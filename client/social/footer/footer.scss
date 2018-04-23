@@ -1,0 +1,30 @@
+.sitemap {
+	background: $color-black-light;
+	padding: 1rem;
+
+	&__content {
+	}
+
+	&__logo img {
+		height: 5rem;
+		width: auto;
+	}
+
+	&__navigation {
+		margin-left: 4rem;
+	}
+
+	&__link {
+		text-decoration: none;
+		color: white;
+		font-weight: $font-primary-medium;
+
+		&:not(:last-child) {
+			margin-right: 2rem;
+		}
+	}
+}
+
+.footer {
+	background: $color-black;
+}

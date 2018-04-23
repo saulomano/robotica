@@ -1,0 +1,57 @@
+.rd-card {
+	padding: .5rem;
+	display: block;
+	
+	&:hover &__wrapper,
+	&:focus &__wrapper {
+		box-shadow: $whiteframe-shadow-4dp;
+	}
+
+	&__wrapper {
+		overflow: hidden;
+		background-color: $color-white;
+		border-radius: $border-radius-default;
+	}
+
+	&__toolbar {
+
+	}
+
+	&__cover {
+		img {
+			width: 100%;
+		}
+	}
+
+	&__header {
+
+	}
+
+	&__body {
+
+	}
+
+	&__footer {
+		border-top: solid 1px $color-grey-light;
+	}
+
+	&__footer:empty {
+		display: none;
+	}
+}
+
+rd-card-toolbar {
+	display: block;
+}
+rd-card-cover {
+	display: block;
+}
+rd-card-header {
+	display: block;
+}
+rd-card-body {
+	display: block;
+}
+rd-card-footer {
+	display: block;
+}

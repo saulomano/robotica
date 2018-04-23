@@ -1,0 +1,97 @@
+.rd-stepper {
+	display: block;
+
+	&__button--save {
+		min-width: 36px !important;
+		background-color: $color-grey !important;
+
+		md-icon {
+			color: $color-white !important;
+		}
+	}
+
+	&__button--back {
+		min-width: 36px !important;
+		background-color: $color-secondary !important;
+
+		md-icon {
+			color: $color-white !important;
+		}
+	}
+
+	&__button--back:disabled {
+		md-icon {
+			color: $color-grey !important;
+		}
+	}
+
+	&__step {
+		outline: none;
+		cursor: pointer;
+		
+		&--number {
+			display: inline-block;
+			height: 3.6rem;
+			width: 3.6rem;
+			text-align: center;
+			line-height: 3.2rem;
+			border-radius: 50%;
+			color: $color-grey;
+			border: solid 1px $color-grey;
+			font-family: $font-family-secondary;
+			font-weight: $font-secondary-medium;
+			font-size: 2rem;
+		}
+
+		&--caption {
+			text-transform: uppercase;
+			font-family: $font-family-secondary;
+			font-weight: $font-secondary-medium;
+			font-size: 2rem;
+			color: $color-grey;
+		}
+
+		&.step-error &--number {
+			border: solid 2px $color-error !important;
+		}
+	}
+
+	// status completed
+	&__step[step-status="completed"],
+	&__step[data-step-status="completed"] {
+		cursor: pointer;
+	}
+
+	&__step[step-status="completed"] > &__step--number,
+	&__step[data-step-status="completed"] > &__step--number {
+			color: $color-black-light;
+			background-color: $color-grey-light;
+			font-weight: $font-secondary-bold;
+	}
+
+	&__step[step-status="completed"] > &__step--caption,
+	&__step[data-step-status="completed"] > &__step--caption {
+			color: $color-grey-light;
+			font-weight: $font-secondary-bold;
+	}
+
+
+	// status editing
+	&__step[step-status="editing"] > &__step--number,
+	&__step[data-step-status="editing"] > &__step--number {
+			color: $color-white;
+			border-color: $color-primary;
+			background-color: $color-primary;
+			font-weight: $font-secondary-bold;
+	}
+
+	&__step[step-status="editing"] > &__step--caption,
+	&__step[data-step-status="editing"] > &__step--caption {
+			color: $color-white;
+			font-weight: $font-secondary-bold;
+	}
+
+	&__step:not(:last-child) {
+		margin-right: 2rem;
+	}
+}

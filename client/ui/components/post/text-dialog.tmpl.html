@@ -1,0 +1,26 @@
+<md-dialog class="post-text__dialog" aria-label="Agregar módulo de texto">
+	<form ng-cloak>
+		<md-toolbar>
+			<div class="md-toolbar-tools post-text__toolbar">
+				<h2><i class="ri ri-mas-texto"></i> Insertar nuevo módulo de texto</h2>
+			</div>
+		</md-toolbar>
+
+		<md-dialog-content class="post-text__content">
+				<ng-quill-editor ng-model="$ctrl.$scope.currentText"></ng-quill-editor>
+		</md-dialog-content>
+
+		<md-dialog-actions layout="row">
+			<md-button class="md-raised post__button" ng-click="$ctrl.clear()">
+					Limpiar
+			</md-button>
+			<span flex></span>
+			<md-button class="md-raised post__button" ng-click="$ctrl.aceptar()">
+				Aceptar
+			</md-button>
+			<md-button class="md-raised post__button" ng-click="$ctrl.cancel()">
+				Cancelar
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

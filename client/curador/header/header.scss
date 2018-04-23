@@ -1,0 +1,52 @@
+// fix the height with the navbar
+.dashboard {
+	&__header {
+		height: $navbar-height-scrolled;
+	}
+	
+	&__navbar--caption {
+		font-family: $font-family-secondary;
+		text-transform: uppercase;
+		color: $color-grey;
+		font-size: 2.8rem;
+	}
+}
+
+.profile__dropdown {
+	position: fixed;
+	right: 2rem;
+	top: $navbar-height-scrolled - 15px;
+	padding: 1rem;
+	width: 23rem;
+	//overflow: hidden;
+	border-radius: $border-radius-default / 2;
+	transition: $transition-default;
+	background-color: $color-white;
+	z-index: $navbar-z-index + 50;
+	box-shadow: $whiteframe-shadow-4dp;
+	border: solid 1px $color-grey-light;
+
+	&--caret {
+		position: absolute;
+		color: $color-white;
+		right: 10px;
+		top: -20px;
+		z-index: $navbar-z-index + 52;
+	}
+
+	&--username {
+		padding: 1rem;
+		text-align: center;
+	}
+
+	&--logout{
+		width: 100%;
+	}
+}
+
+.profile__avatar {
+	img {
+		width: auto;
+		height: 32px;
+	}
+}

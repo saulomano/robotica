@@ -1,0 +1,86 @@
+{
+	"layer": {
+		"api": "./api"
+	},
+	"entity": [
+		{
+			"name": "category",
+			"plural": "categories",
+			"routes": {
+				"index": { "method": "get", "route": "/", "auth": "authenticate" },
+				"update": { "method": "put", "route": "/:id", "auth": "admin" },
+				"show": { "method": "get", "route": "/:id", "auth": "authenticate" },
+				"create": { "method": "post", "route": "/", "auth": "admin" }
+			},
+			"props": [
+				{ "name": "type", "type": "String" },
+				{ "name": "values", "type": "[String]" },
+				{ "name": "caption", "type": "String" }
+			]
+		},
+		{
+			"name": "resource",
+			"plural": "resources",
+			"timestamps": true,
+			"routes": {
+				"index": { "method": "get", "route": "/", "auth": "authenticate" },
+				"destroy": { "method": "delete", "route": "/:id", "auth": "curador" },
+				"update": { "method": "put", "route": "/:id", "auth": "curador" },
+				"show": { "method": "get", "route": "/:id", "auth": "authenticate" },
+				"create": { "method": "post", "route": "/", "auth": "curador" }
+			},
+			"props": [
+				{ "name": "type", "type": "String" },
+				{ "name": "title", "type": "String" },
+				{ "name": "summary", "type": "String" },
+				{ "name": "thumbnail", "type": "String" },
+				{ "name": "nivel", "type": "[String]" },
+				{ "name": "area", "type": "[String]" },
+				{ "name": "accessibility", "type": "[String]" },
+				{ "name": "usability", "type": "[String]" },
+				{ "name": "platform", "type": "[String]" },
+				{ "name": "category", "type": "Schema.Types.Mixed" },
+				{ "name": "postBody", "type": "[{ moduleType: String, content: Schema.Types.Mixed }]" },
+				{ "name": "tags", "type": "[String]" },
+				{ "name": "owner", "type": "{ type: Schema.Types.ObjectId, ref: 'User' }" },
+				{ "name": "collaborators", "type": "[{ type: Schema.Types.ObjectId, ref: 'User' }]" },
+				{ "name": "files", "type": "[{ type: Schema.Types.ObjectId, ref: 'File' }]" },
+				{ "name": "published", "type": "{ type: Schema.Types.ObjectId, ref: 'Published' }"},
+				{ "name": "links", "type": "[{ type: Schema.Types.ObjectId, ref: 'Published' }]" },
+				{ "name": "step", "type": "String" },
+				{ "name": "deleted", "type": "{ type: Boolean, default: false }" }
+			]
+		},
+		{
+			"name": "published",
+			"plural": "publisheds",
+			"timestamps": true,
+			"routes": {
+				"index": { "method": "get", "route": "/" },
+				"destroy": { "method": "delete", "route": "/:id", "auth": "admin" },
+				"update": { "method": "put", "route": "/:id", "auth": "admin" },
+				"show": { "method": "get", "route": "/:id" },
+				"create": { "method": "post", "route": "/", "auth": "admin" }
+			},
+			"props": [
+				{ "name": "type", "type": "String" },
+				{ "name": "title", "type": "String" },
+				{ "name": "summary", "type": "String" },
+				{ "name": "thumbnail", "type": "String" },
+				{ "name": "nivel", "type": "[String]" },
+				{ "name": "area", "type": "[String]" },
+				{ "name": "accessibility", "type": "[String]" },
+				{ "name": "usability", "type": "[String]" },
+				{ "name": "platform", "type": "[String]" },
+				{ "name": "category", "type": "Schema.Types.Mixed" },
+				{ "name": "postBody", "type": "[{ moduleType: String, content: Schema.Types.Mixed }]" },
+				{ "name": "tags", "type": "[String]" },
+				{ "name": "owner", "type": "{ type: Schema.Types.ObjectId, ref: 'User' }" },
+				{ "name": "collaborators", "type": "[{ type: Schema.Types.ObjectId, ref: 'User' }]" },
+				{ "name": "files", "type": "[{ type: Schema.Types.ObjectId, ref: 'File' }]" },
+				{ "name": "links", "type": "[{ type: Schema.Types.ObjectId, ref: 'Published' }]" },
+				{ "name": "deleted", "type": "{ type:Boolean, default: false }" }
+			]
+		}
+	]
+}

@@ -1,0 +1,20 @@
+.mview {
+	display: block;
+	position: absolute;
+	width: calc(100vw - #{$gutter/2});
+	height: 100%;
+	z-index: 20002;
+
+	&__content {
+		display: block;
+		min-height: 100%;
+	}
+}
+
+.md-dialog-backdrop {
+	z-index: 20000 !important;
+}
+
+.md-dialog-container {
+	z-index: 20001;
+}

@@ -1,0 +1,7 @@
+<svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<symbol id="icon-shape" viewBox="0 0 20 20">
+			<path d="m206,0c-162.8,0 -206,57.2 -206,205.3s45.9,207.1 201.8,207.1c167,0 206.6,-50.1 206.6,-208.2s-39.5,-204.2 -202.4,-204.2z"/>
+		</symbol>
+	</defs>
+</svg>

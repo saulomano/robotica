@@ -1,0 +1,26 @@
+.button__text-icon {
+	md-icon {
+		margin-top: -5px;
+	}
+}
+
+.md-button {
+
+	&.bordered {
+		border: solid 1px;
+	}
+	
+	&.mini-button,
+	&.mini-button span {
+		line-height: 26px;
+		min-height: 26px;
+		font-size: 14px;
+		padding: 0 3px;
+	}
+
+	&.mini-button md-icon {
+		margin: 0;
+		line-height: 24px;
+		font-size: 16px;
+	}
+}

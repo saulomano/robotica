@@ -1,0 +1,27 @@
+.clearfix::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.rd-waterfall {
+  display: block;
+
+  &__wrapper {
+    margin: 0 auto;
+    display: block;
+    position: relative;
+  }
+
+  &__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: transform .3s ease-in-out, opacity .2s ease-in-out  .4s;
+  }
+
+  &__actions {
+    text-align: center;
+  }
+}

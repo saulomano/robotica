@@ -1,0 +1,62 @@
+<header class="header">
+	<rd-navbar class="navbar" rd-compact="$ctrl.$state.includes('social.buscar')" ng-class="{'navbar__search' : $ctrl.$state.includes('social.buscar') }">
+		<rd-navbar-brand>
+				<div class="navbar__logo">
+					<a ui-sref="social.home({seccion: null})">
+						<img ng-src="assets/robotica-logo.svg" alt="Logo">
+					</a>
+				</div>
+				<div class="navbar__logo--scrolled">
+					<a ui-sref="social.home({seccion: null})">
+						<img ng-src="assets/robotica-logo-header.svg" alt="Logo">
+					</a>
+				</div>
+		</rd-navbar-brand>
+		<rd-navbar-navigation layout="row" layout-padding ng-if="$ctrl.$state.includes('social.buscar')">
+				<div flex>
+						<md-autocomplete
+								md-input-id="mainSearch"
+								ng-disabled="$ctrl.isDisabled"
+								md-no-cache="$ctrl.noCache"
+								md-selected-item="$ctrl.selectedItem"
+								md-search-text-change="$ctrl.searchTextChange($ctrl.searchText)"
+								md-search-text="$ctrl.searchText"
+								md-selected-item-change="$ctrl.selectedItemChange(item)"
+								md-items="item in $ctrl.querySearch($ctrl.searchText)"
+								md-item-text="item.caption"
+								md-min-length="0"
+								placeholder="Filtrar"
+								md-menu-class="autocomplete-custom-template",
+								ng-model-options="{ 'debounce': 300 }"
+								>
+							<md-item-template>
+								<span class="item-title">
+									<i class="fa" ng-class="item.icon"></i>
+									<span> {{item.caption}} </span>
+								</span>
+								<!--<span class="item-metadata">
+									<span class="item-metastat" ng-repeat="meta in item.metastats">
+										<small><i class="fa" ng-class="meta.icon"></i> <strong>{{meta.total}}</strong> {{meta.caption}}</small>
+									</span>
+								</span>-->
+							</md-item-template>
+						</md-autocomplete>
+					</div>
+		</rd-navbar-navigation>
+		<rd-navbar-navigation ng-if="$ctrl.$state.includes('social.home')">
+			<rd-navbar-item 
+				ng-repeat="item in $ctrl.navbarItems" 
+				ng-model="item" 
+				navbar-item-selected="item.section === $ctrl.selected"
+				ng-click="$ctrl.itemClicked(item)"
+				tabindex="0"/>
+		</rd-navbar-navigation>
+		<rd-navbar-tools>
+			<rd-navbar-item ui-sref="social.buscar" navbar-item-icon="ri ri-lupa" navbar-item-caption="Buscar" navbar-item-selected="$ctrl.$state.includes('social.buscar')"></rd-navbar-item>
+			<rd-navbar-item ui-sref="social.home" navbar-item-icon="mi mi-home" navbar-item-caption="Home" navbar-item-selected="$ctrl.$state.includes('social.home')"></rd-navbar-item>
+			<!--<rd-navbar-item navbar-item-icon="ri ri-mochila" navbar-item-caption="Mi Mochila"></rd-navbar-item>-->
+		</rd-navbar-tools>
+		<rd-navbar-body>
+		</rd-navbar-body>
+	</rd-navbar>
+</header>

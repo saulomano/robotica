@@ -1,0 +1,183 @@
+.navbar {
+
+	&__logo {
+		display: block;
+		position: relative;
+		text-decoration: none;
+		@include transition-move-to-bottom();
+
+		//
+		// make the shadow with before & after
+		&::before {
+			display: block;
+			position: absolute;
+			content: '';
+			opacity: 1;
+			height: 70px;
+			width: 70px;
+			border-radius: 50%;
+			top: 0;
+			left: 10px;
+			box-shadow: $whiteframe-shadow-4dp;
+			z-index: $navbar-z-index + 1;
+		}
+
+		&::after {
+			display: block;
+			position: absolute;
+			content: '';
+			opacity: 1;
+			height: 64px;
+			width: 70px;
+			top: -4px;
+			left: 10px;
+			background-color: $color-white;
+			z-index: $navbar-z-index + 2;
+		}
+	}
+
+	&__logo img {
+		opacity: 1;
+		display: block;
+		height: 70px;
+		width: auto;
+		margin-bottom: -30px;
+		position: relative;
+		z-index: $navbar-z-index + 3;
+	}
+
+	&__logo--scrolled img {
+		opacity: 1;
+		display: block;
+		height: 40px;
+		width: auto;
+		transition: $transition-default;
+		@include opacity-transition();
+	}
+
+	&__search  .rd-navbar__nav--navigation {
+		opacity: 1 !important;
+		display: block !important;
+	}
+}
+
+.rd-navbar {
+
+	// when is scrolled hide the logo
+	&#{&}--scrolled .navbar__logo {
+		opacity: 0;
+		display: none;
+	}
+
+	// hide the logo initial state
+	&:not(&--scrolled) .navbar__logo--scrolled {
+		opacity: 0;
+		display: none;
+	}
+
+	// items
+	&__item {
+		display: block;
+		cursor: pointer;
+		color: $color-grey;
+		transition: $transition-default;
+	}
+
+	//
+	// navigation
+	&__nav--navigation &__item {
+		text-align: center;
+		backface-visibility: hidden;
+
+		&:not(.rd-navbar__item--selected):hover,
+		&:not(.rd-navbar__item--selected):focus {
+			transform: translateY(-1px);
+		}
+
+		&:active, &:focus {
+			transform: translateY(0px);
+		}
+	}
+
+	&__nav--navigation &__item--icon {
+		font-size: 4.5rem;
+		vertical-align: middle;
+	}
+
+	&__nav--navigation &__item--caption {
+		display: block;
+		line-height: normal;
+	}
+	
+	//
+	// dropdown
+	&__dropdown &__item {
+		display: block;
+		cursor: pointer;
+		color: $color-grey;
+		height: 35px;
+		line-height: 35px;
+		padding: 0px ($gutter-fluid/2);
+
+		&--icon {
+			width: 32px;
+			font-size: 2em;
+			vertical-align: top;
+		}
+
+		&--caption {
+			padding-left: $gutter-fluid;
+			vertical-align: middle;
+		}
+	}
+
+	//
+	// tools
+	&__tools {
+		margin-left: auto;
+	}
+
+	&__tools &__item {
+		height: 3.2rem;
+		width: 3.2rem;
+		text-align: center;
+		background-color: $color-grey-light;
+		color: $color-grey;
+		position: relative;
+		line-height: 3.2rem;
+
+		&--icon {
+			vertical-align: middle;
+		}
+
+		&:hover:not(.rd-navbar__item--selected),
+		&:focus:not(.rd-navbar__item--selected) {
+			color: $color-black-light;
+		}
+
+		&--selected {
+			background-color: $color-primary;
+			color: $color-white;
+		}
+
+		@include robotica-shape;	
+	}
+
+	&__profile {
+	}
+	
+}
+
+.rd-navbar__nav--navigation,
+.rd-navbar__dropdown {
+	.rd-navbar__item {
+		&:active, &:hover, &:focus, &.rd-navbar__item--selected {
+			.rd-navbar__item--icon {
+				color: $color-black-light;
+			}
+			.rd-navbar__item--caption {
+				color: $color-black-light;
+			}
+		}
+	}
+}

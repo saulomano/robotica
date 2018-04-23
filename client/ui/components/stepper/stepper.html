@@ -1,0 +1,29 @@
+<div layout="row" layout-align="start stretch">
+	<div class="rd-stepper__steps" flex layout="row" layout-align="start center">
+		<div class="rd-stepper__step" ng-repeat="step in $rdStepperController.steps" 
+				 step-status="{{$rdStepperController.stepStatus(step)}}" 
+				 ng-class="{ 'step-error': step.error }"
+				 ng-click="$rdStepperController.goToStep($index)">
+			<span class="rd-stepper__step--number">{{$index + 1}}</span>
+			<span class="rd-stepper__step--caption">{{step.caption}}</span>
+		</div>
+	</div>
+	<div class="rd-stepper__buttons" layout="row" layout-align="start center">
+		<md-button class="md-raised rd-stepper__button--save"  aria-label="Guardar" ng-click="!$rdStepperController.releaseSave()" >
+			<md-icon class="mi mi-save" aria-hidden="true"></md-icon>
+		</md-button>
+		<md-button class="rd-stepper__button--back" aria-label="Volver" ng-disabled="!$rdStepperController.canBack()" ng-click="$rdStepperController.back()">
+				<md-icon class="mi mi-navigate-back" aria-hidden="true"></md-icon>
+		</md-button>
+		<md-button class="md-raised md-primary rd-stepper__button--next button__text-icon" ng-click="$rdStepperController.next()"
+							 ng-show="$rdStepperController.showNext()">
+				<span>Siguiente</span>
+			<md-icon class="mi mi-navigate-next" aria-hidden="true"></md-icon>
+		</md-button>
+		<md-button class="md-raised md-primary rd-stepper__button--next  button__text-icon" ng-click="$rdStepperController.finish($event)"
+							 ng-show="!$rdStepperController.showNext()">
+			<span>Publicar</span>
+		<md-icon class="mi mi-cloud-upload" aria-hidden="true"></md-icon>
+		</md-button>
+	</div>
+</div>

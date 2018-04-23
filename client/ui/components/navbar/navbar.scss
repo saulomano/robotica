@@ -1,0 +1,195 @@
+.rd-navbar {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-width: $screen-min-width;
+	z-index: $navbar-z-index;
+	background-color: $color-white;
+
+	&__content {
+		display: flex;
+		align-items: center;
+		height: $navbar-height;
+		margin: 0 auto;
+		width: calc((100% - #{$container-gutter-fluid}));
+		z-index: $navbar-z-index + 2;
+		transition: $transition-default;
+	}
+
+	&__menu-button {
+		margin: 0 6px;
+    height: 50px;
+    min-width: 0;
+    padding: 13px;
+    width: 50px;
+		border-radius: 50%;
+		opacity: 1;
+		backface-visibility: hidden;
+		transition: $transition-default;
+				
+		&--bars {
+			display: block;
+			position: relative;
+			width: 100%;
+			height: 3px;
+			background-color: $color-grey;
+			border-radius: 100px;
+
+			&::before {
+				content: '';
+				top: 8px;
+				left: 0;
+				position: absolute;
+				width: 100%;
+				height: 3px;
+				background-color: $color-grey;
+				border-radius: inherit;
+			}
+
+			&::after {
+				content: '';
+				top: -8px;
+				left: 0;
+				position: absolute;
+				width: 100%;
+				height: 3px;
+				background-color: $color-grey;
+				border-radius: inherit;
+			}
+		}
+
+		&:hover {
+			background-color: transparent !important; //fix the md-button selector
+		}
+
+		&:active {
+			box-shadow: $whiteframe-shadow-1dp;
+		}
+
+		&:hover &--bars,
+		&:focus &--bars {
+			background-color: $color-black-light;
+		}
+
+		&:hover &--bars::before,
+		&:focus &--bars::before {
+			background-color: $color-black-light;
+			top: 9px;
+		}
+
+		&:hover &--bars::after,
+		&:focus &--bars::after {
+			background-color: $color-black-light;
+			top: -9px;
+		}
+	}
+
+	&__brand {
+		display: block;
+		position: relative;
+		text-decoration: none;
+	}
+
+	// hide the menu when is not scrolled
+	&:not(&--scrolled) &__menu-button {
+		opacity: 0;
+		visibility: hidden;
+	}
+	
+	// when is scrolled resize the content
+	&#{&}--scrolled &__content {
+		height: $navbar-height-scrolled;
+	}
+
+	&__compact &__content {
+		height: $navbar-height-scrolled;
+	}
+
+	&__nav--navigation {
+		flex: 1 0 auto;
+		opacity: 1;
+		@include opacity-transition-delay($delay: 150ms);
+	}
+
+	&__tools {
+	}
+
+	&__dropdown {
+		position: fixed;
+		z-index: -1;
+		left: ($gutter-fluid - .5);
+		padding: $gutter-fluid 0px;
+		width: 23rem;
+		overflow: hidden;
+		opacity: 0;
+		transition: $transition-default;
+
+		&--tools {
+			opacity: 0;
+			z-index: $navbar-z-index + 3;
+			border-top: 1px solid $color-grey-light;
+			margin-top: 1rem;
+			transition: all .5s cubic-bezier(1,.39,.93,.73);
+		}
+
+		&--items {
+			opacity: 0;
+			transition: all .5s cubic-bezier(1,.39,.93,.73);
+		}
+
+		&--background {
+			position: absolute;
+			width: 4rem;
+			height: 4rem;
+			border-radius: 50%;
+			left: 18px;
+			top: -60px;
+			background-color: $color-white;
+			z-index: -1;
+			//transition: $transition-default;
+			transition: transform 1s cubic-bezier(0.86, 0, 0.07, 1);
+		}
+
+		&:not(.ng-hide) {
+			opacity: 1;
+		}
+
+		&:not(.ng-hide) &--background {
+			transform: scale(80);
+		}
+
+		&:not(.ng-hide) &--items,
+		&:not(.ng-hide) &--tools {
+			opacity: 1;
+		}
+	}
+
+	// styling the rd-navbar-navigation
+	&__nav--navigation > rd-navbar-navigation  {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&#{&}--scrolled &__nav--navigation {
+		opacity: 0;
+		display: none;
+	}
+
+	// styling the rd-navbar-tools
+	&__tools > rd-navbar-tools  {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+}
+
+// responsive
+@include respond(tab-port){
+	.rd-navbar__nav--navigation {
+		display: none;
+	}
+}

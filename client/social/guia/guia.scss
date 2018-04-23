@@ -1,0 +1,121 @@
+// socialGuia Component
+.guia {
+	background-color: $color-white;
+
+	p {
+		color: $color-black-light;
+		font-family: $font-family-primary;
+		font-weight: $font-primary-light;
+		font-size: 1.9rem;
+		line-height: 2.5rem;
+		text-align: justify;
+		margin-bottom: 3rem;
+		margin-top: 3rem;
+
+		&.text-center {
+			text-align: center !important;
+		}
+
+		&.color-propuesta {
+			font-size: 2.4rem;
+			line-height: 2.6rem;
+			color: $color-propuestas !important;
+		}
+
+		&.color-actividad {
+			font-size: 2.4rem;
+			line-height: 2.6rem;
+			color: $color-actividades !important;
+		}
+
+		&.color-herramienta {
+			font-size: 2.4rem;
+			line-height: 2.6rem;
+			color: $color-herramientas !important;
+		}
+	}
+
+	&--content {
+		padding: 3rem 0;
+		background-color: $color-white;
+	}
+
+	&--head {
+		text-align: center;
+		padding: 3rem 0;
+		color: $color-white;
+		margin-bottom: 5rem;
+
+		h2 {
+			font-family: $font-family-secondary;
+			font-weight: $font-secondary-medium;
+			font-size: 4rem;
+		}
+	}
+
+	.logo-bottom {
+		padding: 5rem 0;
+		text-align: center;
+		i {
+			color: $color-primary;
+		}
+	}
+}
+
+.actividad--head {
+	color: $color-actividades;
+	border: solid 2px $color-actividades;
+	border-radius: $border-radius-default;
+	padding: 1rem;
+	font-family: $font-family-secondary;
+	font-weight: $font-secondary-bold;
+
+	&:not(:last-child) {
+		margin-right: 1rem;
+	}
+
+	&.head--fill {
+		color: $color-white;
+		background-color: $color-actividades;
+	}
+}
+
+.herramienta--head {
+	color: $color-herramientas;
+	border: solid 2px $color-herramientas;
+	border-radius: $border-radius-default;
+	padding: 1rem;
+	font-family: $font-family-secondary;
+	font-weight: $font-secondary-bold;
+	margin-bottom: 1rem;
+
+	&:not(:last-child) {
+		margin-right: 1rem;
+	}
+
+	&.head--fill {
+		color: $color-white;
+		background-color: $color-herramientas;
+	}
+}
+
+
+.orientacion--head {
+	color: $color-orientaciones;
+	border: solid 2px $color-orientaciones;
+	border-radius: $border-radius-default;
+	padding: 1rem;
+	font-family: $font-family-secondary;
+	font-weight: $font-secondary-bold;
+	margin-bottom: 1rem;
+
+	&:not(:last-child) {
+		margin-right: 1rem;
+	}
+
+	&.head--fill {
+		color: $color-white;
+		background-color: $color-orientaciones;
+	}
+}
+

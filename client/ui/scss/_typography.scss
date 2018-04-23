@@ -1,0 +1,147 @@
+h1,
+h1 span { 
+	font-size: $h1-font-size;
+}
+
+h2,
+h2 span { 
+	font-size: $h2-font-size; 
+}
+
+h3,
+h3 span { 
+	font-size: $h3-font-size; 
+}
+
+h4,
+h4 span { 
+	font-size: $h4-font-size; 
+}
+
+h5,
+h5 span { 
+	font-size: $h5-font-size; 
+}
+
+h6,
+h6 span { 
+	font-size: $h6-font-size; 
+}
+
+h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
+	font-family: inherit;
+}
+
+h1.margin { 
+	margin-bottom: .7em;
+	margin-top: .5em;
+}
+h2.margin { 
+	margin-bottom: .7em;
+	margin-top: .5em;
+}
+h3.margin { 
+	margin-bottom: .7em;
+	margin-top: .5em;
+}
+h4.margin { 
+	margin-bottom: .7em;
+	margin-top: .5em;
+}
+h5.margin { 
+	margin-bottom: .7em;
+	margin-top: .5em;
+}
+h6.margin { 
+	margin-bottom: .7em;
+	margin-top: .5em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	small {
+		font-size: 0.7em;
+		color: $color-grey;
+	}
+}
+
+
+.rd__text--caption {
+	font-weight: $font-primary-regular;
+	font-size: $caption-font-size;
+
+	span {
+		font-weight: $font-primary-regular;
+		font-size: $caption-font-size;
+	}
+}
+
+// the headpost thing
+.rd__headpost {
+	font-family: $font-family-secondary;
+	font-weight: $font-weight-secondary;
+	
+	&--title {
+		font-family: $font-family-secondary;
+		font-weight: $font-secondary-bold;
+		font-size: $headpost-title-font-size;
+	}
+
+	&--subtitle {
+		font-family: $font-family-secondary;
+		font-weight: $font-secondary-bold;
+		font-size: $headpost-subtitle-font-size;
+	}
+
+	&--sidenav {
+		font-family: $font-family-secondary;
+		font-weight: $font-secondary-bold;
+		font-size: 2.6rem;
+		margin-bottom: 1rem;
+	}
+
+	a, strong {
+		font-family: inherit;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	/*p.#{&} {
+		font-family: inherit;
+		font-weight: $font-secondary-bold;
+		font-size: $headpost-p-font-size;
+	}*/
+}
+
+.rd-card {
+	&__title--v1 {
+		font-family: $font-family-secondary;
+		font-weight: $font-secondary-bold;
+		font-size: 2.8rem;
+	}
+
+	&__title--v2 {
+		font-family: $font-family-secondary;
+		font-weight: $font-secondary-bold;
+		font-size: 2.4rem;
+	}
+
+	&__paragraph,
+	&__caption {
+		font-family: $font-family-primary;
+		font-weight: $font-primary-regular;
+		font-size: 1.4rem;
+	}
+}
+
+strong.rd__text--caption {
+	font-weight: $font-primary-bold;
+}
+
+// utils
+.font-primary-light {
+	font-weight: $font-primary-light !important;
+}
+
+.font-primary-regular {
+	font-weight: $font-primary-regular !important;
+}

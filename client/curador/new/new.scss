@@ -1,0 +1,5 @@
+curador-new {
+	display: block;
+	height: calc(100vh - #{$navbar-height-scrolled});
+	padding-top: 3rem;
+}

@@ -1,0 +1,14 @@
+{
+	"layer": {
+		"app": "./admin"
+	},
+	"module": {
+		"name": "admin"
+	},
+	"route": [
+		{
+			"name": "users",
+			"url": "/admin/users"
+		}
+	]
+}

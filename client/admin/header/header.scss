@@ -1,0 +1,13 @@
+// fix the height with the navbar
+.dashboard {
+	&__header {
+		height: $navbar-height-scrolled;
+	}
+	
+	&__navbar--caption {
+		font-family: $font-family-secondary;
+		text-transform: uppercase;
+		color: $color-grey;
+		font-size: 2.8rem;
+	}
+}

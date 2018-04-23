@@ -1,0 +1,9 @@
+.rd-navbar {
+	&__nav--navigation &__item:not(:last-child) {
+		margin-right: 2.5rem;
+	}
+
+	&__tools &__item:not(:last-child) {
+		margin-right: .5rem;
+	}
+}

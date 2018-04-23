@@ -1,0 +1,8 @@
+.alert {
+	text-align: center;
+	padding: 1rem;
+	
+	&__error {
+		color: $color-error;
+	}
+}

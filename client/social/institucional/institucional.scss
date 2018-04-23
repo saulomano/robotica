@@ -1,0 +1,114 @@
+// socialInstitucional Component
+.institucional {
+	background-color: $color-white;
+
+	h1 {
+		color: $color-primary;
+		font-family: $font-family-secondary;
+		font-weight: $font-secondary-medium;
+	}
+
+	p {
+		color: $color-black-light;
+		font-family: $font-family-primary;
+		font-weight: $font-primary-light;
+		font-size: 1.9rem;
+		line-height: 2.5rem;
+		text-align: justify;
+		margin-bottom: 3rem;
+		margin-top: 3rem;
+	}
+
+	&--banner {
+		text-align: center;
+		padding-top: 3rem;
+
+		p	{
+			color: $color-white;
+			font-size: 150%;
+		}
+	}
+
+	&--logo {
+		width: 15%;
+		height: auto;
+	}
+
+	&--head {
+		text-align: center;
+		padding: 3rem 0;
+		color: $color-white;
+
+		h2 {
+			font-family: $font-family-secondary;
+			font-weight: $font-secondary-medium;
+			font-size: 4rem;
+		}
+	}
+
+	&--credenciales {
+		background: $color-actividades;
+	}
+	
+	&--licencias {
+		background: $color-propuestas;
+	}
+
+	&--contacto {
+		background: $color-mediateca;
+
+		p {
+			color: $color-white;
+			font-family: $font-family-primary;
+			font-weight: $font-primary-light;
+			font-size: 2.5rem;
+			line-height: 2.3rem;
+	
+			&:not(:last-child) {
+				margin-bottom: 2rem;
+			}
+		}
+
+		a {
+			font-family: $font-family-primary;
+			font-weight: $font-primary-regular;
+			font-size: 2.8rem;
+			line-height: 2.9rem;
+			color: $color-white;
+			text-decoration: none;
+		}
+	}
+}
+
+.team--head {
+	color: $color-actividades;
+	border: solid 2px $color-actividades;
+	border-radius: $border-radius-default;
+	padding: 1rem;
+	margin: 2rem 0;
+	font-family: $font-family-secondary;
+	font-weight: $font-secondary-bold;
+}
+
+.team--list {
+	margin-left: 2rem;
+	margin-bottom: 2rem;
+
+	li {
+		color: $color-actividades;
+		font-family: $font-family-primary;
+		font-weight: $font-primary-light;
+		font-size: 1.9rem;
+		line-height: 2.3rem;
+
+		span {
+			color: $color-black-light;
+		}
+	}
+}
+
+.legend--bottom {
+	text-align: center;
+	color: $color-primary;
+	padding: 3rem 0;
+}

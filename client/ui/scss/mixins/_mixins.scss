@@ -1,0 +1,44 @@
+@import 'breakpoints';
+@import 'robotica-shape';
+
+@mixin clearfix {
+  &::after {
+      content: '';
+      display: table;
+      clear: both;
+  }
+}
+
+@mixin opacity-transition($time: 350ms, $type: ease-in){
+  -webkit-animation: _opacityTransition $time $type both;
+  animation: _opacityTransition $time $type both;
+}
+
+@mixin opacity-transition-delay($time: 350ms, $type: ease-in, $delay: 350ms){
+  -webkit-animation: _opacityTransition $time $type both $delay;
+  animation: _opacityTransition $time $type both $delay;
+}
+
+@mixin transition-move-to-bottom($time: 350ms, $type: ease-in){
+  -webkit-animation: moveToBottom $time $type both;
+  animation: moveToBottom $time $type both;
+}
+
+@mixin height-transition($time: .3s){
+  -webkit-transition: height $time, line-height $time; /* Safari */
+  transition: height $time, line-height $time;
+}
+
+@mixin robotica-icon-rounded($color: #000){
+  //TODO make clip-path
+  background-color: $color;
+  border-radius: 12px;
+  padding: 3px;
+}
+
+@mixin centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

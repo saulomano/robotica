@@ -1,0 +1,22 @@
+{
+	"layer": {
+		"app": "./curador"
+	},
+	"module": {
+		"name": "curador"
+	},
+	"route": [
+		{
+			"name": "dashboard",
+			"url": "/tablero"
+		},
+		{
+			"name": "new",
+			"url": "/tablero/new"
+		},
+		{
+			"name": "resource",
+			"url": "/tablero/resource/:uid"
+		}
+	]
+}

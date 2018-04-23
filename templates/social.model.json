@@ -1,0 +1,30 @@
+{
+	"layer": {
+		"app": "./social"
+	},
+	"module": {
+		"name": "social"
+	},
+	"route": [
+		{
+			"name": "home",
+			"url": "/"
+		},
+		{
+			"name": "buscar",
+			"url": "/buscar/:filtro"
+		},
+		{
+			"name": "ver",
+			"url": "/ver/:uid"
+		},
+		{
+			"name": "guia",
+			"url": "/guia"
+		},
+		{
+			"name": "institucional",
+			"url": "/institucional"
+		}
+	]
+}
