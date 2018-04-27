@@ -1,1 +1,103 @@
-// appLogin Component
+.login {
+	&__wrapper {
+		height: 100vh;
+		padding-top: 10rem;
+	}
+
+	&__card {
+		min-height: 40rem;
+		width: 35rem;
+		margin: 0 auto;
+		box-shadow: $whiteframe-shadow-4dp;
+		background-color: $color-white;
+		border-radius: $border-radius-default;
+		padding: 2rem 1rem;
+	}
+
+	&__header {
+		text-align: center;
+
+		&--logo {
+			height: 4.5rem;
+		}
+
+		&--title {
+			font-family: $font-family-secondary;
+			font-weight: $font-secondary-bold;
+			font-size: 3.2rem;
+		}
+	}
+
+	&__form {
+		margin-top: 4rem;
+
+		md-input-container {
+			width: 100%;
+		}
+
+		&--content {
+			width: 21.63rem;
+			margin: 0	auto;
+		}
+	}
+
+	&__button {
+		&--submit {
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		&--google {
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+			margin-bottom: 2.5rem;
+			background-color: #4285f4 !important;
+			color: white !important;
+
+			.google-logo {
+				border-radius: 2px;
+				background-color: #fff;
+				height: 25px;
+				text-align: center;
+				width: 25px;
+
+				svg {
+					position: relative;
+					margin: auto;
+					margin-top: 2px;
+				}
+			}
+		}
+	}
+}
+
+.login-form {
+	&__group:not(:last-child) {
+			margin-bottom: 1rem;
+	}
+
+	&__input {
+			background-color: $color-grey-light;
+			border: solid 1px $color-grey;
+			border-radius: $border-radius-default;
+			color: $color-black;
+			width: 100%;
+			padding: .5rem;
+
+			&:focus {
+					outline: none;
+					border: solid 2px $color-black-light;
+			}
+
+			&:focus:invalid {
+					border: 3px solid $color-primary;
+			}
+	}
+
+	&__label {
+			display: none;
+	}
+
+}

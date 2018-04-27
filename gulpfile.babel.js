@@ -2,7 +2,7 @@ import gulp from 'gulp';
 import gulpLoadPlugins from 'gulp-load-plugins';
 import runSequence from 'run-sequence';
 import del from 'del';
-
+import pm2 from 'pm2';
 import tasksFactory from './tasks';
 
 let plugins = gulpLoadPlugins();

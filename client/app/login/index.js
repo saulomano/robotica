@@ -6,7 +6,7 @@ let routes = function($stateProvider) {
   'ngInject';
   $stateProvider
     .state('app.login', {
-      url: '/login',
+      url: '/login?from',
       template: '<app-login></app-login>'
     });
 }
