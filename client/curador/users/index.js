@@ -7,6 +7,7 @@ let routes = function($stateProvider) {
   $stateProvider
     .state('curador.users', {
       url: '/tablero/users',
+        authenticate: 'curador',
       template: '<curador-users></curador-users>'
     });
 }

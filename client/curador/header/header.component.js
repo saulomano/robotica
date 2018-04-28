@@ -84,9 +84,10 @@ class CuradorHeaderComponent {
   }
 
     goUserModule() {
-        let host = window.location.host;
-        let protocol = window.location.protocol;
-        window.location.href = `${protocol}//${host}/tablero/users`;
+        // let host = window.location.host;
+        // let protocol = window.location.protocol;
+        // window.location.href = `${protocol}//${host}/tablero/users`;
+        this.$state.go('curador.users');
     }
 }
 
