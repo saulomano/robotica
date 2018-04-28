@@ -81,6 +81,10 @@ class CuradorHeaderComponent {
     this.Auth.logout();
     this.$state.go('app.login');
   }
+
+    goUserModule() {
+      console.log('into go')
+    }
 }
 
 export default angular.module('robotica.curador.curadorHeader', [])
