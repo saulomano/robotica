@@ -33,6 +33,7 @@ class CuradorHeaderComponent {
     });
   }
 
+
   searchTextChange(searchText){
     this.$rootScope.$emit('filterChange', searchText);
   }
@@ -83,7 +84,9 @@ class CuradorHeaderComponent {
   }
 
     goUserModule() {
-      console.log('into go')
+        let host = window.location.host;
+        let protocol = window.location.protocol;
+        window.location.href = `${protocol}//${host}/tablero/users`;
     }
 }
 
