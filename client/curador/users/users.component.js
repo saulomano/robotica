@@ -7,9 +7,11 @@ export default class UsersComponent extends CuradorComponent {
   constructor($element, $q, Auth, Restangular) {
     super({$element});
       this.$q = $q;
+      this.page = 0;
+      this.limit = 20;
       this.Auth = Auth;
       this.Restangular = Restangular;
-      this.Resources = this.Restangular.all('resources');
+      this.Users = this.Restangular.all('users');
       this.getUser();
 	}
 
@@ -26,23 +28,23 @@ export default class UsersComponent extends CuradorComponent {
         let def = this.$q.defer();
 
         this.page++;
-        let addNewItem = {
-            type: 'addnew',
-            options: [
-                { section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuestas pedagógica' },
-                { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' },
-                { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
-                { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' },
-                { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' }
-            ]
-        };
+        // let addNewItem = {
+        //     type: 'usuarios',
+        //     options: [
+        //         { section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuestas pedagógica' },
+        //         { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' },
+        //         { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
+        //         { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' },
+        //         { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' }
+        //     ]
+        // };
 
         let q;
         if (this.searchText){
             q = this.searchText
         }
 
-        this.Resources
+        this.Users
             .getList({
                 q: q,
                 page: this.page,
@@ -50,15 +52,13 @@ export default class UsersComponent extends CuradorComponent {
                 sort: 'updatedAt'
             })
             .then(res => {
-                let items = [];
-                if (this.page === 1) {
-                    items.push(addNewItem);
-                }
-
-                items = items.concat(res);
+                const items = res;
+                // if (this.page === 1) {
+                //     items.push(addNewItem);
+                // }
 
                 let data = {
-                    count: (res.$total + 1),
+                    count: (res.length + 1),
                     items: items,
                     page: this.page,
                     limit: this.limit

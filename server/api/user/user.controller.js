@@ -120,6 +120,19 @@ export function me(req, res, next) {
     .catch(err => next(err));
 }
 
+export function editUser(req, res) {
+    const newFormatObjectToUpdate = {
+        $set: {
+            "role": req.body.role
+        }
+    };
+    return User.update({ _id: req.body.id }, newFormatObjectToUpdate).exec()
+        .then(function() {
+            res.status(204).json({msg: "Usuario atualizado satisfactoriamente."});
+        })
+        .catch(handleError(res))
+}
+
 /**
  * Authentication callback
  */

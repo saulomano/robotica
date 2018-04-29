@@ -20,8 +20,7 @@ class ResourceCardController {
 			'actividad': 'Actividad accesible',
 			'herramienta': 'Herramienta',
 			'orientacion': 'Orientación',
-			'mediateca': 'Mediateca',
-			'usuarios' : 'Usuarios'
+			'mediateca': 'Mediateca'
 		};
 
 		this.resource.typeCaption = captions[this.resource.type];
