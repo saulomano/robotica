@@ -28,16 +28,6 @@ export default class UsersComponent extends CuradorComponent {
         let def = this.$q.defer();
 
         this.page++;
-        // let addNewItem = {
-        //     type: 'usuarios',
-        //     options: [
-        //         { section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuestas pedagógica' },
-        //         { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' },
-        //         { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
-        //         { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' },
-        //         { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' }
-        //     ]
-        // };
 
         let q;
         if (this.searchText){
@@ -53,9 +43,6 @@ export default class UsersComponent extends CuradorComponent {
             })
             .then(res => {
                 const items = res;
-                // if (this.page === 1) {
-                //     items.push(addNewItem);
-                // }
 
                 let data = {
                     count: (res.length + 1),
