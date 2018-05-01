@@ -20,8 +20,11 @@ class HeaderComponent {
       { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
       { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' },
       { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' },
+      { section: 'mediateca1', icon: 'ri ri-mediateca', caption: 'Mediateca1' },
     ];
 
+
+   
     $rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
       this.searchText =  $stateParams.search || '';
       if (!toParams.seccion){
