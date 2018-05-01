@@ -4,6 +4,8 @@ import User from './user.model';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
 import _ from 'lodash';
+import Published from "../published/published.model";
+import Resource from "../resource/resource.model";
 
 function validationError(res, statusCode) {
   statusCode = statusCode || 422;
@@ -68,12 +70,9 @@ export function show(req, res, next) {
  * Deletes a user
  * restriction: 'admin'
  */
-export function destroy(req, res) {
-  return User.findByIdAndRemove(req.params.id).exec()
-    .then(function() {
-      res.status(204).end();
-    })
-    .catch(handleError(res));
+export function destroy(req, res, next) {
+    req.result = User.findByIdAndRemove(req.params.id).exec();
+    next();
 }
 
 /**
@@ -120,17 +119,16 @@ export function me(req, res, next) {
     .catch(err => next(err));
 }
 
-export function editUser(req, res) {
-    const newFormatObjectToUpdate = {
-        $set: {
-            "role": req.body.role
-        }
-    };
-    return User.update({ _id: req.body.id }, newFormatObjectToUpdate).exec()
-        .then(function() {
-            res.status(204).json({msg: "Usuario atualizado satisfactoriamente."});
-        })
-        .catch(handleError(res))
+
+/**
+ * Updates a user
+ * restriction: 'admin'
+ */
+export function update(req, res, next) {
+    delete req.body._id;
+
+    req.result = User.update({ _id: req.params.id}, req.body).exec();
+    next();
 }
 
 /**
