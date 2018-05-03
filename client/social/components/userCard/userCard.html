@@ -18,7 +18,21 @@
                 <h1 class="rd-card__title--v1">{{$ctrl.user.name}}</h1>
                 <p class="rd-card__paragraph" ng-show="$ctrl.showInfo"><strong>Role: </strong>{{$ctrl.user.role | truncate:140 }}</p>
                 <p class="rd-card__paragraph" ng-hide="$ctrl.showInfo"><strong>Role: </strong>
-                    <select ng-options="role.name for role in $ctrl.roles track by role.id" ng-model="$ctrl.selectedRole"></select></p>
+                    <md-autocomplete
+                            md-selected-item="$ctrl.selectedRole"
+                            md-search-text="$ctrl.searchText"
+                            md-items="role in $ctrl.roles"
+                            md-item-text="role.name"
+                            md-min-length="0"
+                            placeholder="Seleccione el Rol del Usuario">
+                        <md-item-template>
+                            <span md-highlight-text="$ctrl.searchText" md-highlight-flags="^i">{{role.name}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            No states matching "{{$ctrl.searchText}}" were found.
+                        </md-not-found>
+                    </md-autocomplete>
+                </p>
                 <!--<p><strong class="rd-card__updated rd__color&#45;&#45;grey-light ">Actualizado <strong am-time-ago="$ctrl.resource.createdAt"></strong> </strong></p>-->
                 <!--<p><strong class="rd-card__owner">{{$ctrl.resource.owner.name}}</strong></p>-->
             </div>

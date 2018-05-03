@@ -4,15 +4,25 @@ import CuradorComponent from '../curador.component';
 
 export default class UsersComponent extends CuradorComponent {
   /*@ngInject*/
-  constructor($element, $q, Auth, Restangular) {
+  constructor($element, $rootScope, $q, $stateParams, $state, Auth, Restangular) {
     super({$element});
       this.$q = $q;
+      this.$state = $state;
+      this.$rootScope = $rootScope;
       this.page = 0;
       this.limit = 20;
       this.Auth = Auth;
       this.Restangular = Restangular;
       this.Users = this.Restangular.all('users');
-      this.getUser();
+      this.searchText = $stateParams.search;
+      this.user = this.getUser();
+      this.$rootScope.$on('filterChange', (event, searchText) => {
+          if (this.searchText !== searchText) {
+              this.page = 0;
+              this.searchText = searchText;
+              this.$state.go('.', { search: searchText }, {notify: false});
+          }
+      });
 	}
 
     getUser(){
@@ -38,8 +48,7 @@ export default class UsersComponent extends CuradorComponent {
             .getList({
                 q: q,
                 page: this.page,
-                limit: this.limit,
-                sort: 'updatedAt'
+                limit: this.limit
             })
             .then(res => {
                 const items = res;

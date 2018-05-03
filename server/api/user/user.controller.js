@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken';
 import _ from 'lodash';
 import Published from "../published/published.model";
 import Resource from "../resource/resource.model";
+import Users from "../users/users.model";
 
 function validationError(res, statusCode) {
   statusCode = statusCode || 422;
@@ -25,12 +26,68 @@ function handleError(res, statusCode) {
  * Get list of users
  * restriction: 'admin'
  */
-export function index(req, res) {
-  return User.find({}, '-salt -password').exec()
-    .then(users => {
-      res.status(200).json(users);
-    })
-    .catch(handleError(res));
+// export function index(req, res) {
+//   return User.find({}, '-salt -password').exec()
+//     .then(users => {
+//       res.status(200).json(users);
+//     })
+//     .catch(handleError(res));
+//
+// }
+
+/**
+ * Get list of users
+ * restriction: 'admin'
+ */
+export function index(req, res, next) {
+    var query = req.querymen;
+    let qq = req.query.q;
+    let q = {};
+    if (qq){
+        // convert to regex
+        let keywords = _.escapeRegExp(qq);
+        let patterns = [
+            { s: /[aáà]/ig, v: '[aáà]' },
+            { s: /[eéè]/ig, v: '[eéè]' },
+            { s: /[iíì]/ig, v: '[iíì]' },
+            { s: /[oóò]/ig, v: '[oóò]' },
+            { s: /[uúù]/ig, v: '[uúù]' },
+        ];
+
+        _.each(patterns, p => {
+            keywords = keywords.replace(p.s, p.v);
+        });
+
+        let k = new RegExp(keywords, 'i');
+
+        q = { $or: [
+                { name: { $regex: k, $options: 'i' } },
+                { email: { $regex: k, $options: 'i' } },
+                { provider: { $regex: k, $options: 'i' } },
+                { role: { $regex: k, $options: 'i' } }
+            ]
+        };
+    }
+
+    User
+        .find(q)
+        .count()
+        .exec((err, count) => {
+            if (err){
+                return next(err);
+            }
+            req.totalItems = count;
+            req.result = User
+                .find(q)
+                .populate('owner')
+                .populate('files')
+                .sort(query.cursor.sort)
+                .skip(query.cursor.skip)
+                .limit(query.cursor.limit)
+                .select(query.cursor.select)
+                .exec();
+            next();
+        });
 }
 
 /**
