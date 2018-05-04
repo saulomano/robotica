@@ -1,5 +1,6 @@
 # robotica
-repositorio con fuentes para dte-robotica
+
+## repositorio con fuentes para dte-robotica
 
 
 Copiar y editar el archivo server/config/secret.example.js -> server/config/secret.js con las variables correspondientes
