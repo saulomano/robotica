@@ -1,2 +1,15 @@
 <!--<span class="rd-navbar__item&#45;&#45;icon" ng-class="$rdNavbarItemCtrl.icon" aria-hidden="true"></span>-->
-<span class="rd-navbar__item--caption rd__text--caption">{{$rdNavbarItemCtrl.caption}}</span>
+<span class="rd-navbar__item--caption rd__text--caption" ng-if="$rdNavbarItemCtrl.caption == 'Buscar' || $rdNavbarItemCtrl.caption == 'Home'">{{$rdNavbarItemCtrl.caption}}</span>
+
+<ul class="nav-items">
+    <li class="nav-item" ng-class="{'dropdown': $rdNavbarItemCtrl.model.nodes}">
+        <a class="nav-link"><span>{{ $rdNavbarItemCtrl.model.caption }}</span></a>
+        <nav class="submenu" ng-show="$rdNavbarItemCtrl.model.nodes">
+            <ul class="submenu-items">
+                <li class="submenu-item" ng-repeat="node in $rdNavbarItemCtrl.model.nodes">
+                    <a href class="submenu-link" ng-click="$rdNavbarItemCtrl.itemClicked(node)">{{ node.caption }}</a>
+                </li>
+            </ul>
+        </nav>
+    </li>
+</ul>

@@ -24,29 +24,34 @@ class HeaderComponent {
     ];
 
     this.menuNavBar = [
-      { section: 'institucional',  caption: 'Institucional',
-      "nodes": [
-        {
-          section: 'quienesSomos',  caption: 'Quienes Somos', action:'/quienesSomos.html'
-        },
-        {
-          section: 'ultimasNoticias',  caption: 'Ultimas Noticas', action:'?seccion=ultimasNoticias'
-        },
-        {
-          section: 'calendario',  caption: 'Calendario', action:'?seccion=calendario'
-        }
-      ]    
-    },
-      { section: 'desafios',  caption: 'Desafios',
-      "nodes": [
-        {
-          section: 'desafios',  caption: 'Desafios', action:'?seccion=desafios'
-        },
-        {
-          section: 'subiDesafio',  caption: 'Subi tu desafio', action:'/subiDesafio'
-        }]
+      {
+        section: 'institucional',  caption: 'Institucional',
+        "nodes": [
+          {
+            section: 'quienesSomos',  caption: 'Quienes Somos', action:'/quienesSomos.html'
+          },
+          {
+            section: 'ultimasNoticias',  caption: 'Ultimas Noticas', action:'?seccion=ultimasNoticias'
+          },
+          {
+            section: 'calendario',  caption: 'Calendario', action:'?seccion=calendario'
+          }
+        ]
       },
-      { section: 'kits',  caption: 'Kits',action:'?seccion=kits'}
+      {
+        section: 'desafios',  caption: 'Desafios',
+        "nodes": [
+          {
+            section: 'desafios',  caption: 'Desafios', action:'?seccion=desafios'
+          },
+          {
+            section: 'subiDesafio',  caption: 'Subi tu desafio', action:'/subiDesafio'
+          }
+        ]
+      },
+      {
+        section: 'kits',  caption: 'Kits', action:'?seccion=kits'
+      }
      
     ];
 
@@ -79,11 +84,13 @@ class HeaderComponent {
   }
 
   itemClicked(item) {
-    if (this.selected === item.section){
-      return;
+    if (!item.nodes) {
+        if (this.selected === item.section){
+            return;
+        }
+        this.$state.go('.', { seccion: item.section });
+        this.selected = item.section;
     }
-    this.$state.go('.', { seccion: item.section });
-    this.selected = item.section;
   }
 }
 

@@ -382,34 +382,64 @@ html {
 	pointer-events: auto;
 }
 
-@media screen and (max-width: 600px) {
-	.nav .nav-items .nav-item .nav-link {
-		display: none;
-	}
-	.nav .nav-items .nav-item a.icon {
-		float: right;
-		display: block;
-	}
+/************************* VERTICAL ******************************************/
+
+/* define a fixed width for the entire menu */
+.navigation {
+	width: 300px;
 }
 
-@media screen and (max-width: 600px) {
-	.nav.responsive {position: relative;}
-	.nav.responsive .nav-items .nav-item .icon {
-		position: absolute;
-		right: 10px;
-		top: 0;
-	}
-	.nav.responsive .nav-items .nav-item {
-		float: none;
-		display: block;
-		text-align: left;
-	}
-	.nav.responsive .nav-items .dropdown {float: none;}
-	.nav.responsive .nav-items .nav-item .submenu .submenu-items {position: relative; display: block;}
-	.nav.responsive .nav-items .dropdown .nav-link {
-		display: block;
-		width: 100%;
-		text-align: left;
-		left: 30px;
-	}
+/* reset our lists to remove bullet points and padding */
+.mainmenu, .submenu-i {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* make ALL links (main and submenu-i) have padding and background color */
+.mainmenu a {
+	display: block;
+	background-color: #CCC;
+	text-decoration: none;
+	padding: 10px;
+	color: #000;
+}
+
+/* add hover behaviour */
+.mainmenu a:hover {
+	background-color: #C5C5C5;
+}
+
+
+/* when hovering over a .mainmenu item,
+  display the submenu-i inside it.
+  we're changing the submenu-i's max-height from 0 to 200px;
+*/
+
+.mainmenu li:hover .submenu-i {
+	display: block;
+	max-height: 200px;
+}
+
+/*
+  we now overwrite the background-color for .submenu-i links only.
+  CSS reads down the page, so code at the bottom will overwrite the code at the top.
+*/
+
+.submenu-i a {
+	background-color: #999;
+}
+
+/* hover behaviour for links inside .submenu-i */
+.submenu-i a:hover {
+	background-color: #666;
+}
+
+/* this is the initial state of all submenu-i.
+  we set it to max-height: 0, and hide the overflowed content.
+*/
+.submenu-i {
+	overflow: hidden;
+	max-height: 0;
+	-webkit-transition: all 0.5s ease-out;
 }

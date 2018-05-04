@@ -12,50 +12,7 @@
 	</a>
 
 	<!-- HORIZONTAL NAVIGATION -->
-	<!--<nav class="rd-navbar__nav&#45;&#45;navigation" ng-transclude="items" role="navigation">-->
-	<!--</nav>-->
-
-	<nav role="navigation" class="nav" id="myTopnav">
-		<ul class="nav-items">
-			<li class="nav-item">
-				<a href="#" class="nav-link"><span>Home</span></a>
-			</li>
-			<li class="nav-item dropdown">
-				<a href="#" class="nav-link" ng-mouseover="onClick($event)"><span>Products</span></a>
-				<nav class="submenu">
-					<ul class="submenu-items">
-						<li class="submenu-item"><a href="#" class="submenu-link">Product #1</a></li>
-						<li class="submenu-item"><a href="#" class="submenu-link">Product #2</a></li>
-						<li class="submenu-item"><a href="#" class="submenu-link">Product #3</a></li>
-					</ul>
-				</nav>
-			</li>
-			<li class="nav-item">
-				<a href="#" class="nav-link"><span>Services</span></a>
-			</li>
-			<li class="nav-item">
-				<a href="#" class="nav-link"><span>Pricing</span></a>
-			</li>
-			<li class="nav-item">
-				<a href="#" class="nav-link"><span>News</span></a>
-			</li>
-			<li class="nav-item dropdown">
-				<a href="#" class="nav-link"><span>More</span></a>
-				<nav class="submenu">
-					<ul class="submenu-items">
-						<li class="submenu-item"><a href="#" class="submenu-link">About</a></li>
-						<li class="submenu-item"><a href="#" class="submenu-link">Contact</a></li>
-						<li class="submenu-item"><hr class="submenu-seperator" /></li>
-						<li class="submenu-item"><a href="#" class="submenu-link">Support</a></li>
-						<li class="submenu-item"><a href="#" class="submenu-link">FAQs</a></li>
-						<li class="submenu-item"><a href="#" class="submenu-link">Careers</a></li>
-					</ul>
-				</nav>
-			</li>
-			<li class="nav-item">
-				<a href="javascript:void(0);" style="font-size:15px;" class="icon" ng-click="$rdNavbarController.myFunction()">&#9776;</a>
-			</li>
-		</ul>
+	<nav class="nav rd-navbar__nav--navigation" ng-transclude="items" role="navigation">
 	</nav>
 
 	<!-- TOOLS -->
@@ -64,9 +21,31 @@
 	<!-- PROFILE -->
 	<div class="rd-navbar__profile" ng-transclude="profile"></div>
 </div>
+
 <!-- VERTICAL NAVIGATION -->
-<div flex class="rd-navbar__dropdown"  md-whiteframe="4" ng-show="$rdNavbarController.dropdownOpened">
+<div flex class="rd-navbar__dropdown" md-whiteframe="4" ng-show="false">
 	<div class="rd-navbar__dropdown--background"></div>
-	<div class="rd-navbar__dropdown--items" ng-transclude="items"></div>
+	<div class="rd-navbar__dropdown--items" ng-transclude="items">
+	</div>
+	<div class="rd-navbar__dropdown--tools" ng-transclude="tools"></div>
+</div>
+
+<!-- CUSTOM VERTICAL NAVIGATION -->
+<div flex class="rd-navbar__dropdown" md-whiteframe="4" ng-show="$rdNavbarController.dropdownOpened">
+	<div class="rd-navbar__dropdown--background"></div>
+	<div class="rd-navbar__dropdown--items">
+		<nav class="navigation">
+			<ul class="mainmenu">
+				<li ng-repeat="item in $rdNavbarController.navBarItems">
+					<a href="">{{ item.caption }}</a>
+					<ul class="submenu-i" ng-if="item.nodes">
+						<li ng-repeat="subItem in item.nodes">
+							<a href="">{{ subItem.caption }}</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</div>
 	<div class="rd-navbar__dropdown--tools" ng-transclude="tools"></div>
 </div>

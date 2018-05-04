@@ -13,14 +13,15 @@ class RdNavbarController {
 	/*@ngInject*/
 	constructor($scope, $element, $window, $mdMedia, $timeout){
 		this.$scope = $scope;
-    this.$element = $element;
-    this.$timeout = $timeout;
+    	this.$element = $element;
+    	this.$timeout = $timeout;
+    	this.navBarItems = this.$scope.rdItems;
 
-    this.$element.addClass('rd-navbar md-whiteframe-4dp');
+    	this.$element.addClass('rd-navbar md-whiteframe-4dp');
 
-    this.$scope.$watch(() => { return $mdMedia('xs') || $mdMedia('sm'); }, (mobile) => {
-    	this.isMobile = mobile === true;
-    });
+		this.$scope.$watch(() => { return $mdMedia('xs') || $mdMedia('sm'); }, (mobile) => {
+			this.isMobile = mobile === true;
+		});
 
 		let clsScrolled = 'rd-navbar--scrolled';
 		this.isCompact = this.$scope.rdCompact;
@@ -28,30 +29,30 @@ class RdNavbarController {
 			this.isCompact = this.$scope.rdCompact;
 			if (this.isCompact) {
 				this.$element.addClass(clsScrolled);
-			}	
-    });
+			}
+		});
 		if (this.isCompact) {
 			this.$element.addClass(clsScrolled);
 		}
 
-    $(document).ready(() => {
-		  var scrollTop = 0;
-		  $(window).scroll(() => {
-		    scrollTop = $(window).scrollTop();
-		    if (scrollTop >= HIEGHT_BREACKPOINT) {
-		      this.$element.addClass(clsScrolled);
-		    } else if (scrollTop < HIEGHT_BREACKPOINT) {
+		$(document).ready(() => {
+			var scrollTop = 0;
+			$(window).scroll(() => {
+				scrollTop = $(window).scrollTop();
+				if (scrollTop >= HIEGHT_BREACKPOINT) {
+					this.$element.addClass(clsScrolled);
+				} else if (scrollTop < HIEGHT_BREACKPOINT) {
 					if (!this.isCompact){
 						this.$element.removeClass(clsScrolled);
 					}
-		    } 
+				}
 
-		    this.removeDropdown();
-		  }); 
+				this.removeDropdown();
+			});
 
-		  $(document).click(() => {
-		  	this.removeDropdown();
-		  });
+			$(document).click(() => {
+				this.removeDropdown();
+			});
 		});
 
 		// the dropdown
@@ -60,52 +61,17 @@ class RdNavbarController {
 			this.dropdownOpened = !this.dropdownOpened;
 			$event.stopPropagation();
 		};
-
-        [].slice.call(document.querySelectorAll('.dropdown .nav-link')).forEach(function(el){
-            el.addEventListener('mouseover', onClick, false);
-        });
-
-        function onClick(e){
-            e.preventDefault();
-            var el = this.parentNode;
-            el.classList.contains('show-submenu') ? hideSubMenu(el) : showSubMenu(el);
-        }
-
-        function showSubMenu(el){
-            el.classList.add('show-submenu');
-            document.addEventListener('mouseover', function onDocClick(e){
-                e.preventDefault();
-                if(el.contains(e.target)){
-                    return;
-                }
-                document.removeEventListener('mouseover', onDocClick);
-                hideSubMenu(el);
-            });
-        }
-
-        function hideSubMenu(el){
-            el.classList.remove('show-submenu');
-        }
 	}
 
 	removeDropdown(){
 		// remove the dropdown
-    if (this.dropdownOpened) {
-    	this.dropdownOpened = false;
-    	this.$timeout(() => {
-    		//this.$apply();
-    	});
-    }
+		if (this.dropdownOpened) {
+			this.dropdownOpened = false;
+			this.$timeout(() => {
+				//this.$apply();
+			});
+		}
 	}
-
-    myFunction() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "nav") {
-            x.className += " responsive";
-        } else {
-            x.className = "nav";
-        }
-    }
 }
 
 function RdNavbar($window){
@@ -116,7 +82,8 @@ function RdNavbar($window){
 		controller: RdNavbarController,
 		controllerAs: '$rdNavbarController',
 		scope: {
-			rdCompact: '='
+			rdCompact: '=',
+            rdItems: '='
 		},
 		transclude: {
 			'items': 'rdNavbarNavigation',

@@ -1,5 +1,5 @@
 <header class="header">
-	<rd-navbar class="navbar" rd-compact="$ctrl.$state.includes('social.buscar')" ng-class="{'navbar__search' : $ctrl.$state.includes('social.buscar') }">
+	<rd-navbar class="navbar" rd-items="$ctrl.menuNavBar" rd-compact="$ctrl.$state.includes('social.buscar')" ng-class="{'navbar__search' : $ctrl.$state.includes('social.buscar') }">
 		<rd-navbar-brand>
 				<div class="navbar__logo">
 					<a ui-sref="social.home({seccion: null})">
@@ -54,7 +54,7 @@
 		</rd-navbar-navigation>
 		<rd-navbar-navigation ng-if="$ctrl.$state.includes('social.home')">
 			<rd-navbar-item 
-				ng-repeat="item in $ctrl.navbarItems" 
+				ng-repeat="item in $ctrl.menuNavBar"
 				ng-model="item" 
 				navbar-item-selected="item.section === $ctrl.selected"
 				ng-click="$ctrl.itemClicked(item)"
