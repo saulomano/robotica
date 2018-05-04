@@ -23,6 +23,35 @@ class HeaderComponent {
       { section: 'mediateca1', icon: 'ri ri-mediateca', caption: 'Mediateca1' },
     ];
 
+    this.menuNavBar = [
+      { section: 'institucional',  caption: 'Institucional',
+      "nodes": [
+        {
+          section: 'quienesSomos',  caption: 'Quienes Somos', action:'/quienesSomos.html'
+        },
+        {
+          section: 'ultimasNoticias',  caption: 'Ultimas Noticas', action:'?seccion=ultimasNoticias'
+        },
+        {
+          section: 'calendario',  caption: 'Calendario', action:'?seccion=calendario'
+        }
+      ]    
+    },
+      { section: 'desafios',  caption: 'Desafios',
+      "nodes": [
+        {
+          section: 'desafios',  caption: 'Desafios', action:'?seccion=desafios'
+        },
+        {
+          section: 'subiDesafio',  caption: 'Subi tu desafio', action:'/subiDesafio'
+        }]
+      },
+      { section: 'kits',  caption: 'Kits',action:'?seccion=kits'}
+     
+    ];
+
+
+
 
    
     $rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
