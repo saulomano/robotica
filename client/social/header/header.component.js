@@ -52,7 +52,6 @@ class HeaderComponent {
       {
         section: 'kits',  caption: 'Kits', action:'?seccion=kits'
       }
-     
     ];
 
 

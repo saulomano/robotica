@@ -38,7 +38,7 @@ class RdNavbarItemController {
     });
 
         [].slice.call(document.querySelectorAll('.dropdown .nav-link')).forEach(function(el){
-            el.addEventListener('mouseover', onClick, false);
+            el.addEventListener('click', onClick, false);
         });
 
         function onClick(e){
@@ -49,12 +49,12 @@ class RdNavbarItemController {
 
         function showSubMenu(el){
             el.classList.add('show-submenu');
-            document.addEventListener('mouseover', function onDocClick(e){
+            document.addEventListener('click', function onDocClick(e){
                 e.preventDefault();
                 if(el.contains(e.target)){
                     return;
                 }
-                document.removeEventListener('mouseover', onDocClick);
+                document.removeEventListener('click', onDocClick);
                 hideSubMenu(el);
             });
         }

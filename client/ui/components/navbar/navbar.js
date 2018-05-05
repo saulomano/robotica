@@ -21,6 +21,11 @@ class RdNavbarController {
 
 		this.$scope.$watch(() => { return $mdMedia('xs') || $mdMedia('sm'); }, (mobile) => {
 			this.isMobile = mobile === true;
+			if(this.isMobile) {
+                this.$element.addClass(clsScrolled);
+			} else {
+                this.$element.removeClass(clsScrolled);
+			}
 		});
 
 		let clsScrolled = 'rd-navbar--scrolled';
@@ -36,19 +41,19 @@ class RdNavbarController {
 		}
 
 		$(document).ready(() => {
-			var scrollTop = 0;
-			$(window).scroll(() => {
-				scrollTop = $(window).scrollTop();
-				if (scrollTop >= HIEGHT_BREACKPOINT) {
-					this.$element.addClass(clsScrolled);
-				} else if (scrollTop < HIEGHT_BREACKPOINT) {
-					if (!this.isCompact){
-						this.$element.removeClass(clsScrolled);
-					}
-				}
-
-				this.removeDropdown();
-			});
+			// var scrollTop = 0;
+			// $(window).scroll(() => {
+			// 	scrollTop = $(window).scrollTop();
+			// 	if (scrollTop >= HIEGHT_BREACKPOINT) {
+			// 		this.$element.addClass(clsScrolled);
+			// 	} else if (scrollTop < HIEGHT_BREACKPOINT) {
+			// 		if (!this.isCompact){
+			// 			this.$element.removeClass(clsScrolled);
+			// 		}
+			// 	}
+            //
+			// 	this.removeDropdown();
+			// });
 
 			$(document).click(() => {
 				this.removeDropdown();
