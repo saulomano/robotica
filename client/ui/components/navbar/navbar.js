@@ -43,19 +43,18 @@ class RdNavbarController {
 		}
 
 		$(document).ready(() => {
-			// var scrollTop = 0;
-			// $(window).scroll(() => {
-			// 	scrollTop = $(window).scrollTop();
-			// 	if (scrollTop >= HIEGHT_BREACKPOINT) {
-			// 		this.$element.addClass(clsScrolled);
-			// 	} else if (scrollTop < HIEGHT_BREACKPOINT) {
-			// 		if (!this.isCompact){
-			// 			this.$element.removeClass(clsScrolled);
-			// 		}
-			// 	}
-            //
-			// 	this.removeDropdown();
-			// });
+			var scrollTop = 0;
+			$(window).scroll(() => {
+				scrollTop = $(window).scrollTop();
+				// if (scrollTop >= HIEGHT_BREACKPOINT) {
+				// 	this.$element.addClass(clsScrolled);
+				// } else if (scrollTop < HIEGHT_BREACKPOINT) {
+				// 	if (!this.isCompact){
+				// 		this.$element.removeClass(clsScrolled);
+				// 	}
+				// }
+				this.removeDropdown();
+			});
 
 			$(document).click(() => {
 				this.removeDropdown();
