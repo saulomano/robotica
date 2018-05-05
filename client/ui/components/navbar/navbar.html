@@ -37,10 +37,10 @@
 		<nav class="navigation">
 			<ul class="mainmenu">
 				<li ng-repeat="item in $rdNavbarController.navBarItems">
-					<a href="">{{ item.caption }} </a>
+					<a ng-click="$rdNavbarController.itemClicked(item)">{{ item.caption }} </a>
 					<ul class="submenu-i" ng-if="item.nodes">
 						<li ng-repeat="subItem in item.nodes">
-							<a href="">{{ subItem.caption }}</a>
+							<a href ng-click="$rdNavbarController.itemClicked(subItem)">{{ subItem.caption }}</a>
 						</li>
 					</ul>
 				</li>

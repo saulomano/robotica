@@ -3,7 +3,7 @@
 
 <ul class="nav-items">
     <li class="nav-item" ng-class="{'dropdown': $rdNavbarItemCtrl.model.nodes}">
-        <md-button class="nav-link">{{ $rdNavbarItemCtrl.model.caption }} </md-button>
+        <md-button class="nav-link" ng-click="$rdNavbarItemCtrl.itemClicked($rdNavbarItemCtrl.model)">{{ $rdNavbarItemCtrl.model.caption }} </md-button>
         <!--<a class="nav-link">-->
             <!--<span>{{ $rdNavbarItemCtrl.model.caption }} <i class="material-icons">keyboard_arrow_down</i></span>-->
         <!--</a>-->

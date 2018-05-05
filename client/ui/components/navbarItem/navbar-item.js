@@ -7,9 +7,11 @@ export default angular
 
 class RdNavbarItemController {
 	/*@ngInject*/
-	constructor($scope, $element) {
+	constructor($scope, $element, $state) {
 		this.$scope = $scope;
         this.$element = $element;
+        this.$state = $state;
+        this.selected = '';
         this.parentNode = this.parentNode;
         // has a model?
         this.model = this.$scope.ngModel;
@@ -30,12 +32,12 @@ class RdNavbarItemController {
 		//this.$element.attr('role', 'menuitem');
 
         this.$scope.$watch(() => { return this.$scope.selected }, (value) => {
-    	if (value) {
-    		this.$element.addClass('rd-navbar__item--selected');
-    	} else {
-    		this.$element.removeClass('rd-navbar__item--selected')
-    	}
-    });
+            if (value) {
+                this.$element.addClass('rd-navbar__item--selected');
+            } else {
+                this.$element.removeClass('rd-navbar__item--selected')
+            }
+        });
 
         [].slice.call(document.querySelectorAll('.dropdown .nav-link')).forEach(function(el){
             el.addEventListener('click', onClick, false);
@@ -65,11 +67,17 @@ class RdNavbarItemController {
 	}
 
     itemClicked(item) {
-        if (this.selected === item.section){
+        if (this.selected === item.section) return;
+        let host = window.location.host;
+        let protocol = window.location.protocol;
+        if (item.action) {
+            this.selected = item.action;
+            window.location.href = `${protocol}//${host}/${item.action}`;
+        } else {
             return;
         }
-        this.$state.go('.', { seccion: item.section });
-        this.selected = item.section;
+        // this.$state.go('.', { seccion: item.section });
+        // this.selected = item.section;
     }
 }
 

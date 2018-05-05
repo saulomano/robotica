@@ -11,10 +11,12 @@ export default angular
 
 class RdNavbarController {
 	/*@ngInject*/
-	constructor($scope, $element, $window, $mdMedia, $timeout){
+	constructor($scope, $element, $window, $mdMedia, $timeout, $state){
 		this.$scope = $scope;
     	this.$element = $element;
-    	this.$timeout = $timeout;
+		this.$timeout = $timeout;
+		this.$state = this.$state;
+		this.selected = '';
     	this.navBarItems = this.$scope.rdItems;
 
     	this.$element.addClass('rd-navbar md-whiteframe-4dp');
@@ -77,6 +79,20 @@ class RdNavbarController {
 			});
 		}
 	}
+
+	itemClicked(item) {
+        if (this.selected === item.section) return;
+        let host = window.location.host;
+        let protocol = window.location.protocol;
+        if (item.action) {
+            this.selected = item.action;
+            window.location.href = `${protocol}//${host}/${item.action}`;
+        } else {
+            return;
+        }
+        // this.$state.go('.', { seccion: item.section });
+        // this.selected = item.section;
+    }
 }
 
 function RdNavbar($window){
@@ -99,4 +115,5 @@ function RdNavbar($window){
 		},
 		template: require('./navbar.html')
 	}
+
 }
