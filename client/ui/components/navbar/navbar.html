@@ -23,7 +23,7 @@
 </div>
 
 <!-- VERTICAL NAVIGATION -->
-<div flex class="rd-navbar__dropdown" md-whiteframe="4" ng-show="false">
+<div flex class="rd-navbar__dropdown" md-whiteframe="15" ng-show="false">
 	<div class="rd-navbar__dropdown--background"></div>
 	<div class="rd-navbar__dropdown--items" ng-transclude="items">
 	</div>
@@ -31,13 +31,13 @@
 </div>
 
 <!-- CUSTOM VERTICAL NAVIGATION -->
-<div flex class="rd-navbar__dropdown" md-whiteframe="4" ng-show="$rdNavbarController.dropdownOpened">
+<div flex class="rd-navbar__dropdown" md-whiteframe="15" ng-show="$rdNavbarController.dropdownOpened">
 	<div class="rd-navbar__dropdown--background"></div>
 	<div class="rd-navbar__dropdown--items">
 		<nav class="navigation">
 			<ul class="mainmenu">
 				<li ng-repeat="item in $rdNavbarController.navBarItems">
-					<a href="">{{ item.caption }}</a>
+					<a href="">{{ item.caption }} </a>
 					<ul class="submenu-i" ng-if="item.nodes">
 						<li ng-repeat="subItem in item.nodes">
 							<a href="">{{ subItem.caption }}</a>

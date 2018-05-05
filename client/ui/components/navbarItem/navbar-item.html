@@ -3,8 +3,11 @@
 
 <ul class="nav-items">
     <li class="nav-item" ng-class="{'dropdown': $rdNavbarItemCtrl.model.nodes}">
-        <a class="nav-link"><span>{{ $rdNavbarItemCtrl.model.caption }}</span></a>
-        <nav class="submenu" ng-show="$rdNavbarItemCtrl.model.nodes">
+        <md-button class="nav-link">{{ $rdNavbarItemCtrl.model.caption }} </md-button>
+        <!--<a class="nav-link">-->
+            <!--<span>{{ $rdNavbarItemCtrl.model.caption }} <i class="material-icons">keyboard_arrow_down</i></span>-->
+        <!--</a>-->
+        <nav class="submenu">
             <ul class="submenu-items">
                 <li class="submenu-item" ng-repeat="node in $rdNavbarItemCtrl.model.nodes">
                     <a href class="submenu-link" ng-click="$rdNavbarItemCtrl.itemClicked(node)">{{ node.caption }}</a>
