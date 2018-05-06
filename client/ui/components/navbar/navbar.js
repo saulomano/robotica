@@ -60,9 +60,9 @@ class RdNavbarController {
 				this.removeDropdown();
 			});
 
-			$(document).click(() => {
-				this.removeDropdown();
-			});
+			// $(document).click(() => {
+			// 	this.removeDropdown();
+			// });
 		});
 
 		// the dropdown

@@ -411,8 +411,7 @@ html {
   we're changing the submenu-i's max-height from 0 to 200px;
 */
 
-.mainmenu li:hover .submenu-i {
-	display: block;
+.mainmenu li .submenu-i {
 	max-height: 200px;
 }
 
@@ -435,7 +434,5 @@ html {
   we set it to max-height: 0, and hide the overflowed content.
 */
 .submenu-i {
-	overflow: hidden;
 	max-height: 0;
-	-webkit-transition: all 0.5s ease-out;
 }
