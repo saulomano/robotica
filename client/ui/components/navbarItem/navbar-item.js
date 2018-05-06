@@ -11,10 +11,9 @@ class RdNavbarItemController {
 		this.$scope = $scope;
         this.$element = $element;
         this.$state = $state;
-        this.selected = '';
-        this.parentNode = this.parentNode;
         // has a model?
         this.model = this.$scope.ngModel;
+        this.selected = '';
         let m = this.$scope.ngModel;
 		if (m && typeof m === 'object') {
 			//replace the scope;
@@ -38,35 +37,31 @@ class RdNavbarItemController {
                 this.$element.removeClass('rd-navbar__item--selected')
             }
         });
+    }
+    
+    onClick(e, idElement){
+        e.preventDefault();
+        var el = document.getElementById("item-"+idElement);
+        // var el = this.parentNode;
+        el.classList.contains('show-submenu') ? this.hideSubMenu(el) : this.showSubMenu(el);
+    }
 
-        [].slice.call(document.querySelectorAll('.dropdown .nav-link')).forEach(function(el){
-            el.addEventListener('click', onClick, false);
-        });
+    showSubMenu(el){
+        el.classList.add('show-submenu');
+        // document.addEventListener('click', function onDocClick(e){
+        //     e.preventDefault();
+        //     if(el.contains(e.target)){
+        //         return;
+        //     }
+        //     document.removeEventListener('click', onDocClick);
+        //     this.hideSubMenu(el);
+        // });
+    }
 
-        function onClick(e){
-            e.preventDefault();
-            var el = this.parentNode;
-            el.classList.contains('show-submenu') ? hideSubMenu(el) : showSubMenu(el);
-        }
-
-        function showSubMenu(el){
-            el.classList.add('show-submenu');
-            document.addEventListener('click', function onDocClick(e){
-                e.preventDefault();
-                if(el.contains(e.target)){
-                    return;
-                }
-                document.removeEventListener('click', onDocClick);
-                hideSubMenu(el);
-            });
-        }
-
-        function hideSubMenu(el){
-            el.classList.remove('show-submenu');
-        }
-	}
-
-    itemClicked(item) {
+    hideSubMenu(el){
+        el.classList.remove('show-submenu');
+    }
+    itemClicked(item, event) {
         if (this.selected === item.section) return;
         let host = window.location.host;
         let protocol = window.location.protocol;
@@ -74,7 +69,11 @@ class RdNavbarItemController {
             this.selected = item.action;
             window.location.href = `${protocol}//${host}/${item.action}`;
         } else {
-            return;
+            if (event) {
+                this.onClick(event, item.section);
+            } else {
+                return;
+            };
         }
         // this.$state.go('.', { seccion: item.section });
         // this.selected = item.section;
