@@ -56,6 +56,10 @@ class RdNavbarController {
 				this.removeDropdown();
 			});
 
+			$(window).resize(() => {
+				this.removeDropdown();
+			});
+
 			$(document).click(() => {
 				this.removeDropdown();
 			});
