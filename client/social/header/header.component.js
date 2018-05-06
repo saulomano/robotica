@@ -50,6 +50,17 @@ class HeaderComponent {
         ]
       },
       {
+        section: 'Otra',  caption: 'Otra de purbea',
+        "nodes": [
+          {
+            section: 'prueba 1',  caption: 'prueba1 ', action:'?seccion=desafios'
+          },
+          {
+            section: 'prueba 2',  caption: 'prueba2 ', action:'/subiDesafio'
+          }
+        ]
+      },
+      {
         section: 'kits',  caption: 'Kits', action:'?seccion=kits'
       }
     ];
