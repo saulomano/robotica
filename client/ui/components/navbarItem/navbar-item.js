@@ -13,7 +13,6 @@ class RdNavbarItemController {
         this.$state = $state;
         // has a model?
         this.model = this.$scope.ngModel;
-        this.selected = '';
         let m = this.$scope.ngModel;
 		if (m && typeof m === 'object') {
 			//replace the scope;
@@ -29,6 +28,14 @@ class RdNavbarItemController {
 		this.$element.attr('data-rd-section', this.section);
 		
 		//this.$element.attr('role', 'menuitem');
+
+        this.$scope.$watch(() => { return this.$scope.selected }, (value) => {
+            if (value) {
+                this.$element.addClass('rd-navbar__item--selected');
+            } else {
+                this.$element.removeClass('rd-navbar__item--selected')
+            }
+        });
 
         this.$scope.$watch(() => { return this.$scope.selected }, (value) => {
             if (value) {
