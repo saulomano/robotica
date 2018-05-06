@@ -113,9 +113,6 @@
 		@include opacity-transition-delay($delay: 150ms);
 	}
 
-	&__tools {
-	}
-
 	&__dropdown {
 		position: fixed;
 		z-index: -1;
@@ -294,6 +291,7 @@ html {
 	padding-right: 15px;
 	height: 17px;
 	line-height: 17px;
+	margin: 0 auto;
 }
 
 .dropdown .nav-link::after {
@@ -415,7 +413,7 @@ html {
   we're changing the submenu-i's max-height from 0 to 200px;
 */
 
-.mainmenu li .submenu-i {
+.mainmenu li:hover .submenu-i {
 	display: block;
 	max-height: 200px;
 }
