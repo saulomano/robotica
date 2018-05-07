@@ -38,57 +38,15 @@ class RdNavbarItemController {
                 this.$element.removeClass('rd-navbar__item--selected')
             }
         });
-    } 
-    
-    onClick(e, idElement) {
-        if (idElement) {
-            e.preventDefault();
-            for (var j = 0; j < this.$scope.menuSectionsName.length; j++) {
-                var el = document.getElementById("item-"+this.$scope.menuSectionsName[j]);
-                // var el = this.parentNode;
-                el.classList.contains('show-submenu') ? this.hideSubMenu(el) : false; 
-            };
-            var el = document.getElementById("item-"+idElement);
-            el.classList.contains('show-submenu') ? this.hideSubMenu(el) : this.showSubMenu(el);
-        } else {
-            for (var j = 0; j < arraySectionsName.length; j++) {
-                var el = document.getElementById("item-"+this.$scope.menuSectionsName[j]);
-                // var el = this.parentNode;
-                el.classList.contains('show-submenu') ? this.hideSubMenu(el) : false; 
-            };
-        }
     }
 
-    showSubMenu(el) {
-        el.classList.add('show-submenu');
-        document.addEventListener('click', function onDocClick(e){
-            e.preventDefault();
-            if(el.contains(e.target)){
-                return;
-            }
-            document.removeEventListener('click', onDocClick);
-            this.onClick(false, false);
-        });
-    }
-
-    hideSubMenu(el) {
-        el.classList.remove('show-submenu');
-        return;
-    }
-
-    itemClicked(item, event) {
+    itemClicked(item) {
         if (this.selected === item.section) return;
         let host = window.location.host;
         let protocol = window.location.protocol;
         if (item.action) {
             this.selected = item.action;
             window.location.href = `${protocol}//${host}/${item.action}`;
-        } else {
-            if (event) {
-                this.onClick(event, item.section);
-            } else {
-                return;
-            };
         }
         // this.$state.go('.', { seccion: item.section });
         // this.selected = item.section;
