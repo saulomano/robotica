@@ -1,4 +1,6 @@
 'use strict';
+import $ from 'jquery';
+import { Z_DEFAULT_STRATEGY } from 'zlib';
 
 export default angular
 	.module('robotica-ui.components.navbarItem', [])
@@ -36,38 +38,44 @@ class RdNavbarItemController {
                 this.$element.removeClass('rd-navbar__item--selected')
             }
         });
+    } 
+    
+    onClick(e, idElement) {
+        if (idElement) {
+            e.preventDefault();
+            for (var j = 0; j < this.$scope.menuSectionsName.length; j++) {
+                var el = document.getElementById("item-"+this.$scope.menuSectionsName[j]);
+                // var el = this.parentNode;
+                el.classList.contains('show-submenu') ? this.hideSubMenu(el) : false; 
+            };
+            var el = document.getElementById("item-"+idElement);
+            el.classList.contains('show-submenu') ? this.hideSubMenu(el) : this.showSubMenu(el);
+        } else {
+            for (var j = 0; j < arraySectionsName.length; j++) {
+                var el = document.getElementById("item-"+this.$scope.menuSectionsName[j]);
+                // var el = this.parentNode;
+                el.classList.contains('show-submenu') ? this.hideSubMenu(el) : false; 
+            };
+        }
+    }
 
-        this.$scope.$watch(() => { return this.$scope.selected }, (value) => {
-            if (value) {
-                this.$element.addClass('rd-navbar__item--selected');
-            } else {
-                this.$element.removeClass('rd-navbar__item--selected')
+    showSubMenu(el) {
+        el.classList.add('show-submenu');
+        document.addEventListener('click', function onDocClick(e){
+            e.preventDefault();
+            if(el.contains(e.target)){
+                return;
             }
+            document.removeEventListener('click', onDocClick);
+            this.onClick(false, false);
         });
     }
-    
-    onClick(e, idElement){
-        e.preventDefault();
-        var el = document.getElementById("item-"+idElement);
-        // var el = this.parentNode;
-        el.classList.contains('show-submenu') ? this.hideSubMenu(el) : this.showSubMenu(el);
-    }
 
-    showSubMenu(el){
-        el.classList.add('show-submenu');
-        // document.addEventListener('click', function onDocClick(e){
-        //     e.preventDefault();
-        //     if(el.contains(e.target)){
-        //         return;
-        //     }
-        //     document.removeEventListener('click', onDocClick);
-        //     this.hideSubMenu(el);
-        // });
-    }
-
-    hideSubMenu(el){
+    hideSubMenu(el) {
         el.classList.remove('show-submenu');
+        return;
     }
+
     itemClicked(item, event) {
         if (this.selected === item.section) return;
         let host = window.location.host;
@@ -97,7 +105,8 @@ function RdContainer(){
 		scope: {
 			icon: '@navbarItemIcon',
 			caption: '@navbarItemCaption',
-			section: '@navbarItemSection',
+            section: '@navbarItemSection',
+            menuSectionsName: '=',
 			ngModel: '=',
 			selected: '=navbarItemSelected'
 		},

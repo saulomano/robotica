@@ -61,7 +61,8 @@ class RdNavbarController {
 			});
 
 			// $(document).click(() => {
-			// 	this.removeDropdown();
+			// 	console.log(this.$element)
+			// 	this.$element.removeClass('show-submenu');
 			// });
 		});
 

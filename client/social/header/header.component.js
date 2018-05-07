@@ -65,10 +65,8 @@ class HeaderComponent {
       }
     ];
 
-
-
-
-   
+    this.arraySectionsName = [];
+  
     $rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
       this.searchText =  $stateParams.search || '';
       if (!toParams.seccion){
@@ -79,6 +77,9 @@ class HeaderComponent {
 
   $onInit(){
     this.selected = this.$stateParams.seccion;
+    for (var j = 0; j < this.menuNavBar.length; j++) {
+      this.arraySectionsName.push(this.menuNavBar[j].section);
+    }
   }
   
   selectedItemChange(item){
