@@ -1,4 +1,6 @@
 'use strict';
+import $ from 'jquery';
+import { Z_DEFAULT_STRATEGY } from 'zlib';
 
 export default angular
 	.module('robotica-ui.components.navbarItem', [])
@@ -7,10 +9,10 @@ export default angular
 
 class RdNavbarItemController {
 	/*@ngInject*/
-	constructor($scope, $element) {
+	constructor($scope, $element, $state) {
 		this.$scope = $scope;
         this.$element = $element;
-        this.parentNode = this.parentNode;
+        this.$state = $state;
         // has a model?
         this.model = this.$scope.ngModel;
         let m = this.$scope.ngModel;
@@ -30,46 +32,24 @@ class RdNavbarItemController {
 		//this.$element.attr('role', 'menuitem');
 
         this.$scope.$watch(() => { return this.$scope.selected }, (value) => {
-    	if (value) {
-    		this.$element.addClass('rd-navbar__item--selected');
-    	} else {
-    		this.$element.removeClass('rd-navbar__item--selected')
-    	}
-    });
-
-        [].slice.call(document.querySelectorAll('.dropdown .nav-link')).forEach(function(el){
-            el.addEventListener('mouseover', onClick, false);
+            if (value) {
+                this.$element.addClass('rd-navbar__item--selected');
+            } else {
+                this.$element.removeClass('rd-navbar__item--selected')
+            }
         });
-
-        function onClick(e){
-            e.preventDefault();
-            var el = this.parentNode;
-            el.classList.contains('show-submenu') ? hideSubMenu(el) : showSubMenu(el);
-        }
-
-        function showSubMenu(el){
-            el.classList.add('show-submenu');
-            document.addEventListener('mouseover', function onDocClick(e){
-                e.preventDefault();
-                if(el.contains(e.target)){
-                    return;
-                }
-                document.removeEventListener('mouseover', onDocClick);
-                hideSubMenu(el);
-            });
-        }
-
-        function hideSubMenu(el){
-            el.classList.remove('show-submenu');
-        }
-	}
+    }
 
     itemClicked(item) {
-        if (this.selected === item.section){
-            return;
+        if (this.selected === item.section) return;
+        let host = window.location.host;
+        let protocol = window.location.protocol;
+        if (item.action) {
+            this.selected = item.action;
+            window.location.href = `${protocol}//${host}/${item.action}`;
         }
-        this.$state.go('.', { seccion: item.section });
-        this.selected = item.section;
+        // this.$state.go('.', { seccion: item.section });
+        // this.selected = item.section;
     }
 }
 
@@ -83,7 +63,8 @@ function RdContainer(){
 		scope: {
 			icon: '@navbarItemIcon',
 			caption: '@navbarItemCaption',
-			section: '@navbarItemSection',
+            section: '@navbarItemSection',
+            menuSectionsName: '=',
 			ngModel: '=',
 			selected: '=navbarItemSelected'
 		},

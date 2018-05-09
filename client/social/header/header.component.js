@@ -50,15 +50,23 @@ class HeaderComponent {
         ]
       },
       {
+        section: 'Otra',  caption: 'Otra de purbea',
+        "nodes": [
+          {
+            section: 'prueba 1',  caption: 'prueba1 ', action:'?seccion=desafios'
+          },
+          {
+            section: 'prueba 2',  caption: 'prueba2 ', action:'/subiDesafio'
+          }
+        ]
+      },
+      {
         section: 'kits',  caption: 'Kits', action:'?seccion=kits'
       }
-     
     ];
 
-
-
-
-   
+    this.arraySectionsName = [];
+  
     $rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
       this.searchText =  $stateParams.search || '';
       if (!toParams.seccion){
@@ -69,6 +77,9 @@ class HeaderComponent {
 
   $onInit(){
     this.selected = this.$stateParams.seccion;
+    for (var j = 0; j < this.menuNavBar.length; j++) {
+      this.arraySectionsName.push(this.menuNavBar[j].section);
+    }
   }
   
   selectedItemChange(item){

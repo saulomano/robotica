@@ -11,16 +11,23 @@ export default angular
 
 class RdNavbarController {
 	/*@ngInject*/
-	constructor($scope, $element, $window, $mdMedia, $timeout){
+	constructor($scope, $element, $window, $mdMedia, $timeout, $state){
 		this.$scope = $scope;
     	this.$element = $element;
-    	this.$timeout = $timeout;
+		this.$timeout = $timeout;
+		this.$state = this.$state;
+		this.selected = '';
     	this.navBarItems = this.$scope.rdItems;
 
     	this.$element.addClass('rd-navbar md-whiteframe-4dp');
 
 		this.$scope.$watch(() => { return $mdMedia('xs') || $mdMedia('sm'); }, (mobile) => {
 			this.isMobile = mobile === true;
+			if(this.isMobile) {
+                this.$element.addClass(clsScrolled);
+			} else {
+                this.$element.removeClass(clsScrolled);
+			}
 		});
 
 		let clsScrolled = 'rd-navbar--scrolled';
@@ -39,20 +46,50 @@ class RdNavbarController {
 			var scrollTop = 0;
 			$(window).scroll(() => {
 				scrollTop = $(window).scrollTop();
-				if (scrollTop >= HIEGHT_BREACKPOINT) {
-					this.$element.addClass(clsScrolled);
-				} else if (scrollTop < HIEGHT_BREACKPOINT) {
-					if (!this.isCompact){
-						this.$element.removeClass(clsScrolled);
-					}
-				}
-
+				// if (scrollTop >= HIEGHT_BREACKPOINT) {
+				// 	this.$element.addClass(clsScrolled);
+				// } else if (scrollTop < HIEGHT_BREACKPOINT) {
+				// 	if (!this.isCompact){
+				// 		this.$element.removeClass(clsScrolled);
+				// 	}
+				// }
 				this.removeDropdown();
 			});
 
-			$(document).click(() => {
+			$(window).resize(() => {
 				this.removeDropdown();
 			});
+
+			// $(document).click(() => {
+			// 	console.log(this.$element)
+			// 	this.$element.removeClass('show-submenu');
+			// });
+
+            [].slice.call(document.querySelectorAll('.dropdown .nav-link')).forEach(function(el){
+                el.addEventListener('click', onClick, false);
+            });
+
+            function onClick(e){
+                e.preventDefault();
+                var el = this.parentNode;
+                el.classList.contains('show-submenu') ? hideSubMenu(el) : showSubMenu(el);
+            }
+
+            function showSubMenu(el){
+                el.classList.add('show-submenu');
+                document.addEventListener('click', function onDocClick(e){
+                    e.preventDefault();
+                    if(el.contains(e.target)){
+                        return;
+                    }
+                    document.removeEventListener('click', onDocClick);
+                    hideSubMenu(el);
+                });
+            }
+
+            function hideSubMenu(el){
+                el.classList.remove('show-submenu');
+            }
 		});
 
 		// the dropdown
@@ -72,6 +109,20 @@ class RdNavbarController {
 			});
 		}
 	}
+
+	itemClicked(item) {
+        if (this.selected === item.section) return;
+        let host = window.location.host;
+        let protocol = window.location.protocol;
+        if (item.action) {
+            this.selected = item.action;
+            window.location.href = `${protocol}//${host}/${item.action}`;
+        } else {
+            return;
+        }
+        // this.$state.go('.', { seccion: item.section });
+        // this.selected = item.section;
+    }
 }
 
 function RdNavbar($window){
@@ -94,4 +145,5 @@ function RdNavbar($window){
 		},
 		template: require('./navbar.html')
 	}
+
 }
