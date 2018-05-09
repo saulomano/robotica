@@ -40,7 +40,6 @@ client/index.html
 
 # secret stuff
 server/config/secret.js
-server/config/environment/development.js
 server/auth/available-emails.json
 
 # uploads
