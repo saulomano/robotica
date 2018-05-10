@@ -41,13 +41,19 @@ class RdNavbarItemController {
     }
 
     itemClicked(item) {
-        if (this.selected === item.section) return;
+        if (this.selected === item.action) return;
         let host = window.location.host;
-        let protocol = window.location.protocol;
-        if (item.action) {
-            this.selected = item.action;
-            window.location.href = `${protocol}//${host}/${item.action}`;
-        }
+		let protocol = window.location.protocol;
+		let types = /^(desafios)$/ig;
+		let section = _.toLower(item.section);
+		if (types.test(section)) {
+			this.$state.go(item.action, { type: item.section });
+			// this.$state.go('.', { type: item.section });
+		};
+        // if (item.action) {
+		// 	this.selected = item.action;
+        //     window.location.href = `${protocol}//${host}/${item.action}`;
+        // }
         // this.$state.go('.', { seccion: item.section });
         // this.selected = item.section;
     }
