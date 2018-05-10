@@ -7,7 +7,7 @@ module.exports = {
 
   // MongoDB connection options
   mongo: {
-    // uri: 'mongodb://35.229.17.130:27017/robotica-dev'
+     // uri: 'mongodb://35.231.205.37:27017/robotica-dev'
     uri: 'mongodb://admin:admin123@ds143000.mlab.com:43000/robotica-dev'
   },
 
