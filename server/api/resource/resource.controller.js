@@ -67,28 +67,6 @@ export function index(req, res, next) {
 		});
 }
 
-export function getResourcesByUser(req, res, next) {
-	Resource
-		.find({owner: "5af26c7b2e64d01d10dfb1af"})
-		.count()
-		.exec((err, count) => {
-			if (err){
-				return next(err);
-			}
-			req.totalItems = count;
-			req.result = Resource
-						.find({owner: "5af26c7b2e64d01d10dfb1af"})
-						.populate('owner')
-						.populate('files')
-						.sort(query.cursor.sort)
-						.skip(query.cursor.skip)
-						.limit(query.cursor.limit)
-						.select(query.cursor.select)
-						.exec();
-			next();
-		});
-}
-
 
 /**
  * Creates a new resource

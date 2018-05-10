@@ -14,6 +14,4 @@ router.get('/:id', auth.hasRole('curador'), controller.show);
 router.post('/:id/publish', auth.hasRole('curador'), controller.publish);
 router.post('/', auth.hasRole('curador'), controller.create);
 
-router.get('/desafios', auth.hasRole('user'), querymen.middleware(), controller.getResourcesByUser);
-
 module.exports = router;
