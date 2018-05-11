@@ -49,7 +49,7 @@ class RdNavbarItemController {
 		if (types.test(section)) {
 			this.$state.go(item.action, { type: item.section });
 			// this.$state.go('.', { type: item.section });
-		};
+		}
         // if (item.action) {
 		// 	this.selected = item.action;
         //     window.location.href = `${protocol}//${host}/${item.action}`;

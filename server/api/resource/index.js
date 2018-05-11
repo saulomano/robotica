@@ -7,11 +7,12 @@ import querymen from 'querymen';
 
 var router = new Router();
 
-router.get('/', auth.hasRole('curador'), querymen.middleware(), controller.index);
-router.delete('/:id', auth.hasRole('admin'), controller.destroy);
-router.put('/:id', auth.hasRole('curador'), controller.update);
-router.get('/:id', auth.hasRole('curador'), controller.show);
-router.post('/:id/publish', auth.hasRole('curador'), controller.publish);
-router.post('/', auth.hasRole('curador'), controller.create);
+router.get('/', auth.hasRole('curador', 'index'), querymen.middleware(), controller.index);
+router.get('/user/desafios', auth.hasRole('user', 'getDesafiosByUser'), querymen.middleware(), controller.getDesafiosByUser);
+router.delete('/:id', auth.hasRole('admin', 'destroy'), controller.destroy);
+router.put('/:id', auth.hasRole('curador', 'update'), controller.update);
+router.get('/:id', auth.hasRole('curador', 'show'), controller.show);
+router.post('/:id/publish', auth.hasRole('curador', 'publish'), controller.publish);
+router.post('/', auth.hasRole('curador', 'create'), controller.create);
 
 module.exports = router;
