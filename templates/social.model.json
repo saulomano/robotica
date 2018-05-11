@@ -25,6 +25,10 @@
 		{
 			"name": "institucional",
 			"url": "/institucional"
+		},
+		{
+			"name": "canalYT",
+			"url": "/canalYT"
 		}
 	]
 }

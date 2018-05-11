@@ -46,6 +46,7 @@
     "mongoose": "^4.13.5",
     "morgan": "^1.9.0",
     "ng-meta": "^1.0.2",
+    "ng-youtube-embed": "^1.7.12",
     "node-zopfli": "^2.0.2",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",

@@ -7,10 +7,10 @@ module.exports = {
 
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://35.229.17.130:27017/robotica-dev'
+    uri: 'mongodb://35.232.152.217:27017/robotica-dev'
   },
 
   // Seed database on startup
-  seedDB: false
+  seedDB: true
 
 };
