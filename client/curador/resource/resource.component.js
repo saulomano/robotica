@@ -36,6 +36,14 @@ export default class ResourceComponent extends CuradorComponent {
 		this.Resource = this.Restangular.one('resources', this.uid)
 		this.Publisheds = this.Restangular.all('resources');
 
+		this.School = this.Restangular.one('schools', 'La Plata');
+		this.districts = {};
+		this.selectedDistrict = {};
+		this.selectedSchool = {};
+
+		this.searchDistrictText = '';
+		this.searchSchoolText = '';
+
 		// tag separators
 		this.tagsKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
 		
@@ -50,6 +58,7 @@ export default class ResourceComponent extends CuradorComponent {
 		this.configureDropzone(Util);
 		this.configureFunctions();
 		this.getResource();
+		this.getSchool();
 		this.getCategories_();
 
 		this.onDeletePost = ($index) => {
@@ -288,6 +297,30 @@ export default class ResourceComponent extends CuradorComponent {
 			throw err;
 		});
 	}
+
+
+	getSchool(){
+		this.loading = true;
+		this.School.get()
+		.then(data => {
+
+			this.districts = data;
+
+			this.selectedDistrict = this.districts[0];
+			this.searchDistrictText = angular.copy(this.selectedDistrict.name);
+
+			this.selectedSchool = angular.copy(this.selectedDistrict.schools[0]);
+			this.searchSchoolText = this.selectedSchool.schoolName;
+
+			this.loading = false;
+		})
+		.catch(err => {
+			this.loading = false;
+			console.log("Err", err);
+			throw err;
+		});
+	}
+
 
 	$onDestroy() {
 		if (this.saverHandler) {

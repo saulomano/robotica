@@ -1,6 +1,6 @@
 'use strict';
 
-import Province from './province.model';
+import School from './schools.model';
 
 
 /**
@@ -10,7 +10,7 @@ import Province from './province.model';
 export function index(req, res, next) {
 	var query = req.querymen;
 	
-	Province
+	School
 		.find({})
 		.count()
 		.exec((err, count) => {
@@ -18,7 +18,7 @@ export function index(req, res, next) {
 				return next(err);
 			}
 			req.totalItems = count;
-			req.result = Province
+			req.result = School
 										.find(query.query)
 										.skip(query.cursor.skip)
 										.limit(query.cursor.limit)
@@ -35,9 +35,9 @@ export function index(req, res, next) {
  * restriction: 'admin'
  */
 export function create(req, res, next) {
-  var newProvince = new Province(req.body);
+  var newSchool = new School(req.body);
   
-	req.result = newProvince.save();
+	req.result = newSchool.save();
 	next();
 }
 
@@ -49,25 +49,29 @@ export function create(req, res, next) {
 export function update(req, res, next) {
 	delete req.body._id;
 
-	req.result = Province.update({ _id: req.params.id}, req.body);
+	req.result = School.update({ _id: req.params.id}, req.body);
 	next();
 }
 
 
 /**
- * Get a single province (Untested!)
- * restriction: 'authenticate'
+ * Get a single district
+ * restriction: 'none'
  */
 export function show(req, res, next) {
-  var provinceName = req.params.name;
-
-	req.result = Province.findById(provinceName).exec();
+  var districtName = req.params.name;
+	
+	req.result = School.findOne({name: districtName}).exec();
 	next();
 }
 
-export function getByName(req, res, next) {
-  var provinceName = req.params.name;
+export function getAvailableDistricts(req, res, next) {
+	req.result = School.find({}).exec((err, data) => {
+		if(err)
+		{
+			return next(err);
+		}
 
-	req.result = Province.findOne({type: provinceName}).exec();
-	next();
+		next();
+	});
 }

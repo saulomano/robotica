@@ -116,8 +116,56 @@
 
 			<!-- DESAFIOS -->
 			<!-- TODO: Cargar niveles de los desafios -->
-			<!-- TODO: Cargar colegios de los desafios -->
-			<!-- TODO: Cargar distritos de los desafios -->
+			
+			<!-- DISTRITOS -->
+			<md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loading">
+					<div>
+						<div class="md-title">Distritos</div>
+						<md-autocomplete
+								md-selected-item="$ctrl.selectedDistrict"
+								md-search-text="$ctrl.searchDistrictText"
+								md-items="district in $ctrl.districts"
+								md-item-text="district.name"
+								md-min-length="1"
+								md-autoselect = "true"
+								placeholder="Selecciona el distrito...">
+							<md-item-template>
+								<span md-highlight-text="$ctrl.searchDistrictText" md-highlight-flags="^i">{{district.name}}</span>
+							</md-item-template>
+							<md-not-found>
+								No states matching "{{$ctrl.searchDistrictText}}" were found.
+							</md-not-found>
+						</md-autocomplete>
+					</div>				   
+			</md-content>
+
+			<!-- COLEGIOS -->
+			<md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loading">
+					<div>
+						<div class="md-title">Colegios</div>
+						<select id="schoolList"
+							ng-options="school.schoolName for school in $ctrl.selectedDistrict.schools track by school.schoolNumber"
+							ng-model="$ctrl.selectedSchool">
+						</select>
+						<!-- <md-autocomplete
+								md-selected-item="$ctrl.selectedSchool"
+								md-search-text="$ctrl.searchSchoolText"
+								md-items="school in $ctrl.selectedDistrict.schools"
+								md-item-text="school.schoolName"
+								md-min-length="1"
+								md-autoselect = "true"
+								placeholder="Selecciona un colegio...">
+							<md-item-template>
+								<span md-highlight-text="$ctrl.searchSchoolText" md-highlight-flags="^i">{{school.schoolName}}</span>
+							</md-item-template>
+							<md-not-found>
+								No states matching "{{$ctrl.searchSchoolText}}" were found.
+							</md-not-found>
+						</md-autocomplete> -->
+					</div>				   
+			</md-content>
+
+
 			<md-content ng-if="$ctrl.resource.type == 'desafio'">
 				<md-expansion-panel class="option-panel">
 					
