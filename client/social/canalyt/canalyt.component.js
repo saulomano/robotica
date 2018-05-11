@@ -2,7 +2,7 @@
 import angular from 'angular';
 import SocialComponent from '../social.component';
 
-export default class canalYTComponent extends SocialComponent {
+export default class canalytComponent extends SocialComponent {
   /*@ngInject*/
   constructor($element, ngMeta) {
     super({$element});

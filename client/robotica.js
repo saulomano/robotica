@@ -42,6 +42,9 @@ import ngMeta from 'ng-meta';
 // configs
 import { roboticaConfig, roboticaRun } from './robotica.config';
 
+//youtube ng
+
+
 // componentes
 import admin from './admin';
 import app from './app';
@@ -58,6 +61,9 @@ import authModule from './auth/auth.module';
 import '../node_modules/angular-material-expansion-panel/dist/md-expansion-panel.css';
 import '../node_modules/angular-material-data-table/dist/md-data-table.css';
 import './styles/robotica.scss';
+
+
+import ngYoutubeEmbed from 'ng-youtube-embed';
 
 let requirements = [
 	uiRouter,
