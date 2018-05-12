@@ -36,14 +36,6 @@ export default class ResourceComponent extends CuradorComponent {
 		this.Resource = this.Restangular.one('resources', this.uid)
 		this.Publisheds = this.Restangular.all('resources');
 
-		this.School = this.Restangular.one('schools', 'La Plata');
-		this.districts = {};
-		this.selectedDistrict = {};
-		this.selectedSchool = {};
-
-		this.searchDistrictText = '';
-		this.searchSchoolText = '';
-
 		// tag separators
 		this.tagsKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
 		
@@ -58,7 +50,6 @@ export default class ResourceComponent extends CuradorComponent {
 		this.configureDropzone(Util);
 		this.configureFunctions();
 		this.getResource();
-		this.getSchool();
 		this.getCategories_();
 
 		this.onDeletePost = ($index) => {
@@ -286,6 +277,33 @@ export default class ResourceComponent extends CuradorComponent {
 				];
 			}
 
+			//===============================================
+			// Exclusive 'Desafios' validations
+			//===============================================
+			
+			if(this.resource.type === 'desafio')
+			{
+				// Create angular 'Desafios' variables 
+				this.districts = {};
+				this.selectedDistrict = {};
+				this.selectedSchool = {};
+
+				this.searchDistrictText = '';
+				this.searchSchoolText = '';
+
+				this.rate = this.resource.rate || 0;
+
+				let targetDistrict = this.resource.district || 'La Plata';
+
+				this.School = this.Restangular.one('schools', targetDistrict);
+
+				// Let's retrieve the school information
+				this.getSchool();
+			}
+
+			//===============================================
+
+
 			_.each(this.resource.links, l =>{
 				l.typeCaption = this.captions[l.type];
 			});
@@ -306,11 +324,36 @@ export default class ResourceComponent extends CuradorComponent {
 
 			this.districts = data;
 
-			this.selectedDistrict = this.districts[0];
+			let districtIndex = 0;
+			let schoolIndex = 0;
+			if(this.resource.district)
+			{
+				let tmpResource = this.resource;
+
+				let selDistrictIndex = _.findIndex(this.districts, function (element) {
+					return (element.name == tmpResource.district);
+				});
+
+				if(selDistrictIndex != -1)
+				{
+					districtIndex = selDistrictIndex;
+
+					let selSchoolIndex = _.findIndex(this.districts[selDistrictIndex].schools, function (element) {
+						return (element.schoolName == tmpResource.school);						
+					});
+
+					if(selSchoolIndex != -1)
+					{
+						schoolIndex = selSchoolIndex;
+					}
+				}
+			}
+
+			this.selectedDistrict = this.districts[districtIndex];
 			this.searchDistrictText = angular.copy(this.selectedDistrict.name);
 
-			this.selectedSchool = angular.copy(this.selectedDistrict.schools[0]);
-			this.searchSchoolText = this.selectedSchool.schoolName;
+			this.selectedSchool = angular.copy(this.selectedDistrict.schools[schoolIndex].schoolName);
+			this.searchSchoolText = this.selectedSchool;
 
 			this.loading = false;
 		})
@@ -329,6 +372,9 @@ export default class ResourceComponent extends CuradorComponent {
 	}
 	
 	saveResource(){
+
+		this.onSaveResource();
+
 		this.resource
 			.put()
 			.then(data => {
@@ -339,7 +385,17 @@ export default class ResourceComponent extends CuradorComponent {
 			});
 	}
 
-  
+
+	onSaveResource()
+	{
+		if(this.resource.type === 'desafio')
+		{
+			this.resource.district = angular.copy(this.selectedDistrict.name);
+			this.resource.school = angular.copy(this.selectedSchool);
+			this.resource.rate = angular.copy(this.rate);
+		}
+	}
+
 	
 	canNext(step){
     return true;
