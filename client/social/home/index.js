@@ -1,6 +1,7 @@
 'use strict';
 
 import HomeComponent from './home.component';
+import svg from 'angular1-star-rating';
 
 let routes = function($stateProvider) {
   'ngInject';
@@ -24,3 +25,5 @@ export default angular.module('robotica.social.socialHome', [])
                         controller: HomeComponent
                       })
                       .name;
+
+angular.module('myApp',['star-rating'])

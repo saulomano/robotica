@@ -1,4 +1,5 @@
 'use strict';
+
 import angular from 'angular';
 import SocialComponent from '../social.component';
 import _ from 'lodash';

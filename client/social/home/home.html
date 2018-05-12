@@ -1,7 +1,11 @@
+<script src="https://cdn.rawgit.com/BioPhoton/angular1-star-rating/v1.2.4/dist/index.js"></script>
 <div class="banner__home" section="{{$ctrl.sectionName}}">
 	<div class="banner__wrapper clearfix">
 		<img class="banner__home--image" ng-src="{{$ctrl.section.image}}" aria-hidden="true"></img>
 		<p class="banner__home--legend" ng-bind-html="$ctrl.section.caption"></p>
+		<p>
+            <star-rating-comp rating="3"></star-rating-comp>
+        </p>
 	</div>
 </div>
 <section class="resources_waterfall">

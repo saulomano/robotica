@@ -1,5 +1,6 @@
 'use strict';
 
+import angularStars from 'angular1-star-rating';
 import angular from 'angular';
 import ngMaterial from 'angular-material';
 import uiRouter from 'angular-ui-router';
