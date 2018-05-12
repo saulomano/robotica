@@ -84,7 +84,8 @@ export default class LoginComponent extends AppComponent {
         if (loginWindow.userRole == 'user'){
           this.errors.login = 'El email no se encuentra habilitado.';
           this.$scope.$apply();
-          return;
+          // return;
+          window.location.href = `${protocol}//${host}`;
         }
 
         this.$timeout(() => {

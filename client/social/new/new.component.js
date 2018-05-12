@@ -3,15 +3,14 @@ import angular from 'angular';
 import _ from 'lodash';
 import async from 'async';
 
-export default class NewDesafio {
+export default class NewComponent {
     /*@ngInject*/
     constructor($element, $state, $stateParams, $timeout, Auth, Restangular, $log) {
-        super({$element, $log});
         this.$timeout = $timeout;
         this.$state = $state;
         this.Restangular = Restangular;
         this.Auth = Auth;
-        let types = /^(desafios)$/ig;
+        let types = /^(subidesafio)$/ig;
         this.section = _.toLower($stateParams.type);
 
         if (!types.test(this.section)){
@@ -59,16 +58,17 @@ export default class NewDesafio {
                 resource
                     .post(data)
                     .then(data => {
-                        this.$state.go(`curador.recurso`, { uid: data._id });
+                        console.log('data: ', data)
+                        this.$state.go(`social.desafio`, { uid: data._id });
                     })
                     .catch((err) => {
                         this.$log.error(err)
-                        return this.$state.go(`curador.dashboard`);
+                        return this.$state.go(`social.desafios`);
                     });
             })
             .catch((err) => {
                 this.$log.error(err)
-                return this.$state.go(`curador.dashboard`);
+                return this.$state.go(`social.desafios`);
             });
     }
 }

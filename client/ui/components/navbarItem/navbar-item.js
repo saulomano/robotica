@@ -44,7 +44,7 @@ class RdNavbarItemController {
         if (this.selected === item.action) return;
         let host = window.location.host;
 		let protocol = window.location.protocol;
-		let types = /^(desafios)$/ig;
+		let types = /^(desafios|subidesafio)$/ig;
 		let section = _.toLower(item.section);
 		if (types.test(section)) {
 			this.$state.go(item.action, { type: item.section });

@@ -17,6 +17,8 @@ import guia from './guia';
 import institucional from './institucional';
 import filters from './social.filter';
 import desafios from './desafios';
+import newDesafio from './new';
+
 
 // config to providers
 import { socialConfig } from './social.config';
@@ -35,10 +37,11 @@ let requirements = [
 	guia,
 	institucional,
 	filters,
-	desafios
+	desafios,
+	newDesafio
 ];
 
 module.exports = angular
-									.module('robotica.social', requirements)
-									.config(socialConfig)
-									.name;
+					.module('robotica.social', requirements)
+					.config(socialConfig)
+					.name;
