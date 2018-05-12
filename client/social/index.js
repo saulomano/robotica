@@ -7,6 +7,7 @@ import header from './header/header.component';
 import footer from './footer/footer.component';
 import resourceCard from './components/resourceCard/resourceCard.component';
 import userCard from './components/userCard/userCard.component';
+import desafioCard from './components/desafioCard/desafioCard.component';
 import resourceView from './components/resourceView/resourceView.component';
 import modalView from './components/modalView/modalView.component';
 import home from './home';
@@ -24,7 +25,8 @@ let requirements = [
 	header,
 	footer,
 	resourceCard,
-    userCard,
+	userCard,
+	desafioCard,
 	resourceView,
 	modalView,
 	home,
