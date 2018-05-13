@@ -41,10 +41,10 @@ export default class DesafioComponent extends SocialComponent {
 		
 		this.resource = { };
 		this.steps = [
-			{ name: 'ficha', 		caption: 'Ficha' },
+			{ name: 'ficha', caption: 'Ficha' },
 			{ name: 'recurso', 	caption: 'Recurso' },
-			{ name: 'vinculo', caption: 'Vínculo' },
-			{ name: 'publicar', caption: 'Publicar' },
+			{ name: 'vinculo', caption: 'Vínculo' }
+			// { name: 'publicar', caption: 'Publicar' },
 		];
 
 		this.configureDropzone(Util);
