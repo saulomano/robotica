@@ -33,6 +33,7 @@ export function index(req, res, next) {
 
 		q = { $or: [
 				{ type: { $regex: k, $options: 'i' } },
+				{ status: { $regex: k, $options: 'i' }},
 				{ title: { $regex: k, $options: 'i' } },
 				{ summary: { $regex: k, $options: 'i' } },
 				{ nivel: { $regex: k, $options: 'i' } },
@@ -66,71 +67,6 @@ export function index(req, res, next) {
 							.exec();
 			next();
 		});
-}
-
-export function getDesafiosByUser(req, res, next) {
-	const userId = req.user._id;
-	console.log('userId: ', req.user._id);
-    let query = req.querymen;
-    let qq = req.query.q;
-    let q = {};
-    if (qq){
-        // convert to regex
-        let keywords = _.escapeRegExp(qq);
-        let patterns = [
-            { s: /[aáà]/ig, v: '[aáà]' },
-            { s: /[eéè]/ig, v: '[eéè]' },
-            { s: /[iíì]/ig, v: '[iíì]' },
-            { s: /[oóò]/ig, v: '[oóò]' },
-            { s: /[uúù]/ig, v: '[uúù]' },
-        ];
-
-        _.each(patterns, p => {
-            keywords = keywords.replace(p.s, p.v);
-        });
-
-        let k = new RegExp(keywords, 'i');
-
-        q = { $or: [
-                { type: { $regex: k, $options: 'i' } },
-                { title: { $regex: k, $options: 'i' } },
-                { summary: { $regex: k, $options: 'i' } },
-                { nivel: { $regex: k, $options: 'i' } },
-                { area: { $regex: k, $options: 'i' } },
-                { accessibility: { $regex: k, $options: 'i' } },
-                { usability: { $regex: k, $options: 'i' } },
-                { platform: { $regex: k, $options: 'i' } },
-                { category: { $regex: k, $options: 'i' } },
-                { 'postBody.content': { $regex: k, $options: 'i' } },
-                { tags: { $regex: k, $options: 'i' } },
-            ]
-        };
-    }
-
-    Resource
-        .find({owner: userId})
-        .count()
-        .exec((err, count) => {
-        	console.log('resource find count: ', count);
-            console.error('resource find error: ', err);
-            if (err){
-                return next(err);
-            }
-            req.totalItems = count;
-            req.result = Resource
-                .find({owner: userId})
-                .populate('owner')
-                .populate('files')
-                .sort(query.cursor.sort)
-                .skip(query.cursor.skip)
-                .limit(query.cursor.limit)
-                .select(query.cursor.select)
-                .exec((err, count) => {
-                    console.log('resource q find count: ', count);
-                    console.error('resource q find error: ', err);
-				});
-            next();
-        });
 }
 
 

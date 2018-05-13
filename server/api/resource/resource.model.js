@@ -7,7 +7,7 @@ import {registerEvents} from './resource.events';
 var ops = {};
 ops.timestamps = true;
 var ResourceSchema = new Schema({
-		status: String,
+		status: { type: String, default: 'pendiente'},
 		type: String,
 		title: String,
 		summary: String,
