@@ -60,6 +60,10 @@ import '../node_modules/angular-material-expansion-panel/dist/md-expansion-panel
 import '../node_modules/angular-material-data-table/dist/md-data-table.css';
 import './styles/robotica.scss';
 
+import svg from "angular1-star-rating/dist/assets/images/star-rating.icons.svg";
+
+
+
 let requirements = [
 	uiRouter,
 	ngCookies,

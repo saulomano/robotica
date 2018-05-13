@@ -68,6 +68,9 @@ export default class HomeComponent extends SocialComponent {
     this.section = sections[this.sectionName];
     ngMeta.setTitle(this.section.title);
     ngMeta.setTag('description', this.section.description);
+
+
+    this.puntaje = 5;
   }
 
   fetchData(){
@@ -107,6 +110,12 @@ export default class HomeComponent extends SocialComponent {
 
     return def.promise;
   }
+
+
+  
+   onClickStar($event) {
+    alert("cantidad seeleccionada" + $event.rating);
+    } 
 
   viewResource_($event, resource){
 		this.$mdDialog.show({
@@ -171,4 +180,11 @@ export default class HomeComponent extends SocialComponent {
         });
     }
   }
+
+
+
+ 
+
+
+
 }
