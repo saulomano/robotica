@@ -1,13 +1,13 @@
 'use strict';
 import angular from 'angular';
-import CuradorComponent from '../curador.component';
+import SocialComponent from '../social.component';
 import async from 'async';
 import _ from 'lodash';
 
-export default class ResourceComponent extends CuradorComponent {
+export default class DesafioComponent extends SocialComponent {
   /*@ngInject*/
-  constructor($scope, $element, $stateParams, Auth, Restangular, $log, Util, $timeout, $state, $mdDialog, $mdConstant, ngMeta) {
-    super({$element, Restangular, $log});
+  	constructor($scope, $element, $stateParams, Auth, Restangular, $log, Util, $timeout, $state, $mdDialog, $mdConstant, ngMeta) {
+    	super({$element, Restangular, $log});
 
 		this.$scope = $scope;
 		this.currentStep = 'ficha';
@@ -33,18 +33,18 @@ export default class ResourceComponent extends CuradorComponent {
 			'desafio': 'Desafío',
 		};
 
-		this.Resource = this.Restangular.one('resources', this.uid)
-		this.Publisheds = this.Restangular.all('resources');
+		this.Resource = this.Restangular.one('desafios', this.uid)
+		this.Publisheds = this.Restangular.all('desafios');
 
 		// tag separators
 		this.tagsKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
 		
 		this.resource = { };
 		this.steps = [
-			{ name: 'ficha', 		caption: 'Ficha' },
+			{ name: 'ficha', caption: 'Ficha' },
 			{ name: 'recurso', 	caption: 'Recurso' },
-			{ name: 'vinculo', caption: 'Vínculo' },
-			{ name: 'publicar', caption: 'Publicar' },
+			{ name: 'vinculo', caption: 'Vínculo' }
+			// { name: 'publicar', caption: 'Publicar' },
 		];
 
 		this.configureDropzone(Util);
@@ -74,9 +74,9 @@ export default class ResourceComponent extends CuradorComponent {
 		if (!this.showViculo){
 			return;
 		}
-    let q;
-    if (this.filterText){
-      q = this.filterText
+		let q;
+		if (this.filterText){
+			q = this.filterText
 		}
 
 		this.Publisheds
@@ -102,9 +102,10 @@ export default class ResourceComponent extends CuradorComponent {
 	getCategories_(){
 		async.waterfall([
 			(cb) => {
-				this
-					.loadCategories()
-					.then(() => cb())
+				this.loadCategories()
+					.then(() => 
+						cb()
+					)
 					.catch(cb);
 			},
 			(cb) => {
@@ -130,12 +131,11 @@ export default class ResourceComponent extends CuradorComponent {
 			if (err){
 				this.$log.error(err);
 			}
-		});
+		})
 	}
 
 	watchResource(){
 		this.saveTimes = 0;
-
 		this.$scope.$watch(() => { return this.resource; }, (value) => {
 			this.refreshUI();
 			this.saveTimes++;
@@ -173,33 +173,20 @@ export default class ResourceComponent extends CuradorComponent {
 		this.finish = ($event) => {
 			this.publish();
 		}
-
-		this.toRefuse = ($event) => {
-			this.resource.status = 'rechazado';
-			this.resource
-					.put()	
-					.then(data => {
-						this.$state.go('curador.dashboard');
-					})
-					.catch(err => {
-						throw err;
-					});
-		}
 	}
 
 	configureDropzone(Util){
-
 		var ctrl = this;
-   	 this.dzOptions = {
+   		this.dzOptions = {
 			dictDefaultMessage: '<div class="dz-clickable"></div>',
-      url : '/upload?relative=' + this.uid,
+     		url : '/upload?relative=' + this.uid,
 			paramName : 'Imágen',
 			maxFiles: 1,
 			clickable: '.dz-tumbnail-clickable',
 			maxFilesize : 1024,
 			timeout: 18000000,
-      acceptedFiles : 'image/*',
-      addRemoveLinks : false,
+      		acceptedFiles : 'image/*',
+      		addRemoveLinks : false,
 			headers: Util.getHeaders(),
 			init: function(){
 				// add dropzone to ctrl
@@ -207,20 +194,14 @@ export default class ResourceComponent extends CuradorComponent {
 			}
 		};
 
-    this.dzCallbacks = {
-      'addedfile' : (file) => {
-				
-			},
-			'removedfile' : (file) => {
-				
-      },
-      'success' : (file, xhr) => {
+		this.dzCallbacks = {
+			'addedfile' : (file) => {},
+			'removedfile' : (file) => {},
+			'success' : (file, xhr) => {
 				console.log(xhr);
 				this.resource.thumbnail = xhr.url;
 			},
-			'processing': () => {
-				
-			},
+			'processing': () => {},
 			'queuecomplete': () => {
 				ctrl.dropzoneThumbnail.removeAllFiles();
 			}
@@ -237,25 +218,19 @@ export default class ResourceComponent extends CuradorComponent {
 		this.dzOptionsSoftware.clickable = '.dz-software-clickable';
 
 		this.dzCallbacksSoftware = {
-      'addedfile' : (file) => {
-				
-			},
-			'removedfile' : (file) => {
-				
-      },
-      'success' : (file, xhr) => {
+      		'addedfile' : (file) => {},
+			'removedfile' : (file) => {},
+      		'success' : (file, xhr) => {
 				this.resource.files.push(xhr);
 			},
-      'error' : (err) => {
+      		'error' : (err) => {
 				this.$log.error(err);
 			},
-			'processing': () => {
-				
-			},
+			'processing': () => {},
 			'queuecomplete': () => {
 				//ctrl.dropzoneSoftware.removeAllFiles();
 			}
-    };
+    	};
 	}
 
 	getResource(){
@@ -263,23 +238,18 @@ export default class ResourceComponent extends CuradorComponent {
 		.get()
 		.then(data => {
 			this.resource = data;
-
 			this.ngMeta.setTitle(this.resource.title);
 			this.ngMeta.setTag('description', this.resource.summary);
-
 			if (typeof this.resource.area == 'string'){
 				this.resource.area = [];
 			}
-
 			if (typeof this.resource.nivel == 'string'){
 				this.resource.nivel = [];
 			}
-
 			if (this.resource.step){
 				let idx = _.findIndex(this.steps, { name: this.resource.step });
 				this.initStepIndex = idx === -1 ? undefined : idx;
 			}
-
 			if (this.resource.type === 'mediateca'){
 				this.steps = [
 					{ name: 'ficha', 		caption: 'Ficha' },
@@ -288,31 +258,6 @@ export default class ResourceComponent extends CuradorComponent {
 					{ name: 'publicar', caption: 'Publicar' },
 				];
 			}
-
-			//===============================================
-			// Exclusive 'Desafios' validations
-			//===============================================
-			
-			if(this.resource.type === 'desafio')
-			{
-				// Create angular 'Desafios' variables 
-				this.districts = {};
-				this.selectedDistrict = {};
-				this.selectedSchool = {};
-
-				this.searchDistrictText = this.resource.district || 'La Plata';
-				this.searchSchoolText = '';
-
-				this.rate = this.resource.rate || 0;
-
-				this.School = this.Restangular.one('schools/district', this.searchDistrictText);
-
-				this.getSchool();
-			}
-
-			//===============================================
-
-
 			_.each(this.resource.links, l =>{
 				l.typeCaption = this.captions[l.type];
 			});
@@ -325,63 +270,6 @@ export default class ResourceComponent extends CuradorComponent {
 		});
 	}
 
-
-	getSchool(){
-		// this.loading = true;
-		this.loadingSchools = true;
-		this.School.get()
-		.then(data => {
-
-			this.district = data;
-
-			let resourceInstance = this;
-
-			let schoolIndex = _.findIndex(this.district.schools, function (element) {
-				return (element.schoolName == resourceInstance.resource.school);						
-			});
-
-			if(schoolIndex == -1)
-			{
-				schoolIndex = 0;
-			}			
-
-			this.selectedDistrict = this.district;
-			this.searchDistrictText = angular.copy(this.selectedDistrict.name);
-
-			this.selectedSchool = angular.copy(this.district.schools[schoolIndex].schoolName);
-			this.searchSchoolText = this.selectedSchool;
-
-			// this.loading = false;
-			this.loadingSchools = false;
-		})
-		.catch(err => {
-			this.loading = false;
-			console.log("Err", err);
-			throw err;
-		});
-	}
-
-
-	onChangeDistrict(newDistrict)
-	{
-		if(_.isEmpty(newDistrict) == false)
-		{
-			let districtIndex = _.findIndex(this.getDistricts(), function (element) {
-				return (element == newDistrict);			
-			});
-
-			// If the search district were found...
-			if(districtIndex != -1)
-			{
-				this.School = this.Restangular.one('schools/district', newDistrict);
-		
-				// Let's retrieve the school information
-				this.getSchool();
-			}
-		}
-	}
-
-
 	$onDestroy() {
 		if (this.saverHandler) {
 			clearInterval(this.saverHandler);
@@ -389,9 +277,6 @@ export default class ResourceComponent extends CuradorComponent {
 	}
 	
 	saveResource(){
-
-		this.onSaveResource();
-
 		this.resource
 			.put()
 			.then(data => {
@@ -402,21 +287,11 @@ export default class ResourceComponent extends CuradorComponent {
 			});
 	}
 
-
-	onSaveResource()
-	{
-		if(this.resource.type === 'desafio')
-		{
-			this.resource.district = angular.copy(this.selectedDistrict.name);
-			this.resource.school = angular.copy(this.selectedSchool);
-			this.resource.rate = angular.copy(this.rate);
-		}
-	}
-
+  
 	
 	canNext(step){
-    return true;
-  }
+		return true;
+	}
 	
 	editTumbnail(){
 		
@@ -517,18 +392,15 @@ export default class ResourceComponent extends CuradorComponent {
 	publish(ev){
 		// Appending dialog to document.body to cover sidenav in docs app
 		var confirm = this.$mdDialog.confirm()
-					.title('¿Está seguro que desea hacer publico este recurso?')
-					.ariaLabel('Publicación del Recurso')
-					.targetEvent(ev)
-					.ok('Publicar')
-					.cancel('Cancelar');
+									.title('¿Está seguro que desea hacer publico este recurso?')
+									.ariaLabel('Publicación del Recurso')
+									.targetEvent(ev)
+									.ok('Publicar')
+									.cancel('Cancelar');
 
 		this.$mdDialog.show(confirm).then(() => {
-			this.resource.status = 'aprobado';
-			this.saveResource();
 			this.releasePublish();
-		}, () => {
-		});
+		}, () => {});
 	}
 	
 	releasePublish(){
@@ -548,38 +420,5 @@ export default class ResourceComponent extends CuradorComponent {
 
 	getResourceType(type){
 		return this.captions[type];
-	}
-
-	getDistricts()
-	{
-		let _districts = ['La Plata', 'Adolfo Alsina', 'Alberti', 'Almirante Brown',
-			"Avellaneda", "Ayacucho", "Azul", "Bahía Blanca", "Balcarce",
-			"Baradero", "Arrecifes", "Bolívar", "Bragado", "Brandsen",
-			"Campana", "Cañuelas", "Carlos Casares", "Carlos Tejedor", "Carmen de Areco",
-			"Daireaux", "Castelli", "Colón", "Coronel Dorrego", "Coronel Pringles",
-			"Coronel Suárez", "Chacabuco", "Chascomús", "Chivilcoy", "Dolores",
-			"Esteban Echeverría", "Exaltación de la Cruz", "Florencio Varela", "General Alvarado", "General Alvear",
-			"General Arenales", "General Belgrano", "General Guido", "General La Madrid", "General Lavalle",
-			"General Madariaga", "General Paz", "General Pinto", "General Pueyrredón", "General Rodríguez",
-			"General San Martín", "Zárate", "General Viamonte", "General Villegas", "Gonzáles Chaves",
-			"Guaminí", "Juárez", "Junín", "Laprida", "Tigre",
-			"Las Flores", "General Las Heras", "Leandro N. Alem", "Lincoln", "Lobería",
-			"Lobos", "Lomas de Zamora", "Luján", "Magdalena", "Maipú", "Salto",
-			"Marcos Paz", "Mar Chiquita", "La Matanza", "Mercedes", "Merlo", "Monte",
-			"Moreno", "Navarro", "Necochea", "Nueve de Julio", "Olavarría", "Patagones",
-			"Pehuajó", "Pellegrini", "Pergamino", "Pila", "Pilar",
-			"Puan", "Quilmes", "Ramallo", "Rauch", "Rivadavia",
-			"Rojas", "Roque Pérez", "Saavedra", "Saladillo", "San Andrés de Giles",
-			"San Antonio de Areco", "San Fernando", "San Isidro", "San Nicolás", "San Pedro",
-			"San Vicente", "Morón", "Suipacha", "Tandil", "Tapalqué", 
-		    "Tordillo", "Tornquist", "Trenque Lauquen", "Tres Arroyos", "Veinticinco de Mayo",
-		    "Vicente López", "Villarino", "Lanús", "Coronel Rosales", "Berisso", "Ensenada", 
-		    "San Cayetano", "Escobar", "Tres de Febrero", "Hipólito Yrigoyen", "Berazategui",
-		    "Salliqueló", "Capitán Sarmiento", "La Costa", "Pinamar", "Villa Gesell",
-		    "Monte Hermoso", "Tres Lomas", "Florentino Ameghino", "Presidente Perón", "Ezeiza",
-		    "San Miguel", "José C. Paz", "Malvinas Argentinas", "Punta Indio", "Hurlingham",
-		    "Ituzaingo", "Lezama"
-		];
-		return _districts;
 	}
 }

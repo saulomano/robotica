@@ -1,16 +1,16 @@
 'use strict';
 
-import Resource from './resource.model';
-import Published from '../published/published.model';
+import Resource from '../resource/resource.model';
 import async from 'async';
 import _ from 'lodash';
 
 /**
- * Get list of resources
- * restriction: 'authenticate'
+ * Get list of desafio
+ * restriction: 'user'
  */
 export function index(req, res, next) {
-    console.log('index() req: ', req);
+	console.log('index() req: ', req);
+	const userId = req.user._id;
 	var query = req.querymen;
 	let qq = req.query.q;
 	let q = {};
@@ -33,7 +33,6 @@ export function index(req, res, next) {
 
 		q = { $or: [
 				{ type: { $regex: k, $options: 'i' } },
-				{ status: { $regex: k, $options: 'i' }},
 				{ title: { $regex: k, $options: 'i' } },
 				{ summary: { $regex: k, $options: 'i' } },
 				{ nivel: { $regex: k, $options: 'i' } },
@@ -49,7 +48,7 @@ export function index(req, res, next) {
 	}
 
 	Resource
-		.find(q)
+		.find({owner: userId})
 		.count()
 		.exec((err, count) => {
 			if (err){
@@ -57,7 +56,7 @@ export function index(req, res, next) {
 			}
 			req.totalItems = count;
 			req.result = Resource
-							.find(q)
+							.find({owner: userId})
 							.populate('owner')
 							.populate('files')
 							.sort(query.cursor.sort)
@@ -71,8 +70,8 @@ export function index(req, res, next) {
 
 
 /**
- * Creates a new resource
- * restriction: 'curador'
+ * Creates a new desafio
+ * restriction: 'user'
  */
 export function create(req, res, next) {
 	console.log('create() req: ', req);
@@ -84,8 +83,8 @@ export function create(req, res, next) {
 
 
 /**
- * Updates a resource
- * restriction: 'curador'
+ * Updates a desafio
+ * restriction: 'user'
  */
 export function update(req, res, next) {
     console.log('update() req: ', req);
@@ -97,8 +96,8 @@ export function update(req, res, next) {
 
 
 /**
- * Get a single resource
- * restriction: 'authenticate'
+ * Get a single desafio
+ * restriction: 'user'
  */
 export function show(req, res, next) {
     console.log('show() req: ', req);
@@ -117,7 +116,7 @@ export function show(req, res, next) {
 
 /**
  * Deletes a resource
- * restriction: 'authenticate'
+ * restriction: 'user'
  */
 export function destroy(req, res, next) {
     console.log('destroy() req: ', req);
@@ -128,7 +127,7 @@ export function destroy(req, res, next) {
 
 /**
  * Publish a resource
- * restriction: 'curador'
+ * restriction: 'user'
  */
 export function publish(req, res, next) {
 	let resource = req.body;
