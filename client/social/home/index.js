@@ -2,6 +2,7 @@
 
 import HomeComponent from './home.component';
 
+
 let routes = function($stateProvider) {
   'ngInject';
   $stateProvider
@@ -17,10 +18,12 @@ let routes = function($stateProvider) {
     });
 }
 
-export default angular.module('robotica.social.socialHome', [])
+export default angular.module('robotica.social.socialHome', ['star-rating'])
                       .config(routes)
                       .component('socialHome', {
                         template: require('./home.html'),
                         controller: HomeComponent
                       })
                       .name;
+
+angular.module('myApp',['star-rating'])
