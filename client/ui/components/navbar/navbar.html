@@ -36,11 +36,16 @@
 	<div class="rd-navbar__dropdown--items">
 		<nav class="navigation">
 			<ul class="mainmenu">
-				<li ng-repeat="item in $rdNavbarController.navBarItems">
-					<a href="">{{ item.caption }} </a>
-					<ul class="submenu-i" ng-if="item.nodes">
+				<li ng-repeat="item in $rdNavbarController.navBarItems track by $index" ng-init="$rdNavbarController.showSubmenu[$index] = false">
+					<a href 
+						ng-click="$rdNavbarController.showSubmenu[$index] = !$rdNavbarController.showSubmenu[$index]; $rdNavbarController.itemClicked(item)">
+						{{ item.caption }}
+						<i class="fa fal fa-angle-down" ng-if="item.nodes && $rdNavbarController.showSubmenu[$index] == true"></i>
+						<i class="fa fal fa-angle-right" ng-if="item.nodes && $rdNavbarController.showSubmenu[$index] == false"></i>
+					</a>
+					<ul class="submenu-i" ng-show="$rdNavbarController.showSubmenu[$index]">
 						<li ng-repeat="subItem in item.nodes">
-							<a href="">{{ subItem.caption }}</a>
+							<a href ng-click="$rdNavbarController.itemClicked(subItem)">{{ subItem.caption }}</a>
 						</li>
 					</ul>
 				</li>

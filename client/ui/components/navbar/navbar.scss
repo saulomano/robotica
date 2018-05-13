@@ -113,9 +113,6 @@
 		@include opacity-transition-delay($delay: 150ms);
 	}
 
-	&__tools {
-	}
-
 	&__dropdown {
 		position: fixed;
 		z-index: -1;
@@ -294,6 +291,7 @@ html {
 	padding-right: 15px;
 	height: 17px;
 	line-height: 17px;
+	margin: 0 auto;
 }
 
 .dropdown .nav-link::after {
@@ -301,9 +299,7 @@ html {
 	position:absolute;
 	top: 6px;
 	right: 0;
-	border: 5px solid transparent;
-	border-top-color: #fff;
-}
+	}
 
 .submenu {
 	position: absolute;
@@ -416,7 +412,6 @@ html {
 */
 
 .mainmenu li .submenu-i {
-	display: block;
 	max-height: 200px;
 }
 
@@ -439,7 +434,5 @@ html {
   we set it to max-height: 0, and hide the overflowed content.
 */
 .submenu-i {
-	overflow: hidden;
 	max-height: 0;
-	-webkit-transition: all 0.5s ease-out;
 }
