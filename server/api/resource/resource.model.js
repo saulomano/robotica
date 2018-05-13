@@ -25,7 +25,10 @@ var ResourceSchema = new Schema({
 		published: { type: Schema.Types.ObjectId, ref: 'Published' },
 		links: [{ type: Schema.Types.ObjectId, ref: 'Published' }],
 		step: String,
-		deleted: { type:Boolean, default: false }
+		deleted: { type:Boolean, default: false },
+		district: String,
+		school: String,
+		rate: Number
 	}, ops);
 
 registerEvents(ResourceSchema);
