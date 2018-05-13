@@ -288,16 +288,13 @@ export default class ResourceComponent extends CuradorComponent {
 				this.selectedDistrict = {};
 				this.selectedSchool = {};
 
-				this.searchDistrictText = '';
+				this.searchDistrictText = this.resource.district || 'La Plata';
 				this.searchSchoolText = '';
 
 				this.rate = this.resource.rate || 0;
 
-				let targetDistrict = this.resource.district || 'La Plata';
+				this.School = this.Restangular.one('schools/district', this.searchDistrictText);
 
-				this.School = this.Restangular.one('schools', targetDistrict);
-
-				// Let's retrieve the school information
 				this.getSchool();
 			}
 
@@ -322,37 +319,23 @@ export default class ResourceComponent extends CuradorComponent {
 		this.School.get()
 		.then(data => {
 
-			this.districts = data;
+			this.district = data;
 
-			let districtIndex = 0;
-			let schoolIndex = 0;
-			if(this.resource.district)
+			let resourceInstance = this;
+
+			let schoolIndex = _.findIndex(this.district.schools, function (element) {
+				return (element.schoolName == resourceInstance.resource.school);						
+			});
+
+			if(schoolIndex == -1)
 			{
-				let tmpResource = this.resource;
+				schoolIndex = 0;
+			}			
 
-				let selDistrictIndex = _.findIndex(this.districts, function (element) {
-					return (element.name == tmpResource.district);
-				});
-
-				if(selDistrictIndex != -1)
-				{
-					districtIndex = selDistrictIndex;
-
-					let selSchoolIndex = _.findIndex(this.districts[selDistrictIndex].schools, function (element) {
-						return (element.schoolName == tmpResource.school);						
-					});
-
-					if(selSchoolIndex != -1)
-					{
-						schoolIndex = selSchoolIndex;
-					}
-				}
-			}
-
-			this.selectedDistrict = this.districts[districtIndex];
+			this.selectedDistrict = this.district;
 			this.searchDistrictText = angular.copy(this.selectedDistrict.name);
 
-			this.selectedSchool = angular.copy(this.selectedDistrict.schools[schoolIndex].schoolName);
+			this.selectedSchool = angular.copy(this.district.schools[schoolIndex].schoolName);
 			this.searchSchoolText = this.selectedSchool;
 
 			this.loading = false;
@@ -362,6 +345,26 @@ export default class ResourceComponent extends CuradorComponent {
 			console.log("Err", err);
 			throw err;
 		});
+	}
+
+
+	onChangeDistrict(newDistrict)
+	{
+		if(_.isEmpty(newDistrict) == false)
+		{
+			let districtIndex = _.findIndex(this.getDistricts(), function (element) {
+				return (element == newDistrict);			
+			});
+
+			// If the search district were found...
+			if(districtIndex != -1)
+			{
+				this.School = this.Restangular.one('schools/district', newDistrict);
+		
+				// Let's retrieve the school information
+				this.getSchool();
+			}
+		}
 	}
 
 
@@ -529,5 +532,38 @@ export default class ResourceComponent extends CuradorComponent {
 
 	getResourceType(type){
 		return this.captions[type];
+	}
+
+	getDistricts()
+	{
+		let _districts = ['La Plata', 'Adolfo Alsina', 'Alberti', 'Almirante Brown',
+			"Avellaneda", "Ayacucho", "Azul", "Bahía Blanca", "Balcarce",
+			"Baradero", "Arrecifes", "Bolívar", "Bragado", "Brandsen",
+			"Campana", "Cañuelas", "Carlos Casares", "Carlos Tejedor", "Carmen de Areco",
+			"Daireaux", "Castelli", "Colón", "Coronel Dorrego", "Coronel Pringles",
+			"Coronel Suárez", "Chacabuco", "Chascomús", "Chivilcoy", "Dolores",
+			"Esteban Echeverría", "Exaltación de la Cruz", "Florencio Varela", "General Alvarado", "General Alvear",
+			"General Arenales", "General Belgrano", "General Guido", "General La Madrid", "General Lavalle",
+			"General Madariaga", "General Paz", "General Pinto", "General Pueyrredón", "General Rodríguez",
+			"General San Martín", "Zárate", "General Viamonte", "General Villegas", "Gonzáles Chaves",
+			"Guaminí", "Juárez", "Junín", "Laprida", "Tigre",
+			"Las Flores", "General Las Heras", "Leandro N. Alem", "Lincoln", "Lobería",
+			"Lobos", "Lomas de Zamora", "Luján", "Magdalena", "Maipú", "Salto",
+			"Marcos Paz", "Mar Chiquita", "La Matanza", "Mercedes", "Merlo", "Monte",
+			"Moreno", "Navarro", "Necochea", "Nueve de Julio", "Olavarría", "Patagones",
+			"Pehuajó", "Pellegrini", "Pergamino", "Pila", "Pilar",
+			"Puan", "Quilmes", "Ramallo", "Rauch", "Rivadavia",
+			"Rojas", "Roque Pérez", "Saavedra", "Saladillo", "San Andrés de Giles",
+			"San Antonio de Areco", "San Fernando", "San Isidro", "San Nicolás", "San Pedro",
+			"San Vicente", "Morón", "Suipacha", "Tandil", "Tapalqué", 
+		    "Tordillo", "Tornquist", "Trenque Lauquen", "Tres Arroyos", "Veinticinco de Mayo",
+		    "Vicente López", "Villarino", "Lanús", "Coronel Rosales", "Berisso", "Ensenada", 
+		    "San Cayetano", "Escobar", "Tres de Febrero", "Hipólito Yrigoyen", "Berazategui",
+		    "Salliqueló", "Capitán Sarmiento", "La Costa", "Pinamar", "Villa Gesell",
+		    "Monte Hermoso", "Tres Lomas", "Florentino Ameghino", "Presidente Perón", "Ezeiza",
+		    "San Miguel", "José C. Paz", "Malvinas Argentinas", "Punta Indio", "Hurlingham",
+		    "Ituzaingo", "Lezama"
+		];
+		return _districts;
 	}
 }

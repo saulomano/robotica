@@ -121,20 +121,24 @@
 			<md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loading">
 					<div>
 						<div class="md-title">Distritos</div>
-						<md-autocomplete
+						<md-autocomplete required
+								md-selected-item-change = "$ctrl.onChangeDistrict($ctrl.searchDistrictText)"
 								md-selected-item="$ctrl.selectedDistrict"
 								md-search-text="$ctrl.searchDistrictText"
-								md-items="district in $ctrl.districts"
-								md-item-text="district.name"
+								md-items="district in $ctrl.getDistricts()"
+								md-item-text="($ctrl.selectedDistrict.name || '')"
 								md-min-length="1"
 								md-autoselect = "true"
-								placeholder="Selecciona el distrito...">
+								placeholder="Selecciona un distrito...">
 							<md-item-template>
-								<span md-highlight-text="$ctrl.searchDistrictText" md-highlight-flags="^i">{{district.name || ''}}</span>
+								<span md-highlight-text="$ctrl.searchDistrictText" md-highlight-flags="^i">{{district || ''}}</span>
 							</md-item-template>
 							<md-not-found>
-								No states matching "{{$ctrl.searchDistrictText}}" were found.
+								No se encontro un distrito de nombre "{{$ctrl.searchDistrictText}}".
 							</md-not-found>
+							<div ng-messages="autocompleteForm.autocomplete.$error">
+								<div ng-message="required">Requerido</div>
+							</div>
 						</md-autocomplete>
 					</div>				   
 			</md-content>

@@ -7,15 +7,10 @@ import querymen from 'querymen';
 
 var router = new Router();
 
-//Get all schools
-//Get a single schools from district
-
-// router.get('/', querymen.middleware(), controller.index);
-// router.put('/:id', auth.hasRole('admin'), controller.update);
-// router.get('/province/:name', auth.isAuthenticated(), controller.getByType);
-// router.get('/:name', querymen.middleware(), controller.show);
+// Get all schools/distritcs
 router.get('/:name', querymen.middleware(), controller.getAvailableDistricts);
-// router.get('/:id', auth.isAuthenticated(), controller.show);
-// router.post('/', auth.hasRole('admin'), controller.create);
+
+// Get single school/district using the district name as param
+router.get('/district/:name', querymen.middleware(), controller.show);
 
 module.exports = router;
