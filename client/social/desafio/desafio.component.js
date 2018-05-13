@@ -6,8 +6,8 @@ import _ from 'lodash';
 
 export default class DesafioComponent extends SocialComponent {
   /*@ngInject*/
-  constructor($scope, $element, $stateParams, Auth, Restangular, $log, Util, $timeout, $state, $mdDialog, $mdConstant, ngMeta) {
-    super({$element, Restangular, $log});
+  	constructor($scope, $element, $stateParams, Auth, Restangular, $log, Util, $timeout, $state, $mdDialog, $mdConstant, ngMeta) {
+    	super({$element, Restangular, $log});
 
 		this.$scope = $scope;
 		this.currentStep = 'ficha';
@@ -74,9 +74,9 @@ export default class DesafioComponent extends SocialComponent {
 		if (!this.showViculo){
 			return;
 		}
-    let q;
-    if (this.filterText){
-      q = this.filterText
+		let q;
+		if (this.filterText){
+			q = this.filterText
 		}
 
 		this.Publisheds
@@ -102,9 +102,10 @@ export default class DesafioComponent extends SocialComponent {
 	getCategories_(){
 		async.waterfall([
 			(cb) => {
-				this
-					.loadCategories()
-					.then(() => cb())
+				this.loadCategories()
+					.then(() => 
+						cb()
+					)
 					.catch(cb);
 			},
 			(cb) => {
@@ -130,12 +131,11 @@ export default class DesafioComponent extends SocialComponent {
 			if (err){
 				this.$log.error(err);
 			}
-		});
+		})
 	}
 
 	watchResource(){
 		this.saveTimes = 0;
-
 		this.$scope.$watch(() => { return this.resource; }, (value) => {
 			this.refreshUI();
 			this.saveTimes++;

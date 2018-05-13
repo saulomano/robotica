@@ -6,7 +6,7 @@ let routes = function($stateProvider) {
   'ngInject';
   $stateProvider
     .state('social.desafio', {
-      url: 'desafio/:uid/:action?',
+      url: '/desafio/:uid/:action?',
       template: '<social-desafio></social-desafio>'
     });
 }
@@ -15,6 +15,6 @@ export default angular.module('robotica.social.socialDesafio', [])
                       .config(routes)
                       .component('socialDesafio', {
                         template: require('./desafio.html'),
-                        controller: ResourceComponent
+                        controller: DesafioComponent
                       })
                       .name;

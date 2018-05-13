@@ -18,6 +18,7 @@ import institucional from './institucional';
 import filters from './social.filter';
 import desafios from './desafios';
 import newDesafio from './new';
+import desafio from './desafio';
 
 
 // config to providers
@@ -38,7 +39,8 @@ let requirements = [
 	institucional,
 	filters,
 	desafios,
-	newDesafio
+	newDesafio,
+	desafio
 ];
 
 module.exports = angular

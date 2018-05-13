@@ -7,8 +7,7 @@ let routes = function($stateProvider) {
   $stateProvider
     .state('social.new', {
       url: '/desafio/new?type',
-      template: '<desafio-new></desafio-new>',
-      authenticate: 'user'
+      template: '<desafio-new></desafio-new>'
     });
 }
 

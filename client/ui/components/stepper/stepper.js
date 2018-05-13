@@ -13,8 +13,8 @@ class RdStepperController {
 	/*@ngInject*/
 	constructor($scope, $element, $timeout){
 		this.$scope = $scope;
-    this.$element = $element;
-    this.$timeout = $timeout;
+    	this.$element = $element;
+    	this.$timeout = $timeout;
 
 		this.$element.addClass('rd-stepper');
 		this.currentStepIndex_ = 0;

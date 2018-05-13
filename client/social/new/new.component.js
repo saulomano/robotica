@@ -1,15 +1,18 @@
 'use strict';
 import angular from 'angular';
+import SocialComponent from '../social.component';
 import _ from 'lodash';
 import async from 'async';
 
-export default class NewComponent {
+export default class NewComponent extends SocialComponent{
     /*@ngInject*/
     constructor($element, $state, $stateParams, $timeout, Auth, Restangular, $log) {
+        super({$element, $log});
         this.$timeout = $timeout;
         this.$state = $state;
         this.Restangular = Restangular;
         this.Auth = Auth;
+        this.$log = $log;
         let types = /^(subidesafio)$/ig;
         this.section = _.toLower($stateParams.type);
 
@@ -31,7 +34,7 @@ export default class NewComponent {
 
     createResource(section) {
         let dbtypes = {
-            'desafios': 'desafio',
+            'subidesafio': 'desafio',
         };
     
         let type = dbtypes[section];
@@ -58,7 +61,6 @@ export default class NewComponent {
                 resource
                     .post(data)
                     .then(data => {
-                        console.log('data: ', data)
                         this.$state.go(`social.desafio`, { uid: data._id });
                     })
                     .catch((err) => {
