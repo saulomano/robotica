@@ -19,7 +19,7 @@ import filters from './social.filter';
 import desafios from './desafios';
 import newDesafio from './new';
 import desafio from './desafio';
-
+import canalyt from './canalyt'
 
 // config to providers
 import { socialConfig } from './social.config';
@@ -37,10 +37,12 @@ let requirements = [
 	ver,
 	guia,
 	institucional,
-	filters,
 	desafios,
 	newDesafio,
 	desafio
+	canalyt,
+	filters
+
 ];
 
 module.exports = angular

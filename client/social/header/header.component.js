@@ -14,15 +14,6 @@ class HeaderComponent {
     this.selectedItem;
     this.searchText =  $stateParams.search || '';
 
-    this.navbarItems = [
-      { section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuestas' },
-      { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' },
-      { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
-      { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' },
-      { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' },
-      { section: 'mediateca1', icon: 'ri ri-mediateca', caption: 'Mediateca1' },
-    ];
-
     this.menuNavBar = [
       {
         section: 'institucional',  caption: 'Institucional',
@@ -50,13 +41,36 @@ class HeaderComponent {
         ]
       },
       {
-        section: 'Otra',  caption: 'Otra de purbea',
+        section: 'comunidad',  caption: 'Comunidad',
         "nodes": [
           {
-            section: 'prueba 1',  caption: 'prueba1 ', action:'?seccion=desafios'
+            section: 'sabiasQue',  caption: 'Sabias que', action:'?seccion=desafios'
           },
           {
-            section: 'prueba 2',  caption: 'prueba2 ', action:'/subiDesafio'
+            section: 'queHacemos',  caption: 'Que Hacemos', action:'/subiDesafio'
+          },
+          {
+            section: 'novedades',  caption: 'Novedades', action:'/subiDesafio'
+          },
+          {
+            section: 'ingresaTuDesafio',  caption: 'Ingresa tu Desafio', action:'/subiDesafio'
+          }
+        ]
+      },
+      {
+        section: 'recursos',  caption: 'Recursos',
+        "nodes": [
+          {
+            section: 'documentos',  caption: 'Documentos', action:'?seccion=desafios'
+          },
+          {
+            section: 'mediateca',  caption: 'Mediateca', action:'/subiDesafio'
+          },
+          {
+            section: 'herramientas',  caption: 'Herramientas', action:'/subiDesafio'
+          },
+          {
+            section: 'videos',  caption: 'Videos', action:'/canalyt'
           }
         ]
       },
