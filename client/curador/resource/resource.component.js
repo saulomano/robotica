@@ -315,7 +315,8 @@ export default class ResourceComponent extends CuradorComponent {
 
 
 	getSchool(){
-		this.loading = true;
+		// this.loading = true;
+		this.loadingSchools = true;
 		this.School.get()
 		.then(data => {
 
@@ -338,7 +339,8 @@ export default class ResourceComponent extends CuradorComponent {
 			this.selectedSchool = angular.copy(this.district.schools[schoolIndex].schoolName);
 			this.searchSchoolText = this.selectedSchool;
 
-			this.loading = false;
+			// this.loading = false;
+			this.loadingSchools = false;
 		})
 		.catch(err => {
 			this.loading = false;
