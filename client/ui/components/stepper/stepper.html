@@ -27,5 +27,11 @@
 			<span>Publicar</span>
 		<md-icon class="mi mi-cloud-upload" aria-hidden="true"></md-icon>
 		</md-button>
+		<md-button class="md-raised rd-stepper__button--next  button__text-icon" 
+				ng-click="$rdStepperController.toRefuse($event)"
+				ng-show="!$rdStepperController.showNext() && ($rdStepperController.userRole == 'admin')">
+			<span>Rechazar</span>
+			<md-icon class="mi" aria-hidden="true"><i class="material-icons">block</i></md-icon>
+		</md-button>
 	</div>
 </div>

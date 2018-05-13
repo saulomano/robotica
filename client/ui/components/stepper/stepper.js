@@ -96,6 +96,11 @@ class RdStepperController {
 		this.currentStepIndex_--;
 	}
 
+	toRefuse($event) {
+		let toRefuseFn = this.$scope.onToRefuse;
+		if (typeof this.toRefuseFn === 'function') toRefuseFn($event);
+	}
+
 	finish($event){
 		let finishFn = this.$scope.onFinish;
 		if (typeof finishFn === 'function'){
@@ -141,6 +146,7 @@ function rdStepper($log){
 		controllerAs: '$rdStepperController',
 		scope: {
 			canNext: '=',
+			onToRefuse: '=',
 			onFinish: '=',
 			onEnterStep: '=',
 			onSave: '=',

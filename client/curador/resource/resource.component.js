@@ -173,6 +173,11 @@ export default class ResourceComponent extends CuradorComponent {
 		this.finish = ($event) => {
 			this.publish();
 		}
+
+		this.toRefuse = ($event) => {
+			this.resource.status = 'rechazado';
+			this.saveResource();
+		}
 	}
 
 	configureDropzone(Util){
@@ -507,6 +512,8 @@ export default class ResourceComponent extends CuradorComponent {
 					.cancel('Cancelar');
 
 		this.$mdDialog.show(confirm).then(() => {
+			this.resource.status = 'aprobado';
+			this.saveResource();
 			this.releasePublish();
 		}, () => {
 		});
