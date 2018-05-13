@@ -43,6 +43,7 @@ export default class NewComponent extends SocialComponent{
             .getCurrentUser()
             .then(user => {
                 let data = {
+                    status: 'pendiente',
                     type: type,
                     title: '',
                     summary: '',

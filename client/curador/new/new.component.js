@@ -49,6 +49,7 @@ export default class NewComponent extends CuradorComponent {
     .getCurrentUser()
     .then(user => {
       let data = {
+        status: 'pendiente',
         type: type,
         title: '',
         summary: '',

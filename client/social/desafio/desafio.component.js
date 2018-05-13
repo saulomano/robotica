@@ -21,7 +21,9 @@ export default class DesafioComponent extends SocialComponent {
 		this.isDelete = $stateParams.action === 'remove';
 		this.$state = $state;
 		this.$mdDialog = $mdDialog;
+		this.Auth = Auth;
 		this.ngMeta = ngMeta;
+		this.user = this.getCurrentUser();
 
 		// Global captions to avoid unnecesary temporary captions inside functions
 		this.captions = {
@@ -59,6 +61,17 @@ export default class DesafioComponent extends SocialComponent {
 		this.$scope.$watch(() => { return this.filterText }, (value) => {
 			this.refreshUI(true);
 		});
+	}
+
+	getCurrentUser() {
+		this.Auth
+            .getCurrentUser()
+            .then(user => {
+                return user;
+            })
+            .catch((err) => {
+                this.$log.error(err)
+            });
 	}
 
 	$onInit(){
@@ -176,18 +189,17 @@ export default class DesafioComponent extends SocialComponent {
 	}
 
 	configureDropzone(Util){
-
 		var ctrl = this;
-   	 this.dzOptions = {
+   		this.dzOptions = {
 			dictDefaultMessage: '<div class="dz-clickable"></div>',
-      url : '/upload?relative=' + this.uid,
+     		url : '/upload?relative=' + this.uid,
 			paramName : 'Imágen',
 			maxFiles: 1,
 			clickable: '.dz-tumbnail-clickable',
 			maxFilesize : 1024,
 			timeout: 18000000,
-      acceptedFiles : 'image/*',
-      addRemoveLinks : false,
+      		acceptedFiles : 'image/*',
+      		addRemoveLinks : false,
 			headers: Util.getHeaders(),
 			init: function(){
 				// add dropzone to ctrl
@@ -195,20 +207,14 @@ export default class DesafioComponent extends SocialComponent {
 			}
 		};
 
-    this.dzCallbacks = {
-      'addedfile' : (file) => {
-				
-			},
-			'removedfile' : (file) => {
-				
-      },
-      'success' : (file, xhr) => {
+		this.dzCallbacks = {
+			'addedfile' : (file) => {},
+			'removedfile' : (file) => {},
+			'success' : (file, xhr) => {
 				console.log(xhr);
 				this.resource.thumbnail = xhr.url;
 			},
-			'processing': () => {
-				
-			},
+			'processing': () => {},
 			'queuecomplete': () => {
 				ctrl.dropzoneThumbnail.removeAllFiles();
 			}
@@ -225,25 +231,19 @@ export default class DesafioComponent extends SocialComponent {
 		this.dzOptionsSoftware.clickable = '.dz-software-clickable';
 
 		this.dzCallbacksSoftware = {
-      'addedfile' : (file) => {
-				
-			},
-			'removedfile' : (file) => {
-				
-      },
-      'success' : (file, xhr) => {
+      		'addedfile' : (file) => {},
+			'removedfile' : (file) => {},
+      		'success' : (file, xhr) => {
 				this.resource.files.push(xhr);
 			},
-      'error' : (err) => {
+      		'error' : (err) => {
 				this.$log.error(err);
 			},
-			'processing': () => {
-				
-			},
+			'processing': () => {},
 			'queuecomplete': () => {
 				//ctrl.dropzoneSoftware.removeAllFiles();
 			}
-    };
+    	};
 	}
 
 	getResource(){
@@ -251,23 +251,18 @@ export default class DesafioComponent extends SocialComponent {
 		.get()
 		.then(data => {
 			this.resource = data;
-
 			this.ngMeta.setTitle(this.resource.title);
 			this.ngMeta.setTag('description', this.resource.summary);
-
 			if (typeof this.resource.area == 'string'){
 				this.resource.area = [];
 			}
-
 			if (typeof this.resource.nivel == 'string'){
 				this.resource.nivel = [];
 			}
-
 			if (this.resource.step){
 				let idx = _.findIndex(this.steps, { name: this.resource.step });
 				this.initStepIndex = idx === -1 ? undefined : idx;
 			}
-
 			if (this.resource.type === 'mediateca'){
 				this.steps = [
 					{ name: 'ficha', 		caption: 'Ficha' },
@@ -276,7 +271,6 @@ export default class DesafioComponent extends SocialComponent {
 					{ name: 'publicar', caption: 'Publicar' },
 				];
 			}
-
 			_.each(this.resource.links, l =>{
 				l.typeCaption = this.captions[l.type];
 			});
@@ -309,8 +303,8 @@ export default class DesafioComponent extends SocialComponent {
   
 	
 	canNext(step){
-    return true;
-  }
+		return true;
+	}
 	
 	editTumbnail(){
 		
@@ -411,16 +405,15 @@ export default class DesafioComponent extends SocialComponent {
 	publish(ev){
 		// Appending dialog to document.body to cover sidenav in docs app
 		var confirm = this.$mdDialog.confirm()
-					.title('¿Está seguro que desea hacer publico este recurso?')
-					.ariaLabel('Publicación del Recurso')
-					.targetEvent(ev)
-					.ok('Publicar')
-					.cancel('Cancelar');
+									.title('¿Está seguro que desea hacer publico este recurso?')
+									.ariaLabel('Publicación del Recurso')
+									.targetEvent(ev)
+									.ok('Publicar')
+									.cancel('Cancelar');
 
 		this.$mdDialog.show(confirm).then(() => {
 			this.releasePublish();
-		}, () => {
-		});
+		}, () => {});
 	}
 	
 	releasePublish(){

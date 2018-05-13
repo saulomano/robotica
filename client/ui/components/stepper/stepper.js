@@ -132,7 +132,8 @@ function rdStepper($log){
 			autoSave: '=',
 			ngModel: '=',
 			initStepIndex: '=',
-			steps: '='
+			steps: '=',
+			userRole: '='
 		},
 		template: require('./stepper.html')
 	}
