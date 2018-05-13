@@ -114,42 +114,64 @@
 				 </md-expansion-panel>
 			</md-content>
 
+			<!-- ================================================================ -->
 			<!-- DESAFIOS -->
-			<!-- TODO: Cargar niveles de los desafios -->
-			<!-- TODO: Cargar colegios de los desafios -->
-			<!-- TODO: Cargar distritos de los desafios -->
-			<md-content ng-if="$ctrl.resource.type == 'desafio'">
-				<md-expansion-panel class="option-panel">
-					
-					 <md-expansion-panel-collapsed>
-						 <div class="md-title">Nivel *</div>
-						 <div class="md-summary">{{$ctrl.resource.area.length}} {{$ctrl.textSelection($ctrl.resource.area.length)}}</div>
-						 <md-expansion-panel-icon></md-expansion-panel-icon>
-					 </md-expansion-panel-collapsed>
-					
-					
-					 <md-expansion-panel-expanded>
-					
-						 <md-expansion-panel-header ng-click="$panel.collapse()">
-							 <div class="md-title">Nivel *</div>
-							 <div class="md-summary"></div>
-							 <md-expansion-panel-icon></md-expansion-panel-icon>
-						 </md-expansion-panel-header>
-					
-						 <md-expansion-panel-content>
-								<div flex="100" ng-repeat="item in $ctrl.areas">
-										<md-checkbox ng-checked="$ctrl.exists(item, $ctrl.resource.area)" ng-click="$ctrl.toggle(item, $ctrl.resource.area)">
-										{{ item }}
-									</md-checkbox>
-								</div>
-						 </md-expansion-panel-content>
-					
-					 </md-expansion-panel-expanded>
-					
-				 </md-expansion-panel>
+			<!-- ================================================================ -->
+			<!-- DISTRITOS -->
+			<md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loading">
+					<div>
+						<div class="md-title">Distritos</div>
+						<md-autocomplete
+								md-selected-item="$ctrl.selectedDistrict"
+								md-search-text="$ctrl.searchDistrictText"
+								md-items="district in $ctrl.districts"
+								md-item-text="district.name"
+								md-min-length="1"
+								md-autoselect = "true"
+								placeholder="Selecciona el distrito...">
+							<md-item-template>
+								<span md-highlight-text="$ctrl.searchDistrictText" md-highlight-flags="^i">{{district.name || ''}}</span>
+							</md-item-template>
+							<md-not-found>
+								No states matching "{{$ctrl.searchDistrictText}}" were found.
+							</md-not-found>
+						</md-autocomplete>
+					</div>				   
 			</md-content>
 
+			<!-- COLEGIOS -->
+			<md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loading">					
+				<div>
+					<h1 class="md-title">Colegios</h1>
+					<div layout="row">						
+						<md-input-container style="width: 100%;">
 
+							<label>Colegios</label>
+
+							<md-select ng-model="$ctrl.selectedSchool">
+								<md-option ng-repeat="school in $ctrl.selectedDistrict.schools" 
+								ng-value="school.schoolName" >
+								{{school.schoolName}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+					</div>
+				</div>				   
+			</md-content>
+
+			<!-- HERE GOES THE RATE ('STARS') -->
+			<md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loading">
+				<div>
+					<h1 class="md-title">Calificación para este desafío</h1>
+					<div layout="row">						
+						<md-input-container>
+							<label>Calificación</label>
+							<input type="number" ng-model="$ctrl.rate" required>
+						</md-input-container>
+					</div>
+				</div>			
+			</md-content>
+			<!-- ================================================================ -->
 
 		</md-content>
 		

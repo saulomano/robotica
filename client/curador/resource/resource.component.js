@@ -277,6 +277,33 @@ export default class ResourceComponent extends CuradorComponent {
 				];
 			}
 
+			//===============================================
+			// Exclusive 'Desafios' validations
+			//===============================================
+			
+			if(this.resource.type === 'desafio')
+			{
+				// Create angular 'Desafios' variables 
+				this.districts = {};
+				this.selectedDistrict = {};
+				this.selectedSchool = {};
+
+				this.searchDistrictText = '';
+				this.searchSchoolText = '';
+
+				this.rate = this.resource.rate || 0;
+
+				let targetDistrict = this.resource.district || 'La Plata';
+
+				this.School = this.Restangular.one('schools', targetDistrict);
+
+				// Let's retrieve the school information
+				this.getSchool();
+			}
+
+			//===============================================
+
+
 			_.each(this.resource.links, l =>{
 				l.typeCaption = this.captions[l.type];
 			});
@@ -289,6 +316,55 @@ export default class ResourceComponent extends CuradorComponent {
 		});
 	}
 
+
+	getSchool(){
+		this.loading = true;
+		this.School.get()
+		.then(data => {
+
+			this.districts = data;
+
+			let districtIndex = 0;
+			let schoolIndex = 0;
+			if(this.resource.district)
+			{
+				let tmpResource = this.resource;
+
+				let selDistrictIndex = _.findIndex(this.districts, function (element) {
+					return (element.name == tmpResource.district);
+				});
+
+				if(selDistrictIndex != -1)
+				{
+					districtIndex = selDistrictIndex;
+
+					let selSchoolIndex = _.findIndex(this.districts[selDistrictIndex].schools, function (element) {
+						return (element.schoolName == tmpResource.school);						
+					});
+
+					if(selSchoolIndex != -1)
+					{
+						schoolIndex = selSchoolIndex;
+					}
+				}
+			}
+
+			this.selectedDistrict = this.districts[districtIndex];
+			this.searchDistrictText = angular.copy(this.selectedDistrict.name);
+
+			this.selectedSchool = angular.copy(this.selectedDistrict.schools[schoolIndex].schoolName);
+			this.searchSchoolText = this.selectedSchool;
+
+			this.loading = false;
+		})
+		.catch(err => {
+			this.loading = false;
+			console.log("Err", err);
+			throw err;
+		});
+	}
+
+
 	$onDestroy() {
 		if (this.saverHandler) {
 			clearInterval(this.saverHandler);
@@ -296,6 +372,9 @@ export default class ResourceComponent extends CuradorComponent {
 	}
 	
 	saveResource(){
+
+		this.onSaveResource();
+
 		this.resource
 			.put()
 			.then(data => {
@@ -306,7 +385,17 @@ export default class ResourceComponent extends CuradorComponent {
 			});
 	}
 
-  
+
+	onSaveResource()
+	{
+		if(this.resource.type === 'desafio')
+		{
+			this.resource.district = angular.copy(this.selectedDistrict.name);
+			this.resource.school = angular.copy(this.selectedSchool);
+			this.resource.rate = angular.copy(this.rate);
+		}
+	}
+
 	
 	canNext(step){
     return true;

@@ -11,6 +11,7 @@ router.use('/categories', require('./category'));
 router.use('/resources', require('./resource'));
 router.use('/publisheds', require('./published'));
 router.use('/desafios', require('./desafio'));
+router.use('/schools', require('./schools'));
 
 router.use(writer());
 
