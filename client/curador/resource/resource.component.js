@@ -176,7 +176,14 @@ export default class ResourceComponent extends CuradorComponent {
 
 		this.toRefuse = ($event) => {
 			this.resource.status = 'rechazado';
-			this.saveResource();
+			this.resource
+					.put()	
+					.then(data => {
+						this.$state.go('curador.dashboard');
+					})
+					.catch(err => {
+						throw err;
+					});
 		}
 	}
 
