@@ -21,9 +21,7 @@ export default class DesafioComponent extends SocialComponent {
 		this.isDelete = $stateParams.action === 'remove';
 		this.$state = $state;
 		this.$mdDialog = $mdDialog;
-		this.Auth = Auth;
 		this.ngMeta = ngMeta;
-		this.user = this.getCurrentUser();
 
 		// Global captions to avoid unnecesary temporary captions inside functions
 		this.captions = {
@@ -61,17 +59,6 @@ export default class DesafioComponent extends SocialComponent {
 		this.$scope.$watch(() => { return this.filterText }, (value) => {
 			this.refreshUI(true);
 		});
-	}
-
-	getCurrentUser() {
-		this.Auth
-            .getCurrentUser()
-            .then(user => {
-                return user;
-            })
-            .catch((err) => {
-                this.$log.error(err)
-            });
 	}
 
 	$onInit(){

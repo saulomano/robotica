@@ -23,7 +23,7 @@
 		</md-button>
 		<md-button class="md-raised md-primary rd-stepper__button--next  button__text-icon" 
 				ng-click="$rdStepperController.finish($event)"
-				ng-show="!$rdStepperController.showNext() && $rdStepperController.userRole == 'admin'">
+				ng-show="!$rdStepperController.showNext() && ($rdStepperController.userRole == 'admin')">
 			<span>Publicar</span>
 		<md-icon class="mi mi-cloud-upload" aria-hidden="true"></md-icon>
 		</md-button>

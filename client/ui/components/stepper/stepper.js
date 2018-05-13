@@ -11,14 +11,18 @@ class RdStepperController {
 	steps = [];
 
 	/*@ngInject*/
-	constructor($scope, $element, $timeout){
+	constructor($scope, $element, $timeout, Auth){
 		this.$scope = $scope;
     	this.$element = $element;
-    	this.$timeout = $timeout;
+		this.$timeout = $timeout;
+		this.Auth = Auth;
+		this.userRole = '';
 
 		this.$element.addClass('rd-stepper');
 		this.currentStepIndex_ = 0;
 		this.steps = this.$scope.steps;
+
+		this.getCurrentUser();
 
 		this.$scope.$watch(() => { return this.$scope.steps }, (value) => {
 			this.steps = this.$scope.steps;
@@ -34,6 +38,17 @@ class RdStepperController {
 				//this.releaseEnterStep(value);
 			}
 		});
+	}
+
+	getCurrentUser() {
+		this.Auth
+            .getCurrentUser()
+            .then(user => {
+				this.userRole = user.role;
+            })
+            .catch((err) => {
+                this.$log.error(err)
+            });
 	}
 
 	getStepByIndex_(idx) {
@@ -132,8 +147,7 @@ function rdStepper($log){
 			autoSave: '=',
 			ngModel: '=',
 			initStepIndex: '=',
-			steps: '=',
-			userRole: '='
+			steps: '='
 		},
 		template: require('./stepper.html')
 	}
