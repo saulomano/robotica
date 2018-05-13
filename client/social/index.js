@@ -15,6 +15,7 @@ import ver from './ver';
 import guia from './guia';
 import institucional from './institucional';
 import filters from './social.filter';
+import canalyt from './canalyt'
 
 // config to providers
 import { socialConfig } from './social.config';
@@ -31,6 +32,7 @@ let requirements = [
 	ver,
 	guia,
 	institucional,
+	canalyt,
 	filters
 ];
 

@@ -14,3 +14,10 @@ return {
   
   
   proyect gulp build , gulp serve
+  
+  
+  
+  Import json de escuelas a base de datos 
+  Tomar el archivo escuelas.json y ejecutar el comando
+  mongoimport --db robotica-dev --collection escuelas --type json --file escuel.json --jsonArray
+
