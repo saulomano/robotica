@@ -18,7 +18,11 @@ class DesafioCardController {
         this.editable = this.$scope.editable === true;
     }
 
-    deleteDesafio(_id){
+    editDesafio() {
+        this.$state.go(`social.desafio`, { uid: this.desafio._id });
+    }
+
+    deleteDesafio(_id) {
         this.Desafio = this.Restangular.one('desafios', _id);
         this.Desafio
             .remove()
