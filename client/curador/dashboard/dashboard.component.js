@@ -55,7 +55,8 @@ export default class DashboardComponent extends CuradorComponent {
         { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' },
         { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
         { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' },
-        { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' }
+        { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' },
+        { section: 'desafios', icon: 'ri ri-desafio', caption: 'Desafíos' }
       ]
     };
 
