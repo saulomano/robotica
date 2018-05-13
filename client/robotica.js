@@ -1,5 +1,6 @@
 'use strict';
 
+import angularStars from 'angular1-star-rating';
 import angular from 'angular';
 import ngMaterial from 'angular-material';
 import uiRouter from 'angular-ui-router';
@@ -63,7 +64,12 @@ import '../node_modules/angular-material-data-table/dist/md-data-table.css';
 import './styles/robotica.scss';
 
 
+import svg from "angular1-star-rating/dist/assets/images/star-rating.icons.svg";
+
+
+
 import ngYoutubeEmbed from 'ng-youtube-embed';
+
 
 let requirements = [
 	uiRouter,
