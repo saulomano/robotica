@@ -96,8 +96,54 @@
             </md-content>
             <!-- DESAFIOS -->
             <!-- TODO: Cargar niveles de los desafios -->
-            <!-- TODO: Cargar colegios de los desafios -->
-            <!-- TODO: Cargar distritos de los desafios -->
+            <!-- ================================================================ -->
+			<!-- DESAFIOS -->
+			<!-- ================================================================ -->
+			<!-- DISTRITOS -->
+			<md-content ng-if="!$ctrl.loadingSchools">
+                <div>
+                    <div class="md-title">Distritos</div>
+                    <md-autocomplete required
+                            md-selected-item-change = "$ctrl.onChangeDistrict($ctrl.searchDistrictText)"
+                            md-selected-item="$ctrl.selectedDistrict"
+                            md-search-text="$ctrl.searchDistrictText"
+                            md-items="district in $ctrl.getDistricts()"
+                            md-item-text="($ctrl.selectedDistrict.name || '')"
+                            md-min-length="1"
+                            md-autoselect = "true"
+                            placeholder="Selecciona un distrito...">
+                        <md-item-template>
+                            <span md-highlight-text="$ctrl.searchDistrictText" md-highlight-flags="^i">{{district || ''}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            No se encontro un distrito de nombre "{{$ctrl.searchDistrictText}}".
+                        </md-not-found>
+                        <div ng-messages="autocompleteForm.autocomplete.$error">
+                            <div ng-message="required">Requerido</div>
+                        </div>
+                    </md-autocomplete>
+                </div>				   
+            </md-content>
+
+            <!-- COLEGIOS -->
+            <md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loadingSchools">					
+                <div>
+                    <h1 class="md-title">Colegios</h1>
+                    <div layout="row">						
+                        <md-input-container style="width: 100%;">
+
+                            <label>Colegios</label>
+
+                            <md-select ng-model="$ctrl.selectedSchool">
+                                <md-option ng-repeat="school in $ctrl.selectedDistrict.schools" 
+                                ng-value="school.schoolName" >
+                                {{school.schoolName}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                </div>				   
+            </md-content>
             <md-content ng-if="$ctrl.resource.type == 'desafio'">
                 <md-expansion-panel class="option-panel">
                     
