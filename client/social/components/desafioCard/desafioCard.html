@@ -1,0 +1,50 @@
+<rd-card data-rd-section="{{$ctrl.desafio.type}}" ng-if="$ctrl.desafio.type == 'desafio'">
+	<rd-card-toolbar ng-if="$ctrl.editable">
+		<div layout="row">
+			<div class="rd-card__status" flex ng-hide="$ctrl.desafio.published == undefined"> <i class="fa fa-check-circle-o"></i>	Publicado</div>
+			<div class="rd-card__status" flex ng-show="$ctrl.desafio.published == undefined"> <i class="fa fa-save"></i> Guardado</div>
+			<md-button ng-click="$ctrl.deleteUserBoolean = !$ctrl.deleteUserBoolean" class="bordered md-raised md-mini rd-card__button--delete" aria-label="Eliminar módulo">
+				<md-icon md-font-icon="">delete</md-icon>
+			</md-button>
+			<md-button ng-click="$ctrl.editDesafio()" class="bordered mini-button md-button md-ink-ripple rd-card__button--edit">
+				<div layout="row">
+					<md-icon class="mi-mode-edit"></md-icon> <span>Editar</span>
+				</div>
+			</md-button>
+		</div>
+	</rd-card-toolbar>
+	<rd-card-header ng-hide="$ctrl.deleteUserBoolean">
+        <div class="rd-card__header--wrapper" layout="row" layout-align="start center">
+            <span class="rd-card__icon--circle">
+                <i class="ri ri-3x" ng-class="'ri-'+$ctrl.desafio.type"></i>
+            </span>
+            <span class="rd-card__header--type rd__text--caption">{{$ctrl.desafio.typeCaption}}</span>
+        </div>
+	</rd-card-header>
+	<rd-card-body>
+        <div layout="row">
+            <div class="rd-card__thumbnail" ng-hide="$ctrl.deleteUserBoolean">
+                <img ng-src="{{$ctrl.desafio.thumbnail}}" alt="Miniatura del recurso">
+            </div>
+            <div flex class="rd-card__body--custom" ng-hide="$ctrl.deleteUserBoolean">
+                <h1 class="rd-card__title--v1">{{$ctrl.desafio.title}}</h1>
+                <p class="rd-card__paragraph">{{$ctrl.desafio.summary | truncate:140 }}</p>
+                <p><strong class="rd-card__updated rd__color--grey-light ">Actualizado <strong am-time-ago="$ctrl.desafio.createdAt"></strong> </strong></p>
+                <p><strong class="rd-card__owner">{{$ctrl.desafio.owner.name}}</strong></p>
+            </div>
+            <div flex class="rd-card__body--custom" ng-show="$ctrl.deleteUserBoolean" align="center">
+                <p class="rd-card__paragraph">¿Esta seguro que desea eliminar PERMANENTEMENTE el Desafio?</p>
+                <md-button ng-click="$ctrl.deleteDesafio($ctrl.desafio._id)" 
+                    class="md-raised md-primary" 
+                    aria-label="Eliminar módulo">
+                    Confirmar y Eliminar Desafio
+                </md-button>
+                <md-button ng-click="$ctrl.deleteUserBoolean = !$ctrl.deleteUserBoolean" 
+                    class="md-raised" 
+                    aria-label="Eliminar módulo">
+                    Cancelar
+                </md-button>
+            </div>
+        </div>
+    </rd-card-body>
+</rd-card>
