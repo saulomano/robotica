@@ -13,12 +13,6 @@
 
 
 <section class="resources_waterfall">
-
-		<star-rating-comp  rating="3" num-of-stars="$ctrl.puntaje" read-only="true"></star-rating-comp>
-		<star-rating-comp   num-of-stars="10" on-rating-change="$ctrl.onClickStar($event)"></star-rating-comp>
-
-
-
 	<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewResource">
 		<rd-item-template>
 			<resource-card resource="item" ui-sref="social.ver({ uid: item._id })"></resource-card>

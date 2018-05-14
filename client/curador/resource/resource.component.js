@@ -5,10 +5,9 @@ import async from 'async';
 import _ from 'lodash';
 
 export default class ResourceComponent extends CuradorComponent {
-  /*@ngInject*/
-  constructor($scope, $element, $stateParams, Auth, Restangular, $log, Util, $timeout, $state, $mdDialog, $mdConstant, ngMeta) {
-    super({$element, Restangular, $log});
-
+	/*@ngInject*/
+	constructor($scope, $element, $stateParams, Auth, Restangular, $log, Util, $timeout, $state, $mdDialog, $mdConstant, ngMeta) {
+    	super({$element, Restangular, $log});
 		this.$scope = $scope;
 		this.currentStep = 'ficha';
 		this.loading = true;
@@ -60,6 +59,11 @@ export default class ResourceComponent extends CuradorComponent {
 			this.refreshUI(true);
 		});
 	}
+
+	onClickStar($event) {
+		this.rate = $event.rating;
+		console.log(this.rate)
+	} 
 
 	$onInit(){
 	}

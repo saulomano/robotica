@@ -170,8 +170,9 @@
 					<h1 class="md-title">Calificación para este desafío</h1>
 					<div layout="row">						
 						<md-input-container>
-							<label>Calificación</label>
-							<input type="number" ng-model="$ctrl.rate" required>
+							<!-- <label>Calificación</label>
+							<input type="number" ng-model="$ctrl.rate" required> -->
+							<star-rating-comp num-of-stars="5" rating="$ctrl.rate" on-rating-change="$ctrl.onClickStar($event)"></star-rating-comp>
 						</md-input-container>
 					</div>
 				</div>			
