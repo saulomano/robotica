@@ -70,7 +70,7 @@ class HeaderComponent {
             section: 'herramientas',  caption: 'Herramientas', action:'/subiDesafio'
           },
           {
-            section: 'videos',  caption: 'Videos', action:'/canalyt'
+            section: 'videos',  caption: 'Videos', action:'canalyt'
           }
         ]
       },
