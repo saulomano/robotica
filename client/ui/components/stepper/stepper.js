@@ -98,7 +98,9 @@ class RdStepperController {
 
 	toRefuse($event) {
 		let toRefuseFn = this.$scope.onToRefuse;
-		if (typeof this.toRefuseFn === 'function') toRefuseFn($event);
+		if (typeof toRefuseFn === 'function') {
+			toRefuseFn($event); 
+		}
 	}
 
 	finish($event){
