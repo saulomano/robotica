@@ -5,10 +5,9 @@ import async from 'async';
 import _ from 'lodash';
 
 export default class ResourceComponent extends CuradorComponent {
-  /*@ngInject*/
-  constructor($scope, $element, $stateParams, Auth, Restangular, $log, Util, $timeout, $state, $mdDialog, $mdConstant, ngMeta) {
-    super({$element, Restangular, $log});
-
+	/*@ngInject*/
+	constructor($scope, $element, $stateParams, Auth, Restangular, $log, Util, $timeout, $state, $mdDialog, $mdConstant, ngMeta) {
+    	super({$element, Restangular, $log});
 		this.$scope = $scope;
 		this.currentStep = 'ficha';
 		this.loading = true;
@@ -60,6 +59,11 @@ export default class ResourceComponent extends CuradorComponent {
 			this.refreshUI(true);
 		});
 	}
+
+	onClickStar($event) {
+		this.rate = $event.rating;
+		console.log(this.rate)
+	} 
 
 	$onInit(){
 	}
@@ -173,6 +177,18 @@ export default class ResourceComponent extends CuradorComponent {
 		this.finish = ($event) => {
 			this.publish();
 		}
+
+		this.toRefuse = ($event) => {
+			this.resource.status = 'rechazado';
+			this.resource
+					.put()	
+					.then(data => {
+						this.$state.go('curador.dashboard');
+					})
+					.catch(err => {
+						throw err;
+					});
+		}
 	}
 
 	configureDropzone(Util){
@@ -277,6 +293,30 @@ export default class ResourceComponent extends CuradorComponent {
 				];
 			}
 
+			//===============================================
+			// Exclusive 'Desafios' validations
+			//===============================================
+			
+			if(this.resource.type === 'desafio')
+			{
+				// Create angular 'Desafios' variables 
+				this.districts = {};
+				this.selectedDistrict = {};
+				this.selectedSchool = {};
+
+				this.searchDistrictText = this.resource.district || 'La Plata';
+				this.searchSchoolText = '';
+
+				this.rate = this.resource.rate || 0;
+
+				this.School = this.Restangular.one('schools/district', this.searchDistrictText);
+
+				this.getSchool();
+			}
+
+			//===============================================
+
+
 			_.each(this.resource.links, l =>{
 				l.typeCaption = this.captions[l.type];
 			});
@@ -289,6 +329,63 @@ export default class ResourceComponent extends CuradorComponent {
 		});
 	}
 
+
+	getSchool(){
+		// this.loading = true;
+		this.loadingSchools = true;
+		this.School.get()
+		.then(data => {
+
+			this.district = data;
+
+			let resourceInstance = this;
+
+			let schoolIndex = _.findIndex(this.district.schools, function (element) {
+				return (element.schoolName == resourceInstance.resource.school);						
+			});
+
+			if(schoolIndex == -1)
+			{
+				schoolIndex = 0;
+			}			
+
+			this.selectedDistrict = this.district;
+			this.searchDistrictText = angular.copy(this.selectedDistrict.name);
+
+			this.selectedSchool = angular.copy(this.district.schools[schoolIndex].schoolName);
+			this.searchSchoolText = this.selectedSchool;
+
+			// this.loading = false;
+			this.loadingSchools = false;
+		})
+		.catch(err => {
+			this.loading = false;
+			console.log("Err", err);
+			throw err;
+		});
+	}
+
+
+	onChangeDistrict(newDistrict)
+	{
+		if(_.isEmpty(newDistrict) == false)
+		{
+			let districtIndex = _.findIndex(this.getDistricts(), function (element) {
+				return (element == newDistrict);			
+			});
+
+			// If the search district were found...
+			if(districtIndex != -1)
+			{
+				this.School = this.Restangular.one('schools/district', newDistrict);
+		
+				// Let's retrieve the school information
+				this.getSchool();
+			}
+		}
+	}
+
+
 	$onDestroy() {
 		if (this.saverHandler) {
 			clearInterval(this.saverHandler);
@@ -296,6 +393,9 @@ export default class ResourceComponent extends CuradorComponent {
 	}
 	
 	saveResource(){
+
+		this.onSaveResource();
+
 		this.resource
 			.put()
 			.then(data => {
@@ -306,7 +406,17 @@ export default class ResourceComponent extends CuradorComponent {
 			});
 	}
 
-  
+
+	onSaveResource()
+	{
+		if(this.resource.type === 'desafio')
+		{
+			this.resource.district = angular.copy(this.selectedDistrict.name);
+			this.resource.school = angular.copy(this.selectedSchool);
+			this.resource.rate = angular.copy(this.rate);
+		}
+	}
+
 	
 	canNext(step){
     return true;
@@ -418,6 +528,8 @@ export default class ResourceComponent extends CuradorComponent {
 					.cancel('Cancelar');
 
 		this.$mdDialog.show(confirm).then(() => {
+			this.resource.status = 'aprobado';
+			this.saveResource();
 			this.releasePublish();
 		}, () => {
 		});
@@ -440,5 +552,38 @@ export default class ResourceComponent extends CuradorComponent {
 
 	getResourceType(type){
 		return this.captions[type];
+	}
+
+	getDistricts()
+	{
+		let _districts = ['La Plata', 'Adolfo Alsina', 'Alberti', 'Almirante Brown',
+			"Avellaneda", "Ayacucho", "Azul", "Bahía Blanca", "Balcarce",
+			"Baradero", "Arrecifes", "Bolívar", "Bragado", "Brandsen",
+			"Campana", "Cañuelas", "Carlos Casares", "Carlos Tejedor", "Carmen de Areco",
+			"Daireaux", "Castelli", "Colón", "Coronel Dorrego", "Coronel Pringles",
+			"Coronel Suárez", "Chacabuco", "Chascomús", "Chivilcoy", "Dolores",
+			"Esteban Echeverría", "Exaltación de la Cruz", "Florencio Varela", "General Alvarado", "General Alvear",
+			"General Arenales", "General Belgrano", "General Guido", "General La Madrid", "General Lavalle",
+			"General Madariaga", "General Paz", "General Pinto", "General Pueyrredón", "General Rodríguez",
+			"General San Martín", "Zárate", "General Viamonte", "General Villegas", "Gonzáles Chaves",
+			"Guaminí", "Juárez", "Junín", "Laprida", "Tigre",
+			"Las Flores", "General Las Heras", "Leandro N. Alem", "Lincoln", "Lobería",
+			"Lobos", "Lomas de Zamora", "Luján", "Magdalena", "Maipú", "Salto",
+			"Marcos Paz", "Mar Chiquita", "La Matanza", "Mercedes", "Merlo", "Monte",
+			"Moreno", "Navarro", "Necochea", "Nueve de Julio", "Olavarría", "Patagones",
+			"Pehuajó", "Pellegrini", "Pergamino", "Pila", "Pilar",
+			"Puan", "Quilmes", "Ramallo", "Rauch", "Rivadavia",
+			"Rojas", "Roque Pérez", "Saavedra", "Saladillo", "San Andrés de Giles",
+			"San Antonio de Areco", "San Fernando", "San Isidro", "San Nicolás", "San Pedro",
+			"San Vicente", "Morón", "Suipacha", "Tandil", "Tapalqué", 
+		    "Tordillo", "Tornquist", "Trenque Lauquen", "Tres Arroyos", "Veinticinco de Mayo",
+		    "Vicente López", "Villarino", "Lanús", "Coronel Rosales", "Berisso", "Ensenada", 
+		    "San Cayetano", "Escobar", "Tres de Febrero", "Hipólito Yrigoyen", "Berazategui",
+		    "Salliqueló", "Capitán Sarmiento", "La Costa", "Pinamar", "Villa Gesell",
+		    "Monte Hermoso", "Tres Lomas", "Florentino Ameghino", "Presidente Perón", "Ezeiza",
+		    "San Miguel", "José C. Paz", "Malvinas Argentinas", "Punta Indio", "Hurlingham",
+		    "Ituzaingo", "Lezama"
+		];
+		return _districts;
 	}
 }

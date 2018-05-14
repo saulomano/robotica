@@ -19,11 +19,12 @@
 							rd-section="{{$ctrl.resource.type}}" 
 							steps="$ctrl.steps"
 							can-next="$ctrl.canNext" 
+							on-to-refuse="$ctrl.toRefuse",
 							on-finish="$ctrl.finish"
 							on-enter-step="$ctrl.onEnterStep"
 							on-save="$ctrl.save"
 							init-step-index="$ctrl.initStepIndex"
-							></rd-stepper>
+							user-rol=$ctrl.user.role></rd-stepper>
 </div>
 
 <!-- STEP FICHA -->
@@ -114,42 +115,69 @@
 				 </md-expansion-panel>
 			</md-content>
 
+			<!-- ================================================================ -->
 			<!-- DESAFIOS -->
-			<!-- TODO: Cargar niveles de los desafios -->
-			<!-- TODO: Cargar colegios de los desafios -->
-			<!-- TODO: Cargar distritos de los desafios -->
-			<md-content ng-if="$ctrl.resource.type == 'desafio'">
-				<md-expansion-panel class="option-panel">
-					
-					 <md-expansion-panel-collapsed>
-						 <div class="md-title">Nivel *</div>
-						 <div class="md-summary">{{$ctrl.resource.area.length}} {{$ctrl.textSelection($ctrl.resource.area.length)}}</div>
-						 <md-expansion-panel-icon></md-expansion-panel-icon>
-					 </md-expansion-panel-collapsed>
-					
-					
-					 <md-expansion-panel-expanded>
-					
-						 <md-expansion-panel-header ng-click="$panel.collapse()">
-							 <div class="md-title">Nivel *</div>
-							 <div class="md-summary"></div>
-							 <md-expansion-panel-icon></md-expansion-panel-icon>
-						 </md-expansion-panel-header>
-					
-						 <md-expansion-panel-content>
-								<div flex="100" ng-repeat="item in $ctrl.areas">
-										<md-checkbox ng-checked="$ctrl.exists(item, $ctrl.resource.area)" ng-click="$ctrl.toggle(item, $ctrl.resource.area)">
-										{{ item }}
-									</md-checkbox>
-								</div>
-						 </md-expansion-panel-content>
-					
-					 </md-expansion-panel-expanded>
-					
-				 </md-expansion-panel>
+			<!-- ================================================================ -->
+			<!-- DISTRITOS -->
+			<md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loadingSchools">
+					<div>
+						<div class="md-title">Distritos</div>
+						<md-autocomplete required
+								md-selected-item-change = "$ctrl.onChangeDistrict($ctrl.searchDistrictText)"
+								md-selected-item="$ctrl.selectedDistrict"
+								md-search-text="$ctrl.searchDistrictText"
+								md-items="district in $ctrl.getDistricts()"
+								md-item-text="($ctrl.selectedDistrict.name || '')"
+								md-min-length="1"
+								md-autoselect = "true"
+								placeholder="Selecciona un distrito...">
+							<md-item-template>
+								<span md-highlight-text="$ctrl.searchDistrictText" md-highlight-flags="^i">{{district || ''}}</span>
+							</md-item-template>
+							<md-not-found>
+								No se encontro un distrito de nombre "{{$ctrl.searchDistrictText}}".
+							</md-not-found>
+							<div ng-messages="autocompleteForm.autocomplete.$error">
+								<div ng-message="required">Requerido</div>
+							</div>
+						</md-autocomplete>
+					</div>				   
 			</md-content>
 
+			<!-- COLEGIOS -->
+			<md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loadingSchools">					
+				<div>
+					<h1 class="md-title">Colegios</h1>
+					<div layout="row">						
+						<md-input-container style="width: 100%;">
 
+							<label>Colegios</label>
+
+							<md-select ng-model="$ctrl.selectedSchool">
+								<md-option ng-repeat="school in $ctrl.selectedDistrict.schools" 
+								ng-value="school.schoolName" >
+								{{school.schoolName}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+					</div>
+				</div>				   
+			</md-content>
+
+			<!-- HERE GOES THE RATE ('STARS') -->
+			<md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loading">
+				<div>
+					<h1 class="md-title">Calificación para este desafío</h1>
+					<div layout="row">						
+						<md-input-container>
+							<!-- <label>Calificación</label>
+							<input type="number" ng-model="$ctrl.rate" required> -->
+							<star-rating-comp num-of-stars="5" rating="$ctrl.rate" on-rating-change="$ctrl.onClickStar($event)"></star-rating-comp>
+						</md-input-container>
+					</div>
+				</div>			
+			</md-content>
+			<!-- ================================================================ -->
 
 		</md-content>
 		

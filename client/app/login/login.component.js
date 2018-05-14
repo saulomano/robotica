@@ -81,10 +81,12 @@ export default class LoginComponent extends AppComponent {
 
     let interval = setInterval(() => {
       if (loginWindow.closed == true){
-        if (loginWindow.userRole == 'user'){
+        let types = /^(user|maestro)$/ig;
+        if (types.test(_.toLower(loginWindow.userRole))) {
           this.errors.login = 'El email no se encuentra habilitado.';
           this.$scope.$apply();
-          return;
+          // return;
+          window.location.href = `${protocol}//${host}`;
         }
 
         this.$timeout(() => {

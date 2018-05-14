@@ -10,6 +10,7 @@ import _ from 'lodash';
  * restriction: 'authenticate'
  */
 export function index(req, res, next) {
+    console.log('index() req: ', req);
 	var query = req.querymen;
 	let qq = req.query.q;
 	let q = {};
@@ -32,6 +33,7 @@ export function index(req, res, next) {
 
 		q = { $or: [
 				{ type: { $regex: k, $options: 'i' } },
+				{ status: { $regex: k, $options: 'i' }},
 				{ title: { $regex: k, $options: 'i' } },
 				{ summary: { $regex: k, $options: 'i' } },
 				{ nivel: { $regex: k, $options: 'i' } },
@@ -55,14 +57,14 @@ export function index(req, res, next) {
 			}
 			req.totalItems = count;
 			req.result = Resource
-										.find(q)
-										.populate('owner')
-										.populate('files')
-										.sort(query.cursor.sort)
-										.skip(query.cursor.skip)
-										.limit(query.cursor.limit)
-										.select(query.cursor.select)
-										.exec();
+							.find(q)
+							.populate('owner')
+							.populate('files')
+							.sort(query.cursor.sort)
+							.skip(query.cursor.skip)
+							.limit(query.cursor.limit)
+							.select(query.cursor.select)
+							.exec();
 			next();
 		});
 }
@@ -73,6 +75,7 @@ export function index(req, res, next) {
  * restriction: 'curador'
  */
 export function create(req, res, next) {
+	console.log('create() req: ', req);
   var newResource = new Resource(req.body);
   
 	req.result = newResource.save();
@@ -85,6 +88,7 @@ export function create(req, res, next) {
  * restriction: 'curador'
  */
 export function update(req, res, next) {
+    console.log('update() req: ', req);
 	delete req.body._id;
 
 	req.result = Resource.update({ _id: req.params.id}, req.body);
@@ -97,6 +101,7 @@ export function update(req, res, next) {
  * restriction: 'authenticate'
  */
 export function show(req, res, next) {
+    console.log('show() req: ', req);
   var resourceId = req.params.id;
 
 	req.result = Resource
@@ -115,6 +120,7 @@ export function show(req, res, next) {
  * restriction: 'authenticate'
  */
 export function destroy(req, res, next) {
+    console.log('destroy() req: ', req);
 	req.result =  Resource.findByIdAndRemove(req.params.id).exec();
 	next();
 }
