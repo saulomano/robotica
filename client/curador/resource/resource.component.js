@@ -60,11 +60,6 @@ export default class ResourceComponent extends CuradorComponent {
 		});
 	}
 
-	onClickStar($event) {
-		this.rate = $event.rating;
-		console.log(this.rate)
-	} 
-
 	$onInit(){
 	}
 
@@ -162,7 +157,7 @@ export default class ResourceComponent extends CuradorComponent {
 				this.currentStep = step.name;
 				
 				if (!this.init && !this.loading){
-					this.resource.step = this.currentStep;
+					this.resource.step = 'publicar';
 				}
 				
 				this.init = false;

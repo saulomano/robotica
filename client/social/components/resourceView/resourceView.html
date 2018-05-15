@@ -33,6 +33,11 @@
 						</div>
 						<p><strong class="rd-card__owner">{{$ctrl.resource.owner.name}}</strong></p>
 					</div>
+					<!-- HERE GOES THE RATE ('STARS') -->
+					<div flex class="rview__border-bottom" ng-if="$ctrl.resource.type == 'desafio'">
+						<h1 class="md-title">Calificación para este desafío</h1>
+						<star-rating-comp num-of-stars="5" rating="$ctrl.rateView" on-rating-change="$ctrl.onClickStar($event)"></star-rating-comp>
+					</div>
 					<div flex class="rview__border-bottom">
 							<h5>{{$ctrl.resource.typeCaption}}</h5>
 					</div>
@@ -153,4 +158,5 @@
 		</div>
 		<div class="rview__resources--right"></div>
 	</div>
+	<!-- ================================================================ -->
 </div>
