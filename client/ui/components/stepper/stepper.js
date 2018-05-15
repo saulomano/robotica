@@ -131,10 +131,10 @@ class RdStepperController {
 		//}
 	}
 
-	releaseSave(){
+	releaseSave(button){
 		let onSaveFn = this.$scope.onSave;
 		if (typeof onSaveFn === 'function'){
-			onSaveFn(this.currentStep());
+			onSaveFn(button);
 		}
 	}
 }

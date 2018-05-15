@@ -158,7 +158,7 @@ export default class DesafioComponent extends SocialComponent {
 				this.currentStep = step.name;
 				
 				if (!this.init && !this.loading){
-					this.resource.step = this.currentStep;
+					this.resource.step = 'vinculo';
 				}
 				
 				this.init = false;
@@ -166,8 +166,8 @@ export default class DesafioComponent extends SocialComponent {
 			});
 		};
 
-		this.save = () => {
-			this.saveResource();
+		this.save = (button) => {
+			this.saveResource(button);
 		};
 
 		this.finish = ($event) => {
@@ -276,11 +276,17 @@ export default class DesafioComponent extends SocialComponent {
 		}
 	}
 	
-	saveResource(){
+	saveResource(button){
+		if (button) {
+			this.resource.status = 'pendiente';
+		}
 		this.resource
 			.put()
 			.then(data => {
 				this.$log.log('autosaved', data);
+				if (button) {
+					this.$state.go('social.desafios');
+				}
 			})
 			.catch(err => {
 				throw err;

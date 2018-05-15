@@ -7,7 +7,7 @@ import {registerEvents} from './resource.events';
 var ops = {};
 ops.timestamps = true;
 var ResourceSchema = new Schema({
-		status: { type: String, default: 'pendiente'},
+		status: { type: String, default: 'none'},
 		type: String,
 		title: String,
 		summary: String,
@@ -25,7 +25,7 @@ var ResourceSchema = new Schema({
 		files: [{ type: Schema.Types.ObjectId, ref: 'File' }],
 		published: { type: Schema.Types.ObjectId, ref: 'Published' },
 		links: [{ type: Schema.Types.ObjectId, ref: 'Published' }],
-		step: String,
+		step: { type: String, default: 'ficha'},
 		deleted: { type:Boolean, default: false },
 		district: String,
 		school: String,
