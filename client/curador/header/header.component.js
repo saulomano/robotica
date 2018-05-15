@@ -16,6 +16,9 @@ class CuradorHeaderComponent {
     this.noCache = true;
     this.selectedItem;
     this.searchText =  $stateParams.search || '';
+    this.navUser = {
+        section: 'usuarios',  caption: 'Usuarios', action:'curador.users'
+    };
 
     this.navbarItems = [
       { section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuestas' },
@@ -82,13 +85,13 @@ class CuradorHeaderComponent {
     this.Auth.logout();
     this.$state.go('app.login');
   }
-
-    goUserModule() {
-        // let host = window.location.host;
-        // let protocol = window.location.protocol;
-        // window.location.href = `${protocol}//${host}/tablero/users`;
-        this.$state.go('curador.users');
-    }
+    //
+    // goUserModule() {
+    //     // let host = window.location.host;
+    //     // let protocol = window.location.protocol;
+    //     // window.location.href = `${protocol}//${host}/tablero/users`;
+    //     this.$state.go('curador.users');
+    // }
 }
 
 export default angular.module('robotica.curador.curadorHeader', [])
