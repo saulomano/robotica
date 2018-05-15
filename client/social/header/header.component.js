@@ -33,10 +33,13 @@ class HeaderComponent {
         section: 'desafios',  caption: 'Desafios',
         "nodes": [
           {
-            section: 'desafios',  caption: 'Desafios', action:'social.desafios'
+            section: 'subiDesafio',  caption: 'Subi tu desafio', action:'social.new'
           },
           {
-            section: 'subiDesafio',  caption: 'Subi tu desafio', action:'social.new'
+            section: 'desafios',  caption: 'Mis desafios', action:'social.desafios'
+          },
+          {
+            section: 'desafiosAprobados', caption: 'Desafios', action:'social.desafiosAprobados'
           }
         ]
       },

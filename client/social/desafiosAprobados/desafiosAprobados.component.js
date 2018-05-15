@@ -1,7 +1,7 @@
 'use strict';
 import angular from 'angular';
 
-export default class DesafiosComponent {
+export default class DesafiosAprobadosComponent {
     /*@ngInject*/
     constructor($element, $rootScope, $q, $stateParams, $state, Auth, Restangular) {
         this.$q = $q;
@@ -12,7 +12,7 @@ export default class DesafiosComponent {
         this.Auth = Auth;
         this.Restangular = Restangular;
         this.user = this.getUser();
-        this.Resources = this.Restangular.all('desafios');
+        this.Publisheds = this.Restangular.all('publisheds');
         this.section = $stateParams.type;
         this.searchText = $stateParams.search;
         this.$rootScope.$on('filterChange', (event, searchText) => {
@@ -41,25 +41,24 @@ export default class DesafiosComponent {
             q = this.searchText
         }
 
-        this.Resources
+        this.Publisheds
             .getList({
-                q: q,
-                page: this.page,
-                limit: this.limit
+                page: this.page, 
+                limit: this.limit,
+                type: 'desafio'
             })
-            .then(res => {
-                const items = res;
-                let data = {
-                    count: (res.length + 1),
-                    items: items,
+            .then(data => {
+                let total = data.$total;
+          
+                let res = {
+                    count: total,
+                    items: data,
                     page: this.page,
                     limit: this.limit
                 };
-                def.resolve(data);
+    
+                def.resolve(res);
             })
-            .catch(err => {
-                throw err;
-            });
 
         return def.promise;
     }
