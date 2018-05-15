@@ -19,7 +19,7 @@ class HeaderComponent {
         section: 'institucional',  caption: 'Institucional',
         "nodes": [
           {
-            section: 'quienesSomos',  caption: 'Quienes Somos', action:'social.quienesSomos'
+            section: 'quienesSomos',  caption: 'Quienes Somos', action:'social.institucional'
           },
           {
             section: 'ultimasNoticias',  caption: 'Ultimas Noticas', action:'?seccion=noticias'
@@ -61,13 +61,13 @@ class HeaderComponent {
         section: 'recursos',  caption: 'Recursos',
         "nodes": [
           {
-            section: 'documentos',  caption: 'Documentos', action:'?seccion=documentos'
+            section: 'documentos',  caption: 'Documentos', action:'documentos'
           },
           {
-            section: 'mediateca',  caption: 'Mediateca', action:'?seccion=mediateca'
+            section: 'mediateca',  caption: 'Mediateca', action:'mediateca'
           },
           {
-            section: 'herramientas',  caption: 'Herramientas', action:'?seccion=herramientas'
+            section: 'herramientas',  caption: 'Herramientas', action:'herramientas'
           },
           {
             section: 'videos',  caption: 'Videos', action:'social.canalyt'
