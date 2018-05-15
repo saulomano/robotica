@@ -51,12 +51,14 @@ export default class DashboardComponent extends CuradorComponent {
     let addNewItem = {
       type: 'addnew',
       options: [
-        { section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuestas pedagógica' },
-        { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' },
+        { section: 'noticias', icon: 'ri ri-noticias', caption: 'Noticias' },
+        { section: 'calendarios', icon: 'ri ri-calendario', caption: 'Calendario' },
         { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
-        { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' },
+        { section: 'documentos', icon: 'ri ri-documentos', caption: 'Documentos' },
         { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' },
-        { section: 'desafios', icon: 'ri ri-desafio', caption: 'Desafíos' }
+        { section: 'desafios', icon: 'ri ri-desafio', caption: 'Desafíos' },
+        { section: 'loquehacemos', icon: 'ri ri-loquehacemos', caption: 'Lo que hacemos' },
+        { section: 'novedades', icon: 'ri ri-novedades', caption: 'Novedades' }
       ]
     };
 
