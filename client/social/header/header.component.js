@@ -19,10 +19,10 @@ class HeaderComponent {
         section: 'institucional',  caption: 'Institucional',
         "nodes": [
           {
-            section: 'quienesSomos',  caption: 'Quienes Somos', action:'/quienesSomos.html'
+            section: 'quienesSomos',  caption: 'Quienes Somos', action:'social.quienesSomos'
           },
           {
-            section: 'ultimasNoticias',  caption: 'Ultimas Noticas', action:'?seccion=ultimasNoticias'
+            section: 'ultimasNoticias',  caption: 'Ultimas Noticas', action:'?seccion=noticias'
           },
           {
             section: 'calendario',  caption: 'Calendario', action:'?seccion=calendario'
@@ -47,10 +47,10 @@ class HeaderComponent {
             section: 'sabiasQue',  caption: 'Sabias que', action:'?seccion=desafios'
           },
           {
-            section: 'queHacemos',  caption: 'Que Hacemos', action:'/subiDesafio'
+            section: 'queHacemos',  caption: 'Que Hacemos', action:'?seccion=loquehacemos'
           },
-          {
-            section: 'novedades',  caption: 'Novedades', action:'/subiDesafio'
+          {               
+            section: 'novedades',  caption: 'Novedades', action:'?seccion=novedades'
           },
           {
             section: 'ingresaTuDesafio',  caption: 'Ingresa tu Desafio', action:'/subiDesafio'
@@ -61,16 +61,16 @@ class HeaderComponent {
         section: 'recursos',  caption: 'Recursos',
         "nodes": [
           {
-            section: 'documentos',  caption: 'Documentos', action:'?seccion=desafios'
+            section: 'documentos',  caption: 'Documentos', action:'?seccion=documentos'
           },
           {
-            section: 'mediateca',  caption: 'Mediateca', action:'/subiDesafio'
+            section: 'mediateca',  caption: 'Mediateca', action:'?seccion=mediateca'
           },
           {
-            section: 'herramientas',  caption: 'Herramientas', action:'/subiDesafio'
+            section: 'herramientas',  caption: 'Herramientas', action:'?seccion=herramientas'
           },
           {
-            section: 'videos',  caption: 'Videos', action:'canalyt'
+            section: 'videos',  caption: 'Videos', action:'social.canalyt'
           }
         ]
       },

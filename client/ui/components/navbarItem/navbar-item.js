@@ -45,17 +45,18 @@ class RdNavbarItemController {
         let host = window.location.host;
 		let protocol = window.location.protocol;
 		let types = /^(desafios|subidesafio)$/ig;
-		let section = _.toLower(item.section);
-		if (types.test(section)) {
+		
+		//Si es query string viene por aca sino redirige
+		if (item.action.includes("?seccion=") ){
+			this.$state.go('.', {  seccion: item.action.slice(item.action.indexOf('=')+1)   });
+		}else{
 			this.$state.go(item.action, { type: item.section });
-			// this.$state.go('.', { type: item.section });
+
 		}
-        // if (item.action) {
-		// 	this.selected = item.action;
-        //     window.location.href = `${protocol}//${host}/${item.action}`;
-        // }
-        // this.$state.go('.', { seccion: item.section });
-        // this.selected = item.section;
+		
+
+		
+      
     }
 }
 
