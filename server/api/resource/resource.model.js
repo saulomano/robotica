@@ -7,7 +7,7 @@ import {registerEvents} from './resource.events';
 var ops = {};
 ops.timestamps = true;
 var ResourceSchema = new Schema({
-		status: { type: String, default: 'none'},
+		status: { type: String, default: 'ninguno'},
 		type: String,
 		title: String,
 		summary: String,
@@ -29,7 +29,7 @@ var ResourceSchema = new Schema({
 		deleted: { type:Boolean, default: false },
 		district: String,
 		school: String,
-		rate: Number
+		rate: { type:Number, default: 0 },
 	}, ops);
 
 registerEvents(ResourceSchema);

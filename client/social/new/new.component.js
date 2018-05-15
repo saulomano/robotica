@@ -56,7 +56,7 @@ export default class NewComponent extends SocialComponent{
                     collaborators: [],
                     links: [],
                     files: [],
-                    step: 'vinculo'
+                    step: 'ficha'
                 };
                 let resource = this.Restangular.all('desafios');
                 resource
