@@ -64,13 +64,13 @@ class HeaderComponent {
         section: 'recursos',  caption: 'Recursos',
         "nodes": [
           {
-            section: 'documentos',  caption: 'Documentos', action:'documentos'
+            section: 'documentos',  caption: 'Documentos', action:'?seccion=documentos'
           },
           {
-            section: 'mediateca',  caption: 'Mediateca', action:'mediateca'
+            section: 'mediateca',  caption: 'Mediateca', action:'?seccion=mediateca'
           },
           {
-            section: 'herramientas',  caption: 'Herramientas', action:'herramientas'
+            section: 'herramientas',  caption: 'Herramientas', action:'?seccion=herramientas'
           },
           {
             section: 'videos',  caption: 'Videos', action:'social.canalyt'
