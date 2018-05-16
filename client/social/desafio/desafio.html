@@ -102,7 +102,7 @@
 			<!-- DISTRITOS -->
 			<md-content ng-if="!$ctrl.loadingSchools">
                 <div>
-                    <div class="md-title">Distritos</div>
+                    <div class="md-title">Distrito</div>
                     <md-autocomplete required
                             md-selected-item-change = "$ctrl.onChangeDistrict($ctrl.searchDistrictText)"
                             md-selected-item="$ctrl.selectedDistrict"
@@ -128,20 +128,33 @@
             <!-- COLEGIOS -->
             <md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loadingSchools">					
                 <div>
-                    <h1 class="md-title">Colegios</h1>
-                    <div layout="row">						
-                        <md-input-container style="width: 100%;">
+                    <div class="md-title">Colegios</div>
+                    <md-select ng-model="$ctrl.selectedSchool">
+                        <md-option ng-repeat="school in $ctrl.selectedDistrict.schools"
+                        ng-value="school.schoolName" >
+                        {{school.schoolName}}
+                        </md-option>
+                    </md-select>
 
-                            <label>Colegios</label>
-
-                            <md-select ng-model="$ctrl.selectedSchool">
-                                <md-option ng-repeat="school in $ctrl.selectedDistrict.schools" 
-                                ng-value="school.schoolName" >
-                                {{school.schoolName}}
-                                </md-option>
-                            </md-select>
-                        </md-input-container>
-                    </div>
+                    <!--<md-autocomplete required-->
+                                     <!--md-selected-item-change = "$ctrl.onChangeDistrict($ctrl.searchDistrictText)"-->
+                                     <!--md-selected-item="$ctrl.selectedSchool"-->
+                                     <!--md-search-text="$ctrl.searchSchoolText"-->
+                                     <!--md-items="school in $ctrl.selectedDistrict.schools"-->
+                                     <!--md-item-text="($ctrl.selectedSchool.name || '')"-->
+                                     <!--md-min-length="1"-->
+                                     <!--md-autoselect = "true"-->
+                                     <!--placeholder="Selecciona un distrito...">-->
+                        <!--<md-item-template>-->
+                            <!--<span md-highlight-text="$ctrl.searchSchoolText" md-highlight-flags="^i">{{school || ''}}</span>-->
+                        <!--</md-item-template>-->
+                        <!--<md-not-found>-->
+                            <!--No se encontro un distrito de nombre "{{$ctrl.searchSchoolText}}".-->
+                        <!--</md-not-found>-->
+                        <!--<div ng-messages="autocompleteForm.autocomplete.$error">-->
+                            <!--<div ng-message="required">Requerido</div>-->
+                        <!--</div>-->
+                    <!--</md-autocomplete>-->
                 </div>				   
             </md-content>
             <md-content ng-if="$ctrl.resource.type == 'desafio'">

@@ -121,7 +121,7 @@
 			<!-- DISTRITOS -->
 			<md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loadingSchools">
 					<div>
-						<div class="md-title">Distritos</div>
+						<div class="md-title">Distrito</div>
 						<md-autocomplete required
 								md-selected-item-change = "$ctrl.onChangeDistrict($ctrl.searchDistrictText)"
 								md-selected-item="$ctrl.selectedDistrict"
@@ -163,22 +163,6 @@
 					</div>
 				</div>				   
 			</md-content>
-
-			<!-- HERE GOES THE RATE ('STARS') -->
-			<md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loading">
-				<div>
-					<h1 class="md-title">Calificación para este desafío</h1>
-					<div layout="row">						
-						<md-input-container>
-							<!-- <label>Calificación</label>
-							<input type="number" ng-model="$ctrl.rate" required> -->
-							<star-rating-comp num-of-stars="5" rating="$ctrl.rate" on-rating-change="$ctrl.onClickStar($event)"></star-rating-comp>
-						</md-input-container>
-					</div>
-				</div>			
-			</md-content>
-			<!-- ================================================================ -->
-
 		</md-content>
 		
 		<md-content  class="dashboard__content" flex>
@@ -302,7 +286,7 @@
 			<div class="vinculo__files">
 				<div><span class="text-uppercase color-black-light">{{$ctrl.resource.files.length}} Archivos | {{$ctrl.sumfiles($ctrl.resource.files) | numeraljs:'0b'}}</span></div>
 				<div class="text-uppercase color-black-light">Curado por: {{$ctrl.resource.owner.name}}</div>
-		</div>
+			</div>
 		</md-content>
 		
 		<md-content  class="dashboard__content" flex>
@@ -311,7 +295,7 @@
 				<div class="dashboard__search">
 					<input type="text" ng-model="$ctrl.filterText" autofocus>
 				</div>
-			<md-conten>
+				<md-conten>
 					<md-expansion-panel class="option-panel">
 						
 						 <md-expansion-panel-collapsed class="vinculados__recursos">
@@ -386,5 +370,5 @@
 	<div class="dashboard__preview--header bg-primary">
 		<h2><i class="fa fa-angle-down"></i> Previsualización <i class="fa fa-angle-down"></i></h2>
 	</div>
-	<resource-view resource="$ctrl.resource" class="dashboard__preview"></resource-view>
+	<resource-view resource="$ctrl.resource" rate="$ctrl.rate" class="dashboard__preview"></resource-view>
 </div>

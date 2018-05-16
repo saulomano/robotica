@@ -43,7 +43,6 @@ export default class NewComponent extends SocialComponent{
             .getCurrentUser()
             .then(user => {
                 let data = {
-                    status: 'pendiente',
                     type: type,
                     title: '',
                     summary: '',
@@ -56,7 +55,8 @@ export default class NewComponent extends SocialComponent{
                     owner: user._id,
                     collaborators: [],
                     links: [],
-                    files: []
+                    files: [],
+                    step: 'ficha'
                 };
                 let resource = this.Restangular.all('desafios');
                 resource

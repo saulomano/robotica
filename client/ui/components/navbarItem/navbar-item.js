@@ -44,19 +44,18 @@ class RdNavbarItemController {
         if (this.selected === item.action) return;
         let host = window.location.host;
 		let protocol = window.location.protocol;
-		let types = /^(desafios|subidesafio)$/ig;
-		
+		let types = /^(desafios|subidesafio|desafiosaprobados)$/ig;
+
 		//Si es query string viene por aca sino redirige
 		if (item.action.includes("?seccion=") ){
 			this.$state.go('.', {  seccion: item.action.slice(item.action.indexOf('=')+1)   });
 		}else{
 			this.$state.go(item.action, { type: item.section });
-
 		}
-		
 
-		
-      
+
+
+
     }
 }
 

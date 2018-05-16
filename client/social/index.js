@@ -17,6 +17,7 @@ import guia from './guia';
 import institucional from './institucional';
 import filters from './social.filter';
 import desafios from './desafios';
+import desafiosAprobados from './desafiosAprobados';
 import newDesafio from './new';
 import desafio from './desafio';
 import canalyt from './canalyt';
@@ -38,11 +39,11 @@ let requirements = [
 	guia,
 	institucional,
 	desafios,
+	desafiosAprobados,
 	newDesafio,
 	desafio,
 	canalyt,
 	filters
-
 ];
 
 module.exports = angular

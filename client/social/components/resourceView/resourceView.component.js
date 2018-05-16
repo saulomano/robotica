@@ -11,6 +11,7 @@ class ResourceViewController {
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;
+		this.rateView = this.$scope.rate;
     this.$element.addClass('resource-card');
     
 		this.editable = this.$scope.editable === true;
@@ -41,6 +42,10 @@ class ResourceViewController {
 		
 	}
 
+	onClickStar($event) {
+		this.$scope.rate = $event.rating;
+	} 
+
 	sumfiles(files){
 		return _.sumBy(files, 'size');
 	}
@@ -55,7 +60,8 @@ function resourceView($log){
     controllerAs: '$ctrl',
     scope: {
 			resource: '=',
-			isPublished: '='
+			isPublished: '=',
+			rate: '='
     },
 		template: require('./resourceView.html')
 	}

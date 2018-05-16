@@ -60,11 +60,6 @@ export default class ResourceComponent extends CuradorComponent {
 		});
 	}
 
-	onClickStar($event) {
-		this.rate = $event.rating;
-		console.log(this.rate)
-	} 
-
 	$onInit(){
 	}
 
@@ -162,7 +157,7 @@ export default class ResourceComponent extends CuradorComponent {
 				this.currentStep = step.name;
 				
 				if (!this.init && !this.loading){
-					this.resource.step = this.currentStep;
+					this.resource.step = 'publicar';
 				}
 				
 				this.init = false;
@@ -170,8 +165,8 @@ export default class ResourceComponent extends CuradorComponent {
 			});
 		};
 
-		this.save = () => {
-			this.saveResource();
+		this.save = (button) => {
+			this.saveResource(button);
 		};
 
 		this.finish = ($event) => {
@@ -392,14 +387,19 @@ export default class ResourceComponent extends CuradorComponent {
 		}
 	}
 	
-	saveResource(){
+	saveResource(button){
 
 		this.onSaveResource();
-
+		if (button) {
+			this.resource.status = 'pendiente';
+		}
 		this.resource
 			.put()
 			.then(data => {
 				this.$log.log('autosaved', data);
+				if (button) {
+					this.$state.go('curador.dashboard')
+				}
 			})
 			.catch(err => {
 				throw err;
