@@ -19,7 +19,7 @@ class HeaderComponent {
         section: 'institucional',  caption: 'Institucional',
         "nodes": [
           {
-            section: 'quienesSomos',  caption: 'Quienes Somos', action:'social.quienesSomos'
+            section: 'quienesSomos',  caption: 'Quienes Somos', action:'social.institucional'
           },
           {
             section: 'ultimasNoticias',  caption: 'Ultimas Noticas', action:'?seccion=noticias'
