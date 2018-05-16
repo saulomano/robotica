@@ -10,15 +10,25 @@ $color-light-green-400: #9ccc65;
 $color-yellow-400:      #f9a825;
 $color-light2-green-400: #8CC654;
 $violeta :#894AA5;
+$celeste-claro: #19C4F9;
+$gris-claro: #D1D1D1;
 
 // ------------------------------
 // Sections
 //
 $color-propuestas:    $color-red-500;
 $color-actividades:   $violeta;
-$color-herramientas:  $color-cyan-400;
+$color-herramientas:  $gris-claro;
 $color-orientaciones: $color-light-green-400;
-$color-mediateca:     $color-yellow-400;
+$color-mediateca:     $gris-claro;
+$color-noticias:      $violeta;
+$color-calendario:    $violeta;
+$color-documentos:    $gris-claro;
+$color-desafios:      $celeste-claro;
+$color-loquehacemos:  $color-light2-green-400;
+$color-novedades:     $color-light2-green-400;
+
+
 
 $sections: (
 	propuestas: ( color: $color-propuestas ),
@@ -29,7 +39,13 @@ $sections: (
 	herramienta: ( color: $color-herramientas ),
 	orientaciones: ( color: $color-orientaciones ),
 	orientacion: ( color: $color-orientaciones ),
-	mediateca: ( color: $color-mediateca )
+	mediateca: ( color: $color-mediateca ),
+	noticias: ( color: $color-noticias ),
+	calendario: ( color: $color-calendario ),
+	documentos: ( color: $color-documentos ),
+	desafios:  ( color: $color-desafios ),
+	loquehacemos: (color: $color-loquehacemos),
+	novedades: (color: $color-novedades)
 ) !default;
 
 // ------------------------------
