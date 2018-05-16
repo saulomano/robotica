@@ -13,6 +13,10 @@ let routes = function($stateProvider) {
         search: {
           value: '',
           squash: true
+        },
+        type: {
+          value: '',
+          squash: true
         }
       },
       reloadOnSearch: false

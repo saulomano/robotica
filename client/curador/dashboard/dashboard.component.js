@@ -1,6 +1,7 @@
 'use strict';
 import angular from 'angular';
 import CuradorComponent from '../curador.component';
+import _ from 'lodash';
 
 export default class DashboardComponent extends CuradorComponent {
   /*@ngInject*/
@@ -15,6 +16,8 @@ export default class DashboardComponent extends CuradorComponent {
 
     this.page = 0;
     this.limit = 20;
+
+    this.type = $stateParams.type;
 
     this.Resources = this.Restangular.all('resources');
 
@@ -62,6 +65,15 @@ export default class DashboardComponent extends CuradorComponent {
       ]
     };
 
+    if (this.type == 'desafios') {
+       addNewItem = {
+        type: 'desafios',
+        options: [
+          { section: 'desafios', icon: 'ri ri-desafio', caption: 'Desafíos' }
+        ]
+      };
+    }
+
     let q;
     if (this.searchText){
       q = this.searchText
@@ -76,12 +88,17 @@ export default class DashboardComponent extends CuradorComponent {
         })
         .then(res => {
           let items = [];
+          let desafios =[];
           if (this.page === 1) {
             items.push(addNewItem);
           }
-          
-          items = items.concat(res);
 
+          if (this.type == 'desafios') {
+            items = items.concat(_.filter(res, function(o) { return o.type == 'desafio' }));
+          } else {
+            items = items.concat(_.filter(res, function(o) { return o.type !== 'desafio' }));
+          }
+          
           let data = {
             count: (res.$total + 1),
             items: items,

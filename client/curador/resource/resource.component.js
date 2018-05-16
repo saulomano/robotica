@@ -35,6 +35,8 @@ export default class ResourceComponent extends CuradorComponent {
 		this.Resource = this.Restangular.one('resources', this.uid)
 		this.Publisheds = this.Restangular.all('resources');
 
+		this.returnDesafios = false;
+
 		// tag separators
 		this.tagsKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
 		
@@ -178,7 +180,7 @@ export default class ResourceComponent extends CuradorComponent {
 			this.resource
 					.put()	
 					.then(data => {
-						this.$state.go('curador.dashboard');
+						(this.returnDesafios) ? this.$state.go('curador.dashboard', { type: "desafios" }) : this.$state.go('curador.dashboard');
 					})
 					.catch(err => {
 						throw err;
@@ -262,6 +264,7 @@ export default class ResourceComponent extends CuradorComponent {
 		.get()
 		.then(data => {
 			this.resource = data;
+			this.returnDesafios = (this.resource.type == 'desafio') ? true : false;
 
 			this.ngMeta.setTitle(this.resource.title);
 			this.ngMeta.setTag('description', this.resource.summary);
@@ -398,7 +401,7 @@ export default class ResourceComponent extends CuradorComponent {
 			.then(data => {
 				this.$log.log('autosaved', data);
 				if (button) {
-					this.$state.go('curador.dashboard')
+					(this.returnDesafios) ? this.$state.go('curador.dashboard', { type: "desafios" }) : this.$state.go('curador.dashboard');
 				}
 			})
 			.catch(err => {
@@ -504,13 +507,13 @@ export default class ResourceComponent extends CuradorComponent {
 					Published
 					.remove()
 					.then( data => {
-						this.$state.go('curador.dashboard');
+						(this.returnDesafios) ? this.$state.go('curador.dashboard', { type: "desafios" }) : this.$state.go('curador.dashboard');
 					})
 					.catch( err => {
 						throw err;
 					});
 				} else {
-					this.$state.go('curador.dashboard');
+					(this.returnDesafios) ? this.$state.go('curador.dashboard', { type: "desafios" }) : this.$state.go('curador.dashboard');
 				}
 			})
 			.catch( err => {
@@ -542,7 +545,7 @@ export default class ResourceComponent extends CuradorComponent {
 			.then(data => {
 				this.$log.log('published', data);
 				this.loading = false;
-				this.$state.go('curador.dashboard');
+				(this.returnDesafios) ? this.$state.go('curador.dashboard', { type: "desafios" }) : this.$state.go('curador.dashboard');
 			})
 			.catch(err => {
 				throw err;
