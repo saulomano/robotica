@@ -34,6 +34,15 @@ class ResourceCardController {
 	deleteResource(){
 		this.$state.go(`curador.recurso`, { uid: this.resource._id, action: 'remove' });
 	}
+
+    clickedAction(item) {
+        let types = /^(pendiente|aprobado|rechazado)$/ig;
+		if (types.test(item.section)) {
+            this.$state.go('curador.dashboard', {type: 'desafios', searh: item.section});
+		} else {
+            this.$state.go('curador.new', { type: item.section });
+		}
+	}
 }
 
 function resourceCard($log){
