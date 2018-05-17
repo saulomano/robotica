@@ -90,7 +90,6 @@ export default class DashboardComponent extends CuradorComponent {
         })
         .then(res => {
           let items = [];
-          let desafios =[];
           if (this.page === 1) {
             items.push(addNewItem);
           }
@@ -98,9 +97,9 @@ export default class DashboardComponent extends CuradorComponent {
           if (this.type == 'desafios') {
             items = items.concat(_.filter(res, function(o) { return o.type == 'desafio' }));
           } else {
-            items = items.concat(_.filter(res, function(o) { return o.type !== 'desafio' }));
+            items = items.concat(res);
           }
-          
+
           let data = {
             count: (res.$total + 1),
             items: items,
