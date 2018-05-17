@@ -35,6 +35,8 @@ export default class ResourceComponent extends CuradorComponent {
 		this.Resource = this.Restangular.one('resources', this.uid)
 		this.Publisheds = this.Restangular.all('resources');
 
+		this.returnDesafios = false;
+
 		// tag separators
 		this.tagsKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
 		
@@ -178,7 +180,7 @@ export default class ResourceComponent extends CuradorComponent {
 			this.resource
 					.put()	
 					.then(data => {
-						this.$state.go('curador.dashboard');
+						(this.returnDesafios) ? this.$state.go('curador.dashboard', { type: "desafios" }) : this.$state.go('curador.dashboard');
 					})
 					.catch(err => {
 						throw err;
@@ -189,16 +191,16 @@ export default class ResourceComponent extends CuradorComponent {
 	configureDropzone(Util){
 
 		var ctrl = this;
-   	 this.dzOptions = {
+   	 	this.dzOptions = {
 			dictDefaultMessage: '<div class="dz-clickable"></div>',
-      url : '/upload?relative=' + this.uid,
+      		url : '/upload?relative=' + this.uid,
 			paramName : 'Imágen',
 			maxFiles: 1,
 			clickable: '.dz-tumbnail-clickable',
 			maxFilesize : 1024,
 			timeout: 18000000,
-      acceptedFiles : 'image/*',
-      addRemoveLinks : false,
+      		acceptedFiles : 'image/*, application/pdf',
+      		addRemoveLinks : false,
 			headers: Util.getHeaders(),
 			init: function(){
 				// add dropzone to ctrl
@@ -206,55 +208,56 @@ export default class ResourceComponent extends CuradorComponent {
 			}
 		};
 
-    this.dzCallbacks = {
-      'addedfile' : (file) => {
-				
+		this.dzCallbacks = {
+			'addedfile' : (file) => {
+				console.log(file);
 			},
 			'removedfile' : (file) => {
-				
-      },
-      'success' : (file, xhr) => {
+				console.log(file);
+			},
+			'success' : (file, xhr) => {
 				console.log(xhr);
 				this.resource.thumbnail = xhr.url;
 			},
-			'processing': () => {
-				
+			'processing': (file) => {
+				console.log(file);
 			},
 			'queuecomplete': () => {
 				ctrl.dropzoneThumbnail.removeAllFiles();
 			}
 		};
 
-		this.dzOptionsSoftware = _.cloneDeep(this.dzOptions);
-		this.dzOptionsSoftware.init = function(){
-			// add dropzone to ctrl
-			ctrl.dropzoneSoftware = this;
-		};
-		this.dzOptionsSoftware.acceptedFiles = undefined; //'*/*';
-		this.dzOptionsSoftware.maxFiles = Infinity;
-		this.dzOptionsSoftware.dictDefaultMessage = '<div class="dz-clickable"></div>';
-		this.dzOptionsSoftware.clickable = '.dz-software-clickable';
+			this.dzOptionsSoftware = _.cloneDeep(this.dzOptions);
+			this.dzOptionsSoftware.init = function(){
+				// add dropzone to ctrl
+				ctrl.dropzoneSoftware = this;
+			};
+			this.dzOptionsSoftware.acceptedFiles = undefined; //'*/*';
+			this.dzOptionsSoftware.maxFiles = Infinity;
+			this.dzOptionsSoftware.dictDefaultMessage = '<div class="dz-clickable"></div>';
+			this.dzOptionsSoftware.clickable = '.dz-software-clickable';
 
-		this.dzCallbacksSoftware = {
-      'addedfile' : (file) => {
-				
-			},
-			'removedfile' : (file) => {
-				
-      },
-      'success' : (file, xhr) => {
-				this.resource.files.push(xhr);
-			},
-      'error' : (err) => {
-				this.$log.error(err);
-			},
-			'processing': () => {
-				
-			},
-			'queuecomplete': () => {
-				//ctrl.dropzoneSoftware.removeAllFiles();
-			}
-    };
+			this.dzCallbacksSoftware = {
+				'addedfile' : (file) => {
+					console.log(file);
+					let arreglo = split(file.name, )
+				},
+				'removedfile' : (file) => {
+					console.log(file);
+				},
+				'success' : (file, xhr) => {
+					this.resource.files.push(xhr);
+				},
+				'error' : (err) => {
+					this.$log.error(err);
+				},
+				'processing': () => {
+					
+				},
+				'queuecomplete': () => {
+					//ctrl.dropzoneSoftware.removeAllFiles();
+				}
+		};
 	}
 
 	getResource(){
@@ -262,6 +265,7 @@ export default class ResourceComponent extends CuradorComponent {
 		.get()
 		.then(data => {
 			this.resource = data;
+			this.returnDesafios = (this.resource.type == 'desafio') ? true : false;
 
 			this.ngMeta.setTitle(this.resource.title);
 			this.ngMeta.setTag('description', this.resource.summary);
@@ -398,7 +402,7 @@ export default class ResourceComponent extends CuradorComponent {
 			.then(data => {
 				this.$log.log('autosaved', data);
 				if (button) {
-					this.$state.go('curador.dashboard')
+					(this.returnDesafios) ? this.$state.go('curador.dashboard', { type: "desafios" }) : this.$state.go('curador.dashboard');
 				}
 			})
 			.catch(err => {
@@ -504,13 +508,13 @@ export default class ResourceComponent extends CuradorComponent {
 					Published
 					.remove()
 					.then( data => {
-						this.$state.go('curador.dashboard');
+						(this.returnDesafios) ? this.$state.go('curador.dashboard', { type: "desafios" }) : this.$state.go('curador.dashboard');
 					})
 					.catch( err => {
 						throw err;
 					});
 				} else {
-					this.$state.go('curador.dashboard');
+					(this.returnDesafios) ? this.$state.go('curador.dashboard', { type: "desafios" }) : this.$state.go('curador.dashboard');
 				}
 			})
 			.catch( err => {
@@ -542,7 +546,7 @@ export default class ResourceComponent extends CuradorComponent {
 			.then(data => {
 				this.$log.log('published', data);
 				this.loading = false;
-				this.$state.go('curador.dashboard');
+				(this.returnDesafios) ? this.$state.go('curador.dashboard', { type: "desafios" }) : this.$state.go('curador.dashboard');
 			})
 			.catch(err => {
 				throw err;
