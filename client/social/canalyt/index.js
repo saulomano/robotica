@@ -13,7 +13,7 @@ let routes = function($stateProvider) {
     });
 }
 
-export default angular.module('robotica.social.canalyt',['ngYoutubeEmbed'])
+export default angular.module('robotica.social.canalyt', [])
                       .config(routes)
                       .component('socialCanalyt', {
                         template: require('./canalyt.html'),
