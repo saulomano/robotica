@@ -7,12 +7,15 @@ export default angular
 
 class ResourceViewController {
 	/*@ngInject*/
-	constructor($scope, $element, $state, $timeout){
+	constructor($scope, $element, $state, $timeout, Auth){
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;
 		this.rateView = this.$scope.rate;
-    this.$element.addClass('resource-card');
+        this.Auth = Auth;
+        this.getUser();
+        this.role = '';
+    	this.$element.addClass('resource-card');
     
 		this.editable = this.$scope.editable === true;
 		let captions = {
@@ -49,6 +52,14 @@ class ResourceViewController {
 	sumfiles(files){
 		return _.sumBy(files, 'size');
 	}
+
+    getUser(){
+        this.Auth
+            .getCurrentUser()
+            .then(user => {
+                this.role = user.role;
+            });
+    }
 }
 
 function resourceView($log){
