@@ -76,6 +76,12 @@
       background-color: #894AA5;
     }
 
+    // Banner video
+    &[section="video"] {
+      background-image: url(/assets/img/banner/institucional_back.jpg);
+      background-color: #D1D1D1;
+    }
+
     // Banner propuestas
     &[section="propuestas"] {
       background-color: $color-propuestas;
