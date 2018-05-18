@@ -22,7 +22,7 @@ class HeaderComponent {
             section: 'quienesSomos',  caption: 'Quienes Somos', action:'social.institucional'
           },
           {
-            section: 'ultimasNoticias',  caption: 'Ultimas Noticas', action:'?seccion=noticias'
+            section: 'noticias',  caption: 'Ultimas Noticas', action:'?seccion=noticias'
           },
           {
             section: 'calendario',  caption: 'Calendario', action:'?seccion=calendario'

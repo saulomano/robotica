@@ -63,7 +63,15 @@ export default class HomeComponent extends SocialComponent {
         title: 'Mediateca',
         description: 'Recursos didácticos para mirar, leer y escuchar.',
         type: 'mediateca'
+      },
+      'noticias': {
+        caption: '<h1>Noticias_</h1> <p>Recursos didácticos para mirar, leer y escuchar.</p>',
+        image: '/assets/img/banner/imagen-fondo_violeta.jpg',
+        title: 'Noticias',
+        description: 'Recursos didácticos para mirar, leer y escuchar.',
+        type: 'noticias'
       }
+
     };
     this.section = sections[this.sectionName];
     ngMeta.setTitle(this.section.title);
