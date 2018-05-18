@@ -1,18 +1,18 @@
 <rd-card class="rd-card__addnew" ng-if="$ctrl.resource.type === 'addnew'">
-		<rd-card-body class="rd-card__addnew--body">
-			<ul class="new-resource__list">
-				<li ng-repeat="item in $ctrl.resource.options">
-					<a ui-sref="curador.new({ type: item.section })" layout="row" layout-align="start center">
-						<i class="{{item.icon}} color-{{item.section}} ri-3x"></i>
-						<span class="new-resource__item">{{item.caption}}</span>
-					</a>
-				</li>
-			</ul>
-			<div role="button" class="new-resource__button" ng-hide="$ctrl.resource.clicked" ng-click="$ctrl.resource.clicked = true">
-				<div class="new-resource__button--center">
-				</div>
+	<rd-card-body class="rd-card__addnew--body">
+		<ul class="new-resource__list">
+			<li ng-repeat="item in $ctrl.resource.options">
+				<a ng-click="$ctrl.clickedAction(item)" layout="row" layout-align="start center">
+					<i class="{{item.icon}} color-{{item.section}} ri-3x"></i>
+					<span class="new-resource__item">{{item.caption}}</span>
+				</a>
+			</li>
+		</ul>
+		<div role="button" class="new-resource__button" ng-hide="$ctrl.resource.clicked" ng-click="$ctrl.resource.clicked = true">
+			<div class="new-resource__button--center">
 			</div>
-		</rd-card-body>
+		</div>
+	</rd-card-body>
 </rd-card>
 
 <!-- Herramienta -->

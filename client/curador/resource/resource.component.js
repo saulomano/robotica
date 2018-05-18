@@ -6,7 +6,7 @@ import _ from 'lodash';
 
 export default class ResourceComponent extends CuradorComponent {
 	/*@ngInject*/
-	constructor($scope, $element, $stateParams, Auth, Restangular, $log, Util, $timeout, $state, $mdDialog, $mdConstant, ngMeta) {
+	constructor($scope, $element, $stateParams,$q, Auth, Restangular, $log, Util, $timeout, $state, $mdDialog, $mdConstant, ngMeta) {
     	super({$element, Restangular, $log});
 		this.$scope = $scope;
 		this.currentStep = 'ficha';
@@ -21,6 +21,14 @@ export default class ResourceComponent extends CuradorComponent {
 		this.$state = $state;
 		this.$mdDialog = $mdDialog;
 		this.ngMeta = ngMeta;
+		this.$q = $q;
+
+		this.simulateQuery = true;
+    	this.isDisabled = false;
+    	this.noCache = true;
+
+		// list of `state` value/display objects
+		this.states = this.loadAll();
 
 		// Global captions to avoid unnecesary temporary captions inside functions
 		this.captions = {
@@ -32,7 +40,7 @@ export default class ResourceComponent extends CuradorComponent {
 			'desafio': 'Desafío',
 		};
 
-		this.Resource = this.Restangular.one('resources', this.uid)
+		this.Resource = this.Restangular.one('resources', this.uid);
 		this.Publisheds = this.Restangular.all('resources');
 
 		this.returnDesafios = false;
@@ -40,7 +48,7 @@ export default class ResourceComponent extends CuradorComponent {
 		// tag separators
 		this.tagsKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
 		
-		this.resource = { };
+		this.resource = {};
 		this.steps = [
 			{ name: 'ficha', 		caption: 'Ficha' },
 			{ name: 'recurso', 	caption: 'Recurso' },
@@ -59,6 +67,107 @@ export default class ResourceComponent extends CuradorComponent {
 
 		this.$scope.$watch(() => { return this.filterText }, (value) => {
 			this.refreshUI(true);
+		});
+	}
+
+	searchTextChange(text) {
+		console.log('Text changed to ', text);
+	}
+
+	querySearch (query) {
+		var results = query ? this.states.filter( this.createFilterFor(query) ) : this.states;
+		var deferred;
+		if (this.simulateQuery) {
+		  	deferred = this.$q.defer();
+		  	this.$timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+		  	return deferred.promise;
+		} else {
+		  	return results;
+		}
+	}
+
+	loadAll() {
+		var allStates = `La Plata, Adolfo Alsina, Alberti, Almirante Brown, Avellaneda, Ayacucho, Azul, Bahía Blanca, Balcarce, 
+		Baradero, Arrecifes, Bolívar, Bragado, Brandsen, Campana, Cañuelas, Carlos Casares, Carlos Tejedor, Carmen de Areco, 
+		Daireaux, Castelli, Colón, Coronel Dorrego, Coronel Pringles, Coronel Suárez, Chacabuco, Chascomús, Chivilcoy, Dolores, 
+		Esteban Echeverría, Exaltación de la Cruz, Florencio Varela, General Alvarado, General Alvear, General Arenales, 
+		General Belgrano, General Guido, General La Madrid, General Lavalle, General Madariaga, General Paz, General Pinto, 
+		General Pueyrredón, General Rodríguez, General San Martín, Zárate, General Viamonte, General Villegas, Gonzáles Chaves, 
+		Guaminí, Juárez, Junín, Laprida, Tigre,	Las Flores, General Las Heras, Leandro N. Alem, Lincoln, Lobería, Lobos, 
+		Lomas de Zamora, Luján, Magdalena, Maipú, Salto, Marcos Paz, Mar Chiquita, La Matanza, Mercedes, Merlo, Monte, Moreno, 
+		Navarro, Necochea, Nueve de Julio, Olavarría, Patagones, Pehuajó, Pellegrini, Pergamino, Pila, Pilar, Puan, Quilmes, Ramallo, 
+		Rauch, Rivadavia, Rojas, Roque Pérez, Saavedra, Saladillo, San Andrés de Giles,	San Antonio de Areco, San Fernando, 
+		San Isidro, San Nicolás, San Pedro,	San Vicente, Morón, Suipacha, Tandil, Tapalqué, Tordillo, Tornquist, Trenque Lauquen, 
+		Tres Arroyos, Veinticinco de Mayo, Vicente López, Villarino, Lanús, Coronel Rosales, Berisso, Ensenada, San Cayetano, Escobar, 
+		Tres de Febrero, Hipólito Yrigoyen, Berazategui, Salliqueló, Capitán Sarmiento, La Costa, Pinamar, Villa Gesell, Monte Hermoso, 
+		Tres Lomas, Florentino Ameghino, Presidente Perón, Ezeiza, San Miguel, José C. Paz, Malvinas Argentinas, Punta Indio, 
+		Hurlingham, Ituzaingo, Lezama`;
+  
+		return allStates.split(/, +/g).map( function (state) {
+		  	return {
+				value: state.toLowerCase(),
+				display: state
+		  	};
+		});
+	}
+
+	/**
+     * Create filter function for a query string
+     */
+    createFilterFor(query) {
+		var lowercaseQuery = angular.lowercase(query);
+		return function filterFn(state) {
+		  	return (state.value.indexOf(lowercaseQuery) === 0);
+		};
+	}
+
+	onChangeDistrict(newDistrict) {
+		if(_.isEmpty(newDistrict.display) == false)	{
+			let districtIndex = _.findIndex(this.loadAll(), function (element) {
+				return (element.display == newDistrict.display);			
+			});
+
+			// If the search district were found...
+			if(districtIndex != -1)	{
+				this.School = this.Restangular.one('schools/district', newDistrict.display);
+
+				// Let's retrieve the school information
+				this.getSchool();
+			}
+		}
+	}
+
+	getSchool(){
+		// this.loading = true;
+		this.loadingSchools = true;
+		this.School.get()
+		.then(data => {
+
+			this.district = data;
+
+			let resourceInstance = this;
+
+			let schoolIndex = _.findIndex(this.district.schools, function (element) {
+				return (element.schoolName == resourceInstance.resource.school);						
+			});
+
+			if(schoolIndex == -1) {
+				schoolIndex = 0;
+			}			
+
+			this.selectedDistrict = this.district;
+			this.searchDistrictText = angular.copy(this.selectedDistrict.name);
+
+			this.selectedSchool = angular.copy(this.district.schools[schoolIndex].schoolName);
+			this.searchSchoolText = this.selectedSchool;
+
+			// this.loading = false;
+			this.loadingSchools = false;
+		})
+		.catch(err => {
+			this.loading = false;
+			console.log("Err", err);
+			throw err;
 		});
 	}
 
@@ -265,6 +374,7 @@ export default class ResourceComponent extends CuradorComponent {
 		.get()
 		.then(data => {
 			this.resource = data;
+			console.log(this.resource);
 			this.returnDesafios = (this.resource.type == 'desafio') ? true : false;
 
 			this.ngMeta.setTitle(this.resource.title);
@@ -296,14 +406,13 @@ export default class ResourceComponent extends CuradorComponent {
 			// Exclusive 'Desafios' validations
 			//===============================================
 			
-			if(this.resource.type === 'desafio')
+			if(this.resource.type === 'desafio' && this.resource.district)
 			{
-				// Create angular 'Desafios' variables 
-				this.districts = {};
+				// Create angular 'Desafios' variables
 				this.selectedDistrict = {};
 				this.selectedSchool = {};
 
-				this.searchDistrictText = this.resource.district || 'La Plata';
+				this.searchDistrictText = this.resource.district || 'Dolores';
 				this.searchSchoolText = '';
 
 				this.rate = this.resource.rate || 0;
@@ -327,63 +436,6 @@ export default class ResourceComponent extends CuradorComponent {
 			throw err;
 		});
 	}
-
-
-	getSchool(){
-		// this.loading = true;
-		this.loadingSchools = true;
-		this.School.get()
-		.then(data => {
-
-			this.district = data;
-
-			let resourceInstance = this;
-
-			let schoolIndex = _.findIndex(this.district.schools, function (element) {
-				return (element.schoolName == resourceInstance.resource.school);						
-			});
-
-			if(schoolIndex == -1)
-			{
-				schoolIndex = 0;
-			}			
-
-			this.selectedDistrict = this.district;
-			this.searchDistrictText = angular.copy(this.selectedDistrict.name);
-
-			this.selectedSchool = angular.copy(this.district.schools[schoolIndex].schoolName);
-			this.searchSchoolText = this.selectedSchool;
-
-			// this.loading = false;
-			this.loadingSchools = false;
-		})
-		.catch(err => {
-			this.loading = false;
-			console.log("Err", err);
-			throw err;
-		});
-	}
-
-
-	onChangeDistrict(newDistrict)
-	{
-		if(_.isEmpty(newDistrict) == false)
-		{
-			let districtIndex = _.findIndex(this.getDistricts(), function (element) {
-				return (element == newDistrict);			
-			});
-
-			// If the search district were found...
-			if(districtIndex != -1)
-			{
-				this.School = this.Restangular.one('schools/district', newDistrict);
-		
-				// Let's retrieve the school information
-				this.getSchool();
-			}
-		}
-	}
-
 
 	$onDestroy() {
 		if (this.saverHandler) {
@@ -556,38 +608,5 @@ export default class ResourceComponent extends CuradorComponent {
 
 	getResourceType(type){
 		return this.captions[type];
-	}
-
-	getDistricts()
-	{
-		let _districts = ['La Plata', 'Adolfo Alsina', 'Alberti', 'Almirante Brown',
-			"Avellaneda", "Ayacucho", "Azul", "Bahía Blanca", "Balcarce",
-			"Baradero", "Arrecifes", "Bolívar", "Bragado", "Brandsen",
-			"Campana", "Cañuelas", "Carlos Casares", "Carlos Tejedor", "Carmen de Areco",
-			"Daireaux", "Castelli", "Colón", "Coronel Dorrego", "Coronel Pringles",
-			"Coronel Suárez", "Chacabuco", "Chascomús", "Chivilcoy", "Dolores",
-			"Esteban Echeverría", "Exaltación de la Cruz", "Florencio Varela", "General Alvarado", "General Alvear",
-			"General Arenales", "General Belgrano", "General Guido", "General La Madrid", "General Lavalle",
-			"General Madariaga", "General Paz", "General Pinto", "General Pueyrredón", "General Rodríguez",
-			"General San Martín", "Zárate", "General Viamonte", "General Villegas", "Gonzáles Chaves",
-			"Guaminí", "Juárez", "Junín", "Laprida", "Tigre",
-			"Las Flores", "General Las Heras", "Leandro N. Alem", "Lincoln", "Lobería",
-			"Lobos", "Lomas de Zamora", "Luján", "Magdalena", "Maipú", "Salto",
-			"Marcos Paz", "Mar Chiquita", "La Matanza", "Mercedes", "Merlo", "Monte",
-			"Moreno", "Navarro", "Necochea", "Nueve de Julio", "Olavarría", "Patagones",
-			"Pehuajó", "Pellegrini", "Pergamino", "Pila", "Pilar",
-			"Puan", "Quilmes", "Ramallo", "Rauch", "Rivadavia",
-			"Rojas", "Roque Pérez", "Saavedra", "Saladillo", "San Andrés de Giles",
-			"San Antonio de Areco", "San Fernando", "San Isidro", "San Nicolás", "San Pedro",
-			"San Vicente", "Morón", "Suipacha", "Tandil", "Tapalqué", 
-		    "Tordillo", "Tornquist", "Trenque Lauquen", "Tres Arroyos", "Veinticinco de Mayo",
-		    "Vicente López", "Villarino", "Lanús", "Coronel Rosales", "Berisso", "Ensenada", 
-		    "San Cayetano", "Escobar", "Tres de Febrero", "Hipólito Yrigoyen", "Berazategui",
-		    "Salliqueló", "Capitán Sarmiento", "La Costa", "Pinamar", "Villa Gesell",
-		    "Monte Hermoso", "Tres Lomas", "Florentino Ameghino", "Presidente Perón", "Ezeiza",
-		    "San Miguel", "José C. Paz", "Malvinas Argentinas", "Punta Indio", "Hurlingham",
-		    "Ituzaingo", "Lezama"
-		];
-		return _districts;
 	}
 }

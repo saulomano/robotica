@@ -119,27 +119,26 @@
 			<!-- DESAFIOS -->
 			<!-- ================================================================ -->
 			<!-- DISTRITOS -->
-			<md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loadingSchools">
+			<md-content ng-if="$ctrl.resource.type == 'desafio'">
 					<div>
 						<div class="md-title">Distrito</div>
-						<md-autocomplete required
-								md-selected-item-change = "$ctrl.onChangeDistrict($ctrl.searchDistrictText)"
-								md-selected-item="$ctrl.selectedDistrict"
-								md-search-text="$ctrl.searchDistrictText"
-								md-items="district in $ctrl.getDistricts()"
-								md-item-text="($ctrl.selectedDistrict.name || '')"
-								md-min-length="1"
-								md-autoselect = "true"
-								placeholder="Selecciona un distrito...">
+						<md-autocomplete
+							ng-disabled="$ctrl.isDisabled"
+							md-no-cache="$ctrl.noCache"
+							md-selected-item="$ctrl.selectedDistrict"
+							md-search-text-change="$ctrl.searchTextChange($ctrl.searchDistrictText)"
+							md-search-text="$ctrl.searchDistrictText"
+							md-selected-item-change="$ctrl.onChangeDistrict(item)"
+							md-items="item in $ctrl.querySearch($ctrl.searchDistrictText)"
+							md-item-text="($ctrl.selectedDistrict.name || item.display)"
+							md-min-length="0"
+							placeholder="Selecciona un Distrito...">
 							<md-item-template>
-								<span md-highlight-text="$ctrl.searchDistrictText" md-highlight-flags="^i">{{district || ''}}</span>
+								<span md-highlight-text="$ctrl.searchDistrictText" md-highlight-flags="^i">{{item.display}}</span>
 							</md-item-template>
 							<md-not-found>
 								No se encontro un distrito de nombre "{{$ctrl.searchDistrictText}}".
 							</md-not-found>
-							<div ng-messages="autocompleteForm.autocomplete.$error">
-								<div ng-message="required">Requerido</div>
-							</div>
 						</md-autocomplete>
 					</div>				   
 			</md-content>

@@ -24,7 +24,10 @@ var PublishedSchema = new Schema({
 		collaborators: [{ type: Schema.Types.ObjectId, ref: 'User' }],
 		files: [{ type: Schema.Types.ObjectId, ref: 'File' }],
 		links: [{ type: Schema.Types.ObjectId, ref: 'Published' }],
-		deleted: { type:Boolean, default: false }
+		deleted: { type:Boolean, default: false },
+		district: String,
+		school: String,
+		rate: Number
 	}, ops);
 
 registerEvents(PublishedSchema);
