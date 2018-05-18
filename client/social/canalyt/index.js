@@ -1,5 +1,5 @@
 'use strict';
-
+import angular from 'angular';
 import canalytComponent from './canalyt.component';
 
 
