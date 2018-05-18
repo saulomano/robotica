@@ -9,7 +9,7 @@ let routes = function($stateProvider) {
   $stateProvider
     .state('social.canalyt', {
       url: '/canalyt',
-      template: '<social-canalyt></social-canalyt>'
+      template: '<social-canalyt style="background: url(/assets/img/banner/fondo-videos-08.jpg);"></social-canalyt>'
     });
 }
 
