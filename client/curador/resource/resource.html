@@ -123,8 +123,8 @@
 					<div>
 						<div class="md-title">Distrito</div>
 						<md-autocomplete
-							ng-disabled="$simulateQuery"
-							md-no-cache="$isDisabled"
+							ng-disabled="$ctrl.isDisabled"
+							md-no-cache="$ctrl.noCache"
 							md-selected-item="$ctrl.selectedDistrict"
 							md-search-text-change="$ctrl.searchTextChange($ctrl.searchDistrictText)"
 							md-search-text="$ctrl.searchDistrictText"

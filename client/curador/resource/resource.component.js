@@ -25,6 +25,7 @@ export default class ResourceComponent extends CuradorComponent {
 
 		this.simulateQuery = true;
     	this.isDisabled = false;
+    	this.noCache = true;
 
 		// list of `state` value/display objects
 		this.states = this.loadAll();
@@ -39,7 +40,7 @@ export default class ResourceComponent extends CuradorComponent {
 			'desafio': 'Desafío',
 		};
 
-		this.Resource = this.Restangular.one('resources', this.uid)
+		this.Resource = this.Restangular.one('resources', this.uid);
 		this.Publisheds = this.Restangular.all('resources');
 
 		this.returnDesafios = false;
@@ -47,7 +48,7 @@ export default class ResourceComponent extends CuradorComponent {
 		// tag separators
 		this.tagsKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
 		
-		this.resource = { };
+		this.resource = {};
 		this.steps = [
 			{ name: 'ficha', 		caption: 'Ficha' },
 			{ name: 'recurso', 	caption: 'Recurso' },
@@ -373,6 +374,7 @@ export default class ResourceComponent extends CuradorComponent {
 		.get()
 		.then(data => {
 			this.resource = data;
+			console.log(this.resource);
 			this.returnDesafios = (this.resource.type == 'desafio') ? true : false;
 
 			this.ngMeta.setTitle(this.resource.title);
@@ -404,14 +406,13 @@ export default class ResourceComponent extends CuradorComponent {
 			// Exclusive 'Desafios' validations
 			//===============================================
 			
-			if(this.resource.type === 'desafio')
+			if(this.resource.type === 'desafio' && this.resource.district)
 			{
-				// Create angular 'Desafios' variables 
-				this.districts = {};
+				// Create angular 'Desafios' variables
 				this.selectedDistrict = {};
 				this.selectedSchool = {};
 
-				this.searchDistrictText = this.resource.district || 'La Plata';
+				this.searchDistrictText = this.resource.district || 'Dolores';
 				this.searchSchoolText = '';
 
 				this.rate = this.resource.rate || 0;
