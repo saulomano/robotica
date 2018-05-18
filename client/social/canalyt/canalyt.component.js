@@ -1,31 +1,58 @@
 'use strict';
 import angular from 'angular';
 import SocialComponent from '../social.component';
-
+import _ from 'lodash';
+import $ from 'jquery';
 export default class canalytComponent extends SocialComponent {
   /*@ngInject*/
-  constructor($element, ngMeta) {
+  constructor($element,$scope, ngMeta, $http ) {
     super({$element});
-
+    this.$http = $http;
     this.ngMeta =  ngMeta;
+    this.$scope = $scope;
 
+    this.videos = [];
+
+    this.ngMeta.setTitle('Canal Youtube');
+    this.ngMeta.setTag('description', 'Canal Youtube Exclusivo proyecto de Robotica');
+
+    this.videos = this.obtenerVideosPlaylist();
+
+
+    $scope.changeVideo = function(video) {
    
+      document.getElementById('vid_frame').src='http://youtube.com/embed/'+video+'?autoplay=1&rel=0&showinfo=0&autohide=1';
 
-    this.videos = [
-      { video: 'https://www.youtube.com/watch?v=E813VYySueM' },
-      { video: 'https://www.youtube.com/watch?v=E813VYySueM' },
-      { video: 'https://www.youtube.com/watch?v=E813VYySueM' },
-      { video: 'https://www.youtube.com/watch?v=E813VYySueM' },
-      { video: 'https://www.youtube.com/watch?v=E813VYySueM' },
-      { video: 'https://www.youtube.com/watch?v=E813VYySueM' },
-      { video: 'https://www.youtube.com/watch?v=E813VYySueM' },
-    ];
-
-  
+     }
   
 
-    ngMeta.setTitle('Canal Youtube');
-    ngMeta.setTag('description', 'Canal Youtube Exclusivo proyecto de Robotica');
 	}
-	
+  
+  obtenerVideosPlaylist(){
+    var videos=[];
+    let url = 'https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId=UC2CIS5qTIV1hTfh2dSfBaEQ&maxResults=50&key=AIzaSyDlQjTcmgzmZRMS747O_ubCZ9X7s7dr6TI';
+
+      this.$http({
+        url: 'https://www.googleapis.com/youtube/v3/search',
+        method: "GET",
+        params: {  order:'date' ,
+        part: 'snippet',
+        channelId : 'UC2CIS5qTIV1hTfh2dSfBaEQ',
+        maxResults:50,
+        key :'AIzaSyDlQjTcmgzmZRMS747O_ubCZ9X7s7dr6TI' }
+      }).then(function (response){   
+      console.log(response)
+      angular.forEach( response.data.items, function(item) {
+        videos.push( { video: item.id.videoId , titulo: item.snippet.title , imagen: item.snippet.thumbnails.medium.url } ); 
+      })}, function (error){
+        console.log(error);
+      });
+
+      return videos;
+    }
+
+
+
+    
 }
+ 
