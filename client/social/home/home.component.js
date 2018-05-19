@@ -48,7 +48,7 @@ export default class HomeComponent extends SocialComponent {
         image: '/assets/img/banner/herramientas_image.png',
         title: 'Herramientas',
         description: 'Software para crear actividades, rampas digitales y entornos editables.',
-        type: 'herramienta'
+        type: 'herramientas'
       },
       'orientaciones': {
         caption:  '<h1>_Orientaciones</h1> <p>Con tutoriales, documentos y sitios de interés  que sirven de apoyo a tus prácticas de enseñanza.</p>',
@@ -59,18 +59,53 @@ export default class HomeComponent extends SocialComponent {
       },
       'mediateca': {
         caption: '<h1>Mediateca_</h1> <p>Recursos didácticos para mirar, leer y escuchar.</p>',
-        image: '/assets/img/banner/mediateca_image.png',
         title: 'Mediateca',
         description: 'Recursos didácticos para mirar, leer y escuchar.',
         type: 'mediateca'
       },
       'noticias': {
         caption: '<h1>Noticias_</h1> <p>Recursos didácticos para mirar, leer y escuchar.</p>',
-        image: '/assets/img/banner/imagen-fondo_violeta.jpg',
         title: 'Noticias',
         description: 'Recursos didácticos para mirar, leer y escuchar.',
         type: 'noticias'
+      },
+      'calendario': {
+        caption: '<h1>Calendario_</h1> <p>Recursos didácticos para mirar, leer y escuchar.</p>',
+        title: 'Calendario',
+        description: 'Recursos didácticos para mirar, leer y escuchar.',
+        type: 'calendario'
+      },
+      'sabiasQue': {
+        caption: '<h1>Sabias Que_</h1> <p>Recursos didácticos para mirar, leer y escuchar.</p>',
+        title: 'sabiasQue',
+        description: 'Recursos didácticos para mirar, leer y escuchar.',
+        type: 'sabiasQue'
+      },
+      'loquehacemos': {
+        caption: '<h1>lo que hacemos_</h1> <p>Recursos didácticos para mirar, leer y escuchar.</p>',
+        title: 'loquehacemos',
+        description: 'Recursos didácticos para mirar, leer y escuchar.',
+        type: 'loquehacemos'
+      },
+      'novedades': {
+        caption: '<h1>Novedades_</h1> <p>Recursos didácticos para mirar, leer y escuchar.</p>',
+        title: 'novedades',
+        description: 'Recursos didácticos para mirar, leer y escuchar.',
+        type: 'novedades'
+      },
+      'documentos': {
+        caption:  '<h1>Documentos_</h1> <p>Software para crear actividades, rampas digitales y entornos editables.</p>',
+        title: 'documentos',
+        description: 'Software para crear actividades, rampas digitales y entornos editables.',
+        type: 'documentos'
+      },
+      'kits': {
+        caption:  '<h1>Kits_</h1> <p>Software para crear actividades, rampas digitales y entornos editables.</p>',
+        title: 'kits',
+        description: 'Software para crear actividades, rampas digitales y entornos editables.',
+        type: 'kits'
       }
+
 
     };
     this.section = sections[this.sectionName];
@@ -96,9 +131,10 @@ export default class HomeComponent extends SocialComponent {
           let captions = {
             'propuesta': 'Propuesta pedagógica',
             'actividad': 'Actividad accesible',
-            'herramienta': 'Herramienta',
+            'herramientas': 'Herramienta',
             'orientacion': 'Orientación',
-            'mediateca1': 'Mediateca1',
+            'noticias': 'Noticias',
+            'calendario': 'Calendario',
           };
           let total = data.$total;
           data = _.map(data, p =>{
@@ -160,10 +196,11 @@ export default class HomeComponent extends SocialComponent {
           let captions = {
             'propuesta': 'Propuesta pedagógica',
             'actividad': 'Actividad accesible',
-            'herramienta': 'Herramienta',
+            'herramientas': 'Herramienta',
             'orientacion': 'Orientación',
             'mediateca': 'Mediateca',
-            'mediateca1': 'Mediateca1'
+            'noticias': 'Noticias',
+            'calendario': 'Calendario'
           };
 
           data.links = _.map(data.links, p =>{

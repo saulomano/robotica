@@ -13,7 +13,7 @@ export default class NewComponent extends CuradorComponent {
     this.Restangular = Restangular;
     this.Auth = Auth;
 
-    let types = /^(noticias|calendarios|herramientas|documentos|mediateca|desafios|loquehacemos|novedades|kits)$/ig;
+    let types = /^(noticias|calendario|herramientas|documentos|mediateca|desafios|loquehacemos|novedades|kits)$/ig;
     this.section = _.toLower($stateParams.type);
 
     if (!types.test(this.section)){
@@ -36,7 +36,7 @@ export default class NewComponent extends CuradorComponent {
 
     let dbtypes = {
       'noticias': 'noticias',
-      'calendarios': 'calendarios',
+      'calendario': 'calendario',
       'herramientas': 'herramienta',
       'documentos': 'documentos',
       'mediateca': 'mediateca',

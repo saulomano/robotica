@@ -55,7 +55,7 @@ export default class DashboardComponent extends CuradorComponent {
       type: 'addnew',
       options: [
         { section: 'noticias', icon: 'ri ri-noticias', caption: 'Noticias' },
-        { section: 'calendarios', icon: 'ri ri-calendario', caption: 'Calendario' },
+        { section: 'calendario', icon: 'ri ri-calendario', caption: 'Calendario' },
         { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
         { section: 'documentos', icon: 'ri ri-documentos', caption: 'Documentos' },
         { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' },

@@ -32,6 +32,8 @@ class CuradorHeaderComponent {
       { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
       { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' },
       { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' },
+      { section: 'noticias', icon: 'ri ri-noticias', caption: 'Noticias' },
+      { section: 'calendario', icon: 'ri ri-calendario', caption: 'Calendario' }
     ];
 
     this.getUser();
