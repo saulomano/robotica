@@ -2,11 +2,15 @@
 	<rd-card-toolbar ng-if="$ctrl.editable">
 		<div layout="row">
 			<div class="rd-card__status" flex ng-hide="$ctrl.desafio.published == undefined"> <i class="fa fa-check-circle-o"></i>	Publicado</div>
-            <div class="rd-card__status" flex ng-show="$ctrl.desafio.published == undefined"> <i class="fa fa-save"></i> Guardado</div>
-            <md-button ng-click="$ctrl.deleteUserBoolean = !$ctrl.deleteUserBoolean" class="bordered md-raised md-mini rd-card__button--delete" aria-label="Eliminar módulo">
+            <div class="rd-card__status" flex ng-show="$ctrl.desafio.published == undefined"> <i class="fa fa-save"></i> {{$ctrl.desafio.status}}</div>
+           
+           
+            <md-button ng-disabled="$ctrl.desafio.published != undefined"  ng-click="$ctrl.deleteUserBoolean = !$ctrl.deleteUserBoolean" class="bordered md-raised md-mini rd-card__button--delete" aria-label="Eliminar módulo">
                 <md-icon md-font-icon="">delete</md-icon>
             </md-button>
-			<md-button ng-click="$ctrl.editDesafio()" class="bordered mini-button md-button md-ink-ripple rd-card__button--edit">
+
+            
+			<md-button ng-disabled="$ctrl.desafio.published != undefined" ng-click="$ctrl.editDesafio()" class="bordered mini-button md-button md-ink-ripple rd-card__button--edit">
 				<div layout="row">
 					<md-icon class="mi-mode-edit"></md-icon> <span>Editar</span>
 				</div>
