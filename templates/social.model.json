@@ -29,6 +29,10 @@
 		{
 			"name": "canalyt",
 			"url": "/canalyt"
+		},
+		{
+			"name": "verdesafio",
+			"url": "/verdesafio/:uid"
 		}
 	]
 }
