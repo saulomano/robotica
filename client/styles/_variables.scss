@@ -18,6 +18,7 @@ $gris-claro: #D1D1D1;
 //
 $color-propuestas:    $color-red-500;
 $color-actividades:   $violeta;
+$color-kits:   		  $violeta;
 $color-herramientas:  $gris-claro;
 $color-orientaciones: $color-light-green-400;
 $color-mediateca:     $gris-claro;
@@ -27,6 +28,7 @@ $color-documentos:    $gris-claro;
 $color-desafios:      $celeste-claro;
 $color-loquehacemos:  $color-light2-green-400;
 $color-novedades:     $color-light2-green-400;
+$color-sabiasQue:     $color-light2-green-400;
 
 
 
@@ -45,7 +47,9 @@ $sections: (
 	documentos: ( color: $color-documentos ),
 	desafios:  ( color: $color-desafios ),
 	loquehacemos: (color: $color-loquehacemos),
-	novedades: (color: $color-novedades)
+	novedades: (color: $color-novedades),
+	sabiasQue: (color: $color-sabiasQue),
+	kits: (color: $color-kits)
 ) !default;
 
 // ------------------------------

@@ -270,6 +270,206 @@
 	}
 }
 
+	.rd-card[data-rd-section="noticias"],
+	.rd-card[rd-section="noticias"],
+	.rd-card[data-rd-section="noticias"],
+	.rd-card[rd-section="noticias"] {
+		.rd-card {
+	
+			&__thumbnail {
+				position: relative;
+				height: 7rem;
+				width: 7rem;
+				overflow: hidden;
+				border-radius: $border-radius-default;
+
+				img {
+					display: block;
+					margin: 0 auto;
+					width: 100%;
+					height: auto;
+					border-radius: $border-radius-default;
+				}
+			}
+
+			&__body:before {
+				content: '';
+				position: absolute;
+				right: 0px;
+				top: 50%;
+				transform: translateY(-50%);
+				width: .5rem;
+				height: 80%;
+				background-color: $color-noticias;
+				border-radius: 100px;
+			}
+
+			&__footer {
+				display: none;
+			}
+		}
+	}
+
+	.rd-card[data-rd-section="calendario"],
+	.rd-card[rd-section="calendario"],
+	.rd-card[data-rd-section="calendario"],
+	.rd-card[rd-section="calendario"] {
+		.rd-card {
+	
+			&__thumbnail {
+				position: relative;
+				height: 7rem;
+				width: 7rem;
+				overflow: hidden;
+				border-radius: $border-radius-default;
+
+				img {
+					display: block;
+					margin: 0 auto;
+					width: 100%;
+					height: auto;
+					border-radius: $border-radius-default;
+				}
+			}
+
+			&__body:before {
+				content: '';
+				position: absolute;
+				right: 0px;
+				top: 50%;
+				transform: translateY(-50%);
+				width: .5rem;
+				height: 80%;
+				background-color: $color-calendario;
+				border-radius: 100px;
+			}
+
+			&__footer {
+				display: none;
+			}
+		}
+	}
+
+	.rd-card[data-rd-section="novedades"],
+	.rd-card[rd-section="novedades"],
+	.rd-card[data-rd-section="novedades"],
+	.rd-card[rd-section="novedades"] {
+		.rd-card {
+	
+			&__thumbnail {
+				position: relative;
+				height: 7rem;
+				width: 7rem;
+				overflow: hidden;
+				border-radius: $border-radius-default;
+
+				img {
+					display: block;
+					margin: 0 auto;
+					width: 100%;
+					height: auto;
+					border-radius: $border-radius-default;
+				}
+			}
+
+			&__body:before {
+				content: '';
+				position: absolute;
+				right: 0px;
+				top: 50%;
+				transform: translateY(-50%);
+				width: .5rem;
+				height: 80%;
+				background-color: $color-novedades;
+				border-radius: 100px;
+			}
+
+			&__footer {
+				display: none;
+			}
+		}
+	}
+
+	.rd-card[data-rd-section="documentos"],
+	.rd-card[rd-section="documentos"],
+	.rd-card[data-rd-section="documentos"],
+	.rd-card[rd-section="documentos"] {
+		.rd-card {
+	
+			&__thumbnail {
+				position: relative;
+				height: 7rem;
+				width: 7rem;
+				overflow: hidden;
+				border-radius: $border-radius-default;
+
+				img {
+					display: block;
+					margin: 0 auto;
+					width: 100%;
+					height: auto;
+					border-radius: $border-radius-default;
+				}
+			}
+
+			&__body:before {
+				content: '';
+				position: absolute;
+				right: 0px;
+				top: 50%;
+				transform: translateY(-50%);
+				width: .5rem;
+				height: 80%;
+				background-color: $color-documentos;
+				border-radius: 100px;
+			}
+
+			&__footer {
+				display: none;
+			}
+		}
+	}
+
+	.rd-card[data-rd-section="loquehacemos"],
+	.rd-card[rd-section="loquehacemos"],
+	.rd-card[data-rd-section="loquehacemos"],
+	.rd-card[rd-section="loquehacemos"] {
+		.rd-card {
+	
+			&__thumbnail {
+				position: relative;
+				height: 7rem;
+				width: 7rem;
+				overflow: hidden;
+				border-radius: $border-radius-default;
+
+				img {
+					display: block;
+					margin: 0 auto;
+					width: 100%;
+					height: auto;
+					border-radius: $border-radius-default;
+				}
+			}
+
+			&__body:before {
+				content: '';
+				position: absolute;
+				right: 0px;
+				top: 50%;
+				transform: translateY(-50%);
+				width: .5rem;
+				height: 80%;
+				background-color: $color-loquehacemos;
+				border-radius: 100px;
+			}
+
+			&__footer {
+				display: none;
+			}
+		}
+	}
+
 .rd-card[data-rd-section="mediateca"],
 .rd-card[rd-section="mediateca"],
 .rd-card[data-rd-section="mediateca"],

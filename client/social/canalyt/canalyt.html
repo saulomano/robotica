@@ -1,14 +1,55 @@
  
 
+<div class="container">
 
-  <div class="row">
-    <div class="col-sm-6 wrapper" ng-repeat="item in $ctrl.videos">
-      <ng-youtube-embed video="item.video" width="100%">
-      </ng-youtube-embed>         
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <div class="vid-container">
+        <iframe id="vid_frame" src="http://www.youtube.com/embed/eg6kNoJmzkY?rel=0&showinfo=0&autohide=1" frameborder="0" width="500" height="260"></iframe>
     </div>
-    
-  </div>
+    </div>
+  </md-dialog-content>
+
+  <!-- THE YOUTUBE PLAYER -->
   
 
+<!-- THE PLAYLIST -->
+<div class="vid-list-container">
+      <div class="vid-list">
+         
 
-    
+
+           <div ng-repeat="item in $ctrl.videos" class="vid-item" ng-click="changeVideo(item.video)" >
+             <div class="thumb"><img src="{{item.imagen}}"></div>
+             <div class="desc">{{item.titulo}}</div>
+           </div>
+         
+          
+
+     </div>
+    </div>
+
+    <!-- LEFT AND RIGHT ARROWS -->
+    <div class="arrows">
+      <div class="arrow-left"><i class="fa fa-chevron-left fa-lg"></i></div>
+      <div class="arrow-right"><i class="fa fa-chevron-right fa-lg"></i></div>
+    </div>
+
+  </div>
+
+    	<script type="text/javascript">
+  		$(document).ready(function () {
+		    $(".arrow-right").bind("click", function (event) {
+		        event.preventDefault();
+		        $(".vid-list-container").stop().animate({
+		            scrollLeft: "+=336"
+		        }, 750);
+		    });
+		    $(".arrow-left").bind("click", function (event) {
+		        event.preventDefault();
+		        $(".vid-list-container").stop().animate({
+		            scrollLeft: "-=336"
+		        }, 750);
+		    });
+		});
+  	</script>

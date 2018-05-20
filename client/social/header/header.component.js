@@ -22,7 +22,7 @@ class HeaderComponent {
             section: 'quienesSomos',  caption: 'Quienes Somos', action:'social.institucional'
           },
           {
-            section: 'ultimasNoticias',  caption: 'Ultimas Noticas', action:'?seccion=noticias'
+            section: 'noticias',  caption: 'Ultimas Noticas', action:'?seccion=noticias'
           },
           {
             section: 'calendario',  caption: 'Calendario', action:'?seccion=calendario'
@@ -47,16 +47,13 @@ class HeaderComponent {
         section: 'comunidad',  caption: 'Comunidad',
         "nodes": [
           {
-            section: 'sabiasQue',  caption: 'Sabias que', action:'?seccion=desafios'
+            section: 'sabiasQue',  caption: 'Sabias que', action:'?seccion=sabiasQue'
           },
           {
-            section: 'queHacemos',  caption: 'Que Hacemos', action:'?seccion=loquehacemos'
+            section: 'loquehacemos',  caption: 'Que Hacemos', action:'?seccion=loquehacemos'
           },
           {               
             section: 'novedades',  caption: 'Novedades', action:'?seccion=novedades'
-          },
-          {
-            section: 'ingresaTuDesafio',  caption: 'Ingresa tu Desafio', action:'/subiDesafio'
           }
         ]
       },
