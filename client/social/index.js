@@ -22,7 +22,7 @@ import newDesafio from './new';
 import desafio from './desafio';
 import canalyt from './canalyt';
 import verdesafio from './verdesafio';
-
+import desafioView from './components/desafioView/desafioView.component';
 // config to providers
 import { socialConfig } from './social.config';
 
@@ -45,7 +45,8 @@ let requirements = [
 	desafio,
 	canalyt,
 	filters,
-	verdesafio
+	verdesafio,
+	desafioView
 ];
 
 module.exports = angular

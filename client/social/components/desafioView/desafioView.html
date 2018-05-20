@@ -34,9 +34,9 @@
 						<p><strong class="rd-card__owner">{{$ctrl.resource.owner.name}}</strong></p>
 					</div>
 					<!-- HERE GOES THE RATE ('STARS') -->
-					<div flex class="rview__border-bottom" ng-if="$ctrl.resource.type == 'desafio'">
+					<div flex class="rview__border-bottom" >
 						<h1 class="md-title">Calificación para este desafío</h1>
-						<star-rating-comp read-only="($ctrl.role == 'admin' && $ctrl.resource.status !== 'aprobado') ? false : true" num-of-stars="5" rating="$ctrl.rateView" on-rating-change="$ctrl.onClickStar($event)"></star-rating-comp>
+						<star-rating-comp read-only="true" num-of-stars="5" rating="$ctrl.resource.rate" ></star-rating-comp>
 					</div>
 					<div flex class="rview__border-bottom">
 							<h5>{{$ctrl.resource.typeCaption}}</h5>
@@ -47,10 +47,8 @@
 										<md-icon md-font-icon="ri-mochila" class="ri ri-3x"></md-icon>
 								</md-button>-->
 						</div>
-						<div ng-if="$ctrl.resource.type == 'propuesta'" >
-							<md-button class="rview__button md-raised md-primary" ng-if="$ctrl.resource.files.length" target="_blank" ng-href="/api/publisheds/{{$ctrl.resource._id}}/download">Ver Presentación</md-button>
-						</div>
-						<div  ng-if="$ctrl.resource.type !== 'propuesta'">
+					
+						<div >
 							<div ng-if="$ctrl.resource.files.length"><md-button class="rview__button md-raised md-primary" 
 										ng-href="/api/publisheds/{{$ctrl.resource._id}}/download"
 										target="_blank">Descargar</md-button></div>
