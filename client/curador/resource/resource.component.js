@@ -341,7 +341,7 @@ export default class ResourceComponent extends CuradorComponent {
 			// add dropzone to ctrl
 			ctrl.dropzoneSoftware = this;
 		};
-		this.dzOptionsSoftware.acceptedFiles = undefined; //'*/*';
+		this.dzOptionsSoftware.acceptedFiles = 'application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf, image/*'; //'*/*';
 		this.dzOptionsSoftware.maxFiles = Infinity;
 		this.dzOptionsSoftware.dictDefaultMessage = '<div class="dz-clickable"></div>';
 		this.dzOptionsSoftware.clickable = '.dz-software-clickable';
