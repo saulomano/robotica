@@ -336,36 +336,36 @@ export default class ResourceComponent extends CuradorComponent {
 			}
 		};
 
-			this.dzOptionsSoftware = _.cloneDeep(this.dzOptions);
-			this.dzOptionsSoftware.init = function(){
-				// add dropzone to ctrl
-				ctrl.dropzoneSoftware = this;
-			};
-			this.dzOptionsSoftware.acceptedFiles = undefined; //'*/*';
-			this.dzOptionsSoftware.maxFiles = Infinity;
-			this.dzOptionsSoftware.dictDefaultMessage = '<div class="dz-clickable"></div>';
-			this.dzOptionsSoftware.clickable = '.dz-software-clickable';
+		this.dzOptionsSoftware = _.cloneDeep(this.dzOptions);
+		this.dzOptionsSoftware.init = function(){
+			// add dropzone to ctrl
+			ctrl.dropzoneSoftware = this;
+		};
+		this.dzOptionsSoftware.acceptedFiles = undefined; //'*/*';
+		this.dzOptionsSoftware.maxFiles = Infinity;
+		this.dzOptionsSoftware.dictDefaultMessage = '<div class="dz-clickable"></div>';
+		this.dzOptionsSoftware.clickable = '.dz-software-clickable';
 
-			this.dzCallbacksSoftware = {
-				'addedfile' : (file) => {
-					console.log(file);
-					let arreglo = split(file.name, )
-				},
-				'removedfile' : (file) => {
-					console.log(file);
-				},
-				'success' : (file, xhr) => {
-					this.resource.files.push(xhr);
-				},
-				'error' : (err) => {
-					this.$log.error(err);
-				},
-				'processing': () => {
-					
-				},
-				'queuecomplete': () => {
-					//ctrl.dropzoneSoftware.removeAllFiles();
-				}
+		this.dzCallbacksSoftware = {
+			'addedfile' : (file) => {
+				console.log(file);
+			},
+			'removedfile' : (file) => {
+				console.log(file);
+			},
+			'success' : (file, xhr) => {
+				this.resource.files.push(xhr);
+			},
+			'error' : (err) => {
+				this.$log.error(err);
+			},
+			'processing': () => {
+				console.log('processing');
+			},
+			'queuecomplete': () => {
+				console.log('queuecomplete');
+				//ctrl.dropzoneSoftware.removeAllFiles();
+			}
 		};
 	}
 
