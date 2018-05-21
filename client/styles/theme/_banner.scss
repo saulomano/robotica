@@ -54,20 +54,11 @@
     }
 
     // Banner home
-    &[section="home"] {
-      background-image: url(/assets/img/banner/index_back.png);
-      background-color: $color-primary-dark;
-    }
+    
 
     &[section="home"] &--legend {
-      padding-top: 10rem;
-      text-align: right;
       h1 { color: $color-white; }
       p { color: $color-white; }
-    }
-
-    &[section="home"] &--image {
-      float: left;
     }
 
     // Banner institucional
@@ -81,7 +72,8 @@
 
      &[section="sabiasQue"],
      &[section="loquehacemos"],
-     &[section="novedades"]{
+     &[section="novedades"],
+     &[section="home"]{
       background-image: url(/assets/img/banner/index_back.png);
       background-color: #8CC654;
     }
@@ -108,7 +100,8 @@
     &[section="loquehacemos"] &--legend,
     &[section="novedades"] &--legend,
     &[section="documentos"] &--legend,
-    &[section="kits"] &--legend  {
+    &[section="kits"] &--legend,
+    &[section="home"] &--legend  {
       padding-top: 15rem;
       padding-right: 4rem;
       text-align: right;
@@ -122,9 +115,17 @@
     &[section="mediateca"] &--image,
     &[section="novedades"] &--image,
     &[section="documentos"] &--image,
-    &[section="kits"] &--image {
+    &[section="kits"] &--image,
+    &[section="home"] &--image {
       float: left;
     }
+
+    &[section="home"] &--image {
+      padding-top: 50px;
+      height: 10%;
+      width: 20%;
+    }
+    
 
     &[section="noticias"] &--legend {
       h1 { color: $color-black; }
