@@ -38,94 +38,93 @@ export default class DashboardComponent extends CuradorComponent {
     });
   }
 
-  getUser(){
-    this.Auth
-    .getCurrentUser()
-    .then(user => {
-      this.user = user;
-      this.username = user.name;
-    });
-  }
+  	getUser(){
+    	this.Auth
+    		.getCurrentUser()
+    		.then(user => {
+      			this.user = user;
+      			this.username = user.name;
+    		});
+	}
+	  
+	applyFilter(status) {
+		this.$state.go(this.$state.current, {search: status}, {reload:true});
+	}
 
-  fetchData(){
-    let def = this.$q.defer();
 
-    this.page++;
-    let addNewItem = {
-      type: 'addnew',
-      options: [
-        { section: 'noticias', icon: 'ri ri-noticias', caption: 'Noticias' },
-        { section: 'calendario', icon: 'ri ri-calendario', caption: 'Calendario' },
-        { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
-        { section: 'documentos', icon: 'ri ri-documentos', caption: 'Documentos' },
-        { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' },
-        { section: 'desafios', icon: 'ri ri-desafio', caption: 'Desafíos' },
-        { section: 'loquehacemos', icon: 'ri ri-loquehacemos', caption: 'Lo que hacemos' },
-        { section: 'novedades', icon: 'ri ri-novedades', caption: 'Novedades' }
-      ]
-    };
+  	fetchData(){
+    	let def = this.$q.defer();
+    	this.page++;
+    	let addNewItem = {
+			type: 'addnew',
+			options: [
+				{ section: 'noticias', icon: 'ri ri-noticias', caption: 'Noticias' },
+				{ section: 'calendarios', icon: 'ri ri-calendario', caption: 'Calendario' },
+				{ section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
+				{ section: 'documentos', icon: 'ri ri-documentos', caption: 'Documentos' },
+				{ section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' },
+				{ section: 'desafios', icon: 'ri ri-desafio', caption: 'Desafíos' },
+				{ section: 'loquehacemos', icon: 'ri ri-loquehacemos', caption: 'Lo que hacemos' },
+				{ section: 'novedades', icon: 'ri ri-novedades', caption: 'Novedades' }
+			]
+    	};
 
-    if (this.type == 'desafios') {
-       addNewItem = {
-        type: 'desafios',
-        options: [
-          { section: 'aprobado', icon: 'ri ri-desafio', caption: 'Desafíos Aprobados' },
-            { section: 'pendiente', icon: 'ri ri-desafio', caption: 'Desafíos Pendientes' },
-            { section: 'rechazado', icon: 'ri ri-desafio', caption: 'Desafíos Rechazados' }
-        ]
-      };
-    }
+    	if (this.type == 'desafios') {
+       		addNewItem = {
+        		type: 'desafios',
+        		options: [
+          			{ section: 'aprobado', icon: 'ri ri-desafio', caption: 'Desafíos Aprobados' },
+            		{ section: 'pendiente', icon: 'ri ri-desafio', caption: 'Desafíos Pendientes' },
+            		{ section: 'rechazado', icon: 'ri ri-desafio', caption: 'Desafíos Rechazados' }
+        		]
+      		};
+    	}
 
-    let q;
-    if (this.searchText){
-      q = this.searchText
-    }
+    	let q;
+    	if (this.searchText){
+      		q = this.searchText
+    	}
     
-    this.Resources
-        .getList({
-          q: q,
-          page: this.page, 
-          limit: this.limit,
-          sort: 'updatedAt',
-        })
-        .then(res => {
-          let items = [];
-          if (this.page === 1) {
-            items.push(addNewItem);
-          }
+    	this.Resources
+        	.getList({
+          		q: q,
+          		page: this.page, 
+          		limit: this.limit,
+          		sort: 'updatedAt',
+       		})
+        	.then(res => {
+          		let items = [];
+          		if (this.page === 1) {
+            		items.push(addNewItem);
+          		}
 
-          if (this.type == 'desafios') {
-            items = items.concat(_.filter(res, function(o) { return o.type == 'desafio' }));
-          } else {
-            items = items.concat(res);
-          }
+				if (this.type == 'desafios') {
+					items = items.concat(_.filter(res, function(o) { return o.type == 'desafio' }));
+				} else {
+					items = items.concat(res);
+				}
 
-          let data = {
-            count: (res.$total + 1),
-            items: items,
-            page: this.page,
-            limit: this.limit
-          };
+				let data = {
+					count: (res.$total + 1),
+					items: items,
+					page: this.page,
+					limit: this.limit
+				};
 
-          def.resolve(data);
-        })
-        .catch(err => {
-          throw err;
-        });
+				def.resolve(data);
+			})
+        	.catch(err => {
+          		throw err;
+       		});
 
-    return def.promise;
-  }
+    	return def.promise;
+  	}
   
-  $onInit(){
+  	viewResource_($event, resource){
+    	if (!resource){
+     		return;
+    	}
 
-  }
-  
-  viewResource_($event, resource){
-    if (!resource){
-      return;
-    }
-
-    this.$state.go(`curador.recurso`, { uid: resource._id });
-
-  }
+		this.$state.go(`curador.recurso`, { uid: resource._id });
+	}
 }

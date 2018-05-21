@@ -7,7 +7,32 @@
 	<div class="banner__content">
 		<div><h1 class="banner__head">Hola {{$ctrl.username}}!</h1></div>
 		<div class="banner__subhead">estas en tu Tablero Robotica</div>
-		<div class="banner__legend"><p>acá podés <span class="font-medium">crear, editar y publicar</span> tus recursos</p></div>
+		<div class="banner__legend">
+			<p>acá podés <span class="font-medium">crear, editar y publicar</span> tus recursos</p>
+		</div>
+		<br>
+		<div class="banner__legend" 
+			layout="row"
+			ng-if="$ctrl.type == 'desafios'">
+			<md-button class="md-raised rd-stepper__button--next  button__text-icon"  
+				aria-label="Guardar" 
+				ng-click="$ctrl.applyFilter('')" >
+				<span>Todos</span>
+			</md-button>
+			<md-button class="md-raised rd-stepper__button--save"  
+				aria-label="Guardar" 
+				ng-click="$ctrl.applyFilter('pendiente')" >
+				<span>Pendientes</span>
+			</md-button>
+			<md-button class="rd-stepper__button--back" aria-label="Volver" 
+				ng-click="$ctrl.applyFilter('aprobado')">
+				<span>Aprobados</span>
+			</md-button>
+			<md-button class="md-raised md-primary rd-stepper__button--next button__text-icon" 
+				ng-click="$ctrl.applyFilter('rechazado')">
+				<span>Rechazados</span>
+			</md-button>
+		</div>
 	</div>
 </div>
 
