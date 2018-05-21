@@ -185,7 +185,7 @@ export default class DesafioComponent extends SocialComponent {
 			clickable: '.dz-tumbnail-clickable',
 			maxFilesize : 1024,
 			timeout: 18000000,
-      		acceptedFiles : 'image/*',
+      		acceptedFiles : 'image/*, application/pdf',
       		addRemoveLinks : false,
 			headers: Util.getHeaders(),
 			init: function(){
@@ -212,7 +212,7 @@ export default class DesafioComponent extends SocialComponent {
 			// add dropzone to ctrl
 			ctrl.dropzoneSoftware = this;
 		};
-		this.dzOptionsSoftware.acceptedFiles = undefined; //'*/*';
+		this.dzOptionsSoftware.acceptedFiles = 'application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf, image/*'; //'*/*';
 		this.dzOptionsSoftware.maxFiles = Infinity;
 		this.dzOptionsSoftware.dictDefaultMessage = '<div class="dz-clickable"></div>';
 		this.dzOptionsSoftware.clickable = '.dz-software-clickable';
@@ -263,22 +263,22 @@ export default class DesafioComponent extends SocialComponent {
             // Exclusive 'Desafios' validations
             //===============================================
 
-            if(this.resource.type === 'desafio')
-            {
-                // Create angular 'Desafios' variables
-                this.districts = {};
-                this.selectedDistrict = {};
-                this.selectedSchool = {};
+            if(this.resource.type === 'desafio' && this.resource.district)
+			{
+				// Create angular 'Desafios' variables
+				this.selectedDistrict = {};
+				this.selectedSchool = {};
 
-                this.searchDistrictText = this.resource.district || 'La Plata';
-                this.searchSchoolText = '';
+				this.searchDistrictText = this.resource.district || 'Dolores';
+				this.searchSchoolText = '';
 
-                this.rate = this.resource.rate || 0;
+				this.rate = this.resource.rate || 0;
 
-                this.School = this.Restangular.one('schools/district', this.searchDistrictText);
+				this.School = this.Restangular.one('schools/district', this.searchDistrictText);
 
-                this.getSchool();
-            }
+				this.getSchool();
+			}
+
             //===============================================
 
 			_.each(this.resource.links, l =>{
@@ -516,7 +516,9 @@ export default class DesafioComponent extends SocialComponent {
 	 * TODO: OPTIMIZAR, POR MOTIVOS DE MOSTRAR AL CLIENTE DE SAULO SE HIZO ESTO PARA QUE CARGAR MAS RAPIDO LOS DISTRITOS
      * @returns {string[]}
      */
-    getDistricts()
+    
+	
+	getDistricts()
     {
         let _districts = ['La Plata', 'Adolfo Alsina', 'Alberti', 'Almirante Brown',
             "Avellaneda", "Ayacucho", "Azul", "Bahía Blanca", "Balcarce",
