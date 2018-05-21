@@ -70,10 +70,6 @@ export default class ResourceComponent extends CuradorComponent {
 		});
 	}
 
-	searchTextChange(text) {
-		console.log('Text changed to ', text);
-	}
-
 	querySearch (query) {
 		var results = query ? this.states.filter( this.createFilterFor(query) ) : this.states;
 		var deferred;
@@ -412,7 +408,7 @@ export default class ResourceComponent extends CuradorComponent {
 				this.selectedDistrict = {};
 				this.selectedSchool = {};
 
-				this.searchDistrictText = this.resource.district || 'Dolores';
+				this.searchDistrictText = this.resource.district || '';
 				this.searchSchoolText = '';
 
 				this.rate = this.resource.rate || 0;
