@@ -109,8 +109,8 @@
                             md-search-text="$ctrl.searchDistrictText"
                             md-items="district in $ctrl.getDistricts()"
                             md-item-text="($ctrl.selectedDistrict.name || '')"
-                            md-min-length="1"
-                            md-autoselect = "true"
+                            md-min-length="1"                    
+                            md-match-case-insensitive="false"       
                             placeholder="Selecciona un distrito...">
                         <md-item-template>
                             <span md-highlight-text="$ctrl.searchDistrictText" md-highlight-flags="^i">{{district || ''}}</span>
