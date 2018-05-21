@@ -28,7 +28,7 @@
 	<rd-card-body>
         <div layout="row">
             <div class="rd-card__thumbnail" ng-hide="$ctrl.deleteUserBoolean">
-                <img ng-src="" alt="Miniatura del recurso">
+                <img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del recurso">
             </div>
             <div flex class="rd-card__body--custom" ng-hide="$ctrl.deleteUserBoolean">
                 <h1 class="rd-card__title--v1">{{$ctrl.desafio.title}}</h1>
