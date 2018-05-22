@@ -43,7 +43,7 @@
 		<rd-card-body>
 				<div layout="row">
 					<div class="rd-card__thumbnail">
-						<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del recurso" >
+						<img ng-hide="$ctrl.resource.thumbnail === ''" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del recurso" >
 					</div>
 					<div flex class="rd-card__body--custom">
 						<h1 class="rd-card__title--v1">{{$ctrl.resource.title}}</h1>
