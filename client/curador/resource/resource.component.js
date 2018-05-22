@@ -162,7 +162,7 @@ export default class ResourceComponent extends CuradorComponent {
 			this.selectedDistrict = this.district;
 			this.searchDistrictText = angular.copy(this.selectedDistrict.name);
 
-			this.selectedSchool = angular.copy(this.district.schools[schoolIndex].schoolName);
+			// this.selectedSchool = angular.copy(this.district.schools[schoolIndex].schoolName);
 			// this.searchSchoolText = this.selectedSchool;
 
 			// this.loading = false;
@@ -414,7 +414,7 @@ export default class ResourceComponent extends CuradorComponent {
 			{
 				// Create angular 'Desafios' variables
 				this.selectedDistrict = {};
-				this.selectedSchool = {};
+				this.selectedSchool = this.resource.school || '';
 
 				this.searchDistrictText = this.resource.district || '';
 				// this.searchSchoolText = '';
