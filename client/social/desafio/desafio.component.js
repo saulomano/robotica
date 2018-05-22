@@ -70,21 +70,7 @@ export default class DesafioComponent extends SocialComponent {
 	}
 
     loadAll() {
-        var allStates = `La Plata, Adolfo Alsina, Alberti, Almirante Brown, Avellaneda, Ayacucho, Azul, Bahía Blanca, Balcarce, 
-		Baradero, Arrecifes, Bolívar, Bragado, Brandsen, Campana, Cañuelas, Carlos Casares, Carlos Tejedor, Carmen de Areco, 
-		Daireaux, Castelli, Colón, Coronel Dorrego, Coronel Pringles, Coronel Suárez, Chacabuco, Chascomús, Chivilcoy, Dolores, 
-		Esteban Echeverría, Exaltación de la Cruz, Florencio Varela, General Alvarado, General Alvear, General Arenales, 
-		General Belgrano, General Guido, General La Madrid, General Lavalle, General Madariaga, General Paz, General Pinto, 
-		General Pueyrredón, General Rodríguez, General San Martín, Zárate, General Viamonte, General Villegas, Gonzáles Chaves, 
-		Guaminí, Juárez, Junín, Laprida, Tigre,	Las Flores, General Las Heras, Leandro N. Alem, Lincoln, Lobería, Lobos, 
-		Lomas de Zamora, Luján, Magdalena, Maipú, Salto, Marcos Paz, Mar Chiquita, La Matanza, Mercedes, Merlo, Monte, Moreno, 
-		Navarro, Necochea, Nueve de Julio, Olavarría, Patagones, Pehuajó, Pellegrini, Pergamino, Pila, Pilar, Puan, Quilmes, Ramallo, 
-		Rauch, Rivadavia, Rojas, Roque Pérez, Saavedra, Saladillo, San Andrés de Giles,	San Antonio de Areco, San Fernando, 
-		San Isidro, San Nicolás, San Pedro,	San Vicente, Morón, Suipacha, Tandil, Tapalqué, Tordillo, Tornquist, Trenque Lauquen, 
-		Tres Arroyos, Veinticinco de Mayo, Vicente López, Villarino, Lanús, Coronel Rosales, Berisso, Ensenada, San Cayetano, Escobar, 
-		Tres de Febrero, Hipólito Yrigoyen, Berazategui, Salliqueló, Capitán Sarmiento, La Costa, Pinamar, Villa Gesell, Monte Hermoso, 
-		Tres Lomas, Florentino Ameghino, Presidente Perón, Ezeiza, San Miguel, José C. Paz, Malvinas Argentinas, Punta Indio, 
-		Hurlingham, Ituzaingo, Lezama`;
+		var allStates = 'La Plata, Adolfo Alsina, Alberti, Almirante Brown, Avellaneda, Ayacucho, Azul, Bahía Blanca, Balcarce, Baradero, Arrecifes, Bolívar, Bragado, Brandsen, Campana, Cañuelas, Carlos Casares, Carlos Tejedor, Carmen de Areco, Daireaux, Castelli, Colón, Coronel Dorrego, Coronel Pringles, Coronel Suárez, Chacabuco, Chascomús, Chivilcoy, Dolores, Esteban Echeverría, Exaltación de la Cruz, Florencio Varela, General Alvarado, General Alvear, General Arenales, General Belgrano, General Guido, General La Madrid, General Lavalle, General Madariaga, General Paz, General Pinto, General Pueyrredón, General Rodríguez, General San Martín, Zárate, General Viamonte, General Villegas, Gonzáles Chaves, Guaminí, Juárez, Junín, Laprida, Tigre,	Las Flores, General Las Heras, Leandro N. Alem, Lincoln, Lobería, Lobos, Lomas de Zamora, Luján, Magdalena, Maipú, Salto, Marcos Paz, Mar Chiquita, La Matanza, Mercedes, Merlo, Monte, Moreno, Navarro, Necochea, Nueve de Julio, Olavarría, Patagones, Pehuajó, Pellegrini, Pergamino, Pila, Pilar, Puan, Quilmes, Ramallo, Rauch, Rivadavia, Rojas, Roque Pérez, Saavedra, Saladillo, San Andrés de Giles,	San Antonio de Areco, San Fernando, San Isidro, San Nicolás, San Pedro,	San Vicente, Morón, Suipacha, Tandil, Tapalqué, Tordillo, Tornquist, Trenque Lauquen, Tres Arroyos, Veinticinco de Mayo, Vicente López, Villarino, Lanús, Coronel Rosales, Berisso, Ensenada, San Cayetano, Escobar, Tres de Febrero, Hipólito Yrigoyen, Berazategui, Salliqueló, Capitán Sarmiento, La Costa, Pinamar, Villa Gesell, Monte Hermoso, Tres Lomas, Florentino Ameghino, Presidente Perón, Ezeiza, San Miguel, José C. Paz, Malvinas Argentinas, Punta Indio, Hurlingham, Ituzaingo, Lezama';
 
         return allStates.split(/, +/g).map( function (state) {
             return {
@@ -561,44 +547,5 @@ export default class DesafioComponent extends SocialComponent {
             this.resource.district = angular.copy(this.selectedDistrict.name);
             this.resource.school = angular.copy(this.selectedSchool);
         }
-    }
-
-    /**
-	 * TODO: OPTIMIZAR, POR MOTIVOS DE MOSTRAR AL CLIENTE DE SAULO SE HIZO ESTO PARA QUE CARGAR MAS RAPIDO LOS DISTRITOS
-     * @returns {string[]}
-     */
-    
-	
-	getDistricts()
-    {
-        let _districts = ['La Plata', 'Adolfo Alsina', 'Alberti', 'Almirante Brown',
-            "Avellaneda", "Ayacucho", "Azul", "Bahía Blanca", "Balcarce",
-            "Baradero", "Arrecifes", "Bolívar", "Bragado", "Brandsen",
-            "Campana", "Cañuelas", "Carlos Casares", "Carlos Tejedor", "Carmen de Areco",
-            "Daireaux", "Castelli", "Colón", "Coronel Dorrego", "Coronel Pringles",
-            "Coronel Suárez", "Chacabuco", "Chascomús", "Chivilcoy", "Dolores",
-            "Esteban Echeverría", "Exaltación de la Cruz", "Florencio Varela", "General Alvarado", "General Alvear",
-            "General Arenales", "General Belgrano", "General Guido", "General La Madrid", "General Lavalle",
-            "General Madariaga", "General Paz", "General Pinto", "General Pueyrredón", "General Rodríguez",
-            "General San Martín", "Zárate", "General Viamonte", "General Villegas", "Gonzáles Chaves",
-            "Guaminí", "Juárez", "Junín", "Laprida", "Tigre",
-            "Las Flores", "General Las Heras", "Leandro N. Alem", "Lincoln", "Lobería",
-            "Lobos", "Lomas de Zamora", "Luján", "Magdalena", "Maipú", "Salto",
-            "Marcos Paz", "Mar Chiquita", "La Matanza", "Mercedes", "Merlo", "Monte",
-            "Moreno", "Navarro", "Necochea", "Nueve de Julio", "Olavarría", "Patagones",
-            "Pehuajó", "Pellegrini", "Pergamino", "Pila", "Pilar",
-            "Puan", "Quilmes", "Ramallo", "Rauch", "Rivadavia",
-            "Rojas", "Roque Pérez", "Saavedra", "Saladillo", "San Andrés de Giles",
-            "San Antonio de Areco", "San Fernando", "San Isidro", "San Nicolás", "San Pedro",
-            "San Vicente", "Morón", "Suipacha", "Tandil", "Tapalqué",
-            "Tordillo", "Tornquist", "Trenque Lauquen", "Tres Arroyos", "Veinticinco de Mayo",
-            "Vicente López", "Villarino", "Lanús", "Coronel Rosales", "Berisso", "Ensenada",
-            "San Cayetano", "Escobar", "Tres de Febrero", "Hipólito Yrigoyen", "Berazategui",
-            "Salliqueló", "Capitán Sarmiento", "La Costa", "Pinamar", "Villa Gesell",
-            "Monte Hermoso", "Tres Lomas", "Florentino Ameghino", "Presidente Perón", "Ezeiza",
-            "San Miguel", "José C. Paz", "Malvinas Argentinas", "Punta Indio", "Hurlingham",
-            "Ituzaingo", "Lezama"
-        ];
-        return _districts;
     }
 }
