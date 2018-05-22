@@ -92,6 +92,18 @@ export default class DesafioComponent extends SocialComponent {
         }
     }
 
+    querySearchSchool(query) {
+        var results = query ? this.selectedDistrict.schools.filter( this.createFilterForSchool(query) ) : this.selectedDistrict.schools;
+        var deferred;
+        if (this.simulateQuery) {
+            deferred = this.$q.defer();
+            this.$timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+            return deferred.promise;
+        } else {
+            return results;
+        }
+    }
+
     /**
      * Create filter function for a query string
      */
@@ -99,6 +111,16 @@ export default class DesafioComponent extends SocialComponent {
         var lowercaseQuery = angular.lowercase(query);
         return function filterFn(state) {
             return (state.value.indexOf(lowercaseQuery) === 0);
+        };
+    }
+
+    /**
+     * Create filter function for a query school string
+     */
+    createFilterForSchool(query) {
+        var lowercaseQuery = angular.lowercase(query);
+        return function filterFn(state) {
+            return (angular.lowercase(state.schoolName).indexOf(lowercaseQuery) === 0);
         };
     }
 
@@ -140,7 +162,7 @@ export default class DesafioComponent extends SocialComponent {
                 this.searchDistrictText = angular.copy(this.selectedDistrict.name);
 
                 this.selectedSchool = angular.copy(this.district.schools[schoolIndex].schoolName);
-                this.searchSchoolText = this.selectedSchool;
+                // this.searchSchoolText = this.selectedSchool;
 
                 // this.loading = false;
                 this.loadingSchools = false;
@@ -361,7 +383,7 @@ export default class DesafioComponent extends SocialComponent {
                 this.selectedSchool = {};
 
                 this.searchDistrictText = this.resource.district || '';
-                this.searchSchoolText = '';
+                // this.searchSchoolText = '';
 
 				this.rate = this.resource.rate || 0;
 
@@ -545,7 +567,7 @@ export default class DesafioComponent extends SocialComponent {
         if(this.resource.type === 'desafio')
         {
             this.resource.district = angular.copy(this.selectedDistrict.name);
-            this.resource.school = angular.copy(this.selectedSchool);
+            this.resource.school = angular.copy(this.selectedSchool.schoolName);
         }
     }
 }
