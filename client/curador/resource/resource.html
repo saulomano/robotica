@@ -147,19 +147,20 @@
 			<md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loadingSchools">					
 				<div>
 					<h1 class="md-title">Colegios</h1>
-					<div layout="row">						
-						<md-input-container style="width: 100%;">
-
-							<label>Colegios</label>
-
-							<md-select ng-model="$ctrl.selectedSchool">
-								<md-option ng-repeat="school in $ctrl.selectedDistrict.schools" 
-								ng-value="school.schoolName" >
-								{{school.schoolName}}
-								</md-option>
-							</md-select>
-						</md-input-container>
-					</div>
+					<md-autocomplete
+							md-selected-item="$ctrl.selectedSchool"
+							md-search-text="$ctrl.searchSchoolText"
+							md-items="item in $ctrl.querySearchSchool($ctrl.searchSchoolText)"
+							md-item-text="item.schoolName"
+							md-min-length="0"
+							placeholder="Selecciona un Colegio...">
+						<md-item-template>
+							<span md-highlight-text="$ctrl.searchSchoolText" md-highlight-flags="^i">{{item.schoolName}}</span>
+						</md-item-template>
+						<md-not-found>
+							No se encontro un colegio de nombre "{{$ctrl.searchSchoolText}}".
+						</md-not-found>
+					</md-autocomplete>
 				</div>				   
 			</md-content>
 		</md-content>

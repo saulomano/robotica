@@ -82,6 +82,18 @@ export default class ResourceComponent extends CuradorComponent {
 		}
 	}
 
+    querySearchSchool(query) {
+        var results = query ? this.selectedDistrict.schools.filter( this.createFilterForSchool(query) ) : this.selectedDistrict.schools;
+        var deferred;
+        if (this.simulateQuery) {
+            deferred = this.$q.defer();
+            this.$timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+            return deferred.promise;
+        } else {
+            return results;
+        }
+    }
+
 	loadAll() {
 		var allStates = 'La Plata, Adolfo Alsina, Alberti, Almirante Brown, Avellaneda, Ayacucho, Azul, Bahía Blanca, Balcarce, Baradero, Arrecifes, Bolívar, Bragado, Brandsen, Campana, Cañuelas, Carlos Casares, Carlos Tejedor, Carmen de Areco, Daireaux, Castelli, Colón, Coronel Dorrego, Coronel Pringles, Coronel Suárez, Chacabuco, Chascomús, Chivilcoy, Dolores, Esteban Echeverría, Exaltación de la Cruz, Florencio Varela, General Alvarado, General Alvear, General Arenales, General Belgrano, General Guido, General La Madrid, General Lavalle, General Madariaga, General Paz, General Pinto, General Pueyrredón, General Rodríguez, General San Martín, Zárate, General Viamonte, General Villegas, Gonzáles Chaves, Guaminí, Juárez, Junín, Laprida, Tigre,	Las Flores, General Las Heras, Leandro N. Alem, Lincoln, Lobería, Lobos, Lomas de Zamora, Luján, Magdalena, Maipú, Salto, Marcos Paz, Mar Chiquita, La Matanza, Mercedes, Merlo, Monte, Moreno, Navarro, Necochea, Nueve de Julio, Olavarría, Patagones, Pehuajó, Pellegrini, Pergamino, Pila, Pilar, Puan, Quilmes, Ramallo, Rauch, Rivadavia, Rojas, Roque Pérez, Saavedra, Saladillo, San Andrés de Giles,	San Antonio de Areco, San Fernando, San Isidro, San Nicolás, San Pedro,	San Vicente, Morón, Suipacha, Tandil, Tapalqué, Tordillo, Tornquist, Trenque Lauquen, Tres Arroyos, Veinticinco de Mayo, Vicente López, Villarino, Lanús, Coronel Rosales, Berisso, Ensenada, San Cayetano, Escobar, Tres de Febrero, Hipólito Yrigoyen, Berazategui, Salliqueló, Capitán Sarmiento, La Costa, Pinamar, Villa Gesell, Monte Hermoso, Tres Lomas, Florentino Ameghino, Presidente Perón, Ezeiza, San Miguel, José C. Paz, Malvinas Argentinas, Punta Indio, Hurlingham, Ituzaingo, Lezama';
   
@@ -102,6 +114,16 @@ export default class ResourceComponent extends CuradorComponent {
 		  	return (state.value.indexOf(lowercaseQuery) === 0);
 		};
 	}
+
+    /**
+     * Create filter function for a query school string
+     */
+    createFilterForSchool(query) {
+        var lowercaseQuery = angular.lowercase(query);
+        return function filterFn(state) {
+            return (angular.lowercase(state.schoolName).indexOf(lowercaseQuery) === 0);
+        };
+    }
 
 	onChangeDistrict(newDistrict) {
 		if(_.isEmpty(newDistrict.display) == false)	{
@@ -141,7 +163,7 @@ export default class ResourceComponent extends CuradorComponent {
 			this.searchDistrictText = angular.copy(this.selectedDistrict.name);
 
 			this.selectedSchool = angular.copy(this.district.schools[schoolIndex].schoolName);
-			this.searchSchoolText = this.selectedSchool;
+			// this.searchSchoolText = this.selectedSchool;
 
 			// this.loading = false;
 			this.loadingSchools = false;
@@ -395,7 +417,7 @@ export default class ResourceComponent extends CuradorComponent {
 				this.selectedSchool = {};
 
 				this.searchDistrictText = this.resource.district || '';
-				this.searchSchoolText = '';
+				// this.searchSchoolText = '';
 
 				this.rate = this.resource.rate || 0;
 
@@ -450,7 +472,7 @@ export default class ResourceComponent extends CuradorComponent {
 		if(this.resource.type === 'desafio')
 		{
 			this.resource.district = angular.copy(this.selectedDistrict.name);
-			this.resource.school = angular.copy(this.selectedSchool);
+			this.resource.school = angular.copy(this.selectedSchool.schoolName);
 			this.resource.rate = angular.copy(this.rate);
 		}
 	}
