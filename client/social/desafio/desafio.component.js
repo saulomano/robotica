@@ -6,7 +6,7 @@ import _ from 'lodash';
 
 export default class DesafioComponent extends SocialComponent {
   /*@ngInject*/
-  	constructor($scope, $element, $stateParams, Auth, Restangular, $log, Util, $timeout, $state, $mdDialog, $mdConstant, ngMeta) {
+  	constructor($scope, $element, $stateParams, $q, Auth, Restangular, $log, Util, $timeout, $state, $mdDialog, $mdConstant, ngMeta) {
     	super({$element, Restangular, $log});
 
 		this.$scope = $scope;
@@ -22,6 +22,7 @@ export default class DesafioComponent extends SocialComponent {
 		this.$state = $state;
 		this.$mdDialog = $mdDialog;
 		this.ngMeta = ngMeta;
+		this.$q = $q;
 
         this.simulateQuery = true;
         this.isDisabled = false;
@@ -117,7 +118,7 @@ export default class DesafioComponent extends SocialComponent {
 
     onChangeDistrict(newDistrict) {
         if(_.isEmpty(newDistrict.display) == false) {
-            let districtIndex = _.findIndex(this.getDistricts(), function (element) {
+            let districtIndex = _.findIndex(this.loadAll(), function (element) {
                 return (element.display == newDistrict.display);
             });
 
@@ -367,7 +368,7 @@ export default class DesafioComponent extends SocialComponent {
             // Exclusive 'Desafios' validations
             //===============================================
 
-            if(this.resource.type === 'desafio')
+            if(this.resource.type === 'desafio' && this.resource.district)
             {
                 // Create angular 'Desafios' variables
                 this.selectedDistrict = {};
