@@ -26,6 +26,7 @@ export default class ResourceComponent extends CuradorComponent {
 		this.simulateQuery = true;
     	this.isDisabled = false;
     	this.noCache = true;
+        this.showMsgError = false;
 
 		// list of `state` value/display objects
 		this.states = this.loadAll();
@@ -285,8 +286,13 @@ export default class ResourceComponent extends CuradorComponent {
 		};
 
 		this.finish = ($event) => {
-			this.publish();
-		}
+			if (this.resource.district && this.resource.school) {
+                this.publish()
+			} else {
+                this.showMsgError = !this.showMsgError;
+                this.functionShowMsg('Para poder publicar/aprobar este desafio, debe seleccionar un Distrito y un Colegio.');
+			}
+		};
 
 		this.toRefuse = ($event) => {
 			this.resource.status = 'rechazado';
@@ -299,6 +305,13 @@ export default class ResourceComponent extends CuradorComponent {
 						throw err;
 					});
 		}
+	}
+
+    functionShowMsg(msg) {
+    	this.msg = msg;
+        setTimeout(function(){
+        	this.showMsgError = !this.showMsgError;
+		}, 3000);
 	}
 
 	configureDropzone(Util){
@@ -471,8 +484,8 @@ export default class ResourceComponent extends CuradorComponent {
 	{
 		if(this.resource.type === 'desafio')
 		{
-			this.resource.district = angular.copy(this.selectedDistrict.name);
-			this.resource.school = angular.copy(this.selectedSchool.schoolName);
+			this.resource.district = (this.selectedDistrict) ? angular.copy(this.selectedDistrict.name) : null;
+			this.resource.school = (this.selectedSchool) ? angular.copy(this.selectedSchool.schoolName) : null;
 			this.resource.rate = angular.copy(this.rate);
 		}
 	}
