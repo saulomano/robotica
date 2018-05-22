@@ -7,7 +7,7 @@ import dashboard from './dashboard';
 import newResource from './new';
 import resource from './resource';
 import users from './users';
-
+import propuestadesafio from './propuestadesafio';
 // config to providers
 import { curadorConfig } from './curador.config';
 
@@ -16,7 +16,8 @@ let requirements = [
 	dashboard,
 	newResource,
 	resource,
-    users
+	users,
+	propuestadesafio
 ];
 
 module.exports = angular
