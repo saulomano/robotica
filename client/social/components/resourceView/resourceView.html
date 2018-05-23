@@ -18,7 +18,7 @@
 		<div class="rview__sidenav">
 				<div layout="column" layout-padding>
 					<div flex>
-						<div class="rview__thumnail thumbnail thumbnail--rounded">
+						<div class="rview__thumnail thumbnail thumbnail--rounded" ng-hide="$ctrl.resource.thumbnail === ''">
 							<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
 						</div>
 					</div>

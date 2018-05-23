@@ -1,14 +1,16 @@
 'use strict';
 import angular from 'angular';
+import $ from 'jquery';
 
 class HeaderComponent {
   /*@ngInject*/
-  constructor($element, $state, $stateParams, $rootScope) {
+  constructor($element, $state, $stateParams, $rootScope, Auth) {
     this.selected = '';
     this.$stateParams = $stateParams;
     this.$state = $state;
     this.$rootScope = $rootScope;
 
+    this.Auth = Auth;
     this.isDisabled = false;
     this.noCache = true;
     this.selectedItem;
@@ -87,6 +89,37 @@ class HeaderComponent {
         this.selected = '';
       }
     });
+
+    
+    this.getUser();
+    this.handleClickOnWindow();
+  }
+
+  handleClickOnWindow() {
+    $(window).click(() => {
+      
+    });
+  }
+
+  getUser(){
+    this.Auth
+      .getCurrentUser()
+      .then(user => {
+        this.user = user;
+      })
+      .catch(err => {
+        throw err;
+      });
+  }
+
+  toggleProfile($event){
+    this.showingDropdown = !this.showingDropdown;
+    $event.stopPropagation();
+  }
+
+  logout(){
+    this.Auth.logout();
+    this.$state.go('app.login');
   }
 
   $onInit(){
