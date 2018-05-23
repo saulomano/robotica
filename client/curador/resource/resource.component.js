@@ -2,6 +2,7 @@
 import angular from 'angular';
 import CuradorComponent from '../curador.component';
 import async from 'async';
+import $ from 'jquery';
 import _ from 'lodash';
 
 export default class ResourceComponent extends CuradorComponent {
@@ -26,7 +27,6 @@ export default class ResourceComponent extends CuradorComponent {
 		this.simulateQuery = true;
     	this.isDisabled = false;
     	this.noCache = true;
-        this.showMsgError = false;
 
 		// list of `state` value/display objects
 		this.states = this.loadAll();
@@ -289,7 +289,7 @@ export default class ResourceComponent extends CuradorComponent {
 			if (this.resource.district && this.resource.school) {
                 this.publish()
 			} else {
-                this.showMsgError = !this.showMsgError;
+                $('#msg').show();
                 this.functionShowMsg('Para poder publicar/aprobar este desafio, debe seleccionar un Distrito y un Colegio.');
 			}
 		};
@@ -309,9 +309,9 @@ export default class ResourceComponent extends CuradorComponent {
 
     functionShowMsg(msg) {
     	this.msg = msg;
-        setTimeout(function(){
-        	this.showMsgError = !this.showMsgError;
-		}, 3000);
+        this.$timeout(function(){
+			$('#msg').hide();
+		}, 5000);
 	}
 
 	configureDropzone(Util){

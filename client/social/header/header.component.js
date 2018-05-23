@@ -1,5 +1,6 @@
 'use strict';
 import angular from 'angular';
+import $ from 'jquery';
 
 class HeaderComponent {
   /*@ngInject*/
@@ -91,6 +92,13 @@ class HeaderComponent {
 
     
     this.getUser();
+    this.handleClickOnWindow();
+  }
+
+  handleClickOnWindow() {
+    $(window).click(() => {
+      
+    });
   }
 
   getUser(){
