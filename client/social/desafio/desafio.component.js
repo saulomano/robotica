@@ -566,8 +566,8 @@ export default class DesafioComponent extends SocialComponent {
     {
         if(this.desafio.type === 'desafio')
         {
-            this.resource.district = (this.selectedDistrict) ? angular.copy(this.selectedDistrict.name) : null;;
-            this.resource.school = (this.selectedSchool) ? angular.copy(this.selectedSchool.schoolName) : null;
+            this.desafio.district = (this.selectedDistrict) ? angular.copy(this.selectedDistrict.name) : null;
+			this.desafio.school = (this.selectedSchool) ? angular.copy(this.selectedSchool.schoolName) : null;
         }
     }
 }
