@@ -41,13 +41,13 @@ export default class DesafioComponent extends SocialComponent {
 			'desafio': 'Desafío',
 		};
 
-		this.Resource = this.Restangular.one('desafios', this.uid)
+		this.Desafio = this.Restangular.one('desafios', this.uid)
 		this.Publisheds = this.Restangular.all('desafios');
 
 		// tag separators
 		this.tagsKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
 		
-		this.resource = { };
+		this.desafio = { };
 		this.steps = [
 			{ name: 'ficha', caption: 'Ficha' },
 			{ name: 'recurso', 	caption: 'Recurso' },
@@ -57,7 +57,7 @@ export default class DesafioComponent extends SocialComponent {
 
 		this.configureDropzone(Util);
 		this.configureFunctions();
-		this.getResource();
+		this.getDesafio();
 		this.getCategories_();
 
 		this.onDeletePost = ($index) => {
@@ -148,10 +148,10 @@ export default class DesafioComponent extends SocialComponent {
 
                 this.district = data;
 
-                let resourceInstance = this;
+                let desafioInstance = this;
 
                 let schoolIndex = _.findIndex(this.district.schools, function (element) {
-                    return (element.schoolName == resourceInstance.resource.school);
+                    return (element.schoolName == desafioInstance.desafio.school);
                 });
 
                 if(schoolIndex == -1) {
@@ -178,8 +178,8 @@ export default class DesafioComponent extends SocialComponent {
 	}
 
 	refreshUI(forceApply){
-		this.headText = this.captions[this.resource.type];
-		this.showViculo = ['propuesta', 'actividad', 'orientacion' ].indexOf(this.resource.type) > -1;
+		this.headText = this.captions[this.desafio.type];
+		this.showViculo = ['propuesta', 'actividad', 'orientacion' ].indexOf(this.desafio.type) > -1;
 		this.getPublisheds(forceApply);
 	}
 
@@ -227,7 +227,7 @@ export default class DesafioComponent extends SocialComponent {
 				let at = this.getCategory('area');
 				let lt = this.getCategory('nivel');
 				let ac = this.getCategory('accessibility');
-				let us = this.getCategory('resource');
+				let us = this.getCategory('desafio');
 				let os = this.getCategory('os');
 				let or = this.getCategory('orientacion');
 				
@@ -247,9 +247,9 @@ export default class DesafioComponent extends SocialComponent {
 		})
 	}
 
-	watchResource(){
+	watchDesafio(){
 		this.saveTimes = 0;
-		this.$scope.$watch(() => { return this.resource; }, (value) => {
+		this.$scope.$watch(() => { return this.desafio; }, (value) => {
 			this.refreshUI();
 			this.saveTimes++;
 			if (this.saveTimes <= 1){
@@ -259,7 +259,7 @@ export default class DesafioComponent extends SocialComponent {
 				clearInterval(this.saverHandler);
 			}
 			this.saverHandler = setInterval(() => {
-				this.saveResource();
+				this.saveDesafio();
 				clearInterval(this.saverHandler);
 			}, 500);
 		}, true);
@@ -271,7 +271,7 @@ export default class DesafioComponent extends SocialComponent {
 				this.currentStep = step.name;
 				
 				if (!this.init && !this.loading){
-					this.resource.step = 'ficha';
+					this.desafio.step = 'ficha';
 				}
 				
 				this.init = false;
@@ -280,7 +280,7 @@ export default class DesafioComponent extends SocialComponent {
 		};
 
 		this.save = (button) => {
-			this.saveResource(button);
+			this.saveDesafio(button);
 		};
 
 		this.finish = ($event) => {
@@ -312,7 +312,7 @@ export default class DesafioComponent extends SocialComponent {
 			'removedfile' : (file) => {},
 			'success' : (file, xhr) => {
 				console.log(xhr);
-				this.resource.thumbnail = xhr.url;
+				this.desafio.thumbnail = xhr.url;
 			},
 			'processing': () => {},
 			'queuecomplete': () => {
@@ -334,7 +334,7 @@ export default class DesafioComponent extends SocialComponent {
       		'addedfile' : (file) => {},
 			'removedfile' : (file) => {},
       		'success' : (file, xhr) => {
-				this.resource.files.push(xhr);
+				this.desafio.files.push(xhr);
 			},
       		'error' : (err) => {
 				this.$log.error(err);
@@ -346,24 +346,24 @@ export default class DesafioComponent extends SocialComponent {
     	};
 	}
 
-	getResource(){
-		this.Resource
+	getDesafio(){
+		this.Desafio
 		.get()
 		.then(data => {
-			this.resource = data;
-			this.ngMeta.setTitle(this.resource.title);
-			this.ngMeta.setTag('description', this.resource.summary);
-			if (typeof this.resource.area == 'string'){
-				this.resource.area = [];
+			this.desafio = data;
+			this.ngMeta.setTitle(this.desafio.title);
+			this.ngMeta.setTag('description', this.desafio.summary);
+			if (typeof this.desafio.area == 'string'){
+				this.desafio.area = [];
 			}
-			if (typeof this.resource.nivel == 'string'){
-				this.resource.nivel = [];
+			if (typeof this.desafio.nivel == 'string'){
+				this.desafio.nivel = [];
 			}
-			if (this.resource.step){
-				let idx = _.findIndex(this.steps, { name: this.resource.step });
+			if (this.desafio.step){
+				let idx = _.findIndex(this.steps, { name: this.desafio.step });
 				this.initStepIndex = idx === -1 ? undefined : idx;
 			}
-			if (this.resource.type === 'mediateca'){
+			if (this.desafio.type === 'mediateca'){
 				this.steps = [
 					{ name: 'ficha', 		caption: 'Ficha' },
 					{ name: 'recurso', 	caption: 'Recurso' },
@@ -376,16 +376,16 @@ export default class DesafioComponent extends SocialComponent {
             // Exclusive 'Desafios' validations
             //===============================================
 
-            if(this.resource.type === 'desafio' && this.resource.district)
+            if(this.desafio.type === 'desafio' && this.desafio.district)
             {
                 // Create angular 'Desafios' variables
                 this.selectedDistrict = {};
-                this.selectedSchool = this.resource.school || '';
+                this.selectedSchool = this.desafio.school || '';
 
-                this.searchDistrictText = this.resource.district || '';
+                this.searchDistrictText = this.desafio.district || '';
                 // this.searchSchoolText = '';
 
-				this.rate = this.resource.rate || 0;
+				this.rate = this.desafio.rate || 0;
 
 				this.School = this.Restangular.one('schools/district', this.searchDistrictText);
 
@@ -394,12 +394,12 @@ export default class DesafioComponent extends SocialComponent {
 
             //===============================================
 
-			_.each(this.resource.links, l =>{
+			_.each(this.desafio.links, l =>{
 				l.typeCaption = this.captions[l.type];
 			});
 
 			this.loading = false;
-			this.watchResource()
+			this.watchDesafio()
 		})
 		.catch(err => {
 			throw err;
@@ -412,12 +412,12 @@ export default class DesafioComponent extends SocialComponent {
 		}
 	}
 	
-	saveResource(button){
-        this.onSaveResource();
+	saveDesafio(button){
+        this.onSaveDesafio();
 		if (button) {
-			this.resource.status = 'pendiente';
+			this.desafio.status = 'pendiente';
 		}
-		this.resource
+		this.desafio
 			.put()
 			.then(data => {
 				this.$log.log('autosaved', data);
@@ -484,8 +484,8 @@ export default class DesafioComponent extends SocialComponent {
 	}
 
 	onDeletePost_($index){
-		if (this.resource.postBody instanceof Array){
-			this.resource.postBody.splice($index, 1);
+		if (this.desafio.postBody instanceof Array){
+			this.desafio.postBody.splice($index, 1);
 		}
 	}
 
@@ -497,22 +497,22 @@ export default class DesafioComponent extends SocialComponent {
 	}
 
 	removeAllFiles(){
-		this.resource.files.splice(0, this.resource.files.length)
+		this.desafio.files.splice(0, this.desafio.files.length)
 	}
 
 	sumfiles(files){
 		return _.sumBy(files, 'size');
 	}
 
-	deleteResource(){
+	deleteDesafio(){
 		let Published = this.Restangular.one('publisheds', this.uid)
 		this.loading = true;
 		
 		this
-			.Resource
+			.Desafio
 			.remove()
 			.then( data => {
-				if (this.resource.published) {
+				if (this.desafio.published) {
 					Published
 					.remove()
 					.then( data => {
@@ -546,7 +546,7 @@ export default class DesafioComponent extends SocialComponent {
 	
 	releasePublish(){
 		this.loading = true;
-		this.resource
+		this.desafio
 			.post('publish')
 			.then(data => {
 				this.$log.log('published', data);
@@ -558,16 +558,16 @@ export default class DesafioComponent extends SocialComponent {
 			});
 	}
 
-	getResourceType(type){
+	getDesafioType(type){
 		return this.captions[type];
 	}
 
-    onSaveResource()
+    onSaveDesafio()
     {
-        if(this.resource.type === 'desafio')
+        if(this.desafio.type === 'desafio')
         {
-            this.resource.district = angular.copy(this.selectedDistrict.name);
-            this.resource.school = angular.copy(this.selectedSchool.schoolName);
+            this.desafio.district = angular.copy(this.selectedDistrict.name);
+            this.desafio.school = angular.copy(this.selectedSchool.schoolName);
         }
     }
 }

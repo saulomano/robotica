@@ -1,16 +1,15 @@
 'use strict';
 
-import Resource from '../resource/resource.model';
+import Desafio from './desafio.model';
+import Published from '../published/published.model';
 import async from 'async';
 import _ from 'lodash';
 
 /**
- * Get list of desafio
- * restriction: 'user'
+ * Get list of resources
+ * restriction: 'authenticate'
  */
 export function index(req, res, next) {
-	console.log('index() req: ', req);
-	const userId = req.user._id;
 	var query = req.querymen;
 	let qq = req.query.q;
 	let q = {};
@@ -33,6 +32,7 @@ export function index(req, res, next) {
 
 		q = { $or: [
 				{ type: { $regex: k, $options: 'i' } },
+				{ status: { $regex: k, $options: 'i' }},
 				{ title: { $regex: k, $options: 'i' } },
 				{ summary: { $regex: k, $options: 'i' } },
 				{ nivel: { $regex: k, $options: 'i' } },
@@ -47,16 +47,16 @@ export function index(req, res, next) {
 		};
 	}
 
-	Resource
-		.find({owner: userId})
+	Desafio
+		.find(q)
 		.count()
 		.exec((err, count) => {
 			if (err){
 				return next(err);
 			}
 			req.totalItems = count;
-			req.result = Resource
-							.find({owner: userId})
+			req.result = Desafio
+							.find(q)
 							.populate('owner')
 							.populate('files')
 							.sort(query.cursor.sort)
@@ -70,38 +70,38 @@ export function index(req, res, next) {
 
 
 /**
- * Creates a new desafio
- * restriction: 'user'
+ * Creates a new resource
+ * restriction: 'curador'
  */
 export function create(req, res, next) {
-  var newResource = new Resource(req.body);
+  var newDesafio = new Desafio(req.body);
   
-	req.result = newResource.save();
+	req.result = newDesafio.save();
 	next();
 }
 
 
 /**
- * Updates a desafio
- * restriction: 'user'
+ * Updates a resource
+ * restriction: 'curador'
  */
 export function update(req, res, next) {
 	delete req.body._id;
 
-	req.result = Resource.update({ _id: req.params.id}, req.body);
+	req.result = Desafio.update({ _id: req.params.id}, req.body);
 	next();
 }
 
 
 /**
- * Get a single desafio
- * restriction: 'user'
+ * Get a single resource
+ * restriction: 'authenticate'
  */
 export function show(req, res, next) {
-  var resourceId = req.params.id;
+  var desafioId = req.params.id;
 
-	req.result = Resource
-								.findById(resourceId)
+	req.result = Desafio
+								.findById(desafioId)
 								.populate('owner')
 								.populate('files')
 								.populate('published')
@@ -113,22 +113,22 @@ export function show(req, res, next) {
 
 /**
  * Deletes a resource
- * restriction: 'user'
+ * restriction: 'authenticate'
  */
 export function destroy(req, res, next) {
-	req.result =  Resource.findByIdAndRemove(req.params.id).exec();
+	req.result =  Desafio.findByIdAndRemove(req.params.id).exec();
 	next();
 }
 
 
 /**
  * Publish a resource
- * restriction: 'user'
+ * restriction: 'curador'
  */
 export function publish(req, res, next) {
-	let resource = req.body;
-	let pid = resource.published ? resource.published._id : undefined;
-	let published = new Published(resource);
+	let desafio = req.body;
+	let pid = desafio.published ? desafio.published._id : undefined;
+	let published = new Published(desafio);
 
 	// find the resource
 	if (pid === undefined){
@@ -137,12 +137,12 @@ export function publish(req, res, next) {
 		published
 			.save()
 			.then(p => {
-				delete resource._id;
-				resource.published = p._id;
-				Resource
+				delete desafio._id;
+				desafio.published = p._id;
+				Desafio
 					.update({ _id: req.params.id}, req.body)
 					.then(p => {
-						req.result = Resource
+						req.result = Desafio
 							.findById(req.params.id)
 							.populate('owner')
 							.populate('files')
@@ -159,7 +159,7 @@ export function publish(req, res, next) {
 		Published
 			.update({ _id: pid}, published)
 			.then(p => {
-				req.result = Resource
+				req.result = Desafio
 					.findById(req.params.id)
 					.populate('owner')
 					.populate('files')
