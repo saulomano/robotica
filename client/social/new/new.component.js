@@ -29,10 +29,10 @@ export default class NewComponent extends SocialComponent{
             return;
         }
         // create the object
-        this.createResource(this.section);
+        this.createDesafio(this.section);
     }
 
-    createResource(section) {
+    createDesafio(section) {
         let dbtypes = {
             'subidesafio': 'desafio',
         };
@@ -58,8 +58,8 @@ export default class NewComponent extends SocialComponent{
                     files: [],
                     step: 'ficha'
                 };
-                let resource = this.Restangular.all('desafios');
-                resource
+                let desafio = this.Restangular.all('desafios');
+                desafio
                     .post(data)
                     .then(data => {
                         this.$state.go(`social.desafio`, { uid: data._id });

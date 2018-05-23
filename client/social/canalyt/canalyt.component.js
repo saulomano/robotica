@@ -19,13 +19,33 @@ export default class canalytComponent extends SocialComponent {
     this.videos = this.obtenerVideosPlaylist();
 
 
-    $scope.changeVideo = function(video) {
-   
-      document.getElementById('vid_frame').src='http://youtube.com/embed/'+video+'?autoplay=1&rel=0&showinfo=0&autohide=1';
+      $scope.changeVideo = function(video) {
 
-     }
-  
+          document.getElementById('vid_frame').src='http://youtube.com/embed/'+video+'?autoplay=1&rel=0&showinfo=0&autohide=1';
 
+          if (this.hash === "") {
+              return;
+          }
+
+          var hash = this.hash;
+          $('html, body').animate({
+              scrollTop: 0
+          }, 750);
+      }
+
+      $scope.changeVideoArrow = function(direction) {
+
+          var scrollPos = $(".vid-list-container").scrollLeft();
+
+          if (direction == 'right')
+              scrollPos = scrollPos + 336;
+          else
+              scrollPos = scrollPos - 336;
+
+          $(".vid-list-container").animate({//.stop().animate({
+              scrollLeft: scrollPos
+          }, 750);
+      }
 	}
   
   obtenerVideosPlaylist(){

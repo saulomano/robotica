@@ -49,12 +49,30 @@
 				menu-sections-name="$ctrl.arraySectionsName"
 				navbar-item-selected="item.section === $ctrl.selected"
 				ng-click="$ctrl.itemClicked(item)"
-				tabindex="0"/>
+				tabindex="0">
+			</rd-navbar-item>
 		</rd-navbar-navigation>
 		<rd-navbar-tools>
-		<!--	<rd-navbar-item ui-sref="social.buscar" navbar-item-icon="ri ri-lupa" navbar-item-caption="Buscar" navbar-item-selected="$ctrl.$state.includes('social.buscar')"></rd-navbar-item>
-			<rd-navbar-item ui-sref="social.home" navbar-item-icon="mi mi-home" navbar-item-caption="Home" navbar-item-selected="$ctrl.$state.includes('social.home')"></rd-navbar-item>
-	-->
+			<div class="rd-navbar__item profile__avatar"
+					ng-show="$ctrl.user.google.image.url !== undefined"
+					ng-click="$ctrl.toggleProfile($event)">
+				<img ng-src="{{$ctrl.user.google.image.url}}" alt="Avatar">
+			</div>
+			<div class="profile__dropdown" ng-show="$ctrl.showingDropdown">
+				<div class="profile__dropdown--caret">
+					<i class="fa fa-caret-up fa-2x"></i>
+				</div>
+				<div class="profile__dropdown--username">{{$ctrl.user.name}}</div>
+				<md-divider></md-divider>
+				<div layout="row">
+					<md-button class="md-raised md-mini profile__dropdown--logout">
+						<div layout="row" layout-align="center center" ng-click="$ctrl.logout()">
+							<i class="fa fa-sign-out"></i> <span>Salir</span>
+						</div>
+					</md-button>
+				</div>
+				
+			</div>
 		</rd-navbar-tools>
 		<rd-navbar-body>
 		</rd-navbar-body>
