@@ -21,26 +21,26 @@
 		<md-button class="md-raised rd-stepper__button--save"  
 			aria-label="Guardar" 
 			ng-click="!$rdStepperController.releaseSave(true)" 
-			ng-if="!$rdStepperController.showNext() && $rdStepperController.userRole !== 'admin'">
+			ng-if="!$rdStepperController.showNext() && $rdStepperController.userRole !== 'admin' && ($rdStepperController.userRole == 'desafio')">
 			<span>Enviar</span>
 			<md-icon class="mi mi-save" aria-hidden="true"></md-icon>
 		</md-button>
 		<md-button class="md-raised rd-stepper__button--save"  
 			aria-label="Guardar" 
 			ng-click="!$rdStepperController.releaseSave(true)" 
-			ng-if="!$rdStepperController.showNext() && ($rdStepperController.userRole == 'admin')">
+			ng-if="!$rdStepperController.showNext() && ($rdStepperController.userRole == 'admin') && ($rdStepperController.userRole == 'desafio')">
 			<span>Guardar</span>
 			<md-icon class="mi mi-save" aria-hidden="true"></md-icon>
 		</md-button>
 		<md-button class="md-raised md-primary rd-stepper__button--next  button__text-icon" 
 				ng-click="$rdStepperController.finish($event)"
-				ng-show="!$rdStepperController.showNext() && ($rdStepperController.userRole == 'admin')">
+				ng-show="!$rdStepperController.showNext() && ($rdStepperController.userRole == 'admin') ">
 			<span>Publicar</span>
 		<md-icon class="mi mi-cloud-upload" aria-hidden="true"></md-icon>
 		</md-button>
 		<md-button class="md-raised rd-stepper__button--next  button__text-icon" 
 				ng-click="$rdStepperController.toRefuse($event)"
-				ng-show="!$rdStepperController.showNext() && ($rdStepperController.userRole == 'admin')">
+				ng-show="!$rdStepperController.showNext() && ($rdStepperController.userRole == 'admin')  && ($rdStepperController.userRole == 'desafio')">
 			<span>Rechazar</span>
 			<md-icon class="mi" aria-hidden="true"><i class="material-icons">block</i></md-icon>
 		</md-button>

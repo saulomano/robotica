@@ -8,7 +8,7 @@ import {EventEmitter} from 'events';
 var PropuestaDesafioEvents = new EventEmitter();
 
 // Set max event listeners (0 == unlimited)
-PropuestaDesafio.setMaxListeners(0);
+PropuestaDesafioEvents.setMaxListeners(0);
 
 // Model events
 var events = {

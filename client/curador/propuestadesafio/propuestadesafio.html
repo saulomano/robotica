@@ -8,7 +8,7 @@
 	<div class="dashboard__remove" ng-hide="$ctrl.loading">
 		<p class="dashboard__remove--legend">¿Esta seguro que desea eliminar PERMANENTEMENTE este {{$ctrl.getResourceType($ctrl.resource.type)}}?</p>
 		<md-button ng-click="$ctrl.deleteResource()" class="md-raised md-primary dashboard__remove--button" aria-label="Eliminar módulo">
-			Confirmar y Eliminar Porpuesta Desafio
+			Confirmar y Eliminar Recurso
 		</md-button>
 	</div>
 </div>
@@ -24,7 +24,10 @@
 							on-enter-step="$ctrl.onEnterStep"
 							on-save="$ctrl.save"
 							init-step-index="$ctrl.initStepIndex"
-							user-rol=$ctrl.user.role></rd-stepper>
+							user-rol=$ctrl.user.role
+							type=$ctrl.resource.type
+							
+							></rd-stepper>
 </div>
 
 <!-- STEP FICHA -->
@@ -115,7 +118,55 @@
 				 </md-expansion-panel>
 			</md-content>
 
-		
+			<!-- ================================================================ -->
+			<!-- DESAFIOS -->
+			<!-- ================================================================ -->
+			<!-- DISTRITOS -->
+			<md-content ng-if="$ctrl.resource.type == 'desafio'">
+					<div>
+						<div class="md-title">Distrito</div>
+						<md-autocomplete
+							ng-disabled="$ctrl.isDisabled"
+							md-no-cache="$ctrl.noCache"
+							md-selected-item="$ctrl.selectedDistrict"
+							md-search-text-change="$ctrl.searchTextChange($ctrl.searchDistrictText)"
+							md-search-text="$ctrl.searchDistrictText"
+							md-selected-item-change="$ctrl.onChangeDistrict(item)"
+							md-items="item in $ctrl.querySearch($ctrl.searchDistrictText)"
+							md-item-text="($ctrl.selectedDistrict.name || item.display)"
+							md-min-length="0"
+							placeholder="Selecciona un Distrito...">
+							<md-item-template>
+								<span md-highlight-text="$ctrl.searchDistrictText" md-highlight-flags="^i">{{item.display}}</span>
+							</md-item-template>
+							<md-not-found>
+								No se encontro un distrito de nombre "{{$ctrl.searchDistrictText}}".
+							</md-not-found>
+						</md-autocomplete>
+					</div>				   
+			</md-content>
+
+			<!-- COLEGIOS -->
+			<md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loadingSchools">					
+				<div>
+					<h1 class="md-title">Colegios</h1>
+					<md-autocomplete
+							md-selected-item="$ctrl.selectedSchool"
+							md-search-text="$ctrl.searchSchoolText"
+							md-items="item in $ctrl.querySearchSchool($ctrl.searchSchoolText)"
+							md-item-text="item.schoolName"
+							md-min-length="0"
+							placeholder="Selecciona un Colegio...">
+						<md-item-template>
+							<span md-highlight-text="$ctrl.searchSchoolText" md-highlight-flags="^i">{{item.schoolName}}</span>
+						</md-item-template>
+						<md-not-found>
+							No se encontro un colegio de nombre "{{$ctrl.searchSchoolText}}".
+						</md-not-found>
+					</md-autocomplete>
+				</div>				   
+			</md-content>
+		</md-content>
 		
 		<md-content  class="dashboard__content" flex>
 			<div class="dashboard__content--head">

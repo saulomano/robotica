@@ -21,7 +21,7 @@ class RdStepperController {
 		this.$element.addClass('rd-stepper');
 		this.currentStepIndex_ = 0;
 		this.steps = this.$scope.steps;
-
+		this.type = this.$scope.type;
 		this.getCurrentUser();
 
 		this.$scope.$watch(() => { return this.$scope.steps }, (value) => {

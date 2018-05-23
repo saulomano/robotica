@@ -26,8 +26,8 @@ class CuradorHeaderComponent {
       section: 'desafios',  caption: 'Desafios Resueltos', action:'curador.dashboard'
     };
 
-    this.navDesafios = {
-      section: 'desafiosPropuestos',  caption: 'Desafios Propuestos', action:'curador.propuestadesafio'
+    this.navDesafiosPropuestos = {
+      section: 'desafiosPropuestos',  caption: 'Desafios Propuestos', action:'curador.dashboardpropuestadesafio'
     };
 
     this.navbarItems = [

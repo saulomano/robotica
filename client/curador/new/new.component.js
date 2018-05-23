@@ -13,7 +13,7 @@ export default class NewComponent extends CuradorComponent {
     this.Restangular = Restangular;
     this.Auth = Auth;
 
-    let types = /^(noticias|calendario|herramientas|documentos|mediateca|desafios|loquehacemos|novedades|kits)$/ig;
+    let types = /^(noticias|calendario|herramientas|documentos|mediateca|desafios|loquehacemos|novedades|kits|desafiopropuesto)$/ig;
     this.section = _.toLower($stateParams.type);
 
     if (!types.test(this.section)){
@@ -29,6 +29,9 @@ export default class NewComponent extends CuradorComponent {
       return;
     }
     // create the object
+    if (this.section==='desafiopropuesto'){      
+      this.createPropuestaDesafio(this.section);
+    }else
     this.createResource(this.section);
   }
 
@@ -43,7 +46,7 @@ export default class NewComponent extends CuradorComponent {
       'desafios': 'desafio',
       'loquehacemos': 'loquehacemos',
       'novedades': 'novedades',
-
+      'desafiopropuesto': 'desafiopropuesto'
     };
     
     let type = dbtypes[section];
@@ -51,6 +54,10 @@ export default class NewComponent extends CuradorComponent {
     this.Auth
     .getCurrentUser()
     .then(user => {
+
+      
+
+
       let data = {
         type: type,
         title: '',
@@ -66,11 +73,14 @@ export default class NewComponent extends CuradorComponent {
         links: [],
         files: []
       };
+
+
       let resource = this.Restangular.all('resources');
       resource
         .post(data)
         .then(data => {
           this.$state.go(`curador.recurso`, { uid: data._id });
+
         })
         .catch((err) => {
           this.$log.error(err)
@@ -82,4 +92,49 @@ export default class NewComponent extends CuradorComponent {
       return this.$state.go(`curador.dashboard`);
     });
   }
+
+
+  createPropuestaDesafio(section) {
+
+   
+    this.Auth
+    .getCurrentUser()
+    .then(user => {
+      let data = {
+        type: 'desafiopropuesto',
+        title: '',
+        summary: '',
+        thumbnail: '',
+        nivel: [],
+        area: [],
+        category: '',
+        postBody: [],
+        tags: [],
+        owner: user._id,
+        collaborators: [],
+        links: [],
+        files: []
+      };
+
+
+      let resource = this.Restangular.all('PropuestaDesafio');
+      resource
+        .post(data)
+        .then(data => {
+          this.$state.go(`curador.propuestadesafio`, { uid: data._id });
+
+        })
+        .catch((err) => {
+          this.$log.error(err)
+          return this.$state.go(`curador.dashboardpropuestadesafio`);
+        });
+    })
+    .catch((err) => {
+      this.$log.error(err)
+      return this.$state.go(`curador.propuestadesafio`);
+    });
+  }
+
+
+
 }
