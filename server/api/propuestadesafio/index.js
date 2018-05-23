@@ -12,5 +12,5 @@ router.delete('/:id', auth.isAuthenticated(), controller.destroy);
 router.put('/:id', auth.isAuthenticated(), controller.update);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', auth.isAuthenticated(), controller.create);
-
+router.post('/:id/publish', auth.hasRole('admin'), controller.publish);
 module.exports = router;

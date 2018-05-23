@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/saulomano/robotica#readme",
   "dependencies": {
+    "angular-youtube-api-factory": "^0.6.2",
     "angular1-star-rating": "^1.2.11",
     "async": "^2.6.0",
     "body-parser": "^1.18.2",

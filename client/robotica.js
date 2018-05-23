@@ -68,7 +68,9 @@ import svg from "angular1-star-rating/dist/assets/images/star-rating.icons.svg";
 
 
 
-import ngYoutubeEmbed from 'ng-youtube-embed';
+//import ngYoutubeEmbed from 'ng-youtube-embed';
+
+
 
 
 let requirements = [

@@ -1,6 +1,7 @@
 'use strict';
 
 import PropuestaDesafio from './propuestadesafio.model';
+import Published from '../publishedpropuesta/publishedpropuesta.model';
 import async from 'async';
 import _ from 'lodash';
 
@@ -103,8 +104,7 @@ export function show(req, res, next) {
 	req.result = PropuestaDesafio
 								.findById(resourceId)
 								.populate('owner')
-								.populate('files')
-								.populate('published')
+								.populate('files')								
 								.populate('links')
 								.exec();
 	next();
@@ -139,10 +139,10 @@ export function publish(req, res, next) {
 			.then(p => {
 				delete resource._id;
 				resource.published = p._id;
-				Resource
+				PropuestaDesafio
 					.update({ _id: req.params.id}, req.body)
 					.then(p => {
-						req.result = Resource
+						req.result = PropuestaDesafio
 							.findById(req.params.id)
 							.populate('owner')
 							.populate('files')

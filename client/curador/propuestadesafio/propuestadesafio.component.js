@@ -205,7 +205,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 			this.resource
 					.put()	
 					.then(data => {
-						(this.returnDesafios) ? this.$state.go('curador.dashboard', { type: " propuesta desafios" }) : this.$state.go('curador.dashboard');
+						(this.returnDesafios) ? this.$state.go('curador.propuestadesafio', { type: "propuestadesafio" }) : this.$state.go('curador.propuestadesafio');
 					})
 					.catch(err => {
 						throw err;
@@ -341,7 +341,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 			.then(data => {
 				this.$log.log('autosaved', data);
 				if (button) {
-					(this.returnDesafios) ? this.$state.go('curador.propuestadesafio', { type: " propuesta desafios" }) : this.$state.go('curador.propuestadesafio');
+					(this.returnDesafios) ? this.$state.go('curador.propuestadesafio', { type: "desafiopropuesto" }) : this.$state.go('curador.propuestadesafio');
 				}
 			})
 			.catch(err => {
@@ -456,8 +456,8 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 	publish(ev){
 		// Appending dialog to document.body to cover sidenav in docs app
 		var confirm = this.$mdDialog.confirm()
-					.title('¿Está seguro que desea hacer publico este recurso?')
-					.ariaLabel('Publicación del Recurso')
+					.title('¿Está seguro que desea hacer publico esta propuesta?')
+					.ariaLabel('Publicación del desafio')
 					.targetEvent(ev)
 					.ok('Publicar')
 					.cancel('Cancelar');
@@ -477,7 +477,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 			.then(data => {
 				this.$log.log('published', data);
 				this.loading = false;
-				(this.returnDesafios) ? this.$state.go('curador.dashboard', { type: " propuesta desafios" }) : this.$state.go('curador.dashboard');
+				(this.returnDesafios) ? this.$state.go('curador.propuestadesafio', { type: "propuestadesafio" }) : this.$state.go('curador.propuestadesafio');
 			})
 			.catch(err => {
 				throw err;
