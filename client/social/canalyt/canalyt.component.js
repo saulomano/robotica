@@ -26,15 +26,25 @@ export default class canalytComponent extends SocialComponent {
           if (this.hash === "") {
               return;
           }
-          event.preventDefault();
+
           var hash = this.hash;
           $('html, body').animate({
               scrollTop: 0
-          }, 800, function () {
+          }, 750);
+      }
 
-              // Add hash (#) to URL when done scrolling (default click behavior)
-              window.location.hash = hash;
-          });
+      $scope.changeVideoArrow = function(direction) {
+
+          var scrollPos = $(".vid-list-container").scrollLeft();
+
+          if (direction == 'right')
+              scrollPos = scrollPos + 336;
+          else
+              scrollPos = scrollPos - 336;
+
+          $(".vid-list-container").animate({//.stop().animate({
+              scrollLeft: scrollPos
+          }, 750);
       }
 	}
   
