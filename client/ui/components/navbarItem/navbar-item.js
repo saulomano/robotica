@@ -47,15 +47,11 @@ class RdNavbarItemController {
 		let types = /^(desafios|subidesafio|desafiosaprobados)$/ig;
 
 		//Si es query string viene por aca sino redirige
-		if (item.action.includes("?seccion=") ){
-			this.$state.go('social.home', {  seccion: item.action.slice(item.action.indexOf('=')+1)   });
-		}else{
-			this.$state.go(item.action, { type: item.section });
+		if (item.action.includes("?seccion=")){
+			this.$state.go('social.home', {  seccion: item.action.slice(item.action.indexOf('=')+1)   }, {reload: true});
+		} else {
+			this.$state.go(item.action, { type: item.section }, {reload:true});
 		}
-
-
-
-
     }
 }
 
