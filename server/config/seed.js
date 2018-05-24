@@ -15,7 +15,7 @@ export default function seedDatabaseIfNeeded() {
 
   // populate users
   
-  User.find({}).remove()
+/*  User.find({}).remove()
     .then(() => {
       User.create({
         provider: 'local',
@@ -37,7 +37,7 @@ export default function seedDatabaseIfNeeded() {
       })
       .then(() => console.log('finished populating users'))
       .catch(err => console.log('error populating users', err));
-    });
+    });*/
   
   
   // populate categories
