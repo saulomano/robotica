@@ -11,9 +11,9 @@ let routes = function($stateProvider) {
     });
 }
 
-export default angular.module('robotica.curador.curadordesafio', [])
+export default angular.module('robotica.curador.desafio', [])
                       .config(routes)
-                      .component('curadordesafioss', {
+                      .component('curadorDesafio', {
                         template: require('./desafio.html'),
                         controller: DesafioComponent
                       })

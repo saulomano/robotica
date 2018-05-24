@@ -38,7 +38,7 @@ export default class DesafioComponent extends CuradorComponent {
 		};
 
 		this.Desafio = this.Restangular.one('desafios', this.uid);
-		this.Publisheds = this.Restangular.all('desafios');
+		this.Publisheds = this.Restangular.all('publisheddesafios');
 
 		this.returnDesafios = false;
 

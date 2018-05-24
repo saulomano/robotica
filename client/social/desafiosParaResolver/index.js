@@ -5,7 +5,7 @@ let routes = function($stateProvider) {
     $stateProvider
       .state('social.desafiosParaResolver', {
         url: '/desafiosParaResolver',
-        template: '<desafios-aprobados></desafios-aprobados>'
+        template: '<desafios-para-resolver></desafios-para-resolver>'
       });
   }
   
