@@ -219,7 +219,7 @@
 </rd-card>
 
 <!-- Desafios -->
-<rd-card data-rd-section="{{$ctrl.resource.type}}" ng-if="$ctrl.resource.type == 'desafio'">
+<rd-card data-rd-section="{{$ctrl.resource.type}}" ng-if="$ctrl.resource.type == 'desafio' || $ctrl.resource.type == 'desafiopropuesto'">
 	<rd-card-toolbar ng-if="$ctrl.editable">
 		<div layout="row">
 			<div class="rd-card__status" flex ng-hide="$ctrl.resource.published == undefined"> <i class="fa fa-check-circle-o"></i>	Publicado</div>

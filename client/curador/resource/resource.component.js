@@ -471,7 +471,7 @@ export default class ResourceComponent extends CuradorComponent {
 			.then(data => {
 				this.$log.log('autosaved', data);
 				if (button) {
-					(this.returnDesafios) ? this.$state.go('curador.dashboard', { type: "desafios" }) : this.$state.go('curador.dashboard');
+					(this.returnDesafios) ? this.$state.go('curador.propuestadesafio', { type: "desafios" }) : this.$state.go('curador.propuestadesafio');
 				}
 			})
 			.catch(err => {
