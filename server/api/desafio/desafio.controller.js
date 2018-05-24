@@ -1,7 +1,7 @@
 'use strict';
 
 import Desafio from './desafio.model';
-import Published from '../published/published.model';
+import Published from '../publisheddesafios/publisheddesafios.model';
 import async from 'async';
 import _ from 'lodash';
 

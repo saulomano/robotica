@@ -12,7 +12,7 @@ export default class DesafiosComponent {
         this.Auth = Auth;
         this.Restangular = Restangular;
         this.user = this.getUser();
-        this.Resources = this.Restangular.all('desafios');
+        this.Desafios = this.Restangular.all('desafios');
         this.section = $stateParams.type;
         this.searchText = $stateParams.search;
         this.$rootScope.$on('filterChange', (event, searchText) => {
@@ -41,7 +41,7 @@ export default class DesafiosComponent {
             q = this.searchText
         }
 
-        this.Resources
+        this.Desafios
             .getList({
                 q: q,
                 page: this.page,

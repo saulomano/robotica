@@ -12,14 +12,21 @@ class DesafioCardController {
         this.$element = $element;
         this.$state = $state;
         this.Restangular = Restangular;
-        this.$element.addClass('resource-card');
+        this.$element.addClass('desafio-card');
         this.deleteUserBoolean = false;
         this.desafio = this.$scope.desafio;
         this.editable = this.$scope.editable === true;
+        this.rol = this.$scope.rol;
     }
 
+    
     editDesafio() {
-        this.$state.go(`social.desafio`, { uid: this.desafio._id });
+        if( this.rol == 'social'){
+            this.$state.go(`social.desafio`, { uid: this.desafio._id });
+        }else{
+            this.$state.go(`curador.desafio`, { uid: this.desafio._id })
+        }
+        
     }
 
     deleteDesafio(_id) {
@@ -44,7 +51,8 @@ function desafioCard($log){
         controllerAs: '$ctrl',
         scope: {
             desafio: '=',
-            editable: '='
+            editable: '=',
+            rol: '='
         },
         template: require('./desafioCard.html')
     }

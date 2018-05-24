@@ -516,13 +516,13 @@ export default class DesafioComponent extends SocialComponent {
 					Published
 					.remove()
 					.then( data => {
-						this.$state.go('curador.dashboard');
+						this.$state.go('curador.dashboarddesafios');
 					})
 					.catch( err => {
 						throw err;
 					});
 				} else {
-					this.$state.go('curador.dashboard');
+					this.$state.go('curador.dashboarddesafios');
 				}
 			})
 			.catch( err => {
@@ -551,7 +551,7 @@ export default class DesafioComponent extends SocialComponent {
 			.then(data => {
 				this.$log.log('published', data);
 				this.loading = false;
-				this.$state.go('curador.dashboard');
+				this.$state.go('curador.dashboarddesafios');
 			})
 			.catch(err => {
 				throw err;

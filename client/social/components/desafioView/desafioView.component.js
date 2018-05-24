@@ -15,7 +15,7 @@ class DesafioViewController {
         this.Auth = Auth;
         this.getUser();
         this.role = '';
-    	this.$element.addClass('resource-card');
+    	this.$element.addClass('desafio-card');
     
 		this.editable = this.$scope.editable === true;
 		let captions = {
@@ -28,15 +28,15 @@ class DesafioViewController {
 
 		this.isPublished = this.$scope.isPublished == true;
 
-		if (this.resource){
-			this.resource.typeCaption = captions[this.resource.type];
+		if (this.desafio){
+			this.desafio.typeCaption = captions[this.desafio.type];
 		}
 
-		this.$scope.$watch(() => { return this.$scope.resource; }, (value) => {
-			this.resource = this.$scope.resource;
+		this.$scope.$watch(() => { return this.$scope.desafio; }, (value) => {
+			this.desafio = this.$scope.desafio;
 			
-			if (this.resource){
-				this.resource.typeCaption = captions[this.resource.type];
+			if (this.desafio){
+				this.desafio.typeCaption = captions[this.desafio.type];
 			}
 			$timeout(() => {
 				this.$scope.$apply();
@@ -70,7 +70,7 @@ function desafioView($log){
 		controller: DesafioViewController,
     controllerAs: '$ctrl',
     scope: {
-			resource: '=',
+			desafio: '=',
 			isPublished: '=',
 			rate: '='
     },

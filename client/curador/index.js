@@ -9,6 +9,9 @@ import resource from './resource';
 import users from './users';
 import propuestadesafio from './propuestadesafio';
 import dashboardpropuestadesafio from './dashboardpropuestadesafio';
+import dashboarddesafios from './dashboarddesafios';
+import desafio from './desafio';
+
 
 
 // config to providers
@@ -21,7 +24,9 @@ let requirements = [
 	resource,
 	users,
 	propuestadesafio,
-	dashboardpropuestadesafio
+	dashboardpropuestadesafio,
+	dashboarddesafios,
+	desafio
 ];
 
 module.exports = angular
