@@ -13,6 +13,7 @@ router.use('/publisheds', require('./published'));
 router.use('/desafios', require('./desafio'));
 router.use('/schools', require('./schools'));
 router.use('/propuestadesafio', require('./propuestadesafio'));
+router.use('/publishedpropuesta', require('./publishedpropuesta'));
 router.use(writer());
 
 module.exports = router;

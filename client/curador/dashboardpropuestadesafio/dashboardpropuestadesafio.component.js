@@ -93,7 +93,7 @@ export default class DashboardPropuestaDesafioComponent extends CuradorComponent
           		}
 
 				
-					items = items.concat(_.filter(res, function(o) { return o.type == 'desafio' }));
+					items = items.concat(_.filter(res, function(o) { return o.type == 'desafiopropuesto' }));
 				
 
 				let data = {

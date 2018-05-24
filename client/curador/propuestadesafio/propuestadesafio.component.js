@@ -22,7 +22,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 		this.$mdDialog = $mdDialog;
 		this.ngMeta = ngMeta;
 		this.$q = $q;
-
+		this.deleteDesafioBoolean=== 'remove';
 		this.simulateQuery = true;
     	this.isDisabled = false;
     	this.noCache = true;
@@ -341,7 +341,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 			.then(data => {
 				this.$log.log('autosaved', data);
 				if (button) {
-					(this.returnDesafios) ? this.$state.go('curador.propuestadesafio', { type: "desafiopropuesto" }) : this.$state.go('curador.propuestadesafio');
+					(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestadesafio', { type: "desafiopropuesto" }) : this.$state.go('curador.dashboardpropuestadesafio');
 				}
 			})
 			.catch(err => {
@@ -428,7 +428,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 	}
 
 	deleteResource(){
-		let Published = this.Restangular.one('publisheds', this.uid)
+		let Published = this.Restangular.one('publishedpropuesta', this.uid)
 		this.loading = true;
 		
 		this
@@ -439,13 +439,13 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 					Published
 					.remove()
 					.then( data => {
-						(this.returnDesafios) ? this.$state.go('curador.propuestadesafio', { type: " propuesta desafios" }) : this.$state.go('curador.propuestadesafio');
+						(this.returnDesafios) ? this.$state.go('curador.propuestadesafio', { type: " desafiopropuesto" }) : this.$state.go('curador.propuestadesafio');
 					})
 					.catch( err => {
 						throw err;
 					});
 				} else {
-					(this.returnDesafios) ? this.$state.go('curador.propuestadesafio', { type: " propuesta desafios" }) : this.$state.go('curador.propuestadesafio');
+					(this.returnDesafios) ? this.$state.go('curador.propuestadesafio', { type: " desafiopropuesto" }) : this.$state.go('curador.propuestadesafio');
 				}
 			})
 			.catch( err => {
@@ -477,7 +477,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 			.then(data => {
 				this.$log.log('published', data);
 				this.loading = false;
-				(this.returnDesafios) ? this.$state.go('curador.propuestadesafio', { type: "propuestadesafio" }) : this.$state.go('curador.propuestadesafio');
+				(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestadesafio', { type: "desafiopropuesto" }) : this.$state.go('curador.dashboardpropuestadesafio');
 			})
 			.catch(err => {
 				throw err;
