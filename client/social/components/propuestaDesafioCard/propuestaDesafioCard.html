@@ -12,8 +12,13 @@
 			<div class="new-resource__button--center">
 			</div>
 		</div>
+
+
+
 	</rd-card-body>
 </rd-card>
+
+
 
 
 <!-- Desafios -->
@@ -22,7 +27,7 @@
 		<div layout="row">
 			<div class="rd-card__status" flex ng-hide="$ctrl.resource.published == undefined"> <i class="fa fa-check-circle-o"></i>	Publicado</div>
 			<div class="rd-card__status" flex ng-show="$ctrl.resource.published == undefined"> <i class="fa fa-save"></i> Guardado</div>
-			<md-button ng-click="$ctrl.deleteResource()" class="bordered md-raised md-mini rd-card__button--delete" aria-label="Eliminar módulo">
+			<md-button ng-click="$ctrl.deleteDesafioBoolean = !$ctrl.deleteDesafioBoolean" class="bordered md-raised md-mini rd-card__button--delete" aria-label="Eliminar módulo">
 				<md-icon md-font-icon="">delete</md-icon>
 			</md-button>
 			<md-button ng-click="$ctrl.editResource()" class="bordered mini-button md-button md-ink-ripple rd-card__button--edit">
@@ -41,7 +46,7 @@
 			</div>
 	</rd-card-header>
 	<rd-card-body>
-			<div layout="row">
+			<div layout="row" ng-hide="$ctrl.deleteDesafioBoolean">
 				<div class="rd-card__thumbnail" ng-hide="$ctrl.resource.thumbnail === ''">
 					<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del recurso" >
 				</div>
@@ -52,7 +57,17 @@
 					<p><strong class="rd-card__owner">{{$ctrl.resource.owner.name}}</strong></p>
 				</div>
 			</div>
-			
+			<div layout="row" ng-show="$ctrl.deleteDesafioBoolean">
+	<div class="dashboard__remove" ng-hide="$ctrl.loading">
+		<p class="dashboard__remove--legend">¿Esta seguro que desea eliminar PERMANENTEMENTE el desafio?</p>
+		<md-button ng-click="$ctrl.deleteResource()" class="md-raised md-primary dashboard__remove--button" aria-label="Eliminar módulo">
+			Confirmar y Eliminar Desafio
+		</md-button>
+		<md-button ng-click="$ctrl.deleteDesafioBoolean = !$ctrl.deleteDesafioBoolean" class="md-raised md-primary dashboard__remove--button" aria-label="Eliminar módulo">
+			Cancelar
+		</md-button>
+	</div>
+</div>
 	</rd-card-body>
 </rd-card>
 

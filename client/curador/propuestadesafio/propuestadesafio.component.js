@@ -22,7 +22,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 		this.$mdDialog = $mdDialog;
 		this.ngMeta = ngMeta;
 		this.$q = $q;
-
+		this.deleteDesafioBoolean=== 'remove';
 		this.simulateQuery = true;
     	this.isDisabled = false;
     	this.noCache = true;

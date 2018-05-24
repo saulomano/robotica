@@ -27,7 +27,16 @@ class PropuestaDesafioCardController {
 	}
 
 	deleteResource(){
-		this.$state.go(`curador.propuestadesafio`, { uid: this.resource._id, action: 'remove' });
+        this.resource
+            .remove()
+            .then( data => {
+                this.$state.go(this.$state.current, {}, {reload: true});
+            })
+            .catch( err => {
+                throw err;
+            });
+
+
 	}
 
     clickedAction(item) {
