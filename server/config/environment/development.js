@@ -10,7 +10,7 @@ module.exports = {
     uri: 'mongodb://35.232.152.217:27017/robotica-dev'
   },
 
-  // Seed database on startup
+  // Seed database on startupgulp
   seedDB: true
 
 };
