@@ -41,7 +41,7 @@ class HeaderComponent {
             section: 'subiDesafio',  caption: 'Subi tu desafio', action:'social.new'
           },
           {
-            section: 'desafios',  caption: 'Mis desafios', action:'social.desafios'
+            section: 'desafios',  caption: 'Mis desafios', action:'social.misDesafios'
           },
           {
             section: 'desafiosAprobados', caption: 'Desafios', action:'social.desafiosAprobados'

@@ -23,7 +23,7 @@ class CuradorHeaderComponent {
         section: 'usuarios',  caption: 'Usuarios', action:'curador.users'
     };
     this.navDesafios = {
-      section: 'desafios',  caption: 'Desafios Resueltos', action:'curador.dashboarddesafios'
+      section: 'desafios',  caption: 'Desafios Resueltos', action:'curador.dashboarddesafiosresueltos'
     };
 
     this.navDesafiosPropuestos = {

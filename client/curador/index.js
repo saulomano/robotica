@@ -9,7 +9,7 @@ import resource from './resource';
 import users from './users';
 import propuestadesafio from './propuestadesafio';
 import dashboardpropuestadesafio from './dashboardpropuestadesafio';
-import dashboarddesafios from './dashboarddesafios';
+import dashboarddesafiosresueltos from './dashboarddesafiosresueltos';
 import desafio from './desafio';
 
 
@@ -25,7 +25,7 @@ let requirements = [
 	users,
 	propuestadesafio,
 	dashboardpropuestadesafio,
-	dashboarddesafios,
+	dashboarddesafiosresueltos,
 	desafio
 ];
 

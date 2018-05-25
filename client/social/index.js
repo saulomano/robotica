@@ -16,10 +16,10 @@ import ver from './ver';
 import guia from './guia';
 import institucional from './institucional';
 import filters from './social.filter';
-import desafios from './desafios';
+import misDesafios from './misDesafios';
 import desafiosAprobados from './desafiosAprobados';
 import newDesafio from './new';
-import desafio from './desafio';
+import resolverDesafio from './resolverDesafio';
 import canalyt from './canalyt';
 import verdesafio from './verdesafio';
 import desafioView from './components/desafioView/desafioView.component';
@@ -43,10 +43,10 @@ let requirements = [
 	ver,
 	guia,
 	institucional,
-	desafios,
+	misDesafios,
 	desafiosAprobados,
 	newDesafio,
-	desafio,
+	resolverDesafio,
 	canalyt,
 	filters,
 	verdesafio,

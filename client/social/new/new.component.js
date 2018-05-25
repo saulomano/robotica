@@ -24,7 +24,7 @@ export default class NewComponent extends SocialComponent{
     $onInit(){
         if (this.error){
             this.$timeout(() => {
-                this.$state.go('social.desafios');
+                this.$state.go('social.misDesafios');
             }, 2000);
             return;
         }
@@ -66,12 +66,12 @@ export default class NewComponent extends SocialComponent{
                     })
                     .catch((err) => {
                         this.$log.error(err)
-                        return this.$state.go(`social.desafios`);
+                        return this.$state.go(`social.misDesafios`);
                     });
             })
             .catch((err) => {
                 this.$log.error(err)
-                return this.$state.go(`social.desafios`);
+                return this.$state.go(`social.misDesafios`);
             });
     }
 }

@@ -295,7 +295,7 @@ export default class DesafioComponent extends CuradorComponent {
 			this.desafio
 					.put()	
 					.then(data => {
-						(this.returnDesafios) ? this.$state.go('curador.dashboarddesafios', { type: "desafios" }) : this.$state.go('curador.dashboarddesafios');
+						(this.returnDesafios) ? this.$state.go('curador.dashboarddesafiosresueltos', { type: "desafios" }) : this.$state.go('curador.dashboarddesafiosresueltos');
 					})
 					.catch(err => {
 						throw err;
@@ -467,7 +467,7 @@ export default class DesafioComponent extends CuradorComponent {
 			.then(data => {
 				this.$log.log('autosaved', data);
 				if (button) {
-					(this.returnDesafios) ? this.$state.go('curador.dashboarddesafios', { type: "desafios" }) : this.$state.go('curador.dashboarddesafios');
+					(this.returnDesafios) ? this.$state.go('curador.dashboarddesafiosresueltos', { type: "desafios" }) : this.$state.go('curador.dashboarddesafiosresueltos');
 				}
 			})
 			.catch(err => {
@@ -573,13 +573,13 @@ export default class DesafioComponent extends CuradorComponent {
 					Published
 					.remove()
 					.then( data => {
-						(this.returnDesafios) ? this.$state.go('curador.dashboarddesafios', { type: "desafios" }) : this.$state.go('curador.dashboarddesafios');
+						(this.returnDesafios) ? this.$state.go('curador.dashboarddesafiosresueltos', { type: "desafios" }) : this.$state.go('curador.dashboarddesafiosresueltos');
 					})
 					.catch( err => {
 						throw err;
 					});
 				} else {
-					(this.returnDesafios) ? this.$state.go('curador.dashboarddesafios', { type: "desafios" }) : this.$state.go('curador.dashboarddesafios');
+					(this.returnDesafios) ? this.$state.go('curador.dashboarddesafiosresueltos', { type: "desafios" }) : this.$state.go('curador.dashboarddesafiosresueltos');
 				}
 			})
 			.catch( err => {
@@ -611,7 +611,7 @@ export default class DesafioComponent extends CuradorComponent {
 			.then(data => {
 				this.$log.log('published', data);
 				this.loading = false;
-				(this.returnDesafios) ? this.$state.go('curador.dashboarddesafios', { type: "desafios" }) : this.$state.go('curador.dashboarddesafios');
+				(this.returnDesafios) ? this.$state.go('curador.dashboarddesafiosresueltos', { type: "desafios" }) : this.$state.go('curador.dashboarddesafiosresueltos');
 			})
 			.catch(err => {
 				throw err;
