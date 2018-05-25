@@ -23,7 +23,9 @@
 
 <!-- Desafios -->
 <rd-card data-rd-section="{{$ctrl.resource.type}}" ng-if="$ctrl.resource.type == 'desafiopropuesto'">
-	<rd-card-toolbar ng-if="$ctrl.editable">
+	
+	
+	<rd-card-toolbar ng-if="$ctrl.editable" ng-show="$ctrl.modoVista === 'curador'">
 		<div layout="row">
 			<div class="rd-card__status" flex ng-hide="$ctrl.resource.published == undefined"> <i class="fa fa-check-circle-o"></i>	Publicado</div>
 			<div class="rd-card__status" flex ng-show="$ctrl.resource.published == undefined"> <i class="fa fa-save"></i> Guardado</div>
@@ -37,6 +39,20 @@
 			</md-button>
 		</div>
 	</rd-card-toolbar>
+
+
+	<rd-card-toolbar ng-if="$ctrl.editable" ng-show="$ctrl.modoVista === 'social'">
+		<div layout="row">		
+			<md-button ng-click="$ctrl.editResource()" class="bordered mini-button md-button md-ink-ripple rd-card__button--edit">
+				<div layout="row">
+						<md-icon class="mi-mode-edit"></md-icon> <span>Resolver</span>
+				</div>
+			</md-button>
+		</div>
+	</rd-card-toolbar>
+
+
+
 	<rd-card-header>
 			<div class="rd-card__header--wrapper" layout="row" layout-align="start center">
 					<span class="rd-card__icon--circle">

@@ -20,6 +20,9 @@ class PropuestaDesafioCardController {
 		};
 
 		this.resource.typeCaption = captions[this.resource.type];
+		this.modoVista = this.$scope.modoVista;
+
+
 	}
 
 	editResource(){

@@ -35,16 +35,12 @@
 	<div class="dashboard__container"  layout="row" layout-align="start stretch">
 		<md-content class="dashboard__sidenav" data-type="{{$ctrl.resource.type}}">
 			<h2 class="dashboard__sidenav--head">{{$ctrl.headText}}</h2>
-			<md-input-container class="full-width" ng-if="$ctrl.resource.type == 'herramienta'">
-				<md-select ng-model="$ctrl.resource.category" placeholder="Seleccioná un tipo" required>
-					<md-option ng-value="soft" ng-repeat="soft in $ctrl.softwares">{{ soft }}</md-option>
+			<md-input-container class="full-width" >
+				<md-select ng-model="$ctrl.resource.tipoDesafio" placeholder="Tipo de desafio" required>
+					<md-option ng-value="tipoDes" ng-repeat="tipoDes in $ctrl.tiposDesafios_">{{ tipoDes.caption }}</md-option>
 				</md-select>
 			</md-input-container>
-			<md-input-container class="full-width" ng-if="$ctrl.resource.type == 'orientacion'">
-				<md-select ng-model="$ctrl.resource.category" placeholder="Seleccioná un tipo" required>
-					<md-option ng-value="orientacion" ng-repeat="orientacion in $ctrl.orientaciones">{{ orientacion }}</md-option>
-				</md-select>
-			</md-input-container>		
+				
 			<md-content class="thumbnail__container">
 				<div class="dropzone dz__custom dz__thumbnail select-thumbnail dz-tumbnail-clickable" options="$ctrl.dzOptions" callbacks="$ctrl.dzCallbacks" methods="$ctrl.dzMethods" ng-dropzone
 						 ng-hide="$ctrl.resource.thumbnail !== ''"></div>
@@ -57,66 +53,8 @@
 					</md-button>
 				</div>
 			</md-content>
-			<md-content ng-if="$ctrl.resource.type !== 'mediateca' && $ctrl.resource.type !== 'desafio'">
-				<md-expansion-panel class="option-panel">
-					
-					 <md-expansion-panel-collapsed>
-						 <div class="md-title">Nivel *</div>
-						 <div class="md-summary">{{$ctrl.resource.nivel.length}} {{$ctrl.textSelection($ctrl.resource.nivel.length)}}</div>
-						 <md-expansion-panel-icon></md-expansion-panel-icon>
-					 </md-expansion-panel-collapsed>
-					
-					
-					 <md-expansion-panel-expanded>
-					
-						 <md-expansion-panel-header ng-click="$panel.collapse()">
-							<div class="md-title">Nivel *</div>
-							<div class="md-summary"></div>
-							 <md-expansion-panel-icon></md-expansion-panel-icon>
-						 </md-expansion-panel-header>
-					
-						 <md-expansion-panel-content>
-								<div flex="100" ng-repeat="item in $ctrl.niveles">
-									<md-checkbox ng-checked="$ctrl.exists(item, $ctrl.resource.nivel)" ng-click="$ctrl.toggle(item, $ctrl.resource.nivel)">
-										{{ item }}
-									</md-checkbox>
-								</div>
-						 </md-expansion-panel-content>
-					
-					 </md-expansion-panel-expanded>
-					
-				 </md-expansion-panel>
-			</md-content>
-			<md-content ng-if="$ctrl.resource.type !== 'mediateca' && $ctrl.resource.type !== 'desafio'">
-				<md-expansion-panel class="option-panel">
-					
-					 <md-expansion-panel-collapsed>
-						 <div class="md-title">Area *</div>
-						 <div class="md-summary">{{$ctrl.resource.area.length}} {{$ctrl.textSelection($ctrl.resource.area.length)}}</div>
-						 <md-expansion-panel-icon></md-expansion-panel-icon>
-					 </md-expansion-panel-collapsed>
-					
-					
-					 <md-expansion-panel-expanded>
-					
-						 <md-expansion-panel-header ng-click="$panel.collapse()">
-							 <div class="md-title">Area *</div>
-							 <div class="md-summary"></div>
-							 <md-expansion-panel-icon></md-expansion-panel-icon>
-						 </md-expansion-panel-header>
-					
-						 <md-expansion-panel-content>
-								<div flex="100" ng-repeat="item in $ctrl.areas">
-										<md-checkbox ng-checked="$ctrl.exists(item, $ctrl.resource.area)" ng-click="$ctrl.toggle(item, $ctrl.resource.area)">
-										{{ item }}
-									</md-checkbox>
-								</div>
-						 </md-expansion-panel-content>
-					
-					 </md-expansion-panel-expanded>
-					
-				 </md-expansion-panel>
-			</md-content>
+			
+			
 
 			<!-- ================================================================ -->
 			<!-- DESAFIOS -->
@@ -194,7 +132,7 @@
 				</div>
 				<div flex class="dashboard__sidenav--head-resource">
 					<h2 class="dashboard__sidenav--head">{{$ctrl.headText}}</h2>
-					<h2 class="dashboard__sidenav--subhead">{{$ctrl.resource.category}}</h2>
+					<h2 class="dashboard__sidenav--subhead">{{$ctrl.resource.tipoDesafio.caption}}</h2>
 				</div>
 			</div>
 			<h1 class="rd__headpost--sidenav">{{$ctrl.resource.title}}</h1>
@@ -281,7 +219,7 @@
 				</div>
 				<div flex class="dashboard__sidenav--head-resource">
 					<h2 class="dashboard__sidenav--head color-propuestas">{{$ctrl.headText}}</h2>
-					<h2 class="dashboard__sidenav--subhead color-propuestas">{{$ctrl.resource.category}}</h2>
+					<h2 class="dashboard__sidenav--subhead color-propuestas">{{$ctrl.resource.tipoDesafio.caption}}</h2>
 				</div>
 			</div>
 			<h1 class="rd__headpost--sidenav">{{$ctrl.resource.title}}</h1>
@@ -373,5 +311,5 @@
 	<div class="dashboard__preview--header bg-primary">
 		<h2><i class="fa fa-angle-down"></i> Previsualización <i class="fa fa-angle-down"></i></h2>
 	</div>
-	<resource-view resource="$ctrl.resource" rate="$ctrl.rate" class="dashboard__preview"></resource-view>
+	<propuestadesafio-view resource="$ctrl.resource" rate="$ctrl.rate" class="dashboard__preview"></propuestadesafio-view>
 </div>

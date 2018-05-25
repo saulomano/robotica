@@ -9,6 +9,7 @@ export default class CuradorComponent {
     this.$log = $log;
     this.Restangular = Restangular;
     this.categories_ = {};
+    this.tiposDesafios_ = {};
   }
 
   loadCategories(){
@@ -32,4 +33,31 @@ export default class CuradorComponent {
   getCategory(type){
     return this.categories_[type];
   }
+
+
+
+  loadTiposDesafio(){
+    let def = Q.defer();
+
+    this.TipoDesafio = this.Restangular.all('tipoDesafio');
+
+    let all = this.TipoDesafio.getList();
+    all.then(tiposDesafio => {
+      this.tiposDesafio = tiposDesafio;
+      this.tiposDesafios_ = _.keyBy(tiposDesafio, 'type');
+      def.resolve();
+    })
+    .catch(err => {
+      def.reject(err);
+    });
+
+    return def.promise;
+  }
+
+  getTipoDesafio(type){
+    return this.tiposDesafios_[type];
+  }
+
+
+
 }

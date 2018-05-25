@@ -49,7 +49,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 		this.configureFunctions();
 		this.getResource();
 		this.getCategories_();
-
+		this.loadTiposDesafio();
 		this.onDeletePost = ($index) => {
 			this.onDeletePost_($index);
 		};
@@ -157,6 +157,11 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 				this.$log.error(err);
 			}
 		});
+
+
+
+		
+
 	}
 
 	watchResource(){
@@ -488,4 +493,9 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 	getResourceType(type){
 		return this.captions[type];
 	}
+
+
+
+	
+
 }

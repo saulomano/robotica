@@ -20,6 +20,11 @@ class propuestadesafioViewController {
 		this.editable = this.$scope.editable === true;
 		
 		this.isPublished = this.$scope.isPublished == true;
+		let captions = {
+			'desafiopropuesto': 'Desafio Propuesto',
+		
+		};
+
 
 		if (this.resource){
 			this.resource.typeCaption = captions[this.resource.type];
@@ -29,7 +34,7 @@ class propuestadesafioViewController {
 			this.resource = this.$scope.resource;
 			
 			if (this.resource){
-				this.resource.typeCaption = captions[this.resource.type];
+				this.resource.typeCaption = 'captions[this.resource.type]';
 			}
 			$timeout(() => {
 				this.$scope.$apply();
