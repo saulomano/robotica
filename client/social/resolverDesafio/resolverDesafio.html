@@ -1,0 +1,395 @@
+<div class="dashboard__loading" layout="row" layout-align="center center" ng-show="$ctrl.loading">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+    
+<!-- toolbar -->
+<div class="dashboard__toolbar" ng-hide="($ctrl.loading || $ctrl.isDelete)">
+    <rd-stepper class="dashboard__stepper" 
+                rd-section="{{$ctrl.desafio.type}}" 
+                steps="$ctrl.steps"
+                can-next="$ctrl.canNext" 
+                on-finish="$ctrl.finish"
+                on-enter-step="$ctrl.onEnterStep"
+                on-save="$ctrl.save"
+                init-step-index="$ctrl.initStepIndex"
+                user-rol=$ctrl.user.role>
+    </rd-stepper>
+</div>
+    
+<!-- STEP FICHA -->
+<div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'ficha'" ng-hide="($ctrl.loading || $ctrl.isDelete)">
+    <div class="dashboard__container"  layout="row" layout-align="start stretch">
+        <md-content class="dashboard__sidenav" data-type="{{$ctrl.desafio.type}}">
+            <h2 class="dashboard__sidenav--head">{{$ctrl.headText}}</h2>
+            <md-input-container class="full-width" ng-if="$ctrl.desafio.type == 'herramienta'">
+                <md-select ng-model="$ctrl.desafio.category" placeholder="Seleccioná un tipo" required>
+                    <md-option ng-value="soft" ng-repeat="soft in $ctrl.softwares">{{ soft }}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="full-width" ng-if="$ctrl.desafio.type == 'orientacion'">
+                <md-select ng-model="$ctrl.desafio.category" placeholder="Seleccioná un tipo" required>
+                    <md-option ng-value="orientacion" ng-repeat="orientacion in $ctrl.orientaciones">{{ orientacion }}</md-option>
+                </md-select>
+            </md-input-container>		
+            <md-content class="thumbnail__container">
+                <div class="dropzone dz__custom dz__thumbnail select-thumbnail dz-tumbnail-clickable" 
+                    options="$ctrl.dzOptions" 
+                    callbacks="$ctrl.dzCallbacks" 
+                    methods="$ctrl.dzMethods" 
+                    ng-dropzone
+                    ng-hide="$ctrl.desafio.thumbnail !== ''">
+                </div>
+                <div class="thumbnail thumbnail--rounded" ng-hide="$ctrl.desafio.thumbnail == ''">
+                    <img ng-src="{{$ctrl.desafio.thumbnail}}" alt="Miniatura del Recurso">
+                    <md-button ng-click="$ctrl.editTumbnail()" class="mini-button md-button md-raised thumbnail__button--edit dz-tumbnail-clickable">
+                        <div layout="row">
+                            <md-icon class="mi-mode-edit"></md-icon> <span>Cambiar</span>
+                        </div>
+                    </md-button>
+                </div>
+            </md-content>
+            <md-content ng-if="$ctrl.desafio.type !== 'mediateca' && $ctrl.desafio.type !== 'desafio'">
+                <md-expansion-panel class="option-panel">
+                    <md-expansion-panel-collapsed>
+                        <div class="md-title">Nivel *</div>
+                        <div class="md-summary">{{$ctrl.desafio.nivel.length}} {{$ctrl.textSelection($ctrl.desafio.nivel.length)}}</div>
+                        <md-expansion-panel-icon></md-expansion-panel-icon>
+                    </md-expansion-panel-collapsed>
+                    <md-expansion-panel-expanded>
+                        <md-expansion-panel-header ng-click="$panel.collapse()">
+                            <div class="md-title">Nivel *</div>
+                            <div class="md-summary"></div>
+                            <md-expansion-panel-icon></md-expansion-panel-icon>
+                        </md-expansion-panel-header>                        
+                        <md-expansion-panel-content>
+                            <div flex="100" ng-repeat="item in $ctrl.niveles">
+                                <md-checkbox ng-checked="$ctrl.exists(item, $ctrl.desafio.nivel)" ng-click="$ctrl.toggle(item, $ctrl.desafio.nivel)">
+                                    {{ item }}
+                                </md-checkbox>
+                            </div>
+                        </md-expansion-panel-content>                        
+                    </md-expansion-panel-expanded>
+                </md-expansion-panel>
+            </md-content>
+            <md-content ng-if="$ctrl.desafio.type !== 'mediateca' && $ctrl.desafio.type !== 'desafio'">
+                <md-expansion-panel class="option-panel">                        
+                    <md-expansion-panel-collapsed>
+                        <div class="md-title">Area *</div>
+                        <div class="md-summary">{{$ctrl.desafio.area.length}} {{$ctrl.textSelection($ctrl.desafio.area.length)}}</div>
+                        <md-expansion-panel-icon></md-expansion-panel-icon>
+                    </md-expansion-panel-collapsed>
+                    <md-expansion-panel-expanded>                       
+                        <md-expansion-panel-header ng-click="$panel.collapse()">
+                            <div class="md-title">Area *</div>
+                            <div class="md-summary"></div>
+                            <md-expansion-panel-icon></md-expansion-panel-icon>
+                        </md-expansion-panel-header>
+                        <md-expansion-panel-content>
+                            <div flex="100" ng-repeat="item in $ctrl.areas">
+                                <md-checkbox ng-checked="$ctrl.exists(item, $ctrl.desafio.area)" ng-click="$ctrl.toggle(item, $ctrl.desafio.area)">
+                                    {{ item }}
+                                </md-checkbox>
+                            </div>
+                        </md-expansion-panel-content>                        
+                    </md-expansion-panel-expanded>
+                </md-expansion-panel>
+            </md-content>
+            <!-- DESAFIOS -->
+            <!-- TODO: Cargar niveles de los desafios -->
+            <!-- ================================================================ -->
+			<!-- DESAFIOS -->
+			<!-- ================================================================ -->
+			<!-- DISTRITOS -->
+			<md-content ng-if="$ctrl.desafio.type == 'desafio'">
+                <div>
+                    <div class="md-title">Distrito</div>
+                    <md-autocomplete
+                            ng-disabled="$ctrl.isDisabled"
+                            md-no-cache="$ctrl.noCache"
+                            md-selected-item="$ctrl.selectedDistrict"
+                            md-search-text="$ctrl.searchDistrictText"
+                            md-selected-item-change="$ctrl.onChangeDistrict(item)"
+                            md-items="item in $ctrl.querySearch($ctrl.searchDistrictText)"
+                            md-item-text="($ctrl.selectedDistrict.name || item.display)"
+                            md-min-length="0"
+                            placeholder="Selecciona un Distrito...">
+                        <md-item-template>
+                            <span md-highlight-text="$ctrl.searchDistrictText" md-highlight-flags="^i">{{item.display}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            No se encontro un distrito de nombre "{{$ctrl.searchDistrictText}}".
+                        </md-not-found>
+                    </md-autocomplete>
+                </div>				   
+            </md-content>
+
+            <!--$ctrl.selectedDistrict.schools-->
+            <!-- COLEGIOS -->
+            <md-content ng-if="$ctrl.desafio.type == 'desafio' && !$ctrl.loadingSchools">					
+				<div>
+					<h1 class="md-title">Colegios</h1>
+                    <md-autocomplete
+                            md-selected-item="$ctrl.selectedSchool"
+                            md-search-text="$ctrl.searchSchoolText"
+                            md-items="item in $ctrl.querySearchSchool($ctrl.searchSchoolText)"
+                            md-item-text="item.schoolName"
+                            md-min-length="0"
+                            placeholder="Selecciona un Colegio...">
+                        <md-item-template>
+                            <span md-highlight-text="$ctrl.searchSchoolText" md-highlight-flags="^i">{{item.schoolName}}</span>
+                        </md-item-template>
+                        <md-not-found>
+                            No se encontro un colegio de nombre "{{$ctrl.searchSchoolText}}".
+                        </md-not-found>
+                    </md-autocomplete>
+					<!--<div layout="row">						-->
+						<!--<md-input-container style="width: 100%;">-->
+
+							<!--<label>Colegios</label>-->
+
+							<!--<md-select ng-model="$ctrl.selectedSchool">-->
+								<!--<md-option ng-repeat="school in $ctrl.selectedDistrict.schools" -->
+								<!--ng-value="school.schoolName" >-->
+								<!--{{school.schoolName}}-->
+								<!--</md-option>-->
+							<!--</md-select>-->
+						<!--</md-input-container>-->
+					<!--</div>-->
+				</div>				   
+			</md-content>
+            <md-content ng-if="$ctrl.desafio.type == 'desafio'">
+                <md-expansion-panel class="option-panel">
+                    
+                        <md-expansion-panel-collapsed>
+                            <div class="md-title">Nivel *</div>
+                            <div class="md-summary">{{$ctrl.desafio.area.length}} {{$ctrl.textSelection($ctrl.desafio.area.length)}}</div>
+                            <md-expansion-panel-icon></md-expansion-panel-icon>
+                        </md-expansion-panel-collapsed>
+                    
+                    
+                        <md-expansion-panel-expanded>
+                    
+                            <md-expansion-panel-header ng-click="$panel.collapse()">
+                                <div class="md-title">Nivel *</div>
+                                <div class="md-summary"></div>
+                                <md-expansion-panel-icon></md-expansion-panel-icon>
+                            </md-expansion-panel-header>
+                    
+                            <md-expansion-panel-content>
+                                <div flex="100" ng-repeat="item in $ctrl.areas">
+                                        <md-checkbox ng-checked="$ctrl.exists(item, $ctrl.desafio.area)" ng-click="$ctrl.toggle(item, $ctrl.desafio.area)">
+                                        {{ item }}
+                                    </md-checkbox>
+                                </div>
+                            </md-expansion-panel-content>
+                    
+                        </md-expansion-panel-expanded>
+                    
+                    </md-expansion-panel>
+            </md-content>
+        </md-content>            
+        <md-content  class="dashboard__content" flex>
+            <div class="dashboard__content--head">
+                <md-input-container class="dashboard__input dashboard__input--title">
+                    <label>Título</label>
+                    <input ng-model="$ctrl.desafio.title" required>
+                </md-input-container>
+                <md-input-container  class="dashboard__input dashboard__input--summary">
+                    <label>Síntesis</label>
+                    <textarea ng-model="$ctrl.desafio.summary" required></textarea>
+                </md-input-container>
+            </div>
+            <rd-post modules="$ctrl.desafio.postBody" relative="$ctrl.uid" on-delete="$ctrl.onDeletePost"></rd-post>
+        </md-content>
+    </div>
+</div>
+
+<!-- STEP RECURSO -->
+<div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'recurso'" ng-hide="$ctrl.loading">
+    <div class="dashboard__container"  layout="row" layout-align="start stretch">
+        <md-content class="dashboard__sidenav" data-type="{{$ctrl.desafio.type}}">
+            <div layout="row" class="dashboard__sidenav--top">
+                <div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="$ctrl.desafio.thumbnail == ''">
+                    <img ng-src="{{$ctrl.desafio.thumbnail}}" alt="Miniatura del recurso">
+                </div>
+                <div flex class="dashboard__sidenav--head-desafio">
+                    <h2 class="dashboard__sidenav--head">{{$ctrl.headText}}</h2>
+                    <h2 class="dashboard__sidenav--subhead">{{$ctrl.desafio.category}}</h2>
+                </div>
+            </div>
+            <h1 class="rd__headpost--sidenav">{{$ctrl.desafio.title}}</h1>
+            <p class="rd__headpost">{{$ctrl.desafio.summary | truncate:140}}</p>
+        </md-content>
+        <md-content  class="dashboard__content" flex>IMAGEN PRINCIPAL:
+            <div class="dropzone dz__custom dz-software-clickable"
+                data-type="{{$ctrl.desafio.type}}"
+                options="$ctrl.dzOptionsSoftware"
+                callbacks="$ctrl.dzCallbacksSoftware"
+                methods="$ctrl.dzMethods"
+                ng-dropzone
+                ng-hide="$ctrl.desafio.files.length > 0">
+            </div>
+            <div ng-show="$ctrl.desafio.files.length > 0">
+                <md-table-container class="table__files">
+                    <table md-table multiple>
+                        <thead md-head md-order="$ctrl.myOrder">
+                            <tr md-row>
+                                <th md-column>Nombre</th>
+                                <th md-column md-numeric>Tamaño</th>
+                            </tr>
+                        </thead>
+                        <tbody md-body>
+                            <tr ng-repeat="file in $ctrl.desafio.files">
+                                <td md-cell><i class="{{file.icon}}"></i> <span>{{file.name}}</span></td>
+                                <td md-cell><span>{{file.size | numeraljs:'0b'}}</span></td>
+                            </tr>
+                            <tr class="table__files--summary-cell">
+                                <td md-cell></td>
+                                <td md-cell><span class="table__files--summary">{{$ctrl.desafio.files.length}} Archivos, Total: {{$ctrl.sumfiles($ctrl.desafio.files) | numeraljs:'0b'}}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-table-container>
+                <div layout="row">
+                    <span flex></span>
+                    <md-button class="md-raised" ng-click="$ctrl.removeAllFiles()">Eliminar todos</md-button>
+                    <md-button class="md-raised dz-clickable" ng-click="null"><i class="fa fa-upload"></i> Agregar</md-button>
+                </div>
+            </div>
+            <div class="dashboard__box" ng-if="$ctrl.desafio.type == 'mediateca'">
+                <h4 class="color-grey font-medium">Palabras Claves</h4>
+                <md-chips ng-model="$ctrl.desafio.tags" placeholder="Ingresá un tag" md-separator-keys="$ctrl.tagsKeys">
+            </div>
+            <div layout="row" layout-align="start" class="dashboard__row">
+                <div flex class="dashboard__box" ng-if="$ctrl.desafio.type !== 'herramienta'">
+                    <h6 class="font-medium color-black-light margin">Uso del Recurso</h6>
+                    <div flex="100" ng-repeat="item in $ctrl.usabilities">
+                        <md-checkbox ng-checked="$ctrl.exists(item, $ctrl.desafio.usability)" ng-click="$ctrl.toggle(item, $ctrl.desafio.usability)">
+                            {{ item }}
+                        </md-checkbox>
+                    </div>
+                </div>
+                <div flex class="dashboard__box" ng-if="$ctrl.desafio.type == 'herramienta'">
+                    <h6 class="font-medium color-black-light margin">Plataformas</h6>
+                    <div flex="100" ng-repeat="item in $ctrl.platforms">
+                        <md-checkbox ng-checked="$ctrl.exists(item, $ctrl.desafio.platform)" ng-click="$ctrl.toggle(item, $ctrl.desafio.platform)">
+                            {{ item }}
+                        </md-checkbox>
+                    </div>
+                </div>
+                <div flex class="dashboard__box">
+                    <h6 class="font-medium color-black-light margin">Recomendado para</h6>
+                    <div flex="100" ng-repeat="item in $ctrl.accessibilities">
+                        <md-checkbox ng-checked="$ctrl.exists(item, $ctrl.desafio.accessibility)" ng-click="$ctrl.toggle(item, $ctrl.desafio.accessibility)">
+                            {{ item }}
+                        </md-checkbox>
+                    </div>
+                </div>
+            </div>
+        </md-content>
+    </div> 
+</div>
+
+<!-- STEP VINCULO -->
+<div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'vinculo'" ng-hide="$ctrl.loading">
+    <div class="dashboard__container"  layout="row" layout-align="start stretch">
+        <md-content class="dashboard__sidenav" data-type="{{$ctrl.desafio.type}}">
+            <div layout="row" class="dashboard__sidenav--top">
+                <div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="$ctrl.desafio.thumbnail == ''">
+                    <img ng-src="{{$ctrl.desafio.thumbnail}}" alt="Miniatura de la {{$ctrl.headText}}">
+                </div>
+                <div flex class="dashboard__sidenav--head-desafio">
+                    <h2 class="dashboard__sidenav--head color-propuestas">{{$ctrl.headText}}</h2>
+                    <h2 class="dashboard__sidenav--subhead color-propuestas">{{$ctrl.desafio.category}}</h2>
+                </div>
+            </div>
+            <h1 class="rd__headpost--sidenav">{{$ctrl.desafio.title}}</h1>
+            <p class="rd__headpost">{{$ctrl.desafio.summary | truncate:140}}</p>
+            <div class="vinculo__files">
+                <div><span class="text-uppercase color-black-light">{{$ctrl.desafio.files.length}} Archivos | {{$ctrl.sumfiles($ctrl.desafio.files) | numeraljs:'0b'}}</span></div>
+                <div class="text-uppercase color-black-light">Curado por: {{$ctrl.desafio.owner.name}}</div>
+            </div>
+        </md-content>
+        
+        <md-content  class="dashboard__content" flex>
+            <div class="dashboard__box" ng-if="$ctrl.showViculo">
+                <h4 class="font-medium color-grey">Recursos contenidos en esta propuesta</h4>
+                <div class="dashboard__search">
+                    <input type="text" ng-model="$ctrl.filterText" autofocus>
+                </div>
+                <md-conten>
+                    <md-expansion-panel class="option-panel">                    
+                        <md-expansion-panel-collapsed class="vinculados__recursos">
+                            <div flex><h6 class="font-light color-primary text-center text-uppercase">{{$ctrl.desafio.links.length}} Recursos vinculados</h6></div>
+                            <md-expansion-panel-icon></md-expansion-panel-icon>
+                        </md-expansion-panel-collapsed>
+                        <md-expansion-panel-expanded>                            
+                            <md-expansion-panel-header ng-click="$panel.collapse()" class="vinculados__recursos">
+                                <div flex><h6 class="font-light color-primary text-center">{{$ctrl.desafio.links.length}} Recursos vinculados</h6></div>
+                                <md-expansion-panel-icon></md-expansion-panel-icon>
+                            </md-expansion-panel-header>
+                            <md-expansion-panel-content>
+                                <md-list-item ng-repeat="item in $ctrl.desafio.links">
+                                    <div  layout="row" layout-padding>
+                                        <div>
+                                            <div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
+                                                <img ng-src="{{item.thumbnail}}" alt="Miniatura de la Propuesta Pedagógica">
+                                            </div>
+                                        </div>
+                                        <div flex>
+                                            <div class="color-{{item.type}}" layout="flex" layout-align="start center">
+                                                <i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
+                                            </div>
+                                            <div><strong>{{item.title}}</strong></div>
+                                            <div><p>{{item.summary}}</p></div>
+                                        </div>
+                                        <md-checkbox class="md-secondary" 
+                                                    ng-checked="$ctrl.existsObject(item, $ctrl.desafio.links)" 
+                                                    ng-click="$ctrl.toggleObject(item, $ctrl.desafio.links)"
+                                                    aria-label="Agregar/quitar {{item.title}}">
+                                        </md-checkbox>
+                                    </div>
+                                </md-list-item>
+                            </md-expansion-panel-content>
+                        </md-expansion-panel-expanded>
+                    </md-expansion-panel>
+                </md-content>
+                <md-list ng-cloak>
+                    <md-list-item ng-repeat="item in $ctrl.publisheds">
+                        <div layout="row" layout-padding>
+                            <div>
+                                <div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
+                                    <img ng-src="{{item.thumbnail}}" alt="Miniatura de la Propuesta Pedagógica">
+                                </div>
+                            </div>
+                            <div flex>
+                                <div class="color-{{item.type}}" layout="flex" layout-align="start center">
+                                    <i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
+                                </div>
+                                <div><strong>{{item.title}}</strong></div>
+                                <div><p>{{item.summary}}</p></div>
+                            </div>
+                            <md-checkbox class="md-secondary" 
+                                        ng-checked="$ctrl.existsObject(item, $ctrl.desafio.links)" 
+                                        ng-click="$ctrl.toggleObject(item, $ctrl.desafio.links)"
+                                        aria-label="Agregar/quitar {{item.title}}">
+                            </md-checkbox>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </div>
+            <div class="dashboard__box">
+                <h4 class="color-grey font-medium">Palabras Claves</h4>
+                <md-chips ng-model="$ctrl.desafio.tags" placeholder="Ingresá un tag" md-separator-keys="$ctrl.tagsKeys">
+            </div>
+        </md-content>
+    </div>
+</div>
+
+<!-- STEP PUBLICAR -->
+<!-- <div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'publicar'" ng-hide="$ctrl.loading">
+    <div class="dashboard__preview--header bg-primary">
+        <h2><i class="fa fa-angle-down"></i> Previsualización <i class="fa fa-angle-down"></i></h2>
+    </div>
+    <desafio-view desafio="$ctrl.desafio" class="dashboard__preview"></desafio-view>
+</div> -->
