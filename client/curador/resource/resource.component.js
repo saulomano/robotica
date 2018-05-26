@@ -285,9 +285,13 @@ export default class ResourceComponent extends CuradorComponent {
 			this.saveResource(button);
 		};
 
+		this.cancel = () => {
+			this.deleteResource();
+		};
+
 		this.finish = ($event) => {
 			if (this.resource.district && this.resource.school) {
-                this.publish()
+                this.publish();
 			} else {
                 $('#msg').show();
                 this.functionShowMsg('Para poder publicar/aprobar este desafio, debe seleccionar un Distrito y un Colegio.');
