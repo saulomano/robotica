@@ -26,7 +26,7 @@ class PropuestaDesafioCardController {
 	}
 
 	editResource(){
-		this.$state.go(`curador.propuestadesafio`, { uid: this.resource._id });
+		this.$state.go(`curador.propuestadesafio`, { uid: this.resource._id, action: 'edit' });
 	}
 
 	deleteResource(){
