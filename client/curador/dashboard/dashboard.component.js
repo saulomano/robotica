@@ -125,6 +125,6 @@ export default class DashboardComponent extends CuradorComponent {
      		return;
     	}
 
-		this.$state.go(`curador.recurso`, { uid: resource._id });
+		this.$state.go(`curador.recurso`, { uid: resource._id, action: 'edit' });
 	}
 }

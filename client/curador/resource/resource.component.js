@@ -19,6 +19,7 @@ export default class ResourceComponent extends CuradorComponent {
 		this.$timeout = $timeout;
 		this.init = true;
 		this.isDelete = $stateParams.action === 'remove';
+		this.isEdit = $stateParams.action === 'edit';
 		this.$state = $state;
 		this.$mdDialog = $mdDialog;
 		this.ngMeta = ngMeta;
@@ -286,7 +287,7 @@ export default class ResourceComponent extends CuradorComponent {
 		};
 
 		this.cancel = () => {
-			this.deleteResource();
+			(this.isEdit) ? this.$state.go('curador.dashboard') : this.deleteResource();
 		};
 
 		this.finish = ($event) => {

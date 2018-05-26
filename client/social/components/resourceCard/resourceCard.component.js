@@ -28,7 +28,7 @@ class ResourceCardController {
 	}
 
 	editResource(){
-		this.$state.go(`curador.recurso`, { uid: this.resource._id });
+		this.$state.go(`curador.recurso`, { uid: this.resource._id, action: 'edit' });
 	}
 
 	deleteResource(){
