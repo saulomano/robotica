@@ -1,9 +1,13 @@
 'use strict';
 import angular from 'angular';
+import SocialComponent from '../social.component';
 
-export default class DesafiosParaResolverComponent {
+
+export default class DesafiosParaResolverComponent extends SocialComponent{
     /*@ngInject*/
-    constructor($element, $rootScope, $q, $stateParams, $state, Auth, Restangular) {
+    constructor($element, $log, $rootScope, $q, $stateParams, $state, Auth, Restangular) {
+
+        super({$element});
         this.$q = $q;
         this.$state = $state;
         this.$rootScope = $rootScope;

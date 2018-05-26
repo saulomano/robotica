@@ -463,7 +463,7 @@ export default class DesafioComponent extends CuradorComponent {
 	
 	saveDesafio(button){
 
-		this.onSaveDesafio();
+		onSaveDesafio();
 		if (button) {
 			this.desafio.status = 'pendiente';
 		}

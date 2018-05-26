@@ -8,6 +8,7 @@ export default class SocialComponent {
         this.$log = $log;
         this.Restangular = Restangular;
         this.categories_ = {};
+        this.modoVista= 'social';
     }
 
     loadCategories() {

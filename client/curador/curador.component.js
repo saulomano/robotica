@@ -10,6 +10,8 @@ export default class CuradorComponent {
     this.Restangular = Restangular;
     this.categories_ = {};
     this.tiposDesafios_ = {};
+
+    this.modoVista= 'curador';
   }
 
   loadCategories(){

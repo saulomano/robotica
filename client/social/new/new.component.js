@@ -62,7 +62,7 @@ export default class NewComponent extends SocialComponent{
                 desafio
                     .post(data)
                     .then(data => {
-                        this.$state.go(`social.desafio`, { uid: data._id });
+                        this.$state.go(`social.resolverDesafio`, { uid: data._id });
                     })
                     .catch((err) => {
                         this.$log.error(err)

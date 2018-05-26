@@ -20,7 +20,7 @@ class PropuestaDesafioCardController {
 		};
 
 		this.resource.typeCaption = captions[this.resource.type];
-		this.modoVista = this.$scope.modoVista;
+		this.modoVista = this.$scope.vista;
 
 
 	}
@@ -58,10 +58,14 @@ function propuestaDesafioCard($log){
 	return {
 		restrict: 'E',
 		controller: PropuestaDesafioCardController,
-    controllerAs: '$ctrl',
+	controllerAs: '$ctrl',
+	binding: {		
+		vista: '<'
+	},
     scope: {
 			resource: '=',
-			editable: '='
+			editable: '=',
+			vista: '='
     },
 		template: require('./propuestaDesafioCard.html')
 	}
