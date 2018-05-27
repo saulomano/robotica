@@ -37,14 +37,9 @@
 </div>
 
 <section class="resources_waterfall">
-	<rd-waterfall item-width="350"
-				  gutter="24"
-				  load-more-text="Ver más desafios"
-				  fetch="$ctrl.fetchData()"
-				  item-click="$ctrl.viewDesafio"
-				  search-text="$ctrl.searchText">
+	<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewResource" search-text="$ctrl.searchText">
 		<rd-item-template>
-			<desafio-card desafio="item" editable="item.type !== 'addnew'" ></desafio-card>
+			<desafio-card desafio="item" editable="item.type !== 'addnew'" rol="'curador'"></desafio-card>
 		</rd-item-template>
 	</rd-waterfall>
 </section>
