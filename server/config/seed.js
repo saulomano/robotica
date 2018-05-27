@@ -93,7 +93,7 @@ export default function seedDatabaseIfNeeded() {
     });
 
 
-
+/*
     TipoDesafio
     .find({})
     .remove()
@@ -115,5 +115,5 @@ export default function seedDatabaseIfNeeded() {
       })
       .then(() => console.log('finished populating tipos desafios'))
       .catch(err => console.log('error populating tipos desafios', err));
-    });
+    });*/
 }

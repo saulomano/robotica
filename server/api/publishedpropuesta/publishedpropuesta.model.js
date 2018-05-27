@@ -25,9 +25,7 @@ var PublishedSchema = new Schema({
 		files: [{ type: Schema.Types.ObjectId, ref: 'File' }],
 		links: [{ type: Schema.Types.ObjectId, ref: 'Published' }],
 		deleted: { type:Boolean, default: false },
-		district: String,
-		school: String,
-		rate: Number
+		propuesta: { type: Schema.Types.ObjectId, ref: 'PropuestaDesafio' },
 	}, ops);
 
 registerEvents(PublishedSchema);

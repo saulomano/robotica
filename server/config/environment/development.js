@@ -11,6 +11,6 @@ module.exports = {
   },
 
   // Seed database on startupgulp
-  seedDB: true
+  seedDB: false
 
 };
