@@ -31,7 +31,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 		
 		
 		this.PropuestaDesafio = this.Restangular.one('propuestadesafio', this.uid);
-		this.Publisheds = this.Restangular.all('propuestadesafio');
+		this.Publisheds = this.Restangular.all('publishedpropuesta');
 
 		this.returnDesafios = false;
 
@@ -45,7 +45,9 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 			{ name: 'vinculo', caption: 'Vínculo' },
 			{ name: 'publicar', caption: 'Publicar' },
 		];
-
+		let captions = {
+			'desafiopropuesto': 'Propuesta Desafio'
+		};
 		this.configureDropzone(Util);
 		this.configureFunctions();
 		this.getResource();
@@ -467,7 +469,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 		// Appending dialog to document.body to cover sidenav in docs app
 		var confirm = this.$mdDialog.confirm()
 					.title('¿Está seguro que desea hacer publico esta propuesta?')
-					.ariaLabel('Publicación del desafio')
+					.ariaLabel('Publicación de la propuesta')
 					.targetEvent(ev)
 					.ok('Publicar')
 					.cancel('Cancelar');

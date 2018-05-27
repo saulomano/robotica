@@ -65,6 +65,7 @@ export function index(req, res, next) {
 			req.totalItems = count;
 			req.result = Published
 										.find(q)
+										.populate('tipoDesafio')
 										.sort(query.cursor.sort)
 										.skip(query.cursor.skip)
 										.limit(query.cursor.limit)
