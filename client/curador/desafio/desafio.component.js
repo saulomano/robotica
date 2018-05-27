@@ -288,7 +288,7 @@ export default class DesafioComponent extends CuradorComponent {
 
 		this.finish = ($event) => {
 			if (this.desafio.district && this.desafio.school) {
-                this.publish()
+                this.publish();
 			} else {
                 $('#msg').show();
                 this.functionShowMsg('Para poder publicar/aprobar este desafio, debe seleccionar un Distrito y un Colegio.');

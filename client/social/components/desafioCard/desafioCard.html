@@ -33,6 +33,12 @@
             <div flex class="rd-card__body--custom" ng-hide="$ctrl.deleteUserBoolean">
                 <h1 class="rd-card__title--v1">{{$ctrl.desafio.title}}</h1>
                 <p class="rd-card__paragraph">{{$ctrl.desafio.summary | truncate:140 }}</p>
+                <p class="rd-card__paragraph" ng-if="$ctrl.desafio.district">
+                    <strong>Distrito: </strong>{{ $ctrl.desafio.district }}
+                </p>
+                <p class="rd-card__paragraph" ng-if="$ctrl.desafio.school">
+                    <strong>Colegio: </strong>{{ $ctrl.desafio.school }}
+                </p>
                 <p><strong class="rd-card__updated rd__color--grey-light ">Actualizado <strong am-time-ago="$ctrl.desafio.createdAt"></strong> </strong></p>
                 <p><strong class="rd-card__owner">{{$ctrl.desafio.owner.name}}</strong></p>
             </div>
