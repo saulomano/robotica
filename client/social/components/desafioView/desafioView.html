@@ -11,6 +11,12 @@
 				<div layout="column">
 					<h1 flex class="rd__headpost  rd__headpost--title rview__head">{{$ctrl.desafio.title}}</h1>
 					<p flex class="paragraph post__test rview__summary">{{$ctrl.desafio.summary}}</p>
+					<p class="paragraph post__test rview__summary" ng-if="$ctrl.desafio.district">
+						<strong>Distrito: </strong>{{ $ctrl.desafio.district }}
+					</p>
+					<p class="paragraph post__test rview__summary" ng-if="$ctrl.desafio.school">
+						<strong>Colegio: </strong>{{ $ctrl.desafio.school }}
+					</p>
 					<rd-post flex class="rview__post" modules="$ctrl.desafio.postBody" relative="$ctrl.uid" readonly="true"></rd-post>	
 				</div>
 			</div>
