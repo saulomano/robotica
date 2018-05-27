@@ -68,6 +68,8 @@ export function index(req, res, next) {
 							.exec();
 			next();
 		});
+
+		console.log(req.result );
 }
 
 
@@ -107,6 +109,7 @@ export function show(req, res, next) {
 								.populate('owner')
 								.populate('files')								
 								.populate('links')
+								.populate('tipoDesafio')
 								.exec();
 	next();
 }

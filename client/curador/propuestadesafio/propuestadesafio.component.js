@@ -45,7 +45,9 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 			{ name: 'vinculo', caption: 'Vínculo' },
 			{ name: 'publicar', caption: 'Publicar' },
 		];
-
+		let captions = {
+			'desafiopropuesto': 'Propuesta Desafio'
+		};
 		this.configureDropzone(Util);
 		this.configureFunctions();
 		this.getResource();

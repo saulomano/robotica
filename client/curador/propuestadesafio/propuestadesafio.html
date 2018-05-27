@@ -37,7 +37,7 @@
 		<md-content class="dashboard__sidenav" data-type="{{$ctrl.resource.type}}">
 			<h2 class="dashboard__sidenav--head">{{$ctrl.headText}}</h2>
 			<md-input-container class="full-width" >
-				<md-select ng-model="$ctrl.resource.tipoDesafio" placeholder="Tipo de desafio" required>
+				<md-select ng-model="$ctrl.resource.tipoDesafio"  ng-model-options="{trackBy: '$value.type'}" placeholder="Tipo de desafio" required>
 					<md-option ng-value="tipoDes" ng-repeat="tipoDes in $ctrl.tiposDesafios_">{{ tipoDes.caption }}</md-option>
 				</md-select>
 			</md-input-container>
@@ -57,55 +57,7 @@
 			
 			
 
-			<!-- ================================================================ -->
-			<!-- DESAFIOS -->
-			<!-- ================================================================ -->
-			<!-- DISTRITOS -->
-			<md-content ng-if="$ctrl.resource.type == 'desafio'">
-					<div>
-						<div class="md-title">Distrito</div>
-						<md-autocomplete
-							ng-disabled="$ctrl.isDisabled"
-							md-no-cache="$ctrl.noCache"
-							md-selected-item="$ctrl.selectedDistrict"
-							md-search-text-change="$ctrl.searchTextChange($ctrl.searchDistrictText)"
-							md-search-text="$ctrl.searchDistrictText"
-							md-selected-item-change="$ctrl.onChangeDistrict(item)"
-							md-items="item in $ctrl.querySearch($ctrl.searchDistrictText)"
-							md-item-text="($ctrl.selectedDistrict.name || item.display)"
-							md-min-length="0"
-							placeholder="Selecciona un Distrito...">
-							<md-item-template>
-								<span md-highlight-text="$ctrl.searchDistrictText" md-highlight-flags="^i">{{item.display}}</span>
-							</md-item-template>
-							<md-not-found>
-								No se encontro un distrito de nombre "{{$ctrl.searchDistrictText}}".
-							</md-not-found>
-						</md-autocomplete>
-					</div>				   
-			</md-content>
-
-			<!-- COLEGIOS -->
-			<md-content ng-if="$ctrl.resource.type == 'desafio' && !$ctrl.loadingSchools">					
-				<div>
-					<h1 class="md-title">Colegios</h1>
-					<md-autocomplete
-							md-selected-item="$ctrl.selectedSchool"
-							md-search-text="$ctrl.searchSchoolText"
-							md-items="item in $ctrl.querySearchSchool($ctrl.searchSchoolText)"
-							md-item-text="item.schoolName"
-							md-min-length="0"
-							placeholder="Selecciona un Colegio...">
-						<md-item-template>
-							<span md-highlight-text="$ctrl.searchSchoolText" md-highlight-flags="^i">{{item.schoolName}}</span>
-						</md-item-template>
-						<md-not-found>
-							No se encontro un colegio de nombre "{{$ctrl.searchSchoolText}}".
-						</md-not-found>
-					</md-autocomplete>
-				</div>				   
-			</md-content>
-		</md-content>
+			
 		
 		<md-content  class="dashboard__content" flex>
 			<div class="dashboard__content--head">
@@ -132,11 +84,11 @@
 					<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del recurso">
 				</div>
 				<div flex class="dashboard__sidenav--head-resource">
-					<h2 class="dashboard__sidenav--head">{{$ctrl.headText}}</h2>
-					<h2 class="dashboard__sidenav--subhead">{{$ctrl.resource.tipoDesafio.caption}}</h2>
+					<h2 class="dashboard__sidenav--head">{{$ctrl.headText}}</h2>				
 				</div>
 			</div>
 			<h1 class="rd__headpost--sidenav">{{$ctrl.resource.title}}</h1>
+			<h2 class="rd__headpost">Tipo {{$ctrl.resource.tipoDesafio.caption}}</h2>
 			<p class="rd__headpost">{{$ctrl.resource.summary | truncate:140}}</p>
 		</md-content>
 		
