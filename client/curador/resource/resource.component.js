@@ -293,7 +293,7 @@ export default class ResourceComponent extends CuradorComponent {
 		this.finish = ($event) => {	
 			if (this.resource.type !== 'desafio') {
 				this.publish();
-			} else if (this.resource.district && this.resource.school) {
+			} else if (this.selectedDistrict && this.selectedSchool) {
                 this.publish();
 			} else {
                 $('#msg').show();

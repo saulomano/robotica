@@ -287,7 +287,7 @@ export default class DesafioComponent extends CuradorComponent {
 		};
 
 		this.finish = ($event) => {
-			if (this.desafio.district && this.desafio.school) {
+			if (this.selectedDistrict && this.selectedSchool) {
                 this.publish();
 			} else {
                 $('#msg').show();
@@ -463,7 +463,7 @@ export default class DesafioComponent extends CuradorComponent {
 	
 	saveDesafio(button){
 
-		onSaveDesafio();
+		this.onSaveDesafio();
 		if (button) {
 			this.desafio.status = 'pendiente';
 		}
@@ -481,10 +481,8 @@ export default class DesafioComponent extends CuradorComponent {
 	}
 
 
-	onSaveDesafios()
-	{
-		if(this.desafio.type === 'desafio')
-		{
+	onSaveDesafio()	{
+		if (this.desafio.type === 'desafio') {
 			this.desafio.district = (this.selectedDistrict) ? angular.copy(this.selectedDistrict.name) : null;
 			this.desafio.school = (this.selectedSchool) ? angular.copy(this.selectedSchool.schoolName) : null;
 			this.desafio.rate = angular.copy(this.rate);

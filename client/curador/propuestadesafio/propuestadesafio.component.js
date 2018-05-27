@@ -29,7 +29,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
     	this.noCache = true;
 
 		
-		
+		// this.Resource = this.Restangular.one('resources', this.uid);
 		this.PropuestaDesafio = this.Restangular.one('propuestadesafio', this.uid);
 		this.Publisheds = this.Restangular.all('publishedpropuesta');
 
@@ -444,20 +444,20 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 		this.loading = true;
 		
 		this
-			.Resource
+			.PropuestaDesafio
 			.remove()
 			.then( data => {
 				if (this.resource.published) {
 					Published
 					.remove()
 					.then( data => {
-						(this.returnDesafios) ? this.$state.go('curador.propuestadesafio', { type: " desafiopropuesto" }) : this.$state.go('curador.propuestadesafio');
+						(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestadesafio', { type: "desafiopropuesto" }) : this.$state.go('curador.dashboardpropuestadesafio');
 					})
 					.catch( err => {
 						throw err;
 					});
 				} else {
-					(this.returnDesafios) ? this.$state.go('curador.propuestadesafio', { type: " desafiopropuesto" }) : this.$state.go('curador.propuestadesafio');
+					(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestadesafio', { type: "desafiopropuesto" }) : this.$state.go('curador.dashboardpropuestadesafio');
 				}
 			})
 			.catch( err => {
