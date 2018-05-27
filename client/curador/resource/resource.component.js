@@ -19,6 +19,7 @@ export default class ResourceComponent extends CuradorComponent {
 		this.$timeout = $timeout;
 		this.init = true;
 		this.isDelete = $stateParams.action === 'remove';
+		this.isEdit = $stateParams.action === 'edit';
 		this.$state = $state;
 		this.$mdDialog = $mdDialog;
 		this.ngMeta = ngMeta;
@@ -285,9 +286,15 @@ export default class ResourceComponent extends CuradorComponent {
 			this.saveResource(button);
 		};
 
-		this.finish = ($event) => {
-			if (this.resource.district && this.resource.school) {
-                this.publish()
+		this.cancel = () => {
+			(this.isEdit) ? this.$state.go('curador.dashboard') : this.deleteResource();
+		};
+
+		this.finish = ($event) => {	
+			if (this.resource.type !== 'desafio') {
+				this.publish();
+			} else if (this.resource.district && this.resource.school) {
+                this.publish();
 			} else {
                 $('#msg').show();
                 this.functionShowMsg('Para poder publicar/aprobar este desafio, debe seleccionar un Distrito y un Colegio.');

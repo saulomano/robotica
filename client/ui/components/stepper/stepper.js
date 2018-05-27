@@ -103,6 +103,13 @@ class RdStepperController {
 		}
 	}
 
+	cancel($event) {
+		let onCancelFn = this.$scope.onCancel;
+		if (typeof onCancelFn === 'function') {
+			onCancelFn($event);
+		}
+	}
+
 	finish($event){
 		let finishFn = this.$scope.onFinish;
 		if (typeof finishFn === 'function'){
@@ -152,6 +159,7 @@ function rdStepper($log){
 			onFinish: '=',
 			onEnterStep: '=',
 			onSave: '=',
+			onCancel: '=',
 			autoSave: '=',
 			ngModel: '=',
 			initStepIndex: '=',
