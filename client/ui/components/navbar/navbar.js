@@ -60,10 +60,9 @@ class RdNavbarController {
 				this.removeDropdown();
 			});
 
-			// $(document).click(() => {
-			// 	console.log(this.$element)
-			// 	this.$element.removeClass('show-submenu');
-			// });
+			$(document).click(() => {
+				this.removeDropdown();
+			});
 
             [].slice.call(document.querySelectorAll('.dropdown .nav-link')).forEach(function(el){
                 el.addEventListener('click', onClick, false);
