@@ -205,7 +205,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 		};
 
 		this.cancel = () => {
-			(this.isEdit) ? this.$state.go('curador.dashboard') : this.deleteResource();
+			(this.isEdit) ? this.$state.go('curador.dashboardpropuestadesafio') : this.deleteResource();
 		};
 
 		this.finish = ($event) => {
