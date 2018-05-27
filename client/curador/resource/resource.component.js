@@ -290,8 +290,10 @@ export default class ResourceComponent extends CuradorComponent {
 			(this.isEdit) ? this.$state.go('curador.dashboard') : this.deleteResource();
 		};
 
-		this.finish = ($event) => {
-			if (this.resource.district && this.resource.school) {
+		this.finish = ($event) => {	
+			if (this.resource.type !== 'desafio') {
+				this.publish();
+			} else if (this.resource.district && this.resource.school) {
                 this.publish();
 			} else {
                 $('#msg').show();
