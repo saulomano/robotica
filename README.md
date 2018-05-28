@@ -19,5 +19,5 @@ return {
   
   Import json de escuelas a base de datos 
   Tomar el archivo escuelas.json y ejecutar el comando
-  mongoimport --db robotica-dev --collection escuelas --type json --file escuel.json --jsonArray
+  mongoimport --db robotica-dev --collection colegios --type json --file schools.json --jsonArray
 

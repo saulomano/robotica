@@ -12,7 +12,7 @@ export default class VerDesafioComponent extends SocialComponent {
     this.ngMeta = ngMeta;
     this.$scope = $scope;
     this.$timeout = $timeout;
-    this.Resource = Restangular.one('publisheds', uid);
+    this.Resource = Restangular.one('publisheddesafios', uid);
 
     let captions = {
       'propuesta': 'Propuesta pedagógica',
@@ -20,6 +20,7 @@ export default class VerDesafioComponent extends SocialComponent {
       'herramienta': 'Herramienta',
       'orientacion': 'Orientación',
       'mediateca': 'Mediateca',
+      'desafio': 'Desafio',
     };
 
     this.Resource
