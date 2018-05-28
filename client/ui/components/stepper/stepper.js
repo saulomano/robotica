@@ -163,7 +163,8 @@ function rdStepper($log){
 			autoSave: '=',
 			ngModel: '=',
 			initStepIndex: '=',
-			steps: '='
+			steps: '=',
+			type:'=',
 			
 
 		},

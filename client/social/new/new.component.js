@@ -35,7 +35,7 @@ export default class NewComponent extends SocialComponent{
 
     createDesafio(section, desafioAResolver) {
         let dbtypes = {
-            'subidesafio': 'desafio',
+            'resolvedesafio': 'desafio',
         };
     
         let type = dbtypes[section];
