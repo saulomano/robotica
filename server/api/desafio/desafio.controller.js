@@ -77,9 +77,6 @@ export function index(req, res, next) {
 export function create(req, res, next) {
   var newDesafio = new Desafio(req.body);
   
-  console.log('Guardando desafio');
-  console.log(newDesafio);
-
 	req.result = newDesafio.save();
 	next();
 }

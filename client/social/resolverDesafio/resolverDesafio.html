@@ -101,7 +101,7 @@
 			<!-- DESAFIOS -->
 			<!-- ================================================================ -->
 			<!-- DISTRITOS -->
-			<md-content ng-if="$ctrl.desafio.type == 'desafio'">
+			<md-content >
                 <div>
                     <div class="md-title">Distrito</div>
                     <md-autocomplete
@@ -126,7 +126,7 @@
 
             <!--$ctrl.selectedDistrict.schools-->
             <!-- COLEGIOS -->
-            <md-content ng-if="$ctrl.desafio.type == 'desafio' && !$ctrl.loadingSchools">					
+            <md-content ng-if="!$ctrl.loadingSchools">					
 				<div>
 					<h1 class="md-title">Colegios</h1>
                     <md-autocomplete
@@ -388,9 +388,9 @@
 </div>
 
 <!-- STEP PUBLICAR -->
-<!-- <div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'publicar'" ng-hide="$ctrl.loading">
+<div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'publicar'" ng-hide="$ctrl.loading">
     <div class="dashboard__preview--header bg-primary">
         <h2><i class="fa fa-angle-down"></i> Previsualización <i class="fa fa-angle-down"></i></h2>
     </div>
     <desafio-view desafio="$ctrl.desafio" class="dashboard__preview"></desafio-view>
-</div> -->
+</div> 

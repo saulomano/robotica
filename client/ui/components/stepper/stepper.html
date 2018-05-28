@@ -21,14 +21,14 @@
 		<md-button class="md-raised rd-stepper__button--save"  
 			aria-label="Guardar" 
 			ng-click="!$rdStepperController.releaseSave(true)" 
-			ng-if="!$rdStepperController.showNext() && $rdStepperController.userRole !== 'admin' && ($rdStepperController.userRole == 'desafio')">
+			ng-if="!$rdStepperController.showNext() && $rdStepperController.userRole !== 'admin' && ($rdStepperController.type == 'desafio')">
 			<span>Enviar</span>
 			<md-icon class="mi mi-save" aria-hidden="true"></md-icon>
 		</md-button>
 		<md-button class="md-raised rd-stepper__button--save"  
 			aria-label="Guardar" 
 			ng-click="!$rdStepperController.releaseSave(true)" 
-			ng-if="!$rdStepperController.showNext() && ($rdStepperController.userRole == 'admin') && ($rdStepperController.userRole == 'desafio')">
+			ng-if="!$rdStepperController.showNext() && ($rdStepperController.userRole == 'admin') && ($rdStepperController.type == 'desafio')">
 			<span>Guardar</span>
 			<md-icon class="mi mi-save" aria-hidden="true"></md-icon>
 		</md-button>
