@@ -37,9 +37,9 @@ class HeaderComponent {
           {
             section: 'desafiosParaResolver',  caption: 'Desafios para resolver', action:'social.desafiosParaResolver'
           },
-          {
+          /*{
             section: 'subiDesafio',  caption: 'Subi tu desafio', action:'social.new'
-          },
+          },*/
           {
             section: 'desafios',  caption: 'Mis desafios', action:'social.misDesafios'
           },
