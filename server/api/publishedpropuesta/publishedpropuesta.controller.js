@@ -65,7 +65,14 @@ export function index(req, res, next) {
 			req.totalItems = count;
 			req.result = Published
 										.find(q)
+										.populate({
+											path: 'propuesta',										
+											populate: { path: 'tipoDesafio' }
+										  })
 										.populate('tipoDesafio')
+										.populate('owner')
+										.populate('files')
+										.populate('links')
 										.sort(query.cursor.sort)
 										.skip(query.cursor.skip)
 										.limit(query.cursor.limit)
@@ -112,6 +119,10 @@ export function show(req, res, next) {
 								.populate('owner')
 								.populate('files')
 								.populate('links')
+								.populate({
+									path: 'propuesta',										
+									populate: { path: 'tipoDesafio' }
+								  })
 								.exec();
 	next();
 }

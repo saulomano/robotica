@@ -11,9 +11,16 @@ class PropuestaDesafioCardController {
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;
-    	this.$element.addClass('resource-card');
-    
+		this.$element.addClass('resource-card');
+		
+
+	
+		
+		
 		this.resource = this.$scope.resource;
+
+
+
 		this.editable = this.$scope.editable === true;
 		let captions = {
 			'desafiopropuesto': 'Propuesta Desafio'
@@ -21,8 +28,10 @@ class PropuestaDesafioCardController {
 
 		this.resource.typeCaption = captions[this.resource.type];
 		this.modoVista = this.$scope.vista;
+		if (this.modoVista==='social'){
+			this.resource = this.$scope.resource.propuesta;
 
-
+		}
 	}
 
 	editResource(){
