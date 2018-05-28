@@ -132,6 +132,11 @@ export function publish(req, res, next) {
 	let pid = desafio.published ? desafio.published._id : undefined;
 	let published = new Published(desafio);
 
+	req.result =  Published.findByIdAndRemove(req.params.id).exec();
+	next();
+
+
+
 	// find the resource
 	if (pid === undefined){
 		published.createdAt = new Date();
