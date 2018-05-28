@@ -59,6 +59,7 @@ export function index(req, res, next) {
 							.find(q)
 							.populate('owner')
 							.populate('files')
+							.populate('desafioResuelto')
 							.sort(query.cursor.sort)
 							.skip(query.cursor.skip)
 							.limit(query.cursor.limit)
@@ -106,6 +107,7 @@ export function show(req, res, next) {
 								.populate('files')
 								.populate('published')
 								.populate('links')
+								.populate('desafioResuelto')
 								.exec();
 	next();
 }
@@ -148,6 +150,7 @@ export function publish(req, res, next) {
 							.populate('files')
 							.populate('published')
 							.populate('links')
+							.populate('desafioResuelto')
 							.exec();
 		
 						next();
@@ -165,6 +168,7 @@ export function publish(req, res, next) {
 					.populate('files')
 					.populate('published')
 					.populate('links')
+					.populate('desafioResuelto')
 					.exec();
 
 				next();

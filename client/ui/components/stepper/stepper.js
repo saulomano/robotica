@@ -164,6 +164,8 @@ function rdStepper($log){
 			ngModel: '=',
 			initStepIndex: '=',
 			steps: '='
+			
+
 		},
 		template: require('./stepper.html')
 	}

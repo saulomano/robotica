@@ -13,9 +13,10 @@ export default class NewComponent extends SocialComponent{
         this.Restangular = Restangular;
         this.Auth = Auth;
         this.$log = $log;
-        let types = /^(subidesafio)$/ig;
+        let types = /^(subidesafio|resolvedesafio)$/ig;
         this.section = _.toLower($stateParams.type);
-
+        this.desafioAResolver = this.Restangular.one('propuestadesafio', $stateParams.desafioresolver);
+       
         if (!types.test(this.section)){
             this.error = `Argumento invalido ${this.section}`;
         }
@@ -29,10 +30,10 @@ export default class NewComponent extends SocialComponent{
             return;
         }
         // create the object
-        this.createDesafio(this.section);
+        this.createDesafio(this.section,this.desafioAResolver);
     }
 
-    createDesafio(section) {
+    createDesafio(section, desafioAResolver) {
         let dbtypes = {
             'subidesafio': 'desafio',
         };
@@ -56,9 +57,12 @@ export default class NewComponent extends SocialComponent{
                     collaborators: [],
                     links: [],
                     files: [],
-                    step: 'ficha'
+                    step: 'ficha',
+                    desafioResuelto : desafioAResolver
                 };
                 let desafio = this.Restangular.all('desafios');
+
+
                 desafio
                     .post(data)
                     .then(data => {

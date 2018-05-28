@@ -28,7 +28,8 @@ export default class ResolverDesafioComponent extends SocialComponent {
 		this.role = '';
 		this.getUser();
 
-        this.simulateQuery = true;
+		
+		 this.simulateQuery = true;
         this.isDisabled = false;
         this.noCache = true;
 
@@ -55,8 +56,8 @@ export default class ResolverDesafioComponent extends SocialComponent {
 		this.steps = [
 			{ name: 'ficha', caption: 'Ficha' },
 			{ name: 'recurso', 	caption: 'Recurso' },
-			{ name: 'vinculo', caption: 'Vínculo' }
-			// { name: 'publicar', caption: 'Publicar' },
+			{ name: 'vinculo', caption: 'Vínculo' },
+			{ name: 'publicar', caption: 'Publicar' },
 		];
 
 		this.configureDropzone(Util);
