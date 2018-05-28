@@ -50,6 +50,13 @@ class PropuestaDesafioCardController {
             this.$state.go('curador.new', { type: item.section });
 		}
 	}
+
+
+
+	resolverDesafio(){
+		this.$state.go(`social.new`, { desafioresolver: this.resource._id, action: 'edit' ,type:'resolvedesafio' });
+	}
+
 }
 
 function propuestaDesafioCard($log){

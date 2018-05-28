@@ -28,7 +28,8 @@ export default class ResolverDesafioComponent extends SocialComponent {
 		this.role = '';
 		this.getUser();
 
-        this.simulateQuery = true;
+		
+		 this.simulateQuery = true;
         this.isDisabled = false;
         this.noCache = true;
 

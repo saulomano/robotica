@@ -30,6 +30,7 @@ var DesafioSchema = new Schema({
 		district: String,
 		school: String,
 		rate: { type:Number, default: 0 },
+		desafioResuelto: { type: Schema.Types.ObjectId, ref: 'PropuestaDesafio' },
 	}, ops);
 
 registerEvents(DesafioSchema);
