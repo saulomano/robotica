@@ -136,6 +136,8 @@ export function publish(req, res, next) {
 	if (pid === undefined){
 		published.createdAt = new Date();
 		published.updatedAt = new Date();
+		published.desafio = desafio;
+
 		published
 			.save()
 			.then(p => {
@@ -159,6 +161,7 @@ export function publish(req, res, next) {
 	} else {
 		delete published._id;
 		published.updatedAt = new Date();
+		published.desafio = desafio;
 		Published
 			.update({ _id: pid}, published)
 			.then(p => {
