@@ -586,6 +586,7 @@ export default class ResolverDesafioComponent extends SocialComponent {
         {
             this.desafio.district = (this.selectedDistrict) ? angular.copy(this.selectedDistrict.name) : null;
 			this.desafio.school = (this.selectedSchool) ? angular.copy(this.selectedSchool.schoolName) : null;
+			this.desafio.rate = angular.copy(this.rate);
         }
     }
 }
