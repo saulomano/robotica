@@ -16,7 +16,34 @@
 	</nav>
 
 	<!-- TOOLS -->
-	<div class="rd-navbar__tools" ng-transclude="tools"></div>
+	<div class="rd-navbar__tools">
+		<rd-navbar-item
+			navbar-item-icon="mi mi-person"
+			navbar-item-caption="Profile"
+			ng-hide="$rdNavbarController.user.google.image.url !== undefined"
+			ng-click="$rdNavbarController.toggleProfile($event)">
+		</rd-navbar-item>
+		<div class="rd-navbar__item profile__avatar"
+			ng-show="$rdNavbarController.user.google.image.url !== undefined"
+			ng-click="$rdNavbarController.toggleProfile($event)">
+			<img ng-src="{{$rdNavbarController.user.google.image.url}}" alt="Avatar">
+		</div>
+		<div class="profile__dropdown" ng-show="$rdNavbarController.showingDropdown">
+			<div class="profile__dropdown--caret">
+				<i class="fa fa-caret-up fa-2x"></i>
+			</div>
+			<div class="profile__dropdown--username">{{$rdNavbarController.user.name}}</div>
+			<md-divider></md-divider>
+			<div layout="row">
+				<md-button class="md-raised md-mini profile__dropdown--logout">
+					<div layout="row" layout-align="center center" ng-click="$rdNavbarController.logout()">
+						<i class="fa fa-sign-out"></i> <span>Salir</span>
+					</div>
+				</md-button>
+			</div>
+			
+		</div>
+	</div>
 
 	<!-- PROFILE -->
 	<div class="rd-navbar__profile" ng-transclude="profile"></div>
