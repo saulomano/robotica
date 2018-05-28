@@ -14,7 +14,8 @@ class DesafioViewController {
 		this.rateView = this.$scope.rate;
         this.Auth = Auth;
         this.getUser();
-        this.role = '';
+		this.role = '';
+		this.readOnlyRating = false;
     	this.$element.addClass('desafio-card');
     
 		this.editable = this.$scope.editable === true;
@@ -45,8 +46,8 @@ class DesafioViewController {
 		
 	}
 
-	onClickStar($event) {
-		this.$scope.rate = $event.rating;
+	onClickStar(event) {
+		this.$scope.rate = event.rating;
 	} 
 
 	sumfiles(files){
@@ -57,7 +58,8 @@ class DesafioViewController {
         this.Auth
             .getCurrentUser()
             .then(user => {
-                this.role = user.role;
+				this.role = user.role;
+				if (this.role === 'user') this.readOnlyRating = true;
             });
     }
 }
@@ -68,12 +70,12 @@ function desafioView($log){
 	return {
 		restrict: 'E',
 		controller: DesafioViewController,
-    controllerAs: '$ctrl',
-    scope: {
+		controllerAs: '$ctrl',
+		scope: {
 			desafio: '=',
 			isPublished: '=',
 			rate: '='
-    },
+		},
 		template: require('./desafioView.html')
 	}
 }
