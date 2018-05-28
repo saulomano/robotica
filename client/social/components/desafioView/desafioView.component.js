@@ -46,7 +46,7 @@ class DesafioViewController {
 	}
 
 	onClickStar($event) {
-		this.$scope.rate = $event.rating;
+		this.desafio.rate = $event.rating;
 	} 
 
 	sumfiles(files){

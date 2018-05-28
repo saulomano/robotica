@@ -42,7 +42,7 @@
 					<!-- HERE GOES THE RATE ('STARS') -->
 					<div flex class="rview__border-bottom" >
 						<h1 class="md-title">Calificación para este desafío</h1>
-						<star-rating-comp read-only="true" num-of-stars="5" rating="$ctrl.desafio.rate" ></star-rating-comp>
+						<star-rating-comp read-only="($ctrl.role == 'admin' && $ctrl.resource.status !== 'aprobado') ? false : true" num-of-stars="5" rating="$ctrl.desafio.rate" on-rating-change="$ctrl.onClickStar($event)"></star-rating-comp>
 					</div>
 					<div flex class="rview__border-bottom">
 							<h5>{{$ctrl.desafio.typeCaption}}</h5>
