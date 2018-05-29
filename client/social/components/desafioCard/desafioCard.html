@@ -22,15 +22,31 @@
             <span class="rd-card__icon--circle">
                 <i class="ri ri-3x" ng-class="'ri-'+$ctrl.desafio.type"></i>
             </span>
-            <span class="rd-card__header--type rd__text--caption">{{$ctrl.desafio.typeCaption}}</span>
+            <span class="rd-card__header--type rd__text--caption">{{$ctrl.desafio.desafioResuelto.tipoDesafio.typeCaption}}</span>
         </div>
 	</rd-card-header>
 	<rd-card-body>
+
+            <div layout="row">
+                    <div class="rd-card__thumbnail" ng-hide="$ctrl.deleteUserBoolean">
+                        <img ng-hide="$ctrl.desafio.desafioResuelto.thumbnail === ''"  ng-src="{{$ctrl.desafioResuelto.desafio.thumbnail}}" alt="Miniatura del recurso">
+                    </div>
+                    <div flex class="rd-card__body--custom" ng-hide="$ctrl.deleteUserBoolean">
+                        <p class="rd-card__paragraph">Desafio Propuesto</p>
+                        <h1 class="rd-card__title--v1">{{$ctrl.desafio.desafioResuelto.title}}</h1>
+                        <p class="rd-card__paragraph">{{$ctrl.desafio.desafioResuelto.summary | truncate:140 }}</p>
+                    </div>
+         </div>
+
+
+
+        <md-divider ></md-divider>
         <div layout="row">
             <div class="rd-card__thumbnail" ng-hide="$ctrl.deleteUserBoolean">
                 <img ng-hide="$ctrl.desafio.thumbnail === ''"  ng-src="{{$ctrl.desafio.thumbnail}}" alt="Miniatura del recurso">
             </div>
             <div flex class="rd-card__body--custom" ng-hide="$ctrl.deleteUserBoolean">
+                    <p class="rd-card__paragraph">Resolucion</p>
                 <h1 class="rd-card__title--v1">{{$ctrl.desafio.title}}</h1>
                 <p class="rd-card__paragraph">{{$ctrl.desafio.summary | truncate:140 }}</p>
                 <p class="rd-card__paragraph" ng-if="$ctrl.desafio.district">

@@ -287,11 +287,11 @@ export default class DesafioComponent extends CuradorComponent {
 		};
 
 		this.finish = ($event) => {
-			if (this.selectedDistrict && this.selectedSchool) {
+			if (resource.tipoDesafio !== 'undefined' && resource.tipoDesafio != null) {
                 this.publish();
 			} else {
                 $('#msg').show();
-                this.functionShowMsg('Para poder publicar/aprobar este desafio, debe seleccionar un Distrito y un Colegio.');
+                this.functionShowMsg('Para poder publicar este desafio, debe seleccionar un Tipo.');
 			}
 		};
 
