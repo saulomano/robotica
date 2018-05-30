@@ -113,7 +113,7 @@ export default class ResourceComponent extends CuradorComponent {
     createFilterFor(query) {
 		var lowercaseQuery = angular.lowercase(query);
 		return function filterFn(state) {
-		  	return (state.value.indexOf(lowercaseQuery) === 0);
+		  	return (state.value.indexOf(lowercaseQuery) > -1);
 		};
 	}
 
@@ -123,7 +123,7 @@ export default class ResourceComponent extends CuradorComponent {
     createFilterForSchool(query) {
         var lowercaseQuery = angular.lowercase(query);
         return function filterFn(state) {
-            return (angular.lowercase(state.schoolName).indexOf(lowercaseQuery) === 0);
+            return (angular.lowercase(state.schoolName).indexOf(lowercaseQuery) > -1);
         };
     }
 
