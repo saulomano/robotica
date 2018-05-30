@@ -209,7 +209,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 		};
 
 		this.finish = ($event) => {
-			if (this.selectedDistrict && this.selectedSchool) {
+			if (this.ti && this.selectedSchool) {
                 this.publish();
 			} else {
                 $('#msg').show();
