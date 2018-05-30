@@ -1,6 +1,7 @@
 'use strict';
 import angular from 'angular';
 import SocialComponent from '../social.component';
+import _ from "lodash";
 
 
 export default class DesafiosParaResolverComponent extends SocialComponent{
@@ -65,5 +66,70 @@ export default class DesafiosParaResolverComponent extends SocialComponent{
             })
 
         return def.promise;
+    }
+
+    viewDesafioResource_($event, resource){
+        this.$mdDialog.show({
+            template: require('../components/modalView/modalView.html'),
+            parent: angular.element(document.body),
+            targetEvent: $event,
+            clickOutsideToClose: true,
+            fullscreen: true, // Only for -xs, -sm breakpoints.
+            locals: {
+                resource: resource
+            },
+            controller: DialogController,
+            controllerAs: '$ctrl'
+        })
+            .then((data) => {
+                console.log(data);
+            }, () => {
+
+            })
+            .catch(function(res) {
+                if (!(res === 'cancel' || res === 'escape key press')) {
+                    throw res;
+                }
+            });
+
+        function DialogController($scope, $mdDialog, resource, Restangular, $timeout) {
+            'ngInject';
+            this.loading = true;
+
+            this.Resource = Restangular.one('publishedpropuesta', resource._id);
+
+            this.closeDialog = function() {
+                $mdDialog.hide();
+            }
+
+            this.Resource
+                .get()
+                .then(data => {
+
+                    let captions = {
+                        'propuesta': 'Propuesta pedagógica',
+                        'actividad': 'Actividad accesible',
+                        'herramientas': 'Herramienta',
+                        'orientacion': 'Orientación',
+                        'mediateca': 'Mediateca',
+                        'noticias': 'Noticias',
+                        'calendario': 'Calendario',
+                    };
+
+                    data.links = _.map(data.links, p =>{
+                        p.typeCaption = captions[p.type];
+                        return p;
+                    });
+
+                    this.resource = data;
+                    this.loading = false;
+                    $timeout(() => {
+                        $scope.$apply();
+                    });
+                })
+                .catch(err => {
+                    throw err;
+                });
+        }
     }
 }
