@@ -17,14 +17,14 @@
 
 	<!-- TOOLS -->
 	<div class="rd-navbar__tools">
-		<rd-navbar-item
+		<!-- <rd-navbar-item
 			navbar-item-icon="mi mi-person"
 			navbar-item-caption="Profile"
-			ng-hide="$rdNavbarController.user.google.image.url !== undefined"
+			ng-hide="$rdNavbarController.user.google !== undefined"
 			ng-click="$rdNavbarController.toggleProfile($event)">
-		</rd-navbar-item>
+		</rd-navbar-item> -->
 		<div class="rd-navbar__item profile__avatar"
-			ng-show="$rdNavbarController.user.google.image.url !== undefined"
+			ng-if="$rdNavbarController.user.google"
 			ng-click="$rdNavbarController.toggleProfile($event)">
 			<img ng-src="{{$rdNavbarController.user.google.image.url}}" alt="Avatar">
 		</div>
