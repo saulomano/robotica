@@ -10,6 +10,7 @@ import _ from 'lodash';
  * restriction: 'authenticate'
  */
 export function index(req, res, next) {
+	const userId = req.user._id;
 	var query = req.querymen;
 	let qq = req.query.q;
 	let q = {};
@@ -42,10 +43,14 @@ export function index(req, res, next) {
 				{ platform: { $regex: k, $options: 'i' } },
 				{ category: { $regex: k, $options: 'i' } },
 				{ 'postBody.content': { $regex: k, $options: 'i' } },
-				{ tags: { $regex: k, $options: 'i' } },
+				{ tags: { $regex: k, $options: 'i' } }
 			]
 		};
 	}
+
+	if (qq == 'owner') q = {owner: userId};
+
+	console.log('q value: ', q);
 
 	Desafio
 		.find(q)

@@ -166,3 +166,47 @@ export function destroy(req, res, next) {
 	req.statusCode = 204;
 	next();
 }
+
+
+
+
+export function filtrarTipo(req, res, next) {
+	var query = req.querymen;
+	let qq = req.query.q;
+	var type = req.query.type;
+
+	var tipoCaption = req.params.caption;
+console.log (tipoCaption);
+
+console.log(Published
+.find({ 'propuesta.tipoDesafio.type' : tipoCaption} )
+.count().exec());
+
+
+
+	Published
+		.find({ 'propuesta.tipoDesafio.type' : tipoCaption} )
+		.count()
+		.exec((err, count) => {
+			if (err){
+				return next(err);
+			}
+			req.totalItems = count;
+			req.result = Published
+										.find({ 'propuesta.tipoDesafio.type' : tipoCaption} )
+										.populate({
+											path: 'propuesta',										
+											populate: { path: 'tipoDesafio' }
+										  })
+										.populate('tipoDesafio')
+										.populate('owner')
+										.populate('files')
+										.populate('links')
+										.sort(query.cursor.sort)
+										.skip(query.cursor.skip)
+										.limit(query.cursor.limit)
+										.select(query.cursor.select)
+										.exec();
+			next();
+		});
+}

@@ -261,6 +261,13 @@
 </div>
 
 <!-- STEP PUBLICAR -->
+<div flex class="dashboard__sidenav--head-resource" id="msg">
+		<h2 class="dashboard__sidenav--head color-propuestas">
+			<strong>
+				{{ $ctrl.msg }}
+			</strong>
+		</h2>
+	</div>
 <div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'publicar'" ng-hide="$ctrl.loading">
 	<div class="dashboard__preview--header bg-primary">
 		<h2><i class="fa fa-angle-down"></i> Previsualización <i class="fa fa-angle-down"></i></h2>

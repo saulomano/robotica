@@ -109,7 +109,7 @@ export default class DesafioComponent extends CuradorComponent {
     createFilterFor(query) {
 		var lowercaseQuery = angular.lowercase(query);
 		return function filterFn(state) {
-		  	return (state.value.indexOf(lowercaseQuery) === 0);
+		  	return (state.value.indexOf(lowercaseQuery) > -1);
 		};
 	}
 
@@ -119,7 +119,7 @@ export default class DesafioComponent extends CuradorComponent {
     createFilterForSchool(query) {
         var lowercaseQuery = angular.lowercase(query);
         return function filterFn(state) {
-            return (angular.lowercase(state.schoolName).indexOf(lowercaseQuery) === 0);
+            return (angular.lowercase(state.schoolName).indexOf(lowercaseQuery) > -1);
         };
     }
 
@@ -287,11 +287,11 @@ export default class DesafioComponent extends CuradorComponent {
 		};
 
 		this.finish = ($event) => {
-			if (this.selectedDistrict && this.selectedSchool) {
+			if (resource.tipoDesafio !== 'undefined' && resource.tipoDesafio != null) {
                 this.publish();
 			} else {
                 $('#msg').show();
-                this.functionShowMsg('Para poder publicar/aprobar este desafio, debe seleccionar un Distrito y un Colegio.');
+                this.functionShowMsg('Para poder publicar este desafio, debe seleccionar un Tipo.');
 			}
 		};
 

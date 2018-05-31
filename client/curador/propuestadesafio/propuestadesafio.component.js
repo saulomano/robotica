@@ -209,7 +209,12 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 		};
 
 		this.finish = ($event) => {
-			this.publish();
+			if (this.ti && this.selectedSchool) {
+                this.publish();
+			} else {
+                $('#msg').show();
+                this.functionShowMsg('Para poder publicar/aprobar este desafio, debe seleccionar un Distrito y un Colegio.');
+			}
 		}
 
 		this.toRefuse = ($event) => {
