@@ -6,8 +6,11 @@ let routes = function($stateProvider) {
   'ngInject';
   $stateProvider
     .state('social.new', {
-      url: '/desafio/new?type',
-      template: '<desafio-new></desafio-new>'
+      url: '/desafio/new',
+      params: {
+        desafioresolver: null, type: null
+     },
+     template: '<desafio-new></desafio-new>'
     });
 }
 

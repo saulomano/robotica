@@ -14,5 +14,6 @@ router.get('/:id/relations', querymen.middleware(), controller.relations);
 router.get('/:id/download', controller.download);
 router.get('/:id', controller.show);
 router.post('/', auth.hasRole('admin'), controller.create);
+router.get('/tipo/:caption',  querymen.middleware(),controller.filtrarTipo);
 
 module.exports = router;

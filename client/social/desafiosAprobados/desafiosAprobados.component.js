@@ -12,7 +12,7 @@ export default class DesafiosAprobadosComponent {
         this.Auth = Auth;
         this.Restangular = Restangular;
         this.user = this.getUser();
-        this.Publisheds = this.Restangular.all('publisheds');
+        this.Publisheds = this.Restangular.all('publisheddesafios');
         this.section = $stateParams.type;
         this.searchText = $stateParams.search;
         this.$rootScope.$on('filterChange', (event, searchText) => {

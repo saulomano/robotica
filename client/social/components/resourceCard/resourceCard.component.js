@@ -20,15 +20,14 @@ class ResourceCardController {
 			'actividad': 'Actividad accesible',
 			'herramienta': 'Herramienta',
 			'orientacion': 'Orientación',
-			'mediateca': 'Mediateca',
-			'desafio': 'Desafío',
+			'mediateca': 'Mediateca'
 		};
 
 		this.resource.typeCaption = captions[this.resource.type];
 	}
 
 	editResource(){
-		this.$state.go(`curador.recurso`, { uid: this.resource._id });
+		this.$state.go(`curador.recurso`, { uid: this.resource._id, action: 'edit' });
 	}
 
 	deleteResource(){

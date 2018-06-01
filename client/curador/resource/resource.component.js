@@ -19,6 +19,7 @@ export default class ResourceComponent extends CuradorComponent {
 		this.$timeout = $timeout;
 		this.init = true;
 		this.isDelete = $stateParams.action === 'remove';
+		this.isEdit = $stateParams.action === 'edit';
 		this.$state = $state;
 		this.$mdDialog = $mdDialog;
 		this.ngMeta = ngMeta;
@@ -112,7 +113,7 @@ export default class ResourceComponent extends CuradorComponent {
     createFilterFor(query) {
 		var lowercaseQuery = angular.lowercase(query);
 		return function filterFn(state) {
-		  	return (state.value.indexOf(lowercaseQuery) === 0);
+		  	return (state.value.indexOf(lowercaseQuery) > -1);
 		};
 	}
 
@@ -122,7 +123,7 @@ export default class ResourceComponent extends CuradorComponent {
     createFilterForSchool(query) {
         var lowercaseQuery = angular.lowercase(query);
         return function filterFn(state) {
-            return (angular.lowercase(state.schoolName).indexOf(lowercaseQuery) === 0);
+            return (angular.lowercase(state.schoolName).indexOf(lowercaseQuery) > -1);
         };
     }
 
@@ -285,9 +286,15 @@ export default class ResourceComponent extends CuradorComponent {
 			this.saveResource(button);
 		};
 
-		this.finish = ($event) => {
-			if (this.resource.district && this.resource.school) {
-                this.publish()
+		this.cancel = () => {
+			(this.isEdit) ? this.$state.go('curador.dashboard') : this.deleteResource();
+		};
+
+		this.finish = ($event) => {	
+			if (this.resource.type !== 'desafio') {
+				this.publish();
+			} else if (this.selectedDistrict && this.selectedSchool) {
+                this.publish();
 			} else {
                 $('#msg').show();
                 this.functionShowMsg('Para poder publicar/aprobar este desafio, debe seleccionar un Distrito y un Colegio.');

@@ -10,9 +10,11 @@
                 can-next="$ctrl.canNext" 
                 on-finish="$ctrl.finish"
                 on-enter-step="$ctrl.onEnterStep"
-                on-save="$ctrl.save"
+                on-save="$ctrl.save",
+                on-cancel="$ctrl.cancel"
                 init-step-index="$ctrl.initStepIndex"
-                user-rol=$ctrl.user.role>
+                user-rol="$ctrl.user.role"
+                type="'desafio'">
     </rd-stepper>
 </div>
     
@@ -100,7 +102,7 @@
 			<!-- DESAFIOS -->
 			<!-- ================================================================ -->
 			<!-- DISTRITOS -->
-			<md-content ng-if="$ctrl.desafio.type == 'desafio'">
+			<md-content >
                 <div>
                     <div class="md-title">Distrito</div>
                     <md-autocomplete
@@ -125,7 +127,7 @@
 
             <!--$ctrl.selectedDistrict.schools-->
             <!-- COLEGIOS -->
-            <md-content ng-if="$ctrl.desafio.type == 'desafio' && !$ctrl.loadingSchools">					
+            <md-content ng-if="!$ctrl.loadingSchools">					
 				<div>
 					<h1 class="md-title">Colegios</h1>
                     <md-autocomplete
@@ -253,7 +255,7 @@
                 <div layout="row">
                     <span flex></span>
                     <md-button class="md-raised" ng-click="$ctrl.removeAllFiles()">Eliminar todos</md-button>
-                    <md-button class="md-raised dz-clickable" ng-click="null"><i class="fa fa-upload"></i> Agregar</md-button>
+                    <md-button class="md-raised dz-software-clickable" ng-click="null"><i class="fa fa-upload"></i> Agregar</md-button>
                 </div>
             </div>
             <div class="dashboard__box" ng-if="$ctrl.desafio.type == 'mediateca'">
@@ -387,9 +389,9 @@
 </div>
 
 <!-- STEP PUBLICAR -->
-<!-- <div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'publicar'" ng-hide="$ctrl.loading">
+<div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'publicar'" ng-hide="$ctrl.loading">
     <div class="dashboard__preview--header bg-primary">
         <h2><i class="fa fa-angle-down"></i> Previsualización <i class="fa fa-angle-down"></i></h2>
     </div>
-    <desafio-view desafio="$ctrl.desafio" class="dashboard__preview"></desafio-view>
-</div> -->
+    <desafio-view desafio="$ctrl.desafio" class="dashboard__preview" rate="$ctrl.rate"></desafio-view>
+</div> 

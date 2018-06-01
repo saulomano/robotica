@@ -10,11 +10,24 @@
         <div class="banner__legend"><p>acá podés <span class="font-medium">ver los</span> Desafios que puedes resolver</p></div>
     </div>
 </div>
+<div style="background-color: #f0f1f1;">
+    <div>            
+        <section layout="row" layout-align="center center">
+            <md-button class="groupX left">Programación</md-button>
+            <md-button class="groupX middle">Matemático</md-button>
+            <md-button class="groupX middle">Lógica</md-button>
+            <md-button class="groupX right">Otros</md-button>
+        </section>
+    </div>
+        <div class="estilo"></div>
+</div>
+</div>
 
-<section class="resources_waterfall">
+<section class="resources_waterfall" style="margin-top: 3%;">
 	<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewResource" search-text="$ctrl.searchText">
-		<rd-item-template>            
-            <propuesta-desafio-card resource="item" editable="item.type !== 'addnew' ui-sref="social.verdesafio({ uid: item._id })""></resource-card>
+     
+        <rd-item-template>           
+            <propuesta-desafio-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></resource-card>
 		</rd-item-template>
 	</rd-waterfall>
 </section>

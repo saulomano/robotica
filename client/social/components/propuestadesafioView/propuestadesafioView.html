@@ -11,6 +11,7 @@
 				<div layout="column">
 					<h1 flex class="rd__headpost  rd__headpost--title rview__head">{{$ctrl.resource.title}}</h1>
 					<p flex class="paragraph post__test rview__summary">{{$ctrl.resource.summary}}</p>
+				
 					<rd-post flex class="rview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>	
 				</div>
 			</div>
@@ -34,10 +35,15 @@
 						<p><strong class="rd-card__owner">{{$ctrl.resource.owner.name}}</strong></p>
 					</div>
 					<!-- HERE GOES THE RATE ('STARS') -->
-					<div flex class="rview__border-bottom" >
-						<h1 class="md-title">Calificación para este desafío</h1>
-						<star-rating-comp read-only="true" num-of-stars="5" rating="$ctrl.resource.rate" ></star-rating-comp>
+
+
+
+					<div flex class="rview__border-bottom">
+						<h5>Categoria: {{$ctrl.resource.tipoDesafio.caption}}</h5>
 					</div>
+
+
+				
 					<div flex class="rview__border-bottom">
 							<h5>{{$ctrl.resource.typeCaption}}</h5>
 					</div>

@@ -28,6 +28,7 @@ var PropuestaDesafioSchema = new Schema({
 		step: { type: String, default: 'ficha'},
 		deleted: { type:Boolean, default: false },		
 		rate: { type:Number, default: 0 },
+		tipoDesafio: { type: Schema.Types.ObjectId, ref: 'TipoDesafio' },
 	}, ops);
 
 registerEvents(PropuestaDesafioSchema);

@@ -11,19 +11,31 @@ class PropuestaDesafioCardController {
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;
-    	this.$element.addClass('resource-card');
-    
+		this.$element.addClass('resource-card');
+		
+
+	
+		
+		
 		this.resource = this.$scope.resource;
+
+
+
 		this.editable = this.$scope.editable === true;
 		let captions = {
 			'desafiopropuesto': 'Propuesta Desafio'
 		};
 
 		this.resource.typeCaption = captions[this.resource.type];
+		this.modoVista = this.$scope.vista;
+		if (this.modoVista==='social'){
+			this.resource = this.$scope.resource.propuesta;
+
+		}
 	}
 
 	editResource(){
-		this.$state.go(`curador.propuestadesafio`, { uid: this.resource._id });
+		this.$state.go(`curador.propuestadesafio`, { uid: this.resource._id, action: 'edit' });
 	}
 
 	deleteResource(){
@@ -47,6 +59,13 @@ class PropuestaDesafioCardController {
             this.$state.go('curador.new', { type: item.section });
 		}
 	}
+
+
+
+	resolverDesafio(){
+		this.$state.go(`social.new`, { desafioresolver: this.resource._id, action: 'edit' ,type:'resolvedesafio' });
+	}
+
 }
 
 function propuestaDesafioCard($log){
@@ -55,10 +74,14 @@ function propuestaDesafioCard($log){
 	return {
 		restrict: 'E',
 		controller: PropuestaDesafioCardController,
-    controllerAs: '$ctrl',
+	controllerAs: '$ctrl',
+	binding: {		
+		vista: '<'
+	},
     scope: {
 			resource: '=',
-			editable: '='
+			editable: '=',
+			vista: '='
     },
 		template: require('./propuestaDesafioCard.html')
 	}

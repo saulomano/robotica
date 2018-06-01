@@ -10,6 +10,7 @@ import _ from 'lodash';
  * restriction: 'authenticate'
  */
 export function index(req, res, next) {
+	const userId = req.user._id;
 	var query = req.querymen;
 	let qq = req.query.q;
 	let q = {};
@@ -42,10 +43,14 @@ export function index(req, res, next) {
 				{ platform: { $regex: k, $options: 'i' } },
 				{ category: { $regex: k, $options: 'i' } },
 				{ 'postBody.content': { $regex: k, $options: 'i' } },
-				{ tags: { $regex: k, $options: 'i' } },
+				{ tags: { $regex: k, $options: 'i' } }
 			]
 		};
 	}
+
+	if (qq == 'owner') q = {owner: userId};
+
+	console.log('q value: ', q);
 
 	Desafio
 		.find(q)
@@ -59,6 +64,7 @@ export function index(req, res, next) {
 							.find(q)
 							.populate('owner')
 							.populate('files')
+							.populate('desafioResuelto')
 							.sort(query.cursor.sort)
 							.skip(query.cursor.skip)
 							.limit(query.cursor.limit)
@@ -106,6 +112,7 @@ export function show(req, res, next) {
 								.populate('files')
 								.populate('published')
 								.populate('links')
+								.populate('desafioResuelto')
 								.exec();
 	next();
 }
@@ -130,10 +137,17 @@ export function publish(req, res, next) {
 	let pid = desafio.published ? desafio.published._id : undefined;
 	let published = new Published(desafio);
 
+	req.result =  Published.findByIdAndRemove(req.params.id).exec();
+	next();
+
+
+
 	// find the resource
 	if (pid === undefined){
 		published.createdAt = new Date();
 		published.updatedAt = new Date();
+		published.desafio = desafio;
+
 		published
 			.save()
 			.then(p => {
@@ -148,6 +162,7 @@ export function publish(req, res, next) {
 							.populate('files')
 							.populate('published')
 							.populate('links')
+							.populate('desafioResuelto')
 							.exec();
 		
 						next();
@@ -156,6 +171,7 @@ export function publish(req, res, next) {
 	} else {
 		delete published._id;
 		published.updatedAt = new Date();
+		published.desafio = desafio;
 		Published
 			.update({ _id: pid}, published)
 			.then(p => {
@@ -165,6 +181,7 @@ export function publish(req, res, next) {
 					.populate('files')
 					.populate('published')
 					.populate('links')
+					.populate('desafioResuelto')
 					.exec();
 
 				next();

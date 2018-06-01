@@ -21,14 +21,14 @@
 		<md-button class="md-raised rd-stepper__button--save"  
 			aria-label="Guardar" 
 			ng-click="!$rdStepperController.releaseSave(true)" 
-			ng-if="!$rdStepperController.showNext() && $rdStepperController.userRole !== 'admin' && ($rdStepperController.userRole == 'desafio')">
+			ng-if="!$rdStepperController.showNext() && $rdStepperController.userRole !== 'admin' && ($rdStepperController.type == 'desafio')">
 			<span>Enviar</span>
 			<md-icon class="mi mi-save" aria-hidden="true"></md-icon>
 		</md-button>
 		<md-button class="md-raised rd-stepper__button--save"  
 			aria-label="Guardar" 
 			ng-click="!$rdStepperController.releaseSave(true)" 
-			ng-if="!$rdStepperController.showNext() && ($rdStepperController.userRole == 'admin') && ($rdStepperController.userRole == 'desafio')">
+			ng-if="!$rdStepperController.showNext() && ($rdStepperController.userRole == 'admin') && ($rdStepperController.type == 'desafio')">
 			<span>Guardar</span>
 			<md-icon class="mi mi-save" aria-hidden="true"></md-icon>
 		</md-button>
@@ -43,6 +43,11 @@
 				ng-show="!$rdStepperController.showNext() && ($rdStepperController.userRole == 'admin')  && ($rdStepperController.userRole == 'desafio')">
 			<span>Rechazar</span>
 			<md-icon class="mi" aria-hidden="true"><i class="material-icons">block</i></md-icon>
+		</md-button>
+		<md-button class="md-raised rd-stepper__button--next  button__text-icon"  
+			aria-label="Cancelar" 
+			ng-click="$rdStepperController.cancel($event)" >
+			<span>Cancelar</span>
 		</md-button>
 	</div>
 </div>

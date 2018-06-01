@@ -24,7 +24,9 @@ export default class DashboardPropuestaDesafioComponent extends CuradorComponent
     this.viewResource = ($event, resource) => { 
       this.viewResource_($event, resource);
     };
-
+	let captions = {
+		'desafiopropuesto': 'Propuesta Desafio'
+	};
     this.getUser();
     ngMeta.setTitle('Desafios Propuestos');
     this.searchText = $stateParams.search;

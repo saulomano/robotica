@@ -14,6 +14,8 @@ router.use('/desafios', require('./desafio'));
 router.use('/schools', require('./schools'));
 router.use('/propuestadesafio', require('./propuestadesafio'));
 router.use('/publishedpropuesta', require('./publishedpropuesta'));
+router.use('/tipoDesafio', require('./tipoDesafio'));
+router.use('/publisheddesafios', require('./publisheddesafios'));
 router.use(writer());
 
 module.exports = router;

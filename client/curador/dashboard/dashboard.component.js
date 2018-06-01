@@ -59,11 +59,10 @@ export default class DashboardComponent extends CuradorComponent {
 			type: 'addnew',
 			options: [
 				{ section: 'noticias', icon: 'ri ri-noticias', caption: 'Noticias' },
-				{ section: 'calendarios', icon: 'ri ri-calendario', caption: 'Calendario' },
+				{ section: 'calendario', icon: 'ri ri-calendario', caption: 'Calendario' },
 				{ section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
 				{ section: 'documentos', icon: 'ri ri-documentos', caption: 'Documentos' },
 				{ section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' },
-				{ section: 'desafios', icon: 'ri ri-desafio', caption: 'Desafíos' },
 				{ section: 'loquehacemos', icon: 'ri ri-loquehacemos', caption: 'Lo que hacemos' },
 				{ section: 'novedades', icon: 'ri ri-novedades', caption: 'Novedades' }
 			]
@@ -125,6 +124,6 @@ export default class DashboardComponent extends CuradorComponent {
      		return;
     	}
 
-		this.$state.go(`curador.recurso`, { uid: resource._id });
+		this.$state.go(`curador.recurso`, { uid: resource._id, action: 'edit' });
 	}
 }

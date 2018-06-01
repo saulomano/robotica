@@ -20,6 +20,11 @@ class propuestadesafioViewController {
 		this.editable = this.$scope.editable === true;
 		
 		this.isPublished = this.$scope.isPublished == true;
+		let captions = {
+			'desafiopropuesto': 'Desafio Propuesto',
+		
+		};
+
 
 		if (this.resource){
 			this.resource.typeCaption = captions[this.resource.type];

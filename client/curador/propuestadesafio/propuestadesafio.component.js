@@ -18,6 +18,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 		this.$timeout = $timeout;
 		this.init = true;
 		this.isDelete = $stateParams.action === 'remove';
+		this.isEdit = $stateParams.action === 'edit';
 		this.$state = $state;
 		this.$mdDialog = $mdDialog;
 		this.ngMeta = ngMeta;
@@ -28,9 +29,9 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
     	this.noCache = true;
 
 		
-		
+		// this.Resource = this.Restangular.one('resources', this.uid);
 		this.PropuestaDesafio = this.Restangular.one('propuestadesafio', this.uid);
-		this.Publisheds = this.Restangular.all('propuestadesafio');
+		this.Publisheds = this.Restangular.all('publishedpropuesta');
 
 		this.returnDesafios = false;
 
@@ -44,12 +45,14 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 			{ name: 'vinculo', caption: 'Vínculo' },
 			{ name: 'publicar', caption: 'Publicar' },
 		];
-
+		let captions = {
+			'desafiopropuesto': 'Propuesta Desafio'
+		};
 		this.configureDropzone(Util);
 		this.configureFunctions();
 		this.getResource();
 		this.getCategories_();
-
+		this.loadTiposDesafio();
 		this.onDeletePost = ($index) => {
 			this.onDeletePost_($index);
 		};
@@ -157,6 +160,11 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 				this.$log.error(err);
 			}
 		});
+
+
+
+		
+
 	}
 
 	watchResource(){
@@ -196,8 +204,17 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 			this.saveResource(button);
 		};
 
+		this.cancel = () => {
+			(this.isEdit) ? this.$state.go('curador.dashboardpropuestadesafio') : this.deleteResource();
+		};
+
 		this.finish = ($event) => {
-			this.publish();
+			if (this.ti && this.selectedSchool) {
+                this.publish();
+			} else {
+                $('#msg').show();
+                this.functionShowMsg('Para poder publicar/aprobar este desafio, debe seleccionar un Distrito y un Colegio.');
+			}
 		}
 
 		this.toRefuse = ($event) => {
@@ -432,20 +449,20 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 		this.loading = true;
 		
 		this
-			.Resource
+			.PropuestaDesafio
 			.remove()
 			.then( data => {
 				if (this.resource.published) {
 					Published
 					.remove()
 					.then( data => {
-						(this.returnDesafios) ? this.$state.go('curador.propuestadesafio', { type: " desafiopropuesto" }) : this.$state.go('curador.propuestadesafio');
+						(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestadesafio', { type: "desafiopropuesto" }) : this.$state.go('curador.dashboardpropuestadesafio');
 					})
 					.catch( err => {
 						throw err;
 					});
 				} else {
-					(this.returnDesafios) ? this.$state.go('curador.propuestadesafio', { type: " desafiopropuesto" }) : this.$state.go('curador.propuestadesafio');
+					(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestadesafio', { type: "desafiopropuesto" }) : this.$state.go('curador.dashboardpropuestadesafio');
 				}
 			})
 			.catch( err => {
@@ -457,7 +474,7 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 		// Appending dialog to document.body to cover sidenav in docs app
 		var confirm = this.$mdDialog.confirm()
 					.title('¿Está seguro que desea hacer publico esta propuesta?')
-					.ariaLabel('Publicación del desafio')
+					.ariaLabel('Publicación de la propuesta')
 					.targetEvent(ev)
 					.ok('Publicar')
 					.cancel('Cancelar');
@@ -488,4 +505,9 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 	getResourceType(type){
 		return this.captions[type];
 	}
+
+
+
+	
+
 }

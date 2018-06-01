@@ -11,13 +11,16 @@ export default angular
 
 class RdNavbarController {
 	/*@ngInject*/
-	constructor($scope, $element, $window, $mdMedia, $timeout, $state){
+	constructor($scope, $element, $window, $mdMedia, $timeout, $state, Auth){
 		this.$scope = $scope;
     	this.$element = $element;
 		this.$timeout = $timeout;
 		this.$state = $state;
+		this.Auth = Auth;
+		this.showingDropdown = false;
 		this.selected = '';
-    	this.navBarItems = this.$scope.rdItems;
+		this.navBarItems = this.$scope.rdItems;
+		this.getUser();
 
     	this.$element.addClass('rd-navbar md-whiteframe-4dp');
 
@@ -60,10 +63,9 @@ class RdNavbarController {
 				this.removeDropdown();
 			});
 
-			// $(document).click(() => {
-			// 	console.log(this.$element)
-			// 	this.$element.removeClass('show-submenu');
-			// });
+			$(document).click(() => {
+				this.removeDropdown();
+			});
 
             [].slice.call(document.querySelectorAll('.dropdown .nav-link')).forEach(function(el){
                 el.addEventListener('click', onClick, false);
@@ -100,10 +102,32 @@ class RdNavbarController {
 		};
 	}
 
+	getUser(){
+		this.Auth
+		  .getCurrentUser()
+		  .then(user => {
+			this.user = user;
+		  })
+		  .catch(err => {
+			throw err;
+		  });
+	}
+
+	toggleProfile($event){
+		this.showingDropdown = !this.showingDropdown;
+		$event.stopPropagation();
+	}
+	
+	logout(){
+		this.Auth.logout();
+		this.$state.go('app.login');
+	}
+
 	removeDropdown(){
 		// remove the dropdown
 		if (this.dropdownOpened) {
 			this.dropdownOpened = false;
+			this.showingDropdown = false;
 			this.$timeout(() => {
 				//this.$apply();
 			});

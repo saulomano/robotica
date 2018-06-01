@@ -12,6 +12,7 @@ export default class ResolverDesafioComponent extends SocialComponent {
 		this.$scope = $scope;
 		this.currentStep = 'ficha';
 		this.loading = true;
+		this.Auth = Auth;
 		this.Restangular = Restangular;
 		this.$stateParams = $stateParams;
 		this.uid = this.$stateParams.uid;
@@ -19,12 +20,16 @@ export default class ResolverDesafioComponent extends SocialComponent {
 		this.$timeout = $timeout;
 		this.init = true;
 		this.isDelete = $stateParams.action === 'remove';
+		this.isEdit = $stateParams.action === 'edit';
 		this.$state = $state;
 		this.$mdDialog = $mdDialog;
 		this.ngMeta = ngMeta;
 		this.$q = $q;
+		this.role = '';
+		this.getUser();
 
-        this.simulateQuery = true;
+		
+		 this.simulateQuery = true;
         this.isDisabled = false;
         this.noCache = true;
 
@@ -51,8 +56,8 @@ export default class ResolverDesafioComponent extends SocialComponent {
 		this.steps = [
 			{ name: 'ficha', caption: 'Ficha' },
 			{ name: 'recurso', 	caption: 'Recurso' },
-			{ name: 'vinculo', caption: 'Vínculo' }
-			// { name: 'publicar', caption: 'Publicar' },
+			{ name: 'vinculo', caption: 'Vínculo' },
+			{ name: 'publicar', caption: 'Publicar' },
 		];
 
 		this.configureDropzone(Util);
@@ -68,6 +73,14 @@ export default class ResolverDesafioComponent extends SocialComponent {
 			this.refreshUI(true);
 		});
 	}
+
+	getUser(){
+        this.Auth
+            .getCurrentUser()
+            .then(user => {
+                this.role = user.role;
+            });
+    }
 
     loadAll() {
 		var allStates = 'La Plata, Adolfo Alsina, Alberti, Almirante Brown, Avellaneda, Ayacucho, Azul, Bahía Blanca, Balcarce, Baradero, Arrecifes, Bolívar, Bragado, Brandsen, Campana, Cañuelas, Carlos Casares, Carlos Tejedor, Carmen de Areco, Daireaux, Castelli, Colón, Coronel Dorrego, Coronel Pringles, Coronel Suárez, Chacabuco, Chascomús, Chivilcoy, Dolores, Esteban Echeverría, Exaltación de la Cruz, Florencio Varela, General Alvarado, General Alvear, General Arenales, General Belgrano, General Guido, General La Madrid, General Lavalle, General Madariaga, General Paz, General Pinto, General Pueyrredón, General Rodríguez, General San Martín, Zárate, General Viamonte, General Villegas, Gonzáles Chaves, Guaminí, Juárez, Junín, Laprida, Tigre,	Las Flores, General Las Heras, Leandro N. Alem, Lincoln, Lobería, Lobos, Lomas de Zamora, Luján, Magdalena, Maipú, Salto, Marcos Paz, Mar Chiquita, La Matanza, Mercedes, Merlo, Monte, Moreno, Navarro, Necochea, Nueve de Julio, Olavarría, Patagones, Pehuajó, Pellegrini, Pergamino, Pila, Pilar, Puan, Quilmes, Ramallo, Rauch, Rivadavia, Rojas, Roque Pérez, Saavedra, Saladillo, San Andrés de Giles,	San Antonio de Areco, San Fernando, San Isidro, San Nicolás, San Pedro,	San Vicente, Morón, Suipacha, Tandil, Tapalqué, Tordillo, Tornquist, Trenque Lauquen, Tres Arroyos, Veinticinco de Mayo, Vicente López, Villarino, Lanús, Coronel Rosales, Berisso, Ensenada, San Cayetano, Escobar, Tres de Febrero, Hipólito Yrigoyen, Berazategui, Salliqueló, Capitán Sarmiento, La Costa, Pinamar, Villa Gesell, Monte Hermoso, Tres Lomas, Florentino Ameghino, Presidente Perón, Ezeiza, San Miguel, José C. Paz, Malvinas Argentinas, Punta Indio, Hurlingham, Ituzaingo, Lezama';
@@ -110,7 +123,7 @@ export default class ResolverDesafioComponent extends SocialComponent {
     createFilterFor(query) {
         var lowercaseQuery = angular.lowercase(query);
         return function filterFn(state) {
-            return (state.value.indexOf(lowercaseQuery) === 0);
+            return (state.value.indexOf(lowercaseQuery) > -1);
         };
     }
 
@@ -120,7 +133,7 @@ export default class ResolverDesafioComponent extends SocialComponent {
     createFilterForSchool(query) {
         var lowercaseQuery = angular.lowercase(query);
         return function filterFn(state) {
-            return (angular.lowercase(state.schoolName).indexOf(lowercaseQuery) === 0);
+            return (angular.lowercase(state.schoolName).indexOf(lowercaseQuery) > -1);
         };
     }
 
@@ -283,9 +296,13 @@ export default class ResolverDesafioComponent extends SocialComponent {
 			this.saveDesafio(button);
 		};
 
+		this.cancel = () => {
+			(this.isEdit) ? this.$state.go('social.misDesafios') : this.deleteDesafio();
+		};
+
 		this.finish = ($event) => {
 			this.publish();
-		}
+		};
 	}
 
 	configureDropzone(Util){
@@ -412,6 +429,7 @@ export default class ResolverDesafioComponent extends SocialComponent {
 		}
 	}
 	
+
 	saveDesafio(button){
         this.onSaveDesafio();
 		if (button) {
@@ -516,13 +534,13 @@ export default class ResolverDesafioComponent extends SocialComponent {
 					Published
 					.remove()
 					.then( data => {
-						this.$state.go('curador.dashboarddesafiosresueltos');
+						(this.role === 'user' || this.role === 'maestro') ? this.$state.go('social.misDesafios') : this.$state.go('curador.dashboarddesafiosresueltos');
 					})
 					.catch( err => {
 						throw err;
 					});
 				} else {
-					this.$state.go('curador.dashboarddesafiosresueltos');
+					(this.role === 'user' || this.role === 'maestro') ? this.$state.go('social.misDesafios') : this.$state.go('curador.dashboarddesafiosresueltos');
 				}
 			})
 			.catch( err => {
@@ -568,6 +586,7 @@ export default class ResolverDesafioComponent extends SocialComponent {
         {
             this.desafio.district = (this.selectedDistrict) ? angular.copy(this.selectedDistrict.name) : null;
 			this.desafio.school = (this.selectedSchool) ? angular.copy(this.selectedSchool.schoolName) : null;
+			this.desafio.rate = angular.copy(this.rate);
         }
     }
 }

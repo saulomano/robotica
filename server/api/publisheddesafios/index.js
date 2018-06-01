@@ -1,7 +1,7 @@
 'use strict';
 
 import {Router} from 'express';
-import * as controller from './published.controller';
+import * as controller from './publisheddesafios.controller';
 import * as auth from '../../auth/auth.service';
 import querymen from 'querymen';
 

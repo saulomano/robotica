@@ -19,6 +19,7 @@ export default class DesafioComponent extends CuradorComponent {
 		this.$timeout = $timeout;
 		this.init = true;
 		this.isDelete = $stateParams.action === 'remove';
+		this.isEdit = $stateParams.action === 'edit';
 		this.$state = $state;
 		this.$mdDialog = $mdDialog;
 		this.ngMeta = ngMeta;
@@ -108,7 +109,7 @@ export default class DesafioComponent extends CuradorComponent {
     createFilterFor(query) {
 		var lowercaseQuery = angular.lowercase(query);
 		return function filterFn(state) {
-		  	return (state.value.indexOf(lowercaseQuery) === 0);
+		  	return (state.value.indexOf(lowercaseQuery) > -1);
 		};
 	}
 
@@ -118,7 +119,7 @@ export default class DesafioComponent extends CuradorComponent {
     createFilterForSchool(query) {
         var lowercaseQuery = angular.lowercase(query);
         return function filterFn(state) {
-            return (angular.lowercase(state.schoolName).indexOf(lowercaseQuery) === 0);
+            return (angular.lowercase(state.schoolName).indexOf(lowercaseQuery) > -1);
         };
     }
 
@@ -281,12 +282,16 @@ export default class DesafioComponent extends CuradorComponent {
 			this.saveDesafio(button);
 		};
 
+		this.cancel = () => {
+			(this.isEdit) ? this.$state.go('curador.dashboard') : this.deleteDesafio();
+		};
+
 		this.finish = ($event) => {
-			if (this.desafio.district && this.desafio.school) {
-                this.publish()
+			if (resource.tipoDesafio !== 'undefined' && resource.tipoDesafio != null) {
+                this.publish();
 			} else {
                 $('#msg').show();
-                this.functionShowMsg('Para poder publicar/aprobar este desafio, debe seleccionar un Distrito y un Colegio.');
+                this.functionShowMsg('Para poder publicar este desafio, debe seleccionar un Tipo.');
 			}
 		};
 
@@ -476,10 +481,8 @@ export default class DesafioComponent extends CuradorComponent {
 	}
 
 
-	onSaveDesafios()
-	{
-		if(this.desafio.type === 'desafio')
-		{
+	onSaveDesafio()	{
+		if (this.desafio.type === 'desafio') {
 			this.desafio.district = (this.selectedDistrict) ? angular.copy(this.selectedDistrict.name) : null;
 			this.desafio.school = (this.selectedSchool) ? angular.copy(this.selectedSchool.schoolName) : null;
 			this.desafio.rate = angular.copy(this.rate);

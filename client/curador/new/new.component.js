@@ -43,7 +43,6 @@ export default class NewComponent extends CuradorComponent {
       'herramientas': 'herramienta',
       'documentos': 'documentos',
       'mediateca': 'mediateca',
-      'desafios': 'desafio',
       'loquehacemos': 'loquehacemos',
       'novedades': 'novedades',
       'desafiopropuesto': 'desafiopropuesto'

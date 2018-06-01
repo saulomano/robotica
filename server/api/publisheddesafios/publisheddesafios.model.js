@@ -27,7 +27,8 @@ var PublishedSchema = new Schema({
 		deleted: { type:Boolean, default: false },
 		district: String,
 		school: String,
-		rate: Number
+		rate: Number,
+		desafio: { type: Schema.Types.ObjectId, ref: 'Desafio' },
 	}, ops);
 
 registerEvents(PublishedSchema);

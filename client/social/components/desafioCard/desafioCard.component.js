@@ -22,9 +22,9 @@ class DesafioCardController {
     
     editDesafio() {
         if( this.rol == 'social'){
-            this.$state.go(`social.resolverDesafio`, { uid: this.desafio._id });
+            this.$state.go(`social.resolverDesafio`, { uid: this.desafio._id, action: 'edit' });
         }else{
-            this.$state.go(`curador.desafio`, { uid: this.desafio._id })
+            this.$state.go(`curador.desafio`, { uid: this.desafio._id, action: 'edit' });
         }
         
     }

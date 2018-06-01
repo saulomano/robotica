@@ -60,6 +60,7 @@ export function index(req, res, next) {
 							.find({owner: userId})
 							.populate('owner')
 							.populate('files')
+							.populate('tipoDesafio')
 							.sort(query.cursor.sort)
 							.skip(query.cursor.skip)
 							.limit(query.cursor.limit)
@@ -67,6 +68,8 @@ export function index(req, res, next) {
 							.exec();
 			next();
 		});
+
+		console.log(req.result );
 }
 
 
@@ -106,6 +109,7 @@ export function show(req, res, next) {
 								.populate('owner')
 								.populate('files')								
 								.populate('links')
+								.populate('tipoDesafio')
 								.exec();
 	next();
 }
@@ -130,35 +134,53 @@ export function publish(req, res, next) {
 	let pid = resource.published ? resource.published._id : undefined;
 	let published = new Published(resource);
 
+	req.result =  Published.findByIdAndRemove(req.params.id).exec();
+	next();
+
+
 	// find the resource
 	if (pid === undefined){
 		published.createdAt = new Date();
 		published.updatedAt = new Date();
+		published.propuesta = resource;
+
 		published
 			.save()
 			.then(p => {
 				delete resource._id;
 				resource.published = p._id;
+				
+				let propdes= PropuestaDesafio
+				.findById(req.params.id);
+
 				PropuestaDesafio
 					.update({ _id: req.params.id}, req.body)
 					.then(p => {
-						req.result = PropuestaDesafio
-							.findById(req.params.id)
+						req.result = propdes
 							.populate('owner')
 							.populate('files')
 							.populate('published')
 							.populate('links')
-							.exec();
-		
+							.exec();		
 						next();
-					});
+								
+					}
+			//		p.propuesta = req.result;
+				);
+
+
+				
 			});
 	} else {
 		delete published._id;
 		published.updatedAt = new Date();
+		published.propuesta = resource;
+
 		Published
 			.update({ _id: pid}, published)
 			.then(p => {
+
+				
 				req.result = PropuestaDesafio
 					.findById(req.params.id)
 					.populate('owner')
@@ -166,6 +188,9 @@ export function publish(req, res, next) {
 					.populate('published')
 					.populate('links')
 					.exec();
+
+
+
 
 				next();
 			});

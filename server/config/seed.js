@@ -6,6 +6,7 @@
 'use strict';
 import User from '../api/user/user.model';
 import Category from '../api/category/category.model';
+import TipoDesafio from '../api/tipoDesafio/tipoDesafio.model';
 import config from './environment/';
 
 export default function seedDatabaseIfNeeded() {
@@ -90,4 +91,29 @@ export default function seedDatabaseIfNeeded() {
       .then(() => console.log('finished populating categories'))
       .catch(err => console.log('error populating categories', err));
     });
+
+
+/*
+    TipoDesafio
+    .find({})
+    .remove()
+    .then(() => {
+      TipoDesafio.create({
+        type: 'programacion',
+        descripcion: 'Desafios de programacion',
+        caption: 'Programacion'
+      },
+      {
+        type: 'matematico',
+        descripcion: 'Desafios de matematica',
+        caption: 'Matematico'
+      },
+      {
+        type: 'logica',
+        descripcion: 'Desafios de Logica',
+        caption: 'Logica'
+      })
+      .then(() => console.log('finished populating tipos desafios'))
+      .catch(err => console.log('error populating tipos desafios', err));
+    });*/
 }

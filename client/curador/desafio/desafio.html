@@ -23,6 +23,7 @@
 							on-finish="$ctrl.finish"
 							on-enter-step="$ctrl.onEnterStep"
 							on-save="$ctrl.save"
+							on-cancel="$ctrl.cancel"
 							init-step-index="$ctrl.initStepIndex"
 							user-rol=$ctrl.user.role
 							type=$ctrl.desafio.type></rd-stepper>
@@ -231,7 +232,7 @@
 				<div layout="row">
 					<span flex></span>
 					<md-button class="md-raised" ng-click="$ctrl.removeAllFiles()">Eliminar todos</md-button>
-					<md-button class="md-raised dz-clickable" ng-click="null"><i class="fa fa-upload"></i> Agregar</md-button>
+					<md-button class="md-raised  dz-software-clickable" ng-click="null"><i class="fa fa-upload"></i> Agregar</md-button>
 				</div>
 			</div>
 			<div class="dashboard__box" ng-if="$ctrl.desafio.type == 'mediateca'">
@@ -371,7 +372,10 @@
 	<div class="dashboard__preview--header bg-primary">
 		<h2><i class="fa fa-angle-down"></i> Previsualización <i class="fa fa-angle-down"></i></h2>
 	</div>
-	<desafio-view desafio="$ctrl.desafio" rate="$ctrl.rate" class="dashboard__preview"></desafio-view>
+	<desafio-view desafio="$ctrl.desafio" 
+		rate="$ctrl.rate" 
+		class="dashboard__preview">
+	</desafio-view>
 	<div flex class="dashboard__sidenav--head-resource" id="msg">
 		<h2 class="dashboard__sidenav--head color-propuestas">
 			<strong>

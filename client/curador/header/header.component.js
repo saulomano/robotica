@@ -41,7 +41,6 @@ class CuradorHeaderComponent {
     ];
 
     this.getUser();
-    this.handleClickOnWindow();
 
     $rootScope.$on('$stateChangeSuccess', () => {
       this.searchText =  $stateParams.search || '';
@@ -71,31 +70,12 @@ class CuradorHeaderComponent {
         throw err;
       });
   }
-
-  handleClickOnWindow() {
-    $(window).click(() => {
-      if (this.showingDropdown){
-        this.showingDropdown = false;
-        this.$scope.$apply();
-      }
-    });
-  }
   
   itemClicked(item) {
     if (this.selected === item.section){
       return;
     }
     this.selected = item.section;
-  }
-
-  toggleProfile($event){
-    this.showingDropdown = !this.showingDropdown;
-    $event.stopPropagation();
-  }
-
-  logout(){
-    this.Auth.logout();
-    this.$state.go('app.login');
   }
     //
     // goUserModule() {
