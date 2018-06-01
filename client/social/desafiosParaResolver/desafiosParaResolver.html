@@ -11,7 +11,7 @@
     </div>
 </div>
 <div style="background-color: #f0f1f1;">
-    <div>            
+    <div>
         <section layout="row" layout-align="center center">
             <md-button class="groupX left">Programación</md-button>
             <md-button class="groupX middle">Matemático</md-button>
@@ -24,10 +24,10 @@
 </div>
 
 <section class="resources_waterfall" style="margin-top: 3%;">
-	<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewResource" search-text="$ctrl.searchText">
+	<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewDesafioResource" search-text="$ctrl.searchText">
      
         <rd-item-template>           
-            <propuesta-desafio-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></resource-card>
+            <propuesta-desafio-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></propuesta-desafio-card>
 		</rd-item-template>
 	</rd-waterfall>
 </section>
