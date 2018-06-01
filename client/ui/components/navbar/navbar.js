@@ -64,7 +64,7 @@ class RdNavbarController {
 			});
 
 			$(document).click(() => {
-				this.removeDropdown();
+				// this.removeDropdown();
 			});
 
             [].slice.call(document.querySelectorAll('.dropdown .nav-link')).forEach(function(el){
