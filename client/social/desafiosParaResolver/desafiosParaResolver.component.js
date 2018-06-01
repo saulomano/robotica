@@ -1,7 +1,7 @@
 'use strict';
 import angular from 'angular';
 import SocialComponent from '../social.component';
-
+import _ from 'lodash';
 
 export default class DesafiosParaResolverComponent extends SocialComponent{
     /*@ngInject*/
@@ -36,6 +36,10 @@ export default class DesafiosParaResolverComponent extends SocialComponent{
                 this.username = user.name;
             });
     }
+
+    applyFilter(type) {
+		this.$state.go(this.$state.current, {search: type}, {reload:true});
+	}
 
     fetchData(){
         let def = this.$q.defer();
