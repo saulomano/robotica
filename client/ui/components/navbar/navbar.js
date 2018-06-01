@@ -135,7 +135,7 @@ class RdNavbarController {
 	}
 
 	itemClicked(item) {
-        if (this.selected === item.section) return;
+       /* if (this.selected === item.section) return;
         let host = window.location.host;
         let protocol = window.location.protocol;
         if (item.action) {
@@ -143,9 +143,23 @@ class RdNavbarController {
             window.location.href = `${protocol}//${host}/${item.action}`;
         } else {
             return;
-        }
+		}*/
         // this.$state.go('.', { seccion: item.section });
-        // this.selected = item.section;
+		// this.selected = item.section;
+		
+
+		if (this.selected === item.action) return;
+        let host = window.location.host;
+		let protocol = window.location.protocol;
+		let types = /^(desafios|subidesafio|desafiosaprobados)$/ig;
+
+		//Si es query string viene por aca sino redirige
+		if (item.action.includes("?seccion=")){
+			this.$state.go('social.home', {  seccion: item.action.slice(item.action.indexOf('=')+1)   }, {reload: true});
+		} else {
+			this.$state.go(item.action, { type: item.section }, {reload:true});
+		}
+
     }
 }
 
