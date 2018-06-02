@@ -64,7 +64,7 @@ class RdNavbarController {
 			});
 
 			$(document).click(() => {
-				this.removeDropdown();
+				// this.removeDropdown();
 			});
 
             [].slice.call(document.querySelectorAll('.dropdown .nav-link')).forEach(function(el){
@@ -134,6 +134,7 @@ class RdNavbarController {
 		}
 	}
 
+<<<<<<< HEAD
 	itemClicked(item) {
        /* if (this.selected === item.section) return;
         let host = window.location.host;
@@ -160,7 +161,24 @@ class RdNavbarController {
 			this.$state.go(item.action, { type: item.section }, {reload:true});
 		}
 
+
     }
+
+    // itemClicked(item) {
+    //     if (this.selected === item.section) return;
+    //     let host = window.location.host;
+    //     let protocol = window.location.protocol;
+    //     if (item.action) {
+    //         this.selected = item.action;
+    //         window.location.href = `${protocol}//${host}/${item.action}`;
+    //     } else {
+    //         return;
+    //     }
+    //
+    //
+    //     // this.$state.go('.', { seccion: item.section });
+    //     // this.selected = item.section;
+    // }
 }
 
 function RdNavbar($window){

@@ -1,7 +1,12 @@
 'use strict';
 import angular from 'angular';
 import SocialComponent from '../social.component';
+<<<<<<< HEAD
+import _ from 'lodash';
+=======
+import _ from "lodash";
 
+>>>>>>> 3ac68ab3788681250bb09616ad12be21c46ef343
 
 export default class DesafiosParaResolverComponent extends SocialComponent{
     /*@ngInject*/
@@ -37,6 +42,10 @@ export default class DesafiosParaResolverComponent extends SocialComponent{
             });
     }
 
+    applyFilter(type) {
+		this.$state.go(this.$state.current, {search: type}, {reload:true});
+	}
+
     fetchData(){
         let def = this.$q.defer();
         this.page++;
@@ -65,5 +74,70 @@ export default class DesafiosParaResolverComponent extends SocialComponent{
             })
 
         return def.promise;
+    }
+
+    viewDesafioResource_($event, resource){
+        this.$mdDialog.show({
+            template: require('../components/modalView/modalView.html'),
+            parent: angular.element(document.body),
+            targetEvent: $event,
+            clickOutsideToClose: true,
+            fullscreen: true, // Only for -xs, -sm breakpoints.
+            locals: {
+                resource: resource
+            },
+            controller: DialogController,
+            controllerAs: '$ctrl'
+        })
+            .then((data) => {
+                console.log(data);
+            }, () => {
+
+            })
+            .catch(function(res) {
+                if (!(res === 'cancel' || res === 'escape key press')) {
+                    throw res;
+                }
+            });
+
+        function DialogController($scope, $mdDialog, resource, Restangular, $timeout) {
+            'ngInject';
+            this.loading = true;
+
+            this.Resource = Restangular.one('publishedpropuesta', resource._id);
+
+            this.closeDialog = function() {
+                $mdDialog.hide();
+            }
+
+            this.Resource
+                .get()
+                .then(data => {
+
+                    let captions = {
+                        'propuesta': 'Propuesta pedagógica',
+                        'actividad': 'Actividad accesible',
+                        'herramientas': 'Herramienta',
+                        'orientacion': 'Orientación',
+                        'mediateca': 'Mediateca',
+                        'noticias': 'Noticias',
+                        'calendario': 'Calendario',
+                    };
+
+                    data.links = _.map(data.links, p =>{
+                        p.typeCaption = captions[p.type];
+                        return p;
+                    });
+
+                    this.resource = data;
+                    this.loading = false;
+                    $timeout(() => {
+                        $scope.$apply();
+                    });
+                })
+                .catch(err => {
+                    throw err;
+                });
+        }
     }
 }

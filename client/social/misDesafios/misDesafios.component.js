@@ -36,7 +36,7 @@ export default class MisDesafiosComponent {
     fetchData(){
         let def = this.$q.defer();
         this.page++;
-        let q;
+        let q = 'owner';
         if (this.searchText){
             q = this.searchText
         }
@@ -48,6 +48,7 @@ export default class MisDesafiosComponent {
                 limit: this.limit
             })
             .then(res => {
+
                 const items = res;
                 let data = {
                     count: (res.length + 1),
