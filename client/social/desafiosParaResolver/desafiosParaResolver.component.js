@@ -1,12 +1,8 @@
 'use strict';
 import angular from 'angular';
 import SocialComponent from '../social.component';
-<<<<<<< HEAD
-import _ from 'lodash';
-=======
 import _ from "lodash";
 
->>>>>>> 3ac68ab3788681250bb09616ad12be21c46ef343
 
 export default class DesafiosParaResolverComponent extends SocialComponent{
     /*@ngInject*/

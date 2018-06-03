@@ -11,7 +11,7 @@ export default class InstitucionalComponent extends SocialComponent {
 
     this.coordinador = 'Daniel Giganti';
 
-    this.teamBA = [
+    /*this.teamBA = [
       { cargo: 'Gobernadora', name: 'Lic. María Eugenia Vidal' },
       { cargo: 'Vicegobernador ', name: 'Dr. Daniel Salvador' },
       { cargo: 'Director General de Cultura y Educación ', name: 'Lic. Gabriel Sanchez Zinny' },
@@ -20,7 +20,7 @@ export default class InstitucionalComponent extends SocialComponent {
       { cargo: 'Subsecretario de Educación ', name: 'Lic. Sergio Siciliano' },
       { cargo: 'Subsecretaria de Políticas Docentes y Gestión Territorial ', name: 'Dra. Florencia Castro' },
       { cargo: 'Directora de Innovación y Tecnología Educativa ', name: 'Prof. Liliana Vigolo' },
-    ];
+    ];*/
 
     this.teamPedagogico = [
       'Gabriela Sanguintetti ',
