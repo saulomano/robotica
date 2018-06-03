@@ -33,6 +33,10 @@
 		{
 			"name": "verdesafio",
 			"url": "/verdesafio/:uid"
+		},
+		{
+			"name": "comoEmpezar",
+			"url": "/comoEmpezar"
 		}
 	]
 }

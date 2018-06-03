@@ -2,7 +2,7 @@
 import angular from 'angular';
 import SocialComponent from '../social.component';
 
-export default class InstitucionalComponent extends SocialComponent {
+export default class ComoEmpezarComponent extends SocialComponent {
   /*@ngInject*/
   constructor($element, ngMeta) {
     super({$element});

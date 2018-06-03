@@ -18,20 +18,30 @@ class HeaderComponent {
 
     this.menuNavBar = [
       {
+        section: 'comoEmpezar',  caption: 'Como empezar?', action:'social.comoEmpezar'
+      },
+      {
+        section: 'orientacionesPedagogicas',  caption: 'Orientaciones Pedagógicas', action:'social.orientacionesPedagogicas'
+      },
+      {
+        section: 'kits',  caption: 'Kits', action:'?seccion=kits'
+      },
+      {
+        section: 'noticias',  caption: 'Noticias', action:'?seccion=noticias'
+      },
+      {
         section: 'institucional',  caption: 'Institucional',
         "nodes": [
           {
-            section: 'quienesSomos',  caption: 'Quienes Somos', action:'social.institucional'
+            section: 'quienesSomos',  caption: 'Que es Robótica', action:'social.institucional'
           },
-          {
-            section: 'noticias',  caption: 'Ultimas Noticas', action:'?seccion=noticias'
-          },
+          /*
           {
             section: 'calendario',  caption: 'Calendario', action:'?seccion=calendario'
-          }
+          }*/
         ]
-      },
-      {
+      }
+     /* {
         section: 'desafios',  caption: 'Desafios',
         "nodes": [
           {
@@ -39,7 +49,7 @@ class HeaderComponent {
           },
           /*{
             section: 'subiDesafio',  caption: 'Subi tu desafio', action:'social.new'
-          },*/
+          },
           {
             section: 'desafios',  caption: 'Mis desafios', action:'social.misDesafios'
           },
@@ -78,10 +88,8 @@ class HeaderComponent {
             section: 'videos',  caption: 'Videos', action:'social.canalyt'
           }
         ]
-      },
-      {
-        section: 'kits',  caption: 'Kits', action:'?seccion=kits'
-      }
+      }, */     
+      
     ];
 
     this.arraySectionsName = [];

@@ -1,0 +1,182 @@
+// socialInstitucional Component
+.institucional {
+	background-color: $color-white;
+
+	h1 {
+		color: black;
+		font-family: $font-family-secondary;
+		font-weight: $font-secondary-medium;
+	}
+
+	.mayus{
+		font-size: 2rem;
+	}
+
+	p {
+		color: $color-black-light;
+		font-family: sans-serif;
+		font-weight: $font-primary-light;
+		font-size: 1.5rem;
+		line-height: 2.5rem;
+		text-align: justify;
+		margin-bottom: 3rem;
+		margin-top: 3rem;
+	}
+
+	&--banner {
+		text-align: center;
+		padding-top: 3rem;
+
+		p	{
+			color: $color-white;
+			font-size: 150%;
+		}
+	}
+
+	&--logo {
+		width: 15%;
+		height: auto;
+	}
+
+	&--head {
+		text-align: center;
+		padding: 3rem 0;
+		color: $color-white;
+
+		h2 {
+			font-family: $font-family-secondary;
+			font-weight: $font-secondary-medium;
+			font-size: 4rem;
+		}
+	}
+
+	&--credenciales {
+		background: $color-actividades;
+	}
+	
+	&--licencias {
+		background: $color-propuestas;
+	}
+
+	&--contacto {
+		background: $color-mediateca;
+
+		p {
+			color: $color-white;
+			font-family: $font-family-primary;
+			font-weight: $font-primary-light;
+			font-size: 2.5rem;
+			line-height: 2.3rem;
+	
+			&:not(:last-child) {
+				margin-bottom: 2rem;
+			}
+		}
+
+		a {
+			font-family: $font-family-primary;
+			font-weight: $font-primary-regular;
+			font-size: 2.8rem;
+			line-height: 2.9rem;
+			color: $color-white;
+			text-decoration: none;
+		}
+	}
+}
+
+.team--head {
+	color: $color-actividades;
+	border: solid 2px $color-actividades;
+	border-radius: $border-radius-default;
+	padding: 1rem;
+	margin: 2rem 0;
+	font-family: $font-family-secondary;
+	font-weight: $font-secondary-bold;
+}
+
+.team--list {
+	margin-left: 2rem;
+	margin-bottom: 2rem;
+
+	li {
+		color: $color-actividades;
+		font-family: $font-family-primary;
+		font-weight: $font-primary-light;
+		font-size: 1.9rem;
+		line-height: 2.3rem;
+
+		span {
+			color: $color-black-light;
+		}
+	}
+}
+
+.legend--bottom {
+	text-align: center;
+	color: $color-primary;
+	padding: 3rem 0;
+}
+
+.container {
+  
+	max-width: 700px;
+	min-width: 440px;
+	background: white;
+	margin: 0 auto;
+  
+   
+  }
+  
+  /*  VIDEO PLAYER CONTAINER
+   ############################### */
+   .vid-container {
+	position: relative;
+	padding-bottom: 52%;
+	padding-top: 30px; 
+	height: 0; 
+	
+  }
+
+  .video{
+	margin-top: 30px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  
+  .vid-container iframe,
+  .vid-container object,
+  .vid-container embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+  }
+
+
+.tabsdemoDynamicHeight md-content {
+  background-color: white; }
+  .tabsdemoDynamicHeight md-content md-tabs {
+    background: white;
+    border: 1px solid #e1e1e1; }
+    .tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
+      background: white; }
+  .tabsdemoDynamicHeight md-content h1:first-child {
+	margin-top: 0; }
+	
+	.boxtabs{
+
+
+		margin-left: auto;
+		margin-right: auto;
+		width: 70%;
+		background-color: white;
+		margin-top: 50px;
+		margin-bottom: 50px;
+	}
+
+	.cont{
+		background-color: white !important;
+	}
