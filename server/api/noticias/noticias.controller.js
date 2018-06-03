@@ -1,7 +1,7 @@
 'use strict';
 
-import Noticia from './noticia.model';
-import Published from '../noticia/publishednoticia.model';
+import Noticia from './noticias.model';
+import Published from '../publishednoticia/publishednoticia.model';
 import async from 'async';
 import _ from 'lodash';
 

@@ -2,7 +2,7 @@
 /*eslint no-invalid-this:0*/
 mongoose.Promise = require('bluebird');
 import mongoose, {Schema} from 'mongoose';
-import {registerEvents} from './publishedpropuesta.events';
+import {registerEvents} from './publishednoticia.events';
 
 var ops = {};
 ops.timestamps = true;

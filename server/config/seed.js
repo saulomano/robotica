@@ -16,7 +16,7 @@ export default function seedDatabaseIfNeeded() {
 
   // populate users
   
-/*  User.find({}).remove()
+  User.find({}).remove()
     .then(() => {
       User.create({
         provider: 'local',
@@ -38,7 +38,7 @@ export default function seedDatabaseIfNeeded() {
       })
       .then(() => console.log('finished populating users'))
       .catch(err => console.log('error populating users', err));
-    });*/
+    });
   
   
   // populate categories
@@ -93,7 +93,7 @@ export default function seedDatabaseIfNeeded() {
     });
 
 
-/*
+
     TipoDesafio
     .find({})
     .remove()
@@ -115,5 +115,5 @@ export default function seedDatabaseIfNeeded() {
       })
       .then(() => console.log('finished populating tipos desafios'))
       .catch(err => console.log('error populating tipos desafios', err));
-    });*/
+    });
 }
