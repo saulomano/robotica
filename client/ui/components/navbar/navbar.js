@@ -134,21 +134,9 @@ class RdNavbarController {
 		}
 	}
 
-<<<<<<< HEAD
-	itemClicked(item) {
-       /* if (this.selected === item.section) return;
-        let host = window.location.host;
-        let protocol = window.location.protocol;
-        if (item.action) {
-            this.selected = item.action;
-            window.location.href = `${protocol}//${host}/${item.action}`;
-        } else {
-            return;
-		}*/
-        // this.$state.go('.', { seccion: item.section });
-		// this.selected = item.section;
-		
 
+	itemClicked(item) {
+     
 		if (this.selected === item.action) return;
         let host = window.location.host;
 		let protocol = window.location.protocol;
