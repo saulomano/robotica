@@ -13,7 +13,7 @@ export default class NewComponent extends CuradorComponent {
     this.Restangular = Restangular;
     this.Auth = Auth;
 
-    let types = /^(noticias|calendario|herramientas|documentos|mediateca|desafios|loquehacemos|novedades|kits|desafiopropuesto)$/ig;
+    let types = /^(noticia|calendario|herramientas|documentos|mediateca|desafios|loquehacemos|novedades|kits|desafiopropuesto)$/ig;
     this.section = _.toLower($stateParams.type);
 
     if (!types.test(this.section)){
@@ -31,14 +31,17 @@ export default class NewComponent extends CuradorComponent {
     // create the object
     if (this.section==='desafiopropuesto'){      
       this.createPropuestaDesafio(this.section);
-    }else
+    }else if (this.section==='noticia'){
+      this.createNoticia(this.section);
+    }else{
     this.createResource(this.section);
+    }
   }
 
   createResource(section) {
 
     let dbtypes = {
-      'noticias': 'noticias',
+      'noticia': 'noticia',
       'calendario': 'calendario',
       'herramientas': 'herramienta',
       'documentos': 'documentos',
@@ -134,6 +137,48 @@ export default class NewComponent extends CuradorComponent {
     });
   }
 
+
+  createNoticia(section) {
+
+   
+    this.Auth
+    .getCurrentUser()
+    .then(user => {
+      let data = {
+        type: 'noticia',
+        title: '',
+        summary: '',
+        thumbnail: '',
+        nivel: [],       
+        category: '',
+        postBody: [],
+        tags: [],
+        owner: user._id,    
+        links: [],
+        files: [],
+        video : '',
+      };
+
+
+      let resource = this.Restangular.all('noticias');
+      resource
+        .post(data)
+        .then(data => {
+          this.$state.go(`curador.noticia`, { uid: data._id });
+
+        })
+        .catch((err) => {
+          this.$log.error(err)
+          return this.$state.go(`curador.dashboardnoticia`);
+        });
+    })
+    .catch((err) => {
+      this.$log.error(err)
+      return this.$state.go(`curador.noticia`);
+    });
+  }
+
+  
 
 
 }

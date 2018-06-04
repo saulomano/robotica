@@ -27,7 +27,7 @@ class HeaderComponent {
         section: 'kits',  caption: 'Kits', action:'?seccion=kits'
       },
       {
-        section: 'noticias',  caption: 'Noticias', action:'?seccion=noticias'
+        section: 'noticias',  caption: 'Noticias', action:'social.noticias'
       },
       {
         section: 'institucional',  caption: 'Institucional',
@@ -35,60 +35,10 @@ class HeaderComponent {
           {
             section: 'quienesSomos',  caption: 'Que es Robótica', action:'social.institucional'
           },
-          /*
-          {
-            section: 'calendario',  caption: 'Calendario', action:'?seccion=calendario'
-          }*/
+         
         ]
       }
-     /* {
-        section: 'desafios',  caption: 'Desafios',
-        "nodes": [
-          {
-            section: 'desafiosParaResolver',  caption: 'Desafios para resolver', action:'social.desafiosParaResolver'
-          },
-          /*{
-            section: 'subiDesafio',  caption: 'Subi tu desafio', action:'social.new'
-          },
-          {
-            section: 'desafios',  caption: 'Mis desafios', action:'social.misDesafios'
-          },
-          {
-            section: 'desafiosAprobados', caption: 'Desafios', action:'social.desafiosAprobados'
-          }
-        ]
-      },
-      {
-        section: 'comunidad',  caption: 'Comunidad',
-        "nodes": [
-          {
-            section: 'sabiasQue',  caption: 'Sabias que', action:'?seccion=sabiasQue'
-          },
-          {
-            section: 'loquehacemos',  caption: 'Que Hacemos', action:'?seccion=loquehacemos'
-          },
-          {               
-            section: 'novedades',  caption: 'Novedades', action:'?seccion=novedades'
-          }
-        ]
-      },
-      {
-        section: 'recursos',  caption: 'Recursos',
-        "nodes": [
-          {
-            section: 'documentos',  caption: 'Documentos', action:'?seccion=documentos'
-          },
-          {
-            section: 'mediateca',  caption: 'Mediateca', action:'?seccion=mediateca'
-          },
-          {
-            section: 'herramientas',  caption: 'Herramientas', action:'?seccion=herramientas'
-          },
-          {
-            section: 'videos',  caption: 'Videos', action:'social.canalyt'
-          }
-        ]
-      }, */     
+    
       
     ];
 
