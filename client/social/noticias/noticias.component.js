@@ -6,7 +6,7 @@ import _ from "lodash";
 
 export default class NoticiasComponent extends SocialComponent{
     /*@ngInject*/
-    constructor($element, $log, $rootScope, $q, $stateParams, $state, Auth, Restangular) {
+    constructor($element, $log, $rootScope, $q,  $stateParams, $state, Auth, Restangular,$mdDialog,) {
 
         super({$element});
         this.$q = $q;
@@ -20,6 +20,7 @@ export default class NoticiasComponent extends SocialComponent{
         this.Publisheds = this.Restangular.all('publishednoticia');
         this.section = $stateParams.type;
         this.searchText = $stateParams.search;
+        this.$mdDialog = $mdDialog;
         this.$rootScope.$on('filterChange', (event, searchText) => {
             if (this.searchText !== searchText) {
                 this.page = 0;
@@ -72,7 +73,7 @@ export default class NoticiasComponent extends SocialComponent{
         return def.promise;
     }
 
-    viewDesafioResource_($event, resource){
+    viewNoticia_($event, resource){
         this.$mdDialog.show({
             template: require('../components/modalView/modalView.html'),
             parent: angular.element(document.body),
@@ -100,7 +101,7 @@ export default class NoticiasComponent extends SocialComponent{
             'ngInject';
             this.loading = true;
 
-            this.Resource = Restangular.one('publishedpropuesta', resource._id);
+            this.Resource = Restangular.one('publishednoticia', resource._id);
 
             this.closeDialog = function() {
                 $mdDialog.hide();
@@ -109,21 +110,7 @@ export default class NoticiasComponent extends SocialComponent{
             this.Resource
                 .get()
                 .then(data => {
-
-                    let captions = {
-                        'propuesta': 'Propuesta pedagógica',
-                        'actividad': 'Actividad accesible',
-                        'herramientas': 'Herramienta',
-                        'orientacion': 'Orientación',
-                        'mediateca': 'Mediateca',
-                        'noticias': 'Noticias',
-                        'calendario': 'Calendario',
-                    };
-
-                    data.links = _.map(data.links, p =>{
-                        p.typeCaption = captions[p.type];
-                        return p;
-                    });
+                   
 
                     this.resource = data;
                     this.loading = false;
