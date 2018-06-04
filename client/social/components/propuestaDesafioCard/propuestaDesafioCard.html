@@ -27,6 +27,11 @@
 			<md-button ng-click="$ctrl.deleteDesafioBoolean = !$ctrl.deleteDesafioBoolean" class="bordered md-raised md-mini rd-card__button--delete" aria-label="Eliminar módulo">
 				<md-icon md-font-icon="">delete</md-icon>
 			</md-button>
+			<md-button ng-click="$ctrl.viewResource($event, $ctrl.resource)" class="bordered mini-button md-button md-ink-ripple rd-card__button--edit">
+				<div layout="row">
+					<md-icon class="mi-mode-edit"></md-icon> <span>Ver</span>
+				</div>
+			</md-button>
 			<md-button ng-click="$ctrl.editResource()" class="bordered mini-button md-button md-ink-ripple rd-card__button--edit">
 				<div layout="row">
 					<md-icon class="mi-mode-edit"></md-icon> <span>Editar</span>
@@ -35,7 +40,12 @@
 		</div>
 	</rd-card-toolbar>
 	<rd-card-toolbar ng-if="$ctrl.editable" ng-show="$ctrl.modoVista === 'social'">
-		<div layout="row">		
+		<div layout="row">
+			<md-button ng-click="$ctrl.viewResource($event, $ctrl.resource)" class="bordered mini-button md-button md-ink-ripple rd-card__button--edit">
+				<div layout="row">
+					<md-icon class="mi-mode-edit"></md-icon> <span>Ver</span>
+				</div>
+			</md-button>
 			<md-button ng-click="$ctrl.resolverDesafio()" class="bordered mini-button md-button md-ink-ripple rd-card__button--edit">
 				<div layout="row">
 					<md-icon class="mi-mode-edit"></md-icon> <span>Resolver</span>
