@@ -118,19 +118,18 @@ export default class HomeComponent extends SocialComponent {
 
   slides = [
     {
-        texto: "estos son los Desafios Robotica Disponibles",
-      image: "/assets/img/banner/imagen-pag-videos.jpg", 
+      texto: "estos son los Desafios Robotica Disponibles",      
+      color: "#8CC654", 
+      
       
     },
     {
-        texto: "ooootroooo textooo",
-      image: "/assets/img/banner/imagen-fondo_celeste.jpg", 
-      
+      texto: "ooootroooo textooo",      
+      color: "#894AA5",
     },
     {
-        texto: "yyyyy otroooo masssss",
-      image: "/assets/img/banner/imagen-fondo_violeta.jpg", 
-      
+      texto: "yyyyy otroooo masssss",      
+      color: "#D1D1D1",
     }
   ]; 
 
