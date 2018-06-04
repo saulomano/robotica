@@ -6,7 +6,7 @@ import _ from "lodash";
 
 export default class NoticiasComponent extends SocialComponent{
     /*@ngInject*/
-    constructor($element, $log, $rootScope, $q,  $stateParams, $state, Auth, Restangular,$mdDialog,) {
+    constructor($element, $log, $rootScope, $q,  $stateParams, $state, Auth, Restangular,$mdDialog) {
 
         super({$element});
         this.$q = $q;

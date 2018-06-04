@@ -18,6 +18,10 @@ router.use('/tipoDesafio', require('./tipoDesafio'));
 router.use('/publisheddesafios', require('./publisheddesafios'));
 router.use('/noticias', require('./noticias'));
 router.use('/publishednoticia', require('./publishednoticia'));
+router.use('/orientacionPedagogica', require('./orientacionPedagogica'));
+router.use('/publishedOrientacionPedagogica', require('./publishedOrientacionPedagogica'));
+
+
 router.use(writer());
 
 module.exports = router;
