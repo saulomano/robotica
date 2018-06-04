@@ -9,7 +9,7 @@ let routes = function($stateProvider) {
       });
   }
   
-  export default angular.module('robotica.social.desafiosParaResolver', [])
+  export default angular.module('robotica.social.desafiosParaResolver', ['ui.carousel'])
                         .config(routes)
                         .component('desafiosParaResolver', {
                             template: require('./desafiosParaResolver.html'),

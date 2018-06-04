@@ -1,6 +1,7 @@
 'use strict';
 
 import angularStars from 'angular1-star-rating';
+import angularCorousel from 'angular-ui-carousel';
 import angular from 'angular';
 import ngMaterial from 'angular-material';
 import uiRouter from 'angular-ui-router';

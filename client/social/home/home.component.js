@@ -116,6 +116,24 @@ export default class HomeComponent extends SocialComponent {
     this.puntaje = 5;
   }
 
+  slides = [
+    {
+        texto: "estos son los Desafios Robotica Disponibles",
+      image: "/assets/img/banner/imagen-pag-videos.jpg", 
+      
+    },
+    {
+        texto: "ooootroooo textooo",
+      image: "/assets/img/banner/imagen-fondo_celeste.jpg", 
+      
+    },
+    {
+        texto: "yyyyy otroooo masssss",
+      image: "/assets/img/banner/imagen-fondo_violeta.jpg", 
+      
+    }
+  ]; 
+
   fetchData(){
     let def = this.$q.defer();
 
@@ -219,11 +237,4 @@ export default class HomeComponent extends SocialComponent {
         });
     }
   }
-
-
-
- 
-
-
-
 }
