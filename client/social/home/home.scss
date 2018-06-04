@@ -44,7 +44,9 @@ hr{
   margin-right: auto;
   text-align: center;
   width: 40%;
-  margin-bottom: 30px;
+  //margin-bottom: 30px;
+  position: relative;
+ 
 }
 
 .cardsgral{
@@ -75,6 +77,20 @@ hr{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.cont{
+  padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row{
+  margin-right: -15px;
+    margin-left: -15px;
+    display: table;
+    content: " ";
 }
 
 
