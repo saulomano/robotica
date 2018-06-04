@@ -6,7 +6,7 @@ let routes = function($stateProvider) {
   'ngInject';
   $stateProvider
     .state('curador.dashboardnoticias', {
-      url: '/noticias',
+      url: '/tablero/noticias',
       template: '<curador-dashboardnoticias></curador-dashboardnoticias>',
       authenticate: 'curador',
       params: {

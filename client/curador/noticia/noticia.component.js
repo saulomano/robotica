@@ -46,7 +46,7 @@ export default class NoticiaComponent extends CuradorComponent {
 			{ name: 'publicar', caption: 'Publicar' },
 		];
 		let captions = {
-			'desafiopropuesto': 'Propuesta Desafio'
+			'noticia': 'Noticia'
 		};
 		this.configureDropzone(Util);
 		this.configureFunctions();
@@ -436,7 +436,7 @@ export default class NoticiaComponent extends CuradorComponent {
 	}
 
 	deleteResource(){
-		let Published = this.Restangular.one('publishedpropuesta', this.uid)
+		let Published = this.Restangular.one('publishednoticia', this.uid)
 		this.loading = true;
 		
 		this
@@ -447,13 +447,13 @@ export default class NoticiaComponent extends CuradorComponent {
 					Published
 					.remove()
 					.then( data => {
-						(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestadesafio', { type: "desafiopropuesto" }) : this.$state.go('curador.dashboardpropuestadesafio');
+						(this.returnDesafios) ? this.$state.go('curador.dashboardnoticias', { type: "noticia" }) : this.$state.go('curador.dashboardnoticias');
 					})
 					.catch( err => {
 						throw err;
 					});
 				} else {
-					(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestadesafio', { type: "desafiopropuesto" }) : this.$state.go('curador.dashboardpropuestadesafio');
+					(this.returnDesafios) ? this.$state.go('curador.dashboardnoticias', { type: "noticia" }) : this.$state.go('curador.dashboardnoticias');
 				}
 			})
 			.catch( err => {
@@ -483,9 +483,9 @@ export default class NoticiaComponent extends CuradorComponent {
 		this.resource
 			.post('publish')
 			.then(data => {
-				this.$log.log('published', data);
+				this.$log.log('publishednoticia', data);
 				this.loading = false;
-				(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestadesafio', { type: "desafiopropuesto" }) : this.$state.go('curador.dashboardpropuestadesafio');
+				(this.returnDesafios) ? this.$state.go('curador.dashboardnoticias', { type: "noticias" }) : this.$state.go('curador.dashboardnoticias');
 			})
 			.catch(err => {
 				throw err;

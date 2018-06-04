@@ -127,7 +127,7 @@ export function destroy(req, res, next) {
 export function publish(req, res, next) {
 	let noticia = req.body;
 	let pid = noticia.published ? noticia.published._id : undefined;
-	let published = new Published(resource);
+	let published = new Published(noticia);
 
 	req.result =  Published.findByIdAndRemove(req.params.id).exec();
 	next();
@@ -139,17 +139,16 @@ export function publish(req, res, next) {
 		published
 			.save()
 			.then(p => {
-				delete resource._id;
-				resource.published = p._id;
-				Resource
+				delete noticia._id;
+				noticia.published = p._id;
+				Noticia
 					.update({ _id: req.params.id}, req.body)
 					.then(p => {
 						req.result = Noticia
 							.findById(req.params.id)
 							.populate('owner')
 							.populate('files')
-							.populate('published')
-							.populate('links')
+							.populate('published')							
 							.exec();
 		
 						next();
