@@ -4,6 +4,65 @@
 	margin-bottom: 12rem;
 }
 
+.content_wrapper{
+  
+  width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    position: relative;
+    height: 100px;
+    margin-bottom: 20%;
+}
+
+.carddemoBasicUsage .card-media {
+  background-color: #999999; }
+
+.one_half{
+    position: relative;
+    z-index: 2;
+    float: left;
+    word-wrap: break-word;
+    width: 48%;
+}
+
+hr{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.last{
+  margin-right: 0 !important;
+    clear: right;
+    margin-left: 2%;
+}
+
+.disText{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 40%;
+  margin-bottom: 30px;
+}
+
+.cardsgral{
+    position: relative;
+    height: 300px;
+    margin-left: 30%;
+}
+
+
+.cards{
+  position: relative;
+   
+    float: left;
+  
+}
+
+
+
 //estilo slider
 
 

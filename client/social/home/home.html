@@ -1,6 +1,6 @@
 
 
-<div style="background-color: #f0f1f1;">
+
 	<div class="slideshow-container">
 		<ui-carousel slides="$ctrl.slides" on-init="$ctrl.onCarouselInit()" slides="ctrl.slides"
 		slides-to-show="1"
@@ -27,14 +27,110 @@
 		</div>       
 		</ui-carousel>   
 	</div>
+	<div class="content_wrapper">
+		<div class="one_half">
+			<h4 class="impact-text-large" style="text-align: center">Por qué Explorar el Código?</h4>
+			<hr>
+			<p style="text-align: center">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+				Ut tincidunt mi sed ligula tempor, nec viverra odio elementum. 
+				Sed vestibulum turpis a viverra condimentum. Vestibulum maximus posuere odio. 
+			</p>
+		</div>
+		<div class="one_half last">
+			<md-dialog-content>
+				<div class="md-dialog-content">
+				  <div class="vid-container">
+					  <iframe  src="https://www.youtube.com/embed/3y9VaDSpx8k?feature=oembed" frameborder="0" allowfullscreen></iframe>
+					</div>
+				</div>
+			</md-dialog-content>	
+		</div>
+	</div>
+	<div class="disText">
+		<h4 class="impact-text-large" style="text-align: center">Orientaciones pedagógicas</h4>
+		<hr>
+		<p style="text-align: center">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+			Ut tincidunt mi sed ligula tempor, nec viverra odio elementum.  
+			Nulla et lacus magna. Cras dignissim libero massa, nec imperdiet erat imperdiet eu. 
+			Proin eleifend hendrerit felis, eu pellentesque sem suscipit eu.
+		</p>
+	</div>
+	<div class="cardsgral">
+		<div class="cards">
+			<md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+				<md-card-title>
+				  <md-card-title-text>
+					<span class="md-headline">Card with image</span>
+					<span class="md-subhead">Medium</span>
+				  </md-card-title-text>
+				  <md-card-title-media>
+					<div class="md-media-md card-media"></div>
+				  </md-card-title-media>
+				</md-card-title>
+				<md-card-actions layout="row" layout-align="end center">
+				  <md-button>Action 1</md-button>
+				  <md-button>Action 2</md-button>
+				</md-card-actions>
+			  </md-card>
+		</div>
+		<div class="cards">
+			<md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+				<md-card-title>
+				  <md-card-title-text>
+					<span class="md-headline">Card with image</span>
+					<span class="md-subhead">Medium</span>
+				  </md-card-title-text>
+				  <md-card-title-media>
+					<div class="md-media-md card-media"></div>
+				  </md-card-title-media>
+				</md-card-title>
+				<md-card-actions layout="row" layout-align="end center">
+				  <md-button>Action 1</md-button>
+				  <md-button>Action 2</md-button>
+				</md-card-actions>
+			  </md-card>
+		</div>
+		<div class="cards">
+			<md-card md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+				<md-card-title>
+				  <md-card-title-text>
+					<span class="md-headline">Card with image</span>
+					<span class="md-subhead">Medium</span>
+				  </md-card-title-text>
+				  <md-card-title-media>
+					<div class="md-media-md card-media"></div>
+				  </md-card-title-media>
+				</md-card-title>
+				<md-card-actions layout="row" layout-align="end center">
+				  <md-button>Action 1</md-button>
+				  <md-button>Action 2</md-button>
+				</md-card-actions>
+			  </md-card>
+		</div>
+	</div>
+	<div class="disText">
+		<h4 class="impact-text-large" style="text-align: center">Kits de Robótica</h4>
+		<hr>
+		<p style="text-align: center">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+			Ut tincidunt mi sed ligula tempor, nec viverra odio elementum.  
+			Nulla et lacus magna. Cras dignissim libero massa, nec imperdiet erat imperdiet eu. 
+			Proin eleifend hendrerit felis, eu pellentesque sem suscipit eu.
+		</p>
+	</div>
+
+	
 
 
 
 
-<section class="resources_waterfall">
+
+<!--section class="resources_waterfall">
 	<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewResource">
 		<rd-item-template>
 			<resource-card resource="item" ui-sref="social.ver({ uid: item._id })"></resource-card>
 		</rd-item-template>
 	</rd-waterfall>
-</section>
+</section-->
