@@ -64,7 +64,7 @@ class RdNavbarController {
 			});
 
 			$(document).click(() => {
-				this.removeDropdown();
+				// this.removeDropdown();
 			});
 
             [].slice.call(document.querySelectorAll('.dropdown .nav-link')).forEach(function(el){
@@ -134,19 +134,36 @@ class RdNavbarController {
 		}
 	}
 
-	itemClicked(item) {
-        if (this.selected === item.section) return;
+    itemClicked(item) {
+        if (this.selected === item.action) return;
         let host = window.location.host;
         let protocol = window.location.protocol;
-        if (item.action) {
-            this.selected = item.action;
-            window.location.href = `${protocol}//${host}/${item.action}`;
-        } else {
-            return;
+        let types = /^(desafios|subidesafio|desafiosaprobados)$/ig;
+
+        //Si es query string viene por aca sino redirige
+
+        if (item.action && item.action.includes("?seccion=")){
+            this.$state.go('social.home', {  seccion: item.action.slice(item.action.indexOf('=')+1)   }, {reload: true});
+        } else if (item.action){
+            this.$state.go(item.action, { type: item.section }, {reload:true});
         }
-        // this.$state.go('.', { seccion: item.section });
-        // this.selected = item.section;
     }
+
+    // itemClicked(item) {
+    //     if (this.selected === item.section) return;
+    //     let host = window.location.host;
+    //     let protocol = window.location.protocol;
+    //     if (item.action) {
+    //         this.selected = item.action;
+    //         window.location.href = `${protocol}//${host}/${item.action}`;
+    //     } else {
+    //         return;
+    //     }
+    //
+    //
+    //     // this.$state.go('.', { seccion: item.section });
+    //     // this.selected = item.section;
+    // }
 }
 
 function RdNavbar($window){
