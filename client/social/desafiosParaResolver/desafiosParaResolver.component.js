@@ -38,6 +38,10 @@ export default class DesafiosParaResolverComponent extends SocialComponent{
             });
     }
 
+    applyFilter(type) {
+		this.$state.go(this.$state.current, {search: type}, {reload:true});
+	}
+
     fetchData(){
         let def = this.$q.defer();
         this.page++;

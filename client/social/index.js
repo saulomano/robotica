@@ -26,6 +26,9 @@ import desafioView from './components/desafioView/desafioView.component';
 import propuestaDesafioView from './components/propuestadesafioView/propuestadesafioView.component';
 import propuestaDesafioCard from './components/propuestaDesafioCard/propuestaDesafioCard.component';
 import desafiosParaResolver from './desafiosParaResolver';
+import comoEmpezar from './comoEmpezar';
+import noticiaCard from './components/noticiaCard/noticiaCard.component';
+import noticias from './noticias';
 
 // config to providers
 import { socialConfig } from './social.config';
@@ -53,7 +56,10 @@ let requirements = [
 	desafioView,
 	propuestaDesafioCard,
 	propuestaDesafioView,
-	desafiosParaResolver
+	desafiosParaResolver,
+	comoEmpezar,
+	noticiaCard,
+	noticias
 ];
 
 module.exports = angular

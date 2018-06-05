@@ -22,6 +22,11 @@ class CuradorHeaderComponent {
     this.navUser = {
         section: 'usuarios',  caption: 'Usuarios', action:'curador.users'
     };
+
+    this.navNoticias = {
+      section: 'noticias',  caption: 'Noticias', action:'curador.dashboardnoticias'
+    };
+
     this.navDesafios = {
       section: 'desafios',  caption: 'Desafios Resueltos', action:'curador.dashboarddesafiosresueltos'
     };

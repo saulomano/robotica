@@ -3,6 +3,7 @@ import angular from 'angular';
 import CuradorComponent from '../curador.component';
 import async from 'async';
 import _ from 'lodash';
+import $ from 'jquery';
 
 export default class PropuestaDesafioComponent extends CuradorComponent {
 	/*@ngInject*/
@@ -229,6 +230,13 @@ export default class PropuestaDesafioComponent extends CuradorComponent {
 					});
 		}
 	}
+
+    functionShowMsg(msg) {
+        this.msg = msg;
+        this.$timeout(function(){
+            $('#msg').hide();
+        }, 5000);
+    }
 
 	configureDropzone(Util){
 

@@ -134,19 +134,22 @@ class RdNavbarController {
 		}
 	}
 
-    itemClicked(item) {
-        if (this.selected === item.action) return;
+
+	itemClicked(item) {
+     
+		if (this.selected === item.action) return;
         let host = window.location.host;
-        let protocol = window.location.protocol;
-        let types = /^(desafios|subidesafio|desafiosaprobados)$/ig;
+		let protocol = window.location.protocol;
+		let types = /^(desafios|subidesafio|desafiosaprobados)$/ig;
 
-        //Si es query string viene por aca sino redirige
+		//Si es query string viene por aca sino redirige
+		if (item.action.includes("?seccion=")){
+			this.$state.go('social.home', {  seccion: item.action.slice(item.action.indexOf('=')+1)   }, {reload: true});
+		} else {
+			this.$state.go(item.action, { type: item.section }, {reload:true});
+		}
 
-        if (item.action && item.action.includes("?seccion=")){
-            this.$state.go('social.home', {  seccion: item.action.slice(item.action.indexOf('=')+1)   }, {reload: true});
-        } else if (item.action){
-            this.$state.go(item.action, { type: item.section }, {reload:true});
-        }
+
     }
 
     // itemClicked(item) {

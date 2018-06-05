@@ -116,6 +116,23 @@ export default class HomeComponent extends SocialComponent {
     this.puntaje = 5;
   }
 
+  slides = [
+    {
+      texto: "estos son los Desafios Robotica Disponibles",      
+      color: "#8CC654", 
+      
+      
+    },
+    {
+      texto: "ooootroooo textooo",      
+      color: "#894AA5",
+    },
+    {
+      texto: "yyyyy otroooo masssss",      
+      color: "#D1D1D1",
+    }
+  ]; 
+
   fetchData(){
     let def = this.$q.defer();
 
@@ -219,11 +236,4 @@ export default class HomeComponent extends SocialComponent {
         });
     }
   }
-
-
-
- 
-
-
-
 }

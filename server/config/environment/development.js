@@ -7,7 +7,7 @@ module.exports = {
 
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://35.232.152.217:27017/robotica-dev'
+    uri: 'mongodb://35.232.152.217:27017/robotica-desarrollo'
   },
 
   // Seed database on startupgulp

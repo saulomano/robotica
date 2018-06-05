@@ -18,7 +18,7 @@ let routes = function($stateProvider) {
     });
 }
 
-export default angular.module('robotica.social.socialHome', ['star-rating'])
+export default angular.module('robotica.social.socialHome', ['ngMaterial'])
                       .config(routes)
                       .component('socialHome', {
                         template: require('./home.html'),
