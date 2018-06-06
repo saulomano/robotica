@@ -124,4 +124,3 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
         }
     }
 }
-O
