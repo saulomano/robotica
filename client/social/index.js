@@ -68,12 +68,10 @@ let requirements = [
 	noticiaCard,
 	noticias,
 	orientacionpedagogicaCard,
-<<<<<<< HEAD
 	kitCard,
-	kitView
-=======
+	kitView,
 	orientacionpedagogica
->>>>>>> acd942af98c59f2e2fccda57046894c066443b35
+
 ];
 
 module.exports = angular
