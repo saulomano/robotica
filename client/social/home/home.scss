@@ -49,6 +49,14 @@ hr{
  
 }
 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+  .disText   {
+    width: 100%;
+  }
+} 
+
 .cardsgral{
     position: relative;
     height: 300px;
