@@ -10,9 +10,10 @@ export default class HomeComponent extends SocialComponent {
     super({$element});
     this.$http = $http;
     this.$q = $q;
-    this.Api = Restangular;
+    this.Restangular = Restangular;
     this.$mdDialog = $mdDialog;
     this.$stateParams = $stateParams;
+    this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
 
     this.page = 0;
     this.limit = 20;
@@ -107,7 +108,7 @@ export default class HomeComponent extends SocialComponent {
       }
 
 
-    };
+  };
     this.section = sections[this.sectionName];
     ngMeta.setTitle(this.section.title);
     ngMeta.setTag('description', this.section.description);
@@ -133,7 +134,7 @@ export default class HomeComponent extends SocialComponent {
     }
   ]; 
 
-  fetchData(){
+ /* fetchData(){
     let def = this.$q.defer();
 
     this.page++;
@@ -170,7 +171,37 @@ export default class HomeComponent extends SocialComponent {
         })
 
     return def.promise;
-  }
+  }*/
+
+  fetchData(){
+    let def = this.$q.defer();
+    this.page++;
+    let q;
+    if (this.searchText){
+        q = this.searchText
+    }
+
+    this.Publisheds
+        .getList({
+            page: 1, 
+            limit: 3,
+            type: 'orientacionpedagogica'
+        })
+        .then(data => {
+            let total = data.$total;
+      
+            let res = {
+                count: total,
+                items: data,
+                page: this.page,
+                limit: this.limit
+            };
+
+            def.resolve(res);
+        })
+
+    return def.promise;
+}
 
   viewResource_($event, resource){
 		this.$mdDialog.show({
