@@ -3,11 +3,13 @@
 @import '../app/login/login';
 @import '../curador/dashboard/dashboard';
 @import '../curador/dashboarddesafiosresueltos/dashboarddesafiosresueltos';
+@import '../curador/dashboardkits/dashboardkits';
 @import '../curador/dashboardnoticias/dashboardnoticias';
 @import '../curador/dashboardorientacionpedagogica/dashboardorientacionpedagogica';
 @import '../curador/dashboardpropuestadesafio/dashboardpropuestadesafio';
 @import '../curador/desafio/desafio';
 @import '../curador/header/header';
+@import '../curador/kit/kit';
 @import '../curador/new/new';
 @import '../curador/noticia/noticia';
 @import '../curador/orientacionpedagogica/orientacionpedagogica';
@@ -20,6 +22,8 @@
 @import '../social/comoEmpezar/comoEmpezar';
 @import '../social/components/desafioCard/desafioCard';
 @import '../social/components/desafioView/desafioView';
+@import '../social/components/kitCard/kitCard';
+@import '../social/components/kitView/kitView';
 @import '../social/components/modalView/modalView';
 @import '../social/components/noticiaCard/noticiaCard';
 @import '../social/components/orientacionpedagogicaCard/orientacionpedagogicaCard';
