@@ -63,8 +63,8 @@ class RdNavbarController {
 				this.removeDropdown();
 			});
 
-			$(document).click(() => {
-				// this.removeDropdown();
+			$(document).click((e) => {
+				if (e.target.classList.contains('nav-link') || e.target.classList.contains('ng-binding')) {} else {this.removeDropdown();}
 			});
 
             [].slice.call(document.querySelectorAll('.dropdown .nav-link')).forEach(function(el){
