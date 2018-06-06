@@ -13,8 +13,6 @@ class PropuestaDesafioCardController {
 	constructor($scope, $element, $state, $mdDialog){
 		this.$scope = $scope;
 		this.$element = $element;
-        //this.elementType = 'propuestadesafio';
-        //this.$scope.elementType = this.elementType;
         this.$mdDialog = $mdDialog;
 		this.$state = $state;
 		this.$element.addClass('resource-card');
