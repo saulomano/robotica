@@ -30,6 +30,9 @@ import comoEmpezar from './comoEmpezar';
 import noticiaCard from './components/noticiaCard/noticiaCard.component';
 import noticias from './noticias';
 import orientacionpedagogicaCard from './components/orientacionpedagogicaCard/orientacionpedagogicaCard.component';
+import kitCard from './components/kitCard/kitCard.component';
+import kitView from './components/kitView/kitView.component';
+
 // config to providers
 import { socialConfig } from './social.config';
 
@@ -60,7 +63,9 @@ let requirements = [
 	comoEmpezar,
 	noticiaCard,
 	noticias,
-	orientacionpedagogicaCard
+	orientacionpedagogicaCard,
+	kitCard,
+	kitView
 ];
 
 module.exports = angular

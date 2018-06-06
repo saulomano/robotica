@@ -13,7 +13,7 @@ export default class NewComponent extends CuradorComponent {
     this.Restangular = Restangular;
     this.Auth = Auth;
 
-    let types = /^(noticia|orientacionpedagogica|calendario|herramientas|documentos|mediateca|desafios|loquehacemos|novedades|kits|desafiopropuesto)$/ig;
+    let types = /^(noticia|orientacionpedagogica|kit|herramientas|documentos|mediateca|desafios|loquehacemos|novedades|kits|desafiopropuesto)$/ig;
     this.section = _.toLower($stateParams.type);
 
     if (!types.test(this.section)){
@@ -35,6 +35,9 @@ export default class NewComponent extends CuradorComponent {
       this.createNoticia(this.section);
     }else if (this.section==='orientacionpedagogica'){
       this.createOrientacionPedagogica(this.section);
+    }else if (this.section==='kit'){
+      this.createKit(this.section);
+    
     }else{
     this.createResource(this.section);
     }
@@ -221,6 +224,42 @@ export default class NewComponent extends CuradorComponent {
 
   }
 
+  createKit(section){
+
+    this.Auth
+    .getCurrentUser()
+    .then(user => {
+      let data = {
+        type: 'kit',
+        nombre: '',
+        descripcion: '',
+        thumbnail: '',
+        contenido: [], 
+        armado: [],
+        potencialidades: [],
+        owner: user._id,  
+        files: [],        
+      };
+
+
+      let resource = this.Restangular.all('kit');
+      resource
+        .post(data)
+        .then(data => {
+          this.$state.go(`curador.kit`, { uid: data._id });
+
+        })
+        .catch((err) => {
+          this.$log.error(err)
+          return this.$state.go(`curador.dashboardkit`);
+        });
+    })
+    .catch((err) => {
+      this.$log.error(err)
+      return this.$state.go(`curador.kit`);
+    });
+
+  }
   
 
 

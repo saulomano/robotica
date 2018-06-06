@@ -20,6 +20,8 @@ router.use('/noticias', require('./noticias'));
 router.use('/publishednoticia', require('./publishednoticia'));
 router.use('/orientacionPedagogica', require('./orientacionPedagogica'));
 router.use('/publishedOrientacionPedagogica', require('./publishedOrientacionPedagogica'));
+router.use('/publishedkits', require('./publishedkits'));
+router.use('/kit', require('./kit'));
 
 
 router.use(writer());

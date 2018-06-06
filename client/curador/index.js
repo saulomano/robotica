@@ -15,8 +15,8 @@ import dashboardnoticias from './dashboardnoticias';
 import noticia from './noticia';
 import dashboardorientacionpedagogica from './dashboardorientacionpedagogica';
 import orientacionpedagogica from './orientacionpedagogica';
-
-
+import dashboardkits from './dashboardkits'
+import kit from './kit'
 
 
 
@@ -37,7 +37,9 @@ let requirements = [
 	dashboardnoticias,
 	noticia,
 	dashboardorientacionpedagogica,
-	orientacionpedagogica
+	orientacionpedagogica,
+	dashboardkits,
+	kit
 ];
 
 module.exports = angular
