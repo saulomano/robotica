@@ -13,7 +13,7 @@ export default class NewComponent extends CuradorComponent {
     this.Restangular = Restangular;
     this.Auth = Auth;
 
-    let types = /^(noticia|calendario|herramientas|documentos|mediateca|desafios|loquehacemos|novedades|kits|desafiopropuesto)$/ig;
+    let types = /^(noticia|orientacionpedagogica|calendario|herramientas|documentos|mediateca|desafios|loquehacemos|novedades|kits|desafiopropuesto)$/ig;
     this.section = _.toLower($stateParams.type);
 
     if (!types.test(this.section)){
@@ -33,6 +33,8 @@ export default class NewComponent extends CuradorComponent {
       this.createPropuestaDesafio(this.section);
     }else if (this.section==='noticia'){
       this.createNoticia(this.section);
+    }else if (this.section==='orientacionpedagogica'){
+      this.createOrientacionPedagogica(this.section);
     }else{
     this.createResource(this.section);
     }
@@ -42,6 +44,7 @@ export default class NewComponent extends CuradorComponent {
 
     let dbtypes = {
       'noticia': 'noticia',
+      'orientacionpedagogica': 'orientacionpedagogica',
       'calendario': 'calendario',
       'herramientas': 'herramienta',
       'documentos': 'documentos',
@@ -176,6 +179,46 @@ export default class NewComponent extends CuradorComponent {
       this.$log.error(err)
       return this.$state.go(`curador.noticia`);
     });
+  }
+
+  createOrientacionPedagogica(section){
+
+    this.Auth
+    .getCurrentUser()
+    .then(user => {
+      let data = {
+        type: 'orientacionpedagogica',
+        title: '',
+        summary: '',
+        thumbnail: '',
+        nivel: [],       
+        category: '',
+        postBody: [],
+        tags: [],
+        owner: user._id,    
+        links: [],
+        files: [],
+        video : '',
+      };
+
+
+      let resource = this.Restangular.all('orientacionpedagogica');
+      resource
+        .post(data)
+        .then(data => {
+          this.$state.go(`curador.orientacionpedagogica`, { uid: data._id });
+
+        })
+        .catch((err) => {
+          this.$log.error(err)
+          return this.$state.go(`curador.dashboardorientacionpedagogica`);
+        });
+    })
+    .catch((err) => {
+      this.$log.error(err)
+      return this.$state.go(`curador.orientacionpedagogica`);
+    });
+
   }
 
   

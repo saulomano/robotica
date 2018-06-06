@@ -29,7 +29,7 @@ import desafiosParaResolver from './desafiosParaResolver';
 import comoEmpezar from './comoEmpezar';
 import noticiaCard from './components/noticiaCard/noticiaCard.component';
 import noticias from './noticias';
-
+import orientacionpedagogicaCard from './components/orientacionpedagogicaCard/orientacionpedagogicaCard.component';
 // config to providers
 import { socialConfig } from './social.config';
 
@@ -59,7 +59,8 @@ let requirements = [
 	desafiosParaResolver,
 	comoEmpezar,
 	noticiaCard,
-	noticias
+	noticias,
+	orientacionpedagogicaCard
 ];
 
 module.exports = angular

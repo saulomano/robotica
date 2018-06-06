@@ -13,6 +13,12 @@ import dashboarddesafiosresueltos from './dashboarddesafiosresueltos';
 import desafio from './desafio';
 import dashboardnoticias from './dashboardnoticias';
 import noticia from './noticia';
+import dashboardorientacionpedagogica from './dashboardorientacionpedagogica';
+import orientacionpedagogica from './orientacionpedagogica';
+
+
+
+
 
 
 // config to providers
@@ -29,7 +35,9 @@ let requirements = [
 	dashboarddesafiosresueltos,
 	desafio,
 	dashboardnoticias,
-	noticia
+	noticia,
+	dashboardorientacionpedagogica,
+	orientacionpedagogica
 ];
 
 module.exports = angular

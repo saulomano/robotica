@@ -98,10 +98,10 @@ export function update(req, res, next) {
  * restriction: 'authenticate'
  */
 export function show(req, res, next) {
-  var noticiaId = req.params.id;
+  var orientacionpedagogicaId = req.params.id;
 
 	req.result = OrientacionPedagogica
-								.findById(noticiaId)
+								.findById(orientacionpedagogicaId)
 								.populate('owner')
 								.populate('files')
 								.populate('published')								
@@ -139,7 +139,7 @@ export function publish(req, res, next) {
 		published
 			.save()
 			.then(p => {
-				delete noticia._id;
+				delete orientacionpedagogica._id;
 				propuesta.published = p._id;
 				OrientacionPedagogica
 					.update({ _id: req.params.id}, req.body)

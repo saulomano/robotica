@@ -27,6 +27,10 @@ class CuradorHeaderComponent {
       section: 'noticias',  caption: 'Noticias', action:'curador.dashboardnoticias'
     };
 
+    this.navOrientacionPedagogica = {
+      section: 'orientacionpedagogica',  caption: 'Orientacion Pedagógica', action:'curador.dashboardorientacionpedagogica'
+    };
+
     this.navDesafios = {
       section: 'desafios',  caption: 'Desafios Resueltos', action:'curador.dashboarddesafiosresueltos'
     };

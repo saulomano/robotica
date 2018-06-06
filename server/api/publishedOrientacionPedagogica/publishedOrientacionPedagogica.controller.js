@@ -65,7 +65,7 @@ export function index(req, res, next) {
 			req.totalItems = count;
 			req.result = Published
 										.find(q)
-										.populate({path: 'noticia'})									
+										.populate({path: 'orientacionpedagogica'})									
 										.populate('owner')
 										.populate('files')										
 										.sort(query.cursor.sort)
@@ -114,7 +114,7 @@ export function show(req, res, next) {
 								.populate('owner')
 								.populate('files')								
 								.populate({
-									path: 'noticia'
+									path: 'orientacionpedagogica'
 								  })
 								.exec();
 	next();
