@@ -86,10 +86,6 @@ export default class NoticiaComponent extends CuradorComponent {
 		};
 	}
 
-
-
-	
-
 	$onInit(){
 	}
 

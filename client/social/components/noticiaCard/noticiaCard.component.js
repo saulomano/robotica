@@ -1,5 +1,8 @@
 'use strict';
 
+import angular from "angular";
+import _ from "lodash";
+
 export default angular
 	.module('robotica.social.components.noticiaCard', [])
 	.directive('noticiaCard', noticiaCard)
@@ -7,10 +10,11 @@ export default angular
 
 class NoticiaCardController {
 	/*@ngInject*/
-	constructor($scope, $element, $state){
+	constructor($scope, $element, $state, $mdDialog){
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;
+        this.$mdDialog = $mdDialog;
 		this.$element.addClass('noticia-card');
 		
 
@@ -59,6 +63,73 @@ class NoticiaCardController {
             this.$state.go('curador.new', { type: item.section });
 		}
 	}
+
+    viewResource($event, resource){
+
+        this.$mdDialog.show({
+            template: require('../modalView/modalView.html'),
+            parent: angular.element(document.body),
+            targetEvent: $event,
+            clickOutsideToClose: true,
+            fullscreen: true, // Only for -xs, -sm breakpoints.
+            locals: {
+                resource: resource
+            },
+            controller: DialogController,
+            controllerAs: '$ctrl'
+        })
+            .then((data) => {
+                console.log(data);
+            }, () => {
+
+            })
+            .catch(function(res) {
+                if (!(res === 'cancel' || res === 'escape key press')) {
+                    throw res;
+                }
+            });
+
+        function DialogController($scope, $mdDialog, resource, Restangular, $timeout) {
+            'ngInject';
+            //this.$scope = $scope;
+            this.loading = true;
+
+            this.Resource = Restangular.one(resource.route, resource._id);
+
+            this.closeDialog = function() {
+                $mdDialog.hide();
+            }
+
+            this.Resource
+                .get()
+                .then(data => {
+
+                    let captions = {
+                        'propuesta': 'Propuesta pedagógica',
+                        'actividad': 'Actividad accesible',
+                        'herramientas': 'Herramienta',
+                        'orientacion': 'Orientación',
+                        'mediateca': 'Mediateca',
+                        'noticias': 'Noticias',
+                        'calendario': 'Calendario'
+                    };
+
+                    data.links = _.map(data.links, p =>{
+                        p.typeCaption = captions[p.type];
+                        return p;
+                    });
+
+                    this.resource = data;
+                    this.loading = false;
+                    $timeout(() => {
+                        $scope.$apply();
+                    });
+                })
+                .catch(err => {
+                    throw err;
+                });
+        }
+    }
 
 }
 
