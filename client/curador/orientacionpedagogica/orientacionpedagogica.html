@@ -97,12 +97,12 @@
 		<md-content  class="dashboard__content" flex>
 			<div class="dashboard__content--head">
 					<md-input-container class="dashboard__input dashboard__input--title">
-						<label>Título</label>
-						<input ng-model="$ctrl.resource.title" required>
+						<label>Objetivo</label>
+						<input ng-model="$ctrl.resource.objetivo" required>
 					</md-input-container>
 					<md-input-container  class="dashboard__input dashboard__input--summary">
-						<label>Síntesis</label>
-						<textarea ng-model="$ctrl.resource.summary" required></textarea>
+						<label>Descripción</label>
+						<textarea ng-model="$ctrl.resource.descripcion" required></textarea>
 					</md-input-container>
 			</div>
 			<rd-post modules="$ctrl.resource.postBody" relative="$ctrl.uid" on-delete="$ctrl.onDeletePost"></rd-post>
@@ -122,9 +122,7 @@
 					<h2 class="dashboard__sidenav--head">{{$ctrl.headText}}</h2>				
 				</div>
 			</div>
-			<h1 class="rd__headpost--sidenav">{{$ctrl.resource.title}}</h1>
-			<h2 class="rd__headpost">Tipo {{$ctrl.resource.tipoDesafio.caption}}</h2>
-			<p class="rd__headpost">{{$ctrl.resource.summary | truncate:140}}</p>
+			<h1 class="rd__headpost--sidenav">{{$ctrl.resource.objetivo}}</h1>
 		</md-content>
 		
 		<md-content  class="dashboard__content" flex>IMAGEN PRINCIPAL: 
@@ -162,10 +160,10 @@
 					<md-button class="md-raised dz-software-clickable" ng-click="null"><i class="fa fa-upload"></i> Agregar</md-button>
 				</div>
 			</div>
-			<div class="dashboard__box" >
+			<!--div class="dashboard__box" >
 				<h4 class="color-grey font-medium">Palabras Claves</h4>
 				<md-chips ng-model="$ctrl.resource.tags" placeholder="Ingresá un tag" md-separator-keys="$ctrl.tagsKeys">
-			</div>
+			</div-->
 			
 		</md-content>
 	</div>
@@ -185,8 +183,8 @@
 					<h2 class="dashboard__sidenav--subhead color-propuestas">{{$ctrl.resource.tipoDesafio.caption}}</h2>
 				</div>
 			</div>
-			<h1 class="rd__headpost--sidenav">{{$ctrl.resource.title}}</h1>
-			<p class="rd__headpost">{{$ctrl.resource.summary | truncate:140}}</p>
+			<h1 class="rd__headpost--sidenav">{{$ctrl.resource.objetivo}}</h1>
+			<!--p class="rd__headpost">{{$ctrl.resource.summary | truncate:140}}</p-->
 			<div class="vinculo__files">
 				<div><span class="text-uppercase color-black-light">{{$ctrl.resource.files.length}} Archivos | {{$ctrl.sumfiles($ctrl.resource.files) | numeraljs:'0b'}}</span></div>
 				<div class="text-uppercase color-black-light">Curado por: {{$ctrl.resource.owner.name}}</div>
@@ -214,5 +212,5 @@
 	<div class="dashboard__preview--header bg-primary">
 		<h2><i class="fa fa-angle-down"></i> Previsualización <i class="fa fa-angle-down"></i></h2>
 	</div>
-	<propuestadesafio-view resource="$ctrl.resource" class="dashboard__preview"></propuestadesafio-view>
+	<orientacionpedagogica-view resource="$ctrl.resource" class="dashboard__preview"></orientacionpedagogica-view>
 </div>

@@ -30,7 +30,7 @@ import comoEmpezar from './comoEmpezar';
 import noticiaCard from './components/noticiaCard/noticiaCard.component';
 import noticias from './noticias';
 import orientacionpedagogicaCard from './components/orientacionpedagogicaCard/orientacionpedagogicaCard.component';
-
+import orientacionpedagogicaView from './components/orientacionpedagogicaView/orientacionpedagogicaView.component';
 import kitCard from './components/kitCard/kitCard.component';
 import kitView from './components/kitView/kitView.component';
 
@@ -68,6 +68,7 @@ let requirements = [
 	noticiaCard,
 	noticias,
 	orientacionpedagogicaCard,
+	orientacionpedagogicaView,
 	kitCard,
 	kitView,
 	orientacionpedagogica

@@ -44,8 +44,8 @@
 				<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del recurso" >
 			</div>
 			<div flex class="rd-card__body--custom">
-				<h1 class="rd-card__title--v1">{{$ctrl.resource.title}}</h1>
-				<p class="rd-card__paragraph">{{$ctrl.resource.summary | truncate:140 }}</p>
+				<h1 class="rd-card__title--v1">{{$ctrl.resource.objetivo}}</h1>
+				<p class="rd-card__paragraph">{{$ctrl.resource.descripcion | truncate:140 }}</p>
 			
 				<p><strong class="rd-card__updated rd__color--grey-light ">Actualizado <strong am-time-ago="$ctrl.resource.createdAt"></strong> </strong></p>
 				<p><strong class="rd-card__owner">{{$ctrl.resource.owner.name}}</strong></p>

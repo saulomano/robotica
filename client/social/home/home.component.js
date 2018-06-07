@@ -203,9 +203,9 @@ export default class HomeComponent extends SocialComponent {
     return def.promise;
 }
 
-  viewResource_($event, resource){
+viewOrientacionPedagogica_($event, resource){
 		this.$mdDialog.show({
-      template: require('../components/modalView/modalView.html'),
+      template: require('../components/orientacionpadagogicaView/orientacionpadagogicaView.html'),
       parent: angular.element(document.body),
       targetEvent: $event,
 			clickOutsideToClose: true,
