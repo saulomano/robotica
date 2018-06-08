@@ -123,11 +123,11 @@ export function publish(req, res, next) {
 	let pid = kit.published ? kit.published._id : undefined;
 	let published = new Published(kit);
 
-	req.result =  Published.findByIdAndRemove(req.params.id).exec();
-	next();
+	let kitPublic =  Published.findById(req.params.id).exec();
+	//next();
 
 	// find the resource
-	if (pid === undefined){
+	if (kitPublic === undefined){
 		published.createdAt = new Date();
 		published.updatedAt = new Date();
 		published
