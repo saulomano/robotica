@@ -24,7 +24,7 @@ class HeaderComponent {
         section: 'orientacionpedagogica',  caption: 'Orientaciones Pedagógicas', action:'social.orientacionpedagogica'
       },
       {
-        section: 'kits',  caption: 'Kits', action:'?seccion=kits'
+        section: 'kits',  caption: 'Kits', action:'social.kitsDisponibles'
       },
       {
         section: 'noticias',  caption: 'Noticias', action:'social.noticias'
