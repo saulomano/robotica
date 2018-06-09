@@ -74,6 +74,10 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
     }
 
     viewOrientacionPedagogica_($event, resource){
+
+        if (!this.$mdDialog)
+            return;
+
         this.$mdDialog.show({
             template: require('../components/modalView/modalView.html'),
             parent: angular.element(document.body),
