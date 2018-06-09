@@ -64,7 +64,13 @@ class NoticiaCardController {
 		}
 	}
 
-    viewResource($event, resource){
+    viewResource($event, resource, modoVista){
+
+        if (!this.$mdDialog)
+            return;
+
+	    if (!modoVista || modoVista === 'curador')
+	        return;
 
         this.$mdDialog.show({
             template: require('../modalView/modalView.html'),
