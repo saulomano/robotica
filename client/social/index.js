@@ -28,6 +28,7 @@ import propuestaDesafioCard from './components/propuestaDesafioCard/propuestaDes
 import desafiosParaResolver from './desafiosParaResolver';
 import comoEmpezar from './comoEmpezar';
 import noticiaCard from './components/noticiaCard/noticiaCard.component';
+import noticiaView from './components/noticiaView/noticiaView.component';
 import noticias from './noticias';
 import orientacionpedagogicaCard from './components/orientacionpedagogicaCard/orientacionpedagogicaCard.component';
 import orientacionpedagogicaView from './components/orientacionpedagogicaView/orientacionpedagogicaView.component';
@@ -66,6 +67,7 @@ let requirements = [
 	desafiosParaResolver,
 	comoEmpezar,
 	noticiaCard,
+    noticiaView,
 	noticias,
 	orientacionpedagogicaCard,
 	orientacionpedagogicaView,
