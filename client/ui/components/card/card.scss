@@ -9,9 +9,13 @@
 
 	&__wrapper {
 		overflow: hidden;
-		//background-color: $color-white;
-		border-radius: $border-radius-default;
-		background-color: #d0d0d0;
+		background-color: $color-white;
+		//border-radius: $border-radius-default;
+		//background-color: #d0d0d0;
+		border: solid;
+		border-width: 0.3px;
+		border-color: #d0d0d0;
+		box-shadow: 1px 3px 5px #d0d0d0;
 	}
 
 	&__toolbar {
