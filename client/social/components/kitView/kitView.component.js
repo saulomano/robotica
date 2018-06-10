@@ -10,8 +10,7 @@ class KitViewController {
 	constructor($scope, $element, $state, $timeout, Auth){
 		this.$scope = $scope;
 		this.$element = $element;
-		this.$state = $state;
-		this.rateView = this.$scope.rate;
+		this.$state = $state;	
         this.Auth = Auth;
         this.getUser();
 		this.role = '';
@@ -58,7 +57,7 @@ function kitView($log){
 		controller: KitViewController,
 		controllerAs: '$ctrl',
 		scope: {
-			desafio: '=',
+			resource: '=',
 			isPublished: '='
 		
 		},

@@ -33,7 +33,7 @@ import orientacionpedagogicaCard from './components/orientacionpedagogicaCard/or
 import orientacionpedagogicaView from './components/orientacionpedagogicaView/orientacionpedagogicaView.component';
 import kitCard from './components/kitCard/kitCard.component';
 import kitView from './components/kitView/kitView.component';
-
+import kitsDisponibles from './kitsDisponibles'
 
 import orientacionpedagogica from './orientacionpedagogica';
 
@@ -71,7 +71,8 @@ let requirements = [
 	orientacionpedagogicaView,
 	kitCard,
 	kitView,
-	orientacionpedagogica
+	orientacionpedagogica,
+	kitsDisponibles
 
 ];
 
