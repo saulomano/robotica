@@ -11,6 +11,14 @@
 		<div class="dashboard__loading" layout="row" layout-align="center center" ng-show="$ctrl.loading">
 			<md-progress-circular md-mode="indeterminate"></md-progress-circular>
 		</div>
-		<resource-view resource="$ctrl.resource" class="dashboard__preview" is-published="true"></resource-view>
+
+
+		<resource-view ng-if="$ctrl.resource.type == 'resource' " resource="$ctrl.resource" class="dashboard__preview" is-published="true"></resource-view>
+		<noticia-view ng-if="$ctrl.resource.type == 'noticia' " resource="$ctrl.resource" class="dashboard__preview" is-published="true"></noticia-view>
+		<kit-view ng-if="$ctrl.resource.type == 'kit' " resource="$ctrl.resource" class="dashboard__preview" is-published="true"></kit-view>
+		<orientacionpedagogica-view ng-if="$ctrl.resource.type == 'orientacionpedagogica' " resource="$ctrl.resource" class="dashboard__preview" is-published="true"></o-view>
+	
+	
+	
 	</md-dialog-content>
 </md-dialog>
