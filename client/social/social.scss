@@ -1,3 +1,13 @@
+@font-face {
+	font-family: pacifico-regular;
+	src: local('pacifico-regular'),
+	local('pacifico regular'),
+	local('Pacifico-Regular'),
+	local('Pacifico Regular'),
+	url("../assets/fonts/Pacifico-Regular.ttf")
+	format("truetype");
+}
+
 .social__component {
 	display: block;
 }
