@@ -12,10 +12,9 @@ var ResourceSchema = new Schema({
 		nombre: String,
 		descripcion: String,
 		thumbnail: String,
-		nap: [{ moduleType: String, content: Schema.Types.Mixed }],
+		potencialidades: [{ moduleType: String, content: Schema.Types.Mixed }],
 		armado: [{ moduleType: String, content: Schema.Types.Mixed }],
-		habilidad:[{ moduleType: String, content: Schema.Types.Mixed }],	
-		
+		habilidad:[{ moduleType: String, content: Schema.Types.Mixed }],		
 		owner: { type: Schema.Types.ObjectId, ref: 'User' },	
 		files: [{ type: Schema.Types.ObjectId, ref: 'File' }],
 		published: { type: Schema.Types.ObjectId, ref: 'PublishedKits' },		

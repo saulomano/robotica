@@ -129,11 +129,10 @@ export function publish(req, res, next) {
 	let pid = noticia.published ? noticia.published._id : undefined;
 	let published = new Published(noticia);
 
-	let existPublish =   Published.findByIdAndRemove(req.params.id).exec();
-
+	
 
 	// find the resource
-	if (existPublish === undefined){
+	if (pid === undefined){
 		published.createdAt = new Date();
 		published.updatedAt = new Date();
 		published

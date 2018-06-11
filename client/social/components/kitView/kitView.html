@@ -12,9 +12,30 @@
 							<div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
 								<img class="responsive" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
 							</div>
-					
-					<rd-post flex class="kview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>	
-						
+
+						<div layout="row" layout-xs="column">						
+						<div flex="10" flex-md="10" flex-sm="10" flex-xs="10" >
+								<p>NAP</p>					
+						</div>
+						<div flex>
+								<rd-post flex class="kview__post" modules="$ctrl.resource.potencialidades" relative="$ctrl.uid" readonly="true"></rd-post>										
+						</div>
+						</div>
+
+
+						<div layout="row" layout-xs="column">						
+								<div flex="10" flex-md="10" flex-sm="10" flex-xs="10" >
+										<p>Habilidades</p>					
+								</div>
+								<div flex>
+										<rd-post flex class="kview__post" modules="$ctrl.resource.habilidad" relative="$ctrl.uid" readonly="true"></rd-post>										
+								</div>
+						</div>
+		
+
+					<div layout="row" >		
+					<rd-post flex class="kview__post" modules="$ctrl.resource.armado" relative="$ctrl.uid" readonly="true"></rd-post>	
+					</div>	
 				</div>
 			</div>
 		</div>
