@@ -1,30 +1,26 @@
-<div class="rview" >
-	<div class="rview__wrapper" layout="row" layout-align="start stretch">
+<div class="kview" >
+	<div class="kview__wrapper" layout-gt-xs="row">
 
-
-		<div class="one_half"  layout="column" layout-align="start center" flex>			
-			<div class="rview__content" flex>
-				<div class="rview__content--bar bg-{{$ctrl.resource.type}}"></div>
-				<div layout="column">
-					<h1 flex class="rd__headpost  rd__headpost--title rview__head">{{$ctrl.resource.nombre}}</h1>
-					<p flex class="paragraph post__test rview__summary">{{$ctrl.resource.descripcion}}</p>					
-									
-							<div flex="50" ng-hide="$ctrl.resource.thumbnail === ''">
-								<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
+		<div class="one_half"  layout="column" flex flex-gt-xs="70">			
+			
+			<div class="kview__content" flex>
+				<div  layout="row" layout-padding layout-align="center top"></div>
+				<div flex="70" flex-md="80" flex-sm="80" flex-xs="80" >
+					<h1 class="margin">{{$ctrl.resource.nombre}}</h1>					
+					<p flex class="paragraph post__test kview__summary">{{$ctrl.resource.descripcion}}</p>					
+								
+							<div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
+								<img class="responsive" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
 							</div>
 					
-					
-					
-					
-					<rd-post flex class="rview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>	
-				
-				
-				
+					<rd-post flex class="kview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>	
+						
 				</div>
 			</div>
 		</div>
 
-		<div class="rview__sidenav"  layout="column" layout-align="end" flex>	
+		<!--Lateral -->
+		<div class="kview__sidenav"  layout="column" >	
 				<div flex>
 						<a target="_blank" ng-href="/ver/{{$ctrl.resource.type}}/{{$ctrl.resource._id}}">Ver</a>
 				</div>

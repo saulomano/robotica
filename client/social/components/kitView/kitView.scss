@@ -1,8 +1,14 @@
-resource-view {
+kit-view {
 	display: block;	
 }
 
-.rview { 
+
+.responsive {
+    width: 100%;   
+    height: auto;
+}
+
+.kview { 
 
 	&__wrapper {
 		border-radius: $border-radius-default;
@@ -11,7 +17,7 @@ resource-view {
 
 	&__content {
 		position: relative;
-		padding: 2rem 2rem;
+		padding: 2rem 10rem;
 	}
 	
 	&__content--bar {
@@ -48,7 +54,7 @@ resource-view {
 
 	&__summary {
 		margin-bottom: 3rem;
-		font-size: 120%;
+		font-size: 100%;
 	}
 
 	&__post {

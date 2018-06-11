@@ -124,7 +124,11 @@ export function publish(req, res, next) {
 	let published = new Published(kit);
 
 	let kitPublic =  Published.findById(req.params.id).exec();
-	//next();
+	next();
+
+	console.log('kitPublic');
+console.log(kitPublic);
+
 
 	// find the resource
 	if (kitPublic === undefined){
@@ -149,6 +153,8 @@ export function publish(req, res, next) {
 					});
 			});
 	} else {
+
+		console.log(req.params);
 		delete published._id;
 		published.updatedAt = new Date();
 		Published

@@ -13,9 +13,9 @@ var PublishedKits = new Schema({
 		nombre: String,
 		descripcion: String,
 		thumbnail: String,
-		contenido: [String],
+		potencialidades: [{ moduleType: String, content: Schema.Types.Mixed }],
 		armado: [{ moduleType: String, content: Schema.Types.Mixed }],
-		potencialidades: [String],	
+		habilidad:[{ moduleType: String, content: Schema.Types.Mixed }],		
 		owner: { type: Schema.Types.ObjectId, ref: 'User' },	
 		files: [{ type: Schema.Types.ObjectId, ref: 'File' }],			
 		step: { type: String, default: 'ficha'}		

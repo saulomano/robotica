@@ -69,18 +69,15 @@
 			</div>
 
 			<md-divider md-inset></md-divider>
-			<md-chips
-			ng-model="$ctrl.resource.contenido"			
-			placeholder="Ingrese contenido kit" md-separator-keys="$ctrl.tagsKeys"
-			></md-chips>
+			Habilidades
+			<rd-post modules="$ctrl.resource.habilidades" relative="$ctrl.uid" on-delete="$ctrl.onDeletePost"></rd-post>
 			<md-divider md-inset></md-divider>
-			<md-chips
-			ng-model="$ctrl.resource.potencialidades"			
-			placeholder="Potencialidades"
-			></md-chips>
+		
+			<md-divider md-inset></md-divider>		
+			NAP Relacionados
+			<rd-post modules="$ctrl.resource.potencialidades" relative="$ctrl.uid" on-delete="$ctrl.onDeletePost"></rd-post>
 			<md-divider md-inset></md-divider>
-
-
+			Armado
 			<rd-post modules="$ctrl.resource.armado" relative="$ctrl.uid" on-delete="$ctrl.onDeletePost"></rd-post>
 		</md-content>
 	</div>
