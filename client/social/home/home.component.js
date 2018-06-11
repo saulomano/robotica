@@ -119,18 +119,22 @@ export default class HomeComponent extends SocialComponent {
 
   slides = [
     {
-      texto: "estos son los Desafios Robotica Disponibles",      
-      color: "#8CC654", 
+      titulo: "ROBÓTICA EN LAS ESCUELAS",
+      texto:"Propuestas pedagógicas pensadas en clave del diseño curricular de la Provincia de Buenos Aires favoreciendo los procesos de apaendizaje colaborativo",       
+      url: "/assets/img/banner/slider_1.jpg",
       
       
     },
     {
-      texto: "ooootroooo textooo",      
-      color: "#894AA5",
+      titulo: "APRENDER A PROGRAMAR",
+      texto:"Permte desarrollar la capacidad de privisión, la comprobación de resultados, la optimización de recursos y la toma de decisiones",      
+      url: "/assets/img/banner/slider_2.jpg",
     },
     {
-      texto: "yyyyy otroooo masssss",      
-      color: "#D1D1D1",
+      titulo: "INCORPORAR", 
+      titulo2:"PENSAMIENTO COMPUTACIONAL",
+      texto:"dentro del campo educativo, propone la implementación de actividades creativas y colaborativas, para el desarrollo de la capacidad de resolución de problemas",    
+      url: "/assets/img/banner/slider_3.jpg",
     }
   ]; 
 

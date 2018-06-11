@@ -1,6 +1,5 @@
 
-
-
+	<div class="titHead">PLATAFORMA DE FORMACIÓN CONTINUA EN ROBÓTICA Y PROGRAMACION PARA NIVEL PRIMARIO</div>
 	<div class="slideshow-container">
 		<ui-carousel slides="$ctrl.slides" on-init="$ctrl.onCarouselInit()" slides="ctrl.slides"
 		slides-to-show="1"
@@ -15,11 +14,10 @@
 		   
 		<div  class="mySlides fade">
 			<carousel-item>				
-			<div class="divslide" layout="row" layout-align="center center" ng-style="{'background-color': item.color}">
-                <div class="banner__content">
-                    <div><h1 class="banner__head">Hola {{$ctrl.username}}!</h1></div>
-                    <div class="banner__subhead">{{item.texto}}</div>
-                    <div class="banner__legend"><p>acá podés <span class="font-medium">ver los</span> Desafios que puedes resolver</p></div>
+			<div class="divslide" layout="row" layout-align="center center" ng-style="{'background-image': 'url({{item.url}})'}">
+                <div class="ban_content">
+                    <div class="subhead">{{item.titulo}}<br>{{item.titulo2}} </div>
+                    <div class="legend"><p class="texto">{{item.texto}}</p></div>
                 </div>
             </div>
 			
@@ -27,7 +25,55 @@
 		</div>       
 		</ui-carousel>   
 	</div>
+	<div style="height: 10px; background: #8BBF1F"></div>
+	
 	<div class="cont">
+		<div class="row" style="background-color: #5EA7F1;">					
+			<div class="disText">
+				<h4 class="impact-text-large" style="text-align: center; color: white;">Robótica educativa para primarias</h4>
+				<p style="text-align: center; color: white; font-size: 15px;
+				line-height: 23px;">
+					DISEÑO CURRICULAR - En lo que respecta al aspecto social, tanto la robótica como la programación 
+					favorecen el trabajo en equipo y en colaboración; ambas resultan esenciales en la promoción del aprendizaje
+					entre pares y forman parte de los modos de construcción de conocimiento, así como de las culturas del mundo 
+					donde predomina el trabajo de la sociedad digital.Problemas.
+				</p>				
+				<img ng-src="assets/favicon.png" alt="Logo">				
+			</div >				
+			<div class="estiloflech"></div>
+		</div>
+	</div>
+	<div class="cont">
+			<div class="disText">
+					<h4 class="impact-text-large" style="text-align: center; color: #5EA7F1;">Robótica educativa para primarias</h4>				
+					
+					
+				</div >
+		<div style="background-color: white;">			
+			<div style="display: flex; justify-content: space-between">
+				<div flex-gt-sm="66"  style="flex: 33; text-align: center;">
+					<img ng-src="assets/num1.png" alt="Logo">
+					<p style="margin-top: 10px;">
+						<a style="text-align: center; color: black; text-decoration: none;" ui-sref="social.comoEmpezar">¿QUE ES EL PENSAMIENTO <BR>COMPUTACIONAL?</a>
+					</p>					
+				</div>
+				<div flex-gt-sm="66" style=" flex: 33; text-align: center;">
+					<img ng-src="assets/num2.png" alt="Logo">
+					<p style="margin-top: 10px;">
+						<a style="text-align: center; color: black; text-decoration: none;" ui-sref="social.comoEmpezar">¿CÓMO EMPIEZO <BR>A PROGRAMAR?</a>
+					</p>					
+				</div>
+				<div  flex-gt-sm="66" style="flex: 33; text-align: center;">
+					<img ng-src="assets/num3.png" alt="Logo">
+					<p style="margin-top: 10px;">
+						<a style="text-align: center; color: black; text-decoration: none;" ui-sref="social.comoEmpezar">¿CÓMO PUEDO APLICAR <BR>LA RÓBOTICA EDUCATIVA?</a>
+					</p>					
+				</div>
+			</div>			
+		</div>
+	</div>
+	
+	<!--div class="cont">
 		<div class="row">
 			<div class="content_wrapper">
 				<div class="one_half">
@@ -50,7 +96,7 @@
 				</div>
 			</div>
 		</div>
-	</div >
+	</div-->
 	<div class="cont">
 		<div class="row">
 			<div style="height: 50px; min-height: 0; margin-bottom: 0!important;"></div>
@@ -62,14 +108,7 @@
 			
 			<div class="disText">
 				<h4 class="impact-text-large" style="text-align: center; color: white;">Orientaciones pedagógicas</h4>
-				<hr>
-				<p style="text-align: center; color: white; font-size: 15px;
-				line-height: 23px;">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-					Ut tincidunt mi sed ligula tempor, nec viverra odio elementum.  
-					Nulla et lacus magna. Cras dignissim libero massa, nec imperdiet erat imperdiet eu. 
-					Proin eleifend hendrerit felis, eu pellentesque sem suscipit eu.
-				</p>
+				
 			</div >
 			<div class="cardsgral">
 				<div class="cards">
@@ -79,6 +118,9 @@
 						</rd-item-template>
 					</rd-waterfall>
 				</div>
+			</div>		
+			<div style="margin-left: auto; margin-right: auto; text-align: center;">
+				<a style="text-align: center; color: white;" ui-sref="social.orientacionpedagogica">ver mas</a>
 			</div>		
 		</div>
 	</div>
@@ -91,14 +133,20 @@
 	<div class="cont">
 		<div class="row">
 			<div class="disText">
-				<h4 class="impact-text-large" style="text-align: center">Kits de Robótica</h4>
-				<hr>
-				<p style="text-align: center">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-					Ut tincidunt mi sed ligula tempor, nec viverra odio elementum.  
-					Nulla et lacus magna. Cras dignissim libero massa, nec imperdiet erat imperdiet eu. 
-					Proin eleifend hendrerit felis, eu pellentesque sem suscipit eu.
+				<h4 class="impact-text-large" style="text-align: center">Kits tecnológicos entregados</h4>
+				<p style="text-align: center; color: white; font-size: 15px;
+				line-height: 23px;">
+
 				</p>
+			</div>
+			<div class="cardsgral">
+				<div class="cards">
+					<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText">
+						<rd-item-template>           
+							<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+						</rd-item-template>
+					</rd-waterfall>
+			</div>
 			</div>
 		</div>
 	</div>
