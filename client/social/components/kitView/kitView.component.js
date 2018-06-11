@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 export default angular
 	.module('robotica.social.components.kitView', [])
 	.directive('kitView', kitView)
@@ -20,7 +22,9 @@ class KitViewController {
 		this.editable = this.$scope.editable === true;		
 
 		this.isPublished = this.$scope.isPublished == true;		
-
+	
+	
+		
 		this.$scope.$watch(() => { return this.$scope.resource; }, (value) => {	
 			
 			this.resource = this.$scope.resource;
@@ -28,11 +32,16 @@ class KitViewController {
 			
 			$timeout(() => {
 				this.$scope.$apply();
-			});
+			});r
 		});
 		
 	}
 
+	
+		
+
+	
+ 
 	
 
 	sumfiles(files){
