@@ -4,7 +4,7 @@ import SocialComponent from '../social.component';
 import _ from "lodash";
 
 
-export default class NoticiasComponent extends SocialComponent{
+export default class KitsDisponiblesComponent extends SocialComponent{
     /*@ngInject*/
     constructor($element, $log, $rootScope, $q,  $stateParams, $state, Auth, Restangular,$mdDialog) {
 
@@ -17,7 +17,7 @@ export default class NoticiasComponent extends SocialComponent{
         this.Auth = Auth;
         this.Restangular = Restangular;
         this.user = this.getUser();
-        this.Publisheds = this.Restangular.all('publishednoticia');
+        this.Publisheds = this.Restangular.all('publishedkits');
         this.section = $stateParams.type;
         this.searchText = $stateParams.search;
         this.$mdDialog = $mdDialog;
@@ -55,7 +55,7 @@ export default class NoticiasComponent extends SocialComponent{
             .getList({
                 page: this.page, 
                 limit: this.limit,
-                type: 'noticia'
+                type: 'kit'
             })
             .then(data => {
                 let total = data.$total;
@@ -72,7 +72,7 @@ export default class NoticiasComponent extends SocialComponent{
 
         return def.promise;
     }
-/*
+
     viewNoticia_($event, resource){
         this.$mdDialog.show({
             template: require('../components/modalView/modalView.html'),
@@ -101,7 +101,7 @@ export default class NoticiasComponent extends SocialComponent{
             'ngInject';
             this.loading = true;
 
-            this.Resource = Restangular.one('publishednoticia', resource._id);
+            this.Resource = Restangular.one('publishedkits', resource._id);
 
             this.closeDialog = function() {
                 $mdDialog.hide();
@@ -122,5 +122,5 @@ export default class NoticiasComponent extends SocialComponent{
                     throw err;
                 });
         }
-    }*/
+    }
 }

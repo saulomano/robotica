@@ -208,6 +208,10 @@ export default class HomeComponent extends SocialComponent {
 }
 
 viewOrientacionPedagogica_($event, resource){
+
+    if (!this.$mdDialog)
+        return;
+
 		this.$mdDialog.show({
       template: require('../components/orientacionpedagogicaView/orientacionpedagogicaView.html'),
       parent: angular.element(document.body),

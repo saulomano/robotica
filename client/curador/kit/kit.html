@@ -49,34 +49,7 @@
 						</div>
 					</md-button>
 				</div>
-			</md-content>
-			<md-content>
-				<md-expansion-panel class="option-panel">					
-					 <md-expansion-panel-collapsed>
-						 <div class="md-title">Contenido *</div>
-						 <div class="md-summary">{{$ctrl.resource.contenido.length}} {{$ctrl.textSelection($ctrl.resource.contenido.length)}}</div>
-						 <md-expansion-panel-icon></md-expansion-panel-icon>
-					 </md-expansion-panel-collapsed>
-					 <md-expansion-panel-expanded>
-					
-						 <md-expansion-panel-header ng-click="$panel.collapse()">
-							 <div class="md-title">Contenido *</div>
-							 <div class="md-summary"></div>
-							 <md-expansion-panel-icon></md-expansion-panel-icon>
-						 </md-expansion-panel-header>
-					
-						 <md-expansion-panel-content>
-								<div flex="100" ng-repeat="item in $ctrl.contenido">
-										<md-checkbox ng-checked="$ctrl.exists(item, $ctrl.resource.contenido)" ng-click="$ctrl.toggle(item, $ctrl.resource.contenido)">
-										{{ item }}
-									</md-checkbox>
-								</div>
-						 </md-expansion-panel-content>
-					
-					 </md-expansion-panel-expanded>
-					
-				 </md-expansion-panel>
-			</md-content>
+			</md-content>			
 		</md-content>
 			
 			
@@ -94,6 +67,20 @@
 						<textarea ng-model="$ctrl.resource.descripcion" required></textarea>
 					</md-input-container>
 			</div>
+
+			<md-divider md-inset></md-divider>
+			<md-chips
+			ng-model="$ctrl.resource.contenido"			
+			placeholder="Ingrese contenido kit" md-separator-keys="$ctrl.tagsKeys"
+			></md-chips>
+			<md-divider md-inset></md-divider>
+			<md-chips
+			ng-model="$ctrl.resource.potencialidades"			
+			placeholder="Potencialidades"
+			></md-chips>
+			<md-divider md-inset></md-divider>
+
+
 			<rd-post modules="$ctrl.resource.armado" relative="$ctrl.uid" on-delete="$ctrl.onDeletePost"></rd-post>
 		</md-content>
 	</div>

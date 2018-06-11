@@ -1,30 +1,27 @@
 'use strict';
 
-
-
 export default angular
-	.module('robotica.social.components.kitView', [])
-	.directive('kitView', kitView)
+	.module('robotica.social.components.noticiaView', [])
+	.directive('noticiaView', noticiaView)
 	.name;
 
-class KitViewController {
+class NoticiaViewController {
 	/*@ngInject*/
 	constructor($scope, $element, $state, $timeout, Auth){
 		this.$scope = $scope;
 		this.$element = $element;
-		this.$state = $state;	
+		this.$state = $state;
+		this.rateView = this.$scope.rate;
         this.Auth = Auth;
         this.getUser();
 		this.role = '';
 		this.readOnlyRating = false;
-    	this.$element.addClass('kit-card');
+    	this.$element.addClass('noticia-card');
     
 		this.editable = this.$scope.editable === true;		
 
 		this.isPublished = this.$scope.isPublished == true;		
-	
-	
-		
+
 		this.$scope.$watch(() => { return this.$scope.resource; }, (value) => {	
 			
 			this.resource = this.$scope.resource;
@@ -32,16 +29,11 @@ class KitViewController {
 			
 			$timeout(() => {
 				this.$scope.$apply();
-			});r
+			});
 		});
 		
 	}
 
-	
-		
-
-	
- 
 	
 
 	sumfiles(files){
@@ -58,18 +50,18 @@ class KitViewController {
     }
 }
 
-function kitView($log){
+function noticiaView($log){
 	'ngInject';
 
 	return {
 		restrict: 'E',
-		controller: KitViewController,
+		controller: NoticiaViewController,
 		controllerAs: '$ctrl',
 		scope: {
-			resource: '=',
+			desafio: '=',
 			isPublished: '='
 		
 		},
-		template: require('./kitView.html')
+		template: require('./noticiaView.html')
 	}
 }

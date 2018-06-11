@@ -1,15 +1,36 @@
 <div class="rview" >
 	<div class="rview__wrapper" layout="row" layout-align="start stretch">
-		<div class="rview__container"  layout="row" layout-align="start stretch" flex>			
+
+
+		<div class="one_half"  layout="column" layout-align="start center" flex>			
 			<div class="rview__content" flex>
 				<div class="rview__content--bar bg-{{$ctrl.resource.type}}"></div>
 				<div layout="column">
 					<h1 flex class="rd__headpost  rd__headpost--title rview__head">{{$ctrl.resource.nombre}}</h1>
 					<p flex class="paragraph post__test rview__summary">{{$ctrl.resource.descripcion}}</p>					
+									
+							<div flex="50" ng-hide="$ctrl.resource.thumbnail === ''">
+								<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
+							</div>
+					
+					
+					
+					
 					<rd-post flex class="rview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>	
+				
+				
+				
 				</div>
 			</div>
 		</div>
+
+		<div class="rview__sidenav"  layout="column" layout-align="end" flex>	
+				<div flex>
+						<a target="_blank" ng-href="/ver/{{$ctrl.resource.type}}/{{$ctrl.resource._id}}">Ver</a>
+				</div>
+
+		</div>
+
 		
 	</div>
 

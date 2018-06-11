@@ -6,7 +6,7 @@ let routes = function($stateProvider) {
   'ngInject';
   $stateProvider
     .state('social.ver', {
-      url: '/ver/:uid',
+      url: '/ver/:type/:uid',
       template: '<social-ver></social-ver>'
     });
 }
