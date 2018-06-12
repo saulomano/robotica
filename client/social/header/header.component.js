@@ -30,13 +30,8 @@ class HeaderComponent {
         section: 'noticias',  caption: 'Noticias', action:'social.noticias'
       },
       {
-        section: 'institucional',  caption: 'Institucional',
-        "nodes": [
-          {
-            section: 'quienesSomos',  caption: 'Que es Robótica', action:'social.institucional'
-          },
-         
-        ]
+        section: 'institucional',  caption: 'Institucional', action:'social.institucional'
+        
       }
     
       
