@@ -58,12 +58,81 @@ hr{
     width: 100%;
   }
   .cardsgral{
-    position: relative;
-    height: 300px;
-    margin-left: 10px;
-    margin-top: 40px;
+    position: relative !important;
+    height: 300px !important;
+    margin-left: 10px !important;
+    margin-top: 40px !important;
   }
-} 
+  .divslide{
+    background-repeat: no-repeat !important;
+	  background-size: cover !important;
+	  background-position: center top !important;
+    width: 100% !important;
+    height: 15rem !important;
+    visibility: inherit !important;
+  }
+  .subhead{
+    font-size: 1.4rem !important;
+    margin-left: 30px !important;
+  }
+  
+  .ban_content{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    
+  }
+  .texto{
+    display: table !important;
+    min-height: 0px !important;
+    min-width: 0px !important;
+    border-width: 0px !important;
+    letter-spacing: 0px !important;
+    margin-left: 30px !important;
+    width: 300px !important;
+    font-size: 1rem !important;
+  }
+  .titHead{
+    font-size: 0.8rem !important; 
+  }
+}
+
+.titHead{
+  height: 15px; 
+  background: rgb(175, 174, 174); 
+  color: white; 
+  text-align: center;
+  font-size: 1rem; 
+  padding-top: 3px
+}
+
+.texto{
+    display: table;
+    min-height: 0px;
+    min-width: 0px;
+    border-width: 0px;
+    letter-spacing: 0px;
+    margin-left: 80px;
+    width: 500px;
+}
+
+.subhead {
+  color: white;
+  font-size: 5rem;
+  text-align: left;
+  margin-left: 80px;
+}
+
+.legend {
+  color: white;
+  font-size: 3rem;
+}
+
+.ban_content{
+  margin-left: 10px;
+  margin-right: auto;
+  margin-top: 10%;
+  text-align: left;
+}
 
 .cardsgral{
     position: relative;
@@ -75,16 +144,29 @@ hr{
 
 .cards{
   position: relative;
-   
-    float: left;
+  float: left;
   
 }
+
+.estiloflech{
+	width: 0;
+	height: 0;
+	border-top: 25px solid transparent;
+	border-right: 30px solid transparent;
+	border-left: 30px solid transparent;
+	position: relative;
+	left: 50%;
+	margin-left: -30px;
+	bottom: -25px;
+	border-top-color: #5EA7F1;
+	margin-top: -2%;
+  }
 
 .divslide{
     height: 43rem;
     background-repeat: no-repeat;
-    background-position: center;
     position: relative;
+    background-size: 100%;
 }
 
 .imgfondo{

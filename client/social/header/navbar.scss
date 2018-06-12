@@ -31,7 +31,7 @@
 			width: 70px;
 			top: -4px;
 			left: 10px;
-			background-color: $color-white;
+			background-color: #8BBF1F;
 			z-index: $navbar-z-index + 2;
 		}
 	}
@@ -39,11 +39,10 @@
 	&__logo img {
 		opacity: 1;
 		display: block;
-		height: 70px;
 		width: auto;
-		margin-bottom: -30px;
 		position: relative;
 		z-index: $navbar-z-index + 3;
+		margin-left: -80px;
 	}
 
 	&__logo--scrolled img {
@@ -173,10 +172,10 @@
 	.rd-navbar__item {
 		&:active, &:hover, &:focus, &.rd-navbar__item--selected {
 			.rd-navbar__item--icon {
-				color: $color-black-light;
+				color: white;
 			}
 			.rd-navbar__item--caption {
-				color: $color-black-light;
+				color: white;
 			}
 		}
 	}

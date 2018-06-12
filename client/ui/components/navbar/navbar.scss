@@ -1,12 +1,12 @@
 .rd-navbar {
 	display: block;
-	position: fixed;
+	position: relative;
 	top: 0;
 	left: 0;
 	width: 100%;
 	min-width: $screen-min-width;
 	z-index: $navbar-z-index;
-	background-color: $color-white;
+	background-color: #8BBF1F;
 
 	&__content {
 		display: flex;
@@ -258,7 +258,7 @@ html {
 .nav-link:link,
 .nav-link:visited,
 .nav-link:active {
-	color: #5c5c5c;
+	color: white;
 	font-weight: bold;
 }
 

@@ -19,12 +19,13 @@ var ResourceSchema = new Schema({
 		tags: [String],
 		owner: { type: Schema.Types.ObjectId, ref: 'User' },	
 		files: [{ type: Schema.Types.ObjectId, ref: 'File' }],
-		published: { type: Schema.Types.ObjectId, ref: 'Published' },		
+		published: { type: Schema.Types.ObjectId, ref: 'PublishedNoticia' },		
 		step: { type: String, default: 'ficha'},
 		deleted: { type:Boolean, default: false },
 		video : String,
 		orientacionPedagogica: { type:Boolean, default: false },
 		publicaHome: { type:Boolean, default: false },
+		
 	}, ops);
 
 registerEvents(ResourceSchema);
