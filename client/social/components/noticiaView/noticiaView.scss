@@ -13,7 +13,29 @@ resource-view {
 		background-color: rgb(139, 191, 31);
 	}
 
+	.post {
+
+		&__text{
+			font-size: 2rem;
+			font-weight: 400;
+		}
+	}
+
+	.rd {
+
+		&.rd__headpost--title{
+			font-weight: 500;
+			font-size: 5.0rem;
+		}
+	}
+
 	.rview {
+
+		&__container {
+			padding-left: 100px;
+			padding-right: 200px;
+			padding-top: 50px;
+		}
 
 		&__wrapper {
 			border-radius: $border-radius-default;
