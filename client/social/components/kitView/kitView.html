@@ -1,11 +1,12 @@
 <div class="kview" >
 	<div class="kview__wrapper" layout-gt-xs="row">
 
-		<div class="one_half"  layout="column" flex flex-gt-xs="70">			
-			
+		<div class="one_half"  layout="column" flex="85">			
+			<section>
+
 			<div class="kview__content" flex>
 				<div  layout="row" layout-padding layout-align="center top"></div>
-				<div flex="70" flex-md="80" flex-sm="80" flex-xs="80" >
+				<div flex >
 					<h1 class="margin">{{$ctrl.resource.nombre}}</h1>					
 					<p flex class="paragraph post__test kview__summary">{{$ctrl.resource.descripcion}}</p>					
 								
@@ -13,41 +14,45 @@
 								<img class="responsive" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
 							</div>
 
-						<div layout="row" layout-xs="column">						
-						<div flex="10" flex-md="10" flex-sm="10" flex-xs="10" >
-								<p>NAP</p>					
-						</div>
-						<div flex>
-								<rd-post flex class="kview__post" modules="$ctrl.resource.potencialidades" relative="$ctrl.uid" readonly="true"></rd-post>										
-						</div>
+					
+						<div >						
+							<div flex="none">
+									<p>NAP Relacionados</p>					
+							</div>
+							<div >
+								<rd-post  flex class="kview__post" modules="$ctrl.resource.potencialidades" relative="$ctrl.uid" readonly="true"></rd-post>										
+							</div>
 						</div>
 
 
-						<div layout="row" layout-xs="column">						
-								<div flex="10" flex-md="10" flex-sm="10" flex-xs="10" >
-										<p>Habilidades</p>					
+						<div >						
+							<div flex="none">
+									<p>Habilidades</p>					
 								</div>
-								<div flex>
-										<rd-post flex class="kview__post" modules="$ctrl.resource.habilidad" relative="$ctrl.uid" readonly="true"></rd-post>										
+								<div >
+									<rd-post  class="kview__summary" modules="$ctrl.resource.habilidad" relative="$ctrl.uid" readonly="true"></rd-post>										
 								</div>
 						</div>
 		
 
-					<div layout="row" >		
-					<rd-post flex class="kview__post" modules="$ctrl.resource.armado" relative="$ctrl.uid" readonly="true"></rd-post>	
-					</div>	
+						<div flex >		
+							<rd-post  class="kview__summary"  modules="$ctrl.resource.armado" relative="$ctrl.uid" readonly="true"></rd-post>	
+						</div>	
+
+
 				</div>
 			</div>
 		</div>
-
+	</section>
+	<aside>
 		<!--Lateral -->
-		<div class="kview__sidenav"  layout="column" >	
+		<div class="kview__sidenav"  layout="column" layout-xs="hide">	
 				<div flex>
 						<a target="_blank" ng-href="/ver/{{$ctrl.resource.type}}/{{$ctrl.resource._id}}">Ver</a>
 				</div>
 
 		</div>
-
+	</aside>
 		
 	</div>
 
