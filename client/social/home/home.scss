@@ -26,6 +26,11 @@
     width: 48%;
 }
 
+.respNum{
+  display: flex; 
+  justify-content: space-between;
+}
+
 hr{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -94,6 +99,11 @@ hr{
   .titHead{
     font-size: 0.8rem !important; 
   }
+  .respNum{
+    justify-content: space-between !important;
+    display: block !important; 
+  }
+  
 }
 
 .titHead{

@@ -30,6 +30,21 @@ header {
 	}
 }
 
+.titHead{
+	height: 15px; 
+	background: rgb(175, 174, 174); 
+	color: white; 
+	text-align: center;
+	font-size: 1rem; 
+	padding-top: 3px
+  }
+
 .footer {
 	background: #8BBF1F;
+}
+
+@media only screen and (max-width: 992px) {
+	.titHead{
+		font-size: 0.8rem !important; 
+	  }
 }

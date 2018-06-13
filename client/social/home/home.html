@@ -1,5 +1,5 @@
 
-	<div class="titHead">PLATAFORMA DE FORMACIÓN CONTINUA EN ROBÓTICA Y PROGRAMACION PARA NIVEL PRIMARIO</div>
+	<!--div class="titHead">PLATAFORMA DE FORMACIÓN CONTINUA EN ROBÓTICA Y PROGRAMACION PARA NIVEL PRIMARIO</div-->
 	<div class="slideshow-container">
 		<ui-carousel slides="$ctrl.slides" on-init="$ctrl.onCarouselInit()" slides="ctrl.slides"
 		slides-to-show="1"
@@ -38,7 +38,7 @@
 					entre pares y forman parte de los modos de construcción de conocimiento, así como de las culturas del mundo 
 					donde predomina el trabajo de la sociedad digital.Problemas.
 				</p>				
-				<img ng-src="assets/favicon.png" alt="Logo">				
+				<img ng-src="assets/robotica_educativa_icon.png" alt="Logo">				
 			</div >				
 			<div class="estiloflech"></div>
 		</div>
@@ -50,20 +50,20 @@
 					
 				</div >
 		<div style="background-color: white;">			
-			<div style="display: flex; justify-content: space-between">
-				<div flex-gt-sm="66"  style="flex: 33; text-align: center;">
-					<img ng-src="assets/num1.png" alt="Logo">
+			<div class="respNum">
+				<div flex-gt-sm="100" flex= "33"  style=" text-align: center;">
+					<img  ng-src="assets/num1.png" alt="Logo">
 					<p style="margin-top: 10px;">
 						<a style="text-align: center; color: black; text-decoration: none;" ui-sref="social.comoEmpezar">¿QUE ES EL PENSAMIENTO <BR>COMPUTACIONAL?</a>
 					</p>					
 				</div>
-				<div flex-gt-sm="66" style=" flex: 33; text-align: center;">
-					<img ng-src="assets/num2.png" alt="Logo">
+				<div flex-gt-sm="100" flex= "33" style="text-align: center;">
+					<img  ng-src="assets/num2.png" alt="Logo">
 					<p style="margin-top: 10px;">
 						<a style="text-align: center; color: black; text-decoration: none;" ui-sref="social.comoEmpezar">¿CÓMO EMPIEZO <BR>A PROGRAMAR?</a>
 					</p>					
 				</div>
-				<div  flex-gt-sm="66" style="flex: 33; text-align: center;">
+				<div  flex-gt-sm="100" flex= "33" style="text-align: center;">
 					<img ng-src="assets/num3.png" alt="Logo">
 					<p style="margin-top: 10px;">
 						<a style="text-align: center; color: black; text-decoration: none;" ui-sref="social.comoEmpezar">¿CÓMO PUEDO APLICAR <BR>LA RÓBOTICA EDUCATIVA?</a>
@@ -112,7 +112,7 @@
 			</div >
 			<div class="cardsgral">
 				<div class="cards">
-					<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText">
+					<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" search-text="$ctrl.searchText">
 						<rd-item-template>           
 							<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
 						</rd-item-template>
@@ -141,9 +141,9 @@
 			</div>
 			<div class="cardsgral">
 				<div class="cards">
-					<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText">
+					<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchDataKit()"  search-text="$ctrl.searchText">
 						<rd-item-template>           
-							<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+							<kit-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></kit-card>
 						</rd-item-template>
 					</rd-waterfall>
 			</div>

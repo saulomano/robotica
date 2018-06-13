@@ -14,6 +14,7 @@ export default class HomeComponent extends SocialComponent {
     this.$mdDialog = $mdDialog;
     this.$stateParams = $stateParams;
     this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
+    this.Publishedskits = this.Restangular.all('publishedkits');
 
     this.page = 0;
     this.limit = 20;
@@ -207,7 +208,38 @@ export default class HomeComponent extends SocialComponent {
     return def.promise;
 }
 
-viewOrientacionPedagogica_($event, resource){
+fetchDataKit(){
+  let def = this.$q.defer();
+  this.page++;
+  let q;
+  if (this.searchText){
+      q = this.searchText
+  }
+
+  this.Publishedskits
+      .getList({
+          page: 1, 
+          limit: 3,
+          type: 'kit'
+      })
+      .then(data => {
+          let total = data.$total;
+    
+          let res = {
+              count: total,
+              items: data,
+              page: this.page,
+              limit: this.limit
+          };
+
+          def.resolve(res);
+      })
+
+  return def.promise;
+}
+
+
+/*viewOrientacionPedagogica_($event, resource){
 
     if (!this.$mdDialog)
         return;
@@ -274,5 +306,5 @@ viewOrientacionPedagogica_($event, resource){
           throw err;
         });
     }
-  }
+  }*/
 }
