@@ -6,7 +6,7 @@ import _ from 'lodash';
 
 export default class HomeComponent extends SocialComponent {
   /*@ngInject*/
-  constructor($element, $q, $http, Restangular, $mdDialog, $stateParams, ngMeta) {
+  constructor($element, $q, $http, Restangular, $mdDialog, $stateParams, ngMeta,$state,$location) {
     super({$element});
     this.$http = $http;
     this.$q = $q;
@@ -15,10 +15,10 @@ export default class HomeComponent extends SocialComponent {
     this.$stateParams = $stateParams;
     this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
     this.Publishedskits = this.Restangular.all('publishedkits');
-
+    this.$state = $state;
     this.page = 0;
     this.limit = 20;
-
+    this.$location=$location;
     //this.viewResource = ($event, resource) => { 
     //  this.viewResource_($event, resource);
     //};
@@ -177,6 +177,14 @@ export default class HomeComponent extends SocialComponent {
 
     return def.promise;
   }*/
+
+  ircomoempezar(valor){
+
+
+    this.$location.url("/comoEmpezar?tab="+valor);
+
+  }
+
 
   fetchData(){
     let def = this.$q.defer();

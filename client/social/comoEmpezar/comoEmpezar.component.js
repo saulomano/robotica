@@ -4,10 +4,14 @@ import SocialComponent from '../social.component';
 
 export default class ComoEmpezarComponent extends SocialComponent {
   /*@ngInject*/
-  constructor($element, ngMeta) {
+  constructor($element, ngMeta, $location) {
     super({$element});
 
     this.ngMeta =  ngMeta;
+
+
+    this.tabSelect = $location.search()['tab']|| 0;
+
 
     this.coordinador = 'Daniel Giganti';
 
