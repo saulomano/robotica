@@ -4,7 +4,8 @@
 	src: url('#{$robotica-font-path}/robotica.eot?#iefix') format('embedded-opentype'),
 		url('#{$robotica-font-path}/robotica.woff') format('woff'),
 		url('#{$robotica-font-path}/robotica.ttf') format('truetype'),
-		url('#{$robotica-font-path}/robotica.svg#robotica') format('svg');
+  //  url('#{$robotica-font-path}/robotica.svg#robotica') format('svg'),
+    url('#{$robotica-font-path}/iconos-roboton.svg#roboton') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }

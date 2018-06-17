@@ -4,8 +4,14 @@ let routes = function($stateProvider) {
     'ngInject';
     $stateProvider
       .state('social.orientacionpedagogica', {
-        url: '/orientacionpedagogica',
-        template: '<orientacionpedagogica></orientacionpedagogica>'
+        url: '/orientacionpedagogica/:filter?',
+        template: '<orientacionpedagogica></orientacionpedagogica>',  
+        params: {
+            filter: {
+              value: null,
+              dynamic: true
+           }
+        }
       });
   }
   

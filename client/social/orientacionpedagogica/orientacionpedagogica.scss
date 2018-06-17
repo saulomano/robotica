@@ -43,4 +43,40 @@
 	margin-top: -2%;
   }
 
-  
+	.iconDemo .glyph {
+		border-bottom: 1px dotted #ccc;
+		padding: 10px 0 20px;
+		margin-bottom: 20px; 
+ }
+ .iconDemo .preview-glyphs {
+		display: flex;
+		flex-direction: row; 
+ } 
+ .iconDemo .step {
+		flex-grow: 1;
+		line-height: 0.5; 
+ }  
+ .iconDemo .material-icons.md-18 {
+		font-size: 18px; 
+ }
+ .iconDemo .material-icons.md-24 {
+		font-size: 24px; 
+ }
+ .iconDemo .material-icons.md-36 {
+		font-size: 36px; 
+ }
+ .iconDemo .material-icons.md-48 {
+		font-size: 48px; 
+ }
+ .iconDemo .material-icons.md-dark {
+		color: rgba(0, 0, 0, 0.54); 
+ }
+ .iconDemo .material-icons.md-dark.md-inactive {
+		color: rgba(0, 0, 0, 0.26); 
+ }
+ .iconDemo .material-icons.md-light {
+		color: white; 
+ }
+ .iconDemo .material-icons.md-light.md-inactive {
+		color: rgba(255, 255, 255, 0.3); 
+ }

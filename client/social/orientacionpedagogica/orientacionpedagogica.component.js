@@ -18,17 +18,37 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
         this.Restangular = Restangular;
         this.user = this.getUser();
         this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
+        this.$stateParams = $stateParams;
         this.section = $stateParams.type;
         this.searchText = $stateParams.search;
+        
+        this.filter = this.$stateParams.filter || 'all';
         this.$mdDialog = $mdDialog;
-        this.$rootScope.$on('filterChange', (event, searchText) => {
-            if (this.searchText !== searchText) {
-                this.page = 0;
-                this.searchText = searchText;
-                this.$state.go('.', { search: searchText }, {notify: false});
-            }
-        });
+        this.filterChange;
+
+      
+      
+        var tiposOr = [
+            {name: 'lengua'  , color: "#777" },
+            {name: 'matematica', color: "rgb(89, 226, 168)" },
+            {name: 'cssociales'         , color: "#A00" },
+            {name: 'csnaturales'         , color: "#A00" },
+            {name: 'ingles'         , color: "#A00" },
+            {name: 'edFisica'         , color: "#A00" },
+            {name: 'musica'         , color: "#A00" },
+            {name: 'plastica'         , color: "#A00" },
+            {name: 'danza'         , color: "#A00" },
+            {name: 'teatro'          , color: "#00A" }
+         ];
+         this.orientacionesFiltro = [].concat(tiposOr);            
+         
+
+         
+
     }
+
+   
+              
 
     getUser(){
         this.Auth
@@ -42,6 +62,16 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
     applyFilter(type) {
 		this.$state.go(this.$state.current, {search: type}, {reload:true});
 	}
+
+    itemClicked(item) {      
+            if (this.filter === item.name){
+                return;
+            }
+            this.$state.go(this.$state.current, { filter: item.name });
+            this.filter = item.name;
+      
+      }
+
 
     fetchData(){
         let def = this.$q.defer();

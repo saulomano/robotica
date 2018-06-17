@@ -1,5 +1,24 @@
 
 
+
+
+
+
+
+
+
+ <div style="background-color: white;">			
+	<div class="respNum">
+		<div ng-repeat="font in $ctrl.orientacionesFiltro" flex-gt-sm="100" flex  style=" text-align: center;" ng-click="$ctrl.itemClicked(item)>
+			<object data="/assets/fonts/iconos-roboton.svg#lengua"></object>
+			<p style="margin-top: 10px;">
+				<a style="text-align: center; color: black; text-decoration: none;" >{{ font.name }}</a>
+			</p>					
+		</div>			
+	</div>			
+</div>
+
+
 <section class="resources_waterfall" style="margin-top: 3%;">
 	<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText">
      
