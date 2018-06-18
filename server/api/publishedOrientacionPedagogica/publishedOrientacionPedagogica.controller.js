@@ -160,5 +160,59 @@ export function destroy(req, res, next) {
 	next();
 }
 
+export function findArea(req, res, next) {
+	var query = req.querymen;
+	let qq = req.query.q;	
+
+	var areaParam = req.params.area;
+
+
+	console.log (areaParam);
+	let q = {};
+	if (areaParam){
+  	// convert to regex
+		let keywords = _.escapeRegExp(areaParam);
+		let patterns = [
+			{ s: /[aáà]/ig, v: '[aáà]' },
+			{ s: /[eéè]/ig, v: '[eéè]' },
+			{ s: /[iíì]/ig, v: '[iíì]' },
+			{ s: /[oóò]/ig, v: '[oóò]' },
+			{ s: /[uúù]/ig, v: '[uúù]' },
+		];
+
+		_.each(patterns, p => {
+			keywords = keywords.replace(p.s, p.v);
+		});
+
+		let k = new RegExp(keywords, 'i');
+
+		q = { $or: [			
+				{ area: { $regex: k, $options: 'i' } }
+				
+			]
+		};
+	}
+	
+	
+
+	Published
+		.find(q)
+		.count()
+		.exec((err, count) => {
+			if (err){
+				return next(err);
+			}
+			req.totalItems = count;
+			req.result = Published
+										.find(q)
+										.sort(query.cursor.sort)
+										.skip(query.cursor.skip)
+										.limit(query.cursor.limit)
+										.select(query.cursor.select)
+										.exec();
+			next();
+		});
+}
+
 
 

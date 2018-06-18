@@ -14,6 +14,6 @@ router.get('/:id/relations', querymen.middleware(), controller.relations);
 router.get('/:id/download', controller.download);
 router.get('/:id', controller.show);
 router.post('/', auth.hasRole('admin'), controller.create);
-
+router.get('/findArea/:area',  querymen.middleware(), querymen.middleware(), controller.findArea);
 
 module.exports = router;
