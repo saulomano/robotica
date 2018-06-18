@@ -125,9 +125,9 @@ export function destroy(req, res, next) {
  * restriction: 'curador'
  */
 export function publish(req, res, next) {
-	let propuesta = req.body;
-	let pid = propuesta.published ? propuesta.published._id : undefined;
-	let published = new Published(propuesta);
+	let orientacionpedagogica = req.body;
+	let pid = orientacionpedagogica.published ? orientacionpedagogica.published._id : undefined;
+	let published = new Published(orientacionpedagogica);
 
 
 	// find the resource
@@ -138,7 +138,7 @@ export function publish(req, res, next) {
 			.save()
 			.then(p => {
 				delete orientacionpedagogica._id;
-				propuesta.published = p._id;
+				orientacionpedagogica.published = p._id;
 				OrientacionPedagogica
 					.update({ _id: req.params.id}, req.body)
 					.then(p => {
