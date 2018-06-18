@@ -9,10 +9,10 @@
 
  <div style="background-color: white;">			
 	<div class="respNum">
-		<div ng-repeat="font in $ctrl.orientacionesFiltro" flex-gt-sm="100" flex  style=" text-align: center;" ng-click="$ctrl.itemClicked(item)>
+		<div ng-repeat="item in $ctrl.orientacionesFiltro" flex-gt-sm="100" flex  style=" text-align: center;" ng-click="$ctrl.itemClicked(item)">
 			<object data="/assets/fonts/iconos-roboton.svg#lengua"></object>
 			<p style="margin-top: 10px;">
-				<a style="text-align: center; color: black; text-decoration: none;" >{{ font.name }}</a>
+				<a style="text-align: center; color: black; text-decoration: none;" >{{ item.name }}</a>
 			</p>					
 		</div>			
 	</div>			
