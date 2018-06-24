@@ -3,16 +3,12 @@
 
 
 
-
-
-
-
  <div style="background-color: white;">			
 	<div class="respNum">
-		<div ng-repeat="item in $ctrl.orientacionesFiltro" flex-gt-sm="100" flex  style=" text-align: center;" ng-click="$ctrl.itemClicked(item)">
-			<object data="/assets/fonts/iconos-roboton.svg#lengua"></object>
+		<div ng-repeat="item in $ctrl.orientacionesFiltro" flex-gt-sm="100" flex  style=" text-align: center;" ng-click="$ctrl.itemClicked(item)">		
+			<span class="rd-navbar__item--icon" ng-class="{{item.name}}" aria-hidden="true"></span>
 			<p style="margin-top: 10px;">
-				<a style="text-align: center; color: black; text-decoration: none;" >{{ item.name }}</a>
+				<a style="text-align: center; color: black; text-decoration: none;" >{{ item.desc }}</a>
 			</p>					
 		</div>			
 	</div>			

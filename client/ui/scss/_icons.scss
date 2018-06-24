@@ -146,3 +146,44 @@
 .mi-mode-edit::before {
   content: "\E254";
 }
+
+.icon-danza{
+  background: url('#{$robotica-orintaciones-svg-path}/danza.svg');
+}
+
+.icon-fisica{
+  background: url('#{$robotica-orintaciones-svg-path}/fisica.svg');
+}
+
+.icon-ingles{
+  background: url('#{$robotica-orintaciones-svg-path}/ingles.svg');
+}
+
+.icon-lengua{
+  background: url('#{$robotica-orintaciones-svg-path}/lengua.svg');
+}
+
+.icon-matematica{
+  background: url('#{$robotica-orintaciones-svg-path}/matematica.svg');
+}
+
+.icon-musica{
+  background: url('#{$robotica-orintaciones-svg-path}/musica.svg');
+}
+
+
+.icon-naturales{
+  background: url('#{$robotica-orintaciones-svg-path}/naturales.svg');
+}
+
+.icon-plastica{
+  background: url('#{$robotica-orintaciones-svg-path}/plastica.svg');
+}
+
+.icon-sociales{
+  background: url('#{$robotica-orintaciones-svg-path}/sociales.svg');
+}
+
+.icon-teatro{
+  background: url('#{$robotica-orintaciones-svg-path}/teatro.svg');
+}

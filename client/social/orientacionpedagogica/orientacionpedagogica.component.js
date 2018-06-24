@@ -29,17 +29,19 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
       
       
         var tiposOr = [
-            {name: 'lengua'  , color: "#777" },
-            {name: 'matematica', color: "rgb(89, 226, 168)" },
-            {name: 'cssociales'         , color: "#A00" },
-            {name: 'csnaturales'         , color: "#A00" },
-            {name: 'ingles'         , color: "#A00" },
-            {name: 'edFisica'         , color: "#A00" },
-            {name: 'musica'         , color: "#A00" },
-            {name: 'plastica'         , color: "#A00" },
-            {name: 'danza'         , color: "#A00" },
-            {name: 'teatro'          , color: "#00A" }
+            {name: 'danza'  ,   desc: "Danza" },
+            {name: 'fisica',     desc: "Fisica" },
+            {name: 'ingles'         , desc: "Ingles" },
+            {name: 'lengua'         , desc: "Lengua" },
+            {name: 'matematica'         , desc: "Matematica" },
+            {name: 'musica'         , desc: "Musica" },
+            {name: 'naturales'         , desc: "Cs Naturales" },
+            {name: 'plastica'         , desc: "Plastica" },
+            {name: 'sociales'         , desc: "Sociales#A00" },
+            {name: 'teatro'          , desc: "Teatro" }
          ];
+
+
          this.orientacionesFiltro = [].concat(tiposOr);            
          
 
