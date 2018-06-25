@@ -24,6 +24,7 @@ var PublishedSchema = new Schema({
 		video : String,
 		orientacionPedagogica: { type:Boolean, default: false },
 		publicaHome: { type:Boolean, default: false },
+		urlVideo:{ type: String, default: 'ficha'},
 	}, ops);
 
 registerEvents(PublishedSchema);
