@@ -30,7 +30,11 @@
 				</div>
 			</md-button>
 		</div>
-	</rd-card-toolbar>	
+	</rd-card-toolbar>
+	<rd-card-cover ng-if="$ctrl.resource.thumbnail" ng-hide="$ctrl.resource.thumbnail === ''">
+			<img style="width: 100%;
+			height: auto;" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del recurso">
+	</rd-card-cover>	
 	<rd-card-header>
 		<div class="rd-card__header--wrapper" layout="row" layout-align="start center">
 			<span class="rd-card__icon--circle">
@@ -40,9 +44,6 @@
 	</rd-card-header>
 	<rd-card-body>
 		<div layout="row" ng-hide="$ctrl.deleteDesafioBoolean">
-			<div class="rd-card__thumbnail" ng-hide="$ctrl.resource.thumbnail === ''">
-				<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del recurso" >
-			</div>
 			<div flex class="rd-card__body--custom">
 				<h1 class="rd-card__title--v1">{{$ctrl.resource.nombre}}</h1>
 				<p class="rd-card__paragraph">{{$ctrl.resource.descripcion | truncate:140 }}</p>

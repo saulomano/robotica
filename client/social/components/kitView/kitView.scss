@@ -24,6 +24,10 @@ p {
     height: auto;
 }
 
+.flex{
+	padding: 8px;
+}
+
 .kview { 
 
 	&__wrapper {
@@ -62,6 +66,8 @@ p {
 
 	&__thumnail {
 		margin: 0 auto;
+		width: 120px;
+    	height: 120px;
 	}
 
 	&__head {
