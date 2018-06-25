@@ -73,7 +73,7 @@ class NoticiaCardController {
 	        return;
 
         this.$mdDialog.show({
-            template: require('../noticiaView/noticiaView.html'),
+            template: require('../modalView/modalView.html'),
             parent: angular.element(document.body),
             targetEvent: $event,
             clickOutsideToClose: true,

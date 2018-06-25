@@ -73,7 +73,7 @@ class OrientacionPedagogicaCardController {
             return;
 
         this.$mdDialog.show({
-            template: require('../modalView/modalView.html'),
+            template: require('../orientacionpedagogicaView/orientacionpedagogicaView.html'),
             parent: angular.element(document.body),
             targetEvent: $event,
             clickOutsideToClose: true,
