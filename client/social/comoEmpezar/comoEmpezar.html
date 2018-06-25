@@ -1,59 +1,139 @@
 
-<div class="institucional" layout="row" layout-padding layout-align="center top">
-		<div flex="70" flex-md="80" flex-sm="80" flex-xs="80" >
-		<h1 class="margin">Cómo empezar?</h1>
-		<p>Los sistemas digitales son la base material de la cultura digital. Su incidencia en distintos ámbitos sociales es cada vez
-			más frecuente y será aún más importante en el futuro. Es por eso, que la <b class="mayus">programación</b> -en tanto sustento para la contrucción de sistemas digitales-
-			resulta un campo de conocimiento fundamental para el presente y el futuro de la humanidad.
-		</p>
 
-		<p><b class="mayus">La programación</b>, en todos sus usos y aplicaciones, incluyendo los procesos de automatización,es decir, la <b class="mayus">robótica</b>, ayuda a desarrollar innovaciones que permiten
-			solucionar diversas problemáticas sociales. Esto incluye avances en la medicina, la comunicación, la industria, la producción y la economía, e incluso, en tareas de rescate o exploración en lugares
-			remotos o de difícil acceso, solo por mencionar algunas de las esferas sociales en las que se desarrolla su creciente influencia.
-		</p>
-
-		<p>En este marco, se plantea la necesidad de su integracion a la educacion básica:<b class="mayus">al comprender sis lenguajes y su lógica en la resolución de problemas,</b> los alumnos se preparan para entender 
-			y cambiar el mundo. Pueden, de este modo, desarrollar habilidades fundamentales para solucionar diversas problemáticas sociales, crear oportunidades y prepararse para su integración al mundo del trabajo.
-		</p>
-		<div>
-			<div style="border-bottom-style: solid; border-color: #e6e7e8;"></div>
+<div layout="row" layout-align="center center">
+<h2 class="impact-text-large" style="text-align: center; color: #727272; font-family: pacifico-regular, sans-serif;">¿Como empezar?</h2>				
+</div>			
+<div layout="row" layout-align="start strech" layout-sm="column"  layout-xs="column">	
+  <div flex >
+			<img  ng-click="$ctrl.tabSelect=1"  ng-src="{{$ctrl.tabSelect==1 && 'assets/images/1_on.png' || 'assets/images/1_off.png'}}" class="pointer">
+	</div>
+  <div flex >
+			<img  ng-click="$ctrl.tabSelect=2" ng-src="{{$ctrl.tabSelect==2 && 'assets/images/2_on.png' || 'assets/images/2_off.png'}}" class="pointer">
+	</div>
+		<div flex >
+				<img ng-click="$ctrl.tabSelect=3"ng-src="{{$ctrl.tabSelect==3 && 'assets/images/3_on.png' || 'assets/images/3_off.png'}}" class="pointer">
 		</div>
-		<div class="video">
-		<md-dialog-content>
-			<div class="md-dialog-content">
-			  <div class="vid-container">
-				  <iframe width="500" height="281" src="https://www.youtube.com/embed/3y9VaDSpx8k?feature=oembed" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+	<md-content flex layout-padding ng-show="$ctrl.tabSelect==1">
+			<div class="comoEmpezar" layout="row" layout-padding layout-align="center top">
+					<div flex="70" flex-md="80" flex-sm="80" flex-xs="80" >
+					<h4 class="margin" style="color:rgba(33, 196, 216, 0.87);">Las ciencias de la computación contribuyen fuertemente al
+							desarrollo del razonamiento lógico, del diseño y estructura
+							y de la resolución de problemas.</h4>
+					<p>Es la posibilidad de resolver un problema complejo de manera crítica y analítica, descomponiéndolo en sistemáticas
+							operaciones que nuestro cerebro activa para ordenar la información que percibe del exterior, separándola en partes que
+							organizarán un todo de una forma profundamente dinámica.
+							El pensamiento computacional, matriz conceptual de la robótica y de la programación, es producto de la mente
+							humana, esencialmente en lo que compete a la cibernética como la “ciencia de la organización efectiva”.</p>
+
+							<h4 class="margin">¿POR QUÉ INCORPORAR EL PENSAMIENTO
+									COMPUTACIONAL EN LAS ESCUELAS?</h4>
+
+
+					<p>En la Dirección de Innovación y Tecnología Educativa (DITE) concebimos que el pensamiento computacional
+							constituye una lógica de trabajo que, dentro del campo educativo, propone la implementación de actividades
+							creativas y colaborativas, puestas en clave de diseño, para el desarrollo de la capacidad de resolución de problemas
+							de la vida cotidiana.
+							Las estrategias de programación y robótica no se instalan en la educación como fin último para atender solamente
+							aprendizajes relacionados con la formación científico-tecnológica: estos saberes son fundamentales para el cultivo
+							de actitudes científicas básicas como el asombro, la curiosidad, el análisis y la investigación; a la vez que impulsan
+							el desarrollo de otras habilidades fundamentales relacionadas con la resolución de problemas y la toma de
+							decisiones, haciendo hincapié en las inherentes al desempeño social como la seguridad en uno mismo, el liderazgo,
+							la autoestima, la búsqueda de desafíos y la habilidad para trabajar en equipo.</p>
+
+							
+							<h4 class="margin">EL APRENDIZAJE BASADO EN PROYECTOS</h4>
+
+					<p>Para el desarrollo de las competencias en educación digital, se propone el aprendizaje basado en proyectos (ABP).
+							Se sugiere crear propuestas que orienten el trabajo de los alumnos para que ellos mismos puedan construir
+							proyectos o experiencias originales, creativas y relacionadas con su contexto sociocultural. Aquí encontrarán un
+							conjunto de recursos para planificar proyectos escolares: entrevistas a especialistas y docentes, experiencias
+							concretas y aplicaciones.</p>
+			
+				
 				</div>
 			</div>
-		</md-dialog-content>	
-	</div>	
-	</div>
-</div>
-<div >
-<div ng-cloak class="boxtabs">
-	<md-content class="cont">
-	  <md-tabs md-dynamic-height md-border-bottom md-selected="$ctrl.tabSelect">
-		<md-tab label="Programación">
-		  <md-content class="cont">
-			<h1 class="md-display-2">Programación</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi.</p>
-		  </md-content>
-		</md-tab>
-		<md-tab label="Robótica">
-		  <md-content class="cont">
-			<h1 class="md-display-2">Robótica</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
-			<p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
-			<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-		  </md-content>
-		</md-tab>
-		<md-tab label="Pensamiento Computacional">
-		  <md-content class="cont">
-			<h1 class="md-display-2">Pensamiento Computacional</h1>
-			<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-		  </md-content>
-		</md-tab>
-	  </md-tabs>
 	</md-content>
-  </div>
-</div>
+	<md-content flex layout-padding ng-show="$ctrl.tabSelect==2">
+			<div class="comoEmpezar" layout="row" layout-padding layout-align="center top">
+					<div flex="70" flex-md="80" flex-sm="80" flex-xs="80" >
+					<h4 class="margin" style="color:rgb(154, 201, 59)">“Para un niño, ser él quien decide y dirige una acción, y que como por arte
+							de magia una iniciativa suya deviene realidad, es doblemente satisfactorio.
+							Le da autonomía y lo hace sentir responsable e importante. Ver y no
+							imaginar, comprobar que dio una orden y que como consecuencia algo
+							sucedió, demuestra su capacidad y su éxito. La motivación nace de su
+							propio logro: él es causa y efecto de su propia decisión. :”</h4>
+	
+							<h4 class="margin">¿QUÉ ES PROGRAMAR?</h4>
+
+					<p>La programación es una de las áreas más importantes de las ciencias de la computación y del pensamiento
+							computacional; reconocida como una disciplina orientada al desarrollo de una serie de habilidades de abstracción
+							y operacionalidad que puede verse como el proceso de diseñar y escribir una secuencia de instrucciones en un
+							lenguaje determinado que pueda ser entendido y posteriormente reproducido por un autómata.</p>
+
+							<h4 class="margin">¿POR QUÉ PROGRAMAR EN EL AULA?</h4>
+
+
+					<p>ELos beneficios que se obtienen al aprender a programar, están vinculados, en primer lugar a su articulación social,
+							en tanto que alfabetizamos; pero también al desarrollo de las habilidades/competencias del pensamiento
+							computacional y tienen que ver con el desarrollo del pensamiento abstracto, del pensamiento lógico-matemático y
+							del pensamiento algorítmico.
+							Cuando se habla de programación, muchas veces se habla de “enseña a pensar” en tanto pone en marcha
+							procesos creativos que pueden ser realizados por grupos de trabajo (aprendizaje colaborativo) y contribuye al
+							fortalecimiento de diferentes inteligencias en proyectos compartidos: lingüística, matemática, artística, espacial,
+							musical, interpersonal e intrapersonal.
+							El desarrollo del pensamiento abstracto, del pensamiento lógico-matemático y del pensamiento algorítmico.
+							Además enseñar a programar permite desarrollar la capacidad de previsión, la comprobación de resultados, la
+							optimización de recursos y la toma de decisiones.
+						</p>
+						<p>Los beneficios que se obtienen al aprender a programar, están vinculados, en primer lugar a su articulación social,
+								en tanto que alfabetizamos; pero también al desarrollo de las habilidades/competencias del pensamiento
+								computacional y tienen que ver con el desarrollo del pensamiento abstracto, del pensamiento lógico-matemático y
+								del pensamiento algorítmico.
+								Cuando se habla de programación, muchas veces se habla de “enseña a pensar” en tanto pone en marcha
+								procesos creativos que pueden ser realizados por grupos de trabajo (aprendizaje colaborativo) y contribuye al
+								fortalecimiento de diferentes inteligencias en proyectos compartidos: lingüística, matemática, artística, espacial,
+								musical, interpersonal e intrapersonal.
+								El desarrollo del pensamiento abstracto, del pensamiento lógico-matemático y del pensamiento algorítmico.
+								Además enseñar a programar permite desarrollar la capacidad de previsión, la comprobación de resultados, la
+								optimización de recursos y la toma de decisiones.</p>
+				
+				</div>
+			</div>
+	</md-content>
+	<md-content flex layout-padding ng-show="$ctrl.tabSelect==3">
+			<div class="comoEmpezar" layout="row" layout-padding layout-align="center top">
+					<div flex="70" flex-md="80" flex-sm="80" flex-xs="80" >
+					<h4 class="margin" style="color:rgb(186, 96, 179)">En lo que respecta al aspecto social, tanto la robótica
+							como la programación favorecen el trabajo en equipo y en
+							colaboración</h4>
+	
+							<h4 class="margin">¿A QUÉ LLAMAMOS ROBÓTICA?</h4>
+
+					<p>La robótica constituye como un área dentro de ciencias de la computación que involucra tecnología de sensores,
+							cibernética, automatización de tareas y programación, entre otros de los tantos aspectos inherentes al pensamiento
+							computacional.
+							una definición de robótica sería la de concebirla como “medio de aprendizaje” en tanto que permite el paso de las
+							creaciones de un estado mental a uno físico, resultado de la combinación entre innovación educativa, propuesta
+							pedagógica y recursos didácticos. La conjugación de estos procesos permite ir más allá del funcionamiento del robot,
+							promoviendo el desarrollo de competencias relacionadas con la toma de decisiones, la formación
+							científico-tecnológico y el desarrollo social.</p>
+
+							<h4 class="margin">¿POR QUÉ INCORPORAR ROBÓTICA EN LAS ESCUELAS?</h4>
+
+
+					<p>Debido a su carácter esencialmente colaborativo, tanto la robótica como la programación resultan fundamentales en
+							la promoción del aprendizaje entre pares, formando parte de los modos de construcción de conocimiento y de las
+							culturas del mundo del trabajo de la sociedad digital.
+							Como característica fundamental, la robótica educativa, favorece los procesos de creación a partir del uso y
+							manipulación de diversos materiales.
+						</p>
+						
+				</div>
+			</div>
+	</md-content>
+
+
+

@@ -1,5 +1,5 @@
 // socialInstitucional Component
-.institucional {
+.comoEmpezar {
 	background-color: $color-white;
 
 	h1 {
@@ -180,3 +180,54 @@
 	.cont{
 		background-color: white !important;
 	}
+
+
+	.rectanguloCeleste {
+		width: 250px; 
+		height: 100px; 		
+		background: #3C92C6;
+   }
+   .rectanguloVerde {
+	width: 250px; 
+	height: 100px; 	
+	background: #89B23A;
+}
+.rectanguloVioleta {
+	width: 250px; 
+	height: 100px; 	
+	background: #A6569E;
+}
+
+.icon1_off{
+		background-image: url('#{$robotica-orintaciones-svg-path}/1_off.png');
+		background-repeat: no-repeat;		
+}
+
+.icon1_on{
+	background-image: url('#{$robotica-orintaciones-svg-path}/1_on.png');
+	background-repeat: no-repeat;		
+}
+
+.icon2_off{
+	background-image: url('#{$robotica-orintaciones-svg-path}/2_off.png');
+	background-repeat: no-repeat;		
+}
+
+.icon2_on{
+	background-image: url('#{$robotica-orintaciones-svg-path}/2_on.png');
+	background-repeat: no-repeat;		
+}
+
+.icon3_on{
+	background-image: url('#{$robotica-orintaciones-svg-path}/3_on.png');
+	background-repeat: no-repeat;		
+}
+
+.icon3_off{
+	background-image: url('#{$robotica-orintaciones-svg-path}/3_off.png');
+	background-repeat: no-repeat;		
+}
+
+
+
+
