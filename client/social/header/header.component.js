@@ -21,7 +21,7 @@ class HeaderComponent {
         section: 'comoEmpezar',  caption: 'Como empezar?', action:'social.comoEmpezar'
       },
       {
-        section: 'orientacionpedagogica',  caption: 'Orientaciones Pedagógicas', action:'social.orientacionpedagogica'
+        section: 'orientacionpedagogica',  caption: 'Propuestas Pedagógicas', action:'social.orientacionpedagogica'
       },
       {
         section: 'kits',  caption: 'Kits', action:'social.kitsDisponibles'

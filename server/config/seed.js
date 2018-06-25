@@ -53,18 +53,16 @@ export default function seedDatabaseIfNeeded() {
       },{
         type: 'area',
         values: [
-          'Autonomía personal y social',
-          'Ciencias Naturales',
-          'Ciencias Sociales',
-          'Construcción de la ciudadanía',
-          'Educación Artística',
-          'Educación Física',
-          'Formación científico-tecnología',
-          'Formación profesional u ocupacional',
-          'Formación Técnico Específica',
-          'Inglés',
-          'Matemática',
-          'Prácticas del lenguaje',
+          'danza',
+          'fisica',
+          'ingles',
+          'lengua',
+          'matematica',
+          'musica',
+          'naturales',
+          'plastica',
+          'sociales',
+          'teatro'
         ],
         caption: 'Area'
       },{

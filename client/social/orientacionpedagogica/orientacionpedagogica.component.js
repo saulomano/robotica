@@ -17,7 +17,7 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
         this.Auth = Auth;
         this.Restangular = Restangular;
         this.user = this.getUser();
-        this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
+       
         this.$stateParams = $stateParams;
         this.section = $stateParams.type;
         this.searchText = $stateParams.search;
@@ -26,10 +26,17 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
         this.$mdDialog = $mdDialog;
         this.filterChange;
 
-      
+
+        if(this.filter === 'all'){
+            this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
+        }else{
+            this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica/findArea/'+this.filter);
+        }
+
+
       
         var tiposOr = [
-            {name: 'sinfiltro'  ,   desc: "Sin Filtro" },
+            {name: 'all'  ,   desc: "Sin Filtro" },
             {name: 'danza'  ,   desc: "Danza" },
             {name: 'fisica',     desc: "Fisica" },
             {name: 'ingles'         , desc: "Ingles" },
@@ -152,7 +159,7 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
                     this.resource = data;
                     this.loading = false;
                     $timeout(() => {
-                        $scope.$apply();
+                        $scope.$apply();publishedOrientacionPedagogica
                     });
                 })
                 .catch(err => {
