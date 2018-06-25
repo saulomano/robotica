@@ -1,24 +1,42 @@
-<md-dialog class="noticia-dialog" aria-label="Recurso {{$ctrl.resource.title}}">
-	<md-toolbar class="bg-{{$ctrl.resource.type}}">
-		<div class="md-toolbar-tools">
-			<span flex></span>
-			<md-button class="md-icon-button" ng-click="$ctrl.closeDialog()">
-				<i class="fa fa-times fa-2x" aria-hidden="true" aria-label="Cerrar dialogo"></i>
-			</md-button>
-		</div>
-	</md-toolbar>
-	<md-dialog-content class="mview__content">
-		<div class="rview" >
-			<div class="rview__wrapper" layout="row" layout-align="start stretch">
-				<div class="rview__container"  layout="column" layout-align="start stretch" flex>
-					<h1 flex class="rd__headpost  rd__headpost--title rview__head">{{$ctrl.resource.title}}</h1>
-					<div flex class="rview__thumnail thumbnail thumbnail--rounded" ng-hide="$ctrl.resource.thumbnail === ''">
-						<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
+<div class="kview" >
+	<div class="kview__wrapper" layout-gt-xs="row">
+
+		<div class="one_half"  layout="column" flex="100">			
+			<section>
+
+			<div class="kview__content" flex>
+				<div  layout="row" layout-padding layout-align="center top"></div>
+				<div flex >
+					<h4 class="margin">{{$ctrl.resource.title}}</h4>					
+					
+					<div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
+						<img class="responsive" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
 					</div>
+
 					<p flex class="paragraph post__test rview__summary">{{$ctrl.resource.summary}}</p>
 					<rd-post flex class="rview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>
+						
+						<!--div class="video">
+							<md-dialog-content>
+								<div class="md-dialog-content">
+								  <div class="vid-container">
+									  <iframe width="500" height="281" src="$ctrl.resource.urlVideo" frameborder="0" allowfullscreen></iframe>
+									</div>
+								</div>
+							</md-dialog-content>	
+						</div-->	
+						
+
 				</div>
 			</div>
 		</div>
-	</md-dialog-content>
-</md-dialog>
+	</section>
+</div>
+	<!--Lateral -->
+	<div class="icon-bar">
+		<a ng-href="/ver/{{$ctrl.resource.type}}/{{$ctrl.resource._id}}" target="_blank" class="view-item" title="Ver Noticia"><i class="fa fa-search"></i></a>
+		<!--a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+		<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+		<a href="#" class="youtube"><i class="fa fa-youtube"></i></a-->
+	</div>
+</div>

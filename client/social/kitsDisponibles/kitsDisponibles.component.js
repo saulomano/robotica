@@ -73,7 +73,7 @@ export default class KitsDisponiblesComponent extends SocialComponent{
         return def.promise;
     }
 
-    viewNoticia_($event, resource){
+    viewKit_($event, resource){
         this.$mdDialog.show({
             template: require('../components/modalView/modalView.html'),
             parent: angular.element(document.body),
