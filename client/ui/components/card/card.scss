@@ -57,11 +57,13 @@
 	
 	&__cover {
 		img {
-			display: block;
-					margin: 0 auto;
+			display: block !important;
+			height: 170px !important;
+			overflow: hidden !important;
+					/*margin: 0 auto;
 					width: 100%;
 					height: auto;
-					border-radius: 6px;
+					border-radius: 6px;*/
 		}
 	}
 

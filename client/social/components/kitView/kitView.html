@@ -7,7 +7,7 @@
 			<div class="kview__content" flex>
 				<div  layout="row" layout-padding layout-align="center top"></div>
 				<div flex >
-					<h1 class="margin">{{$ctrl.resource.nombre}}</h1>					
+					<h4 class="margin">{{$ctrl.resource.nombre}}</h4>					
 					<p flex class="paragraph post__test kview__summary">{{$ctrl.resource.descripcion}}</p>					
 								
 							<div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
@@ -46,10 +46,16 @@
 	</section>
 	<aside>
 		<!--Lateral -->
-		<div class="kview__sidenav"  layout="column" layout-xs="hide">	
-				<div flex>
-						<a target="_blank" ng-href="/ver/{{$ctrl.resource.type}}/{{$ctrl.resource._id}}">Ver</a>
+		<div class="kview__sidenav"   layout-xs="hide">	
+			<div layout="column" layout-padding class="layout-padding layout-column">
+				<div flex class="flex">
+					<div class="kview__thumnail">
+						<md-button class="md-primary" style="color:#005173" ng-href="/ver/{{$ctrl.resource.type}}/{{$ctrl.resource._id}}" target="_blank">Ver kits</md-button>
+					</div>
+
 				</div>
+
+			</div>
 
 		</div>
 	</aside>
