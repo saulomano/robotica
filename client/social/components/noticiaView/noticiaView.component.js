@@ -58,7 +58,7 @@ function noticiaView($log){
 		controller: NoticiaViewController,
 		controllerAs: '$ctrl',
 		scope: {
-			desafio: '=',
+			resource: '=',
 			isPublished: '='
 		
 		},
