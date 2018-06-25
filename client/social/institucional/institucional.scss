@@ -8,15 +8,24 @@
 		font-weight: $font-secondary-medium;
 	}
 
+	h4 {
+		color: #ffffffde;
+		font-family: $font-family-secondary;
+	//	font-weight: $font-secondary-medium;
+		font-weight: bold;
+	}
+
 	p {
 		color: $color-black-light;
 		font-family: $font-family-primary;
 		font-weight: $font-primary-light;
-		font-size: 1.9rem;
-		line-height: 2.5rem;
+		font-size: 1.5rem;
+		line-height: 2.0rem;
 		text-align: justify;
 		margin-bottom: 3rem;
 		margin-top: 3rem;
+		color: #ffffffde;
+		font-weight: bold;
 	}
 
 	&--banner {
@@ -62,7 +71,7 @@
 			font-family: $font-family-primary;
 			font-weight: $font-primary-light;
 			//font-size: 2.5rem;
-			line-height: 2.3rem;
+			line-height: 2.0rem;
 	
 			&:not(:last-child) {
 				margin-bottom: 2rem;
