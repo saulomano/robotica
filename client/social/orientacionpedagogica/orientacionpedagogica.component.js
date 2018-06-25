@@ -29,6 +29,7 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
       
       
         var tiposOr = [
+            {name: 'sinfiltro'  ,   desc: "Sin Filtro" },
             {name: 'danza'  ,   desc: "Danza" },
             {name: 'fisica',     desc: "Fisica" },
             {name: 'ingles'         , desc: "Ingles" },
@@ -37,7 +38,7 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
             {name: 'musica'         , desc: "Musica" },
             {name: 'naturales'         , desc: "Cs Naturales" },
             {name: 'plastica'         , desc: "Plastica" },
-            {name: 'sociales'         , desc: "Sociales#A00" },
+            {name: 'sociales'         , desc: "Cs Sociales" },
             {name: 'teatro'          , desc: "Teatro" }
          ];
 

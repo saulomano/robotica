@@ -2,17 +2,37 @@
 
 
 
-
+<!--
  <div style="background-color: white;">			
 	<div class="respNum">
-		<div ng-repeat="item in $ctrl.orientacionesFiltro" flex-gt-sm="100" flex  style=" text-align: center;" ng-click="$ctrl.itemClicked(item)">		
-			<span class="rd-navbar__item--icon" ng-class="{{item.name}}" aria-hidden="true"></span>
+		<div ng-repeat="item in $ctrl.orientacionesFiltro" flex-gt-sm="100" flex 
+		  class="iconPed-{{item.name}} " >				
 			<p style="margin-top: 10px;">
 				<a style="text-align: center; color: black; text-decoration: none;" >{{ item.desc }}</a>
-			</p>					
+						
+		</div>		
 		</div>			
 	</div>			
 </div>
+layout-align="center center"
+-->
+<div layout="row">
+	<div  flex   ng-repeat="item in $ctrl.orientacionesFiltro" ng-click="$ctrl.itemClicked(item)" 
+	style="text-align: center;" layout="column">
+	 
+	  <div flex></div>
+      <div class="preview-glyphs">
+		<md-icon 			          
+		style="font-size: 48px; height: 48px"
+            class="iconPed-{{item.name}} step"></md-icon>
+      </div>
+      <div class="preview-scale">
+        <span class="step" >{{ item.desc }}</span>
+	  </div>
+	</div>
+</div>   
+ 
+
 
 
 <section class="resources_waterfall" style="margin-top: 3%;">
