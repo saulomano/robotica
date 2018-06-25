@@ -16,9 +16,7 @@ class CuradorHeaderComponent {
     this.noCache = true;
     this.selectedItem;
     this.searchText =  $stateParams.search || '';
-    this.navDashboard = {
-      section: 'dashboard',  caption: 'Dashboard', action:'curador.dashboard'
-    };
+  
     this.navUser = {
         section: 'usuarios',  caption: 'Usuarios', action:'curador.users'
     };
