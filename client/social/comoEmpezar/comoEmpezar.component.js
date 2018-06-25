@@ -10,10 +10,10 @@ export default class ComoEmpezarComponent extends SocialComponent {
     this.ngMeta =  ngMeta;
 
 
-    this.tabSelect = $location.search()['tab']|| 0;
+    this.tabSelect = $location.search()['tab']|| 1;
 
 
-    this.coordinador = 'Daniel Giganti';
+    
 
     /*this.teamBA = [
       { cargo: 'Gobernadora', name: 'Lic. María Eugenia Vidal' },
@@ -26,25 +26,9 @@ export default class ComoEmpezarComponent extends SocialComponent {
       { cargo: 'Directora de Innovación y Tecnología Educativa ', name: 'Prof. Liliana Vigolo' },
     ];*/
 
-    this.teamPedagogico = [
-      'Gabriela Sanguintetti ',
-      'Patricia Valenzuela',
-      'Karina Michalek',
-      'Stella Valbueno',
-      'Gabriela Tobio ',
-      'Daniel Giganti',
-    ];
+    
 
-    this.teamDesarrollo = [
-      'Rodrigo Bonilla (Diseño Interfaz y comunicación)',
-      'María Elina Beltrán (Diseño Interfaz y comunicación)',
-      'Delmo Carrozzo (Desarrollo y Arquitectura de software)',
-      'Julieta Alessio (Diseño identidad y comunicación)',
-      'Melgarejo Agustina (Diseño identidad y comunicación)',
-      'Federico Etcheverry (Diseño identidad y comunicación)',
-      'Julia Inchaurregui (Diseño UI & UX)',
-      'Alejandro Palestrini  (Consulting)',
-    ];
+   
 
     ngMeta.setTitle('Institicional');
     ngMeta.setTag('description', 'Una plataforma educativa diseñada para acercar a los docentes y estudiantes de la modalidad Educación Especial otras posibilidades de enseñar y aprender');
