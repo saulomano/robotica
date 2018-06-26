@@ -19,13 +19,18 @@ export default class VerComponent extends SocialComponent {
 
     if (type==='kit'){
       this.Resource = Restangular.one('publishedkits', uid);
+    }else if (type==='noticia'){
+      this.Resource = Restangular.one('publishednoticia', uid);
+    }else{
+      this.Resource = Restangular.one('publishedOrientacionPedagogica', uid);
     }
 
 
 
     let captions = {
       'kit': 'Kit',
-      
+      'noticia' : 'Noticia',
+      'orientacionpedagogica': 'OrientacionPedagogica',
     };
 
     this.Resource
