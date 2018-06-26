@@ -58,7 +58,7 @@ function orientacionpedagogicaView($log){
 		controller: OrientacionPedagogicaViewController,
 		controllerAs: '$ctrl',
 		scope: {
-			desafio: '=',
+			resource: '=',
 			isPublished: '='
 		
 		},
