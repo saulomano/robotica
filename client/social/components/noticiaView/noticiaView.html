@@ -20,7 +20,7 @@
 							<md-dialog-content>
 								<div class="md-dialog-content">
 								  <div class="vid-container">
-									  <iframe width="500" height="281" src="$ctrl.resource.urlVideo" frameborder="0" allowfullscreen></iframe>
+									  <iframe width="500" height="281" ng-src="{{$ctrl.resource.urlVideo.replace('watch?v=', 'v/') | trustUrl}}" frameborder="0" allowfullscreen></iframe>
 									</div>
 								</div>
 							</md-dialog-content>	

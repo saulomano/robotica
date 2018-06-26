@@ -40,8 +40,14 @@ function filterByText(){
   }
 }
 
+
+
+
+
+
 module.exports = angular
                   .module('robotica.social.filters', [])
                   .filter('truncate', truncate)
                   .filter('filterByText', filterByText)
+                 
 									.name;

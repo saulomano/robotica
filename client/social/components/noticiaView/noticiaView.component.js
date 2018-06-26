@@ -2,8 +2,14 @@
 
 export default angular
 	.module('robotica.social.components.noticiaView', [])
-	.directive('noticiaView', noticiaView)
-	.name;
+	.filter('trustUrl', function ($sce) {
+		return function(url) {
+		  return $sce.trustAsResourceUrl(url);
+		};
+	  })
+	.directive('noticiaView', noticiaView)	
+	.name
+	;
 
 class NoticiaViewController {
 	/*@ngInject*/
@@ -31,6 +37,8 @@ class NoticiaViewController {
 				this.$scope.$apply();
 			});
 		});
+
+		
 		
 	}
 
@@ -47,8 +55,14 @@ class NoticiaViewController {
 				this.role = user.role;
 				if (this.role === 'user') this.readOnlyRating = true;
             });
-    }
+	}
+	
+	
+	
+
 }
+
+
 
 function noticiaView($log){
 	'ngInject';
