@@ -105,6 +105,15 @@
 						<textarea ng-model="$ctrl.resource.descripcion" required></textarea>
 					</md-input-container>
 			</div>
+			Tema
+			<rd-post modules="$ctrl.resource.tema" relative="$ctrl.uid" on-delete="$ctrl.onDeletePost"></rd-post>
+			<md-divider md-inset></md-divider>
+			NAP Relacionados
+			<rd-post modules="$ctrl.resource.potencialidades" relative="$ctrl.uid" on-delete="$ctrl.onDeletePost"></rd-post>
+			<md-divider md-inset></md-divider>
+			Habilidad
+			<rd-post modules="$ctrl.resource.habilidad" relative="$ctrl.uid" on-delete="$ctrl.onDeletePost"></rd-post>
+			<md-divider md-inset></md-divider>
 			<rd-post modules="$ctrl.resource.postBody" relative="$ctrl.uid" on-delete="$ctrl.onDeletePost"></rd-post>
 		</md-content>
 	</div>

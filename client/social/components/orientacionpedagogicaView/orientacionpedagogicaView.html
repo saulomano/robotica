@@ -16,9 +16,7 @@
 							</div>
 						</div>
 						<p flex class="paragraph post__test kview__summary">{{$ctrl.resource.descripcion}}</p>
-						<div flex >
-							<rd-post flex class="kview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>
-						</div>
+						
 						<div >
 							<div flex="none">
 								<p><strong>Tema:</strong></p>
@@ -42,6 +40,9 @@
 							<div >
 								<rd-post  class="kview__summary" modules="$ctrl.resource.habilidad" relative="$ctrl.uid" readonly="true"></rd-post>
 							</div>
+						</div>
+						<div flex >
+							<rd-post flex class="kview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>
 						</div>
 						<div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
 							<img class="responsive" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
