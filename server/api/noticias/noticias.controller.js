@@ -116,6 +116,7 @@ export function show(req, res, next) {
  */
 export function destroy(req, res, next) {
 	req.result =  Noticia.findByIdAndRemove(req.params.id).exec();
+	Published.findByIdAndRemove(req.params.id).exec();
 	next();
 }
 
