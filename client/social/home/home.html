@@ -44,20 +44,37 @@
 		</div>
 	</div>
 
-	<div layout="row" layout-align="center center">
-	<h3 class="impact-text-large" style="text-align: center; margin-top: 30px; color: #5EA7F1; font-family: pacifico-regular, sans-serif;">¿Como empezar?</h3>		
-	</div>			
-	<div layout="row" layout-align="start strech" layout-sm="column"  layout-xs="column">	
-	  <div flex class="center" >
-				<img class="responsive"  ng-click="$ctrl.ircomoempezar(1)"  ng-src="assets/images/1_off.png" class="pointer">
-		</div>
-	  <div flex class="center" >
-				<img class="responsive"  ng-click="$ctrl.ircomoempezar(2)" ng-src="assets/images/2_off.png" class="pointer">
-		</div>
-			<div flex class="center" >
-					<img class="responsive" ng-click="$ctrl.ircomoempezar(2)" ng-src="assets/images/3_off.png" class="pointer">
+
+	<div class="cont">
+		<div class="disText">
+				<h4 class="impact-text-large" style="text-align: center; color: #5EA7F1; font-family: pacifico-regular, sans-serif;">¿Como empezar?</h4>				
+				
+				
+			</div >
+	<div style="background-color: white;">			
+		<div class="respNum">
+			<div flex-gt-sm="100" flex= "33"  style=" text-align: center;" ng-click="$ctrl.ircomoempezar(1)">
+				<img  ng-src="assets/num1.png" class="pointer">
+				<p style="margin-top: 10px;">
+					<a style="text-align: center; color: black; text-decoration: none;" >¿QUE ES EL PENSAMIENTO <BR>COMPUTACIONAL?</a>
+				</p>					
 			</div>
+			<div flex-gt-sm="100" flex= "33" style="text-align: center;" ng-click="$ctrl.ircomoempezar(2)">
+				<img  ng-src="assets/num2.png" class="pointer" >
+				<p style="margin-top: 10px;">
+					<a style="text-align: center; color: black; text-decoration: none;" >¿CÓMO EMPIEZO <BR>A PROGRAMAR?</a>
+				</p>					
+			</div>
+			<div  flex-gt-sm="100" flex= "33" style="text-align: center;" ng-click="$ctrl.ircomoempezar(3)">
+				<img ng-src="assets/num3.png" class="pointer">
+				<p style="margin-top: 10px;">
+					<a style="text-align: center; color: black; text-decoration: none;" >¿CÓMO PUEDO APLICAR <BR>LA RÓBOTICA EDUCATIVA?</a>
+				</p>					
+			</div>
+		</div>			
 	</div>
+
+
 
 
 	
