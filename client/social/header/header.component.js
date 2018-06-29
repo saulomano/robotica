@@ -4,17 +4,18 @@ import $ from 'jquery';
 
 class HeaderComponent {
   /*@ngInject*/
-  constructor($element, $state, $stateParams, $rootScope, Auth) {
+  constructor($element, $state, $stateParams, $rootScope, Auth,$scope,$mdMedia) {
     this.selected = '';
     this.$stateParams = $stateParams;
     this.$state = $state;
     this.$rootScope = $rootScope;
-
+    this.$scope = $scope;
     this.Auth = Auth;
     this.isDisabled = false;
     this.noCache = true;
     this.selectedItem;
     this.searchText =  $stateParams.search || '';
+    $scope.$mdMedia = $mdMedia;
 
     this.menuNavBar = [
       {
@@ -49,6 +50,14 @@ class HeaderComponent {
     
     this.getUser();
     this.handleClickOnWindow();
+
+
+
+
+    this.$scope.$watch(() => { return $mdMedia('xs') || $mdMedia('sm'); }, (mobile) => {
+      this.isMobile = mobile === true;      
+    });
+
   }
 
   handleClickOnWindow() {
@@ -106,6 +115,11 @@ class HeaderComponent {
         this.selected = item.section;
     }
   }
+
+
+
+ 
+
 }
 
 export default angular.module('robotica.social.socialHeader', [])

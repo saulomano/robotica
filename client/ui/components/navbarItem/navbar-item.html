@@ -3,11 +3,8 @@
 
 <ul class="nav-items">
     <li class="nav-item" id="item-{{$rdNavbarItemCtrl.model.section}}" ng-class="{'dropdown': $rdNavbarItemCtrl.model.nodes}">
-        <a
-        
-        
+        <a  
         class="nav-link" ng-click="$rdNavbarItemCtrl.itemClicked($rdNavbarItemCtrl.model)">{{ $rdNavbarItemCtrl.model.caption | uppercase}} 
-
 
     </a>
         <nav class="submenu">
