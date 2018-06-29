@@ -115,7 +115,11 @@ export function show(req, res, next) {
  * restriction: 'authenticate'
  */
 export function destroy(req, res, next) {
+	Published.findByIdAndRemove(req.params.id).exec();
 	req.result =  OrientacionPedagogica.findByIdAndRemove(req.params.id).exec();
+
+
+
 	next();
 }
 

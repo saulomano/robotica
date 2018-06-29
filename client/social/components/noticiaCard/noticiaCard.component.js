@@ -51,11 +51,13 @@ class NoticiaCardController {
               .ok('Si!')
               .cancel('No');
               confirm.resource= this.resource;
+              confirm.$state= this.$state;
         this.$mdDialog.show(confirm).then(function() {
             confirm.resource
             .remove()
             .then( data => {
-                this.$state.go('curador.dashboardnoticias', {}, {reload: true});
+
+                confirm.$state.go('curador.dashboardnoticias', { type: "noticia" }) 
             })
             .catch( err => {
                 throw err;
