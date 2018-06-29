@@ -19,8 +19,7 @@
 	<rd-waterfall item-width="350"
 				  gutter="24"
 				  load-more-text="Ver más kits"
-				  fetch="$ctrl.fetchData()"
-				  item-click="$ctrl.viewResource"
+				  fetch="$ctrl.fetchData()"				 
 				  search-text="$ctrl.searchText">
 		<rd-item-template>
 			<kit-card resource="item" editable="item.type !== 'addnew'" vista="'curador'"></kit-card>
