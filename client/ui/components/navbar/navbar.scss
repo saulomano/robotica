@@ -65,7 +65,7 @@
 		}
 
 		&:active {
-			box-shadow: $whiteframe-shadow-1dp;
+			//box-shadow: $whiteframe-shadow-1dp;
 		}
 
 		&:hover &--bars,
@@ -312,7 +312,7 @@ html {
 	border-radius: 3px;
 	line-height: 1.46667;
 	margin-top: -5px;
-	box-shadow: 0 0 8px rgba(0,0,0,.3);
+	//box-shadow: 0 0 8px rgba(0,0,0,.3);
 	opacity:0;
 	-webkit-transform: translate(0, 0) scale(.85);
 	transform: translate(0, 0)scale(.85);
@@ -395,10 +395,10 @@ html {
 /* make ALL links (main and submenu-i) have padding and background color */
 .mainmenu a {
 	display: block;
-	background-color: #9a9a9a; // #CCC
+	//background-color: #9a9a9a; // #CCC
 	text-decoration: none;
 	padding: 10px;
-	color: #000;
+	color: white;
 }
 
 /* add hover behaviour */

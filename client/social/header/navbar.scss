@@ -18,7 +18,7 @@
 			border-radius: 50%;
 			top: 0;
 			left: 10px;
-			box-shadow: $whiteframe-shadow-4dp;
+			//box-shadow: $whiteframe-shadow-4dp;
 			z-index: $navbar-z-index + 1;
 		}
 
@@ -42,7 +42,7 @@
 		width: auto;
 		position: relative;
 		z-index: $navbar-z-index + 3;
-		margin-left: -80px;
+		margin-left: -40px;
 	}
 
 	&__logo--scrolled img {
