@@ -10,14 +10,14 @@ export default angular
 
 class NoticiaCardController {
 	/*@ngInject*/
-	constructor($scope, $element, $state, $mdDialog){
+	constructor($scope, $element, $state, $mdDialog, $mdToast){
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;
         this.$mdDialog = $mdDialog;
 		this.$element.addClass('noticia-card');
-		
-
+        this.deleteUserBoolean = false;
+        this.$mdToast = $mdToast;
 	
 		
 		
@@ -40,7 +40,35 @@ class NoticiaCardController {
 
 	editResource(){
 		this.$state.go(`curador.noticia`, { uid: this.resource._id, action: 'edit' });
-	}
+    }
+  showConfirm(ev) {
+        // Appending dialog to document.body to cover sidenav in docs app
+        var confirm =this.$mdDialog.confirm()
+              .title('Eliminar?')
+              .textContent('Esta seguro que desea eliminar la noticia.')
+              .ariaLabel('')
+              .targetEvent(ev)
+              .ok('Si!')
+              .cancel('No');
+              confirm.resource= this.resource;
+              confirm.$state= this.$state;
+        this.$mdDialog.show(confirm).then(function() {
+            confirm.resource
+            .remove()
+            .then( data => {
+
+                confirm.$state.go('curador.dashboardnoticias', { type: "noticia" }) 
+            })
+            .catch( err => {
+                throw err;
+            });
+        }, function() {
+         
+        });
+      };
+
+   
+
 
 	deleteResource(){
         this.resource

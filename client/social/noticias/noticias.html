@@ -1,7 +1,9 @@
 <h1 class="noticias-header">Noticias</h1>
 
 <section class="resources_waterfall" style="margin-top: 0.5%;">
-	<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" search-text="$ctrl.searchText">
+	<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos"
+	
+	fetch="$ctrl.fetchData()" search-text="$ctrl.searchText">
      
         <rd-item-template>           
             <noticia-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></noticia-card>

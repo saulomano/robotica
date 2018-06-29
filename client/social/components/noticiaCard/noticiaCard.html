@@ -21,8 +21,8 @@
 		<div layout="row">
 			<div class="rd-card__status" flex ng-hide="$ctrl.resource.published == undefined"> <i class="fa fa-check-circle-o"></i>	Publicado</div>
 			<div class="rd-card__status" flex ng-show="$ctrl.resource.published == undefined"> <i class="fa fa-save"></i> Guardado</div>
-			<md-button ng-click="$ctrl.deleteDesafioBoolean = !$ctrl.deleteDesafioBoolean" class="bordered md-raised md-mini rd-card__button--delete" aria-label="Eliminar módulo">
-				<md-icon md-font-icon="">delete</md-icon>
+			<md-button ng-click="$ctrl.showConfirm($event)" class="bordered md-raised md-mini rd-card__button--delete" aria-label="Eliminar módulo">
+				<md-iconclass="mi-mode-delete">Borrar</md-icon>
 			</md-button>
 			<md-button ng-click="$ctrl.editResource()" class="bordered mini-button md-button md-ink-ripple rd-card__button--edit">
 				<div layout="row">
@@ -35,14 +35,14 @@
 		<img style="width: 100%;
 		height: auto;" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del recurso">
 	</rd-card-cover>	
-	
+	<!--  -->
 	<rd-card-body>
-		<div layout="row" ng-hide="$ctrl.deleteDesafioBoolean">
+		<div layout="row" ng-hide="$ctrl.deleteDesafioBoolean"  >
 			<div flex class="rd-card__body--custom">
 				<h1 class="rd-card__title--v1">{{$ctrl.resource.title}}</h1>
 				<p class="rd-card__paragraph">{{$ctrl.resource.summary | truncate:140 }}</p>
 			
-				<p><strong class="rd-card__updated rd__color--grey-light "><strong >{{$ctrl.resource.createdAt | amTimezone:'Argentina' | amDateFormat:'DD MMMM YYYY'}} </strong></p>
+				<p><strong class="rd-card__updated rd__color--grey-light ">{{$ctrl.resource.createdAt | amTimezone:'Argentina' | amDateFormat:'DD MMMM YYYY'}} </strong></p>
 				<p><strong class="rd-card__owner">{{$ctrl.resource.owner.name}}</strong></p>
 			</div>
 		</div>

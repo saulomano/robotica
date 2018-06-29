@@ -40,7 +40,34 @@ class OrientacionPedagogicaCardController {
 
 	editResource(){
 		this.$state.go(`curador.orientacionpedagogica`, { uid: this.resource._id, action: 'edit' });
-	}
+    }
+    
+
+    showConfirm(ev) {
+        // Appending dialog to document.body to cover sidenav in docs app
+        var confirm =this.$mdDialog.confirm()
+              .title('Eliminar?')
+              .textContent('Esta seguro que desea eliminar este Orientacion.')
+              .ariaLabel('')
+              .targetEvent(ev)
+              .ok('Si!')
+              .cancel('No');
+              confirm.resource= this.resource;
+              confirm.$state= this.$state;
+        this.$mdDialog.show(confirm).then(function() {
+            confirm.resource
+            .remove()
+            .then( data => {
+                confirm.$state.go('curador.dashboardkits', {}, {reload: true});
+            })
+            .catch( err => {
+                throw err;
+            });
+        }, function() {
+         
+        });
+      };
+
 
 	deleteResource(){
         this.resource
