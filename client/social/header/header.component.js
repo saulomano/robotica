@@ -18,7 +18,7 @@ class HeaderComponent {
 
     this.menuNavBar = [
       {
-        section: 'comoEmpezar',  caption: 'Como empezar?', action:'social.comoEmpezar'
+        section: 'comoEmpezar',  caption: 'Cómo empezar', action:'social.comoEmpezar'
       },
       {
         section: 'orientacionpedagogica',  caption: 'Propuestas Pedagógicas', action:'social.orientacionpedagogica'
