@@ -22,7 +22,7 @@ class RdNavbarController {
 		this.navBarItems = this.$scope.rdItems;
 		this.getUser();
 
-    	this.$element.addClass('rd-navbar md-whiteframe-4dp');
+    	this.$element.addClass('rd-navbar');
 
 		this.$scope.$watch(() => { return $mdMedia('xs') || $mdMedia('sm'); }, (mobile) => {
 			this.isMobile = mobile === true;
