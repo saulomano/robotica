@@ -23,7 +23,7 @@
 	transition: $transition-default;
 	background-color: $color-white;
 	z-index: $navbar-z-index + 50;
-	box-shadow: $whiteframe-shadow-4dp;
+	//box-shadow: $whiteframe-shadow-4dp;
 	border: solid 1px $color-grey-light;
 
 	&--caret {

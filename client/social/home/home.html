@@ -1,134 +1,143 @@
-
-	<!--div class="titHead">PLATAFORMA DE FORMACIÓN CONTINUA EN ROBÓTICA Y PROGRAMACION PARA NIVEL PRIMARIO</div-->
-	<div class="slideshow-container">
-		<ui-carousel slides="$ctrl.slides" on-init="$ctrl.onCarouselInit()" slides="ctrl.slides"
-		slides-to-show="1"
-		slides-to-scroll="1"
-		initial-slide="1"
-		autoplay="true"
-		autoplay-speed="4000"
-		arrows="true"
-		dots="false"
-		cssEase="easy"
-		>
-		   
-		<div  class="mySlides fade">
-			<carousel-item>				
-			<div class="divslide" layout="row" layout-align="center center" ng-style="{'background-image': 'url({{item.url}})'}">
-                <div class="ban_content">
-                    <div class="subhead">{{item.titulo}}<br>{{item.titulo2}} </div>
-                    <div class="legend"><p class="texto">{{item.texto}}</p></div>
-                </div>
-            </div>
-			
-			 </carousel-item>
-		</div>       
-		</ui-carousel>   
-	</div>
-	<div style="height: 10px; background: #8BBF1F"></div>
-	
-	<div class="cont">
-		<div class="row" style="background-color: #5EA7F1;">					
-			<div class="disText">
-				<h4 class="impact-text-large" style="text-align: center; color: white;">Robótica educativa para primarias</h4>
-				<p style="text-align: center; color: white; font-size: 15px;
-				line-height: 23px;">
-					DISEÑO CURRICULAR - En lo que respecta al aspecto social, tanto la robótica como la programación 
-					favorecen el trabajo en equipo y en colaboración; ambas resultan esenciales en la promoción del aprendizaje
-					entre pares y forman parte de los modos de construcción de conocimiento, así como de las culturas del mundo 
-					donde predomina el trabajo de la sociedad digital.Problemas.
-				</p>				
-				<img ng-src="assets/robotica_educativa_icon.png" alt="Logo">				
-			</div >				
-			<div class="estiloflech"></div>
+<!--div class="titHead">PLATAFORMA DE FORMACIÓN CONTINUA EN ROBÓTICA Y PROGRAMACION PARA NIVEL PRIMARIO</div-->
+<div class="slideshow-container">
+	<ui-carousel slides="$ctrl.slides" on-init="$ctrl.onCarouselInit()" slides="ctrl.slides"
+	slides-to-show="1"
+	slides-to-scroll="1"
+	initial-slide="1"
+	autoplay="true"
+	autoplay-speed="4000"
+	arrows="true"
+	dots="false"
+	cssEase="easy"
+	>
+	   
+	<div  class="mySlides fade">
+		<carousel-item>				
+		<div class="divslide" layout="row" layout-align="center center" ng-style="{'background-image': 'url({{item.url}})'}">
+			<div class="ban_content">
+				<div class="subhead">{{item.titulo}}<br>{{item.titulo2}} </div>
+				<div class="legend"><p class="texto">{{item.texto}}</p></div>
+			</div>
 		</div>
-	</div>
+		
+		 </carousel-item>
+	</div>       
+	</ui-carousel>   
+</div>
+<div style="height: 10px; background: #8BBF1F"></div>
 
-	<div layout="row" layout-align="center center">
-	<h2 class="impact-text-large" style="text-align: center; color: #5EA7F1; font-family: pacifico-regular, sans-serif;">¿Como empezar?</h2>		
+<div class="cont">
+	<div class="row" style="background-color: #5EA7F1;">					
+		<div class="disText">
+			<h4 class="impact-text-large" style="text-align: center; color: white;">Robótica educativa para primarias</h4>
+			<p style="text-align: center; color: white; font-size: 15px;
+			line-height: 23px;">
+				DISEÑO CURRICULAR - En lo que respecta al aspecto social, tanto la robótica como la programación 
+				favorecen el trabajo en equipo y en colaboración; ambas resultan esenciales en la promoción del aprendizaje
+				entre pares y forman parte de los modos de construcción de conocimiento, así como de las culturas del mundo 
+				donde predomina el trabajo de la sociedad digital.Problemas.
+			</p>				
+			<img ng-src="assets/robotica_educativa_icon.png" alt="Logo">				
+		</div >				
+		<div class="estiloflech"></div>
+	</div>
+</div>
+
+
+<div class="cont">
+	<div class="disText">
+			<p class="impact-text-large titulos" style=" text-align: center; color: #5EA7F1; font-family: pacifico-regular, sans-serif;">¿Cómo empezar?</p>				
+			
+			
+		</div >
+<div style="background-color: white;">			
+	<div class="respNum">
+		<div flex-gt-sm="100" flex= "33"  style=" text-align: center;" ng-click="$ctrl.ircomoempezar(1)">
+			<img  ng-src="assets/num1.png" class="pointer">
+			<p style="margin-top: 10px;">
+				<a style="text-align: center; color: black; text-decoration: none;" >¿QUE ES EL PENSAMIENTO <BR>COMPUTACIONAL?</a>
+			</p>					
+		</div>
+		<div flex-gt-sm="100" flex= "33" style="text-align: center;" ng-click="$ctrl.ircomoempezar(2)">
+			<img  ng-src="assets/num2.png" class="pointer" >
+			<p style="margin-top: 10px;">
+				<a style="text-align: center; color: black; text-decoration: none;" >¿CÓMO EMPIEZO <BR>A PROGRAMAR?</a>
+			</p>					
+		</div>
+		<div  flex-gt-sm="100" flex= "33" style="text-align: center;" ng-click="$ctrl.ircomoempezar(3)">
+			<img ng-src="assets/num3.png" class="pointer">
+			<p style="margin-top: 10px;">
+				<a style="text-align: center; color: black; text-decoration: none;" >¿CÓMO PUEDO APLICAR <BR>LA RÓBOTICA EDUCATIVA?</a>
+			</p>					
+		</div>
 	</div>			
-	<div layout="row" layout-align="start strech" layout-sm="column"  layout-xs="column">	
-	  <div flex >
-				<img  ng-click="$ctrl.ircomoempezar(1)"  ng-src="assets/images/1_off.png" class="pointer">
-		</div>
-	  <div flex >
-				<img  ng-click="$ctrl.ircomoempezar(2)" ng-src="assets/images/2_off.png" class="pointer">
-		</div>
-			<div flex >
-					<img ng-click="$ctrl.ircomoempezar(2)" ng-src="assets/images/3_off.png" class="pointer">
-			</div>
+</div>
+
+
+
+
+
+<div class="cont">
+	<div class="row">
+		<div style="height: 50px; min-height: 0; margin-bottom: 0!important;"></div>
 	</div>
+</div>
 
-
-	
-	<div class="cont">
-		<div class="row">
-			<div style="height: 50px; min-height: 0; margin-bottom: 0!important;"></div>
-		</div>
-	</div>
-
-	<div class="cont">
-		<div class="rowparallax imgfondo" style="background-image: url(/assets/img/banner/ejemplo.jpg)">
+<div class="cont">
+	<div class="rowparallax imgfondo" style="background-image: url(/assets/img/banner/ejemplo.jpg)">
+		
+		<div class="textKit">
+			<p class="impact-text-large titulos" style="text-align: center; color: white; font-family: pacifico-regular, sans-serif;">Propuestas pedagógicas</p>
 			
-			<div class="disText">
-				<h4 class="impact-text-large" style="text-align: center; color: white; font-family: pacifico-regular, sans-serif;">Orientaciones pedagógicas</h4>
-				
-			</div >
-			<div class="cardsgral">
-				<div class="cards">
-					<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" search-text="$ctrl.searchText">
-						<rd-item-template>           
-							<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
-						</rd-item-template>
-					</rd-waterfall>
-				</div>
-			</div>		
-			<div style="margin-left: auto; margin-right: auto; text-align: center;">
-				<a style="text-align: center; color: white;" ui-sref="social.orientacionpedagogica">ver mas</a>
-			</div>		
-		</div>
+		</div >
+		<div class="cardsgral">
+			<div class="cards">
+				<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" search-text="$ctrl.searchText">
+					<rd-item-template>           
+						<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+					</rd-item-template>
+				</rd-waterfall>
+			</div>
+		</div>		
+		<div style="margin-left: auto; margin-right: auto; text-align: center;">
+			<a style="text-align: center; color: white; font-family: DIN-Regular; font-size: 15pt;" ui-sref="social.orientacionpedagogica">ver mas</a>
+		</div>		
 	</div>
-	<div class="cont">
-		<div class="row">
-			<div style="height: 50px; min-height: 0; margin-bottom: 0!important;"></div>
-		</div>
+</div>
+<div class="cont">
+	<div class="row">
+		<div style="height: 50px; min-height: 0; margin-bottom: 0!important;"></div>
 	</div>
+</div>
 
-	<div class="cont">
-		<div class="rowparallax">
-			<div class="disText">
-				<h4 class="impact-text-large" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Kits tecnológicos entregados</h4>
-				<p style="text-align: center; color: white; font-size: 15px;
-				line-height: 23px;">
+<div class="cont">
+	<div class="rowparallax">
+		<div class="textKit">
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Kits tecnológicos entregados</p>
+			<p style="text-align: center; color: white; font-size: 15px;
+			line-height: 23px;">
 
-				</p>
-			</div>
-			<div class="cardsgral">
-				<div class="cards">
-					<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchDataKit()"  search-text="$ctrl.searchText">
-						<rd-item-template>           
-							<kit-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></kit-card>
-						</rd-item-template>
-					</rd-waterfall>
-			</div>
-			</div>
+			</p>
+		</div>
+		<div class="cardsgral">
+			<div class="cards">
+				<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchDataKit()"  search-text="$ctrl.searchText">
+					<rd-item-template>           
+						<kit-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></kit-card>
+					</rd-item-template>
+				</rd-waterfall>
+		</div>
 		</div>
 	</div>
-	<div class="cont">
-		<div class="row">
-			<div style="height: 50px; min-height: 0; margin-bottom: 0!important;"></div>
-		</div>
-	</div>	
-	<div class="cont">
-		<div class="rowparallax">
-	<!--div  style="background-image: url(/assets/img/banner/slider_contanos.jpg); width: 100%; height: auto;"></div-->
-	<img class="responsive" ng-src="/assets/img/banner/slider_contanos.jpg" alt="Logo">
+</div>
+<div class="cont">
+	<div class="row">
+		<div style="height: 50px; min-height: 0; margin-bottom: 0!important;"></div>
+	</div>
+</div>	
+<div class="cont">
+	<div class="rowparallax">
+<!--div  style="background-image: url(/assets/img/banner/slider_contanos.jpg); width: 100%; height: auto;"></div-->
+<img class="responsive" ng-src="/assets/img/banner/slider_contanos.jpg" alt="Logo">
 </div>
 </div>	
-
-	
-
-
-
-
-

@@ -3,11 +3,14 @@
 
 <ul class="nav-items">
     <li class="nav-item" id="item-{{$rdNavbarItemCtrl.model.section}}" ng-class="{'dropdown': $rdNavbarItemCtrl.model.nodes}">
-        <md-button class="nav-link" ng-click="$rdNavbarItemCtrl.itemClicked($rdNavbarItemCtrl.model)">{{ $rdNavbarItemCtrl.model.caption }} </md-button>
+        <a  
+        class="nav-link" ng-click="$rdNavbarItemCtrl.itemClicked($rdNavbarItemCtrl.model)">{{ $rdNavbarItemCtrl.model.caption | uppercase}} 
+
+    </a>
         <nav class="submenu">
             <ul class="submenu-items">
                 <li class="submenu-item" ng-repeat="node in $rdNavbarItemCtrl.model.nodes">
-                    <a class="submenu-link" ng-click="$rdNavbarItemCtrl.itemClicked(node)">{{ node.caption }}</a>
+                    <a class="submenu-link" ng-click="$rdNavbarItemCtrl.itemClicked(node)">{{ node.caption | uppercase }}</a>
                 </li>
             </ul>
         </nav>

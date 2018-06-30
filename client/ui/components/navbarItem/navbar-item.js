@@ -52,6 +52,8 @@ class RdNavbarItemController {
 		} else {
 			this.$state.go(item.action, { type: item.section }, {reload:true});
 		}
+
+		
     }
 }
 

@@ -1,17 +1,17 @@
 
 
 <div layout="row" layout-align="center center">
-<h2 class="impact-text-large" style="text-align: center; color: #727272; font-family: pacifico-regular, sans-serif;">¿Como empezar?</h2>				
+<p class="impact-text-large" style="text-align: center; margin-top: 20px; font-size: 40px; color: #727272; font-family: pacifico-regular, sans-serif;">¿Cómo empezar?</p>				
 </div>			
 <div layout="row" layout-align="start strech" layout-sm="column"  layout-xs="column">	
   <div flex >
-			<img  ng-click="$ctrl.tabSelect=1"  ng-src="{{$ctrl.tabSelect==1 && 'assets/images/1_on.png' || 'assets/images/1_off.png'}}" class="pointer">
+			<img class="responsive" ng-click="$ctrl.tabSelect=1"  ng-src="{{$ctrl.tabSelect==1 && 'assets/images/1_on.png' || 'assets/images/1_off.png'}}" class="pointer">
 	</div>
   <div flex >
-			<img  ng-click="$ctrl.tabSelect=2" ng-src="{{$ctrl.tabSelect==2 && 'assets/images/2_on.png' || 'assets/images/2_off.png'}}" class="pointer">
+			<img class="responsive" ng-click="$ctrl.tabSelect=2" ng-src="{{$ctrl.tabSelect==2 && 'assets/images/2_on.png' || 'assets/images/2_off.png'}}" class="pointer">
 	</div>
 		<div flex >
-				<img ng-click="$ctrl.tabSelect=3"ng-src="{{$ctrl.tabSelect==3 && 'assets/images/3_on.png' || 'assets/images/3_off.png'}}" class="pointer">
+				<img  class="responsive" ng-click="$ctrl.tabSelect=3"ng-src="{{$ctrl.tabSelect==3 && 'assets/images/3_on.png' || 'assets/images/3_off.png'}}" class="pointer">
 		</div>
 </div>
 

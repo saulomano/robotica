@@ -8,8 +8,21 @@
 	format("truetype");
 }
 
+
+@font-face {
+	font-family: DIN-Regular;
+	src: local('DIN-Regular'),
+	local('din regular'),
+	local('DIN-Regular'),
+	local('DIN Regular'),
+	url("../assets/fonts/DIN-Regular.ttf")
+	format("truetype");
+}
+
+
 .social__component {
 	display: block;
+	//margin-top: 78px
 }
 
 social-header {

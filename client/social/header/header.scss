@@ -1,6 +1,6 @@
 // fix the height with the navbar
 header {
-	height: $navbar-height;
+	//height: $navbar-height;
 }
 
 .sitemap {
@@ -31,12 +31,13 @@ header {
 }
 
 .titHead{
-	height: 15px; 
-	background: rgb(175, 174, 174); 
+	height: 20px; 
+	background: rgb(112, 112, 112); 
 	color: white; 
 	text-align: center;
 	font-size: 1rem; 
-	padding-top: 3px
+	padding-top: 7px;
+
   }
 
 .footer {
