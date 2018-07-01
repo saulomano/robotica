@@ -127,7 +127,7 @@ class OrientacionPedagogicaCardController {
             //this.$scope = $scope;
             this.loading = true;
 
-            this.Resource = Restangular.one(resource.route, resource._id);
+            this.Resource = Restangular.one('publishedOrientacionPedagogica', resource._id);
 
             this.closeDialog = function() {
                 $mdDialog.hide();

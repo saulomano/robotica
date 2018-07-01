@@ -159,7 +159,7 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
                     this.resource = data;
                     this.loading = false;
                     $timeout(() => {
-                        $scope.$apply();publishedOrientacionPedagogica
+                        $scope.$apply();
                     });
                 })
                 .catch(err => {
