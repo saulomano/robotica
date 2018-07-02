@@ -112,6 +112,9 @@ h3 {
 
 @media (max-width: 800px) {
 	aside, section { width: auto; float: none; }
+	h1 span {
+		font-size: 3rem !important;
+	}
 }
 
 .responsive {
