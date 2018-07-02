@@ -10,7 +10,7 @@
 				<p><strong >{{$ctrl.resource.createdAt | amTimezone:'Argentina' | amDateFormat:'DD MMMM YYYY'}} </strong></p>
 				</div>
 				<div flex >
-					<h4 class="margin">{{$ctrl.resource.title}}</h4>					
+					<h4 class="margin" style="font-family: DIN-Regular;">{{$ctrl.resource.title}}</h4>					
 					
 					<div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
 						<img class="responsive" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
