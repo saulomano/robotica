@@ -6,7 +6,7 @@ import _ from "lodash";
 
 export default class OrientacionPedagogicaComponent extends SocialComponent{
     /*@ngInject*/
-    constructor($element, $log, $rootScope, $q,  $stateParams, $state, Auth, Restangular,$mdDialog,$mdMedia,$scope) {
+    constructor($element, $log, $rootScope, $q,  $stateParams, $state, Auth, Restangular,$mdDialog,$mdMedia,$scope,$mdBottomSheet) {
 
         super({$element});
         this.$q = $q;
@@ -21,7 +21,7 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
         this.$stateParams = $stateParams;
         this.section = $stateParams.type;
         this.searchText = $stateParams.search;
-        
+        this.muestraFiltroMobile= false;
         this.filter = this.$stateParams.filter || 'all';
         this.$mdDialog = $mdDialog;
         this.filterChange;
@@ -54,8 +54,14 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
          
 
          this.$scope.$watch(() => { return $mdMedia('xs') }, (mobile) => {
-            this.isMobile = mobile === true;      
+            this.isMobile = mobile === true;    
+            this.muestraFiltroMobile=false;  
           });
+
+
+
+
+          
 
     }
 
@@ -169,4 +175,13 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
                 });
         }
     }
+
+
+
+    //mdButton
+
+
+    
+
+
 }
