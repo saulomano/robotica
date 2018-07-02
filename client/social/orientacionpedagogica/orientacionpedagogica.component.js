@@ -6,7 +6,7 @@ import _ from "lodash";
 
 export default class OrientacionPedagogicaComponent extends SocialComponent{
     /*@ngInject*/
-    constructor($element, $log, $rootScope, $q,  $stateParams, $state, Auth, Restangular,$mdDialog) {
+    constructor($element, $log, $rootScope, $q,  $stateParams, $state, Auth, Restangular,$mdDialog,$mdMedia,$scope) {
 
         super({$element});
         this.$q = $q;
@@ -17,7 +17,7 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
         this.Auth = Auth;
         this.Restangular = Restangular;
         this.user = this.getUser();
-       
+        this.$scope = $scope;
         this.$stateParams = $stateParams;
         this.section = $stateParams.type;
         this.searchText = $stateParams.search;
@@ -25,7 +25,7 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
         this.filter = this.$stateParams.filter || 'all';
         this.$mdDialog = $mdDialog;
         this.filterChange;
-
+        $scope.$mdMedia = $mdMedia;
 
         if(this.filter === 'all'){
             this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
@@ -53,7 +53,9 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
          this.orientacionesFiltro = [].concat(tiposOr);            
          
 
-         
+         this.$scope.$watch(() => { return $mdMedia('xs') }, (mobile) => {
+            this.isMobile = mobile === true;      
+          });
 
     }
 
