@@ -59,6 +59,7 @@ export function index(req, res, next) {
 							.find(q)
 							.populate('owner')
 							.populate('files')
+                			.populate('links')
 							.sort(query.cursor.sort)
 							.skip(query.cursor.skip)
 							.limit(query.cursor.limit)
@@ -104,7 +105,8 @@ export function show(req, res, next) {
 								.findById(orientacionpedagogicaId)
 								.populate('owner')
 								.populate('files')
-								.populate('published')								
+								.populate('published')
+        						.populate('links')
 								.exec();
 	next();
 }
@@ -150,7 +152,8 @@ export function publish(req, res, next) {
 							.findById(req.params.id)
 							.populate('owner')
 							.populate('files')
-							.populate('published')							
+							.populate('published')
+                            .populate('links')
 							.exec();
 		
 						next();
@@ -166,7 +169,8 @@ export function publish(req, res, next) {
 					.findById(req.params.id)
 					.populate('owner')
 					.populate('files')
-					.populate('published')					
+					.populate('published')
+                    .populate('links')
 					.exec();
 
 				next();
