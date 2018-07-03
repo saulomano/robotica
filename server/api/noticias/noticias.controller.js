@@ -134,7 +134,7 @@ export function publish(req, res, next) {
 
 	// find the resource
 	if (pid === undefined){
-		published.createdAt = new Date();
+	//	published.createdAt = new Date();
 		published.updatedAt = new Date();
 		published
 			.save()
