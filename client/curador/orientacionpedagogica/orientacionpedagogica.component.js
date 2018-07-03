@@ -28,10 +28,15 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
     	this.isDisabled = false;
     	this.noCache = true;
 
+        this.captions = {
+            'orientacionpedagogica': 'Orientacion Pedagogica',
+            'noticia': 'Noticia',
+            'kit': 'Kit'
+        };
 		
 		// this.Resource = this.Restangular.one('resources', this.uid);
 		this.PropuestaDesafio = this.Restangular.one('orientacionpedagogica', this.uid);
-		this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
+		this.Publisheds = this.Restangular.all('noticias');
 
 		this.returnDesafios = false;
 
@@ -95,7 +100,7 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
 
 	refreshUI(forceApply){
 		this.headText = 'Orientacion Pedagogica';
-		this.showViculo = ['propuesta', 'actividad', 'orientacion' ].indexOf(this.resource.type) > -1;
+		this.showViculo = ['orientacionpedagogica' ].indexOf(this.PropuestaDesafio.route) > -1;
 		this.getPublisheds(forceApply);
 	}
 
