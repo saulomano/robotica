@@ -5,10 +5,10 @@
 				<div class="kview__content" flex>
 					<div  layout="row" layout-padding layout-align="center top"></div>
 					<div flex >
-						<h4 class="margin">{{$ctrl.resource.nombre}}</h4>
+						<h4 class="margin" style="font-family: DIN-Regular;">{{$ctrl.resource.nombre}}</h4>
 						<p flex class="paragraph post__test kview__summary">{{$ctrl.resource.descripcion}}</p>
 						<div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
-							<img class="responsive" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
+							<img  ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
 						</div>
 						<div >
 							<div flex="none">

@@ -6,7 +6,7 @@ import _ from "lodash";
 
 export default class OrientacionPedagogicaComponent extends SocialComponent{
     /*@ngInject*/
-    constructor($element, $log, $rootScope, $q,  $stateParams, $state, Auth, Restangular,$mdDialog) {
+    constructor($element, $log, $rootScope, $q,  $stateParams, $state, Auth, Restangular,$mdDialog,$mdMedia,$scope,$mdBottomSheet) {
 
         super({$element});
         this.$q = $q;
@@ -17,15 +17,15 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
         this.Auth = Auth;
         this.Restangular = Restangular;
         this.user = this.getUser();
-       
+        this.$scope = $scope;
         this.$stateParams = $stateParams;
         this.section = $stateParams.type;
         this.searchText = $stateParams.search;
-        
+        this.muestraFiltroMobile= false;
         this.filter = this.$stateParams.filter || 'all';
         this.$mdDialog = $mdDialog;
         this.filterChange;
-
+        $scope.$mdMedia = $mdMedia;
 
         if(this.filter === 'all'){
             this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
@@ -53,7 +53,15 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
          this.orientacionesFiltro = [].concat(tiposOr);            
          
 
-         
+         this.$scope.$watch(() => { return $mdMedia('xs') }, (mobile) => {
+            this.isMobile = mobile === true;    
+            this.muestraFiltroMobile=false;  
+          });
+
+
+
+
+          
 
     }
 
@@ -159,7 +167,7 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
                     this.resource = data;
                     this.loading = false;
                     $timeout(() => {
-                        $scope.$apply();publishedOrientacionPedagogica
+                        $scope.$apply();
                     });
                 })
                 .catch(err => {
@@ -167,4 +175,13 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
                 });
         }
     }
+
+
+
+    //mdButton
+
+
+    
+
+
 }

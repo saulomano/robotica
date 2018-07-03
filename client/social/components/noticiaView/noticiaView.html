@@ -4,37 +4,37 @@
 		<div class="one_half"  layout="column" flex="100">			
 			<section>
 
-			<div class="kview__content" flex>
-				<div  layout="row" layout-padding layout-align="center top"></div>
-				<div flex >
-				<p><strong >{{$ctrl.resource.createdAt | amTimezone:'Argentina' | amDateFormat:'DD MMMM YYYY'}} </strong></p>
-				</div>
-				<div flex >
-					<h4 class="margin">{{$ctrl.resource.title}}</h4>					
-					
-					<div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
-						<img class="responsive" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
+				<div class="kview__content" flex>
+					<div  layout="row" layout-padding layout-align="center top">
+
 					</div>
+						<div flex >
+							<p><strong >{{$ctrl.resource.createdAt | amTimezone:'Argentina' | amDateFormat:'DD MMMM YYYY'}} </strong></p>
+						</div>
+						<div flex >
+							<h4 class="margin" style="font-family: DIN-Regular;">{{$ctrl.resource.title}}</h4>					
+							
+							<div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
+								<img  ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
+							</div>
 
-					<p flex class="paragraph post__test rview__summary">{{$ctrl.resource.summary}}</p>
-					<rd-post flex class="rview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>
-						
-						<div class="video">
-							<md-dialog-content>
-								<div class="md-dialog-content">
-								  <div class="vid-container">
-									  <iframe width="500" height="281" ng-src="{{$ctrl.resource.urlVideo.replace('watch?v=', 'v/') | trustUrl}}" frameborder="0" allowfullscreen></iframe>
-									</div>
-								</div>
-							</md-dialog-content>	
-						</div>	
-						
-
-				</div>
-			</div>
+							<p flex class="paragraph post__test rview__summary">{{$ctrl.resource.summary}}</p>
+							<rd-post flex class="rview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>
+								
+								<!--div class="video">
+									<md-dialog-content>
+										<div class="md-dialog-content">
+										<div class="vid-container">
+											<iframe width="500" height="281" ng-src="{{$ctrl.resource.urlVideo.replace('watch?v=', 'v/') | trustUrl}}" frameborder="0" allowfullscreen></iframe>
+											</div>
+										</div>
+									</md-dialog-content>	
+								</div-->
+						</div>				
+					</div>
+			</section>
 		</div>
-	</section>
-</div>
+	</div>
 	<!--Lateral -->
 	<div class="icon-bar">
 		<a ng-href="/ver/{{$ctrl.resource.type}}/{{$ctrl.resource._id}}" target="_blank" class="view-item" title="Ver Noticia"><i class="fa fa-search"></i></a>

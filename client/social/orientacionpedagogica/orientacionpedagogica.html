@@ -1,26 +1,18 @@
 
 
+<div layout="row" layout-align="center center">
+		<p class="impact-text-large" style="text-align: center; margin-top: 20px; font-size: 40px; color: #727272; font-family: pacifico-regular, sans-serif;">Propuestas Pedagógicas</p>				
+	</div>
+
+ <div class="bottom-sheet-demo inset" layout="row" layout-sm="column" layout-align="center"  ng-if="$ctrl.isMobile">
+    <md-button flex="100" class="md-button-filter" ng-click="$ctrl.muestraFiltroMobile = !$ctrl.muestraFiltroMobile">Filtrar</md-button>
+  </div>
 
 
-<!--
- <div style="background-color: white;">			
-	<div class="respNum">
-		<div ng-repeat="item in $ctrl.orientacionesFiltro" flex-gt-sm="100" flex 
-		  class="iconPed-{{item.name}} " >				
-			<p style="margin-top: 10px;">
-				<a style="text-align: center; color: black; text-decoration: none;" >{{ item.desc }}</a>
-						
-		</div>		
-		</div>			
-	</div>			
-</div>
-layout-align="center center"
--->
-<div layout="row">
-	<div  flex   ng-repeat="item in $ctrl.orientacionesFiltro" ng-click="$ctrl.itemClicked(item)" 
-	style="text-align: center;" layout="column">
-	 
-	  <div flex></div>
+<div layout-gt-xs="row"  layout-xs ="column" ng-show="!$ctrl.isMobile || $ctrl.muestraFiltroMobile">
+	<div  flex   ng-repeat="item in $ctrl.orientacionesFiltro" ng-click="$ctrl.itemClicked(item)"  
+			style="text-align: center;" layout="column">	 
+	  <div flex="auto"></div>
       <div class="preview-glyphs">
 		<md-icon 			          
 		style="font-size: 48px; height: 48px"
@@ -37,7 +29,7 @@ layout-align="center center"
 
 <section class="resources_waterfall" style="margin-top: 3%;">
 	<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText">
-     
+    
         <rd-item-template>           
             <orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
 		</rd-item-template>

@@ -6,7 +6,7 @@
 					<div  layout="row" layout-padding layout-align="center top"></div>
 					<div flex >
 						<p><strong>{{ $ctrl.resource.createdAt | amDateFormat:'D MMMM YYYY' }}</strong></p>
-						<h4 class="margin">{{$ctrl.resource.objetivo}}</h4>
+						<h4 class="margin" style="font-family: DIN-Regular;">{{$ctrl.resource.objetivo}}</h4>
 						<div layout="row" ng-hide="$ctrl.deleteDesafioBoolean">
 							<div class="preview-glyphs">
 								<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="iconPed-{{area}} step"></md-icon>
@@ -34,7 +34,7 @@
 							</div>
 						</div>
 						<div >
-							<div flex="none">
+							<div flex="none" style="margin-bottom: 10px;">
 								<p><strong>Habilidades:</strong></p>
 							</div>
 							<div >
@@ -45,7 +45,7 @@
 							<rd-post flex class="kview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>
 						</div>
 						<div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
-							<img class="responsive" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
+							<img  ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
 						</div>
 						<div flex >
 							<rd-post  class="kview__summary"  modules="$ctrl.resource.armado" relative="$ctrl.uid" readonly="true"></rd-post>
