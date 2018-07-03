@@ -25,8 +25,10 @@ var ResourceSchema = new Schema({
 		video : String,
 		orientacionPedagogica: { type:Boolean, default: false },
 		publicaHome: { type:Boolean, default: false },
+
 		urlVideo:{ type: String},
 		createdAt:{type: Date}
+
 	}, ops);
 
 registerEvents(ResourceSchema);
