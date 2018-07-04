@@ -62,7 +62,7 @@ class OrientacionPedagogicaCardController {
             confirm.resource
             .remove()
             .then( data => {
-                confirm.$state.go('curador.dashboardkits', {}, {reload: true});
+                confirm.$state.go('curador.dashboardorientacionpedagogica', {}, {reload: true});
             })
             .catch( err => {
                 throw err;
