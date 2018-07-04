@@ -42,8 +42,8 @@
 				<h1 class="rd-card__title--v1">{{$ctrl.resource.title}}</h1>
 				<p class="rd-card__paragraph">{{$ctrl.resource.summary | truncate:140 }}</p>
 			
-				<p><strong class="rd-card__updated rd__color--grey-light ">{{$ctrl.resource.createdAt | amTimezone:'Argentina' | amDateFormat:'DD MMMM YYYY'}} </strong></p>
-				<p><strong class="rd-card__owner">{{$ctrl.resource.owner.name}}</strong></p>
+				<p><strong class="rd-card__updated rd__color--grey-light ">{{$ctrl.resource.fecha | amTimezone:'Argentina' | amDateFormat:'DD MMMM YYYY'}} </strong></p>
+				
 			</div>
 		</div>
 		<div layout="row" ng-show="$ctrl.deleteDesafioBoolean">

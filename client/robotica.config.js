@@ -191,7 +191,7 @@ export function roboticaConfig($urlRouterProvider, $locationProvider, $mdTheming
     let total = response.headers('x-result-total');
 
     data.$skip = parseInt(skip);
-    data.$limit = parseInt(limit);
+    data.$limit = parseInt(limit); 
     data.$total = parseInt(total);
 
     return data;
@@ -237,6 +237,8 @@ export function roboticaRun($cookies, $rootScope, $state, amMoment, ngMeta, $win
   $rootScope.$on("$stateChangeSuccess", function (event, currentRoute, previousRoute) {
     $window.scrollTo(0, 0);
   });
+
+ 
   
   amMoment.changeLocale('es');
 
@@ -252,4 +254,7 @@ export function roboticaRun($cookies, $rootScope, $state, amMoment, ngMeta, $win
       xhr.setRequestHeader("X-CSRFToken", $cookies.get("XSRF-TOKEN"));
     }
   });
+
+
+  
 }

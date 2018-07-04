@@ -56,38 +56,11 @@
 			  </md-checkbox>
 			</md-content>
 			<md-content>
-			<md-checkbox ng-model="$ctrl.resource.orientacionPedagogica" aria-label="Checkbox 1">
-							Orientacion Pedagogica
-						  </md-checkbox>
+					
+							<h4>Fecha</h4>
+				<md-datepicker ng-model="$ctrl.resource.fecha" md-placeholder="Fecha"></md-datepicker>
 			</md-content>
-			<md-content>
-				<md-expansion-panel class="option-panel">
-					
-					 <md-expansion-panel-collapsed>
-						 <div class="md-title">Area *</div>
-						 <div class="md-summary">{{$ctrl.resource.area.length}} {{$ctrl.textSelection($ctrl.resource.area.length)}}</div>
-						 <md-expansion-panel-icon></md-expansion-panel-icon>
-					 </md-expansion-panel-collapsed>
-					 <md-expansion-panel-expanded>
-					
-						 <md-expansion-panel-header ng-click="$panel.collapse()">
-							 <div class="md-title">Area *</div>
-							 <div class="md-summary"></div>
-							 <md-expansion-panel-icon></md-expansion-panel-icon>
-						 </md-expansion-panel-header>
-					
-						 <md-expansion-panel-content>
-								<div flex="100" ng-repeat="item in $ctrl.areas">
-										<md-checkbox ng-checked="$ctrl.exists(item, $ctrl.resource.area)" ng-click="$ctrl.toggle(item, $ctrl.resource.area)">
-										{{ item }}
-									</md-checkbox>
-								</div>
-						 </md-expansion-panel-content>
-					
-					 </md-expansion-panel-expanded>
-					
-				 </md-expansion-panel>
-			</md-content>
+			
 		</md-content>
 			
 			
@@ -126,7 +99,7 @@
 			<p class="rd__headpost">{{$ctrl.resource.summary | truncate:140}}</p>
 		</md-content>
 		
-		<md-content  class="dashboard__content" flex>IMAGEN PRINCIPAL: 
+		<md-content  class="dashboard__content" flex>CARGAR RECURSO: 
 			<div class="dropzone dz__custom dz-software-clickable"
 					data-type="{{$ctrl.resource.type}}"
 					options="$ctrl.dzOptionsSoftware"
@@ -162,19 +135,8 @@
 				</div>
 			</div>
 
-			<div class="dashboard__box" >
-				<md-input-container class="dashboard__input dashboard__input--title">
-					<h4 class="color-grey font-medium">Link Video Youtube</h4>
-					<input ng-model="$ctrl.resource.urlVideo" required>
-				</md-input-container>
-			</div>
-
 			
 
-			<div class="dashboard__box" >
-				<h4 class="color-grey font-medium">Palabras Claves</h4>
-				<md-chips ng-model="$ctrl.resource.tags" placeholder="Ingresá un tag" md-separator-keys="$ctrl.tagsKeys">
-			</div>
 			
 		</md-content>
 	</div>

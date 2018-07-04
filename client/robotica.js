@@ -100,6 +100,11 @@ let requirements = [
 var robotica = angular
 							.module('robotica', requirements)
 							.config(roboticaConfig)
+							.config(function($mdDateLocaleProvider,moment) {
+								$mdDateLocaleProvider.formatDate = function(date) {
+								   return moment(date).format('DD-MM-YYYY');
+								};
+							})
 							.run(roboticaRun)
 							.name;
 
