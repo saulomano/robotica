@@ -51,7 +51,7 @@
 							<rd-post  class="kview__summary"  modules="$ctrl.resource.armado" relative="$ctrl.uid" readonly="true"></rd-post>
 						</div>
 						<div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
-							<img  ng-repeat="file in $ctrl.resource.files" ng-src="{{file}}">
+							<img class="responsive" ng-repeat="file in $ctrl.resource.files" ng-src="{{file}}">
 						</div>
 					</div>
 				</div>
