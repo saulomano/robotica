@@ -67,7 +67,8 @@ export function index(req, res, next) {
 										.find(q)
 										.populate({path: 'orientacionpedagogica'})									
 										.populate('owner')
-										.populate('files')										
+										.populate('files')
+                						.populate('links')
 										.sort(query.cursor.sort)
 										.skip(query.cursor.skip)
 										.limit(query.cursor.limit)
@@ -112,7 +113,8 @@ export function show(req, res, next) {
 	req.result = Published
 								.findById(publishedId)
 								.populate('owner')
-								.populate('files')								
+								.populate('files')
+        						.populate('links')
 								.populate({
 									path: 'orientacionpedagogica'
 								  })

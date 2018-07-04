@@ -193,7 +193,7 @@
 				</div>
 			</div>
 			<h1 class="rd__headpost--sidenav">{{$ctrl.resource.objetivo}}</h1>
-			<!--p class="rd__headpost">{{$ctrl.resource.summary | truncate:140}}</p-->
+			<p class="rd__headpost">{{$ctrl.resource.summary | truncate:140}}</p>
 			<div class="vinculo__files">
 				<div><span class="text-uppercase color-black-light">{{$ctrl.resource.files.length}} Archivos | {{$ctrl.sumfiles($ctrl.resource.files) | numeraljs:'0b'}}</span></div>
 				<div class="text-uppercase color-black-light">Curado por: {{$ctrl.resource.owner.name}}</div>
@@ -239,28 +239,28 @@
 						</md-expansion-panel-expanded>
 					</md-expansion-panel>
 				</md-conten>
+				<md-list ng-cloak>
+					<md-list-item ng-repeat="item in $ctrl.publisheds">
+						<div  layout="row" layout-padding>
+							<div>
+								<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
+									<img ng-src="{{item.thumbnail}}" alt="Miniatura de la Propuesta Pedagógica">
+								</div>
+							</div>
+							<div flex>
+								<div class="color-{{item.type}}" layout="flex" layout-align="start center">
+									<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
+								</div>
+								<div><strong>{{item.title}}</strong></div>
+								<div><p>{{item.summary}}</p></div>
+							</div>
+							<md-checkbox class="md-secondary" ng-checked="$ctrl.existsObject(item, $ctrl.resource.links)" ng-click="$ctrl.toggleObject(item, $ctrl.resource.links)"
+										 aria-label="Agregar/quitar {{item.title}}"></md-checkbox>
+						</div>
+					</md-list-item>
+				</md-list>
 			</div>
 		</md-content>
-		<md-list ng-cloak>
-			<md-list-item ng-repeat="item in $ctrl.publisheds">
-				<div  layout="row" layout-padding>
-					<div>
-						<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
-							<img ng-src="{{item.thumbnail}}" alt="Miniatura de la Propuesta Pedagógica">
-						</div>
-					</div>
-					<div flex>
-						<div class="color-{{item.type}}" layout="flex" layout-align="start center">
-							<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
-						</div>
-						<div><strong>{{item.title}}</strong></div>
-						<div><p>{{item.summary}}</p></div>
-					</div>
-					<md-checkbox class="md-secondary" ng-checked="$ctrl.existsObject(item, $ctrl.resource.links)" ng-click="$ctrl.toggleObject(item, $ctrl.resource.links)"
-								 aria-label="Agregar/quitar {{item.title}}"></md-checkbox>
-				</div>
-			</md-list-item>
-		</md-list>
 	</div>
 <!--	<div class="dashboard__box">
 		<h4 class="color-grey font-medium">Palabras Claves</h4>
