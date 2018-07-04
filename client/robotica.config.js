@@ -231,16 +231,14 @@ export function roboticaConfig($urlRouterProvider, $locationProvider, $mdTheming
   ngMetaProvider.setDefaultTag('description', 'Plataforma de contenidos digitales con fines educativos para que todos podamos participar y acceder.');
 }
 
-export function roboticaRun($cookies, $rootScope, $state, amMoment, ngMeta, $window, $mdDateLocaleProvider){
+export function roboticaRun($cookies, $rootScope, $state, amMoment, ngMeta, $window){
   'ngInject';
 
   $rootScope.$on("$stateChangeSuccess", function (event, currentRoute, previousRoute) {
     $window.scrollTo(0, 0);
   });
 
-  $mdDateLocaleProvider.formatDate = function(date) {
-    return moment(date).format('DD/MM/YYYY');
-  };
+ 
   
   amMoment.changeLocale('es');
 
