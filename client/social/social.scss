@@ -19,6 +19,36 @@
 	format("truetype");
 }
 
+@font-face {
+	font-family: DINNextRoundedLTPro-Bold;
+	src: 
+	local('DINNextRoundedLTPro-Bold'),
+	url("../assets/fonts/DIN/DINNextRoundedLTPro-Bold.otf")
+	format("OpenType");
+}
+
+@font-face {
+	font-family: DINNextRoundedLTPro-Light;
+	src: 
+	local('DINNextRoundedLTPro-Light'),
+	url("../assets/fonts/DIN/DINNextRoundedLTPro-Light.otf")
+	format("OpenType");
+}
+@font-face {
+	font-family: DINNextRoundedLTPro-Medium;
+	src: 
+	local('DINNextRoundedLTPro-Medium'),
+	url("../assets/fonts/DIN/DINNextRoundedLTPro-Medium.otf")
+	format("OpenType");
+}
+
+@font-face {
+	font-family: DINNextRoundedLTPro-Regular;
+	src: 
+	local('DINNextRoundedLTPro-Regular'),
+	url("../assets/fonts/DIN/DINNextRoundedLTPro-Regular.otf")
+	format("OpenType");
+}
 
 .social__component {
 	display: block;
