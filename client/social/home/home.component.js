@@ -121,20 +121,20 @@ export default class HomeComponent extends SocialComponent {
   slides = [
     {
       titulo: "ROBÓTICA EN LAS ESCUELAS",
-      texto:"Propuestas pedagógicas pensadas en clave del diseño curricular de la Provincia de Buenos Aires favoreciendo los procesos de apaendizaje colaborativo",       
-      url: "/assets/img/banner/slider_1.jpg",
+      texto:"Propuestas pedagógicas pensadas en clave del diseño curricular de la Provincia de Buenos Aires favoreciendo los procesos de aprendizaje colaborativo",       
+      url: "/assets/img/banner/slider_1.jpg", 
       
       
     },
     {
       titulo: "APRENDER A PROGRAMAR",
-      texto:"Permte desarrollar la capacidad de privisión, la comprobación de resultados, la optimización de recursos y la toma de decisiones",      
+      texto:"Permite desarrollar la capacidad de privisión, la comprobación de resultados, la optimización de recursos y la toma de decisiones",      
       url: "/assets/img/banner/slider_2.jpg",
     },
     {
       titulo: "INCORPORAR", 
       titulo2:"PENSAMIENTO COMPUTACIONAL",
-      texto:"dentro del campo educativo, propone la implementación de actividades creativas y colaborativas, para el desarrollo de la capacidad de resolución de problemas",    
+      texto:"Dentro del campo educativo, propone la implementación de actividades creativas y colaborativas, para el desarrollo de la capacidad de resolución de problemas",    
       url: "/assets/img/banner/slider_3.jpg",
     }
   ]; 

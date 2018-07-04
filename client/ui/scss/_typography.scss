@@ -77,17 +77,17 @@ h1, h2, h3, h4, h5, h6 {
 
 // the headpost thing
 .rd__headpost {
-	font-family: $font-family-secondary;
+	font-family: DINNextRoundedLTPro-Bold;
 	font-weight: $font-weight-secondary;
 	
 	&--title {
-		font-family: $font-family-secondary;
+		font-family: DINNextRoundedLTPro-Bold;
 		font-weight: $font-secondary-bold;
 		font-size: $headpost-title-font-size;
 	}
 
 	&--subtitle {
-		font-family: $font-family-secondary;
+		font-family: DINNextRoundedLTPro-Bold;
 		font-weight: $font-secondary-bold;
 		font-size: $headpost-subtitle-font-size;
 	}
@@ -114,27 +114,27 @@ h1, h2, h3, h4, h5, h6 {
 
 .rd-card {
 	&__title--v1 {
-		font-family: $font-family-secondary;
+		font-family: DINNextRoundedLTPro-Bold;
 		font-weight: $font-secondary-bold;
 		font-size: 2.8rem;
 	}
 
 	&__title--v2 {
-		font-family: $font-family-secondary;
+		font-family: DINNextRoundedLTPro-Bold;
 		font-weight: $font-secondary-bold;
 		font-size: 2.4rem;
 	}
 
 	&__paragraph,
 	&__caption {
-		font-family: $font-family-primary;
+		font-family: DINNextRoundedLTPro-Medium;
 		font-weight: $font-primary-regular;
 		font-size: 1.4rem;
 	}
 }
 
 strong.rd__text--caption {
-	font-weight: $font-primary-bold;
+	font-weight: DINNextRoundedLTPro-Bold;
 }
 
 // utils
