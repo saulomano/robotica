@@ -26,6 +26,7 @@ var PublishedSchema = new Schema({
 	deleted: { type:Boolean, default: false },		
 	kitusado: String,				
 	publicaHome: { type:Boolean, default: false },
+    links: [{ type: Schema.Types.ObjectId, ref: 'Noticia' }],
 }, ops);
 
 registerEvents(PublishedSchema);
