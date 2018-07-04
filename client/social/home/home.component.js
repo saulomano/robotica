@@ -122,7 +122,7 @@ export default class HomeComponent extends SocialComponent {
     {
       titulo: "ROBÓTICA EN LAS ESCUELAS",
       texto:"Propuestas pedagógicas pensadas en clave del diseño curricular de la Provincia de Buenos Aires favoreciendo los procesos de aprendizaje colaborativo",       
-      url: "/assets/img/banner/slider_1.jpg",
+      url: "/assets/img/banner/slider_1.jpg", 
       
       
     },
