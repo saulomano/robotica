@@ -21,8 +21,9 @@
 		</div>
 		
 		 </carousel-item>
-	</div>       
-	</ui-carousel>   
+	    
+	</ui-carousel>  
+</div>    
 </div>
 <div style="height: 10px; background: #8BBF1F"></div>
 
@@ -111,21 +112,24 @@
 <div class="cont">
 	<div class="rowparallax">
 		<div class="textKit">
-			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Kits tecnológicos entregados</p>
-			<p style="text-align: center; color: white; font-size: 15px;
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Kits tecnológicos</p>
+			<!--p style="text-align: center; color: white; font-size: 15px;
 			line-height: 23px;">
 
-			</p>
+			</p-->
+			<a ui-sref="social.kitsDisponibles"  target="_blank" rel="noopener noreferrer"  ng-disabled="true">
+				<img class="responsive" ng-src="/assets/img/banner/slider_kit.jpeg" alt="Logo">
+				</a>
 		</div>
-		<div class="cardsgral">
+		<!--div class="cardsgral">
 			<div class="cards">
 				<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchDataKit()"  search-text="$ctrl.searchText">
 					<rd-item-template>           
 						<kit-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></kit-card>
 					</rd-item-template>
 				</rd-waterfall>
-		</div>
-		</div>
+			</div>
+		</div-->
 	</div>
 </div>
 -->
