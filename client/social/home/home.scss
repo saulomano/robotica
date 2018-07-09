@@ -21,7 +21,7 @@
 .one_half{
     position: relative;
     z-index: 2;
-    float: left;
+    //float: left;
     word-wrap: break-word;
     width: 48%;
 }
@@ -89,7 +89,7 @@ hr{
   }
   .cardsgral{
     position: relative !important;
-    height: 300px !important;
+    height: auto !important;
     margin-left: 10px !important;
     margin-top: 40px !important;
   }
@@ -144,7 +144,10 @@ hr{
       height: auto !important;
 
     }
-}
+  }
+  .cards{
+    float: none !important;  
+  } 
   
 }
 
