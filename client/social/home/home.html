@@ -91,21 +91,16 @@
 		</div >
 		<div class="cardsgral">
 			<div class="cards">
-				<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" search-text="$ctrl.searchText">
+				<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" search-text="$ctrl.searchText" max-items="3" >
 					<rd-item-template>           
 						<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
 					</rd-item-template>
 				</rd-waterfall>
 			</div>
 		</div>		
-<<<<<<< HEAD
-		<div style="margin-left: auto; margin-right: auto; text-align: center; padding-top: 10%;">
-			<a style="text-align: center; color: white; font-family: DIN-Regular; font-size: 15pt;" ui-sref="social.orientacionpedagogica">ver mas</a>
-=======
 		<div style="margin-left: auto; margin-right: auto; text-align: center; padding-bottom: 10%;
 		padding-top: 10%;">
 			<a style="text-align: center; color: white; font-family: DIN-Regular; font-size: 15pt; " ui-sref="social.orientacionpedagogica">ver mas</a>
->>>>>>> 55e392afbfd757165ce6a3c06164507041e0890c
 		</div>		
 	</div>
 </div>

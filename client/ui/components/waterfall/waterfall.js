@@ -26,7 +26,7 @@ class RdWaterfallController {
 			this.columnsSizes = {};
 			this.lastColumn_ = null;
 			this.loadMoreText = this.$scope.loadMoreText || 'Load more';
-
+			this.maxItems = this.$scope.maxItems || 0;
 			this.$scope.itemWidth = this.$scope.itemWidth || DEFAULT_ITEM_WIDTH;
 			this.$scope.gutter = this.$scope.gutter	|| DEFAULT_GUTTER;
 			this.searchText = '';
@@ -46,7 +46,13 @@ class RdWaterfallController {
 			this.initColumnsSizes_();
 			this.$element.addClass('rd-waterfall');
 			this.currentPage = 1;
+
+
+
 			this.limit = 20;
+			if (this.maxItems!= 0){
+				this.limit = this.maxItems;
+			}
 			this.itemCount = 0;
 		}
 
@@ -202,6 +208,11 @@ class RdWaterfallController {
 		}
 
 		nomoreItems() {
+
+			if (this.maxItems!==0 && this.maxItems <= this.itemCount)
+				return true;
+
+
 			if (this.itemCount === 0 || this.itemCount >= this.total){
 				return true;
 			}
@@ -212,7 +223,11 @@ class RdWaterfallController {
 		}
 
 		showMoreVisible(){
-			return this.loadingIsVisible() || this.nomoreItems();
+
+		
+
+
+			return this.loadingIsVisible() || this.nomoreItems() ;//&& (this.maxItems!=0|| this.maxItems <= this.itemCount);
 		}
 }
 
@@ -229,7 +244,8 @@ function rdWaterfall(){
 				'gutter': '=',
 				'loadMoreText': '@',
 				'itemClick': '=',
-				'searchText': '='
+				'searchText': '=',
+				'maxItems': '='
 			},
 			template: (element, attr) => {
 				attr.itemTemplate    = getItemTemplate();
