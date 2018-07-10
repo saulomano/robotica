@@ -83,7 +83,7 @@ hr{
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1460px) {
   .disText, .one_half,.textKit   {
     width: 100%;
   }
@@ -255,7 +255,7 @@ hr{
     margin-left: -15px;
     display: block;
     content: " ";
-    padding-bottom: 3%;
+    //padding-bottom: 3%;
 }
 
 
