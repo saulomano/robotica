@@ -133,6 +133,27 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+.rd-card-orientaciones {
+	&__title--v1 {
+		font-family: DINNextRoundedLTPro-Bold;
+		font-weight: $font-secondary-bold;
+		font-size: 2.8rem;
+	}
+
+	&__title--v2 {
+		font-family: DINNextRoundedLTPro-Bold;
+		font-weight: $font-secondary-bold;
+		font-size: 2.4rem;
+	}
+
+	&__paragraph,
+	&__caption {
+		font-family: DINNextRoundedLTPro-Medium;
+		font-weight: $font-primary-regular;
+		font-size: 1.4rem;
+	}
+}
+
 strong.rd__text--caption {
 	font-weight: DINNextRoundedLTPro-Bold;
 }
