@@ -75,17 +75,17 @@
 								</div>
 								<div flex>
 									<div layout="row" layout-align="start center">
-										<div><strong>{{item.title}}</strong> | </div>
+										<div><strong>{{item.nombre}}</strong> | </div>
 										<div class="color-{{item.type}}" layout="row" layout-align="start center">
 											<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
 										</div>
 									</div>
-									<div><p>{{item.summary | truncate:140}}</p></div>
+									<div><p>{{item.descripcion | truncate:140}}</p></div>
 								</div>
 							</div>
 						</div>
 						<div ng-if="$ctrl.isPublished == true"  flex layout="row">
-							<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ui-sref="social.ver({ uid: item._id })">
+							<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ng-href="/ver/{{item.type}}/{{item._id}}" target="_blank">
 								<div>
 									<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
 										<img ng-src="{{item.thumbnail}}" alt="Miniatura de la {{item.typeCaption}}">
@@ -93,69 +93,24 @@
 								</div>
 								<div flex>
 									<div layout="row" layout-align="start center">
-										<div><strong>{{item.title}}</strong> | </div>
+										<div><strong>{{item.nombre}}</strong> | </div>
 										<div class="color-{{item.type}}" layout="row" layout-align="start center">
 											<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
 										</div>
 									</div>
-									<div><p>{{item.summary | truncate:140}}</p></div>
+									<div><p>{{item.descripcion | truncate:140}}</p></div>
 								</div>
 							</a>
 						</div>
 					</md-list-item>
 				</md-list>
 			</div>
-			<div ng-if="$ctrl.resource.type !== 'orientacionpedagogica'">
-				<div class="rview__links" ng-if="$ctrl.resource.relations.length > 0">
-					<h3 flex class="text-uppercase">Contenido en {{$ctrl.resource.relations.length}} materiales</h3>
-					<md-list ng-cloak>
-						<md-list-item ng-repeat="item in $ctrl.resource.relations">
-							<div ng-if="$ctrl.isPublished == false" layout="row">
-								<div layout="row" layout-padding layout-align="start center">
-									<div>
-										<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
-											<img ng-src="{{item.thumbnail}}" alt="Miniatura de la {{item.typeCaption}}">
-										</div>
-									</div>
-									<div flex>
-										<div layout="row" layout-align="start center">
-											<div><strong>{{item.title}}</strong> | </div>
-											<div class="color-{{item.type}}" layout="row" layout-align="start center">
-												<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
-											</div>
-										</div>
-										<div><p>{{item.summary | truncate:140}}</p></div>
-									</div>
-								</div>
-							</div>
-							<div ng-if="$ctrl.isPublished == true"  flex layout="row">
-								<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ui-sref="social.ver({ uid: item._id })">
-									<div>
-										<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
-											<img ng-src="{{item.thumbnail}}" alt="Miniatura de la {{item.typeCaption}}">
-										</div>
-									</div>
-									<div flex>
-										<div layout="row" layout-align="start center">
-											<div><strong>{{item.title}}</strong> | </div>
-											<div class="color-{{item.type}}" layout="row" layout-align="start center">
-												<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
-											</div>
-										</div>
-										<div><p>{{item.summary | truncate:140}}</p></div>
-									</div>
-								</a>
-							</div>
-						</md-list-item>
-					</md-list>
-				</div>
-			</div>
 		</div>
 		<div class="rview__resources--right"></div>
 	</div-->
 	<!--Lateral -->
 	<div class="icon-bar">
-		<a ng-href="/ver/{{$ctrl.resource.type}}/{{$ctrl.resource._id}}" target="_blank" class="view-item" title="Ver kits"><i class="fa fa-search"></i></a>
+		<a ng-href="/ver/{{$ctrl.resource.type}}/{{$ctrl.resource._id}}" target="_blank" class="view-item" title="Ver Orientacion"><i class="fa fa-search"></i></a>
 		<!--a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
 		<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
 		<a href="#" class="youtube"><i class="fa fa-youtube"></i></a-->
