@@ -15,7 +15,7 @@ class OrientacionPedagogicaCardController {
 		this.$element = $element;
 		this.$state = $state;
         this.$mdDialog = $mdDialog;
-		this.$element.addClass('rd-card-orientaciones');
+		this.$element.addClass('orientacionpedagogica-card');
 
         this.captions = {
             'orientacionpedagogica': 'Orientacion Pedagogica',
