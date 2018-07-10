@@ -30,6 +30,12 @@
 										</div>
 									</md-dialog-content>	
 								</div-->
+								<div ng-if="$ctrl.resource.files.length"><md-button class="rview__button md-raised md-primary" 
+									ng-href="/api/publishednoticia/{{$ctrl.resource._id}}/download"
+									target="_blank">Descargar</md-button></div>
+						<div ng-if="$ctrl.resource.files.length">
+							<div class="text-center"><span class="text-uppercase color-grey">{{$ctrl.resource.files.length}} Archivos | {{$ctrl.sumfiles($ctrl.resource.files) | numeraljs:'0b'}}</span></div>
+						</div>
 						</div>				
 					</div>
 			</section>
