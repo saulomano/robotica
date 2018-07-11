@@ -104,7 +104,7 @@ hr{
   .subhead{
     font-size: 1.4rem !important;
     margin-left: 30px !important;
-    font-family: DINNextRoundedLTPro-Regular;
+    font-family: DINNextRoundedLTPro-Regular !important;
   }
   
   .ban_content{
@@ -151,6 +151,23 @@ hr{
   
 }
 
+@media only screen and (min-width: 850px) and (max-width: 990px) {
+ 
+  .divslide{
+    background-repeat: no-repeat !important;
+	  background-size: cover !important;
+	  background-position: center top !important;
+    width: 100% !important;
+    height: 20rem !important;
+    visibility: inherit !important;
+  }
+  .subhead{
+    font-size: 2rem !important;
+    margin-left: 80px !important;
+    font-family: DINNextRoundedLTPro-Regular !important ;
+  }  
+}
+
 .titHead{
   height: 15px; 
   background: rgb(175, 174, 174); 
@@ -168,7 +185,7 @@ hr{
     letter-spacing: 0px;
     margin-left: 80px;
     width: 500px;
-    font-family: DINNextRoundedLTPro-Medium;
+    font-family: DINNextRoundedLTPro-Medium !important;
 }
 
 .subhead {
@@ -176,7 +193,7 @@ hr{
   font-size: 47pt;
   text-align: left;
   margin-left: 80px;
-  font-family: DINNextRoundedLTPro-Regular;
+  font-family: DINNextRoundedLTPro-Regular !important;
 }
 
 .legend {
@@ -259,6 +276,19 @@ hr{
     //padding-bottom: 3%;
 }
 
+.pcomoempezar{
+  margin-top: 10px !important; 
+  font-family: DINNextRoundedLTPro-Regular !important; 
+  font-weight: bold !important;
+}
+
+.acomoempezar{
+  text-align: center; 
+  color: black; 
+  font-family: DINNextRoundedLTPro-Regular !important;
+  font-weight: bold; 
+  text-decoration: none;
+}
 
 
 //estilo slider
