@@ -174,11 +174,11 @@ hr{
 }
 
 .titHead{
-  height: 22px; 
+  height: 15px; 
   background: rgb(175, 174, 174); 
   color: white; 
   text-align: center;
-  font-size: 1.3rem; 
+  font-size: 1rem; 
   padding-top: 3px
 }
 
@@ -194,7 +194,7 @@ hr{
 }
 
 
-textoBanner{
+.textoBanner{
   display: table;
   min-height: 0px;
   min-width: 0px;
@@ -217,10 +217,10 @@ textoBanner{
 .legend {
   color: white;
   font-size: 3rem;
-  background-image: url(/assets/filtro_gris.png);
-	background-repeat: no-repeat;
-    background-position: center;
-    position: relative; 
+  //background-image: url(/assets/filtro_gris.png);
+	//background-repeat: no-repeat;
+    //background-position: center;
+    //position: relative; 
 }
 
 .ban_content{
