@@ -261,9 +261,9 @@ textoBanner{
 
 .divslide{
     height: 43rem;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat !important;
     position: relative;
-    background-size: 100%;
+    background-size: 100% !important;
 }
 
 .imgfondo{
