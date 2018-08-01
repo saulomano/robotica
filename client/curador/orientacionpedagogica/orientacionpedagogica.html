@@ -88,6 +88,67 @@
 					
 				 </md-expansion-panel>
 			</md-content>
+
+			<!-- areaEmergente -->
+			<md-content>
+				<md-expansion-panel class="option-panel">
+					
+					 <md-expansion-panel-collapsed>
+						 <div class="md-title">Area Emergente *</div>
+						 <div class="md-summary">{{$ctrl.resource.areaEmergente.length}} {{$ctrl.textSelection($ctrl.resource.areaEmergente.length)}}</div>
+						 <md-expansion-panel-icon></md-expansion-panel-icon>
+					 </md-expansion-panel-collapsed>
+					 <md-expansion-panel-expanded>
+					
+						 <md-expansion-panel-header ng-click="$panel.collapse()">
+							 <div class="md-title">Area  Emergente*</div>
+							 <div class="md-summary"></div>
+							 <md-expansion-panel-icon></md-expansion-panel-icon>
+						 </md-expansion-panel-header>
+					
+						 <md-expansion-panel-content>
+								<div flex="100" ng-repeat="item in $ctrl.areaEmergente">
+										<md-checkbox ng-checked="$ctrl.exists(item, $ctrl.resource.areaEmergente)" ng-click="$ctrl.toggle(item, $ctrl.resource.areaEmergente)">
+										{{ item }}
+									</md-checkbox>
+								</div>
+						 </md-expansion-panel-content>
+					
+					 </md-expansion-panel-expanded>
+					
+				 </md-expansion-panel>
+			</md-content>
+
+			<!-- anio -->
+			<md-content>
+				<md-expansion-panel class="option-panel">
+					
+					 <md-expansion-panel-collapsed>
+						 <div class="md-title">Año *</div>
+						 <div class="md-summary">{{$ctrl.resource.anio.length}} {{$ctrl.textSelection($ctrl.resource.anio.length)}}</div>
+						 <md-expansion-panel-icon></md-expansion-panel-icon>
+					 </md-expansion-panel-collapsed>
+					 <md-expansion-panel-expanded>
+					
+						 <md-expansion-panel-header ng-click="$panel.collapse()">
+							 <div class="md-title">Año*</div>
+							 <div class="md-summary"></div>
+							 <md-expansion-panel-icon></md-expansion-panel-icon>
+						 </md-expansion-panel-header>
+					
+						 <md-expansion-panel-content>
+								<div flex="100" ng-repeat="item in $ctrl.anio">
+										<md-checkbox ng-checked="$ctrl.exists(item, $ctrl.resource.anio)" ng-click="$ctrl.toggle(item, $ctrl.resource.anio)">
+										{{ item }}
+									</md-checkbox>
+								</div>
+						 </md-expansion-panel-content>
+					
+					 </md-expansion-panel-expanded>
+					
+				 </md-expansion-panel>
+			</md-content>
+
 		</md-content>
 			
 			

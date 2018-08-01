@@ -145,13 +145,13 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
 				// here init the stuff
 			
 				let at = this.getCategory('area');
-				let lt = this.getCategory('nivel');
-				
-				
-				
+				let lt = this.getCategory('nivel');				
+				let ot = this.getCategory('areaEmergente');
+				let ant = this.getCategory('anio');
 				this.areas = at.values;
 				this.niveles = lt.values;
-				
+				this.areaEmergente =ot.values;
+				this.anio =ant.values;
 				cb()
 			}
 		], err => {
