@@ -85,6 +85,15 @@ export default function seedDatabaseIfNeeded() {
         type: 'orientacion',
         values: ['Tutoriales', 'Documentación', 'Recomendaciones de uso de soft', 'Enlaces de interés', 'Documentación de apoyo'],
         caption: 'Tipo de Orientación'
+      },{
+        type: 'areaEmergente',
+        values: ['Pensamiento Computacional', 'Porgramacion', 'Robotica'],
+        caption: 'Area Emergente'
+      },
+      {
+        type: 'anio',
+        values: ['5to', '6to'],
+        caption: 'Año'
       })
       .then(() => console.log('finished populating categories'))
       .catch(err => console.log('error populating categories', err));
