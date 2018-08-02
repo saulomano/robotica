@@ -1,3 +1,97 @@
+#donate {
+	margin:4px;
+
+}
+
+#donate label {
+	float:left;
+	margin:4px;
+	background-color: rgba(224, 224, 224, 0.96);
+	border-radius:4px;
+	border:2px solid rgb(131, 130, 130);
+	overflow:auto;
+		 
+}
+
+#donate label span {
+	text-align:center;
+	font-size: 12px;
+	padding:7px 0px;
+	display:block;
+	font-family: DINNextRoundedLTPro-Regular;
+}
+
+#donate label input {
+	position:absolute;
+	top:-20px;
+}
+
+#donate input:checked + span {
+	background-color: #9F9A99;
+	color:white;
+}
+
+#b1 input:checked + span{
+	background-color:#5EA7F1;
+	color:white;
+}
+
+#b2 input:checked + span{
+	background-color:#8BBF1F;
+	color:white;
+}
+
+#b3 input:checked + span{
+	background-color:#BB62B3;
+	color:white;
+}
+
+#donate .yellow {
+	margin:4px;
+	background-color: rgba(224, 224, 224, 0.96);
+	border-radius:4px;
+	border:2px solid #BB62B3;
+	overflow:auto;
+	float:left;
+	color:#BB62B3;
+	width: 250px;
+}
+
+#donate .blue {
+	margin:4px;
+	background-color: rgba(224, 224, 224, 0.96);
+	border-radius:4px;
+	border:2px solid #5EA7F1;
+	overflow:auto;
+	float:left;
+	color:#5EA7F1;
+	width: 250px;
+}
+
+
+#donate .green {
+	margin:4px;
+	background-color: rgba(224, 224, 224, 0.96);
+	border-radius:4px;
+	border:2px solid #8BBF1F;
+	overflow:auto;
+	float:left;
+	color:#8BBF1F;
+	width: 250px;
+}
+
+.mat .nat .praclen{
+	width: 150px;
+}
+
+.quinto .sexto{
+	width: 50px;
+}
+
+
+
+
+
 .groupX {
 	font-size: 16px;
 	margin: 20px 0;
