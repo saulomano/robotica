@@ -217,4 +217,65 @@ export function findArea(req, res, next) {
 }
 
 
+export function filtrarOrientacion(req, res, next) {
+	var query = req.querymen;
+	let qq = req.query.q;
+	var type = req.query.type;
+	let q = {};
+	if (qq){
+  	// convert to regex
+		let keywords = _.escapeRegExp(qq);
+		let patterns = [
+			{ s: /[aáà]/ig, v: '[aáà]' },
+			{ s: /[eéè]/ig, v: '[eéè]' },
+			{ s: /[iíì]/ig, v: '[iíì]' },
+			{ s: /[oóò]/ig, v: '[oóò]' },
+			{ s: /[uúù]/ig, v: '[uúù]' },
+		];
+
+		_.each(patterns, p => {
+			keywords = keywords.replace(p.s, p.v);
+		});
+
+		let k = new RegExp(keywords, 'i');
+
+		q = { $or: [
+				{ area: { $regex: k, $options: 'i' } },
+				{ areaEmergente: { $regex: k, $options: 'i' } },
+				{ anio: { $regex: k, $options: 'i' } },				
+			]
+		};
+	}
+	
+	if (type){
+		q['$and'] = [ { type: type } ];
+		if (q['$or']) {
+			q['$or'].type = undefined; 
+		}
+	}
+
+	Published
+		.find(q)
+		.count()
+		.exec((err, count) => {
+			if (err){
+				return next(err);
+			}
+			req.totalItems = count;
+			req.result = Published
+										.find(q)
+										.populate({path: 'orientacionpedagogica'})									
+										.populate('owner')
+										.populate('files')
+                						.populate('links')
+										.sort(query.cursor.sort)
+										.skip(query.cursor.skip)
+										.limit(query.cursor.limit)
+										.select(query.cursor.select)
+										.exec();
+			next();
+		});
+}
+
+
 
