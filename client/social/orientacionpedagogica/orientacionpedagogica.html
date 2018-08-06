@@ -10,21 +10,21 @@
 
 	<div layout="row" layout-align="center center" style="margin-bottom: 0.5%;" id="donate">
 	
-			<label id="b1" class="blue"><input id="b1" type="checkbox" checklist-model="$ctrl.areaEspecializacion"><span id="b1">PENSAMIENTO COMPUTACIONAL</span></label>	
-			<label id="b2" class="green"><input id="b2" type="checkbox" checklist-model="$ctrl.areaEspecializacion"><span id="b2">PROGRAMACIÓN</span></label>
-			<label id="b3" class="yellow"><input id="b3" type="checkbox" checklist-model="$ctrl.areaEspecializacion"><span id="b3">ROBÓTICA</span></label>
+			<label id="b1" class="blue"><input id="b1" type="checkbox" ng-model="$ctrl.areaEspecializacion.pensamientoComputacional"><span id="b1">PENSAMIENTO COMPUTACIONAL</span></label>	
+			<label id="b2" class="green"><input id="b2" type="checkbox" ng-model="$ctrl.areaEspecializacion.programacion"><span id="b2">PROGRAMACIÓN</span></label>
+			<label id="b3" class="yellow"><input id="b3" type="checkbox" ng-model="$ctrl.areaEspecializacion.robotica"><span id="b3">ROBÓTICA</span></label>
 
 </div>
 
 <div layout="row" layout-align="center center" style="margin-bottom: 0.5%;" id="donate">
 	<div>
-	<label class="mat"><input type="checkbox" name="area" ng-model="$ctrl.area.matematica" value="matematica"  checkbox-group><span style="width: 100px;">Matemática</span></label>
-	<label class="nat"><input type="checkbox" name="area" ng-model="$ctrl.area.naturales" value="naturales"  checkbox-group><span style="width: 100px;">Cs. Naturales</span></label>
-	<label class="pracLen"><input type="checkbox" name="area" ng-model="$ctrl.area.xxx" value="xxx"  checkbox-group><span style="width: 150px;">Prácticas del lenguaje</span></label>
+	<label class="mat"><input type="checkbox" name="area" ng-model="$ctrl.area.matematica"   checkbox-group><span style="width: 100px;">Matemática</span></label>
+	<label class="nat"><input type="checkbox" name="area" ng-model="$ctrl.area.naturales"  checkbox-group><span style="width: 100px;">Cs. Naturales</span></label>
+	<label class="pracLen"><input type="checkbox" name="area" ng-model="$ctrl.area.xxx"   checkbox-group><span style="width: 150px;">Prácticas del lenguaje</span></label>
 </div>
 	<div style="margin-left: 35px;">
-		<label class="quinto"><input type="checkbox" checklist-model="$ctrl.anio"><span style="width: 50px;">5to año</span></label>
-		<label class="sexto"><input type="checkbox" checklist-model="$ctrl.anio"><span style="width: 50px;">6to año</span></label>
+		<label class="quinto"><input type="checkbox"  ng-model="$ctrl.anio.5" ><span style="width: 50px;">5to año</span></label>
+		<label class="sexto"><input type="checkbox" ng-model="$ctrl.anio.6" ><span style="width: 50px;">6to año</span></label>
 	</div>
 </div>
 	

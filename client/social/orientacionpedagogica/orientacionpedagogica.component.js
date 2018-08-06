@@ -110,7 +110,9 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
                 page: this.page, 
                 limit: this.limit,
                 type: 'orientacionpedagogica',
-                area:this.area
+                area:this.area,
+                areaEspecializacion:this.areaEspecializacion,
+                anio:this.anio
             })
             .then(data => {
                 let total = data.$total;
