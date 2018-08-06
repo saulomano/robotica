@@ -14,6 +14,13 @@ export function index(req, res, next) {
 	var query = req.querymen;
 	let qq = req.query.q;
 	var type = req.query.type;
+	var area = req.query.area;
+	var areaEmergente = req.query.areaEmergente;
+	var anio = req.query.anio;
+
+	
+		
+
 	let q = {};
 	if (qq){
   	// convert to regex
@@ -54,6 +61,37 @@ export function index(req, res, next) {
 			q['$or'].type = undefined; 
 		}
 	}
+
+
+	if (area ) {
+	area=	JSON.parse(area);
+		console.log(area);
+		//if(areaObject.naturales)
+		console.log("naturales "+area.naturales);
+		console.log("xxx "+area.xxx);
+	}
+
+
+	/*if (area){
+		q['$and'] = [ { area: area } ];
+		if (q['$or']) {
+			q['$or'].area = undefined; 
+		}
+	}
+
+	if (areaEmergente){
+		q['$and'] = [ { areaEmergente: areaEmergente } ];
+		if (q['$or']) {
+			q['$or'].areaEmergente = undefined; 
+		}
+	}
+
+	if (anio){
+		q['$and'] = [ { anio: anio } ];
+		if (q['$or']) {
+			q['$or'].anio = undefined; 
+		}
+	}*/
 
 	Published
 		.find(q)

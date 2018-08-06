@@ -25,6 +25,9 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
         this.filter = this.$stateParams.filter || 'all';
         this.$mdDialog = $mdDialog;
         this.filterChange;
+        this.area;
+        this.areaEspecializacion;
+        this.anio;
         $scope.$mdMedia = $mdMedia;
 
         if(this.filter === 'all'){
@@ -32,6 +35,7 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
         }else{
             this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica/findArea/'+this.filter);
         }
+
 
 
       
@@ -50,7 +54,7 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
          ];
 
 
-         this.orientacionesFiltro = [].concat(tiposOr);            
+         this.orientacionesFiltro =[].concat(tiposOr);            
          
 
          this.$scope.$watch(() => { return $mdMedia('xs') }, (mobile) => {
@@ -58,7 +62,9 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
             this.muestraFiltroMobile=false;  
           });
 
-
+          this.$scope.$watch( this.area, function(){
+            console.log(this); 
+          });
 
 
           
@@ -103,7 +109,8 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
             .getList({
                 page: this.page, 
                 limit: this.limit,
-                type: 'orientacionpedagogica'
+                type: 'orientacionpedagogica',
+                area:this.area
             })
             .then(data => {
                 let total = data.$total;
