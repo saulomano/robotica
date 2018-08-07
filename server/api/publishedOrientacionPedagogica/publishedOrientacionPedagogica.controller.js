@@ -85,7 +85,7 @@ export function index(req, res, next) {
 				'lengua' )
 		}
 
-
+		if ( arrayArea.length > 0) 
 		q['area']= { $in : arrayArea};
 	}
 
@@ -99,7 +99,7 @@ export function index(req, res, next) {
 			
 	}
 	if(areaEmergente.programacion){						
-		arraarrayAreaEmergenteyArea.push (
+		arrayAreaEmergente.push (
 			'Programacion' )
 	}
 	if(areaEmergente.robotica){			
@@ -107,7 +107,7 @@ export function index(req, res, next) {
 			'Robotica' )
 	}
 
-
+	if ( arrayAreaEmergente.length > 0) 
 	q['areaEmergente']= { $in : arrayAreaEmergente};
 	}
 
@@ -125,7 +125,7 @@ export function index(req, res, next) {
 			'6to' )
 	}
 
-
+	if ( arrayAnio.length > 0) 
 	q['anio']= { $in : arrayAnio};
 }
 
