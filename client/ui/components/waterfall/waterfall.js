@@ -30,6 +30,7 @@ class RdWaterfallController {
 			this.$scope.itemWidth = this.$scope.itemWidth || DEFAULT_ITEM_WIDTH;
 			this.$scope.gutter = this.$scope.gutter	|| DEFAULT_GUTTER;
 			this.searchText = '';
+			
 
 			this.$scope.$watch(() => { return this.$scope.searchText }, (value) => {
 				if (this.searchText !== value) {
@@ -42,6 +43,16 @@ class RdWaterfallController {
 					this.fetch();
 				}
 			});
+
+			this.$scope.$watch(() => { return this.$scope.obligareset }, (value) => {				
+					//reset & fetch
+					this.reset();
+					this.fetch();
+				
+			});
+
+
+
 			// set sizes
 			this.initColumnsSizes_();
 			this.$element.addClass('rd-waterfall');
@@ -245,7 +256,8 @@ function rdWaterfall(){
 				'loadMoreText': '@',
 				'itemClick': '=',
 				'searchText': '=',
-				'maxItems': '='
+				'maxItems': '=',
+				'obligareset':'='
 			},
 			template: (element, attr) => {
 				attr.itemTemplate    = getItemTemplate();

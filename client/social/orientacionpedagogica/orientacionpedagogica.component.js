@@ -29,7 +29,7 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
         this.areaEspecializacion;
         this.anio;
         $scope.$mdMedia = $mdMedia;
-
+        this.resetWaterfall;
         if(this.filter === 'all'){
             this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
         }else{
@@ -96,6 +96,10 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
       
       }
 
+
+      fetchDataFilter(){
+        this.resetWaterfall="";
+      }
 
     fetchData(){
         let def = this.$q.defer();
