@@ -49,6 +49,8 @@
 				<h1 class="rd-card__title--v1">{{$ctrl.resource.objetivo}}</h1>
 				<p class="rd-card__paragraph">{{$ctrl.resource.descripcion | truncate:140 }}</p>
 				<p class="rd-card__paragraph ng-binding"><strong ng-repeat="area in $ctrl.resource.area"> {{area}} </strong></p>
+				<p class="rd-card__paragraph ng-binding"><strong ng-repeat="anio in $ctrl.resource.anio"> {{anio}} </strong></p>
+				<p class="rd-card__paragraph ng-binding"><strong ng-repeat="areaEmergente in $ctrl.resource.areaEmergente"> {{areaEmergente}} </strong></p>
 				<!--<p><strong class="rd-card-orientaciones__owner">{{$ctrl.resource.owner.name}}</strong></p>-->
 			</div>
 		</div>
