@@ -22,10 +22,26 @@ class OrientacionPedagogicaCardController {
             'noticia': 'Noticia',
             'kit': 'Kit'
         };
-	
+    
+        
+
+
+
 		
 		
 		this.resource = this.$scope.resource;
+
+
+
+        let captionsAreas = {
+            'Cs. Naturales' : 'naturales',
+            'Matemática' : 'Matemática',
+            'Práctica del Lenguajes' : 'lengua'
+        };
+
+        this.iconsAreas = _.map(this.resource.area, p =>{
+            return captionsAreas[p.type];         
+        });
 
 
 
