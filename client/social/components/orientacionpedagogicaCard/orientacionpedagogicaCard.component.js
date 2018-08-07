@@ -73,6 +73,25 @@ class OrientacionPedagogicaCardController {
       };
 
 
+
+
+      getFieldClass(entry){
+        if (entry === 'Cs. Naturales')
+            return "iconPed-naturales step";
+        if (entry === 'Matemática')
+            return "iconPed-matematica step";
+        if (entry === 'Práctica del Lenguaje')
+            return "iconPed-lengua step";            
+
+
+
+        return  "iconPed-"+entry +" step";
+
+     }
+
+      
+
+
 	deleteResource(){
         this.resource
             .remove()
@@ -136,6 +155,10 @@ class OrientacionPedagogicaCardController {
             this.closeDialog = function() {
                 $mdDialog.hide();
             }
+
+
+
+
 
             this.Resource
                 .get()
