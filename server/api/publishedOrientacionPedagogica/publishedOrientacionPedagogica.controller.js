@@ -70,19 +70,17 @@ export function index(req, res, next) {
 		let arrayArea=[];
 		
 		if(area.naturales){	
-
-
 			arrayArea.push (
-				 'naturales' );
+				 'Cs. Naturales' );
 				
 		}
 		if(area.matematica){						
 			arrayArea.push (
-				'matematica' )
+				'Matemática' )
 		}
 		if(area.lengua){			
 			arrayArea.push (
-				'lengua' )
+				'Práctica del Lenguaje' )
 		}
 
 		if ( arrayArea.length > 0) 
