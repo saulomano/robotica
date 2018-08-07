@@ -22,6 +22,8 @@ export function index(req, res, next) {
 		
 
 	let q = {};
+
+	
 	if (qq){
   	// convert to regex
 		let keywords = _.escapeRegExp(qq);
@@ -63,32 +65,69 @@ export function index(req, res, next) {
 	}
 
 
-	if (area ) {
-			area=JSON.parse(area);
+	if (area) {
+			area=JSON.parse(area);		
+		let arrayArea=[];
 		
 		if(area.naturales){	
-			console.log ("area.naturales "+area.naturales);			
-			q = { $or: [			
-				{ area: { $regex: 'naturales', $options: 'i' } }
-				]
-			};
+
+
+			arrayArea.push (
+				 'naturales' );
+				
 		}
-		if(area.matematica){	
-			console.log ("area.matematica "+area.matematica);				
-			q = { $or: [			
-				{ area: "matematica" }
-				]
-			};
+		if(area.matematica){						
+			arrayArea.push (
+				'matematica' )
 		}
-		if(area.lengua){	
-			console.log ("area.lengua "+area.lengua);				
-			q = { $or: [			
-				{ area: { $regex:  'lengua', $options: 'i' } }
-				]
-			};
+		if(area.lengua){			
+			arrayArea.push (
+				'lengua' )
 		}
+
+
+		q['area']= { $in : arrayArea};
 	}
 
+	if (areaEmergente) {
+		areaEmergente=JSON.parse(areaEmergente);		
+	let arrayAreaEmergente=[];
+	
+	if(areaEmergente.pensamientoComputacional){	
+		arrayAreaEmergente.push (
+			 'Pensamiento Computacional' );
+			
+	}
+	if(areaEmergente.programacion){						
+		arraarrayAreaEmergenteyArea.push (
+			'Programacion' )
+	}
+	if(areaEmergente.robotica){			
+		arrayAreaEmergente.push (
+			'Robotica' )
+	}
+
+
+	q['areaEmergente']= { $in : arrayAreaEmergente};
+	}
+
+	if (anio) {
+		anio=JSON.parse(anio);		
+	let arrayAnio=[];
+	
+
+	if(anio.quinto){						
+		arrayAnio.push (
+			'5to' )
+	}
+	if(anio.sexto){			
+		arrayAnio.push (
+			'6to' )
+	}
+
+
+	q['anio']= { $in : arrayAnio};
+}
 
 
 	console.log(q);

@@ -26,7 +26,7 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
         this.$mdDialog = $mdDialog;
         this.filterChange;
         this.area;
-        this.areaEspecializacion;
+        this.areaEmergente;
         this.anio;
         $scope.$mdMedia = $mdMedia;
         this.resetWaterfall;
@@ -97,8 +97,9 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
       }
 
 
-      fetchDataFilter(){
-        this.resetWaterfall="";
+      fetchDataFilter(value){
+          this.page=0;
+        this.resetWaterfall= Math.random();
       }
 
     fetchData(){
@@ -115,7 +116,7 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
                 limit: this.limit,
                 type: 'orientacionpedagogica',
                 area:this.area,
-                areaEspecializacion:this.areaEspecializacion,
+                areaEmergente:this.areaEmergente,
                 anio:this.anio
             })
             .then(data => {

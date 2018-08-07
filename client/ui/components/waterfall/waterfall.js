@@ -44,12 +44,16 @@ class RdWaterfallController {
 				}
 			});
 
-		/*	this.$scope.$watch(() => { return this.$scope.obligareset }, (value) => {				
+			this.$scope.$watch(() => { return this.$scope.obligareset }, (value) => {				
 					//reset & fetch
+					if ( value  == undefined ) {
+						return;
+					}
+
 					this.reset();
 					this.fetch();
 				
-			});*/
+			});
 
 
 
@@ -257,7 +261,7 @@ function rdWaterfall(){
 				'itemClick': '=',
 				'searchText': '=',
 				'maxItems': '=',
-				//'obligareset':'='
+				'obligareset':'=?'
 			},
 			template: (element, attr) => {
 				attr.itemTemplate    = getItemTemplate();

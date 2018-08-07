@@ -87,7 +87,7 @@ export default function seedDatabaseIfNeeded() {
         caption: 'Tipo de Orientación'
       },{
         type: 'areaEmergente',
-        values: ['Pensamiento Computacional', 'Porgramacion', 'Robotica'],
+        values: ['Pensamiento Computacional', 'Programacion', 'Robotica'],
         caption: 'Area Emergente'
       },
       {
