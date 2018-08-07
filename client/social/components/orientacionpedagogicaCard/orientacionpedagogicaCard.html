@@ -41,7 +41,7 @@
 	<rd-card-body>
 		<div layout="row" ng-hide="$ctrl.deleteDesafioBoolean">
 			<div class="preview-glyphs">
-				<md-icon ng-repeat="area in $ctrl.iconsAreas" style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass($ctrl.resource.area)}}"></md-icon>
+				<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(area)}}"></md-icon>
 			</div>
 		</div>
 		<div layout="row" ng-hide="$ctrl.deleteDesafioBoolean">
