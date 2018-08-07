@@ -178,7 +178,7 @@ export function download(req, res, next) {
 					path: path.join(config.uploads, f.relative),
 					name: f.name
 				}
-			}), `${p.title}.zip`);
+			}), `${p.objetivo.replace(' ', '_').slice(0,20)}.zip`);
 		});
 }
 
