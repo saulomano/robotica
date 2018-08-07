@@ -98,11 +98,11 @@ export function index(req, res, next) {
 	}
 	if(areaEmergente.programacion){						
 		arrayAreaEmergente.push (
-			'Programacion' )
+			'Programación' )
 	}
 	if(areaEmergente.robotica){			
 		arrayAreaEmergente.push (
-			'Robotica' )
+			'Robótica' )
 	}
 
 	if ( arrayAreaEmergente.length > 0) 
