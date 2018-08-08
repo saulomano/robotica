@@ -103,7 +103,7 @@ class OrientacionPedagogicaCardController {
 
         return  "iconPed-"+entry +" step";
 
-     }
+        }
 
       
 

@@ -9,7 +9,7 @@
 						<h4 class="margin" style="font-family: DINNextRoundedLTPro-Regular;">{{$ctrl.resource.objetivo}}</h4>
 						<div layout="row" ng-hide="$ctrl.deleteDesafioBoolean">
 							<div class="preview-glyphs">
-								<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="iconPed-{{area}} step"></md-icon>
+								<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(area)}}"></md-icon>
 							</div>
 							<div flex class="rd-card__body--custom">
 								<p class="rd-card__paragraph ng-binding"><strong ng-repeat="area in $ctrl.resource.area"> {{area}} </strong></p>
