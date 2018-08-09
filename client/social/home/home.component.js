@@ -198,7 +198,8 @@ export default class HomeComponent extends SocialComponent {
         .getList({
             page: 1, 
             limit: 3,
-            type: 'orientacionpedagogica'
+            type: 'orientacionpedagogica',
+            publicaHome: true
         })
         .then(data => {
             let total = data.$total;

@@ -17,5 +17,4 @@ router.post('/', auth.hasRole('admin'), controller.create);
 router.get('/findArea/:area',  querymen.middleware(), querymen.middleware(), controller.findArea);
 
 
-
 module.exports = router;
