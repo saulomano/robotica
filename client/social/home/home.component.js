@@ -199,7 +199,7 @@ export default class HomeComponent extends SocialComponent {
             page: 1, 
             limit: 3,
             type: 'orientacionpedagogica',
-            publicaHome: true
+            troncal: true
         })
         .then(data => {
             let total = data.$total;

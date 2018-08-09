@@ -28,7 +28,8 @@ var PublishedSchema = new Schema({
 	publicaHome: { type:Boolean, default: false },
 	links: [{ type: Schema.Types.ObjectId, ref: 'Kit' }],
 	areaEmergente: [String],	
-	anio: [String]
+	anio: [String],
+	troncal: { type:Boolean, default: false },
 }, ops);
 
 registerEvents(PublishedSchema);

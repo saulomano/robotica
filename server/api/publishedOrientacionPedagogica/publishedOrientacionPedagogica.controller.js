@@ -17,7 +17,7 @@ export function index(req, res, next) {
 	var area = req.query.area;
 	var areaEmergente = req.query.areaEmergente;
 	var anio = req.query.anio;
-	var publicaHome = req.query.publicaHome;
+	var troncal = req.query.troncal;
 	
 		
 
@@ -59,8 +59,8 @@ export function index(req, res, next) {
 
 
 
-	if(publicaHome){
-		q['publicaHome'] = true;
+	if(troncal){
+		q['troncal'] = true;
 	}
 	
 	if (type){
