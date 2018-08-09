@@ -17,7 +17,7 @@ export function index(req, res, next) {
 	var area = req.query.area;
 	var areaEmergente = req.query.areaEmergente;
 	var anio = req.query.anio;
-
+	var troncal = req.query.troncal;
 	
 		
 
@@ -55,6 +55,12 @@ export function index(req, res, next) {
 				{ tags: { $regex: k, $options: 'i' } },
 			]
 		};
+	}
+
+
+
+	if(troncal){
+		q['troncal'] = true;
 	}
 	
 	if (type){
@@ -291,6 +297,9 @@ export function findArea(req, res, next) {
 			next();
 		});
 }
+
+
+
 
 
 

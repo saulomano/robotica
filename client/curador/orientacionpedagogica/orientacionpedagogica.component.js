@@ -237,7 +237,7 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
 			clickable: '.dz-tumbnail-clickable',
 			maxFilesize : 1024,
 			timeout: 18000000,
-      		acceptedFiles : 'image/*, application/pdf',
+      	//	acceptedFiles : 'image/*, application/pdf',
       		addRemoveLinks : false,
 			headers: Util.getHeaders(),
 			init: function(){
