@@ -31,6 +31,7 @@ var PublishedSchema = new Schema({
 	anio: [String],
 	troncal: { type:Boolean, default: false },
 	complementarias: { type:Boolean, default: false },
+	intensivo: { type:Boolean, default: false },
 }, ops);
 
 registerEvents(PublishedSchema);
