@@ -143,13 +143,16 @@ class RdNavbarController {
 		let types = /^(desafios|subidesafio|desafiosaprobados)$/ig;
 		console.log('cai en nav var');
 		//Si es query string viene por aca sino redirige
-		if (item.action.includes("?seccion=")){
-			this.$state.go('social.home', {  seccion: item.action.slice(item.action.indexOf('=')+1)   }, {reload: true});
-		}else if (item.params){
-			this.$state.go(item.action,{params:item.params},{reload:true});
-		} else {
-			this.$state.go(item.action, { type: item.section }, {reload:true});
-		}
+		
+		if(!item.nodes){
+			if (item.action.includes("?seccion=")){
+				this.$state.go('social.home', {  seccion: item.action.slice(item.action.indexOf('=')+1)   }, {reload: true});
+			}else if (item.params){
+				this.$state.go(item.action,{params:item.params},{reload:true});
+			} else {
+				this.$state.go(item.action, { type: item.section }, {reload:true});
+			}
+	}
 
 
     }
