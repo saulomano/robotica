@@ -18,7 +18,7 @@ export function index(req, res, next) {
 	var areaEmergente = req.query.areaEmergente;
 	var anio = req.query.anio;
 	var troncal = req.query.troncal;
-	
+	var complementarias= req.query.complementarias;
 		
 
 	let q = {};
@@ -58,6 +58,8 @@ export function index(req, res, next) {
 	}
 
 
+
+	q['complementarias'] =complementarias;
 
 	if(troncal){
 		q['troncal'] = true;

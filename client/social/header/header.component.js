@@ -22,8 +22,21 @@ class HeaderComponent {
         section: 'comoEmpezar',  caption: 'Cómo empezar', action:'social.comoEmpezar'
       },
       {
-        section: 'orientacionpedagogica',  caption: 'Propuestas Pedagógicas', action:'social.orientacionpedagogica'
-      },
+        section: 'enelaula',  caption: 'En el Aula',
+        "nodes": [
+          {
+            section: 'orientacionpedagogica',  caption: 'Propuestas Pedagógicas', action:'social.orientacionpedagogica'
+          },
+          {
+            section: 'actividadescomplementarias',  caption: 'Actividades Complementarias', action:'social.orientacionpedagogica', params:{"complementarias":true}
+          },
+          
+        ]
+      }
+,
+
+
+    
       {
         section: 'kits',  caption: 'Kits', action:'social.kitsDisponibles'
       },

@@ -10,7 +10,10 @@ let routes = function($stateProvider) {
             filter: {
               value: null,
               dynamic: true
-           }
+           },params: {
+            value: null,
+            dynamic: true
+         }
         }
       });
   }

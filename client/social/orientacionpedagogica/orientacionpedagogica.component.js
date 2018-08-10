@@ -30,12 +30,15 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
         this.anio;
         $scope.$mdMedia = $mdMedia;
         this.resetWaterfall;
+        this.complementarias = this.$stateParams.params?  this.$stateParams.params.complementarias || false :false;
         if(this.filter === 'all'){
             this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
         }else{
             this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica/findArea/'+this.filter);
         }
 
+
+       
 
 
       
@@ -117,7 +120,8 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
                 type: 'orientacionpedagogica',
                 area:this.area,
                 areaEmergente:this.areaEmergente,
-                anio:this.anio
+                anio:this.anio,
+                complementarias: this.complementarias
             })
             .then(data => {
                 let total = data.$total;
