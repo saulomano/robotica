@@ -25,7 +25,7 @@ class HeaderComponent {
         section: 'enelaula',  caption: 'En el Aula',
         "nodes": [
           {
-            section: 'orientacionpedagogica',  caption: 'Propuestas Pedagógicas', action:'social.orientacionpedagogica'
+            section: 'orientacionpedagogica',  caption: 'Propuestas Pedagógicas', action:'social.orientacionpedagogica', params:{"complementarias":false}
           },
           {
             section: 'actividadescomplementarias',  caption: 'Actividades Complementarias', action:'social.orientacionpedagogica', params:{"complementarias":true}
