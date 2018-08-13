@@ -331,9 +331,9 @@ html {
 .submenu {
 	position: absolute;
 	top: 100%;
-	left: 50%;
+	left: 30%;
 	z-index: 100;
-	width: 200px;
+	width: 230px;
 	margin-left: -100px;
 	background: #fff;
 	border-radius: 3px;
@@ -372,7 +372,8 @@ html {
 
 .submenu-items {
 	list-style: none;
-	padding: 10px 0;
+	//padding: 10px 0;
+	padding: 8px 0;
 }
 
 .submenu-item {
@@ -384,12 +385,20 @@ html {
 .submenu-link:link,
 .submenu-link:visited,
 .submenu-link:active {
-	color: #3498db;
-	padding: 10px 20px;
+	//color: #3498db;
+	color: #565656;
+	padding: 5px 10px;
+	font-size: 11px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    font-family: DINNextRoundedLTPro-Regular !important;
+    
 }
 
 .submenu-link:hover {
-	text-decoration: underline;
+	//text-decoration: underline;
+	background: #eee;
+	
 }
 
 .submenu-seperator {
