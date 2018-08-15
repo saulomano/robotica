@@ -22,6 +22,8 @@ router.use('/orientacionPedagogica', require('./orientacionPedagogica'));
 router.use('/publishedOrientacionPedagogica', require('./publishedOrientacionPedagogica'));
 router.use('/publishedkits', require('./publishedkits'));
 router.use('/kit', require('./kit'));
+router.use('/propuestasTaller', require('./propuestasTaller'));
+router.use('/publishedPropuestTaller', require('./publishedPropuestTaller'));
 
 
 router.use(writer());

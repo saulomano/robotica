@@ -25,6 +25,11 @@ class CuradorHeaderComponent {
       section: 'noticias',  caption: 'Noticias', action:'curador.dashboardnoticias'
     };
 
+
+    this.navPropuestaTaller = {
+      section: 'propuestataller',  caption: 'Propuesta Taller', action:'curador.dashboarpropuestataller'
+    };
+
     this.navOrientacionPedagogica = {
       section: 'orientacionpedagogica',  caption: 'Orientacion Pedagógica', action:'curador.dashboardorientacionpedagogica'
     };
