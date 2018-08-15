@@ -35,7 +35,7 @@ export default class PropuestaTallerComponent extends CuradorComponent {
         };
 		
 		// this.Resource = this.Restangular.one('resources', this.uid);
-		this.PropuestaDesafio = this.Restangular.one('propuestataller', this.uid);
+		this.Propuestataller = this.Restangular.one('propuestasTaller', this.uid);
 		//this.Publisheds = this.Restangular.all('kit');
 
 		this.returnDesafios = false;
@@ -46,12 +46,12 @@ export default class PropuestaTallerComponent extends CuradorComponent {
 		this.resource = {};
 		this.steps = [
 			{ name: 'ficha', 		caption: 'Ficha' },
-			{ name: 'recurso', 	caption: 'Recurso' },
+			//{ name: 'recurso', 	caption: 'Recurso' },
 			{ name: 'vinculo', caption: 'Vínculo' },
 			{ name: 'publicar', caption: 'Publicar' },
 		];
 		let captions = {
-			'orientacionpedagogica': 'OrientacionPedagogica'
+			'propuestataller': 'propuesta Taller'
 		};
 		this.configureDropzone(Util);
 		this.configureFunctions();
@@ -100,7 +100,7 @@ export default class PropuestaTallerComponent extends CuradorComponent {
 
 	refreshUI(forceApply){
 		this.headText = 'Propuesta taller';
-		this.showViculo = ['propuestataller' ].indexOf(this.PropuestaDesafio.route) > -1;
+		this.showViculo = ['propuestataller' ].indexOf(this.Propuestataller.route) > -1;
 		this.getPublisheds(forceApply);
 	}
 
@@ -145,12 +145,9 @@ export default class PropuestaTallerComponent extends CuradorComponent {
 				// here init the stuff
 			
 				let at = this.getCategory('area');
-				let lt = this.getCategory('nivel');				
-				let ot = this.getCategory('areaEmergente');
 				let ant = this.getCategory('anio');
 				this.areas = at.values;
-				this.niveles = lt.values;
-				this.areaEmergente =ot.values;
+								
 				this.anio =ant.values;
 				cb()
 			}
@@ -164,66 +161,6 @@ export default class PropuestaTallerComponent extends CuradorComponent {
 
 		
 
-	}
-
-	watchResource(){
-		this.saveTimes = 0;
-
-		this.$scope.$watch(() => { return this.resource; }, (value) => {
-			this.refreshUI();
-			this.saveTimes++;
-			if (this.saveTimes <= 1){
-				return;
-			}
-			if (this.saverHandler) {
-				clearInterval(this.saverHandler);
-			}
-			this.saverHandler = setInterval(() => {
-				this.saveResource();
-				clearInterval(this.saverHandler);
-			}, 500);
-		}, true);
-	}
-
-	configureFunctions(){	
-		this.onEnterStep = (step) => {
-			this.$timeout(() => {
-				this.currentStep = step.name;
-				
-				if (!this.init && !this.loading){
-					this.resource.step = 'publicar';
-				}
-				
-				this.init = false;
-				this.$scope.$apply();
-			});
-		};
-
-		this.save = (button) => {
-			this.saveResource(button);
-		};
-
-		this.cancel = () => {
-			(this.isEdit) ? this.$state.go('curador.dashboardorientacionpedagogica') : this.deleteResource();
-		};
-
-		this.finish = ($event) => {
-			
-                this.publish();
-			
-		}
-
-		this.toRefuse = ($event) => {
-			this.resource.status = 'rechazado';
-			this.resource
-					.put()	
-					.then(data => {
-						(this.returnDesafios) ? this.$state.go('curador.orientacionpedagogica', { type: "orientacionpedagogica" }) : this.$state.go('curador.propuestadesafio');
-					})
-					.catch(err => {
-						throw err;
-					});
-		}
 	}
 
 	configureDropzone(Util){
@@ -298,23 +235,85 @@ export default class PropuestaTallerComponent extends CuradorComponent {
 		};
 	}
 
+	watchResource(){
+		this.saveTimes = 0;
+
+		this.$scope.$watch(() => { return this.resource; }, (value) => {
+			this.refreshUI();
+			this.saveTimes++;
+			if (this.saveTimes <= 1){
+				return;
+			}
+			if (this.saverHandler) {
+				clearInterval(this.saverHandler);
+			}
+			this.saverHandler = setInterval(() => {
+				this.saveResource();
+				clearInterval(this.saverHandler);
+			}, 500);
+		}, true);
+	}
+
+	configureFunctions(){	
+		this.onEnterStep = (step) => {
+			this.$timeout(() => {
+				this.currentStep = step.name;
+				
+				if (!this.init && !this.loading){
+					this.resource.step = 'publicar';
+				}
+				
+				this.init = false;
+				this.$scope.$apply();
+			});
+		};
+
+		this.save = (button) => {
+			this.saveResource(button);
+		};
+
+		this.cancel = () => {
+			(this.isEdit) ? this.$state.go('curador.dashboardpropuestataller') : this.deleteResource();
+		};
+
+		this.finish = ($event) => {
+			
+                this.publish();
+			
+		}
+
+		this.toRefuse = ($event) => {
+			this.resource.status = 'rechazado';
+			this.resource
+					.put()	
+					.then(data => {
+						(this.returnDesafios) ? this.$state.go('curador.propuestataller', { type: "propuestataller" }) : this.$state.go('curador.propuestataller');
+					})
+					.catch(err => {
+						throw err;
+					});
+		}
+	}
+
+	
+
 	getResource(){
-		this.PropuestaDesafio
+		this.Propuestataller
 		.get()
 		.then(data => {
 			this.resource = data;
 			console.log(this.resource);
-			this.returnDesafios = (this.resource.type == 'orientacionpedagogica') ? true : false;
+			this.returnDesafios = (this.resource.type == 'propuestataller') ? true : false;
 
-			this.ngMeta.setTitle(this.resource.title);
+			this.ngMeta.setTitle(this.resource.titulo);
 			this.ngMeta.setTag('description', this.resource.summary);
 
 			if (typeof this.resource.area == 'string'){
 				this.resource.area = [];
 			}
 
-			if (typeof this.resource.nivel == 'string'){
-				this.resource.nivel = [];
+			if (typeof this.resource.anio == 'string'){
+				this.resource.anio = [];
 			}
 
 			if (this.resource.step){
@@ -354,7 +353,7 @@ export default class PropuestaTallerComponent extends CuradorComponent {
 			.then(data => {
 				this.$log.log('autosaved', data);
 				if (button) {
-					(this.returnDesafios) ? this.$state.go('curador.dashboardorientacionpedagogica', { type: "orientacionpedagogica" }) : this.$state.go('curador.dashboardorientacionpedagogica');
+					(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestataller', { type: "propuestataller" }) : this.$state.go('curador.dashboardpropuestataller');
 				}
 			})
 			.catch(err => {
@@ -441,24 +440,24 @@ export default class PropuestaTallerComponent extends CuradorComponent {
 	}
 
 	deleteResource(){
-		let Published = this.Restangular.one('publishedOrientacionPedagogica', this.uid)
+		let Published = this.Restangular.one('publishedPropuestTaller', this.uid)
 		this.loading = true;
 		
 		this
-			.PropuestaDesafio
+			.Propuestataller
 			.remove()
 			.then( data => {
 				if (this.resource.published) {
 					Published
 					.remove()
 					.then( data => {
-						(this.returnDesafios) ? this.$state.go('curador.dashboardorientacionpedagogica', { type: "orientacionpedagogica" }) : this.$state.go('curador.dashboardorientacionpedagogica');
+						(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestataller', { type: "propuestataller" }) : this.$state.go('curador.dashboardpropuestataller');
 					})
 					.catch( err => {
 						throw err;
 					});
 				} else {
-					(this.returnDesafios) ? this.$state.go('curador.dashboardorientacionpedagogica', { type: "orientacionpedagogica" }) : this.$state.go('curador.dashboardorientacionpedagogica');
+					(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestataller', { type: "propuestataller" }) : this.$state.go('curador.dashboardpropuestataller');
 				}
 			})
 			.catch( err => {
@@ -469,7 +468,7 @@ export default class PropuestaTallerComponent extends CuradorComponent {
 	publish(ev){
 		// Appending dialog to document.body to cover sidenav in docs app
 		var confirm = this.$mdDialog.confirm()
-					.title('¿Está seguro que desea hacer publico esta propuesta?')
+					.title('¿Está seguro que desea hacer publico este taller?')
 					.ariaLabel('Publicación de la propuesta')
 					.targetEvent(ev)
 					.ok('Publicar')
@@ -488,9 +487,9 @@ export default class PropuestaTallerComponent extends CuradorComponent {
 		this.resource
 			.post('publish')
 			.then(data => {
-				this.$log.log('publishedOrientacionPedagogica', data);
+				this.$log.log('publishedPropuestaTaller', data);
 				this.loading = false;
-				(this.returnDesafios) ? this.$state.go('curador.dashboardorientacionpedagogica', { type: "orientacionpedagogica" }) : this.$state.go('curador.dashboardorientacionpedagogica');
+				(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestataller', { type: "propuestataller" }) : this.$state.go('curador.dashboardpropuestataller');
 			})
 			.catch(err => {
 				throw err;

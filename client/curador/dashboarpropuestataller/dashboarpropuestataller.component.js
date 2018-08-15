@@ -28,7 +28,7 @@ export default class DashboardOrientacionPedagogicaComponent extends CuradorComp
 		'propuestasTaller': 'Propuestas Taller'
 	};
     this.getUser();
-    ngMeta.setTitle('OrientacionPedagogica');
+    ngMeta.setTitle('Propuestas Taller');
     this.searchText = $stateParams.search;
 
    
@@ -52,7 +52,7 @@ export default class DashboardOrientacionPedagogicaComponent extends CuradorComp
     	let addNewItem = {
 			type: 'addnew',
 			options: [				
-				{ section: 'propuestasTaller', icon: 'ri ri-propuestasTaller', caption: 'Propuesta Taller' },
+				{ section: 'propuestataller', icon: 'ri ri-propuestasTaller', caption: 'Propuesta Taller' },
 			 
 			]
     	};

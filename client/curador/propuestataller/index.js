@@ -13,7 +13,7 @@ let routes = function($stateProvider) {
 
 export default angular.module('robotica.curador.propuestataller', [])
                       .config(routes)
-                      .component('curadorOropuestataller', {
+                      .component('curadorPropuestataller', {
                        template: require('./propuestataller.html'),
               
                         controller: PropuestaTallerComponent

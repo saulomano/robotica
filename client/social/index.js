@@ -38,6 +38,9 @@ import kitsDisponibles from './kitsDisponibles'
 
 import orientacionpedagogica from './orientacionpedagogica';
 
+import propuestaTalleresCard from './components/propuestaTalleresCard/propuestaTalleresCard.component';
+
+
 // config to providers
 import { socialConfig } from './social.config';
 
@@ -74,7 +77,8 @@ let requirements = [
 	kitCard,
 	kitView,
 	orientacionpedagogica,
-	kitsDisponibles
+	kitsDisponibles,
+	propuestaTalleresCard
 
 ];
 

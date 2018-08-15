@@ -13,7 +13,7 @@ export default class NewComponent extends CuradorComponent {
     this.Restangular = Restangular;
     this.Auth = Auth;
 
-    let types = /^(noticia|orientacionpedagogica|kit|herramientas|documentos|mediateca|desafios|loquehacemos|novedades|kits|desafiopropuesto)$/ig;
+    let types = /^(noticia|orientacionpedagogica|kit|herramientas|documentos|mediateca|desafios|loquehacemos|novedades|kits|desafiopropuesto|propuestataller)$/ig;
     this.section = _.toLower($stateParams.type);
 
     if (!types.test(this.section)){
@@ -37,7 +37,8 @@ export default class NewComponent extends CuradorComponent {
       this.createOrientacionPedagogica(this.section);
     }else if (this.section==='kit'){
       this.createKit(this.section);
-    
+    }else if (this.section==='propuestataller'){
+      this.createPropuestaTaller(this.section);
     }else{
     this.createResource(this.section);
     }
@@ -257,6 +258,41 @@ export default class NewComponent extends CuradorComponent {
     .catch((err) => {
       this.$log.error(err)
       return this.$state.go(`curador.kit`);
+    });
+
+  }
+
+
+  createPropuestaTaller(section){
+
+    this.Auth
+    .getCurrentUser()
+    .then(user => {
+      let data = {
+        type: 'propuestataller',
+        titulo: '',
+        descripcion: '',
+        thumbnail: '',      
+        
+        owner: user._id,            
+      };
+
+
+      let resource = this.Restangular.all('propuestasTaller');
+      resource
+        .post(data)
+        .then(data => {
+          this.$state.go(`curador.propuestataller`, { uid: data._id });
+
+        })
+        .catch((err) => {
+          this.$log.error(err)
+          return this.$state.go(`curador.propuestataller`);
+        });
+    })
+    .catch((err) => {
+      this.$log.error(err)
+      return this.$state.go(`curador.propuestataller`);
     });
 
   }
