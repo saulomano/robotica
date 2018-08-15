@@ -3,30 +3,32 @@
 
 }
 
-#donate label {
+#donate  label {
 	float:left;
 	margin:4px;
-	background-color: rgba(224, 224, 224, 0.96);
-	border-radius:4px;
-	border:2px solid rgb(131, 130, 130);
+	background-color:white;
+	border-radius:8px;
+	border:1px solid #ccc;
 	overflow:auto;
 		 
 }
 
 #donate label span {
 	text-align:center;
-	font-size: 12px;
-	padding:7px 0px;
+	font-size: 20px;
+	padding:20px 0px;
 	display:block;
 	font-family: DINNextRoundedLTPro-Regular;
+	font-weight: bold !important;
 }
 
-#donate label input {
+
+#donate  label input {
 	position:absolute;
 	top:-20px;
 }
 
-#donate input:checked + span {
+#donate  input:checked + span {
 	background-color: #9F9A99;
 	color:white;
 }
@@ -81,11 +83,11 @@
 }
 
 .mat .nat .praclen{
-	width: 150px;
+	width: 300px !important;
 }
 
 .quinto .sexto{
-	width: 50px;
+	width: 50px !important;
 }
 
 
