@@ -164,7 +164,7 @@
 			</div>
 		</md-content>
 		<md-content  class="dashboard__content" flex>
-			<div class="dashboard__box" ng-if="$ctrl.showViculo">
+			<div class="dashboard__box" >
 				<h4 class="font-medium color-grey">Orientaciones Contenidas</h4>
 				<div class="dashboard__search">
 					<input type="text" ng-model="$ctrl.filterText" autofocus>
@@ -181,7 +181,7 @@
 								<md-expansion-panel-icon></md-expansion-panel-icon>
 							</md-expansion-panel-header>
 							<md-expansion-panel-content>
-								<md-list-item ng-repeat="item in $ctrl.resource.links">
+								<md-list-item ng-repeat="item in $ctrl.resource.propuestas">
 									<div  layout="row" layout-padding>
 										<div>
 											<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
@@ -195,7 +195,7 @@
 											<div><strong>{{item.objetivo}}</strong></div>
 											<div><p>{{item.descripcion}}</p></div>
 										</div>
-										<md-checkbox class="md-secondary" ng-checked="$ctrl.existsObject(item, $ctrl.resource.links)" ng-click="$ctrl.toggleObject(item, $ctrl.resource.links)"
+										<md-checkbox class="md-secondary" ng-checked="$ctrl.existsObject(item, $ctrl.resource.propuestas)" ng-click="$ctrl.toggleObject(item, $ctrl.resource.propuestas)"
 													 aria-label="Agregar/quitar {{item.nombre}}"></md-checkbox>
 									</div>
 								</md-list-item>
@@ -218,7 +218,7 @@
 								<div><strong>{{item.nombre}}</strong></div>
 								<div><p>{{item.descripcion}}</p></div>
 							</div>
-							<md-checkbox class="md-secondary" ng-checked="$ctrl.existsObject(item, $ctrl.resource.links)" ng-click="$ctrl.toggleObject(item, $ctrl.resource.links)"
+							<md-checkbox class="md-secondary" ng-checked="$ctrl.existsObject(item, $ctrl.resource.propuestas)" ng-click="$ctrl.toggleObject(item, $ctrl.resource.propuestas)"
 										 aria-label="Agregar/quitar {{item.nombre}}"></md-checkbox>
 						</div>
 					</md-list-item>
@@ -249,8 +249,6 @@
 		</h2>
 	</div>
 <div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'publicar'" ng-hide="$ctrl.loading">
-	<div class="dashboard__preview--header bg-primary">
-		<h2><i class="fa fa-angle-down"></i> Previsualización <i class="fa fa-angle-down"></i></h2>
-	</div>
-	<orientacionpedagogica-view resource="$ctrl.resource" class="dashboard__preview"></orientacionpedagogica-view>
+	
+	
 </div>

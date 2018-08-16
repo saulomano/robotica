@@ -29,14 +29,13 @@ export default class PropuestaTallerComponent extends CuradorComponent {
     	this.noCache = true;
 
         this.captions = {
-            'orientacionpedagogica': 'Orientacion Pedagogica',
-            'noticia': 'Noticia',
-            'kit': 'Kit'
+            'orientacionpedagogica': 'Orientacion Pedagogica'
+            
         };
 		
 		// this.Resource = this.Restangular.one('resources', this.uid);
 		this.Propuestataller = this.Restangular.one('propuestasTaller', this.uid);
-		//this.Publisheds = this.Restangular.all('kit');
+		this.PublishedsOrientaciones = this.Restangular.all('publishedOrientacionPedagogica');
 
 		this.returnDesafios = false;
 
@@ -100,20 +99,20 @@ export default class PropuestaTallerComponent extends CuradorComponent {
 
 	refreshUI(forceApply){
 		this.headText = 'Propuesta taller';
-		this.showViculo = ['propuestataller' ].indexOf(this.Propuestataller.route) > -1;
+	//	this.showViculo = ['propuestataller' ].indexOf(this.PublishedsOrientaciones.route) > -1;
 		this.getPublisheds(forceApply);
 	}
 
 	getPublisheds(forceApply){
-		if (!this.showViculo){
+	/*	if (!this.showViculo){
 			return;
-		}
+		}*/
     let q;
     if (this.filterText){
       q = this.filterText
 		}
 
-		this.Publisheds
+		this.PublishedsOrientaciones
 			.getList({
 				q: q
 			})
