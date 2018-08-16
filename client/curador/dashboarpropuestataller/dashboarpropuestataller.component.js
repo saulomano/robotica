@@ -3,7 +3,7 @@ import angular from 'angular';
 import CuradorComponent from '../curador.component';
 import _ from 'lodash';
 
-export default class DashboardOrientacionPedagogicaComponent extends CuradorComponent {
+export default class DashboardPropuestaTallerComponent extends CuradorComponent {
   /*@ngInject*/
   constructor($element, $rootScope, $q, $http, $log, $stateParams, $state, Restangular, Auth, ngMeta) {
     super({$element, $log});
@@ -52,7 +52,7 @@ export default class DashboardOrientacionPedagogicaComponent extends CuradorComp
     	let addNewItem = {
 			type: 'addnew',
 			options: [				
-				{ section: 'propuestasTaller', icon: 'ri ri-propuestasTaller', caption: 'Propuesta Taller' },
+				{ section: 'propuestataller', icon: 'ri ri-propuestasTaller', caption: 'Propuesta Taller' },
 			 
 			]
     	};
@@ -87,7 +87,7 @@ export default class DashboardOrientacionPedagogicaComponent extends CuradorComp
           		}
 
 				
-					items = items.concat(_.filter(res, function(o) { return o.type == 'orientacionpedagogica' }));
+					items = items.concat(_.filter(res, function(o) { return o.type == 'propuestataller' }));
 				
 
 				let data = {

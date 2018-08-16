@@ -1,7 +1,7 @@
 'use strict';
 
 import PropuestaTaller from './propuestasTaller.model';
-import Published from '../propuestasTaller/propuestasTaller.model';
+import Published from '../publishedPropuestTaller/publishedPropuestTaller.model';
 import async from 'async';
 import _ from 'lodash';
 
@@ -65,7 +65,7 @@ export function index(req, res, next) {
  * restriction: 'curador'
  */
 export function create(req, res, next) {
-  var newPropuestaTaller = new OrientPropuestaTalleracionPedagogica(req.body);
+  var newPropuestaTaller = new PropuestaTaller(req.body);
   
 	req.result = newPropuestaTaller.save();
 	next();
