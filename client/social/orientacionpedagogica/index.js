@@ -4,7 +4,7 @@ let routes = function($stateProvider) {
     'ngInject';
     $stateProvider
       .state('social.orientacionpedagogica', {
-        url: '/orientacionpedagogica/:filter?',
+        url: '/orientacionpedagogica/:tallerid',
         template: '<orientacionpedagogica></orientacionpedagogica>',  
         params: {
             filter: {

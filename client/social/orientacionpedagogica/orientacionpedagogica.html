@@ -2,62 +2,13 @@
 <div style="background-color: white">
 	<div  layout="row" layout-align="center center" style="margin-bottom: 2%;">
 		<div>
-			<p ng-hide="$ctrl.complementarias" class="impact-text-large" style="text-align: center; margin-top: 20px; font-size: 40px; color: #8BBF1F; font-family: pacifico-regular, sans-serif;">Propuestas de taller</p>	
-			<P ng-hide="$ctrl.complementarias" class="impact-text-large" style="text-align: center; margin-top: 14px; font-size: 12px; color: #c7c2c2; font-family: Roboto, Helvetica Neue, sans-serif;">CÓMO TRABAJAR ROBÓTICA APLICANDO PENSAMIENTO COMPUTACIONAL Y PROGRAMACIÓN EN TU CLASE</P>
-			<p ng-show="$ctrl.complementarias" class="impact-text-large" style="text-align: center; margin-top: 20px; font-size: 40px; color: #8BBF1F; font-family: pacifico-regular, sans-serif;">Actividades complementarias</p>				
+			<p class="impact-text-large" style="text-align: center; margin-top: 20px; font-size: 40px; color: #8BBF1F; font-family: pacifico-regular, sans-serif;">Taller</p>	
+			<P class="impact-text-large" style="text-align: center; margin-top: 14px; font-size: 12px; color: #c7c2c2; font-family: Roboto, Helvetica Neue, sans-serif;">{{$ctrl.taller.titulo}}</P>
+			<P class="impact-text-large" style="text-align: center; margin-top: 14px; font-size: 12px; color: #c7c2c2; font-family: Roboto, Helvetica Neue, sans-serif;">{{$ctrl.taller.descripcion}}</P>	
 		</div>
 	</div>
 
-	<div layout="row" layout-align="center center" style="margin-bottom: 0.5%;" id="donate"  layout-sm="column"  layout-xs="column">
 	
-			<!--label id="b1" class="blue"><input id="b1" type="checkbox" ng-model="$ctrl.areaEmergente.pensamientoComputacional" ng-change="$ctrl.fetchDataFilter()"><span id="b1">PENSAMIENTO COMPUTACIONAL</span></label>	
-			<label id="b2" class="green"><input id="b2" type="checkbox" ng-model="$ctrl.areaEmergente.programacion" ng-change="$ctrl.fetchDataFilter()"><span id="b2">PROGRAMACIÓN</span></label>
-			<label id="b3" class="yellow"><input id="b3" type="checkbox" ng-model="$ctrl.areaEmergente.robotica" ng-change="$ctrl.fetchDataFilter()"><span id="b3">ROBÓTICA</span></label-->
-		<div style="margin-right: 10px;">
-			<label class="mat responsive"><input type="checkbox" name="area" ng-model="$ctrl.area.matematica"   ng-click="$ctrl.fetchDataFilter()"><span style="width: 300px; background-image: url(/assets/images/matematica.svg); background-repeat: no-repeat; text-align: center" >Matemática</span></label>
-		</div>
-		<div style="margin-right: 10px;">
-			<label class="nat responsive"><input type="checkbox" name="area" ng-model="$ctrl.area.naturales"  ng-click="$ctrl.fetchDataFilter()"><span style="width: 300px; background-image: url(/assets/images/naturales.svg); background-repeat: no-repeat; text-align: center">Cs. Naturales</span></label>
-		</div>
-		<div style="margin-right: 10px;">
-			<label class="pracLen responsive"><input type="checkbox" name="area" ng-model="$ctrl.area.lengua"   ng-click="$ctrl.fetchDataFilter()"><span style="width: 300px; background-image: url(/assets/images/lengua.svg); background-repeat: no-repeat; text-align: center">Práct. del lenguaje</span></label>
-		</div>
-	</div>
-
-	<div layout="row" layout-align="center center" style="margin-bottom: 0.5%;" id="donate">
-		<!--div>
-		<label class="mat"><input type="checkbox" name="area" ng-model="$ctrl.area.matematica"   ng-click="$ctrl.fetchDataFilter()"><span style="width: 130px; background-image: url(/assets/images/matematica.svg); background-repeat: no-repeat;" >Matemática</span></label>
-		<label class="nat"><input type="checkbox" name="area" ng-model="$ctrl.area.naturales"  ng-click="$ctrl.fetchDataFilter()"><span style="width: 130px; background-image: url(/assets/images/naturales.svg); background-repeat: no-repeat;">Cs. Naturales</span></label>
-		<label class="pracLen"><input type="checkbox" name="area" ng-model="$ctrl.area.lengua"   ng-click="$ctrl.fetchDataFilter()"><span style="width: 180px; background-image: url(/assets/images/lengua.svg); background-repeat: no-repeat;">Prácticas del lenguaje</span></label>
-		</div>
-		<div style="margin-left: 35px;"-->
-			<label class="quinto"><input type="checkbox"  ng-model="$ctrl.anio.quinto" ng-change="$ctrl.fetchDataFilter()" ><span style="color: #8BBF1F; width: 130px; text-align: center;padding: 4px 0px">5to</span></label>
-			<label class="sexto"><input type="checkbox" ng-model="$ctrl.anio.sexto" ng-change="$ctrl.fetchDataFilter()"><span style="color: #8BBF1F; width: 130px;text-align: center; padding: 4px 0px">6to </span></label>
-		<!--/div-->
-	</div>
-	
-
- <!--div class="bottom-sheet-demo inset" layout="row" layout-sm="column" layout-align="center"  ng-if="$ctrl.isMobile">
-    <md-button flex="100" class="md-button-filter" ng-click="$ctrl.muestraFiltroMobile = !$ctrl.muestraFiltroMobile">Filtrar</md-button>
-  </div>
-
-
-<div layout-gt-xs="row"  layout-xs ="column" ng-show="!$ctrl.isMobile || $ctrl.muestraFiltroMobile">
-	<div  flex   ng-repeat="item in $ctrl.orientacionesFiltro" ng-click="$ctrl.itemClicked(item)"  
-			style="text-align: center;" layout="column">	 
-	  <div flex="auto"></div>
-      <div class="preview-glyphs">
-		<md-icon 			          
-		style="font-size: 48px; height: 48px"
-            class="iconPed-{{item.name}} step"></md-icon>
-      </div>
-      <div class="preview-scale">
-        <span class="step" >{{ item.desc }}</span>
-	  </div>
-	</div>
-</div-->   
- 
-
 
 
 	<!--section class="resources_waterfall" style="margin-top: 3%;"-->

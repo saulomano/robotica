@@ -119,81 +119,12 @@ class PropuestaTallerCardController {
 		}
 	}
 
-    viewResource($event, resource, modoVista){
-
-        if (!this.$mdDialog)
-            return;
+    viewResource($event, resource, modoVista){       
 
         if (!modoVista || modoVista === 'curador')
             return;
 
-        this.$mdDialog.show({
-            template: require('../modalView/modalView.html'),
-            parent: angular.element(document.body),
-            targetEvent: $event,
-            clickOutsideToClose: true,
-            fullscreen: true, // Only for -xs, -sm breakpoints.
-            locals: {
-                resource: resource
-            },
-            controller: DialogController,
-            controllerAs: '$ctrl'
-        })
-            .then((data) => {
-                console.log(data);
-            }, () => {
-
-            })
-            .catch(function(res) {
-                if (!(res === 'cancel' || res === 'escape key press')) {
-                    throw res;
-                }
-            });
-
-        function DialogController($scope, $mdDialog, resource, Restangular, $timeout) {
-            'ngInject';
-            //this.$scope = $scope;
-            this.loading = true;
-
-            this.Resource = Restangular.one('publishedpropuestaTaller', resource._id);
-
-            this.closeDialog = function() {
-                $mdDialog.hide();
-            }
-
-
-
-
-
-            this.Resource
-                .get()
-                .then(data => {
-
-                    let captions = {
-                        'propuesta': 'Propuesta pedagógica',
-                        'actividad': 'Actividad accesible',
-                        'herramientas': 'Herramienta',
-                        'orientacion': 'Orientación',
-                        'mediateca': 'Mediateca',
-                        'noticias': 'Noticias',
-                        'calendario': 'Calendario'
-                    };
-
-                    data.links = _.map(data.links, p =>{
-                        p.typeCaption = captions[p.type];
-                        return p;
-                    });
-
-                    this.resource = data;
-                    this.loading = false;
-                    $timeout(() => {
-                        $scope.$apply();
-                    });
-                })
-                .catch(err => {
-                    throw err;
-                });
-        }
+        this.$state.go('social.orientacionpedagogica', { tallerid: resource._id });
     }
 
 }

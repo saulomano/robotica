@@ -128,7 +128,7 @@ export function index(req, res, next) {
 										.populate({path: 'orientacionpedagogica'})									
 										.populate('owner')
 										.populate('files')
-                						.populate('links')
+                						.populate('propuestas')
 										.sort(query.cursor.sort)
 										.skip(query.cursor.skip)
 										.limit(query.cursor.limit)
@@ -174,7 +174,7 @@ export function show(req, res, next) {
 								.findById(publishedId)
 								.populate('owner')
 								.populate('files')
-        						.populate('links')
+        						.populate('propuestas')
 								.populate({
 									path: 'orientacionpedagogica'
 								  })
@@ -198,9 +198,8 @@ export function download(req, res, next) {
 
 export function relations(req, res, next) {
   var publishedId = req.params.id;
-
 	req.result = Published
-								.find({ links: publishedId })
+								.find({ propuestas: publishedId })
 								.exec();
 	next();
 }
