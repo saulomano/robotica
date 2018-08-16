@@ -5,9 +5,9 @@ import DashboardPropuestaTallerComponent from './dashboarpropuestataller.compone
 let routes = function($stateProvider) {
   'ngInject';
   $stateProvider
-    .state('curador.propuestasdetaller', {
-      url: '/tablero/propuestasdetaller',
-      template: '<curador-propuestasdetaller></curador-propuestasdetaller>',
+  .state('curador.dashboarpropuestataller', {
+    url: '/tablero/dashboarpropuestataller',
+    template: '<curador-dashboarpropuestataller></curador-dashboarpropuestataller>',
       authenticate: 'curador',
       params: {
         search: {

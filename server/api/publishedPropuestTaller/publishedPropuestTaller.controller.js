@@ -17,8 +17,8 @@ export function index(req, res, next) {
 	var area = req.query.area;
 	var areaEmergente = req.query.areaEmergente;
 	var anio = req.query.anio;
-	var troncal = req.query.troncal;
-	var complementarias= req.query.complementarias;
+	var publicaHome = req.query.publicaHome;
+	
 		
 
 	let q = {};
@@ -68,6 +68,12 @@ export function index(req, res, next) {
 			q['$or'].type = undefined; 
 		}
 	}
+
+
+		if (publicaHome) {
+			q['publicaHome'] = true;
+		}
+
 
 
 	if (area) {

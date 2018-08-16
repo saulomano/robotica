@@ -34,7 +34,7 @@ export default class PropuestaTallerComponent extends CuradorComponent {
         };
 		
 		// this.Resource = this.Restangular.one('resources', this.uid);
-		this.Propuestataller = this.Restangular.one('propuestasTaller', this.uid);
+		this.Propuestataller = this.Restangular.one('publishedPropuestasTaller', this.uid);
 		this.PublishedsOrientaciones = this.Restangular.all('publishedOrientacionPedagogica');
 
 		this.returnDesafios = false;

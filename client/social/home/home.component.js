@@ -13,7 +13,7 @@ export default class HomeComponent extends SocialComponent {
     this.Restangular = Restangular;
     this.$mdDialog = $mdDialog;
     this.$stateParams = $stateParams;
-    this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
+    this.Publisheds = this.Restangular.all('publishedPropuestasTaller');
     this.Publishedskits = this.Restangular.all('publishedkits');
     this.$state = $state;
     this.page = 0;
@@ -198,8 +198,8 @@ export default class HomeComponent extends SocialComponent {
         .getList({
             page: 1, 
             limit: 3,
-            type: 'orientacionpedagogica',
-            troncal: true
+            type: 'propuestataller',
+            publicaHome: true
         })
         .then(data => {
             let total = data.$total;
