@@ -108,12 +108,26 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
 
     fetchData(){
         let def = this.$q.defer();
-let objtaller;
+        let objtaller;
 
-        this.taller.get().then(data => {
-            objtaller = data;
-           
-        })
+        this.taller.get().then(data => 
+            
+            {    objtaller = data;
+
+                let res = {
+                    count: objtaller.propuestas.length,
+                    items:  objtaller.propuestas,
+                    page: 1,
+                    limit: objtaller.propuestas.length
+                };
+                def.resolve(res);
+              
+            }
+            
+        
+        );
+        return def.promise;
+      
 
      /*   this.page++;
         let q;
@@ -146,15 +160,9 @@ let objtaller;
 
         return def.promise;*/
 
-        let res = {
-            count: objtaller.propuestas.length,
-            items:  objtaller.propuestas,
-            page: 1,
-            limit: objtaller.propuestas.length
-        };
-        def.resolve(res);
-        return def.promise;
-      
+       
+        
+        
     }
 
     viewOrientacionPedagogica_($event, resource){
