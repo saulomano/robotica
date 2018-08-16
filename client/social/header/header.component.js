@@ -26,14 +26,14 @@ class HeaderComponent {
         "nodes": [
           {
             section: 'propuestasdetaller',  caption: 'Propuestas de Taller', action:'social.propuestasdetaller'
-          },
-          
+          },         
 
+        
           {
-            section: 'orientacionpedagogica',  caption: 'Talleres combinado intensivos', action:'social.orientacionpedagogica', params:{"intensivas":false}
+            section: 'orientacionpedagogica',  caption: 'Talleres Combinados Intensivos', action:'social.orientacionpedagogica'
           },
           {
-            section: 'actividadescomplementarias',  caption: 'Actividades Complementarias', action:'social.orientacionpedagogica', params:{"complementarias":true}
+            section: 'actividadescomplementarias',  caption: 'Actividades Complementarias', action:'social.actividadescomplementarias'
           },
           
         ]

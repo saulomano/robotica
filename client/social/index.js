@@ -37,6 +37,7 @@ import kitView from './components/kitView/kitView.component';
 import kitsDisponibles from './kitsDisponibles'
 
 import orientacionpedagogica from './orientacionpedagogica';
+import actividadescomplementarias from './actividadescomplementarias';
 
 import propuestaTalleresCard from './components/propuestaTalleresCard/propuestaTalleresCard.component';
 import propuestasdetaller from './propuestasdetaller';
@@ -80,7 +81,10 @@ let requirements = [
 	orientacionpedagogica,
 	kitsDisponibles,
 	propuestaTalleresCard,
-	propuestasdetaller
+	propuestasdetaller,
+	actividadescomplementarias,
+	propuestaTalleresCard
+
 
 ];
 
