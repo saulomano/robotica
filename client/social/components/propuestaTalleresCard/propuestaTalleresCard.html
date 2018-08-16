@@ -39,6 +39,10 @@
 			</span>
 			</div>
 	</rd-card-header>
+	<rd-card-cover ng-if="$ctrl.resource.thumbnail" ng-hide="$ctrl.resource.thumbnail === ''">
+		<img style="width: 100%;
+		height: auto;" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del recurso">
+	</rd-card-cover>	
 	<rd-card-body>
 		<div layout="row" ng-hide="$ctrl.deleteDesafioBoolean">
 			<div class="preview-glyphs">
