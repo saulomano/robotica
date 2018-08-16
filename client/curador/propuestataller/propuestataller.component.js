@@ -353,7 +353,7 @@ export default class PropuestaTallerComponent extends CuradorComponent {
 			.then(data => {
 				this.$log.log('autosaved', data);
 				if (button) {
-					(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestataller', { type: "propuestataller" }) : this.$state.go('curador.dashboardpropuestataller');
+					(this.returnDesafios) ? this.$state.go('curador.dashboarpropuestataller', { type: "propuestataller" }) : this.$state.go('curador.dashboarpropuestataller');
 				}
 			})
 			.catch(err => {
@@ -451,13 +451,13 @@ export default class PropuestaTallerComponent extends CuradorComponent {
 					Published
 					.remove()
 					.then( data => {
-						(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestataller', { type: "propuestataller" }) : this.$state.go('curador.dashboardpropuestataller');
+						(this.returnDesafios) ? this.$state.go('curador.dashboarpropuestataller', { type: "propuestataller" }) : this.$state.go('curador.dashboarpropuestataller');
 					})
 					.catch( err => {
 						throw err;
 					});
 				} else {
-					(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestataller', { type: "propuestataller" }) : this.$state.go('curador.dashboardpropuestataller');
+					(this.returnDesafios) ? this.$state.go('curador.dashboarpropuestataller', { type: "propuestataller" }) : this.$state.go('curador.dashboarpropuestataller');
 				}
 			})
 			.catch( err => {
@@ -489,7 +489,7 @@ export default class PropuestaTallerComponent extends CuradorComponent {
 			.then(data => {
 				this.$log.log('publishedPropuestaTaller', data);
 				this.loading = false;
-				(this.returnDesafios) ? this.$state.go('curador.dashboardpropuestataller', { type: "propuestataller" }) : this.$state.go('curador.dashboardpropuestataller');
+				(this.returnDesafios) ? this.$state.go('curador.dashboarpropuestataller', { type: "propuestataller" }) : this.$state.go('curador.dashboarpropuestataller');
 			})
 			.catch(err => {
 				throw err;

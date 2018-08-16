@@ -5,7 +5,7 @@ import _ from "lodash";
 
 export default angular
 	.module('robotica.social.components.propuestaTalleresCard', [])
-	.directive('propuestaTalleresCard', propuestaTalleresCard)
+	.directive('propuestatallerCard', propuestaTalleresCard)
 	.name;
 
 class PropuestaTallerCardController {
@@ -39,7 +39,7 @@ class PropuestaTallerCardController {
 		this.editable = this.$scope.editable === true;
 		
 
-		this.resource.typeCaption = captions[this.resource.type];
+		this.resource.typeCaption = this.captions[this.resource.type];
 		this.modoVista = this.$scope.vista;
 		if (this.modoVista==='social'){
 			this.resource = this.$scope.resource;
@@ -48,7 +48,7 @@ class PropuestaTallerCardController {
 	}
 
 	editResource(){
-		this.$state.go(`curador.propuestatalleres`, { uid: this.resource._id, action: 'edit' });
+		this.$state.go('curador.propuestataller', { uid: this.resource._id, action: 'edit' });
     }
     
 

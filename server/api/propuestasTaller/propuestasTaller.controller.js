@@ -1,7 +1,7 @@
 'use strict';
 
 import PropuestaTaller from './propuestasTaller.model';
-import Published from '../propuestasTaller/propuestasTaller.model';
+import Published from '../publishedPropuestTaller/publishedPropuestTaller.model';
 import async from 'async';
 import _ from 'lodash';
 
