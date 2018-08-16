@@ -37,6 +37,7 @@ import kitView from './components/kitView/kitView.component';
 import kitsDisponibles from './kitsDisponibles'
 
 import orientacionpedagogica from './orientacionpedagogica';
+import actividadescomplementarias from './actividadescomplementarias';
 
 // config to providers
 import { socialConfig } from './social.config';
@@ -74,7 +75,8 @@ let requirements = [
 	kitCard,
 	kitView,
 	orientacionpedagogica,
-	kitsDisponibles
+	kitsDisponibles,
+	actividadescomplementarias
 
 ];
 
