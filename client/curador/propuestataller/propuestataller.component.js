@@ -151,7 +151,8 @@ for (var i in this.resource.area) {
 				complementarias:false,
 				troncal:false,
 				area:area,
-				anio:anio
+				anio:anio,
+				intensivo: false
 			})
 			.then(publisheds => {
 				let filtered = _.filter(publisheds, p => {
