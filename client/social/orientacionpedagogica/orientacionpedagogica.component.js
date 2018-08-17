@@ -121,6 +121,7 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
                     page: 1,
                     limit: objtaller.propuestas.length
                 };
+                this.taller = data;
                 def.resolve(res);
               
             }
