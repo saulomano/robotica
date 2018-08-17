@@ -115,13 +115,27 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
             
             {    objtaller = data;
 
+                objtaller.propuestas = _.sortBy(objtaller.propuestas ,'areaEmergente');
+
+
+
                 let res = {
                     count: objtaller.propuestas.length,
                     items:  objtaller.propuestas,
                     page: 1,
-                    limit: objtaller.propuestas.length
+                    limit: objtaller.propuestas.length,
+
                 };
+<<<<<<< HEAD
                 this.taller = data;
+=======
+
+
+
+
+
+
+>>>>>>> eaf3b73303ad6cb58303129c56bfe53c078f3d43
                 def.resolve(res);
               
             }

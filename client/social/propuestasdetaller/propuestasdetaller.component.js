@@ -98,7 +98,8 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
                 type: 'propuestataller',
                 area:this.area,               
                 anio:this.anio,
-                complementarias: false
+                complementarias: false,
+                sort: '-introductoria',
             })
             .then(data => {
                 let total = data.$total;

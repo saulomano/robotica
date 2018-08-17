@@ -19,7 +19,7 @@ export function index(req, res, next) {
 	var anio = req.query.anio;
 	var troncal = req.query.troncal;
 	var complementarias= req.query.complementarias;
-		
+	var intensivo = req.query.intensivo;
 
 	let q = {};
 
@@ -43,14 +43,10 @@ export function index(req, res, next) {
 
 		q = { $or: [
 				{ type: { $regex: k, $options: 'i' } },
-				{ title: { $regex: k, $options: 'i' } },
-				{ summary: { $regex: k, $options: 'i' } },
+				{ objetivo: { $regex: k, $options: 'i' } },
+				{ descripcion: { $regex: k, $options: 'i' } },
 				{ nivel: { $regex: k, $options: 'i' } },
-				//{ area: { $regex: k, $options: 'i' } },
-				{ accessibility: { $regex: k, $options: 'i' } },
-				{ usability: { $regex: k, $options: 'i' } },
-				{ platform: { $regex: k, $options: 'i' } },
-				{ category: { $regex: k, $options: 'i' } },
+			
 				{ 'postBody.content': { $regex: k, $options: 'i' } },
 				{ tags: { $regex: k, $options: 'i' } },
 			]
@@ -58,19 +54,32 @@ export function index(req, res, next) {
 	}
 
 
-
-	q['complementarias'] =complementarias;
-
-	if(troncal){
-		q['troncal'] = true;
+	if(complementarias ){
+		q['complementarias'] =complementarias;
+	}else{
+		q['complementarias'] =false;
 	}
-	
+
+	if(intensivo ){
+		q['intensivo'] =intensivo;
+	}else{
+		q['intensivo'] =false;
+	}
+
+	if(troncal ){
+		q['troncal'] = true;
+	}else{
+		q['troncal'] = false;
+	}
+
 	if (type){
 		q['$and'] = [ { type: type } ];
 		if (q['$or']) {
 			q['$or'].type = undefined; 
 		}
 	}
+
+	
 
 
 	if (area) {
@@ -84,11 +93,14 @@ export function index(req, res, next) {
 		}
 		if(area.matematica){						
 			arrayArea.push (
-				'Matemática' )
+				'Matemática' );
 		}
 		if(area.lengua){			
 			arrayArea.push (
-				'Prácticas del Lenguaje' )
+				'Prácticas del Lenguaje' );
+				arrayArea.push (
+					'Práctica del Lenguaje' );
+				
 		}
 
 		if ( arrayArea.length > 0) 
