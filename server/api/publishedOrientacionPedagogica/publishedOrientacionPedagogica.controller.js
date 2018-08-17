@@ -56,20 +56,13 @@ export function index(req, res, next) {
 
 	if(complementarias ){
 		q['complementarias'] =complementarias;
-	}else{
-		q['complementarias'] =false;
 	}
 
 	if(intensivo ){
 		q['intensivo'] =intensivo;
-	}else{
-		q['intensivo'] =false;
 	}
-
 	if(troncal ){
-		q['troncal'] = true;
-	}else{
-		q['troncal'] = false;
+		q['troncal'] = troncal;
 	}
 
 	if (type){
@@ -170,6 +163,10 @@ export function index(req, res, next) {
 										.limit(query.cursor.limit)
 										.select(query.cursor.select)
 										.exec();
+
+
+			
+
 			next();
 		});
 }

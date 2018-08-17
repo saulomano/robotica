@@ -85,7 +85,7 @@ class PropuestaTallerCardController {
             return "iconPed-naturales step";
         if (entry == "Matemática")
             return "iconPed-matematica step";
-        if (entry == "Práctica del Lenguaje")
+        if (entry == "Prácticas del Lenguaje")
             return "iconPed-lengua step";            
 
 
