@@ -143,12 +143,17 @@ hr{
   .rowparallax{
    
     display: table !important;
+
+  .rowparallaxk{
+  
+    display: table !important;
    
     .responsive{
       width: 100% !important;
       height: auto !important;
 
     }
+  }
   }
   .cards{
     float: none !important;  
@@ -290,7 +295,7 @@ hr{
     content: " ";
 }
 
-.rowparallax{
+.rowparallaxk{
     margin-right: -15px;
     margin-left: -15px;
     display: block;
@@ -548,3 +553,4 @@ img {vertical-align: middle;}
         -webkit-font-smoothing: antialiased; }
     .carousel-dots li.carousel-active button:before {
       opacity: .75; }
+   
