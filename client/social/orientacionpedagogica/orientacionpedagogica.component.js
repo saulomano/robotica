@@ -30,7 +30,8 @@ export default class OrientacionPedagogicaComponent extends SocialComponent{
         this.anio;       
         
         
-        this.taller = this.Restangular.one('publishedPropuestTaller', this.$stateParams.tallerid);
+        this.taller = Restangular.one('publishedPropuestTaller', this.$stateParams.tallerid);
+        this.publishedTaller = Restangular.one('publishedPropuestTaller', this.$stateParams.tallerid).get();
         $scope.$mdMedia = $mdMedia;
         this.resetWaterfall;
         this.complementarias = this.$stateParams.params?  this.$stateParams.params.complementarias || false :false;
