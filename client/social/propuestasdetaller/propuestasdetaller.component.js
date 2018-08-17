@@ -25,7 +25,9 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
       
         this.$mdDialog = $mdDialog;
        
-        this.area;
+        this.area={'matematica':false, 
+                'lengua': false,
+            'naturales':false};
         this.areaEmergente;
         this.anio;
         $scope.$mdMedia = $mdMedia;
@@ -78,7 +80,14 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
     }
 
 
-      fetchDataFilter(value){
+      fetchDataFilter(e,value){
+        e.preventDefault();
+        console.log(value);
+        if (value=='matematica'){
+            this.area.matematica=  !this.area.matematica;
+        }
+
+
           this.page=0;
         this.resetWaterfall= Math.random();
       }
