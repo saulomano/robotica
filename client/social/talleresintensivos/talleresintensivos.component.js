@@ -25,9 +25,12 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
       
         this.$mdDialog = $mdDialog;
        
-        this.area;
-        this.areaEmergente;
-        this.anio;
+        this.area={'matematica':false, 
+        'lengua': false,
+    'naturales':false};
+this.areaEmergente;
+this.anio={'quinto':false, 
+'sexto': false};
         $scope.$mdMedia = $mdMedia;
         this.resetWaterfall;
         this.intensivos = true;
@@ -78,7 +81,30 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
     }
 
 
-      fetchDataFilter(value){
+      fetchDataFilter(e,value){
+
+        e.preventDefault();
+        console.log(value);
+        if (value=='matematica'){
+            this.area.matematica=  !this.area.matematica;
+        }
+        if (value=='lengua'){
+            this.area.lengua=  !this.area.lengua;
+        }
+        if (value=='naturales'){
+            this.area.naturales=  !this.area.naturales;
+        }
+
+        if (value=='quinto'){
+            this.anio.quinto=  !this.anio.quinto;
+        }
+
+        if (value=='sexto'){
+            this.anio.sexto=  !this.anio.sexto;
+        }
+
+
+
           this.page=0;
         this.resetWaterfall= Math.random();
       }
