@@ -32,7 +32,7 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
         this.resetWaterfall;
         this.intensivos = true;
       
-         this.Publisheds = this.Restangular.all('publishedPropuestTaller');
+         this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
       
 
       
@@ -95,7 +95,7 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             .getList({
                 page: this.page, 
                 limit: this.limit,
-                type: 'propuestataller',
+                type: 'orientacionpedagogica',
                 area:this.area,               
                 anio:this.anio,
                 intensivo: true
