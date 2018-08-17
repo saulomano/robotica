@@ -2,9 +2,9 @@
 <div style="background-color: white">
 	<div  layout="row" layout-align="center center" style="margin-bottom: 2%;">
 		<div>
-			<p  class="impact-text-large" style="text-align: center; margin-top: 20px; font-size: 40px; color: #8BBF1F; font-family: pacifico-regular, sans-serif;">Propuestas de taller</p>	
-			<P  class="impact-text-large" style="text-align: center; margin-top: 14px; font-size: 12px; color: #c7c2c2; font-family: Roboto, Helvetica Neue, sans-serif;">Estrategias para que docentes y talleristas aborden la robótica </br>
-				aplicando pensamiento computacional y programación.</P>
+			<p  class="impact-text-large" style="text-align: center; margin-top: 20px; font-size: 40px; color: #8BBF1F; font-family: pacifico-regular, sans-serif;">Talleres Combinados Intensivos</p>	
+			<P  class="impact-text-large" style="text-align: center; margin-top: 14px; font-size: 12px; color: #c7c2c2; font-family: Roboto, Helvetica Neue, sans-serif;">Propuestas temáticas para abordar robótica, programación </br>
+				y pensamiento computacional en una clase.</P>
 			</div>
 	</div>
 
@@ -24,7 +24,7 @@
 		</div>
 	</div>
 
-	<div layout="row" layout-align="center center"  style="margin-bottom: 10%;" id="donate">
+	<div layout="row" layout-align="center center"  style="margin-bottom: 14%;" id="donate">
 		<!--div>
 		<label class="mat"><input type="checkbox" name="area" ng-model="$ctrl.area.matematica"   ng-click="$ctrl.fetchDataFilter()"><span style="width: 130px; background-image: url(/assets/images/matematica.svg); background-repeat: no-repeat;" >Matemática</span></label>
 		<label class="nat"><input type="checkbox" name="area" ng-model="$ctrl.area.naturales"  ng-click="$ctrl.fetchDataFilter()"><span style="width: 130px; background-image: url(/assets/images/naturales.svg); background-repeat: no-repeat;">Cs. Naturales</span></label>
@@ -58,12 +58,12 @@
 </div-->   
 </div>
 	<!--section class="resources_waterfall" style="margin-top: 3%;"-->
-	<div style="background-color: #eef2f5">
-		<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
-			
-					<rd-item-template>           
-							<propuestataller-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></propuestataller-card>
-			</rd-item-template>
-		</rd-waterfall>
-	</div>
+<div style="background-color: #eef2f5">
+	<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+		
+				<rd-item-template>           
+						<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+		</rd-item-template>
+	</rd-waterfall>
+</div>
 	<!--/section-->

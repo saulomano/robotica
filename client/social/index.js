@@ -41,6 +41,7 @@ import actividadescomplementarias from './actividadescomplementarias';
 
 import propuestaTalleresCard from './components/propuestaTalleresCard/propuestaTalleresCard.component';
 import propuestasdetaller from './propuestasdetaller';
+import talleresintensivos from './talleresintensivos';
 
 
 // config to providers
@@ -83,7 +84,8 @@ let requirements = [
 	propuestaTalleresCard,
 	propuestasdetaller,
 	actividadescomplementarias,
-	propuestaTalleresCard
+	propuestaTalleresCard,
+	talleresintensivos
 
 
 ];

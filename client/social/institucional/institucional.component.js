@@ -12,7 +12,7 @@ export default class InstitucionalComponent extends SocialComponent {
  
   
 
-    ngMeta.setTitle('Institicional');
+    ngMeta.setTitle('Institucional');
     ngMeta.setTag('description', 'Una plataforma educativa diseñada para acercar a los docentes y estudiantes de la modalidad Educación Especial otras posibilidades de enseñar y aprender');
 	}
 	

@@ -30,7 +30,7 @@ class HeaderComponent {
 
         
           {
-            section: 'orientacionpedagogica',  caption: 'Talleres Combinados Intensivos', action:'social.orientacionpedagogica'
+            section: 'orientacionpedagogica',  caption: 'Talleres Combinados Intensivos', action:'social.talleresintensivos'
           },
           {
             section: 'actividadescomplementarias',  caption: 'Actividades Complementarias', action:'social.actividadescomplementarias'
