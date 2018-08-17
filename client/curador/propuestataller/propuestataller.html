@@ -194,6 +194,7 @@
 											</div>
 											<div><strong>{{item.objetivo}}</strong></div>
 											<div><p>{{item.descripcion}}</p></div>
+											<div><strong>{{item.area}}</strong> {{item.anio}}</div>
 										</div>
 										<md-checkbox class="md-secondary" ng-checked="$ctrl.existsObject(item, $ctrl.resource.propuestas)" ng-click="$ctrl.toggleObject(item, $ctrl.resource.propuestas)"
 													 aria-label="Agregar/quitar {{item.nombre}}"></md-checkbox>
@@ -215,8 +216,9 @@
 								<div class="color-{{item.type}}" layout="flex" layout-align="start center">
 									<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
 								</div>
-								<div><strong>{{item.nombre}}</strong></div>
+								<div><strong>{{item.objetivo}}</strong></div>
 								<div><p>{{item.descripcion}}</p></div>
+								<div><strong>{{item.area}}</strong> {{item.anio}}</div>
 							</div>
 							<md-checkbox class="md-secondary" ng-checked="$ctrl.existsObject(item, $ctrl.resource.propuestas)" ng-click="$ctrl.toggleObject(item, $ctrl.resource.propuestas)"
 										 aria-label="Agregar/quitar {{item.nombre}}"></md-checkbox>

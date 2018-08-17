@@ -104,9 +104,42 @@ export default class PropuestaTallerComponent extends CuradorComponent {
 	}
 
 	getPublisheds(forceApply){
+
+
+
 	/*	if (!this.showViculo){
 			return;
 		}*/
+
+
+		let area={};       
+        let anio={}; 
+
+
+
+for (var i in this.resource.area) {
+	if (this.resource.area[i]==='Prácticas del Lenguaje'){
+		area.lengua=true;
+	}else if(this.resource.area[i]==='Matemática'){
+		area.matematica=true;
+	}else if(this.resource.area[i]==='Cs. Naturales'){
+		area.naturales=true;
+	}
+
+	
+  }
+
+
+  for (var i in this.resource.anio) {
+	if (this.resource.anio[i]==='5to'){
+		anio.quinto=true;
+	}else if(this.resource.anio[i]==='6to'){
+		anio.sexto=true;
+	}
+	
+	
+  }
+
     let q;
     if (this.filterText){
       q = this.filterText
@@ -114,7 +147,11 @@ export default class PropuestaTallerComponent extends CuradorComponent {
 
 		this.PublishedsOrientaciones
 			.getList({
-				q: q
+				q: q,
+				complementarias:false,
+				troncal:false,
+				area:area,
+				anio:anio
 			})
 			.then(publisheds => {
 				let filtered = _.filter(publisheds, p => {
