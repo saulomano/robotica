@@ -29,7 +29,8 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
                 'lengua': false,
             'naturales':false};
         this.areaEmergente;
-        this.anio;
+        this.anio={'quinto':false, 
+        'sexto': false};
         $scope.$mdMedia = $mdMedia;
         this.resetWaterfall;
         this.complementarias = this.$stateParams.params?  this.$stateParams.params.complementarias || false :false;
@@ -85,6 +86,20 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
         console.log(value);
         if (value=='matematica'){
             this.area.matematica=  !this.area.matematica;
+        }
+        if (value=='lengua'){
+            this.area.lengua=  !this.area.lengua;
+        }
+        if (value=='naturales'){
+            this.area.naturales=  !this.area.naturales;
+        }
+
+        if (value=='quinto'){
+            this.anio.quinto=  !this.anio.quinto;
+        }
+
+        if (value=='sexto'){
+            this.anio.sexto=  !this.anio.sexto;
         }
 
 
