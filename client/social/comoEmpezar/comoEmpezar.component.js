@@ -30,7 +30,7 @@ export default class ComoEmpezarComponent extends SocialComponent {
 
    
 
-    ngMeta.setTitle('Institicional');
+    ngMeta.setTitle('Cómo Empezar');
     ngMeta.setTag('description', 'Una plataforma educativa diseñada para acercar a los docentes y estudiantes de la modalidad Educación Especial otras posibilidades de enseñar y aprender');
 	}
 	

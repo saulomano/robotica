@@ -1,22 +1,22 @@
 
-<div style="background-color: white">
-	<div  layout="row" layout-align="center center" style="margin-bottom: 2%;">
-		<div>
-			<p  class="impact-text-large" style="text-align: center; margin-top: 20px; font-size: 40px; color: #8BBF1F; font-family: pacifico-regular, sans-serif;">Actividades complementarias</p>	
-			<P  class="impact-text-large" style="text-align: center; margin-top: 14px; font-size: 12px; color: #c7c2c2; font-family: Roboto, Helvetica Neue, sans-serif;">PROPUESTAS PARA QUE DOCENTES Y ALUMNOS SIGAN APRENDIENDO SOBRE ROBÓTICA, </br> PROGRAMACIÓN Y PENSAMIENTO COMPUTACIONAL</P>			
+<div>
+	<div style="background-color: white">
+		<div  layout="row" layout-align="center center" style="margin-bottom: 14%;">
+			<div>
+				<p  class="impact-text-large" style="text-align: center; margin-top: 20px; font-size: 40px; color: #8BBF1F; font-family: pacifico-regular, sans-serif;">Actividades complementarias</p>	
+				<P  class="impact-text-large" style="text-align: center; margin-top: 14px; font-size: 12px; color: #c7c2c2; font-family: Roboto, Helvetica Neue, sans-serif;">Propuestas para que docentes y alumnos sigan aprendiendo sobre robótica, </br> programación y pensamiento computacional</P>			
+			</div>
 		</div>
+		
 	</div>
-</div>
 
-<div style="background-color: rgb(224, 218, 218)">
-	
-	<div>
-	
-		<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
-			
-					<rd-item-template>           
-							<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+	<div style="background-color: #eef2f5">
+		
+		<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">			
+			<rd-item-template>           
+				<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
 			</rd-item-template>
 		</rd-waterfall>
+				
 	</div>
 </div>

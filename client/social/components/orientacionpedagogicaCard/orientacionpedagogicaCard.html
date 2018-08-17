@@ -16,7 +16,7 @@
 </rd-card>
 
 <!-- Desafios -->
-<rd-card data-rd-section="{{$ctrl.resource.type}}" ng-if="$ctrl.resource.type !== 'addnew'" ng-click="$ctrl.viewResource($event, $ctrl.resource, $ctrl.modoVista)">
+<rd-card style="margin-top: -50px;" data-rd-section="{{$ctrl.resource.type}}" ng-if="$ctrl.resource.type !== 'addnew'" ng-click="$ctrl.viewResource($event, $ctrl.resource, $ctrl.modoVista)">
 	<rd-card-toolbar ng-if="$ctrl.editable" ng-show="$ctrl.modoVista === 'curador'">
 		<div layout="row">
 			<div class="rd-card__status" flex ng-hide="$ctrl.resource.published == undefined"> <i class="fa fa-check-circle-o"></i>	Publicado</div>
