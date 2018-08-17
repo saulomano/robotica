@@ -170,6 +170,10 @@ export function index(req, res, next) {
 										.limit(query.cursor.limit)
 										.select(query.cursor.select)
 										.exec();
+
+
+			
+
 			next();
 		});
 }

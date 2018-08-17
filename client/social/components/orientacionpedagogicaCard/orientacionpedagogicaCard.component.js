@@ -36,7 +36,7 @@ class OrientacionPedagogicaCardController {
         let captionsAreas = {
             'Cs. Naturales' : 'naturales',
             'Matemática' : 'Matemática',
-            'Prácticas del Lenguajes' : 'lengua'
+            'Prácticas del Lenguaje' : 'lengua'
         };
 
         this.iconsAreas = _.map(this.resource.area, p =>{
