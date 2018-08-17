@@ -88,7 +88,7 @@ export function index(req, res, next) {
 		}
 		if(area.lengua){			
 			arrayArea.push (
-				'Práctica del Lenguaje' )
+				'Prácticas del Lenguaje' )
 		}
 
 		if ( arrayArea.length > 0) 

@@ -14,15 +14,11 @@ export function index(req, res, next) {
 	var query = req.querymen;
 	let qq = req.query.q;
 	var type = req.query.type;
-	var area = req.query.area;
-	var areaEmergente = req.query.areaEmergente;
+	var area = req.query.area;	
 	var anio = req.query.anio;
 	var publicaHome = req.query.publicaHome;
-	
-		
 
 	let q = {};
-
 	
 	if (qq){
   	// convert to regex
@@ -43,23 +39,11 @@ export function index(req, res, next) {
 
 		q = { $or: [
 			
-				{ title: { $regex: k, $options: 'i' } },
-				{ summary: { $regex: k, $options: 'i' } },
-				{ nivel: { $regex: k, $options: 'i' } },
-				//{ area: { $regex: k, $options: 'i' } },
-				{ accessibility: { $regex: k, $options: 'i' } },
-				{ usability: { $regex: k, $options: 'i' } },
-				{ platform: { $regex: k, $options: 'i' } },
-				{ category: { $regex: k, $options: 'i' } },
-				{ 'postBody.content': { $regex: k, $options: 'i' } },
-				{ tags: { $regex: k, $options: 'i' } },
+				{ titulo: { $regex: k, $options: 'i' } },
+				{ descripcion: { $regex: k, $options: 'i' } }				
 			]
 		};
 	}
-
-
-
-	
 
 
 	if (type){
@@ -73,8 +57,6 @@ export function index(req, res, next) {
 		if (publicaHome) {
 			q['publicaHome'] = true;
 		}
-
-
 
 	if (area) {
 			area=JSON.parse(area);		
@@ -91,7 +73,7 @@ export function index(req, res, next) {
 		}
 		if(area.lengua){			
 			arrayArea.push (
-				'Práctica del Lenguaje' )
+				'Prácticas del Lenguaje' )
 		}
 
 		if ( arrayArea.length > 0) 
@@ -117,10 +99,6 @@ export function index(req, res, next) {
 	if ( arrayAnio.length > 0) 
 	q['anio']= { $in : arrayAnio};
 }
-
-
-	
-	
 	Published
 		.find(q)
 		.count()
@@ -131,7 +109,7 @@ export function index(req, res, next) {
 			req.totalItems = count;
 			req.result = Published
 										.find(q)
-										.populate({path: 'orientacionpedagogica'})									
+									//	.populate({path: 'orientacionpedagogica'})									
 										.populate('owner')
 										.populate('files')
                 						.populate('propuestas')
@@ -181,9 +159,9 @@ export function show(req, res, next) {
 								.populate('owner')
 								.populate('files')
         						.populate('propuestas')
-								.populate({
+								/*.populate({
 									path: 'orientacionpedagogica'
-								  })
+								  })*/
 								.exec();
 	next();
 }

@@ -13,7 +13,7 @@ export default class HomeComponent extends SocialComponent {
     this.Restangular = Restangular;
     this.$mdDialog = $mdDialog;
     this.$stateParams = $stateParams;
-    this.Publisheds = this.Restangular.all('publishedPropuestasTaller');
+    this.Publisheds = this.Restangular.all('publishedPropuestTaller');
     this.Publishedskits = this.Restangular.all('publishedkits');
     this.$state = $state;
     this.page = 0;
