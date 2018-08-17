@@ -19,7 +19,7 @@ export function index(req, res, next) {
 	var anio = req.query.anio;
 	var troncal = req.query.troncal;
 	var complementarias= req.query.complementarias;
-		
+	var intensivo = req.query.intensivo;
 
 	let q = {};
 
@@ -54,14 +54,19 @@ export function index(req, res, next) {
 	}
 
 
-	if(complementarias && complementarias ==true){
+	if(complementarias ){
 		q['complementarias'] =complementarias;
 	}else{
 		q['complementarias'] =false;
 	}
 
+	if(intensivo ){
+		q['intensivo'] =intensivo;
+	}else{
+		q['intensivo'] =false;
+	}
 
-	if(troncal && troncal==true){
+	if(troncal ){
 		q['troncal'] = true;
 	}else{
 		q['troncal'] = false;
