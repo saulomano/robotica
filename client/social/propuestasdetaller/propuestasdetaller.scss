@@ -28,7 +28,16 @@
 	top:-20px;
 }
 
-#donate  input:checked + span {
+#donate  input:checked + label {
+	background-color: #9F9A99;
+	color:white;
+}
+
+input:checked + label {
+	color: red;
+  }
+
+:checked{
 	background-color: #9F9A99;
 	color:white;
 }
