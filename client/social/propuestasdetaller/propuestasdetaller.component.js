@@ -35,7 +35,7 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
         this.resetWaterfall;
         this.complementarias = this.$stateParams.params?  this.$stateParams.params.complementarias || false :false;
       
-         this.Publisheds = this.Restangular.all('publishedPropuestTaller');
+         this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
       
 
       
@@ -123,7 +123,8 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
                 area:this.area,               
                 anio:this.anio,
                 complementarias: false,
-                sort: '-introductoria',
+                intensivo: false,
+                sort: '-orden',
             })
             .then(data => {
                 let total = data.$total;

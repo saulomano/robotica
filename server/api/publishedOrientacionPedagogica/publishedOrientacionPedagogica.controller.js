@@ -79,21 +79,18 @@ export function index(req, res, next) {
 			area=JSON.parse(area);		
 		let arrayArea=[];
 		
-		if(area.naturales){	
+		if(area === 'naturales'){	
 			arrayArea.push (
 				 'Cs. Naturales' );
 				
 		}
-		if(area.matematica){						
+		if(area === 'matematica'){						
 			arrayArea.push (
 				'Matemática' );
 		}
-		if(area.lengua){			
+		if(area === 'lengua'){			
 			arrayArea.push (
 				'Prácticas del Lenguaje' );
-				arrayArea.push (
-					'Práctica del Lenguaje' );
-				
 		}
 
 		if ( arrayArea.length > 0) 
@@ -104,16 +101,16 @@ export function index(req, res, next) {
 		areaEmergente=JSON.parse(areaEmergente);		
 	let arrayAreaEmergente=[];
 	
-	if(areaEmergente.pensamientoComputacional){	
+	if(areaEmergente === 'pensamientoComputacional'){	
 		arrayAreaEmergente.push (
 			 'Pensamiento Computacional' );
 			
 	}
-	if(areaEmergente.programacion){						
+	if(areaEmergente === 'programacion'){						
 		arrayAreaEmergente.push (
 			'Programación' )
 	}
-	if(areaEmergente.robotica){			
+	if(areaEmergente === 'robotica'){			
 		arrayAreaEmergente.push (
 			'Robótica' )
 	}
@@ -127,11 +124,11 @@ export function index(req, res, next) {
 	let arrayAnio=[];
 	
 
-	if(anio.quinto){						
+	if(anio === 'quinto'){						
 		arrayAnio.push (
 			'5to' )
 	}
-	if(anio.sexto){			
+	if(anio === 'sexto'){			
 		arrayAnio.push (
 			'6to' )
 	}
