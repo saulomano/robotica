@@ -15,11 +15,11 @@
 
 #donate label span {
 	text-align:center;
-	font-size: 20px;
+	font-size: 14px;
 	padding:20px 0px;
 	display:block;
 	font-family: DINNextRoundedLTPro-Regular;
-	font-weight: bold !important;
+	font-weight: bold;
 }
 
 
@@ -28,31 +28,31 @@
 	top:-20px;
 }
 
-#donate  input:checked + span {
+#donate   input:checked + span  {
 	background-color: #9F9A99;
 	color:white;
 }
 
-#b1 input:checked + span{
+#b1  input:checked + span {
 	background-color:#5EA7F1;
-	color:white;
+	color:white ;
 }
 
-#b2 input:checked + span{
+#b2 input:checked + span {
 	background-color:#8BBF1F;
-	color:white;
+	color:white ;
 }
 
-#b3 input:checked + span{
+#b3 input:checked + span {
 	background-color:#BB62B3;
-	color:white;
+	color:white ;
 }
 
 #donate .yellow {
 	margin:4px;
-	background-color: rgba(224, 224, 224, 0.96);
-	border-radius:4px;
-	border:2px solid #BB62B3;
+	background-color: white;
+	border-radius:8px;
+	border:1px solid #BB62B3;
 	overflow:auto;
 	float:left;
 	color:#BB62B3;
@@ -61,9 +61,9 @@
 
 #donate .blue {
 	margin:4px;
-	background-color: rgba(224, 224, 224, 0.96);
-	border-radius:4px;
-	border:2px solid #5EA7F1;
+	background-color: white;
+	border-radius:8px;
+	border:1px solid #5EA7F1;
 	overflow:auto;
 	float:left;
 	color:#5EA7F1;
@@ -73,9 +73,9 @@
 
 #donate .green {
 	margin:4px;
-	background-color: rgba(224, 224, 224, 0.96);
-	border-radius:4px;
-	border:2px solid #8BBF1F;
+	background-color: white;
+	border-radius:8px;
+	border:1px solid #8BBF1F;
 	overflow:auto;
 	float:left;
 	color:#8BBF1F;
@@ -91,7 +91,12 @@
 }
 
 
-
+.parrafoComp{
+	color: gray;	
+    font-size: 15px !important;
+    font-weight: normal !important;
+    font-family: DINNextRoundedLTPro-Regular;
+}
 
 
 .groupX {

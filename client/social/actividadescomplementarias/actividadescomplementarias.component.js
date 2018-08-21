@@ -26,7 +26,11 @@ export default class ActividadesComplementariasComponent extends SocialComponent
         this.$mdDialog = $mdDialog;
         this.filterChange;
         this.area;
-        this.areaEmergente;
+        this.areaEmergente = {
+            'pensamientoComputacional': false,
+            'programacion' : false,
+            'robotica' : false,
+        };
         this.anio;
         $scope.$mdMedia = $mdMedia;
         this.resetWaterfall;
@@ -99,11 +103,30 @@ export default class ActividadesComplementariasComponent extends SocialComponent
       
       }
 
+      fetchDataFilter(e,value){
+        e.preventDefault();
+        console.log(value);
+        if (value=='pensamientoComputacional'){
+            this.areaEmergente.pensamientoComputacional =  !this.areaEmergente.pensamientoComputacional;
+        }
+        if (value=='programacion'){
+            this.areaEmergente.programacion=  !this.areaEmergente.programacion;
+        }
+        if (value=='robotica'){
+            this.areaEmergente.robotica=  !this.areaEmergente.robotica;
+        }
 
-      fetchDataFilter(value){
+       
+
+
           this.page=0;
         this.resetWaterfall= Math.random();
       }
+
+      /*fetchDataFilter(value){
+          this.page=0;
+        this.resetWaterfall= Math.random();
+      }*/
 
     fetchData(){
         let def = this.$q.defer();
@@ -118,6 +141,7 @@ export default class ActividadesComplementariasComponent extends SocialComponent
                 page: this.page, 
                 limit: this.limit,
                 type: 'orientacionpedagogica',
+                areaEmergente:this.areaEmergente,
                 complementarias: this.complementarias
             })
             .then(data => {
