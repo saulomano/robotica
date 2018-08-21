@@ -25,7 +25,7 @@ class OrientacionPedagogicaViewController {
 		this.$scope.$watch(() => { return this.$scope.resource; }, (value) => {	
 			
 			this.resource = this.$scope.resource;
-			
+			this.resource.postBody[0].content = this.resource.postBody[0].content.replace("<img", '<img class="responsive"');
 			
 			$timeout(() => {
 				this.$scope.$apply();

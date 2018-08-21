@@ -17,7 +17,7 @@ export function index(req, res, next) {
 	var area = req.query.area;	
 	var anio = req.query.anio;
 	var publicaHome = req.query.publicaHome;
-
+	var traeIntroductorias = req.query.traeIntroductorias
 	let q = {};
 	
 	if (qq){
@@ -53,6 +53,10 @@ export function index(req, res, next) {
 		}
 	}
 
+
+	
+	//if(traeIntroductorias)
+//	q['introductoria'] = traeIntroductorias;
 
 		if (publicaHome) {
 			q['publicaHome'] = true;
@@ -196,6 +200,63 @@ export function destroy(req, res, next) {
 	req.result =  Published.findByIdAndRemove(req.params.id).exec();
 	req.statusCode = 204;
 	next();
+}
+
+export function introductorias(req, res, next) {
+	var query = req.querymen;
+	let qq = req.query.q;	
+	let q = {};
+	
+	if (qq){
+  	// convert to regex
+		let keywords = _.escapeRegExp(qq);
+		let patterns = [
+			{ s: /[aáà]/ig, v: '[aáà]' },
+			{ s: /[eéè]/ig, v: '[eéè]' },
+			{ s: /[iíì]/ig, v: '[iíì]' },
+			{ s: /[oóò]/ig, v: '[oóò]' },
+			{ s: /[uúù]/ig, v: '[uúù]' },
+		];
+
+		_.each(patterns, p => {
+			keywords = keywords.replace(p.s, p.v);
+		});
+
+		let k = new RegExp(keywords, 'i');
+
+		q = { $or: [
+			
+				{ titulo: { $regex: k, $options: 'i' } },
+				{ descripcion: { $regex: k, $options: 'i' } }				
+			]
+		};
+	}
+
+
+	q['introductoria'] = true;
+
+
+	Published
+		.find(q)
+		.count()
+		.exec((err, count) => {
+			if (err){
+				return next(err);
+			}
+			req.totalItems = count;
+			req.result = Published
+										.find(q)
+									//	.populate({path: 'orientacionpedagogica'})									
+										.populate('owner')
+										.populate('files')
+                						.populate('propuestas')
+										.sort(query.cursor.sort)
+										.skip(query.cursor.skip)
+										.limit(query.cursor.limit)
+										.select(query.cursor.select)
+										.exec();
+			next();
+		});
 }
 
 
