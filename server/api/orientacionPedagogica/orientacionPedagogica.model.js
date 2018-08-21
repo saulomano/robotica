@@ -32,6 +32,7 @@ var ResourceSchema = new Schema({
 		troncal: { type:Boolean, default: false },
 		complementarias: { type:Boolean, default: false },
 		intensivo: { type:Boolean, default: false },
+		orden: Number
 	}, ops);
 
 registerEvents(ResourceSchema);

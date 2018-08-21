@@ -56,6 +56,11 @@
 			  </md-checkbox>
 			</md-content>
 			<md-content >
+					<md-input-container  class="dashboard__input dashboard__input--summary">
+							<label>Ordén</label>
+							<input  ng-model="$ctrl.resource.orden"  type="number" min="0"
+							>							
+						</md-input-container>
 				<md-checkbox ng-model="$ctrl.resource.complementarias" aria-label="Checkbox 1">
 					Complementaria
 				  </md-checkbox>
