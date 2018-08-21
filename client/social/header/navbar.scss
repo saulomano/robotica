@@ -91,10 +91,14 @@
 		&:not(.rd-navbar__item--selected):hover,
 		&:not(.rd-navbar__item--selected):focus {
 			transform: translateY(-1px);
+			outline: none;
+			border: 0;
 		}
 
 		&:active, &:focus {
 			transform: translateY(0px);
+			outline: none;
+			border: 0;
 		}
 	}
 
@@ -151,7 +155,9 @@
 
 		&:hover:not(.rd-navbar__item--selected),
 		&:focus:not(.rd-navbar__item--selected) {
-			color: $color-black-light;
+			//color: $color-black-light;
+			outline: none;
+			border: 0;
 		}
 
 		&--selected {
