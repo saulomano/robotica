@@ -76,7 +76,7 @@ export function index(req, res, next) {
 
 
 	if (area) {
-			area=JSON.parse(area);		
+					
 		let arrayArea=[];
 		
 		if(area === 'naturales'){	
@@ -98,7 +98,7 @@ export function index(req, res, next) {
 	}
 
 	if (areaEmergente) {
-		areaEmergente=JSON.parse(areaEmergente);		
+			
 	let arrayAreaEmergente=[];
 	
 	if(areaEmergente === 'pensamientoComputacional'){	
@@ -119,8 +119,7 @@ export function index(req, res, next) {
 	q['areaEmergente']= { $in : arrayAreaEmergente};
 	}
 
-	if (anio) {
-		anio=JSON.parse(anio);		
+	if (anio) {		
 	let arrayAnio=[];
 	
 

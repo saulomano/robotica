@@ -25,12 +25,13 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
       
         this.$mdDialog = $mdDialog;
        
-        this.area={'matematica':false, 
-                'lengua': false,
-            'naturales':false};
+        this.matematica=false;
+        this.matemlenguaatica=false;
+        this.naturales=false;
+        this.quinto=false;
+        this.sexto=false;
         this.areaEmergente;
-        this.anio={'quinto':false, 
-        'sexto': false};
+       
         $scope.$mdMedia = $mdMedia;
         this.resetWaterfall;
         this.complementarias = this.$stateParams.params?  this.$stateParams.params.complementarias || false :false;
@@ -85,21 +86,34 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
         e.preventDefault();
         console.log(value);
         if (value=='matematica'){
-            this.area.matematica=  !this.area.matematica;
+            this.matematica=  !this.matematica;
+            this.lengua= false;
+            this.naturales=false;
+            this.quinto= false;
+            this.sexto= false;
         }
         if (value=='lengua'){
-            this.area.lengua=  !this.area.lengua;
+            this.lengua=  !this.lengua;
+            this.matematica= false;
+            this.naturales=false;
         }
         if (value=='naturales'){
-            this.area.naturales=  !this.area.naturales;
+            this.naturales=  !this.naturales;
+            this.lengua= false;
+            this.matematica= false;
+            this.quinto= false;
+            this.sexto= false;
         }
 
         if (value=='quinto'){
-            this.anio.quinto=  !this.anio.quinto;
+            this.quinto=  !this.quinto;
+            this.sexto= false;
         }
 
         if (value=='sexto'){
-            this.anio.sexto=  !this.anio.sexto;
+            this.sexto=  !this.sexto;
+            this.quinto= false;
+            
         }
 
 
@@ -115,13 +129,44 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             q = this.searchText
         }
 
+        
+                 
+
+
+
+        if (!(this.lengua || this.matematica || this.naturales ) || 
+            !(this.quinto || this.sexto)){
+                let res = {
+                    count: 0,
+                    items: [],
+                    page: this.page,
+                    limit: this.limit
+                };
+
+                def.resolve(res);;
+            }else{
+
+
+                var areaElegida;
+                var anioElegido = this.quinto ?'quinto' :'sexto';
+                if (this.matematica)
+                         areaElegida='matematica';
+                if (this.lengua)
+                         areaElegida='lengua'; 
+                         if (this.naturales)
+                         areaElegida='naturales';     
+                         
+
+
+
+
         this.Publisheds
             .getList({
                 page: this.page, 
                 limit: this.limit,
-                type: 'propuestataller',
-                area:this.area,               
-                anio:this.anio,
+                type: 'orientacionpedagogica',
+                area:areaElegida,               
+                anio:anioElegido,
                 complementarias: false,
                 intensivo: false,
                 sort: '-orden',
@@ -138,7 +183,7 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
     
                 def.resolve(res);
             })
-
+        }
         return def.promise;
     }
 
