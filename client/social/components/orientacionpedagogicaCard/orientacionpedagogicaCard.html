@@ -53,7 +53,7 @@
 		<div layout="row" ng-hide="$ctrl.deleteDesafioBoolean">
 			<div flex class="rd-card__body--custom">
 				<h1 class="rd-card__title--v1">{{$ctrl.resource.objetivo}}</h1>
-				<p class="rd-card__paragraph">{{$ctrl.resource.descripcion | truncate:140 }}</p>
+				<p class="rd-card__paragraph">{{$ctrl.resource.descripcion | truncate:90 }}...</p>
 				<p class="rd-card__paragraph ng-binding"><strong ng-repeat="area in $ctrl.resource.area"> {{area}} </strong></p>
 				<p class="rd-card__paragraph ng-binding"><strong ng-repeat="anio in $ctrl.resource.anio"> {{anio}} </strong></p>
 				<p class="rd-card__paragraph ng-binding"><strong ng-repeat="areaEmergente in $ctrl.resource.areaEmergente" ng-class="{'blue_font': areaEmergente == 'Pensamiento Computacional', 'green_font': areaEmergente == 'Programación', 'purple_font': areaEmergente == 'Robótica'}"> {{areaEmergente}} </strong></p>
