@@ -26,7 +26,7 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
         this.$mdDialog = $mdDialog;
        
         this.matematica=false;
-        this.matemlenguaatica=false;
+        this.lengua=false;
         this.naturales=false;
         this.quinto=false;
         this.sexto=false;
