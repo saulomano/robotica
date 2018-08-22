@@ -169,7 +169,7 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
                 anio:anioElegido,
                 complementarias: false,
                 intensivo: false,
-                sort: '-orden',
+                sort: 'orden',
             })
             .then(data => {
                 let total = data.$total;
