@@ -26,12 +26,9 @@ export default class ActividadesComplementariasComponent extends SocialComponent
         this.$mdDialog = $mdDialog;
         this.filterChange;
         this.area;
-        this.areaEmergente = {
-            'pensamientoComputacional': false,
-            'programacion' : false,
-            'robotica' : false,
-        };
-        this.anio;
+        this.pensamientoComputacional= false;
+        this.programacion=false;
+        this.robotica=false;
         $scope.$mdMedia = $mdMedia;
         this.resetWaterfall;
         this.complementarias = true;
@@ -107,13 +104,20 @@ export default class ActividadesComplementariasComponent extends SocialComponent
         e.preventDefault();
         console.log(value);
         if (value=='pensamientoComputacional'){
-            this.areaEmergente.pensamientoComputacional =  !this.areaEmergente.pensamientoComputacional;
+            this.pensamientoComputacional =  !this.pensamientoComputacional;
+            this.programacion=false;
+            this.robotica= false;
         }
         if (value=='programacion'){
-            this.areaEmergente.programacion=  !this.areaEmergente.programacion;
+            this.programacion=  !this.programacion;
+            this.pensamientoComputacional =false;
+            this.robotica= false;
         }
         if (value=='robotica'){
-            this.areaEmergente.robotica=  !this.areaEmergente.robotica;
+            this.robotica=  !this.robotica;
+            this.programacion=false;
+            this.pensamientoComputacional =false;
+
         }
 
        
@@ -136,12 +140,38 @@ export default class ActividadesComplementariasComponent extends SocialComponent
             q = this.searchText
         }
 
+
+
+        if (!(this.pensamientoComputacional || this.programacion || this.robotica ) ){
+
+            let res = {
+                count: 0,
+                items: [],
+                page: this.page,
+                limit: this.limit
+            };
+
+            def.resolve(res);;
+
+
+        }else{
+
+
+            var areaEmergenteElegida;
+           
+            if (this.pensamientoComputacional)
+             areaEmergenteElegida='pensamientoComputacional';
+            if (this.programacion)
+             areaEmergenteElegida='programacion'; 
+            if (this.robotica)
+             areaEmergenteElegida='robotica';     
+
         this.Publisheds
             .getList({
                 page: this.page, 
                 limit: this.limit,
                 type: 'orientacionpedagogica',
-                areaEmergente:this.areaEmergente,
+                areaEmergente:areaEmergenteElegida,
                 complementarias: this.complementarias
             })
             .then(data => {
@@ -156,7 +186,7 @@ export default class ActividadesComplementariasComponent extends SocialComponent
     
                 def.resolve(res);
             })
-
+        }
         return def.promise;
     }
 
