@@ -8,6 +8,10 @@
 			</div>
 	</div>
 
+	<div style="margin-bottom: 15px;">
+		<p  class="impact-text-large" style="text-align: center; margin-top: 20px;  color: #8BBF1F; font-family: DINNextRoundedLTPro-Regular;">SELECCIONÁ TU ÁREA</p>	
+	</div>
+
 	<div layout="row" layout-align="center center" style="margin-bottom: 0.5%;" id="donate"  layout-sm="column"  layout-xs="column">
 	
 			<!--label id="b1" class="blue"><input id="b1" type="checkbox" ng-model="$ctrl.areaEmergente.pensamientoComputacional" ng-change="$ctrl.fetchDataFilter()"><span id="b1">PENSAMIENTO COMPUTACIONAL</span></label>	
@@ -24,6 +28,9 @@
 		</div>
 	</div>
 
+	<div ng-show="$ctrl.matematica || $ctrl.naturales || $ctrl.lengua" style="margin-bottom: 15px;">
+			<p  class="impact-text-large" style="text-align: center; margin-top: 20px;  color: #8BBF1F; font-family: DINNextRoundedLTPro-Regular;">SELECCIONÁ EL AÑO</p>	
+		</div>
 	<div layout="row" layout-align="center center"  style="margin-bottom: 14%;" id="donate">
 		<!--div>
 		<label class="mat"><input type="checkbox" name="area" ng-model="$ctrl.area.matematica"   ng-click="$ctrl.fetchDataFilter()"><span style="width: 130px; background-image: url(/assets/images/matematica.svg); background-repeat: no-repeat;" >Matemática</span></label>
