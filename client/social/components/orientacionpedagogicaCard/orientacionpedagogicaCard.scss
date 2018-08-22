@@ -69,8 +69,25 @@
 
 .green_font {
 	color: #9aca3c;
+	text-align:center;
+	font-size: 18px;
+	margin-right: 15px;
 }
 
 .purple_font {
 	color: #bb62b3;
 }
+
+span.green {
+	background: #9aca3c;
+	border-radius: 1.8em;
+	-moz-border-radius: 1.8em;
+	-webkit-border-radius: 1.8em;
+	color: #ffffff;
+	display: inline-block;
+	font-weight: bold;
+	line-height: 2.7em;
+	margin-left: 10px;
+	text-align: center;
+	width: 2.7em; 
+  }
