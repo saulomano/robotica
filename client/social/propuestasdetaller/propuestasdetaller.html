@@ -32,10 +32,10 @@
 		</div>
 		<div style="margin-left: 35px;"-->
 			<div ng-show="$ctrl.matematica || $ctrl.naturales || $ctrl.lengua">
-			<label class="quinto" ng-click="$ctrl.fetchDataFilter($event,'quinto')"><input type="checkbox"  ng-model="$ctrl.quinto"  ><span style="color: #8BBF1F; width: 130px; text-align: center;padding: 4px 0px">5to</span></label>
+			<label class="quinto" ng-click="$ctrl.fetchDataFilter($event,'quinto')"><input id="quinto" type="checkbox"  ng-model="$ctrl.quinto"  ><span style="width: 130px; text-align: center;padding: 4px 0px">5to</span></label>
 			</div>
 			<div ng-show="$ctrl.matematica || $ctrl.naturales || $ctrl.lengua">			
-			<label class="sexto"  ng-click="$ctrl.fetchDataFilter($event,'sexto')"><input type="checkbox" ng-model="$ctrl.sexto" ><span style="color: #8BBF1F; width: 130px;text-align: center; padding: 4px 0px">6to </span></label>
+			<label class="sexto"  ng-click="$ctrl.fetchDataFilter($event,'sexto')"><input id="sexto" type="checkbox" ng-model="$ctrl.sexto" ><span style="width: 130px;text-align: center; padding: 4px 0px">6to </span></label>
 		</div>
 			<!--/div-->
 	</div>
