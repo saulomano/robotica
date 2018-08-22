@@ -117,25 +117,34 @@ class RdWaterfallController {
 				colsHeights[c] = 0;
 			}
 
+			var indice  = 0;
+			var calculoSeteoPosicion;
+
+
 			$(this.$wrapperElement).find('[data-grid-item]').each(function(){
 				let $this = $(this);
 				let idx = parseInt($this.attr('data-grid-item'));
 				//let ci = idx % csize;
 				// get the column with min height
-				let ci = _.minBy(_.keys(colsHeights), (key) => {
+				
+				
+				/*let ci = _.minBy(_.keys(colsHeights), (key) => {
 					return colsHeights[key];
-				});
+				});*/
+				let ci = indice < _.size(colsHeights) ? indice : indice% _.size(colsHeights);
 
 				let tx = (itemW*(ci))+((ci)*gutter);
 				let ty = colsHeights[ci];
 
 				// set transform
-				$this.css('transform', `translateX(${tx}px) translateY(${ty}px)`);
+				$this.  css('transform', `translateX(${tx}px) translateY(${ty}px)`);
 
 				$this.css('opacity', 1);
 
 				// upgrade colsHeights
 				colsHeights[ci] += $this.height() + gutter;
+
+				indice++;
 			});
 			
 			this.rendering_ = false;
