@@ -219,3 +219,9 @@
 	color: $color-grey;
 	text-transform: none;
 }
+
+@media only screen and (max-width: 930px) {
+	.anchoDiv  {
+	  width: 350px !important;
+	}
+}
