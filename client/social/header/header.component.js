@@ -25,7 +25,7 @@ class HeaderComponent {
         section: 'enelaula',  caption: 'En el Aula',
         "nodes": [
           {
-            section: 'propuestasdetaller',  caption: 'Propuestas de Taller', action:'social.propuestasdetaller'
+            section: 'propuestasdetaller',  caption: 'Propuestas de Taller', action:'social.propuestasdetaller', param: 'true'
           },         
 
         
