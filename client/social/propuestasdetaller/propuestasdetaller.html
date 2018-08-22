@@ -14,26 +14,30 @@
 			<label id="b2" class="green"><input id="b2" type="checkbox" ng-model="$ctrl.areaEmergente.programacion" ng-change="$ctrl.fetchDataFilter()"><span id="b2">PROGRAMACIÓN</span></label>
 			<label id="b3" class="yellow"><input id="b3" type="checkbox" ng-model="$ctrl.areaEmergente.robotica" ng-change="$ctrl.fetchDataFilter()"><span id="b3">ROBÓTICA</span></label-->
 		<div style="margin-right: 10px;" ng-click="$ctrl.fetchDataFilter($event,'matematica')">
-			<label class="mat responsive"><input type="checkbox" name="area" ng-model="$ctrl.area.matematica"   ><span style="width: 300px; background-image: url(/assets/images/matematica.svg); background-repeat: no-repeat; text-align: center" >Matemática</span></label>
+			<label class="mat responsive"><input type="checkbox" name="area" ng-model="$ctrl.matematica"   ><span style="width: 300px; background-image: url(/assets/images/matematica.svg); background-repeat: no-repeat; text-align: center" >Matemática</span></label>
 		</div>
 		<div style="margin-right: 10px;" ng-click="$ctrl.fetchDataFilter($event,'naturales')">
-			<label class="nat responsive"><input type="checkbox" name="area" ng-model="$ctrl.area.naturales"  ><span style="width: 300px; background-image: url(/assets/images/naturales.svg); background-repeat: no-repeat; text-align: center">Cs. Naturales</span></label>
+			<label class="nat responsive"><input type="checkbox" name="area" ng-model="$ctrl.naturales"  ><span style="width: 300px; background-image: url(/assets/images/naturales.svg); background-repeat: no-repeat; text-align: center">Cs. Naturales</span></label>
 		</div>
 		<div style="margin-right: 10px;" ng-click="$ctrl.fetchDataFilter($event,'lengua')">
-			<label class="pracLen responsive"><input type="checkbox" name="area" ng-model="$ctrl.area.lengua"   ><span style="width: 300px; background-image: url(/assets/images/lengua.svg); background-repeat: no-repeat; text-align: center">Práct. del lenguaje</span></label>
+			<label class="pracLen responsive"><input type="checkbox" name="area" ng-model="$ctrl.lengua"   ><span style="width: 300px; background-image: url(/assets/images/lengua.svg); background-repeat: no-repeat; text-align: center">Práct. del lenguaje</span></label>
 		</div>
 	</div>
 
-	<div layout="row" layout-align="center center"  style="margin-bottom: 14%;" id="donate">
+	<div layout="row" layout-align="center center"  style="margin-bottom: 14%;" id="donate" >
 		<!--div>
 		<label class="mat"><input type="checkbox" name="area" ng-model="$ctrl.area.matematica"   ng-click="$ctrl.fetchDataFilter()"><span style="width: 130px; background-image: url(/assets/images/matematica.svg); background-repeat: no-repeat;" >Matemática</span></label>
 		<label class="nat"><input type="checkbox" name="area" ng-model="$ctrl.area.naturales"  ng-click="$ctrl.fetchDataFilter()"><span style="width: 130px; background-image: url(/assets/images/naturales.svg); background-repeat: no-repeat;">Cs. Naturales</span></label>
 		<label class="pracLen"><input type="checkbox" name="area" ng-model="$ctrl.area.lengua"   ng-click="$ctrl.fetchDataFilter()"><span style="width: 180px; background-image: url(/assets/images/lengua.svg); background-repeat: no-repeat;">Prácticas del lenguaje</span></label>
 		</div>
 		<div style="margin-left: 35px;"-->
-			<label class="quinto" ng-click="$ctrl.fetchDataFilter($event,'quinto')"><input type="checkbox"  ng-model="$ctrl.anio.quinto"  ><span style="color: #8BBF1F; width: 130px; text-align: center;padding: 4px 0px">5to</span></label>
-			<label class="sexto"  ng-click="$ctrl.fetchDataFilter($event,'sexto')"><input type="checkbox" ng-model="$ctrl.anio.sexto" ><span style="color: #8BBF1F; width: 130px;text-align: center; padding: 4px 0px">6to </span></label>
-		<!--/div-->
+			<div ng-show="$ctrl.matematica || $ctrl.naturales || $ctrl.lengua">
+			<label class="quinto" ng-click="$ctrl.fetchDataFilter($event,'quinto')"><input type="checkbox"  ng-model="$ctrl.quinto"  ><span style="color: #8BBF1F; width: 130px; text-align: center;padding: 4px 0px">5to</span></label>
+			</div>
+			<div ng-show="$ctrl.matematica || $ctrl.naturales || $ctrl.lengua">			
+			<label class="sexto"  ng-click="$ctrl.fetchDataFilter($event,'sexto')"><input type="checkbox" ng-model="$ctrl.sexto" ><span style="color: #8BBF1F; width: 130px;text-align: center; padding: 4px 0px">6to </span></label>
+		</div>
+			<!--/div-->
 	</div>
 	
 
