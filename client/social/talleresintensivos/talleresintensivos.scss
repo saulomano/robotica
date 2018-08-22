@@ -202,3 +202,16 @@
 		margin-bottom: 18% !important;
 	}
 }
+
+input#quinto + span {
+	color: #8BBF1F;
+}
+
+input#sexto + span {
+	color: #8BBF1F;
+}
+
+input[type=checkbox]:checked + span {
+	background-color: #9F9A99;
+    color: white;
+}
