@@ -48,6 +48,21 @@
 	color:white ;
 }
 
+#b1  input:checked + span .parrafoComp {
+	background-color:#5EA7F1;
+	color:white ;
+}
+
+#b2 input:checked + span .parrafoComp {
+	background-color:#8BBF1F;
+	color:white ;
+}
+
+#b3 input:checked + span .parrafoComp {
+	background-color:#BB62B3;
+	color:white ;
+}
+
 #donate .yellow {
 	margin:4px;
 	background-color: white;
@@ -203,4 +218,10 @@
 	background-color: #8BBF1F;
 	color: $color-grey;
 	text-transform: none;
+}
+
+@media only screen and (max-width: 930px) {
+	.anchoDiv  {
+	  width: 350px !important;
+	}
 }
