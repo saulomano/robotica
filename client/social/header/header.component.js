@@ -19,7 +19,7 @@ class HeaderComponent {
 
     this.menuNavBar = [
       {
-        section: 'comoEmpezar',  caption: 'Cómo empezar', action:'social.comoEmpezar'
+        section: 'comoEmpezar',  caption: 'Fundamentación', action:'social.comoEmpezar'
       },
       {
         section: 'enelaula',  caption: 'En el Aula',
@@ -30,7 +30,7 @@ class HeaderComponent {
 
         
           {
-            section: 'orientacionpedagogica',  caption: 'Talleres Combinados Intensivos', action:'social.talleresintensivos'
+            section: 'orientacionpedagogica',  caption: 'Talleres Intensivos', action:'social.talleresintensivos'
           },
           {
             section: 'actividadescomplementarias',  caption: 'Actividades Complementarias', action:'social.actividadescomplementarias'
