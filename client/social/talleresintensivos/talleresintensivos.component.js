@@ -157,7 +157,8 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
                 type: 'orientacionpedagogica',
                 area:areaElegida,               
                 anio:anioElegido,
-                intensivo: true
+                intensivo: true,
+                sort: 'orden',
             })
             .then(data => {
                 let total = data.$total;
