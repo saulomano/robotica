@@ -133,7 +133,7 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             !(this.quinto || this.sexto)){
                 let res = {
                     count: 0,
-                    items: [],
+                    items: null,
                     page: this.page,
                     limit: this.limit
                 };
@@ -157,7 +157,8 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
                 type: 'orientacionpedagogica',
                 area:areaElegida,               
                 anio:anioElegido,
-                intensivo: true
+                intensivo: true,
+                sort: 'orden',
             })
             .then(data => {
                 let total = data.$total;
