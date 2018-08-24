@@ -256,7 +256,7 @@ html {
 	text-decoration: none;
 	outline: none;
 	font-family: DINNextRoundedLTPro-Regular;
-	font-size: 16pt;
+	//font-size: 16pt;
 	font-weight: bold;
 	color: #494949;
 }
@@ -333,7 +333,7 @@ html {
 	top: 100%;
 	left: 30%;
 	z-index: 100;
-	width: 230px;
+	width: 300px;
 	margin-left: -100px;
 	background: #fff;
 	border-radius: 3px;
@@ -379,6 +379,7 @@ html {
 .submenu-item {
 	display: block;
 	text-align: left;
+	font-size: 14px !important;
 }
 
 .submenu-link,
@@ -388,7 +389,7 @@ html {
 	//color: #3498db;
 	color: #565656;
 	padding: 8px 10px;
-	font-size: 12px !important;
+	
     text-align: center !important;
     font-weight: bold !important;
     font-family: DINNextRoundedLTPro-Regular !important;

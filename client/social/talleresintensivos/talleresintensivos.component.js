@@ -133,7 +133,7 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             !(this.quinto || this.sexto)){
                 let res = {
                     count: 0,
-                    items: [],
+                    items: null,
                     page: this.page,
                     limit: this.limit
                 };
