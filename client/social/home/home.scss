@@ -87,6 +87,10 @@ hr{
   .disText, .one_half,.textKit   {
     width: 100%;
   }
+
+  .textoVideo{
+    width: unset !important;
+  }
   .cardsgral{
     position: relative !important;
     height: auto !important;
@@ -163,6 +167,9 @@ hr{
 
 @media only screen and (min-width: 850px) and (max-width: 990px) {
  
+  .textoVideo{
+    width: unset !important;
+  }
   .divslide{
     background-repeat: no-repeat !important;
 	  background-size: cover !important;
@@ -274,11 +281,22 @@ hr{
 .imgfondo{
    -webkit-background-size: 100%;
     height: auto;
-    background-attachment: fixed;
+    //background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     //background-size: cover;  
    
+}
+
+.textoVideo{
+  margin-bottom: 2%; 
+  width: 600px; 
+  font-size: 18px; 
+  color:#4D4D4D; 
+  font-family:DINNextRoundedLTPro-Regular; 
+  text-align: center; 
+  margin-left: auto; 
+  margin-right: auto;
 }
 
 .cont{

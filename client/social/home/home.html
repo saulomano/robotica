@@ -30,11 +30,14 @@
 <div class="cont">
 	<div class="row" style="background-color: #5EA7F1;">					
 		<div class="disText">
-			<h4 class="impact-text-large" style="text-align: center; color: white; font-family: DINNextRoundedLTPro-Regular;">Robótica educativa para escuelas primarias</h4>
+			
+			<p class="impact-text-large" style="text-align: center; color: white; font-family: DINNextRoundedLTPro-Regular; font-size: 48px; font-weight: bold">Robótica educativa</p>
+			<p class="impact-text-large" style="text-align: center; color: white; font-family: pacifico-regular; font-size: 40px; margin: -4% 0;">para escuelas primarias</p>
 			<p style="text-align: center; color: white; font-size: 15px;
-			line-height: 23px ;  font-family: DINNextRoundedLTPro-Medium;">
+			line-height: 23px ;  font-family: DINNextRoundedLTPro-Medium; margin-top: 6%;">
 			El uso de la robótica en el aula, y de las herramientas que ofrecen las nuevas tecnologías, fomentan un aprendizaje innovador y colaborativo a la vez que impulsan el aprendizaje basado en proyectos, permitiendo a los alumnos trabajar interdisciplinariamente y desarrollar habilidades y competencias necesarias para su inserción plena en la sociedad del conocimiento.
-			</p>				
+			</p>
+					
 			<img ng-src="assets/robotica_educativa_icon.png" alt="Logo">
 			<div class="video">
 									<md-dialog-content>
@@ -52,74 +55,64 @@
 
 
 <div class="cont">
-	<div class="disText">
-			<p class="impact-text-large titulos" style=" text-align: center; color: #5EA7F1; font-family: pacifico-regular, sans-serif;">Fundamentación de la Robótica Educativa</p>				
-			
-			
-		</div >
-		<div style="margin-bottom: 2%;">
-			<P class="impact-text-large" style="text-align: center; margin-top: 14px; font-size: 14px; color: #8BBF1F; font-family: Roboto, Helvetica Neue, sans-serif;">La robótica educativa es una estrategia de aprendizaje interdisciplinaria que emplea robots para potenciar el desarrollo de  </br>
-				habilidades y competencias de los alumnos como el pensamiento computacional y la programación.</P>
-			</div>			
-		</div>
-<div style="background-color: white;">			
-	<div class="respNum">
-		<div flex-gt-sm="100" flex= "33"  style=" text-align: center;" ng-click="$ctrl.ircomoempezar(1)">
-			<img  ng-src="assets/num1.png" class="pointer">
-			<p class="pcomoempezar">
-				<a class="acomoempezar" >¿QUÉ ES EL PENSAMIENTO <BR>COMPUTACIONAL?</a>
-			</p>					
-		</div>
-		<div flex-gt-sm="100" flex= "33" style="text-align: center;" ng-click="$ctrl.ircomoempezar(2)">
-			<img  ng-src="assets/num2.png" class="pointer" >
-			<p class="pcomoempezar">
-				<a class="acomoempezar" >¿CÓMO EMPIEZO <BR>A PROGRAMAR?</a>
-			</p>					
-		</div>
-		<div  flex-gt-sm="100" flex= "33" style="text-align: center;" ng-click="$ctrl.ircomoempezar(3)">
-			<img ng-src="assets/num3.png" class="pointer">
-			<p class="pcomoempezar">
-				<a class="acomoempezar" >¿CÓMO PUEDO APLICAR <BR>LA RÓBOTICA EDUCATIVA?</a>
-			</p>					
-		</div>
+	<div class="disText" style="margin-top: 2%">
+		<p class="impact-text-large titulos" style=" text-align: center; color: #8BBF1F; font-family: pacifico-regular; font-size: 40px;">Fundamentación de la<br> Robótica Educativa</p>				
+	</div >
+	<div class="textoVideo" >
+		La <strong>Rótica Educativa</strong> es una estrategia de aprendizaje interdisciplinaria que emplea robots para potenciar el desarrollo de habilidades y competencias 
+		de los alumnos como el pensamiento computacional y la programación.
 	</div>			
-</div>
-</div>
 
-
-
-
-
-<div class="cont">
-	<div class="row">
-		<div style="height: 50px; min-height: 0; margin-bottom: 0!important;"></div>
+	<div >			
+		<div layout="row" layout-align="start strech" layout-sm="column"  layout-xs="column">
+			<div flex  ng-click="$ctrl.ircomoempezar(1)">
+				<img class="responsive" ng-src="assets/1_home.png" class="pointer">				
+			</div>
+			<div flex ng-click="$ctrl.ircomoempezar(2)">
+				<img  class="responsive" ng-src="assets/2_home.png" class="pointer" >				
+			</div>
+			<div  flex ng-click="$ctrl.ircomoempezar(3)">
+				<img class="responsive" ng-src="assets/3_home.png" class="pointer">				
+			</div>
+		</div>			
 	</div>
 </div>
 
+
+
+
+
+<!--div class="cont">
+	<div class="row">
+		<div style="height: 50px; min-height: 0; margin-bottom: 0!important;"></div>
+	</div>
+</div-->
+
 <!--div class="cont"-->
-	<div>
+<div>
 	<div class="rowparallax imgfondo" style="background-image: url(/assets/img/banner/fondo_parallax.jpg)">
 	<!--div class=" imgfondo" style="background-image: url(/assets/img/banner/fondo_parallax.jpg)"-->	
-		<div class="textKit">
+		<!--div class="textKit">
 			<p class="impact-text-large titulos" style="text-align: center; color: white; font-family: pacifico-regular, sans-serif;">Propuestas de Talleres</p>
 			
-		</div >
+		</div -->
 		<div class="cardsgral">
 			<div class="cards">
-				<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" search-text="$ctrl.searchText" max-items="3" >
+				<!--rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" search-text="$ctrl.searchText" max-items="3" >
 					<rd-item-template>           
 					
 							<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
 	
 				</rd-item-template>
-				</rd-waterfall>
+				</rd-waterfall-->
+				<img style=" width: 25%; margin: 5%;" ng-src="assets/propuestas.png" class="pointer">
 			</div>
 		</div>		
-		<div style="margin-left: auto; margin-right: auto; text-align: center; padding-bottom: 10%;
+		<!--div style="margin-left: auto; margin-right: auto; text-align: center; padding-bottom: 10%;
 		padding-top: 10%;">
 			
 			<a style="text-align: center; color: white; font-family: DINNextRoundedLTPro-Regular; font-size: 15pt; " ui-sref="social.propuestasdetaller">ver m&aacute;s</a>
-		</div>		
+		</div-->		
 	</div>
 </div>
 <div class="cont">
