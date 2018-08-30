@@ -26,10 +26,11 @@ class OrientacionPedagogicaViewController {
 			
 			this.resource = this.$scope.resource;
 
-			for (var i =0 ; i<= this.resource.postBody.length;i++){
-				this.resource.postBody[i].content = this.resource.postBody[i].content.replace("<img", '<img class="responsive"');
+			for (var i =0 ; i< this.resource.postBody.length;i++){
+				this.resource.postBody[i].content = this.resource.postBody[i].content.replace(/<img/g, '<img class="responsive"');
 			}
 
+			console.log(this.resource);
 
 			$timeout(() => {
 				this.$scope.$apply();
