@@ -26,7 +26,7 @@ class OrientacionPedagogicaViewController {
 			
 			this.resource = this.$scope.resource;
 
-			for (var i =0 ; i< this.resource.postBody.length;i++){
+			for (var i =0 ; i<= this.resource.postBody.length;i++){
 				this.resource.postBody[i].content = this.resource.postBody[i].content.replace("<img", '<img class="responsive"');
 			}
 
