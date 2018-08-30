@@ -7,7 +7,7 @@ export default angular
 
 class OrientacionPedagogicaViewController {
 	/*@ngInject*/
-	constructor($scope, $element, $state, $timeout, Auth){
+	constructor($scope, $element, $state, $timeout, Auth,$mdMedia){
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;
@@ -19,7 +19,7 @@ class OrientacionPedagogicaViewController {
     	this.$element.addClass('orientacionpedagogica-card');
     
 		this.editable = this.$scope.editable === true;		
-
+		this.isMobile;
 		this.isPublished = this.$scope.isPublished == true;		
 
 		this.$scope.$watch(() => { return this.$scope.resource; }, (value) => {	
@@ -36,6 +36,14 @@ class OrientacionPedagogicaViewController {
 				this.$scope.$apply();
 			});
 		});
+
+
+		this.$scope.$watch(() => { return $mdMedia('xs') }, (mobile) => {
+            this.isMobile = mobile === true;    
+           
+		  });
+		  
+
 		
 	}
 
