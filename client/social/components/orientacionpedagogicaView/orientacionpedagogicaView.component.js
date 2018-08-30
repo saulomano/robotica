@@ -25,8 +25,12 @@ class OrientacionPedagogicaViewController {
 		this.$scope.$watch(() => { return this.$scope.resource; }, (value) => {	
 			
 			this.resource = this.$scope.resource;
-			this.resource.postBody[0].content = this.resource.postBody[0].content.replace("<img", '<img class="responsive"');
-			
+
+			for (var i =0 ; i< this.resource.postBody.length;i++){
+				this.resource.postBody[i].content = this.resource.postBody[i].content.replace("<img", '<img class="responsive"');
+			}
+
+
 			$timeout(() => {
 				this.$scope.$apply();
 			});
