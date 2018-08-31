@@ -19,10 +19,10 @@ class HeaderComponent {
 
     this.menuNavBar = [
       {
-        section: 'comoEmpezar',  caption: 'Fundamentación', action:'social.comoEmpezar' ,viewMobile:true,viewWeb:true
+        section: 'comoEmpezar',  caption: 'Fundamentación', action:'social.comoEmpezar'
       },
       {
-        section: 'enelaula',  caption: 'En el Aula', viewMobile:false ,  viewWeb:true,
+        section: 'enelaula',  caption: 'En el Aula',
         "nodes": [
           {
             section: 'propuestasdetaller',  caption: 'Propuestas de Talleres', action:'social.propuestasdetaller', param: 'true'
@@ -40,25 +40,16 @@ class HeaderComponent {
       }
 ,
 
-{
-  section: 'propuestasdetaller',  caption: 'Propuestas de Talleres', action:'social.propuestasdetaller', param: 'true' ,viewMobile:true , viewWeb:false
-},        
 
-{
-  section: 'orientacionpedagogica',  caption: 'Talleres Intensivos', action:'social.talleresintensivos', viewMobile:true , viewWeb:false
-},
-{
-  section: 'actividadescomplementarias',  caption: 'Actividades Complementarias', action:'social.actividadescomplementarias',viewMobile:true , viewWeb:false
-},
     
       {
-        section: 'kits',  caption: 'Kits', action:'social.kitsDisponibles',viewMobile:true, viewWeb:true
+        section: 'kits',  caption: 'Kits', action:'social.kitsDisponibles'
       },
       {
-        section: 'noticias',  caption: 'Noticias', action:'social.noticias',viewMobile:true, viewWeb:true
+        section: 'noticias',  caption: 'Noticias', action:'social.noticias'
       },
       {
-        section: 'institucional',  caption: 'Institucional', action:'social.institucional',viewMobile:true, viewWeb:true
+        section: 'institucional',  caption: 'Institucional', action:'social.institucional'
         
       }
     

@@ -121,7 +121,7 @@
 		width: 100%;
 		overflow: hidden;
 		opacity: 0;
-		margin: -10px 60px;
+		margin: -10px ;
 		transition: $transition-default;
 
 		&--tools {
@@ -387,7 +387,7 @@ html {
 .submenu-link:visited,
 .submenu-link:active {
 	//color: #3498db;
-	color: #565656;
+	color: white;
 	padding: 8px 10px;
 	
     text-align: center !important;
@@ -435,19 +435,19 @@ html {
 	display: block;
 	//background-color: #9a9a9a; // #CCC
 	text-decoration: none;
-	padding: 2px;
-	background-color: #565656;
-	color: #fff;
+	padding: 9px;
+	background-color: white;
+	color: black;
 	font-family: DINNextRoundedLTPro-Regular;
-    font-size: 16px;
+    font-size: 12px;
 
 }
 
 /* add hover behaviour */
-.mainmenu a:hover {
+/*.mainmenu a:hover {
 	color:#8BBF1F
 	 // #666
-}
+}*/
 
 /* when hovering over a .mainmenu item,
   display the submenu-i inside it.
@@ -464,13 +464,13 @@ html {
 */
 
 .submenu-i a {
-	background-color: #CCC; // #5c5c5c
+	background-color:white; // #5c5c5c
 	padding-left: 30px;
 }
 
 /* hover behaviour for links inside .submenu-i */
 .submenu-i a:hover {
-	background-color: #b1b1b1; //#C5C5C5;
+	background-color: white; //#C5C5C5;
 }
 
 /* this is the initial state of all submenu-i.
