@@ -59,8 +59,8 @@
 		<rd-navbar-navigation>
 			<rd-navbar-item 
 				ng-repeat="item in $ctrl.menuNavBar"
-				ng-model="item"
-				menu-sections-name="$ctrl.arraySectionsName"
+				ng-model="item" ng-show="item.viewWeb"
+							menu-sections-name="$ctrl.arraySectionsName"
 				navbar-item-selected="item.section === $ctrl.selected"
 				ng-click="$ctrl.itemClicked(item)"
 				tabindex="0">
