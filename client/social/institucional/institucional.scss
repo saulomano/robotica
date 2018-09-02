@@ -1,6 +1,7 @@
 // socialInstitucional Component
 .institucional {
-	background-color: #9ACA3C;
+	//background-color: $color-white;
+	background-image: url('#{$robotica-orintaciones-svg-path}/fondo123_section.png');
 
 	h1 {
 		color: $color-primary;
@@ -15,17 +16,16 @@
 		font-weight: bold;
 	}
 
-	p {
-		color: $color-black-light;
-		font-family: $font-family-primary;
-		font-weight: $font-primary-light;
-		font-size: 1.5rem;
+	
+
+	p {		
+		font-family: DINNextRoundedLTPro-Light !important;		
+		font-size: 18px !important;
 		line-height: 2.0rem;
 		text-align: justify;
 		margin-bottom: 3rem;
 		margin-top: 3rem;
-		color: #ffffffde;
-		font-weight: bold;
+		color: #4D4D4D !important;		
 	}
 
 	&--banner {
