@@ -8,6 +8,7 @@
 	z-index: $navbar-z-index;
 	background-color: #8BBF1F;
 
+
 	&__content {
 		display: flex;
 		align-items: center;
@@ -66,13 +67,29 @@
 
 		&:hover {
 			background-color: transparent !important; //fix the md-button selector
+			border-radius: 50%;
+		opacity: 1;
+		backface-visibility: hidden;
+		transition: $transition-default;
+		background: #76AA13;
+		border-radius: 1.8em;
+		-moz-border-radius: 1.8em;
+		-webkit-border-radius: 1.8em;	
 		}
 
 		&:active {
 			//box-shadow: $whiteframe-shadow-1dp;
+			border-radius: 50%;
+		opacity: 1;
+		backface-visibility: hidden;
+		transition: $transition-default;
+		background: #76AA13;
+		border-radius: 1.8em;
+		-moz-border-radius: 1.8em;
+		-webkit-border-radius: 1.8em;	
 		}
 
-		&:hover &--bars,
+		/*&:hover &--bars,
 		&:focus &--bars {
 			background-color: $color-black-light;
 		}
@@ -87,7 +104,7 @@
 		&:focus &--bars::after {
 			background-color: $color-black-light;
 			top: -9px;
-		}
+		}*/
 	}
 
 
@@ -351,6 +368,7 @@ html {
 	transition: transform 0.1s ease-out, opacity 0.1s ease-out;
 	pointer-events: none;
 	color:#565656;
+	
 }
 
 .submenu::after,
@@ -445,7 +463,9 @@ html {
 	background-color: white;
 	color: black;
 	font-family: DINNextRoundedLTPro-Regular;
-    font-size: 12px;
+	font-size: 12px;
+	text-decoration: none;
+	padding-left: 32px;
 
 }
 
@@ -471,7 +491,8 @@ html {
 
 .submenu-i a {
 	background-color:white; // #5c5c5c
-	padding-left: 30px;
+	padding-left: 62px;
+	font-weight: normal;
 }
 
 /* hover behaviour for links inside .submenu-i */

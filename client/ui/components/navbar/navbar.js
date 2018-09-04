@@ -24,7 +24,7 @@ class RdNavbarController {
 
     	this.$element.addClass('rd-navbar');
 
-		this.$scope.$watch(() => { return $mdMedia('xs') || $mdMedia('sm'); }, (mobile) => {
+		this.$scope.$watch(() => { return $mdMedia('xs')  }, (mobile) => {
 			this.isMobile = mobile === true;
 			if(this.isMobile) {
                 this.$element.addClass(clsScrolled);
@@ -187,7 +187,7 @@ function RdNavbar($window){
 		},
 		transclude: {
 			'items': 'rdNavbarNavigation',
-			'tools': 'rdNavbarTools',
+			'tools': '?rdNavbarTools',
 			'brand': 'rdNavbarBrand',
 			'body': '?rdNavbarBody',
 			'profile': '?rdNavbarProfile'
