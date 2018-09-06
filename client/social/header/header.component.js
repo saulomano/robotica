@@ -16,8 +16,11 @@ class HeaderComponent {
     this.selectedItem;
     this.searchText =  $stateParams.search || '';
     $scope.$mdMedia = $mdMedia;
-
+    this.site= 'curador';
     this.menuNavBar = [
+      {
+        section: 'home',  caption: 'HOME', action:'social.home', soloMobile:true
+      },
       {
         section: 'comoEmpezar',  caption: 'Fundamentación', action:'social.comoEmpezar'
       },

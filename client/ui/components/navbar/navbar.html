@@ -3,7 +3,7 @@
 		 ng-class="{ 'rd-navbar--mobile': $rdNavbarController.isMobile }">
 	
 	<!-- MENU BUTTON -->
-	<a class="rd-navbar__menu-button" aria-label="Menu" ng-if="$rdNavbarController.isMobile" ng-click="$rdNavbarController.toggleDropdown($event)">
+	<a class="rd-navbar__menu-button" aria-label="Menu"  ng-click="$rdNavbarController.toggleDropdown($event)">
 		<span class="rd-navbar__menu-button--bars"></span>
 	</a>
 
@@ -37,7 +37,7 @@
 						ng-click="$rdNavbarController.showSubmenu[$index] = !$rdNavbarController.showSubmenu[$index]; $rdNavbarController.itemClicked(item)">
 						{{ item.caption | uppercase}}			
 					</a>
-					<ul class="submenu-i" >
+					<ul class="submenu-i" ng-if="item.nodes">
 						<li ng-repeat="subItem in item.nodes">
 							<a href  ng-click="$rdNavbarController.itemClicked(subItem)" >{{ subItem.caption | uppercase }}</a>
 						</li>

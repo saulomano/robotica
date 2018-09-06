@@ -11,7 +11,7 @@ class CuradorHeaderComponent {
     this.$state = $state;
     this.showingDropdown = false;
     this.$rootScope = $rootScope;
-
+this.site= 'curador';
     this.isDisabled = false;
     this.noCache = true;
     this.selectedItem;
