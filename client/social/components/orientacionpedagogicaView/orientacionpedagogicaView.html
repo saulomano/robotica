@@ -7,8 +7,8 @@
 					<div flex >
 						<p><strong>{{ $ctrl.resource.createdAt | amDateFormat:'D MMMM YYYY' }}</strong></p>
 						<h4 class="margin" style="font-family: DINNextRoundedLTPro-Regular;">{{$ctrl.resource.objetivo}}</h4>
-						<div layout="row" ng-hide="$ctrl.deleteDesafioBoolean">
-							<div class="preview-glyphs">
+						<div layout="row" layout-gt-xs="column" ng-hide="$ctrl.deleteDesafioBoolean">
+							<div flex class="preview-glyphs">
 								<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(area)}}"></md-icon>
 							</div>
 							<div flex class="rd-card__body--custom">
