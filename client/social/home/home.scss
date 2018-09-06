@@ -4,6 +4,11 @@
 	margin-bottom: 12rem;
 }
 
+.imgPropuesta{
+  width: 25%; 
+  margin: 5%;
+}
+
 .content_wrapper{
   
   width: 70%;
@@ -86,6 +91,14 @@ hr{
 @media only screen and (max-width: 840px) {
   .disText, .one_half,.textKit   {
     width: 100%;
+  }
+
+  .imgPropuesta{
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    padding: 5% !important;
   }
 
   .textoVideo{
@@ -182,7 +195,14 @@ hr{
     font-size: 2rem !important;
     margin-left: 80px !important;
     font-family: DINNextRoundedLTPro-Regular !important ;
-  }  
+  } 
+  .imgPropuesta{
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    padding: 5% !important;
+  } 
 }
 
 .titHead{
