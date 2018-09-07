@@ -19,7 +19,7 @@ class HeaderComponent {
     this.site= 'curador';
     this.menuNavBar = [
       {
-        section: 'home',  caption: 'HOME', action:'social.home', soloMobile:true
+        section: 'home',  caption: 'INICIO', action:'social.home', soloMobile:true
       },
       {
         section: 'comoEmpezar',  caption: 'Fundamentación', action:'social.comoEmpezar'
