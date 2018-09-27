@@ -20,7 +20,8 @@ export function index(req, res, next) {
 	var troncal = req.query.troncal;
 	var complementarias= req.query.complementarias;
 	var intensivo = req.query.intensivo;
-
+	var publicaHome = req.query.publicaHome;
+	
 	let q = {};
 
 	
@@ -53,6 +54,10 @@ export function index(req, res, next) {
 		};
 	}
 
+
+	if (publicaHome){
+		q['publicaHome'] =true;
+	}
 
 	if(complementarias ){
 		q['complementarias'] =complementarias;
@@ -92,6 +97,12 @@ export function index(req, res, next) {
 			arrayArea.push (
 				'Prácticas del Lenguaje' );
 		}
+
+		if(area === 'lengua'){			
+			arrayArea.push (
+				'Prácticas del Lenguaje' );
+		}
+
 
 		if ( arrayArea.length > 0) 
 		q['area']= { $in : arrayArea};

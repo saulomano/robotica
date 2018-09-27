@@ -197,7 +197,7 @@ export default class HomeComponent extends SocialComponent {
     this.Publisheds
         .getList({
             page: 1, 
-            //limit: 3,
+            limit: 3,
             type: 'orientacionpedagogica',
             publicaHome: true
         })

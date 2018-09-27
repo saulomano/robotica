@@ -31,8 +31,17 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
         this.quinto=false;
         this.sexto=false;
         this.areaEmergente;
-       
+        this.masAreas=false;
+        this.sociales=false;
+        this.plastica=false;
+        this.danza=false;
+        this.teatro=false;
+        this.musica=false;
+        
+
         $scope.$mdMedia = $mdMedia;
+
+        this.habilita56= false;
         this.resetWaterfall;
         this.complementarias = this.$stateParams.params?  this.$stateParams.params.complementarias || false :false;
       
@@ -91,11 +100,27 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             this.naturales=false;
             this.quinto= false;
             this.sexto= false;
+            this.masAreas= false;
+            this.habilita56= true;
+            this.sociales=false;
+            this.plastica=false;
+            this.danza=false;
+            this.teatro=false;
+            this.musica=false;
         }
         if (value=='lengua'){
             this.lengua=  !this.lengua;
             this.matematica= false;
             this.naturales=false;
+            this.masAreas= false;
+            this.quinto= false;
+            this.sexto= false;
+            this.habilita56= true;
+            this.sociales=false;
+            this.plastica=false;
+            this.danza=false;
+            this.teatro=false;
+            this.musica=false;
         }
         if (value=='naturales'){
             this.naturales=  !this.naturales;
@@ -103,6 +128,13 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             this.matematica= false;
             this.quinto= false;
             this.sexto= false;
+            this.masAreas= false;
+            this.habilita56= true;
+            this.sociales=false;
+            this.plastica=false;
+            this.danza=false;
+            this.teatro=false;
+            this.musica=false;
         }
 
         if (value=='quinto'){
@@ -115,6 +147,63 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             this.quinto= false;
             
         }
+        if (value=='masAreas'){
+            this.naturales=  false;
+            this.lengua= false;
+            this.matematica= false;
+            this.quinto= false;
+            this.sexto= false;
+            this.masAreas= !this.masAreas;
+            this.habilita56= false;
+            this.sociales=false;
+            this.plastica=false;
+            this.danza=false;
+            this.teatro=false;
+            this.musica=false;
+        }
+        
+
+        if (value=='sociales'){
+            this.sociales=!this.sociales;
+            this.plastica=false;
+            this.danza=false;
+            this.teatro=false;
+            this.musica=false;
+        }
+
+
+        if (value=='plastica'){
+            this.sociales=false;
+            this.plastica=!this.plastica;
+            this.danza=false;
+            this.teatro=false;
+            this.musica=false;
+        }
+
+        if (value=='danza'){
+            this.sociales=false;
+            this.plastica=false;
+            this.danza=!this.danza;
+            this.teatro=false;
+            this.musica=false;
+        }
+
+        if (value=='teatro'){
+            this.sociales=false;
+            this.plastica=false;
+            this.danza=false;
+            this.teatro=!this.teatro;
+            this.musica=false;
+        }
+        if (value=='musica'){
+            this.sociales=false;
+            this.plastica=false;
+            this.danza=false;
+            this.teatro=false;
+            this.musica=!this.musica;
+        }
+
+
 
 
           this.page=0;
