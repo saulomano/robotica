@@ -94,22 +94,26 @@
 <div>
 	<div class="rowparallax imgfondo" style="background-image: url(/assets/img/banner/fondo_parallax.jpg)">
 	<!--div class=" imgfondo" style="background-image: url(/assets/img/banner/fondo_parallax.jpg)"-->	
-		<!--div class="textKit">
+		<div class="textKit">
 			<p class="impact-text-large titulos" style="text-align: center; color: white; font-family: pacifico-regular, sans-serif;">Propuestas de Talleres</p>
 			
-		</div -->
+		</div>
 		<div class="cardsgral">
 			<div class="cards">
+				<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+			
+					<rd-item-template>           
+							<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+		</rd-item-template>
+		</rd-waterfall>
 				<!--rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" search-text="$ctrl.searchText" max-items="3" >
 					<rd-item-template>           
-					
-							<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
-	
-				</rd-item-template>
+						<propuestataller-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></propuestataller-card>
+					</rd-item-template>
 				</rd-waterfall-->
-				<a ui-sref="social.propuestasdetaller" >
+				<!--a ui-sref="social.propuestasdetaller" >
 				<img class="imgPropuesta" ng-src="assets/propuestas.png" class="pointer">
-					</a>
+					</a-->
 			</div>
 		</div>		
 		<!--div style="margin-left: auto; margin-right: auto; text-align: center; padding-bottom: 10%;
