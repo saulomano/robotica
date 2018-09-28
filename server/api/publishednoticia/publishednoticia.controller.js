@@ -14,6 +14,7 @@ export function index(req, res, next) {
 	var query = req.querymen;
 	let qq = req.query.q;
 	var type = req.query.type;
+	var publicaHome = req.query.publicaHome;
 	let q = {};
 	if (qq){
   	// convert to regex
@@ -47,6 +48,11 @@ export function index(req, res, next) {
 			]
 		};
 	}
+
+	if (publicaHome){
+		q['publicaHome'] =true;
+	}
+
 	
 	if (type){
 		q['$and'] = [ { type: type } ];
