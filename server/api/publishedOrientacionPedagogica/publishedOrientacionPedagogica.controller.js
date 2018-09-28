@@ -102,6 +102,33 @@ export function index(req, res, next) {
 			arrayArea.push (
 				'Prácticas del Lenguaje' );
 		}
+		
+		
+		if(area === 'sociales'){			
+			arrayArea.push (
+				'Cs. Sociales' );
+		}
+
+		if(area === 'plastica'){			
+			arrayArea.push (
+				'Plástica' );
+		}
+
+		if(area === 'danza'){			
+			arrayArea.push (
+				'Danza' );
+		}
+
+		if(area === 'musica'){			
+			arrayArea.push (
+				'Música' );
+		}
+
+		if(area === 'teatro'){			
+			arrayArea.push (
+				'Teatro' );
+		}
+
 
 
 		if ( arrayArea.length > 0) 

@@ -53,7 +53,7 @@ export default function seedDatabaseIfNeeded() {
       },{
         type: 'area',
         values: [
-          'danza',
+          'Danza',
           'fisica',
           'ingles',
           'lengua',

@@ -218,13 +218,12 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             q = this.searchText
         }
 
-        
-                 
 
 
-
-        if (!(this.lengua || this.matematica || this.naturales ) || 
-            !(this.quinto || this.sexto)){
+        if (!(this.lengua || this.matematica || this.naturales || this.masAreas) || 
+            !(this.quinto || this.sexto ||  this.sociales  ||            
+                this.plastica || this.danza || this.teatro || this.musica
+            )){
                 let res = {
                     count: 0,
                     items: null,
@@ -237,16 +236,23 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
 
 
                 var areaElegida;
-                var anioElegido = this.quinto ?'quinto' :'sexto';
+                var anioElegido = this.masAreas ?null : this.quinto ?'quinto' :'sexto';
                 if (this.matematica)
                          areaElegida='matematica';
                 if (this.lengua)
                          areaElegida='lengua'; 
-                         if (this.naturales)
-                         areaElegida='naturales';     
-                         
-
-
+                 if (this.naturales)
+                         areaElegida='naturales';
+                  if (this.sociales)
+                         areaElegida='sociales';     
+                         if (this.plastica)
+                         areaElegida='plastica';      
+                         if (this.danza)
+                         areaElegida='danza';
+                         if (this.teatro)
+                         areaElegida='teatro';
+                         if (this.musica)
+                         areaElegida='musica';
 
 
         this.Publisheds
