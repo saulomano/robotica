@@ -13,7 +13,7 @@
 	   
 	<div  class="mySlides fade">
 		<carousel-item>
-			<a style="text-decoration: none;" ui-sref="social.propuestasdetaller" >				
+		<a style="text-decoration: none;" ui-sref="social.propuestasdetaller" >				
 		<div class="divslide" layout="row" layout-align="center center" ng-style="{'background': 'linear-gradient(to bottom, rgba(50, 45, 45, 0), rgb(90, 125, 220)), url({{item.url}})'}">
 			<div class="ban_content">
 				<div class="subhead">{{item.titulo}}<br>{{item.titulo2}} </div>
@@ -102,12 +102,11 @@
 		</div>
 		<div class="cardsgral">
 			<div class="cards">
-				<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
-			
+				<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()"  search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
 					<rd-item-template>           
-							<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
-		</rd-item-template>
-		</rd-waterfall>
+						<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+					</rd-item-template>
+				</rd-waterfall>
 				<!--rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" search-text="$ctrl.searchText" max-items="3" >
 					<rd-item-template>           
 						<propuestataller-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></propuestataller-card>
@@ -130,6 +129,27 @@
 		<div style="height: 50px; min-height: 0; margin-bottom: 0!important;"></div>
 	</div>
 </div>
+
+<div class="cont">
+
+	<div class="rowparallaxk">
+		<div class="textKit">
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Noticias</p>
+			
+			
+		</div>
+		<div class="cardsgral">
+			<div class="cards">
+				<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchDataNoticia()" search-text="$ctrl.searchText">
+					<rd-item-template>           
+						<noticia-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></noticia-card>
+					</rd-item-template>
+				</rd-waterfall>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 <div class="cont">
 

@@ -15,6 +15,7 @@ export default class HomeComponent extends SocialComponent {
     this.$stateParams = $stateParams;
     this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
     this.Publishedskits = this.Restangular.all('publishedkits');
+    this.PublishedsNoticias = this.Restangular.all('publishednoticia');
     this.$state = $state;
     this.page = 0;
     this.limit = 20;
@@ -199,7 +200,7 @@ export default class HomeComponent extends SocialComponent {
             page: 1, 
             limit: 3,
             type: 'orientacionpedagogica',
-            publicaHome: true
+            publicaHome: true          
         })
         .then(data => {
             let total = data.$total;
@@ -215,6 +216,37 @@ export default class HomeComponent extends SocialComponent {
         })
 
     return def.promise;
+}
+
+fetchDataNoticia(){
+  let def = this.$q.defer();
+        this.page++;
+        let q;
+        if (this.searchText){
+            q = this.searchText
+        }
+
+        this.PublishedsNoticias
+            .getList({
+                page: 1, 
+                limit: 3,
+                type: 'noticia',
+                publicaHome: true
+            })
+            .then(data => {
+                let total = data.$total;
+          
+                let res = {
+                    count: total,
+                    items: data,
+                    page: this.page,
+                    limit: this.limit
+                };
+    
+                def.resolve(res);
+            })
+
+        return def.promise;
 }
 
 fetchDataKit(){
