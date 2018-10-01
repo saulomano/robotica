@@ -16,7 +16,7 @@ class OrientacionPedagogicaCardController {
 		this.$state = $state;
         this.$mdDialog = $mdDialog;
 		this.$element.addClass('orientacionpedagogica-card');
-
+        this.cardhome = this.$scope.cardhome;
         this.captions = {
             'orientacionpedagogica': 'Orientacion Pedagogica',
             'noticia': 'Noticia',
@@ -43,6 +43,7 @@ class OrientacionPedagogicaCardController {
             return captionsAreas[p.type];         
         });
 
+        
 
 
 		this.editable = this.$scope.editable === true;
@@ -217,12 +218,15 @@ function orientacionpedagogicaCard($log){
 		controller: OrientacionPedagogicaCardController,
 	controllerAs: '$ctrl',
 	binding: {		
-		vista: '<'
+        vista: '<',
+      
+       
 	},
     scope: {
 			resource: '=',
 			editable: '=',
-			vista: '='
+            vista: '=',
+            cardhome:'='
     },
 		template: require('./orientacionpedagogicaCard.html')
 	}
