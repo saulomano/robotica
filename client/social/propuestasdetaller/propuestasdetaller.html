@@ -27,11 +27,9 @@
 		</div>
 
 		<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'masAreas')">
-			<label class=" responsive"><input type="checkbox" name="area" ng-model="$ctrl.masAreas"   ><span style="width: 300px;  text-align: center">MAS AREAS</span></label>
+			<label class=" responsive"><input type="checkbox" id="mas" name="area" ng-model="$ctrl.masAreas"   ><span style="width: 300px;  text-align: center">MAS AREAS</span></label>
 		</div>
 	</div>
-
-
 
 	<div ng-if="$ctrl.masAreas " layout="row" layout-align="center center" style="margin-bottom: 0.5%;" id="donate"  layout-sm="column"  layout-xs="column">
 
@@ -51,28 +49,36 @@
 	<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'teatro')">
 		<label class="pracLen responsive"><input type="checkbox" name="area" ng-model="$ctrl.teatro"   ><span style="width: 180px; background-image: url(/assets/images/teatro.svg); background-repeat: no-repeat; text-align: center">Teatro</span></label>
 	</div>
-
+	
 	
 </div>
+
+<div ng-if="$ctrl.masAreas" layout="row" layout-align="center center"  style="margin-bottom: 15px;" layout-sm="column"  layout-xs="column" id="donate" >
+			
+	<div style="margin-right: 10px;  margin-bottom: 10px " ng-click="$ctrl.fetchDataFilter($event,'edfisica')">
+		<label class="pracLen responsive"><input type="checkbox" name="area" ng-model="$ctrl.edfisica"   ><span style="width: 180px; background-image: url(/assets/images/fisica.svg); background-repeat: no-repeat; text-align: center">Ed. Física</span></label>
+	</div>
+	
+	<div style="margin-right: 10px;  margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'ingles')">
+		<label class="pracLen responsive"><input type="checkbox" name="area" ng-model="$ctrl.ingles"   ><span style="width: 180px; background-image: url(/assets/images/ingles.svg); background-repeat: no-repeat; text-align: center">Inglés</span></label>
+	</div>
+	
+</div>
+
+
 
 
 	<div ng-show="$ctrl.habilita56 " style="margin-bottom: 15px; ">
 		<p  class="impact-text-large" style="text-align: center; margin-top: 20px;  color: #8BBF1F; font-family: DINNextRoundedLTPro-Regular;">SELECCIONÁ EL AÑO</p>
 	</div>
 	<div layout="row" layout-align="center center"  style="margin-bottom: 15px;" id="donate" >
-		<!--div>
-		<label class="mat"><input type="checkbox" name="area" ng-model="$ctrl.area.matematica"   ng-click="$ctrl.fetchDataFilter()"><span style="width: 130px; background-image: url(/assets/images/matematica.svg); background-repeat: no-repeat;" >Matemática</span></label>
-		<label class="nat"><input type="checkbox" name="area" ng-model="$ctrl.area.naturales"  ng-click="$ctrl.fetchDataFilter()"><span style="width: 130px; background-image: url(/assets/images/naturales.svg); background-repeat: no-repeat;">Cs. Naturales</span></label>
-		<label class="pracLen"><input type="checkbox" name="area" ng-model="$ctrl.area.lengua"   ng-click="$ctrl.fetchDataFilter()"><span style="width: 180px; background-image: url(/assets/images/lengua.svg); background-repeat: no-repeat;">Prácticas del lenguaje</span></label>
-		</div>
-		<div style="margin-left: 35px;"-->
-			<div ng-show="$ctrl.habilita56 " style="margin-right: 10px;">
+				<div ng-show="$ctrl.habilita56 " style="margin-right: 10px;">
 			<label class="quinto" ng-click="$ctrl.fetchDataFilter($event,'quinto')"><input id="quinto" type="checkbox"  ng-model="$ctrl.quinto"  ><span style="width: 130px; text-align: center;padding: 4px 0px">5to</span></label>
 			</div>
 			<div ng-show="$ctrl.habilita56 ">
 			<label class="sexto"  ng-click="$ctrl.fetchDataFilter($event,'sexto')"><input id="sexto" type="checkbox" ng-model="$ctrl.sexto" ><span style="width: 130px;text-align: center; padding: 4px 0px">6to </span></label>
 		</div>
-			<!--/div-->
+		
 	</div>
 	
 

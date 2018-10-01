@@ -37,6 +37,8 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
         this.danza=false;
         this.teatro=false;
         this.musica=false;
+        this.edfisica=false;
+        this.ingles=false;
         
 
         $scope.$mdMedia = $mdMedia;
@@ -91,6 +93,11 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
     }
 
 
+    paddingButtonFisica(){
+        return this.isMobile? "10px;" : "0px;";
+    }
+
+
       fetchDataFilter(e,value){
         e.preventDefault();
         console.log(value);
@@ -107,6 +114,8 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             this.danza=false;
             this.teatro=false;
             this.musica=false;
+            this.edfisica=false;
+             this.ingles=false;
         }
         if (value=='lengua'){
             this.lengua=  !this.lengua;
@@ -121,6 +130,8 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             this.danza=false;
             this.teatro=false;
             this.musica=false;
+            this.edfisica=false;
+            this.ingles=false;
         }
         if (value=='naturales'){
             this.naturales=  !this.naturales;
@@ -135,6 +146,8 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             this.danza=false;
             this.teatro=false;
             this.musica=false;
+            this.edfisica=false;
+            this.ingles=false;
         }
 
         if (value=='quinto'){
@@ -160,6 +173,8 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             this.danza=false;
             this.teatro=false;
             this.musica=false;
+            this.edfisica=false;
+             this.ingles=false;
         }
         
 
@@ -169,6 +184,8 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             this.danza=false;
             this.teatro=false;
             this.musica=false;
+            this.edfisica=false;
+            this.ingles=false;
         }
 
 
@@ -178,6 +195,8 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             this.danza=false;
             this.teatro=false;
             this.musica=false;
+            this.edfisica=false;
+              this.ingles=false;
         }
 
         if (value=='danza'){
@@ -186,6 +205,8 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             this.danza=!this.danza;
             this.teatro=false;
             this.musica=false;
+            this.edfisica=false;
+        this.ingles=false;
         }
 
         if (value=='teatro'){
@@ -194,6 +215,8 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             this.danza=false;
             this.teatro=!this.teatro;
             this.musica=false;
+            this.edfisica=false;
+        this.ingles=false;
         }
         if (value=='musica'){
             this.sociales=false;
@@ -201,9 +224,29 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
             this.danza=false;
             this.teatro=false;
             this.musica=!this.musica;
+            this.edfisica=false;
+        this.ingles=false;
         }
 
+        if (value=='edfisica'){
+            this.sociales=false;
+            this.plastica=false;
+            this.danza=false;
+            this.teatro=false;
+            this.musica=false;
+            this.edfisica=!this.edfisica;
+            this.ingles=false;
+        }
 
+        if (value=='ingles'){
+            this.sociales=false;
+            this.plastica=false;
+            this.danza=false;
+            this.teatro=false;
+            this.musica=false;
+            this.edfisica=false;
+            this.ingles=!this.ingles;
+        }
 
 
           this.page=0;

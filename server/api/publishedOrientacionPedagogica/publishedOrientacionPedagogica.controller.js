@@ -129,6 +129,16 @@ export function index(req, res, next) {
 				'Teatro' );
 		}
 
+		if(area === 'edfisica'){			
+			arrayArea.push (
+				'Ed. Física' );
+		}
+
+		if(area === 'ingles'){			
+			arrayArea.push (
+				'Inglés' );
+		}
+
 
 
 		if ( arrayArea.length > 0) 

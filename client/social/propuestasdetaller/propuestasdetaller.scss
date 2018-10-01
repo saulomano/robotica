@@ -215,3 +215,9 @@ input[type=checkbox]:checked + span {
 	background-color: #9F9A99;
     color: white;
 }
+
+
+input#mas[type=checkbox]:checked + span {
+	background-color: #8BBF1F;
+    color: white;
+}
