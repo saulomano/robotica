@@ -15,6 +15,17 @@
 								<p class="rd-card__paragraph ng-binding"><strong ng-repeat="area in $ctrl.resource.area"> {{area}} </strong></p>
 							</div>
 						</div>
+
+
+						<div ng-if="$ctrl.resource.files.length">
+							<md-button ng-if="$ctrl.resource.orden > 1"class="rview__button md-button" style="background-color:#8BBF1F; color: white"
+						ng-click="$ctrl.anterior()" >Anterior</md-button>
+						<md-button class="rview__button md-button" style="background-color:#8BBF1F; color: white"
+						ng-click="$ctrl.siguiente()" >Siguiente</md-button>
+						
+					</div>
+
+
 						<p flex class="paragraph post__test kview__summary">{{$ctrl.resource.descripcion}}</p>
 						
 						

@@ -93,9 +93,7 @@ export default class PropuestasDeTallerComponent extends SocialComponent{
     }
 
 
-    paddingButtonFisica(){
-        return this.isMobile? "10px;" : "0px;";
-    }
+    
 
 
       fetchDataFilter(e,value){

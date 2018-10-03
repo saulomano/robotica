@@ -7,7 +7,7 @@ export default angular
 
 class OrientacionPedagogicaViewController {
 	/*@ngInject*/
-	constructor($scope, $element, $state, $timeout, Auth,$mdMedia){
+	constructor($scope, $element, $state, $timeout, Auth,$mdMedia,Restangular){
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;
@@ -17,7 +17,7 @@ class OrientacionPedagogicaViewController {
 		this.role = '';
 		this.readOnlyRating = false;
     	this.$element.addClass('orientacionpedagogica-card');
-    
+		this.Restangular = Restangular;
 		this.editable = this.$scope.editable === true;		
 		this.isMobile;
 		this.isPublished = this.$scope.isPublished == true;		
@@ -26,10 +26,12 @@ class OrientacionPedagogicaViewController {
 			
 			this.resource = this.$scope.resource;
 
-			for (var i =0 ; i< this.resource.postBody.length;i++){
-				this.resource.postBody[i].content = this.resource.postBody[i].content.replace(/<img/g, '<img class="responsive"');
-			}
 
+			if(this.resource.postBody){
+				for (var i =0 ; i< this.resource.postBody.length;i++){
+					this.resource.postBody[i].content = this.resource.postBody[i].content.replace(/<img/g, '<img class="responsive"');
+				}
+			}
 			console.log(this.resource);
 
 			$timeout(() => {
@@ -47,7 +49,57 @@ class OrientacionPedagogicaViewController {
 		
 	}
 
+	siguiente(){
+
+
 	
+
+		this.Restangular.one('publishedOrientacionPedagogica/pororden/'+this.$scope.resource.area[0]+'/'+(this.$scope.resource.orden+1))
+		.get({
+			anio:this.$scope.resource.anio,
+			complementarias: this.$scope.resource.complementarias,
+			intensivo: this.$scope.resource.intensivo
+		})
+		.then(data => {
+			if(data && data.length > 0)
+			this.$scope.resource = data[0];
+		
+		})
+		.catch(err => {
+			throw err;
+		});
+
+
+
+
+
+	}
+
+	anterior(){
+
+
+	
+
+		this.Restangular.one('publishedOrientacionPedagogica/pororden/'+this.$scope.resource.area[0]+'/'+(this.$scope.resource.orden-1))
+		.get({
+			anio:this.$scope.resource.anio,
+			complementarias: this.$scope.resource.complementarias,
+			intensivo: this.$scope.resource.intensivo
+		})
+		.then(data => {
+			if(data && data.length > 0)
+			this.$scope.resource = data[0];
+		
+		})
+		.catch(err => {
+			throw err;
+		});
+
+
+
+
+
+	}
 
 	sumfiles(files){
 		return _.sumBy(files, 'size');

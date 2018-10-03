@@ -14,15 +14,16 @@ export function index(req, res, next) {
 	var query = req.querymen;
 	let qq = req.query.q;
 	var type = req.query.type;
-	var area = req.query.area;
+	var area = req.query.area || req.param.area;
 	var areaEmergente = req.query.areaEmergente;
 	var anio = req.query.anio;
 	var troncal = req.query.troncal;
 	var complementarias= req.query.complementarias;
 	var intensivo = req.query.intensivo;
 	var publicaHome = req.query.publicaHome;
-	
+	var orden = req.query.orden || req.param.orden;
 	let q = {};
+
 
 	
 	if (qq){
@@ -77,7 +78,9 @@ export function index(req, res, next) {
 		}
 	}
 
-	
+	if(orden ){
+		q['orden'] = orden;
+	}
 
 
 	if (area) {
@@ -138,6 +141,11 @@ export function index(req, res, next) {
 			arrayArea.push (
 				'Inglés' );
 		}
+
+
+		if ( arrayArea.length === 0)
+			area.push (
+				area );
 
 
 
@@ -355,7 +363,161 @@ export function findArea(req, res, next) {
 
 
 
+export function buscarPorOrden(req, res, next) {
+	var query = req.querymen;
+	let qq = req.query.q;
+	var type = req.query.type;
+	var area =  req.params.area;
+	var areaEmergente = req.query.areaEmergente;
+	var anio = req.query.anio;
+	var troncal = req.query.troncal;
+	var complementarias= req.query.complementarias;
+	var intensivo = req.query.intensivo;
+	var publicaHome = req.query.publicaHome;
+	var orden =  req.params.orden;
+	let q = {};
 
+
+	
+	if (qq){
+  	// convert to regex
+		let keywords = _.escapeRegExp(qq);
+		let patterns = [
+			{ s: /[aáà]/ig, v: '[aáà]' },
+			{ s: /[eéè]/ig, v: '[eéè]' },
+			{ s: /[iíì]/ig, v: '[iíì]' },
+			{ s: /[oóò]/ig, v: '[oóò]' },
+			{ s: /[uúù]/ig, v: '[uúù]' },
+		];
+
+		_.each(patterns, p => {
+			keywords = keywords.replace(p.s, p.v);
+		});
+
+		let k = new RegExp(keywords, 'i');
+
+		q = { $or: [
+				{ type: { $regex: k, $options: 'i' } },
+				{ objetivo: { $regex: k, $options: 'i' } },
+				{ descripcion: { $regex: k, $options: 'i' } },
+				{ nivel: { $regex: k, $options: 'i' } },
+			
+				{ 'postBody.content': { $regex: k, $options: 'i' } },
+				{ tags: { $regex: k, $options: 'i' } },
+			]
+		};
+	}
+
+
+	if (publicaHome){
+		q['publicaHome'] =true;
+	}
+
+	if(complementarias ){
+		q['complementarias'] =complementarias;
+	}
+
+	if(intensivo ){
+		q['intensivo'] =intensivo;
+	}
+	if(troncal ){
+		q['troncal'] = troncal;
+	}
+
+	if (type){
+		q['$and'] = [ { type: type } ];
+		if (q['$or']) {
+			q['$or'].type = undefined; 
+		}
+	}
+
+	if(orden ){
+		q['orden'] = orden;
+	}
+
+
+	if (area) {
+					
+		let arrayArea=[];		
+	
+		arrayArea.push (
+				area );
+		if ( arrayArea.length > 0) 
+		q['area']= { $in : arrayArea};
+	}
+
+	if (areaEmergente) {
+			
+	let arrayAreaEmergente=[];
+	
+	if(areaEmergente === 'pensamientoComputacional'){	
+		arrayAreaEmergente.push (
+			 'Pensamiento Computacional' );
+			
+	}
+	if(areaEmergente === 'programacion'){						
+		arrayAreaEmergente.push (
+			'Programación' )
+	}
+	if(areaEmergente === 'robotica'){			
+		arrayAreaEmergente.push (
+			'Robótica' )
+	}
+
+	if ( arrayAreaEmergente.length > 0) 
+	q['areaEmergente']= { $in : arrayAreaEmergente};
+	}
+
+	if (anio) {	
+	let arrayAnio=[];			
+		
+	if (Array.isArray(anio)){
+		arrayAnio=anio;
+	}else{
+		arrayAnio.push (
+			anio );
+	}
+	
+
+			
+			if ( arrayAnio.length > 0) 
+	q['anio']= { $in : arrayAnio};
+	}
+	
+
+	
+
+
+
+	console.log(q);
+
+	
+	Published
+		.find(q)
+		.count()
+		.exec((err, count) => {
+			if (err){
+				return next(err);
+			}
+			req.totalItems = count;
+			req.result = Published
+										.find(q)
+										.populate({path: 'orientacionpedagogica'})									
+										.populate('owner')
+										.populate('files')
+                						.populate('links')
+										.sort(query.cursor.sort)
+										.skip(query.cursor.skip)
+										.limit(query.cursor.limit)
+										.select(query.cursor.select)
+										.exec();
+
+
+			
+
+			next();
+		});
+}
 
 
 
