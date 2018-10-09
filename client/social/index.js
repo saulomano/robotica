@@ -42,7 +42,7 @@ import actividadescomplementarias from './actividadescomplementarias';
 import propuestaTalleresCard from './components/propuestaTalleresCard/propuestaTalleresCard.component';
 import propuestasdetaller from './propuestasdetaller';
 import talleresintensivos from './talleresintensivos';
-
+import searchComponent from './components/searchComponent/searchComponent.component'
 
 // config to providers
 import { socialConfig } from './social.config';
@@ -85,7 +85,8 @@ let requirements = [
 	propuestasdetaller,
 	actividadescomplementarias,
 	propuestaTalleresCard,
-	talleresintensivos
+	talleresintensivos,
+	searchComponent
 
 
 ];
