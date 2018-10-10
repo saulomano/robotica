@@ -121,22 +121,39 @@ export default class HomeComponent extends SocialComponent {
 
   slides = [
     {
-      titulo: "Robótica en las escuelas",
-      texto:"Propuestas pedagógicas pensadas en clave del diseño curricular de la Provincia de Buenos Aires favoreciendo los procesos de aprendizaje colaborativo",       
-      url: "/assets/img/banner/slider_1.jpg", 
+      titulo: "Robótica",
+      titulo2:"y plástica",      
+      texto:"Alumnos marplatenses diseñaron y crearon sus propios robots",       
+      url: "/assets/img/banner/slider_1.jpg",
+      textoboton:"VER NOTA",
+      seccion:"social.propuestasdetaller" 
       
       
     },
     {
-      titulo: "Aprender a Programar",
-      texto:"Permite desarrollar la capacidad de previsión, la comprobación de resultados, la optimización de recursos y la toma de decisiones",      
+      titulo: "Actividades",
+      titulo2:"complementarias",
+      titulo3:"Para el aula",
+      texto:"Actividades diseñadas para que los docentes puedan desarrollar junto a los alumnos sin contar con la presencia de los talleristas. ",      
       url: "/assets/img/banner/slider_2.jpg",
+      textoboton:"VER ACTIVIDADES",
+      seccion:"social.actividadescomplementarias"
     },
     {
-      titulo: "Incorporar", 
-      titulo2:"Pensamiento computacional",
-      texto:"Dentro del campo educativo, propone la implementación de actividades creativas y colaborativas, para el desarrollo de la capacidad de resolución de problemas",    
+      titulo: "Talleres", 
+      titulo3:"para el aula",
+      texto:"Encuentra PROPUESTAS DE TALLERES pensados para que docentes y talleristas aborden la robótica aplicando pensamiento computacional y programación.",    
       url: "/assets/img/banner/slider_3.jpg",
+      textoboton:"VER TALLERES",
+      seccion:"social.propuestasdetaller"
+    },
+
+    {
+      titulo: "Experiencia", 
+      titulo3:"de robótica educativa",     
+      url: "/assets/img/banner/slider_4.jpg",
+      textoboton:"VER VIDEO",
+      seccion:"social.propuestasdetaller"
     }
   ]; 
 
@@ -277,6 +294,30 @@ fetchDataKit(){
       })
 
   return def.promise;
+}
+
+openVideo($event){
+
+  this.$mdDialog.show({
+
+    template: require('../components/modalVideo/modalVideo.html'),
+    parent: angular.element(document.body),
+    targetEvent: $event,
+    clickOutsideToClose: true,
+    fullscreen: true, // Only for -xs, -sm breakpoints.
+
+    //controller: () => {},
+
+    controllerAs: '$ctrl'
+
+  })
+  .then((data) => {
+
+  }, () => {  
+
+  })
+  .catch(function(res) {
+  });
 }
 
 
