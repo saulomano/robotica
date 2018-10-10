@@ -5,7 +5,7 @@ import BuscarComponent from './buscar.component';
 let routes = function($stateProvider) {
   'ngInject';
   $stateProvider
-    .state('social.buscar', {
+    .state('social.pantallabusqueda', {
       url: '/buscar/:search',
       template: '<social-buscar></social-buscar>',
       params: {

@@ -2,13 +2,13 @@
 
 import angular from "angular";
 import _ from "lodash";
-
+import $ from 'jquery';
 export default angular
 	.module('robotica.social.components.searchComponent', [])
 	.directive('searchComponent', searchComponent)
 	.name;
 
-class NoticiaCardController {
+class SearchComponentController {
 	/*@ngInject*/
 	constructor($scope, $element, $state, $mdDialog) {
 		this.$scope = $scope;
@@ -18,21 +18,33 @@ class NoticiaCardController {
 		this.$element.addClass('search-component');
 
 		
-		this.resource = this.$scope.resource;
+	
 
+			function onClick(e){
+                e.preventDefault();
+                var el = this.$window.document.getElementById('dd');
+                el.classList.contains('active') ? hideSubMenu(el) : showSubMenu(el);
+            }
 
+            function showSubMenu(el){
+                el.classList.add('active');
+                document.addEventListener('click', function onDocClick(e){
+                    e.preventDefault();
+                    if(el.contains(e.target)){
+                        return;
+                    }
+                    document.removeEventListener('click', onDocClick);
+                    hideSubMenu(el);
+                });
+            }
 
-		this.editable = this.$scope.editable === true;
-		let captions = {
-			'search': 'Serach Component'
-		};
+            function hideSubMenu(el){
+                el.classList.remove('active');
+            }
 
-		this.resource.typeCaption = captions[this.resource.type];
-		this.modoVista = this.$scope.vista;
-		if (this.modoVista==='social'){
-			this.resource = this.$scope.resource;
+	
 
-		}
+	
 	}
 
 	
