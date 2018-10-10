@@ -39,6 +39,26 @@
 <div style="height: 10px; background: #8BBF1F"></div>
 
 <div class="cont">
+
+	<div class="rowparallaxk">
+		<div class="textKit">
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Noticias</p>
+			
+			
+		</div>
+		<div class="cardsgral">
+			<div class="cards">
+				<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchDataNoticia()" search-text="$ctrl.searchText">
+					<rd-item-template>           
+						<noticia-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></noticia-card>
+					</rd-item-template>
+				</rd-waterfall>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="cont">
 	<div class="row" style="background-color: #5EA7F1;">					
 		<div class="disText">
 			
@@ -139,25 +159,7 @@
 	</div>
 </div>
 
-<div class="cont">
 
-	<div class="rowparallaxk">
-		<div class="textKit">
-			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Noticias</p>
-			
-			
-		</div>
-		<div class="cardsgral">
-			<div class="cards">
-				<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchDataNoticia()" search-text="$ctrl.searchText">
-					<rd-item-template>           
-						<noticia-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></noticia-card>
-					</rd-item-template>
-				</rd-waterfall>
-			</div>
-		</div>
-	</div>
-</div>
 
 
 <div class="cont">
