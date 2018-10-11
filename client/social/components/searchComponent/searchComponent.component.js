@@ -20,33 +20,33 @@ class SearchComponentController {
 		
 	
 
-			function onClick(e){
-                e.preventDefault();
-                var el = this.$window.document.getElementById('dd');
-                el.classList.contains('active') ? hideSubMenu(el) : showSubMenu(el);
-            }
-
-            function showSubMenu(el){
-                el.classList.add('active');
-                document.addEventListener('click', function onDocClick(e){
-                    e.preventDefault();
-                    if(el.contains(e.target)){
-                        return;
-                    }
-                    document.removeEventListener('click', onDocClick);
-                    hideSubMenu(el);
-                });
-            }
-
-            function hideSubMenu(el){
-                el.classList.remove('active');
-            }
+		
 
 	
 
 	
 	}
+	onClick(e){
+		e.preventDefault();
+		var el = document.getElementById('dd');
+		el.classList.contains('active') ? this.hideSubMenu(el) : this.showSubMenu(el);
+	}
 
+	 showSubMenu(el){
+		el.classList.add('active');
+		document.addEventListener('click', function onDocClick(e){
+			e.preventDefault();
+			if(el.contains(e.target)){
+				return;
+			}
+			document.removeEventListener('click', onDocClick);
+			this.hideSubMenu(el);
+		});
+	}
+
+	 hideSubMenu(el){
+		el.classList.remove('active');
+	}
 	
 	
    
