@@ -121,18 +121,18 @@ export default class HomeComponent extends SocialComponent {
 
   slides = [
     {
-      titulo: "Robótica",
-      titulo2:"y plástica",      
+      titulo: "Robótica y plástica",
+      //titulo2:"y plástica",      
       texto:"Alumnos marplatenses diseñaron y crearon sus propios robots",       
       url: "/assets/img/banner/slider_1.jpg",
       textoboton:"VER NOTA",
-      seccion:"social.propuestasdetaller" 
+      seccion:"social.noticias" 
       
       
     },
     {
-      titulo: "Actividades",
-      titulo2:"complementarias",
+      titulo: "Actividades complementarias",
+      //titulo2:"complementarias",
       titulo3:"Para el aula",
       texto:"Actividades diseñadas para que los docentes puedan desarrollar junto a los alumnos sin contar con la presencia de los talleristas. ",      
       url: "/assets/img/banner/slider_2.jpg",

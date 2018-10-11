@@ -16,17 +16,11 @@
 					
 		<div class="divslide" layout="row" layout-align="center center" ng-style="{'background': 'url({{item.url}})'}">
 			<div>
-				<div class="subhead">{{item.titulo}}<br>{{item.titulo2}} </div>
+				<div class="subhead">{{item.titulo}}</div>
 				<div class="subhead2">{{item.titulo3}}</div>
 				<div class="legend"><p class="texto">{{item.texto}}</p></div>
 				
-				<div style="text-align: center; margin-top: 7%;"><a style="background-color:#8BBF1F !important; color: white !important ; border-radius: 7%;
-					padding-left: 5%;
-					padding-right: 5%;
-					padding-bottom: 2%;
-					padding-top: 2%;
-					text-decoration: none;" 
-				ui-sref="{{item.seccion}}" ng-click="">{{item.textoboton}}</a></div>
+				<div style="text-align: center; margin-top: 7%; margin-bottom: 5%;"><a class="botonSlider" ui-sref="{{item.seccion}}" ng-click="">{{item.textoboton}}</a></div>
 			</div>
 		</div>
 	

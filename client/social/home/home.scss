@@ -119,18 +119,34 @@ hr{
     visibility: inherit !important;
   }
   .subhead{
-    font-size: 47pt;
-    text-align: center;
+    font-size: 2rem !important;
+    text-align: center!important;
     //margin-left: 30px !important;
     font-family: DINNextRoundedLTPro-Regular !important;
     font-weight: bold !important;
+    color: white!important;
+    margin-top: 1% !important;
   }
 
   .subhead2{
     font-family: pacifico-regular !important;
-    font-size: 30px !important;
+    font-size: 2rem !important;
     text-align: center !important;
     color: white;
+  }
+
+  .botonSlider{
+    background-color:#8BBF1F !important; 
+    color: white !important ; 
+    border-radius: 7%!important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+    padding-bottom: 2% !important;
+    padding-top: 2% !important;
+    text-decoration: none !important; 
+    font-size: 10px !important;
+    margin-bottom: 2px !important;   
+
   }
   
   .ban_content{
@@ -147,7 +163,7 @@ hr{
     //margin-left: 30px !important;
     width: 300px !important;
     font-size: 1rem !important;
-    text-align: center;
+    text-align: center !important;
    
   }
 
@@ -205,7 +221,9 @@ hr{
     font-size: 2rem !important;
     //margin-left: 80px !important;
     font-family: DINNextRoundedLTPro-Regular !important ;
-    text-align: center;
+    text-align: center !important;
+    font-weight: bold !important;
+    color: white !important;
   } 
 
   .subhead2{
@@ -213,6 +231,19 @@ hr{
     font-size: 2rem !important;
     text-align: center !important;
     color: white;
+  }
+  .botonSlider{
+    background-color:#8BBF1F !important; 
+    color: white !important ; 
+    border-radius: 7%!important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+    padding-bottom: 2% !important;
+    padding-top: 2% !important;
+    text-decoration: none !important; 
+    font-size: 10px !important;
+    //margin-bottom: 2px !important;   
+
   }
   .imgPropuesta{
     width: 100% !important;
@@ -262,14 +293,27 @@ hr{
   font-size: 47pt;
   text-align: center;
   //margin-left: 80px;
-  font-family: DINNextRoundedLTPro-Regular !important;
+  font-family: DINNextRoundedLTPro-Regular ;
+  font-weight: bold;
 }
 
 .subhead2{
-  font-family: pacifico-regular !important;
-  font-size: 30px !important;
-  text-align: center !important;
+  font-family: pacifico-regular ;
+  font-size: 30px ;
+  text-align: center ;
   color: white;
+}
+
+.botonSlider{
+  background-color:#8BBF1F !important; 
+  color: white !important ; 
+  border-radius: 7%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 2%;
+  padding-top: 2%;
+  text-decoration: none;    
+
 }
 
 
@@ -411,6 +455,7 @@ img {vertical-align: middle;}
   font-size: 18px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
+  display: none;
 }
 
 /* Position the "next button" to the right */
