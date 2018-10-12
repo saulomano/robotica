@@ -22,6 +22,7 @@
     margin: 60px 0 0 0;
     *zoom: 1;
     font-weight: 400;
+    position: relative;
 }
 
 .wrapper-demo:after {
@@ -34,9 +35,11 @@
 .wrapper-dropdown-3 {
     /* Size and position */
     position: relative;
-    width: 200px;
-    margin: 0 auto;
+    width: 300px;
+    margin-left: 30%;
+    //margin: 0 auto;
     padding: 10px;
+    float: left;
 
     /* Styles */
     background: #fff;
@@ -167,3 +170,42 @@
 .no-pointerevents .wrapper-dropdown-3.active .dropdown {
     display: block;
 }
+
+md-checkbox.md-checked.green .md-icon {
+    background-color: #8BBF1F !important;
+    
+    border-radius: 5px !important;
+   }
+
+   md-checkbox:not(.md-checked) .md-icon {
+    border-color: grey;
+    border-radius: 5px !important;
+}
+
+   md-checkbox {
+    //margin: 8px;
+    //margin-left: 90% !important;
+    margin-left: 5% !important;
+    border-radius: 5px !important;
+    cursor: pointer;
+    //padding-left: 18px;
+    padding-right: 0;
+   // line-height: 26px;
+    min-width: 18px;
+    min-height: 18px;
+    margin-top: 3%;
+    
+  }
+
+  md-checkbox .md-label{
+    font-size: 10px !important;
+  }
+
+  .linea{
+    margin-top: 0;
+    margin-bottom: 0;
+    border: 0;
+    border-top: 1px solid #eee;
+  }
+  
+  
