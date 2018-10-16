@@ -24,6 +24,7 @@ router.use('/publishedkits', require('./publishedkits'));
 router.use('/kit', require('./kit'));
 router.use('/propuestasTaller', require('./propuestasTaller'));
 router.use('/publishedPropuestTaller', require('./publishedPropuestTaller'));
+router.use('/search', require('./search'));
 
 
 router.use(writer());
