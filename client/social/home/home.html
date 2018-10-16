@@ -1,36 +1,29 @@
 <!--div class="titHead">PLATAFORMA DE FORMACIÓN CONTINUA EN ROBÓTICA Y PROGRAMACION PARA NIVEL PRIMARIO</div-->
-<div class="slideshow-container">
-	<ui-carousel slides="$ctrl.slides" on-init="$ctrl.onCarouselInit()" slides="ctrl.slides"
-	slides-to-show="1"
-	slides-to-scroll="1"
-	initial-slide="1"
-	autoplay="true"
-	autoplay-speed="4000"
-	arrows="true"
-	dots="false"
-	cssEase="easy"
-	>
-	   
-	<div  class="mySlides fade">
-		<carousel-item>
-					
-		<div class="divslide" layout="row" layout-align="center center" ng-style="{'background': 'url({{item.url}})'}">
+<div class="slideshow-container">		   
+		
+		<div ng-repeat="item in $ctrl.slides" ng-if="$ctrl.currentIndex === $index"
+	 		class="divslide" layout="row" layout-align="center center" ng-style="{'background': 'url({{item.url}})'}">
 			<div>
 				<div class="subhead">{{item.titulo}}</div>
 				<div class="subhead2">{{item.titulo3}}</div>
-				<div class="legend"><p class="texto">{{item.texto}}</p></div>
-				
-				<div style="text-align: center; margin-top: 7%; margin-bottom: 5%;"><a class="botonSlider" ui-sref="{{item.seccion}}" ng-click="">{{item.textoboton}}</a></div>
+				<div class="legend"><p class="texto">{{item.texto}}</p></div>				
+				<div style="text-align: center; margin-top: 7%; margin-bottom: 5%;">
+					<a class="botonSlider"  ng-click="$ctrl.selectButtonSlider($event,item)">
+						{{item.textoboton}}</a></div>
 			</div>
+			
 		</div>
-	
 		
-		 </carousel-item>
-	    
-	</ui-carousel>  
-</div>    
+		<div style="text-align:center  " > 
+				<span class="dot" ng-click="$ctrl.sliderClick(0)"></span> 
+				<span class="dot" ng-click="$ctrl.sliderClick(1)"></span> 
+				<span class="dot" ng-click="$ctrl.sliderClick(2)"></span>
+				<span class="dot" ng-click="$ctrl.sliderClick(3)"></span> 
+		</div>
+  
 </div>
-<div style="height: 10px; background: #8BBF1F"></div>
+
+<div style="height: 2px; background: #8BBF1F"></div>
 
 <div class="cont">
 

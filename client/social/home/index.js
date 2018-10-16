@@ -26,4 +26,3 @@ export default angular.module('robotica.social.socialHome', ['ngMaterial'])
                       })
                       .name;
 
-angular.module('myApp',['star-rating'])

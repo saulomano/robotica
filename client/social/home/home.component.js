@@ -6,7 +6,7 @@ import _ from 'lodash';
 
 export default class HomeComponent extends SocialComponent {
   /*@ngInject*/
-  constructor($element, $q, $http, Restangular, $mdDialog, $stateParams, ngMeta,$state,$location) {
+  constructor($element, $q, $http, Restangular, $mdDialog, $stateParams, ngMeta,$state,$location,$interval) {
     super({$element});
     this.$http = $http;
     this.$q = $q;
@@ -23,140 +23,97 @@ export default class HomeComponent extends SocialComponent {
     //this.viewResource = ($event, resource) => { 
     //  this.viewResource_($event, resource);
     //};
-
-    this.sectionName = this.$stateParams.seccion || 'home';
-    let sections = {
-      'home': {
-        caption:  '<h1><span class="font-primary-regular">Un entorno</span><br/> de educación accesible</h1> <p>para compartir prácticas de enseñanza inclusivas pensadas desde la diversidad</p>',
-        image: '/assets/img/banner/index_image.png',
-        title: 'Bienvenido',
-        description: 'Robotica es un entorno de educación accesible para compartir prácticas de enseñanza inclusivas pensadas desde la diversidad',
-      },
-      'propuestas': {
-        caption:  '<h1><span class="font-primary-regular">Propuestas</span><br/>pedagógicas</h1> <p>Dinámicas, flexibles y transversales. Para diseñar tu clase  integrando  nuevas experiencias de aprendizaje.</p>',
-        image: '/assets/img/banner/propuesta_image.png',
-        title: 'Propuestas pedagógicas',
-        description: 'Propuestas pedagógicas Dinámicas, flexibles y transversales.<br />Para diseñar tu clase  integrando  nuevas experiencias de aprendizaje.',
-        type: 'propuesta'
-      },
-      'actividades': {
-        caption:  '<h1>_Actividades <br />accesibles</h1> <p>Diseñadas  para  participar , interactuar y aprender  en el aula  inclusiva.</p>',
-        image: '/assets/img/banner/actividades_image.png',
-        title: 'Actividades accesibles',
-        description: 'Actividades accesibles diseñadas  para  participar, interactuar y aprender  en el aula  inclusiva.',
-        type: 'actividad'
-      },
-      'herramientas': {
-        caption:  '<h1>Herramientas_</h1> <p>Software para crear actividades, rampas digitales y entornos editables.</p>',
-        image: '/assets/img/banner/herramientas_image.png',
-        title: 'Herramientas',
-        description: 'Software para crear actividades, rampas digitales y entornos editables.',
-        type: 'herramientas'
-      },
-      'orientaciones': {
-        caption:  '<h1>_Orientaciones</h1> <p>Con tutoriales, documentos y sitios de interés  que sirven de apoyo a tus prácticas de enseñanza.</p>',
-        image: '/assets/img/banner/orientaciones_image.png',
-        title: 'Orientaciones',
-        description: 'Orientaciones con tutoriales y documentación que sirven de apoyo para tus prácticas.',
-        type: 'orientacion'
-      },
-      'mediateca': {
-        caption: '<h1>Mediateca_</h1> <p>Recursos didácticos para mirar, leer y escuchar.</p>',
-        title: 'Mediateca',
-        description: 'Recursos didácticos para mirar, leer y escuchar.',
-        type: 'mediateca'
-      },
-      'noticias': {
-        caption: '<h1>Noticias_</h1> <p>Recursos didácticos para mirar, leer y escuchar.</p>',
-        title: 'Noticias',
-        description: 'Recursos didácticos para mirar, leer y escuchar.',
-        type: 'noticias'
-      },
-      'calendario': {
-        caption: '<h1>Calendario_</h1> <p>Recursos didácticos para mirar, leer y escuchar.</p>',
-        title: 'Calendario',
-        description: 'Recursos didácticos para mirar, leer y escuchar.',
-        type: 'calendario'
-      },
-      'sabiasQue': {
-        caption: '<h1>Sabias Que_</h1> <p>Recursos didácticos para mirar, leer y escuchar.</p>',
-        title: 'sabiasQue',
-        description: 'Recursos didácticos para mirar, leer y escuchar.',
-        type: 'sabiasQue'
-      },
-      'loquehacemos': {
-        caption: '<h1>lo que hacemos_</h1> <p>Recursos didácticos para mirar, leer y escuchar.</p>',
-        title: 'loquehacemos',
-        description: 'Recursos didácticos para mirar, leer y escuchar.',
-        type: 'loquehacemos'
-      },
-      'novedades': {
-        caption: '<h1>Novedades_</h1> <p>Recursos didácticos para mirar, leer y escuchar.</p>',
-        title: 'novedades',
-        description: 'Recursos didácticos para mirar, leer y escuchar.',
-        type: 'novedades'
-      },
-      'documentos': {
-        caption:  '<h1>Documentos_</h1> <p>Software para crear actividades, rampas digitales y entornos editables.</p>',
-        title: 'documentos',
-        description: 'Software para crear actividades, rampas digitales y entornos editables.',
-        type: 'documentos'
-      },
-      'kits': {
-        caption:  '<h1>Kits_</h1> <p>Software para crear actividades, rampas digitales y entornos editables.</p>',
-        title: 'kits',
-        description: 'Software para crear actividades, rampas digitales y entornos editables.',
-        type: 'kits'
-      }
-
-
-  };
-    this.section = sections[this.sectionName];
-    ngMeta.setTitle(this.section.title);
-    ngMeta.setTag('description', this.section.description);
-
+this.$interval = $interval;
+        ngMeta.setTitle("Home");
+    
 
     this.puntaje = 5;
+
+    this.slides = [
+      {
+        titulo: "Robótica y plástica",
+        //titulo2:"y plástica",      
+        texto:"Alumnos marplatenses diseñaron y crearon sus propios robots",       
+        url: "/assets/img/banner/slider_1.jpg",
+        textoboton:"VER NOTA",
+        seccion:"social.noticias" 
+        
+        
+      },
+      {
+        titulo: "Actividades complementarias",
+        //titulo2:"complementarias",
+        titulo3:"Para el aula",
+        texto:"Actividades diseñadas para que los docentes puedan desarrollar junto a los alumnos sin contar con la presencia de los talleristas. ",      
+        url: "/assets/img/banner/slider_2.jpg",
+        textoboton:"VER ACTIVIDADES",
+        seccion:"social.actividadescomplementarias"
+      },
+      {
+        titulo: "Talleres", 
+        titulo3:"para el aula",
+        texto:"Encuentra PROPUESTAS DE TALLERES pensados para que docentes y talleristas aborden la robótica aplicando pensamiento computacional y programación.",    
+        url: "/assets/img/banner/slider_3.jpg",
+        textoboton:"VER TALLERES",
+        seccion:"social.propuestasdetaller"
+      },
+  
+      {
+        titulo: "Experiencia", 
+        titulo3:"de robótica educativa",     
+        url: "/assets/img/banner/slider_4.jpg",
+        textoboton:"VER VIDEO",
+        seccion:"social.propuestasdetaller"
+      }
+    ]; 
+
+   // this.slides = slides;
+    this.currentIndex = 0;
+    this.setCurrentSlideIndex = 0;
+    this.isCurrentSlideIndex = 0;
+    
+   //this.loadSlides();
+
+   var self = this;    
+
+   self.runTimeoutExample = function(){
+       self.$interval(function(){         
+           self.nextSlide();
+       }, 5000);
+   }
+    
+   self.runTimeoutExample();
   }
 
-  slides = [
-    {
-      titulo: "Robótica y plástica",
-      //titulo2:"y plástica",      
-      texto:"Alumnos marplatenses diseñaron y crearon sus propios robots",       
-      url: "/assets/img/banner/slider_1.jpg",
-      textoboton:"VER NOTA",
-      seccion:"social.noticias" 
-      
-      
-    },
-    {
-      titulo: "Actividades complementarias",
-      //titulo2:"complementarias",
-      titulo3:"Para el aula",
-      texto:"Actividades diseñadas para que los docentes puedan desarrollar junto a los alumnos sin contar con la presencia de los talleristas. ",      
-      url: "/assets/img/banner/slider_2.jpg",
-      textoboton:"VER ACTIVIDADES",
-      seccion:"social.actividadescomplementarias"
-    },
-    {
-      titulo: "Talleres", 
-      titulo3:"para el aula",
-      texto:"Encuentra PROPUESTAS DE TALLERES pensados para que docentes y talleristas aborden la robótica aplicando pensamiento computacional y programación.",    
-      url: "/assets/img/banner/slider_3.jpg",
-      textoboton:"VER TALLERES",
-      seccion:"social.propuestasdetaller"
-    },
+ 
+  setCurrentSlideIndex(index) {
+    this.currentIndex = index;
+  }
+  
+   isCurrentSlideIndex(index) {
+    return this.currentIndex === index;
+  }
+  
+   nextSlide() {
+    this.currentIndex = (this.currentIndex < this.slides.length - 1) ? ++this.currentIndex : 0;
+   // this.loadSlides();
+  }
+  
+  sliderClick(indice){
+    this.currentIndex =indice;   
+  }
+  
 
-    {
-      titulo: "Experiencia", 
-      titulo3:"de robótica educativa",     
-      url: "/assets/img/banner/slider_4.jpg",
-      textoboton:"VER VIDEO",
-      seccion:"social.propuestasdetaller"
+  selectButtonSlider(event,item){
+
+    if (item.textoboton === "VER VIDEO"){
+        this.openVideo(event);
+    }else{
+      this.$state.go(item.seccion,{reload:true});
     }
-  ]; 
 
+
+  }
  /* fetchData(){
     let def = this.$q.defer();
 
