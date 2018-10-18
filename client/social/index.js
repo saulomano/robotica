@@ -44,6 +44,7 @@ import propuestasdetaller from './propuestasdetaller';
 import talleresintensivos from './talleresintensivos';
 import searchComponent from './components/searchComponent/searchComponent.component'
 
+import modalVideo from './components/modalVideo/modalVideo.component';
 // config to providers
 import { socialConfig } from './social.config';
 
@@ -86,7 +87,8 @@ let requirements = [
 	actividadescomplementarias,
 	propuestaTalleresCard,
 	talleresintensivos,
-	searchComponent
+	searchComponent,
+	modalVideo
 
 
 ];

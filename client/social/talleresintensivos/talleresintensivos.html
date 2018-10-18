@@ -31,31 +31,31 @@
 		</div>
 		<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'masAreas')">
 			<label class=" responsive"><input type="checkbox" id="mas" name="area" ng-model="$ctrl.masAreas"   ><span style="width: 300px;  text-align: center">MAS AREAS</span></label>
-		</div>
+		</div> 
 	</div>
 
-	<div ng-if="$ctrl.masAreas " layout="row" layout-align="center center" style="margin-bottom: 0.5%;" id="donate"  layout-sm="column"  layout-xs="column">
+		<div ng-if="$ctrl.masAreas " layout="row" layout-align="center center" style="margin-bottom: 0.5%;" id="donate"  layout-sm="column"  layout-xs="column">
 
 		<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'sociales')">
 		<label class="mat responsive"><input type="checkbox" name="area" ng-model="$ctrl.sociales"   ><span style="width: 180px; background-image: url(/assets/images/sociales.svg); background-repeat: no-repeat; text-align: center" >Cs. Sociales</span></label>
-	</div>
-	<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'plastica')">
-		<label class="nat responsive"><input type="checkbox" name="area" ng-model="$ctrl.plastica"  ><span style="width: 180px; background-image: url(/assets/images/plastica.svg); background-repeat: no-repeat; text-align: center">Plástica</span></label>
-	</div>
-	<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'danza')">
-		<label class="mat responsive"><input type="checkbox" name="area" ng-model="$ctrl.danza"   ><span style="width: 180px; background-image: url(/assets/images/danza.svg); background-repeat: no-repeat; text-align: center" >Danza</span></label>
-	</div>
-	<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'musica')">
-		<label class="nat responsive"><input type="checkbox" name="area" ng-model="$ctrl.musica"  ><span style="width: 180px; background-image: url(/assets/images/musica.svg); background-repeat: no-repeat; text-align: center">Música</span></label>
-	</div>
-
-	<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'teatro')">
-		<label class="pracLen responsive"><input type="checkbox" name="area" ng-model="$ctrl.teatro"   ><span style="width: 180px; background-image: url(/assets/images/teatro.svg); background-repeat: no-repeat; text-align: center">Teatro</span></label>
-	</div>
-	
-	
+		</div>
+		<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'plastica')">
+			<label class="nat responsive"><input type="checkbox" name="area" ng-model="$ctrl.plastica"  ><span style="width: 180px; background-image: url(/assets/images/plastica.svg); background-repeat: no-repeat; text-align: center">Plástica</span></label>
+		</div>
+		<!--
+		<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'danza')">
+			<label class="mat responsive"><input type="checkbox" name="area" ng-model="$ctrl.danza"   ><span style="width: 180px; background-image: url(/assets/images/danza.svg); background-repeat: no-repeat; text-align: center" >Danza</span></label>
+		</div>-->
+		<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'musica')">
+			<label class="nat responsive"><input type="checkbox" name="area" ng-model="$ctrl.musica"  ><span style="width: 180px; background-image: url(/assets/images/musica.svg); background-repeat: no-repeat; text-align: center">Música</span></label>
+		</div>
+	<!--
+			<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'teatro')">
+				<label class="pracLen responsive"><input type="checkbox" name="area" ng-model="$ctrl.teatro"   ><span style="width: 180px; background-image: url(/assets/images/teatro.svg); background-repeat: no-repeat; text-align: center">Teatro</span></label>
+			</div> -->
+	 
 </div>
-
+	<!--
 <div ng-if="$ctrl.masAreas" layout="row" layout-align="center center"  style="margin-bottom: 15px;" layout-sm="column"  layout-xs="column" id="donate" >
 			
 	<div style="margin-right: 10px;  margin-bottom: 10px " ng-click="$ctrl.fetchDataFilter($event,'edfisica')">
@@ -67,7 +67,7 @@
 	</div>
 	
 </div>
-
+-->
 
 
 

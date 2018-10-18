@@ -55,9 +55,9 @@ class HeaderComponent {
         section: 'institucional',  caption: 'Institucional', action:'social.institucional'
         
       },
-      {
+      /*{
         section: 'busqueda',  caption: 'Busqueda', action:'social.pantallabusqueda'
-      },
+      },*/
     
       
     ];

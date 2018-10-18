@@ -8,7 +8,6 @@ class ModalViewComponent {
 		this.$state = $state;
 		this.$stateParams = $stateParams;
 		this.Restangular = Restangular;
-console.log('wsrerse saidmslf');
 		this.Resource = this.Restangular.one(elementType, $scope.$parent.resource._id);
 
 		this.loading = true;

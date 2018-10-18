@@ -36,8 +36,8 @@ this.$interval = $interval;
         texto:"Alumnos marplatenses diseñaron y crearon sus propios robots",       
         url: "/assets/img/banner/slider_1.jpg",
         textoboton:"VER NOTA",
-        seccion:"social.noticias" 
-        
+        seccion:"social.noticias" ,
+        tipo: "link"
         
       },
       {
@@ -47,7 +47,8 @@ this.$interval = $interval;
         texto:"Actividades diseñadas para que los docentes puedan desarrollar junto a los alumnos sin contar con la presencia de los talleristas. ",      
         url: "/assets/img/banner/slider_2.jpg",
         textoboton:"VER ACTIVIDADES",
-        seccion:"social.actividadescomplementarias"
+        seccion:"social.actividadescomplementarias",
+        tipo: "link"
       },
       {
         titulo: "Talleres", 
@@ -55,7 +56,8 @@ this.$interval = $interval;
         texto:"Encuentra PROPUESTAS DE TALLERES pensados para que docentes y talleristas aborden la robótica aplicando pensamiento computacional y programación.",    
         url: "/assets/img/banner/slider_3.jpg",
         textoboton:"VER TALLERES",
-        seccion:"social.propuestasdetaller"
+        seccion:"social.propuestasdetaller",
+        tipo: "link"
       },
   
       {
@@ -63,7 +65,8 @@ this.$interval = $interval;
         titulo3:"de robótica educativa",     
         url: "/assets/img/banner/slider_4.jpg",
         textoboton:"VER VIDEO",
-        seccion:"social.propuestasdetaller"
+        seccion:"social.propuestasdetaller",
+        tipo: "video"
       }
     ]; 
 
@@ -261,7 +264,7 @@ openVideo($event){
     parent: angular.element(document.body),
     targetEvent: $event,
     clickOutsideToClose: true,
-    fullscreen: true, // Only for -xs, -sm breakpoints.
+    //fullscreen: true, // Only for -xs, -sm breakpoints.
 
     //controller: () => {},
 
