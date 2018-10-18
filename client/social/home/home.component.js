@@ -35,7 +35,7 @@ this.$interval = $interval;
         //titulo2:"y plástica",      
         texto:"Alumnos marplatenses diseñaron y crearon sus propios robots",       
         url: "/assets/img/banner/slider_1.jpg",
-        textoboton:"VER NOTA",
+       textoboton:"VER NOTA",
         seccion:"social.noticias" ,
         tipo: "link"
         
@@ -66,7 +66,17 @@ this.$interval = $interval;
         url: "/assets/img/banner/slider_4.jpg",
         textoboton:"VER VIDEO",
         seccion:"social.propuestasdetaller",
-        tipo: "video"
+        tipo: "video",
+        vid: 1
+      },
+      {
+        titulo: "Robótica Educativa", 
+        titulo3:"En la provincia",    
+        texto:"Llega el Plan Provincial de Robótica Educativa a las escuelas primarias de la Provincia de Buenos Aires",    
+        url: "/assets/img/banner/banner-video2.jpg",
+        textoboton:"VER VIDEO",        
+        tipo: "video",
+        vid: 2
       }
     ]; 
 
@@ -86,6 +96,8 @@ this.$interval = $interval;
    }
     
    self.runTimeoutExample();
+
+
   }
 
  
@@ -109,8 +121,8 @@ this.$interval = $interval;
 
   selectButtonSlider(event,item){
 
-    if (item.textoboton === "VER VIDEO"){
-        this.openVideo(event);
+    if (item.tipo === "video"){
+        this.openVideo(event,item);
     }else{
       this.$state.go(item.seccion,{reload:true});
     }
@@ -256,28 +268,41 @@ fetchDataKit(){
   return def.promise;
 }
 
-openVideo($event){
+
+openVideo($event, resource){
+
+  if (!this.$mdDialog)
+      return;
 
   this.$mdDialog.show({
-
-    template: require('../components/modalVideo/modalVideo.html'),
-    parent: angular.element(document.body),
-    targetEvent: $event,
-    clickOutsideToClose: true,
-    //fullscreen: true, // Only for -xs, -sm breakpoints.
-
-    //controller: () => {},
-
-    controllerAs: '$ctrl'
-
+      template: require('../components/modalVideo/modalVideo.html'),
+      parent: angular.element(document.body),
+      targetEvent: $event,
+      clickOutsideToClose: true,
+      fullscreen: true, // Only for -xs, -sm breakpoints.
+      locals: {
+          resource: resource
+      },
+      controller: DialogController,
+      controllerAs: '$ctrl'
   })
-  .then((data) => {
+      .then((data) => {
+          console.log(data);
+      }, () => {
 
-  }, () => {  
+      })
+      .catch(function(res) {
+          if (!(res === 'cancel' || res === 'escape key press')) {
+              throw res;
+          }
+      });
 
-  })
-  .catch(function(res) {
-  });
+  function DialogController($scope, $mdDialog, resource, Restangular, $timeout) {
+      'ngInject';
+      this.loading = true;
+      this.resource = resource;
+      
+  }
 }
 
 

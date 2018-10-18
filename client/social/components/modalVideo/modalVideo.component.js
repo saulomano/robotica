@@ -17,7 +17,6 @@ class ModalVideoComponent {
 	
 }
 
-
 export default angular.module('robotica.social.components.modalVideo', [])
 											.component('modalView', {
 												template: require('./modalVideo.html'),
