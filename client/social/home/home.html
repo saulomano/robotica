@@ -2,7 +2,7 @@
 <div class="slideshow-container">		   
 		
 	<div ng-repeat="item in $ctrl.slides" ng-if="$ctrl.currentIndex === $index"
-	class="divslide" layout="row" layout-align="center center" ng-style="{'background': 'url({{item.url}})'}">
+	class="divslide" layout="row" layout-align="center center" ng-style="{'background-image': 'url({{item.url}})'}">
 			<div>
 				<div class="subhead">{{item.titulo}}</div>
 				<div class="subhead2">{{item.titulo3}}</div>
