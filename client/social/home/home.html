@@ -1,15 +1,17 @@
 <!--div class="titHead">PLATAFORMA DE FORMACIÓN CONTINUA EN ROBÓTICA Y PROGRAMACION PARA NIVEL PRIMARIO</div-->
 <div class="slideshow-container">		   
 		
-		<div ng-repeat="item in $ctrl.slides" ng-if="$ctrl.currentIndex === $index"
-	 		class="divslide" layout="row" layout-align="center center" ng-style="{'background': 'url({{item.url}})'}">
+	<div ng-repeat="item in $ctrl.slides" ng-if="$ctrl.currentIndex === $index"
+	class="divslide" layout="row" layout-align="center center" ng-style="{'background': 'url({{item.url}})'}">
 			<div>
 				<div class="subhead">{{item.titulo}}</div>
 				<div class="subhead2">{{item.titulo3}}</div>
 				<div class="legend"><p class="texto">{{item.texto}}</p></div>				
 				<div style="text-align: center; margin-top: 7%; margin-bottom: 5%;">
-					<a class="botonSlider"  ng-click="$ctrl.selectButtonSlider($event,item)">
-						{{item.textoboton}}</a></div>
+				
+				
+					<md-button class="botonSlider" ng-click="$ctrl.selectButtonSlider($event,item)"> {{item.textoboton}} </md-button>
+					</div>
 			</div>
 			
 		</div>
