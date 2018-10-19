@@ -34,14 +34,14 @@
 			
 			
 		</div>
-		<div class="cardsgral">
-			<div class="cards">
-				<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchDataNoticia()" search-text="$ctrl.searchText">
-					<rd-item-template>           
+		<div >
+			
+				<rd-waterfall item-width="350" gutter="24" class="wf-container"load-more-text="Ver más recursos" fetch="$ctrl.fetchDataNoticia()" search-text="$ctrl.searchText">
+					<rd-item-template class="wf-box">           
 						<noticia-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></noticia-card>
 					</rd-item-template>
 				</rd-waterfall>
-			</div>
+		
 		</div>
 	</div>
 </div>
@@ -117,10 +117,10 @@
 			<p class="impact-text-large titulos" style="text-align: center; color: white; font-family: pacifico-regular, sans-serif;">Propuestas de Talleres</p>
 			
 		</div>
-		<div class="cardsgral">
+		<div >
 			<div class="cards">
-				<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()"  search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
-					<rd-item-template>           
+				<rd-waterfall item-width="350" gutter="24" class="wf-container" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()"  search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+					<rd-item-template class="wf-box">           
 						<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"  cardhome="'home'"></orientacionpedagogica-card>
 					</rd-item-template>
 				</rd-waterfall>
