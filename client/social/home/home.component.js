@@ -31,6 +31,16 @@ this.$interval = $interval;
     this.puntaje = 5;
 
     this.slides = [
+      ,
+      {
+        titulo: "Robótica Educativa", 
+        titulo3:"en la provincia",    
+        texto:"Llega el Plan Provincial de Robótica Educativa a las escuelas primarias de la Provincia de Buenos Aires",    
+        url: "/assets/img/banner/banner-video2.jpg",
+        textoboton:"VER VIDEO",        
+        tipo: "video",
+        vid: 2
+      },
       {
         titulo: "Robótica y plástica",
         //titulo2:"y plástica",      
@@ -44,7 +54,7 @@ this.$interval = $interval;
       {
         titulo: "Actividades complementarias",
         //titulo2:"complementarias",
-        titulo3:"Para el aula",
+        titulo3:"para el aula",
         texto:"Actividades diseñadas para que los docentes puedan desarrollar junto a los alumnos sin contar con la presencia de los talleristas. ",      
         url: "/assets/img/banner/slider_2.jpg",
         textoboton:"VER ACTIVIDADES",
@@ -69,15 +79,6 @@ this.$interval = $interval;
         seccion:"social.propuestasdetaller",
         tipo: "video",
         vid: 1
-      },
-      {
-        titulo: "Robótica Educativa", 
-        titulo3:"En la provincia",    
-        texto:"Llega el Plan Provincial de Robótica Educativa a las escuelas primarias de la Provincia de Buenos Aires",    
-        url: "/assets/img/banner/banner-video2.jpg",
-        textoboton:"VER VIDEO",        
-        tipo: "video",
-        vid: 2
       }
     ]; 
 
