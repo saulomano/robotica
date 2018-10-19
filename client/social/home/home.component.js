@@ -30,8 +30,7 @@ this.$interval = $interval;
 
     this.puntaje = 5;
 
-    this.slides = [
-      ,
+    this.slides = [      
       {
         titulo: "Robótica Educativa", 
         titulo3:"en la provincia",    
@@ -69,8 +68,7 @@ this.$interval = $interval;
         textoboton:"VER TALLERES",
         seccion:"social.propuestasdetaller",
         tipo: "link"
-      },
-  
+      },  
       {
         titulo: "Experiencia", 
         titulo3:"de robótica educativa",     
@@ -88,7 +86,7 @@ this.$interval = $interval;
     this.isCurrentSlideIndex = 0;
     
    //this.loadSlides();
-
+/*
    var self = this;    
 
    self.runTimeoutExample = function(){
@@ -98,7 +96,7 @@ this.$interval = $interval;
    }
     
    self.runTimeoutExample();
-
+*/
 
   }
 
