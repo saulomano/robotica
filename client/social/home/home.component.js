@@ -87,7 +87,7 @@ this.$interval = $interval;
     this.isCurrentSlideIndex = 0;
     
    //this.loadSlides();
-/*
+
    var self = this;    
 
    self.runTimeoutExample = function(){
@@ -98,7 +98,7 @@ this.$interval = $interval;
     
    self.runTimeoutExample();
 
-*/
+
   }
 
  
