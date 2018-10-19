@@ -6,7 +6,7 @@ import _ from 'lodash';
 
 export default class HomeComponent extends SocialComponent {
   /*@ngInject*/
-  constructor($element, $q, $http, Restangular, $mdDialog, $stateParams, ngMeta,$state,$location,$interval) {
+  constructor($element, $q, $http, Restangular, $mdDialog, $stateParams, ngMeta,$state,$location,$interval,$mdMedia) {
     super({$element});
     this.$http = $http;
     this.$q = $q;
@@ -20,6 +20,7 @@ export default class HomeComponent extends SocialComponent {
     this.page = 0;
     this.limit = 20;
     this.$location=$location;
+ 
     //this.viewResource = ($event, resource) => { 
     //  this.viewResource_($event, resource);
     //};
@@ -297,11 +298,26 @@ openVideo($event, resource){
           }
       });
 
-  function DialogController($scope, $mdDialog, resource, Restangular, $timeout) {
+  function DialogController($scope, $mdDialog, resource, Restangular, $timeout,$mdMedia) {
       'ngInject';
       this.loading = true;
       this.resource = resource;
-      
+      this.$scope =$scope;
+
+      this.width=0;
+		this.height=0;
+      this.isMobile=false;
+
+
+    this.$scope.$watch(() => { return $mdMedia('xs') }, (mobile) => {
+      this.isMobile = mobile === true;
+
+    });
+
+   
+		
+
+	
   }
 }
 
