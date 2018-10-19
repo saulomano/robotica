@@ -93,6 +93,12 @@ hr{
     width: 100%;
   }
 
+  .divVideo{
+    text-align: center; 
+    margin-top: 0 !important; 
+    margin-bottom: 0 !important;
+  }
+
   .wf-box{
     margin: 0 !important;
   }
@@ -159,7 +165,7 @@ hr{
     
   }
   .texto{
-    display: table !important;
+    //display: table !important;
     min-height: 0px !important;
     min-width: 0px !important;
     border-width: 0px !important;
@@ -213,6 +219,13 @@ hr{
   .textoVideo{
     width: unset !important;
   }
+
+  .divVideo{
+    text-align: center; 
+    margin-top: 0 !important; 
+    margin-bottom: 0 !important;
+  }
+
   .divslide{
     background-repeat: no-repeat !important;
 	  background-size: cover !important;
@@ -269,7 +282,7 @@ hr{
 }
 
 .texto{
-    display: table;
+    //display: table;
     min-height: 0px;
     min-width: 0px;
     border-width: 0px;
@@ -279,6 +292,7 @@ hr{
     font-family: DINNextRoundedLTPro-Medium !important;
     text-align: center;
 }
+
 
 
 .textoBanner{
@@ -537,7 +551,11 @@ img {vertical-align: middle;}
   .prev, .next,.slideshow-container,.text {font-size: 59rem}
 }
 
-
+.divVideo{
+  text-align: center; 
+  margin-top: 7%; 
+  margin-bottom: 5%;
+}
 
 
 .v-middle, .ui-carousel .carousel-btn {
