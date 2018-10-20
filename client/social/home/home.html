@@ -16,15 +16,19 @@
 
 			<div style="height: 10px;"> </div>
 			<div class="dot1" > 
-				<span class="dot" ng-click="$ctrl.sliderClick(0)"></span> 
-				<span class="dot" ng-click="$ctrl.sliderClick(1)"></span> 
-				<span class="dot" ng-click="$ctrl.sliderClick(2)"></span>
-				<span class="dot" ng-click="$ctrl.sliderClick(3)"></span> 
-				<span class="dot" ng-click="$ctrl.sliderClick(4)"></span> 
+				<span class="dot" ng-click="$ctrl.sliderClick(0)" ng-class="{prueba: $index== 0}"></span> 
+				<span class="dot" ng-click="$ctrl.sliderClick(1)" ng-class="{prueba: $index== 1}"></span> 
+				<span class="dot" ng-click="$ctrl.sliderClick(2)" ng-class="{prueba: $index== 2}"></span>
+				<span class="dot" ng-click="$ctrl.sliderClick(3)" ng-class="{prueba: $index== 3}"></span> 
+				<span class="dot" ng-click="$ctrl.sliderClick(4)" ng-class="{prueba: $index== 4}"></span> 
 			</div>
-  
+
+			<a class="prev" style="left: 0%;" ng-click="$ctrl.slideIndexPrev($index)">&#10094;</a>
+			<a class="next" ng-click="$ctrl.slideIndexNext($index)">&#10095;</a>
 			
 		</div>
+
+		
 		
 		
 </div>

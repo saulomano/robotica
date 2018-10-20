@@ -35,7 +35,7 @@ this.$interval = $interval;
         titulo: "Robótica Educativa", 
         titulo3:"en la provincia",    
         texto:"Llega el Plan Provincial de Robótica Educativa a las escuelas primarias de la Provincia de Buenos Aires",    
-        url: "/assets/img/banner/banner-video2-min.jpg",
+        url: "/assets/img/banner/banner-video2.jpg",
         textoboton:"VER VIDEO",        
         tipo: "video",
         vid: 2
@@ -44,7 +44,7 @@ this.$interval = $interval;
         titulo: "Robótica y plástica",
         //titulo2:"y plástica",      
         texto:"Alumnos marplatenses diseñaron y crearon sus propios robots",       
-        url: "/assets/img/banner/slider_1-min.jpg",
+        url: "/assets/img/banner/slider_1.jpg",
        textoboton:"VER NOTA",
         seccion:"social.noticias" ,
         tipo: "link"
@@ -55,7 +55,7 @@ this.$interval = $interval;
         //titulo2:"complementarias",
         titulo3:"para el aula",
         texto:"Actividades diseñadas para que los docentes puedan desarrollar junto a los alumnos sin contar con la presencia de los talleristas. ",      
-        url: "/assets/img/banner/slider_2-min.jpg",
+        url: "/assets/img/banner/slider_2.jpg",
         textoboton:"VER ACTIVIDADES",
         seccion:"social.actividadescomplementarias",
         tipo: "link"
@@ -64,7 +64,7 @@ this.$interval = $interval;
         titulo: "Talleres", 
         titulo3:"para el aula",
         texto:"Encuentra PROPUESTAS DE TALLERES pensados para que docentes y talleristas aborden la robótica aplicando pensamiento computacional y programación.",    
-        url: "/assets/img/banner/slider_3-min.jpg",
+        url: "/assets/img/banner/slider_3.jpg",
         textoboton:"VER TALLERES",
         seccion:"social.propuestasdetaller",
         tipo: "link"
@@ -73,7 +73,7 @@ this.$interval = $interval;
         titulo: "Experiencia", 
         titulo3:"de robótica educativa",     
         texto:"",           
-        url: "/assets/img/banner/slider_4-min.jpg",
+        url: "/assets/img/banner/slider_4.jpg",
         textoboton:"VER VIDEO",
         seccion:"social.propuestasdetaller",
         tipo: "video",
@@ -93,7 +93,7 @@ this.$interval = $interval;
    self.runTimeoutExample = function(){
        self.$interval(function(){         
            self.nextSlide();
-       }, 8000);
+       }, 5000);
    }
     
    self.runTimeoutExample();
@@ -104,6 +104,14 @@ this.$interval = $interval;
  
   setCurrentSlideIndex(index) {
     this.currentIndex = index;
+  }
+
+  slideIndexNext(index) {
+    this.currentIndex = index + 1;
+  }
+
+  slideIndexPrev(index) {
+    this.currentIndex = index - 1;
   }
   
    isCurrentSlideIndex(index) {
