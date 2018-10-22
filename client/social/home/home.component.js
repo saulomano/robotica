@@ -113,7 +113,7 @@ this.$interval = $interval;
   }
 
   slideIndexPrev(index) {
-    this.currentIndex = index - 1;
+    this.currentIndex = index == 0  ? this.slides.length - 1:  index- 1;
   }
   
    isCurrentSlideIndex(index) {
