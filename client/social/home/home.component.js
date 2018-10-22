@@ -41,13 +41,15 @@ this.$interval = $interval;
         vid: 2
       },
       {
-        titulo: "Robótica y plástica",
+        titulo: "Robótica en las aulas",
         //titulo2:"y plástica",      
-        texto:"Alumnos marplatenses diseñaron y crearon sus propios robots",       
-        url: "/assets/img/banner/slider_1-min.jpg",
-       textoboton:"VER NOTA",
+        texto:"Docentes y estudiantes dan su testimonio de esta innovación educativa",       
+        url: "/assets/img/banner/slider_vid3-min.jpg",
+       textoboton:"VER VIDEO",
         seccion:"social.noticias" ,
-        tipo: "link"
+        tipo: "video"
+        ,
+        vid: 3
         
       },
       {
