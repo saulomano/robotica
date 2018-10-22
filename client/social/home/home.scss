@@ -99,6 +99,11 @@ hr{
     margin-bottom: 0 !important;
   }
 
+  .divBotones{
+    margin-top: 1%;
+    margin-bottom: 1%
+  }
+  
   .wf-box{
     margin: 0 !important;
   }
@@ -228,6 +233,11 @@ hr{
     margin-bottom: 0 !important;
   }
 
+  .divBotones{
+    margin-top: 1%;
+    margin-bottom: 1%
+  }
+
   .divslide{
     background-repeat: no-repeat !important;
 	  background-size: cover !important;
@@ -331,15 +341,9 @@ hr{
   background-color:#8BBF1F !important; 
   color: white !important ; 
   border-radius:9px 9px 9px 9px;
-  //padding: 2% !important;
-  //padding-left: 5% !important;
-  //padding-right: 5% !important;
-  //padding-bottom: 2% !important;
-  //padding-top: 2% !important;
   text-decoration: none !important; 
   font-size: 10px !important;
-  //margin-bottom: 2px !important;   
-
+  
 }
 
 
@@ -752,4 +756,15 @@ img {vertical-align: middle;}
     }
     @media screen and (min-width: 1200px) {
         .wf-container { width: 1170px; }
+    }
+
+    .divBotones{
+      margin-left: auto; 
+      margin-right: auto; 
+      text-align: center; 
+      border: 1px solid lightgrey; 
+      padding: 18px 40px; 
+      border-radius: 5px;     
+      margin-left: 1%;
+		  margin-right: 1%;
     }
