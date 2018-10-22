@@ -58,26 +58,15 @@ export default class DashboardComponent extends CuradorComponent {
     	let addNewItem = {
 			type: 'addnew',
 			options: [
-				{ section: 'noticias', icon: 'ri ri-noticias', caption: 'Noticias' },
-				{ section: 'calendario', icon: 'ri ri-calendario', caption: 'Calendario' },
-				{ section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
-				{ section: 'documentos', icon: 'ri ri-documentos', caption: 'Documentos' },
-				{ section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' },
-				{ section: 'loquehacemos', icon: 'ri ri-loquehacemos', caption: 'Lo que hacemos' },
-				{ section: 'novedades', icon: 'ri ri-novedades', caption: 'Novedades' }
+				{ section: 'tutorial', icon: 'ri ri-', caption: 'Tutoriales' },
+				{ section: 'herramienta', icon: 'ri ri-', caption: 'Herramientas' },
+				{ section: 'materailApoyo', icon: 'ri ri-', caption: 'Materiales de Apoyo' },
+				{ section: 'experiencia', icon: 'ri ri-', caption: 'Experiencias' },
+				{ section: 'ejemplos', icon: 'ri ri-', caption: 'Ejemplos' },
+				
 			]
     	};
 
-    	if (this.type == 'desafios') {
-       		addNewItem = {
-        		type: 'desafios',
-        		options: [
-          			{ section: 'aprobado', icon: 'ri ri-desafio', caption: 'Desafíos Aprobados' },
-            		{ section: 'pendiente', icon: 'ri ri-desafio', caption: 'Desafíos Pendientes' },
-            		{ section: 'rechazado', icon: 'ri ri-desafio', caption: 'Desafíos Rechazados' }
-        		]
-      		};
-    	}
 
     	let q;
     	if (this.searchText){
