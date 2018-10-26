@@ -225,3 +225,62 @@
 	  width: 350px !important;
 	}
 }
+
+@media screen and (max-width: 960px) {
+
+	.col-3 {
+		width: 100% !important; 
+		height: 300px !important;
+		position: unset !important;
+	}
+
+	.col-9 {
+	
+		width: 100% !important; 
+		height: auto !important;
+		margin-left: 0 !important;
+	}
+	.primerDiv{
+		padding-top: 8% !important;
+		margin-top: 0 !important;
+		margin-left: auto !important;
+    	margin-right: auto !important;
+    	text-align: center !important;
+	}
+	/*.iconoFlecha{
+		padding-left: 20px;
+		//padding-top: 5px;
+		background-image: url(/assets/iconoAbajo.png) left no-repeat;
+	}*/
+
+}
+
+
+
+
+.col-3 {
+	width: 20%; 
+	height: 500px;
+	position: absolute;
+}
+
+.col-9 {
+	
+	width: 80%; 
+	height: 500px;
+	margin-left: 20%;
+}
+
+.primerDiv{
+	//padding-top: 15%;
+	margin-left: 15%;
+	margin-top: 35%; 
+	text-align: left;
+}
+
+/*.iconoFlecha{
+	padding-left: 20px;
+	//padding-top: 5px;
+	background-image: url(/assets/iconoR.png) left no-repeat;
+}*/
+
