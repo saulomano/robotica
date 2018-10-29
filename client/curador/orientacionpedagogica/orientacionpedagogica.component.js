@@ -36,7 +36,7 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
 		
 		// this.Resource = this.Restangular.one('resources', this.uid);
 		this.PropuestaDesafio = this.Restangular.one('orientacionpedagogica', this.uid);
-		this.Publisheds = this.Restangular.all('kit');
+		this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
 
 		this.returnDesafios = false;
 
