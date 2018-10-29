@@ -13,7 +13,7 @@ export default class NewComponent extends CuradorComponent {
     this.Restangular = Restangular;
     this.Auth = Auth;
 
-    let types = /^(noticia|orientacionpedagogica|kit|herramientas|documentos|mediateca|desafios|loquehacemos|novedades|kits|desafiopropuesto|propuestataller)$/ig;
+    let types = /^(noticia|orientacionpedagogica|kits|desafiopropuesto|propuestataller|tutorial|herramienta|materialapoyo|experiencia|ejemplos)$/ig;
     this.section = _.toLower($stateParams.type);
 
     if (!types.test(this.section)){
@@ -55,7 +55,13 @@ export default class NewComponent extends CuradorComponent {
       'mediateca': 'mediateca',
       'loquehacemos': 'loquehacemos',
       'novedades': 'novedades',
-      'desafiopropuesto': 'desafiopropuesto'
+      'desafiopropuesto': 'desafiopropuesto',
+      'tutorial': 'tutorial',
+      'herramienta': 'herramienta',
+      'materialapoyo': 'materialapoyo',
+      'experiencia': 'experiencia',
+      'ejemplos': 'ejemplos'
+
     };
     
     let type = dbtypes[section];

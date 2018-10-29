@@ -60,7 +60,7 @@ export default class DashboardComponent extends CuradorComponent {
 			options: [
 				{ section: 'tutorial', icon: 'ri ri-', caption: 'Tutoriales' },
 				{ section: 'herramienta', icon: 'ri ri-', caption: 'Herramientas' },
-				{ section: 'materailApoyo', icon: 'ri ri-', caption: 'Materiales de Apoyo' },
+				{ section: 'materialapoyo', icon: 'ri ri-', caption: 'Materiales de Apoyo' },
 				{ section: 'experiencia', icon: 'ri ri-', caption: 'Experiencias' },
 				{ section: 'ejemplos', icon: 'ri ri-', caption: 'Ejemplos' },
 				

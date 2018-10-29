@@ -54,7 +54,7 @@ export default class ResourceComponent extends CuradorComponent {
 		this.steps = [
 			{ name: 'ficha', 		caption: 'Ficha' },
 			{ name: 'recurso', 	caption: 'Recurso' },
-			{ name: 'vinculo', caption: 'Vínculo' },
+		//	{ name: 'vinculo', caption: 'Vínculo' },
 			{ name: 'publicar', caption: 'Publicar' },
 		];
 
@@ -564,8 +564,8 @@ export default class ResourceComponent extends CuradorComponent {
 		return 'seleccionado';
 	}
 
-	removeAllFiles(){
-		this.resource.files.splice(0, this.resource.files.length)
+	removeAllImages(){
+		this.resource.imagen.splice(0, this.resource.imagen.length)
 	}
 
 	sumfiles(files){

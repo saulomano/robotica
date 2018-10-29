@@ -47,7 +47,14 @@ this.site= 'curador';
       section: 'desafiosPropuestos',  caption: 'Desafios Propuestos', action:'curador.dashboardpropuestadesafio'
     };
 
+    this.navRecursos = {
+      section: 'recursos',  caption: 'Recursos', action:'curador.dashboard'   
+    };
+
+    
+
     this.navbarItems = [
+      { section: 'recursos', icon: 'ri ri-recursos', caption: 'Recursos' },
       { section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuestas' },
       { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' },
       { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
