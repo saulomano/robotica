@@ -147,12 +147,12 @@ for (var i in this.resource.area) {
 
 		this.PublishedsOrientaciones
 			.getList({
-				q: q,
-				complementarias:false,
-				troncal:false,
-				area:area,
-				anio:anio,
-				intensivo: false
+				q: q//,
+		//		complementarias:false,
+		//		troncal:false,
+			//	area:area,
+		//		anio:anio,
+		//		intensivo: false
 			})
 			.then(publisheds => {
 				let filtered = _.filter(publisheds, p => {
