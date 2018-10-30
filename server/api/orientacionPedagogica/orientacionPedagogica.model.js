@@ -26,7 +26,7 @@ var ResourceSchema = new Schema({
 		deleted: { type:Boolean, default: false },		
 		kitusado: String,				
 		publicaHome: { type:Boolean, default: false },
-		links: [{ type: Schema.Types.ObjectId, ref: 'Kit' }],
+		links: [{ type: Schema.Types.ObjectId, ref: 'PublishedOrientacionPedagogica' }],
 		areaEmergente: [String],	
 		anio: [String],
 		troncal: { type:Boolean, default: false },
