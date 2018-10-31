@@ -73,44 +73,27 @@
 		</div>
 	</div>
 	<div class="rview__resources" layout="row" layout-align="start stretch">
-		<div class="rview__resources--left"></div>
+	
 		<div flex>
-			<div class="rview__links" ng-if="$ctrl.resource.links.length > 0">
-				<h3 flex class="text-uppercase" ng-if="$ctrl.resource.type !== 'orientacionpedagogica'">Vinculado a {{$ctrl.resource.links.length}} materiales</h3>
-				<h3 flex class="text-uppercase" ng-if="$ctrl.resource.type == 'orientacionpedagogica'">Esta Orientaci&oacute;n Pedagógica contiene {{$ctrl.resource.links.length}} materiales</h3>
+			<div  ng-if="$ctrl.resource.links.length > 0">
+					<h3 flex class="text-uppercase" ng-if="$ctrl.resource.type == 'orientacionpedagogica'">TE SUGERIMOS CONTENIDOS RELACIONADOS</h3>
 				<md-list ng-cloak>
-					<md-list-item ng-repeat="item in $ctrl.resource.links">
-						<div ng-if="$ctrl.isPublished == false" layout="row">
-							<div layout="row" layout-padding layout-align="start center">
-								<div>
-									<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
-										<img ng-src="{{item.thumbnail}}" alt="Miniatura de la {{item.typeCaption}}">
-									</div>
-								</div>
-								<div flex>
-									<div layout="row" layout-align="start center">
-										<div><strong>{{item.nombre}}</strong> | </div>
-										<div class="color-{{item.type}}" layout="row" layout-align="start center">
-											<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
-										</div>
-									</div>
-									<div><p>{{item.descripcion | truncate:140}}</p></div>
-								</div>
-							</div>
-						</div>
+					<md-list-item ng-repeat="item in $ctrl.resource.links">						
 						<div ng-if="$ctrl.isPublished == true"  flex layout="row">
 							<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ng-href="/ver/{{item.type}}/{{item._id}}" target="_blank">
 								<div>
-									<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
-										<img ng-src="{{item.thumbnail}}" alt="Miniatura de la {{item.typeCaption}}">
+									<div class="thumbnail thumbnail--rounded thumbnail--50">
+											<div flex class="preview-glyphs">
+													<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(item.area)}}"></md-icon>
+												</div>									
 									</div>
 								</div>
 								<div flex>
 									<div layout="row" layout-align="start center">
 										<div><strong>{{item.nombre}}</strong> | </div>
 										<div class="color-{{item.type}}" layout="row" layout-align="start center">
-											<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
-										</div>
+												<div class="fIntensivo" ng-show="item.intensivo == true ">TALLER INTENSIVO <span class="green"> {{item.orden}}</span> {{item.area}} {{item.anio}}</div>
+											</div>
 									</div>
 									<div><p>{{item.descripcion | truncate:140}}</p></div>
 								</div>

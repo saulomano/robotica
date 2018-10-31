@@ -115,6 +115,10 @@ class OrientacionPedagogicaViewController {
 	}
 	
 	getFieldClass(entry){
+
+		if (entry.length>1)
+			entry= entry[0];
+		
         if (entry == "Cs. Naturales")
             return "iconPed-naturales step";
         if (entry == "Matemática")
