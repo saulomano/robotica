@@ -76,7 +76,7 @@
 	
 		<div flex>
 			<div  ng-if="$ctrl.resource.links.length > 0">
-					<h3 flex class="text-uppercase" ng-if="$ctrl.resource.type == 'orientacionpedagogica'">TE SUGERIMOS CONTENIDOS RELACIONADOS</h3>
+					<h5 flex class="text-uppercase" ng-if="$ctrl.resource.type == 'orientacionpedagogica'" style="font-family: DINNextRoundedLTPro-Bold;">TE SUGERIMOS CONTENIDOS RELACIONADOS</h5>
 				<md-list ng-cloak>
 					<md-list-item ng-repeat="item in $ctrl.resource.links">						
 						<div ng-if="$ctrl.isPublished == true"  flex layout="row">
@@ -90,12 +90,14 @@
 								</div>
 								<div flex>
 									<div layout="row" layout-align="start center">
-										<div><strong>{{item.nombre}}</strong> | </div>
+										<div><strong>{{item.nombre}}</strong></div>
 										<div class="color-{{item.type}}" layout="row" layout-align="start center">
-												<div class="fIntensivo" ng-show="item.intensivo == true ">TALLER INTENSIVO <span class="green"> {{item.orden}}</span> {{item.area}} {{item.anio}}</div>
+												<div  ng-show="item.intensivo == true "><span style="font-size: 12px; color: #9aca3c">TALLER INTENSIVO</span> <span class="greenRel"> {{item.orden}}</span><strong ng-repeat="areas in item.area" style="font-size: 12px;"> . {{areas}}  </strong> <strong ng-repeat="anios in item.anio" style="font-size: 12px;"> . {{anios}} </strong></div>
+												<div  ng-show="item.complementarias == true "><span style="font-size: 12px; color: #9aca3c">ACTIVIDADES COMPLEMENTARIAS</span></div>
 											</div>
 									</div>
-									<div><p>{{item.descripcion | truncate:140}}</p></div>
+									<div><p style="font-family: DINNextRoundedLTPro-Bold; font-weight: 700; font-size: 18px;">{{item.objetivo}}</p></div>
+									<div><p style="font-size: 12px !important;">{{item.descripcion | truncate:140}}</p></div>
 								</div>
 							</a>
 						</div>
