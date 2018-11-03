@@ -21,7 +21,10 @@
 							<p flex class="paragraph post__test rview__summary">{{$ctrl.resource.summary}}</p>
 							<rd-post flex class="rview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>
 								
-								<!--div class="video">
+	
+
+								<div class="video" ng-if="$ctrl.resource.urlVideo !== '' && $ctrl.resource.urlVideo.includes('/embed')">
+								
 									<md-dialog-content>
 										<div class="md-dialog-content">
 										<div class="vid-container">
@@ -29,7 +32,9 @@
 											</div>
 										</div>
 									</md-dialog-content>	
-								</div-->
+								</div>		
+
+
 								<div ng-if="$ctrl.resource.files.length">
 									<md-button class="rview__button md-button" style="background-color:#8BBF1F; color: white"
 									ng-href="/api/publishednoticia/{{$ctrl.resource._id}}/download" target="_blank">Descargar</md-button>
