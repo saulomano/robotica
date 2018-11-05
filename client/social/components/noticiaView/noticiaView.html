@@ -14,7 +14,7 @@
 						<div flex >
 							<h4 class="margin" style="font-family: DIN-Regular;">{{$ctrl.resource.title}}</h4>					
 							
-							<div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
+							<div flex="75" ng-hide="$ctrl.resource.thumbnail === ''">
 								<img class="responsive" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
 							</div>
 
@@ -23,10 +23,10 @@
 								
 	
 
-								<div class="video" ng-if="$ctrl.resource.urlVideo !== '' && $ctrl.resource.urlVideo.includes('/embed')">
+								<div flex="75"  ng-if="$ctrl.resource.urlVideo !== '' && $ctrl.resource.urlVideo.includes('/embed')">
 								
 									<md-dialog-content>
-										<div class="md-dialog-content">
+										<div>
 										<div class="vid-container">
 											<iframe width="500" height="281" ng-src="{{$ctrl.resource.urlVideo.replace('watch?v=', 'v/') | trustUrl}}" frameborder="0" allowfullscreen></iframe>
 											</div>
