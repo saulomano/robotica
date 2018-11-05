@@ -22,7 +22,8 @@ class NoticiaViewController {
         this.getUser();
 		this.role = '';
 		this.readOnlyRating = false;
-    	this.$element.addClass('noticia-card');
+		this.$element.addClass('noticia-card');
+		this.modoVista = this.$scope.vista;	
     
 		this.editable = this.$scope.editable === true;		
 
@@ -71,9 +72,15 @@ function noticiaView($log){
 		restrict: 'E',
 		controller: NoticiaViewController,
 		controllerAs: '$ctrl',
+		binding: {		
+			vista: '<',
+		  
+		   
+		},
 		scope: {
 			resource: '=',
-			isPublished: '='
+			isPublished: '=',
+			vista: '='
 		
 		},
 		template: require('./noticiaView.html')

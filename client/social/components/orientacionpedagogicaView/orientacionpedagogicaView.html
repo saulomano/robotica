@@ -38,7 +38,7 @@
 								<rd-post  class="kview__summary" modules="$ctrl.resource.habilidad" relative="$ctrl.uid" readonly="true"></rd-post>
 							</div>
 						</div-->
-						<div flex >
+						<div flex-75 >
 							<rd-post flex class="kview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>
 						</div>
 						<!--div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
@@ -108,7 +108,7 @@
 		<div class="rview__resources--right"></div>
 	</div>
 	<!--Lateral -->
-	<div class="icon-bar" ng-show="!$ctrl.isMobile">
+	<div class="icon-bar"  ng-hide="$ctrl.modoVista === 'ver'">
 		<a ng-href="/ver/{{$ctrl.resource.type}}/{{$ctrl.resource._id}}" target="_blank" class="view-item" title="Ver Orientacion"><i class="fa fa-search"></i></a>
 		<!--a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
 		<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>

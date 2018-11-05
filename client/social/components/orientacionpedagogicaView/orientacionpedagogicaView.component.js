@@ -20,11 +20,13 @@ class OrientacionPedagogicaViewController {
 		this.Restangular = Restangular;
 		this.editable = this.$scope.editable === true;		
 		this.isMobile;
-		this.isPublished = this.$scope.isPublished == true;		
+		this.isPublished = this.$scope.isPublished == true;
+		this.modoVista = this.$scope.vista;		
 
 		this.$scope.$watch(() => { return this.$scope.resource; }, (value) => {	
 			
 			this.resource = this.$scope.resource;
+			
 
 
 			if(this.resource.postBody){
@@ -140,9 +142,15 @@ function orientacionpedagogicaView($log){
 		restrict: 'E',
 		controller: OrientacionPedagogicaViewController,
 		controllerAs: '$ctrl',
+		binding: {		
+			vista: '<',
+		  
+		   
+		},
 		scope: {
 			resource: '=',
-			isPublished: '='
+			isPublished: '=',
+			vista: '=',
 		
 		},
 		template: require('./orientacionpedagogicaView.html')
