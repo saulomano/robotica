@@ -30,7 +30,7 @@ export default class ResourceComponent extends CuradorComponent {
     	this.noCache = true;
 
 		// list of `state` value/display objects
-		this.states = this.loadAll();
+	//	this.states = this.loadAll();
 
 		// Global captions to avoid unnecesary temporary captions inside functions
 		this.captions = {
@@ -58,11 +58,13 @@ export default class ResourceComponent extends CuradorComponent {
 			{ name: 'publicar', caption: 'Publicar' },
 		];
 
-		this.configureDropzone(Util);
+		this.configureDropzonImagen(Util);
+		this.configureDropzonePdf(Util);
+
+
 		this.configureFunctions();
 		this.getResource();
-		this.getCategories_();
-
+	
 		this.onDeletePost = ($index) => {
 			this.onDeletePost_($index);
 		};
@@ -84,28 +86,9 @@ export default class ResourceComponent extends CuradorComponent {
 		}
 	}
 
-    querySearchSchool(query) {
-        var results = query ? this.selectedDistrict.schools.filter( this.createFilterForSchool(query) ) : this.selectedDistrict.schools;
-        var deferred;
-        if (this.simulateQuery) {
-            deferred = this.$q.defer();
-            this.$timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-            return deferred.promise;
-        } else {
-            return results;
-        }
-    }
+   
 
-	loadAll() {
-		var allStates = 'La Plata, Adolfo Alsina, Alberti, Almirante Brown, Avellaneda, Ayacucho, Azul, Bahía Blanca, Balcarce, Baradero, Arrecifes, Bolívar, Bragado, Brandsen, Campana, Cañuelas, Carlos Casares, Carlos Tejedor, Carmen de Areco, Daireaux, Castelli, Colón, Coronel Dorrego, Coronel Pringles, Coronel Suárez, Chacabuco, Chascomús, Chivilcoy, Dolores, Esteban Echeverría, Exaltación de la Cruz, Florencio Varela, General Alvarado, General Alvear, General Arenales, General Belgrano, General Guido, General La Madrid, General Lavalle, General Madariaga, General Paz, General Pinto, General Pueyrredón, General Rodríguez, General San Martín, Zárate, General Viamonte, General Villegas, Gonzáles Chaves, Guaminí, Juárez, Junín, Laprida, Tigre,	Las Flores, General Las Heras, Leandro N. Alem, Lincoln, Lobería, Lobos, Lomas de Zamora, Luján, Magdalena, Maipú, Salto, Marcos Paz, Mar Chiquita, La Matanza, Mercedes, Merlo, Monte, Moreno, Navarro, Necochea, Nueve de Julio, Olavarría, Patagones, Pehuajó, Pellegrini, Pergamino, Pila, Pilar, Puan, Quilmes, Ramallo, Rauch, Rivadavia, Rojas, Roque Pérez, Saavedra, Saladillo, San Andrés de Giles,	San Antonio de Areco, San Fernando, San Isidro, San Nicolás, San Pedro,	San Vicente, Morón, Suipacha, Tandil, Tapalqué, Tordillo, Tornquist, Trenque Lauquen, Tres Arroyos, Veinticinco de Mayo, Vicente López, Villarino, Lanús, Coronel Rosales, Berisso, Ensenada, San Cayetano, Escobar, Tres de Febrero, Hipólito Yrigoyen, Berazategui, Salliqueló, Capitán Sarmiento, La Costa, Pinamar, Villa Gesell, Monte Hermoso, Tres Lomas, Florentino Ameghino, Presidente Perón, Ezeiza, San Miguel, José C. Paz, Malvinas Argentinas, Punta Indio, Hurlingham, Ituzaingo, Lezama';
-  
-		return allStates.split(/, +/g).map( function (state) {
-		  	return {
-				value: state.toLowerCase(),
-				display: state
-		  	};
-		});
-	}
+	
 
 	/**
      * Create filter function for a query string
@@ -117,65 +100,10 @@ export default class ResourceComponent extends CuradorComponent {
 		};
 	}
 
-    /**
-     * Create filter function for a query school string
-     */
-    createFilterForSchool(query) {
-        var lowercaseQuery = angular.lowercase(query);
-        return function filterFn(state) {
-            return (angular.lowercase(state.schoolName).indexOf(lowercaseQuery) > -1);
-        };
-    }
+   
 
-	onChangeDistrict(newDistrict) {
-		if(_.isEmpty(newDistrict.display) == false)	{
-			let districtIndex = _.findIndex(this.loadAll(), function (element) {
-				return (element.display == newDistrict.display);			
-			});
-
-			// If the search district were found...
-			if(districtIndex != -1)	{
-				this.School = this.Restangular.one('schools/district', newDistrict.display);
-
-				// Let's retrieve the school information
-				this.getSchool();
-			}
-		}
-	}
-
-	getSchool(){
-		// this.loading = true;
-		this.loadingSchools = true;
-		this.School.get()
-		.then(data => {
-
-			this.district = data;
-
-			let resourceInstance = this;
-
-			let schoolIndex = _.findIndex(this.district.schools, function (element) {
-				return (element.schoolName == resourceInstance.resource.school);						
-			});
-
-			if(schoolIndex == -1) {
-				schoolIndex = 0;
-			}			
-
-			this.selectedDistrict = this.district;
-			this.searchDistrictText = angular.copy(this.selectedDistrict.name);
-
-			// this.selectedSchool = angular.copy(this.district.schools[schoolIndex].schoolName);
-			// this.searchSchoolText = this.selectedSchool;
-
-			// this.loading = false;
-			this.loadingSchools = false;
-		})
-		.catch(err => {
-			this.loading = false;
-			console.log("Err", err);
-			throw err;
-		});
-	}
+	
+	
 
 	$onInit(){
 	}
@@ -215,39 +143,7 @@ export default class ResourceComponent extends CuradorComponent {
 			});
 	}
 
-	getCategories_(){
-		async.waterfall([
-			(cb) => {
-				this
-					.loadCategories()
-					.then(() => cb())
-					.catch(cb);
-			},
-			(cb) => {
-				// here init the stuff
-				let st = this.getCategory('software');
-				let at = this.getCategory('area');
-				let lt = this.getCategory('nivel');
-				let ac = this.getCategory('accessibility');
-				let us = this.getCategory('resource');
-				let os = this.getCategory('os');
-				let or = this.getCategory('orientacion');
-				
-				this.softwares = st.values;
-				this.areas = at.values;
-				this.niveles = lt.values;
-				this.accessibilities = ac.values;
-				this.usabilities = us.values;
-				this.platforms = os.values;
-				this.orientaciones = or.values;
-				cb()
-			}
-		], err => {
-			if (err){
-				this.$log.error(err);
-			}
-		});
-	}
+	
 
 	watchResource(){
 		this.saveTimes = 0;
@@ -321,19 +217,74 @@ export default class ResourceComponent extends CuradorComponent {
 		}, 5000);
 	}
 
-	configureDropzone(Util){
+	configureDropzonImagen(Util){
 
 		var ctrl = this;
-   	 	this.dzOptions = {
+   	 	this.dzOptionsSoftwareImagen = {
 			dictDefaultMessage: '<div class="dz-clickable"></div>',
       		url : '/upload?relative=' + this.uid,
 			paramName : 'Imágen',
 			maxFiles: 1,
-			clickable: '.dz-tumbnail-clickable',
+			clickable: '.dz-clickable',
+			maxFilesize : 3048,
+			timeout: 18000000,
+      		acceptedFiles : 'image/*',
+      		addRemoveLinks : true,
+			headers: Util.getHeaders(),
+			init: function(){
+				// add dropzone to ctrl
+				ctrl.dropzoneThumbnail = this;
+			}
+		};
+		this.dzOptionsSoftwareImagen = _.cloneDeep(this.dzOptionsSoftwareImagen);
+		this.dzOptionsSoftwareImagen.init = function(){
+			// add dropzone to ctrl
+			ctrl.dropzoneSoftware = this;
+		};
+		this.dzOptionsSoftwareImagen.acceptedFiles = 'image/*'; //'*/*';
+		this.dzOptionsSoftwareImagen.maxFiles = Infinity;
+		this.dzOptionsSoftwareImagen.dictDefaultMessage = '<div class="dz-clickable"></div>';
+		this.dzOptionsSoftwareImagen.clickable = '.dz-clickable';
+
+		this.dzCallbacksImagen = {
+			'addedfile' : (file) => {
+				console.log(file);
+			},
+			'removedfile' : (file) => {
+				console.log(file);
+				this.removeAllImages();
+			},
+			'success' : (file, xhr) => {
+				this.resource.imagen.push(xhr);
+			},
+			'error' : (err) => {
+				this.$log.error(err);
+			},
+			'processing': () => {
+				console.log('processing');
+			},
+			'queuecomplete': () => {
+				console.log('queuecomplete');
+				//ctrl.dzOptionsSoftwareImagen.removeAllImages();
+			}
+		};
+	}
+
+
+
+	configureDropzonePdf(Util){
+
+		var ctrl = this;
+   	 	this.dzOptionspdf = {
+			dictDefaultMessage: '<div class="dz-clickable"></div>',
+      		url : '/upload?relative=' + this.uid,
+			paramName : 'PDF',
+			maxFiles: 1,
+			clickable: '.dz-clickable',
 			maxFilesize : 1024,
 			timeout: 18000000,
       		//acceptedFiles : 'image/*, application/pdf',
-      		addRemoveLinks : false,
+      		addRemoveLinks : true,
 			headers: Util.getHeaders(),
 			init: function(){
 				// add dropzone to ctrl
@@ -341,36 +292,19 @@ export default class ResourceComponent extends CuradorComponent {
 			}
 		};
 
-		this.dzCallbacks = {
-			'addedfile' : (file) => {
-				console.log(file);
-			},
-			'removedfile' : (file) => {
-				console.log(file);
-			},
-			'success' : (file, xhr) => {
-				console.log(xhr);
-				this.resource.thumbnail = xhr.url;
-			},
-			'processing': (file) => {
-				console.log(file);
-			},
-			'queuecomplete': () => {
-				ctrl.dropzoneThumbnail.removeAllFiles();
-			}
-		};
+		
 
-		this.dzOptionsSoftware = _.cloneDeep(this.dzOptions);
-		this.dzOptionsSoftware.init = function(){
+		this.dzOptionsSoftwarePdf = _.cloneDeep(this.dzOptionspdf);
+		this.dzOptionsSoftwarePdf.init = function(){
 			// add dropzone to ctrl
-			ctrl.dropzoneSoftware = this;
+			ctrl.dropzoneSoftwarePDF = this;
 		};
-		this.dzOptionsSoftware.acceptedFiles = 'application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf, image/*'; //'*/*';
-		this.dzOptionsSoftware.maxFiles = Infinity;
-		this.dzOptionsSoftware.dictDefaultMessage = '<div class="dz-clickable"></div>';
-		this.dzOptionsSoftware.clickable = '.dz-software-clickable';
+		this.dzOptionsSoftwarePdf.acceptedFiles = ' application/pdf'; //'*/*';
+		this.dzOptionsSoftwarePdf.maxFiles = Infinity;
+		this.dzOptionsSoftwarePdf.dictDefaultMessage = '<div class="dz-clickable"></div>';
+		this.dzOptionsSoftwarePdf.clickable = '.dz-clickable';
 
-		this.dzCallbacksSoftware = {
+		this.dzCallbacksSoftwarePdf = {
 			'addedfile' : (file) => {
 				console.log(file);
 			},
@@ -388,7 +322,7 @@ export default class ResourceComponent extends CuradorComponent {
 			},
 			'queuecomplete': () => {
 				console.log('queuecomplete');
-				//ctrl.dropzoneSoftware.removeAllFiles();
+			//	ctrl.dropzoneSoftware.removeAllPdfs();
 			}
 		};
 	}
@@ -566,6 +500,10 @@ export default class ResourceComponent extends CuradorComponent {
 
 	removeAllImages(){
 		this.resource.imagen.splice(0, this.resource.imagen.length)
+	}
+
+	removeAllPdfs(){
+		this.resource.pdf.splice(0, this.resource.pdf.length)
 	}
 
 	sumfiles(files){
