@@ -146,7 +146,7 @@ class RdPdfController {
 			controller: MediaDialogController,
 			scope: this.$scope,
 			preserveScope: true,
-      template: require('./media-dialog.tmpl.html'),
+      template: require('./media-dialogpdf.tmpl.html'),
       parent: angular.element(document.body),
       targetEvent: ev,
 			clickOutsideToClose: false,

@@ -9,6 +9,8 @@ import card from './components/card/card';
 import post from './components/post/post';
 import stepper from './components/stepper/stepper';
 import cardOrientaciones from './components/cardOrientaciones/cardOrientaciones';
+import file1 from './components/pdf/pdf';
+
 let requirements = [
 	navbar,
 	navbarItem,
@@ -16,7 +18,8 @@ let requirements = [
 	card,
 	post,
 	stepper,
-	cardOrientaciones
+	cardOrientaciones,
+	file1
 ];
 
 module.exports = angular
