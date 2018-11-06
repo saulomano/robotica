@@ -1,0 +1,94 @@
+<!-- content here -->
+<ul class="post__content" dnd-list="$rdPostController.getModel()" ng-if="!$rdPostController.readonly">
+	<li class="post__module"
+			ng-show="module.moduleType !== undefined"
+			ng-repeat="module in $rdPostController.getModel()"
+			ng-class="{'post__module--editable': !$rdPostController.readonly}"
+			dnd-draggable="module"
+			dnd-effect-allowed="move"
+			dnd-moved="$rdPostController.getModel().splice($index, 1)"
+			dnd-selected="$rdPostController.models.selected = module"
+			ng-class="{selected: $rdPostController.models.selected === module}">
+
+		<div class="post__toolbar" layout="row">
+			<div flex></div>
+			<md-button ng-click="$rdPostController.editModule(module)" class="md-raised md-mini post__button--delete" aria-label="Editar módulo"
+								 ng-show="module.moduleType === 'text' && !module.editing">
+				<md-icon md-font-icon="">edit</md-icon>
+			</md-button>
+			<md-button ng-click="$rdPostController.editedModule(module)" class="md-raised md-mini post__button--delete" aria-label="Editar módulo"
+			ng-show="module.moduleType === 'text' && module.editing">
+			<md-icon md-font-icon="">check</md-icon>
+			</md-button>
+			<md-button ng-click="$rdPostController.deleteModule($index)" class="md-raised md-mini post__button--delete" aria-label="Eliminar módulo">
+				<md-icon md-font-icon="">delete</md-icon>
+			</md-button>
+		</div>
+		
+		<!-- divisor -->
+		<div class="post__divisor" ng-if="module.moduleType === 'divisor'" ></div>
+		
+		<!-- text -->
+		<div ng-if="module.moduleType === 'text'">
+			<div class="post__text ql-editor"   ng-bind-html="module.content" ng-hide="module.editing"></div>
+			<div class="post__text post__text--editor" ng-show="module.editing">
+				<ng-quill-editor ng-model="module.content"></ng-quill-editor>
+			</div>
+		</div>
+		
+		<!-- media -->
+		<div class="post__image--gallery" ng-if="module.moduleType === 'image-gallery'"  layout="column">
+			<div ng-repeat="image in module.content">
+				<img ng-src="{{image.src}}" alt="{{image.description}}">
+			</div>
+		</div>
+		<div class="post__image--grid" ng-if="module.moduleType === 'image-grid'"  layout="row">
+				<div ng-repeat="image in module.content" flex="33">
+					<img ng-src="{{image.src}}" alt="{{image.description}}">
+				</div>
+			</div>
+	</li>
+</ul>
+
+<ul class="post__content" ng-if="$rdPostController.readonly">
+		<li class="post__module"
+				ng-show="module.moduleType !== undefined"
+				ng-repeat="module in $rdPostController.getModel()"
+				ng-class="{'post__module--editable': !$rdPostController.readonly}">
+			
+			<div class="post__divisor" ng-if="module.moduleType === 'divisor'" ></div>
+			<div class="post__text" ng-if="module.moduleType === 'text'"  ng-bind-html="module.content"></div>
+			<div class="post__image--gallery" ng-if="module.moduleType === 'image-gallery'" layout="column">
+				<div ng-repeat="image in module.content" layout="row">
+					<div flex="75">
+						<img ng-src="{{image.src}}" alt="{{image.description}}">
+					</div>
+				</div>
+			</div>
+			<div class="post__image--grid" ng-if="module.moduleType === 'image-grid'"  layout="row">
+					<div ng-repeat="image in module.content" flex="33">
+						<img ng-src="{{image.src}}" alt="{{image.description}}">
+					</div>
+				</div>
+		</li>
+	</ul>
+
+<div class="post__actions--wrapper" ng-if="!$rdPostController.readonly">
+	<div class="post__actions" layout="row" layout-align="center center">
+		<div class="post__actions--caption">
+			<i class="ri ri-mas"></i><span> Insertar nuevo módulo de:</span>
+		</div>
+		<md-button class="md-raised post__button" layout="row" ng-click="$rdPostController.addText($event)">
+			<i class="ri ri-mas-texto"></i> Texto
+		</md-button>
+		<md-button class="md-raised post__button" layout="row" ng-click="$rdPostController.addMedia($event)">
+			<i class="ri ri-mas-imagen"></i> Media
+		</md-button>
+		<!--<md-button class="md-raised post__button" layout="row">
+			<i class="ri ri-mas-medios"></i> Medios
+		</md-button>-->
+		<md-button class="md-raised post__button" layout="row" ng-click="$rdPostController.addDivisor($event)">
+			<i class="ri ri-divisor"></i> Divisor
+		</md-button>
+	</div>
+</div>
