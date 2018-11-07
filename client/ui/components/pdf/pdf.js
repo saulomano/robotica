@@ -43,13 +43,9 @@ class MediaDialogController {
 
     this.dzOptions = {
       url : '/upload?relative=' + this.$scope.relative,
-	  paramName : 'Imágen',
-	  maxFiles: 1,
-	  clickable: '.dz-tumbnail-clickable',
-	  maxFilesize : 1024,
-	  timeout: 18000000,
+      paramName : 'Imágen',
       //maxFilesize : '10',
-      acceptedFiles : 'application/pdf',
+      acceptedFiles : 'image/jpeg, images/jpg, image/png',
       addRemoveLinks : true,
       headers: Util.getHeaders()
     };
@@ -63,9 +59,8 @@ class MediaDialogController {
 				this.canContinue = this.images.length > 0;
       },
       'success' : (file, xhr) => {
-				//xhr.description = xhr.description || '';
-				//this.images.push(xhr);
-				this.resource.thumbnail = xhr.url;
+				xhr.description = xhr.description || '';
+				this.images.push(xhr);
 			},
 			'processing': () => {
 				this.canContinue = false;
@@ -76,10 +71,10 @@ class MediaDialogController {
     };
 	}
 
-	/*continuar() {
+	continuar() {
 		this.editing = true;
 		this.message = 'Describir imagenes';
-	}*/
+	}
 
 	cancel(){
 		this.$mdDialog.hide(false);

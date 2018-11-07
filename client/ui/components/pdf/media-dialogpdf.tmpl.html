@@ -1,53 +1,52 @@
-<md-dialog class="post-text__dialog" aria-label="Agregar Documentos pdf">
-		<form ng-cloak>
-			<md-toolbar>
-				<div class="md-toolbar-tools post-text__toolbar">
-					<h2><i class="ri ri-mas-imagen"></i> Agregar Documentos PDF</h2>
+<md-dialog class="post-text__dialog" aria-label="Agregar módulo de medios">
+	<form ng-cloak>
+		<md-toolbar>
+			<div class="md-toolbar-tools post-text__toolbar">
+				<h2><i class="ri ri-mas-imagen"></i> Agregar módulo de medios</h2>
+			</div>
+		</md-toolbar>
+
+		<md-dialog-content class="post-text__content">
+				<div ng-hide="$ctrl.editing">
+						<md-content>
+								<div class="dropzone" options="$ctrl.dzOptions" callbacks="$ctrl.dzCallbacks" methods="$ctrl.dzMethods" ng-dropzone></div>
+						</md-content>
 				</div>
-			</md-toolbar>
-	
-			<md-dialog-content class="post-text__content">
-					<div ng-hide="$ctrl.editing">
-							<md-content>
-									<div class="dropzone" options="$ctrl.dzOptions" callbacks="$ctrl.dzCallbacks" methods="$ctrl.dzMethods" ng-dropzone ng-hide="$ctrl.resource.files.length > 0"></div>
-							</md-content>
-					</div>
-					<div ng-show="$ctrl.editing" >
-						<div ng-repeat="image in $ctrl.images" layout="row" class="post-media__image--edition">
-							<div flex>
-								<img ng-src="{{image.url}}">
-							</div>
-							<!--div flex="33" layout="column" layout-padding >
-								<h5>Descipción de la imágen</h5>
-								<textarea name="" ng-model="image.description" flex></textarea>
-							</div-->
+				<div ng-show="$ctrl.editing" >
+					<div ng-repeat="image in $ctrl.images" layout="row" class="post-media__image--edition">
+						<div flex>
+							<img ng-src="{{image.url}}">
+						</div>
+						<div flex="33" layout="column" layout-padding >
+							<h5>Descipción de la imágen</h5>
+							<textarea name="" ng-model="image.description" flex></textarea>
 						</div>
 					</div>
-			</md-dialog-content>
-	
-			<md-dialog-actions layout="row">
-				<!--div flex layout="row" layout-padding>
-						<div>
-							Visualizar imagenes como:
-						</div>
-						<div>
-							<md-radio-group ng-model="$ctrl.galleryType" class="post-media__opstions">
-									<md-radio-button value="image-gallery" class="md-primary">Galería</md-radio-button>
-									<md-radio-button value="image-grid">Cuadrícula</md-radio-button>
-									<md-radio-button value="image-slider">Slider</md-radio-button>
-								</md-radio-group>
-						</div>	
-				</div-->
-				<!--md-button class="md-raised md-primary" ng-click="$ctrl.continuar()" ng-show="$ctrl.canContinue && !$ctrl.editing">
-						Continuar
-				</md-button-->
-				<md-button class="md-raised md-primary" ng-click="$ctrl.aceptar()" ng-show="$ctrl.editing">
-					Aceptar
-				</md-button>
-				<md-button class="md-raised post__button" ng-click="$ctrl.cancel()">
-					Cancelar
-				</md-button>
-			</md-dialog-actions>
-		</form>
-	</md-dialog>
-	
+				</div>
+		</md-dialog-content>
+
+		<md-dialog-actions layout="row">
+			<div flex layout="row" layout-padding>
+					<div>
+						Visualizar imagenes como:
+					</div>
+					<div>
+						<md-radio-group ng-model="$ctrl.galleryType" class="post-media__opstions">
+								<md-radio-button value="image-gallery" class="md-primary">Galería</md-radio-button>
+								<md-radio-button value="image-grid">Cuadrícula</md-radio-button>
+								<md-radio-button value="image-slider">Slider</md-radio-button>
+							</md-radio-group>
+					</div>	
+			</div>
+			<md-button class="md-raised md-primary" ng-click="$ctrl.continuar()" ng-show="$ctrl.canContinue && !$ctrl.editing">
+					Continuar
+			</md-button>
+			<md-button class="md-raised md-primary" ng-click="$ctrl.aceptar()" ng-show="$ctrl.editing">
+				Aceptar
+			</md-button>
+			<md-button class="md-raised post__button" ng-click="$ctrl.cancel()">
+				Cancelar
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>
