@@ -27,7 +27,10 @@ export default class ResourceComponent extends CuradorComponent {
 
 		this.simulateQuery = true;
     	this.isDisabled = false;
-    	this.noCache = true;
+		this.noCache = true;
+		
+		this.getResources_();
+		
 
 		// list of `state` value/display objects
 	//	this.states = this.loadAll();
@@ -87,7 +90,31 @@ export default class ResourceComponent extends CuradorComponent {
 	}
 
    
+	getResources_(){
+		async.waterfall([
+			(cb) => {
+				this
+					.loadCategories()
+					.then(() => cb())
+					.catch(cb);
+			},
+			(cb) => {
+				// here init the stuff
+			
+				this.tipoRecursos = this.getCategory('resource').values;
+				cb()
+			}
+		], err => {
+			if (err){
+				this.$log.error(err);
+			}
+		});
 
+
+
+		
+
+	}
 	
 
 	/**

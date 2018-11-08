@@ -33,6 +33,29 @@
 <div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'ficha'" ng-hide="($ctrl.loading || $ctrl.isDelete)">
 	<div class="dashboard__container"  layout="row" layout-align="start stretch">
 		
+
+		<md-content>			
+				
+				
+					 <div class="md-title">Tipo Recurso *</div>
+					 
+
+							<md-radio-group ng-model="$ctrl.resource.tipoRecurso" class="md-primary">
+
+							<md-radio-button ng-repeat="item in $ctrl.tipoRecursos"
+											 ng-value="item"
+											 >
+								{{ item }}							  
+					
+							</md-radio-button>
+					
+						</md-radio-group>
+					
+		</md-content>
+
+	</md-content>
+
+	
 		
 		<md-content  class="dashboard__content" flex>
 			<div class="dashboard__content--head">
@@ -134,10 +157,7 @@
 		-->
 		
 	
-		<md-content  class="dashboard__content" flex>
-			<rd-pdf modules="$ctrl.resource.pdf" relative="$ctrl.uid" on-delete="$ctrl.onDeletePost"></rd-pdf>
-	
-		</md-content>
+		
 
 
 

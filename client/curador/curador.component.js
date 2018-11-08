@@ -36,6 +36,8 @@ export default class CuradorComponent {
     return this.categories_[type];
   }
 
+  
+
 
 
   loadTiposDesafio(){
