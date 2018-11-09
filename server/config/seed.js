@@ -71,7 +71,7 @@ export default function seedDatabaseIfNeeded() {
         caption: 'Sistema Operativo'
       },{
         type: 'resource',
-        values: ['Presentación', 'Video', 'Plantilla', 'Texto', 'Imágen', 'Audio'],
+        values: ['Presentación', 'Video', 'PDF', 'Software', 'Imágen', 'Audio'],
         caption: 'Tipo de recurso'
       },{
         type: 'accessibility',

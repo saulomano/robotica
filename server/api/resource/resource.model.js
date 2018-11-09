@@ -16,7 +16,8 @@ var ResourceSchema = new Schema({
 		owner: { type: Schema.Types.ObjectId, ref: 'User' },		
 		video: String,
 		files: [{ type: Schema.Types.ObjectId, ref: 'File' }],
-		audio: [{ type: Schema.Types.ObjectId, ref: 'File' }],
+		
+		link: { type: String, default: 'ficha'},
 		tipoRecurso: { type: String, default: 'ficha'},
 		published: { type: Schema.Types.ObjectId, ref: 'Published' },		
 		step: { type: String, default: 'ficha'},

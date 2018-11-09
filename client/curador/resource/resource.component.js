@@ -62,7 +62,7 @@ export default class ResourceComponent extends CuradorComponent {
 		];
 
 		this.configureDropzonImagen(Util);
-		this.configureDropzonePdf(Util);
+	
 
 
 		this.configureFunctions();
@@ -75,6 +75,23 @@ export default class ResourceComponent extends CuradorComponent {
 		this.$scope.$watch(() => { return this.filterText }, (value) => {
 			this.refreshUI(true);
 		});
+
+		this.$scope.$watch(() => { return this.resource.tipoRecurso }, (value) => {
+			if (value === 'Presentación')
+			this.dzOptionsSoftware.acceptedFiles = '.ppt'; //'*/*';
+
+			if (value === 'PDF')
+			this.dzOptionsSoftware.acceptedFiles = 'application/pdf'; //'*/*';
+
+			if (value === 'Imágen')
+			this.dzOptionsSoftware.acceptedFiles = 'image/*'; //'*/*';
+
+			if (value === 'Software')
+			this.dzOptionsSoftware.acceptedFiles = '.exe'; //'*/*';
+
+		});
+
+	
 	}
 
 	querySearch (query) {
@@ -155,7 +172,8 @@ export default class ResourceComponent extends CuradorComponent {
 				q: q
 			})
 			.then(publisheds => {
-				let filtered = _.filter(publisheds, p => {
+				let filtered = _.fil
+				ter(publisheds, p => {
 					return p._id !== this.uid;
 				});
 
@@ -247,7 +265,7 @@ export default class ResourceComponent extends CuradorComponent {
 	configureDropzonImagen(Util){
 
 		var ctrl = this;
-   	 	this.dzOptionsSoftwareImagen = {
+   	 	this.dzOptionsSoftware = {
 			dictDefaultMessage: '<div class="dz-clickable"></div>',
       		url : '/upload?relative=' + this.uid,
 			paramName : 'Imágen',
@@ -263,17 +281,17 @@ export default class ResourceComponent extends CuradorComponent {
 				ctrl.dropzoneThumbnail = this;
 			}
 		};
-		this.dzOptionsSoftwareImagen = _.cloneDeep(this.dzOptionsSoftwareImagen);
-		this.dzOptionsSoftwareImagen.init = function(){
+		this.dzOptionsSoftware = _.cloneDeep(this.dzOptionsSoftwareImagen);
+		this.dzOptionsSoftware.init = function(){
 			// add dropzone to ctrl
 			ctrl.dropzoneSoftware = this;
 		};
-		this.dzOptionsSoftwareImagen.acceptedFiles = 'image/*'; //'*/*';
-		this.dzOptionsSoftwareImagen.maxFiles = Infinity;
-		this.dzOptionsSoftwareImagen.dictDefaultMessage = '<div class="dz-clickable"></div>';
-		this.dzOptionsSoftwareImagen.clickable = '.dz-clickable';
+		this.dzOptionsSoftware.acceptedFiles = 'image/*'; //'*/*';
+		this.dzOptionsSoftware.maxFiles = Infinity;
+		this.dzOptionsSoftware.dictDefaultMessage = '<div class="dz-clickable"></div>';
+		this.dzOptionsSoftware.clickable = '.dz-clickable';
 
-		this.dzCallbacksImagen = {
+		this.dzCallbacksSoftware = {
 			'addedfile' : (file) => {
 				console.log(file);
 			},
@@ -299,60 +317,7 @@ export default class ResourceComponent extends CuradorComponent {
 
 
 
-	configureDropzonePdf(Util){
-
-		var ctrl = this;
-   	 	this.dzOptionspdf = {
-			dictDefaultMessage: '<div class="dz-clickable"></div>',
-      		url : '/upload?relative=' + this.uid,
-			paramName : 'PDF',
-			maxFiles: 1,
-			clickable: '.dz-clickable',
-			maxFilesize : 1024,
-			timeout: 18000000,
-      		//acceptedFiles : 'image/*, application/pdf',
-      		addRemoveLinks : true,
-			headers: Util.getHeaders(),
-			init: function(){
-				// add dropzone to ctrl
-				ctrl.dropzoneThumbnail = this;
-			}
-		};
-
-		
-
-		this.dzOptionsSoftwarePdf = _.cloneDeep(this.dzOptionspdf);
-		this.dzOptionsSoftwarePdf.init = function(){
-			// add dropzone to ctrl
-			ctrl.dropzoneSoftwarePDF = this;
-		};
-		this.dzOptionsSoftwarePdf.acceptedFiles = ' application/pdf'; //'*/*';
-		this.dzOptionsSoftwarePdf.maxFiles = Infinity;
-		this.dzOptionsSoftwarePdf.dictDefaultMessage = '<div class="dz-clickable"></div>';
-		this.dzOptionsSoftwarePdf.clickable = '.dz-clickable';
-
-		this.dzCallbacksSoftwarePdf = {
-			'addedfile' : (file) => {
-				console.log(file);
-			},
-			'removedfile' : (file) => {
-				console.log(file);
-			},
-			'success' : (file, xhr) => {
-				this.resource.files.push(xhr);
-			},
-			'error' : (err) => {
-				this.$log.error(err);
-			},
-			'processing': () => {
-				console.log('processing');
-			},
-			'queuecomplete': () => {
-				console.log('queuecomplete');
-			//	ctrl.dropzoneSoftware.removeAllPdfs();
-			}
-		};
-	}
+	
 
 	getResource(){
 		this.Resource
