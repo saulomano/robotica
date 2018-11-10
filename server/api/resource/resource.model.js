@@ -11,11 +11,12 @@ var ResourceSchema = new Schema({
 		type: String,
 		category: String,
 		title: String,
-		summary: String,
+		descripcion: String,
 		tags: [String],
 		owner: { type: Schema.Types.ObjectId, ref: 'User' },		
 		video: String,
 		files: [{ type: Schema.Types.ObjectId, ref: 'File' }],
+		postBody: [{ moduleType: String, content: Schema.Types.Mixed }],
 		
 		link: { type: String, default: 'ficha'},
 		tipoRecurso: { type: String, default: 'ficha'},

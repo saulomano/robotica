@@ -68,6 +68,8 @@
 						<textarea ng-model="$ctrl.resource.summary" required></textarea>
 					</md-input-container>
 			</div>
+			<rd-post modules="$ctrl.resource.postBody" relative="$ctrl.uid" on-delete="$ctrl.onDeletePost"></rd-post>
+	
 		</md-content>
 	</div>
 </div>
@@ -91,7 +93,7 @@
 		</md-content>
 	<md-content  class="dashboard__content" flex ng-if="$ctrl.resource.tipoRecurso == 'Imágen' || $ctrl.resource.tipoRecurso == 'Presentación' || $ctrl.resource.tipoRecurso == 'PDF'  || $ctrl.resource.tipoRecurso == 'Software'" >Archivo:
 
-				<div class="dropzone dz__custom dz-software-clickable"
+				<div class="dropzone dz__custom dz-clickable"
 					data-type="{{$ctrl.resource.type}}"
 					options="$ctrl.dzOptionsSoftware"
 					callbacks="$ctrl.dzCallbacksSoftware"
@@ -122,7 +124,7 @@
 				<div layout="row">
 					<span flex></span>
 					<md-button class="md-raised" ng-click="$ctrl.removeAllFiles()">Eliminar todos</md-button>
-					<md-button class="md-raised dz-software-clickable" ng-click="null"><i class="fa fa-upload"></i> Agregar</md-button>
+					<md-button class="md-raised dz-clickable" ng-click="null"><i class="fa fa-upload"></i> Agregar</md-button>
 				</div>
 			</div>
 			<!--div class="dashboard__box" >

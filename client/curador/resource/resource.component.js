@@ -79,6 +79,7 @@ export default class ResourceComponent extends CuradorComponent {
 		this.$scope.$watch(() => { return this.resource.tipoRecurso }, (value) => {
 			if (value === 'Presentación')
 			this.dzOptionsSoftware.acceptedFiles = '.ppt'; //'*/*';
+		
 
 			if (value === 'PDF')
 			this.dzOptionsSoftware.acceptedFiles = 'application/pdf'; //'*/*';
@@ -89,6 +90,7 @@ export default class ResourceComponent extends CuradorComponent {
 			if (value === 'Software')
 			this.dzOptionsSoftware.acceptedFiles = '.exe'; //'*/*';
 
+			this.removeAllFiles();
 		});
 
 	
@@ -281,7 +283,7 @@ export default class ResourceComponent extends CuradorComponent {
 				ctrl.dropzoneThumbnail = this;
 			}
 		};
-		this.dzOptionsSoftware = _.cloneDeep(this.dzOptionsSoftwareImagen);
+		this.dzOptionsSoftware = _.cloneDeep(this.dzOptionsSoftware);
 		this.dzOptionsSoftware.init = function(){
 			// add dropzone to ctrl
 			ctrl.dropzoneSoftware = this;
@@ -297,7 +299,7 @@ export default class ResourceComponent extends CuradorComponent {
 			},
 			'removedfile' : (file) => {
 				console.log(file);
-				this.removeAllImages();
+				this.removeAllFiles();
 			},
 			'success' : (file, xhr) => {
 				this.resource.imagen.push(xhr);
@@ -490,12 +492,8 @@ export default class ResourceComponent extends CuradorComponent {
 		return 'seleccionado';
 	}
 
-	removeAllImages(){
-		this.resource.imagen.splice(0, this.resource.imagen.length)
-	}
-
-	removeAllPdfs(){
-		this.resource.pdf.splice(0, this.resource.pdf.length)
+	removeAllFiles(){
+		this.resource.files.splice(0, this.resource.files.length)
 	}
 
 	sumfiles(files){
