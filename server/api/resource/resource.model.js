@@ -17,9 +17,7 @@ var ResourceSchema = new Schema({
 		video: String,
 		files: [{ type: Schema.Types.ObjectId, ref: 'File' }],
 		postBody: [{ moduleType: String, content: Schema.Types.Mixed }],
-		
-		link: { type: String, default: 'ficha'},
-		tipoRecurso: { type: String, default: 'ficha'},
+		tipoRecurso:  String,
 		published: { type: Schema.Types.ObjectId, ref: 'Published' },		
 		step: { type: String, default: 'ficha'},
 		deleted: { type:Boolean, default: false },

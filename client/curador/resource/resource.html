@@ -43,7 +43,7 @@
 							<md-radio-group ng-model="$ctrl.resource.tipoRecurso" class="md-primary">
 
 							<md-radio-button ng-repeat="item in $ctrl.tipoRecursos"
-											 ng-value="item"
+											 ng-value="item" ng-click="$ctrl.changeTipoRecurso()"
 											 >
 								{{ item }}							  
 					
@@ -93,7 +93,8 @@
 		</md-content>
 	<md-content  class="dashboard__content" flex ng-if="$ctrl.resource.tipoRecurso == 'Imágen' || $ctrl.resource.tipoRecurso == 'Presentación' || $ctrl.resource.tipoRecurso == 'PDF'  || $ctrl.resource.tipoRecurso == 'Software'" >Archivo:
 
-				<div class="dropzone dz__custom dz-clickable"
+		<md-content  class="dashboard__content" flex>IMAGEN PRINCIPAL: 
+			<div class="dropzone dz__custom dz-software-clickable"
 					data-type="{{$ctrl.resource.type}}"
 					options="$ctrl.dzOptionsSoftware"
 					callbacks="$ctrl.dzCallbacksSoftware"
@@ -111,7 +112,7 @@
 						</thead>
 						<tbody md-body>
 							<tr ng-repeat="file in $ctrl.resource.files">
-								<td md-cell><i class="{{file.icon}}"></i> <span>{{file.name}}</span></td>
+								<td md-cell> <span>{{file.name}}</span></td>
 								<td md-cell><span>{{file.size | numeraljs:'0b'}}</span></td>
 							</tr>
 							<tr class="table__files--summary-cell">
@@ -124,13 +125,9 @@
 				<div layout="row">
 					<span flex></span>
 					<md-button class="md-raised" ng-click="$ctrl.removeAllFiles()">Eliminar todos</md-button>
-					<md-button class="md-raised dz-clickable" ng-click="null"><i class="fa fa-upload"></i> Agregar</md-button>
+					<md-button class="md-raised dz-software-clickable" ng-click="null"><i class="fa fa-upload"></i> Agregar</md-button>
 				</div>
 			</div>
-			<!--div class="dashboard__box" >
-				<h4 class="color-grey font-medium">Palabras Claves</h4>
-				<md-chips ng-model="$ctrl.resource.tags" placeholder="Ingresá un tag" md-separator-keys="$ctrl.tagsKeys">
-			</div-->
 			
 		</md-content>
 	</md-content>

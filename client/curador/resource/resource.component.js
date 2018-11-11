@@ -61,7 +61,7 @@ export default class ResourceComponent extends CuradorComponent {
 			{ name: 'publicar', caption: 'Publicar' },
 		];
 
-		this.configureDropzonImagen(Util);
+		this.configureDropzone(Util);
 	
 
 
@@ -76,23 +76,26 @@ export default class ResourceComponent extends CuradorComponent {
 			this.refreshUI(true);
 		});
 
-		this.$scope.$watch(() => { return this.resource.tipoRecurso }, (value) => {
-			if (value === 'Presentación')
-			this.dzOptionsSoftware.acceptedFiles = '.ppt'; //'*/*';
 		
+	
+	}
 
-			if (value === 'PDF')
-			this.dzOptionsSoftware.acceptedFiles = 'application/pdf'; //'*/*';
+	changeTipoRecurso(){
+						
+		if (this.resource.tipoRecurso === 'Presentación')
+		this.dzOptionsSoftware.acceptedFiles = '.ppt'; 
+	
 
-			if (value === 'Imágen')
-			this.dzOptionsSoftware.acceptedFiles = 'image/*'; //'*/*';
+		if (this.resource.tipoRecurso === 'PDF')
+		this.dzOptionsSoftware.acceptedFiles = 'application/pdf'; 
 
-			if (value === 'Software')
-			this.dzOptionsSoftware.acceptedFiles = '.exe'; //'*/*';
+		if (this.resource.tipoRecurso === 'Imágen')
+		this.dzOptionsSoftware.acceptedFiles = 'image/*'; 
 
-			this.removeAllFiles();
-		});
+		if (this.resource.tipoRecurso === 'Software')
+		this.dzOptionsSoftware.acceptedFiles = '.exe'; 
 
+		this.removeAllFiles();
 	
 	}
 
@@ -264,34 +267,54 @@ export default class ResourceComponent extends CuradorComponent {
 		}, 5000);
 	}
 
-	configureDropzonImagen(Util){
+	configureDropzone(Util){
 
 		var ctrl = this;
-   	 	this.dzOptionsSoftware = {
+   	 	this.dzOptions = {
 			dictDefaultMessage: '<div class="dz-clickable"></div>',
       		url : '/upload?relative=' + this.uid,
 			paramName : 'Imágen',
 			maxFiles: 1,
-			clickable: '.dz-clickable',
-			maxFilesize : 3048,
+			clickable: '.dz-tumbnail-clickable',
+			maxFilesize : 1024,
 			timeout: 18000000,
-      		acceptedFiles : 'image/*',
-      		addRemoveLinks : true,
+      		acceptedFiles : 'image/*, application/pdf,.zip, .rar, .7z',
+      		addRemoveLinks : false,
 			headers: Util.getHeaders(),
 			init: function(){
 				// add dropzone to ctrl
 				ctrl.dropzoneThumbnail = this;
 			}
 		};
-		this.dzOptionsSoftware = _.cloneDeep(this.dzOptionsSoftware);
+
+		this.dzCallbacks = {
+			'addedfile' : (file) => {
+				console.log(file);
+			},
+			'removedfile' : (file) => {
+				console.log(file);
+			},
+			'success' : (file, xhr) => {
+				console.log(xhr);
+			
+			},
+			'processing': (file) => {
+				console.log(file);
+			},
+			'queuecomplete': () => {
+				//ctrl.dropzoneThumbnail.removeAllFiles();
+			}
+		};
+
+		this.dzOptionsSoftware = _.cloneDeep(this.dzOptions);
 		this.dzOptionsSoftware.init = function(){
 			// add dropzone to ctrl
 			ctrl.dropzoneSoftware = this;
 		};
-		this.dzOptionsSoftware.acceptedFiles = 'image/*'; //'*/*';
+	//	this.dzOptionsSoftware.acceptedFiles = 'application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf, image/*'; //'*/*';
 		this.dzOptionsSoftware.maxFiles = Infinity;
 		this.dzOptionsSoftware.dictDefaultMessage = '<div class="dz-clickable"></div>';
-		this.dzOptionsSoftware.clickable = '.dz-clickable';
+		this.dzOptionsSoftware.clickable = '.dz-software-clickable';
 
 		this.dzCallbacksSoftware = {
 			'addedfile' : (file) => {
@@ -299,10 +322,9 @@ export default class ResourceComponent extends CuradorComponent {
 			},
 			'removedfile' : (file) => {
 				console.log(file);
-				this.removeAllFiles();
 			},
 			'success' : (file, xhr) => {
-				this.resource.imagen.push(xhr);
+				this.resource.files.push(xhr);
 			},
 			'error' : (err) => {
 				this.$log.error(err);
@@ -312,7 +334,7 @@ export default class ResourceComponent extends CuradorComponent {
 			},
 			'queuecomplete': () => {
 				console.log('queuecomplete');
-				//ctrl.dzOptionsSoftwareImagen.removeAllImages();
+				//ctrl.dropzoneSoftware.removeAllFiles();
 			}
 		};
 	}
@@ -327,59 +349,19 @@ export default class ResourceComponent extends CuradorComponent {
 		.then(data => {
 			this.resource = data;
 			console.log(this.resource);
-			this.returnDesafios = (this.resource.type == 'desafio') ? true : false;
-
+		
 			this.ngMeta.setTitle(this.resource.title);
-			this.ngMeta.setTag('description', this.resource.summary);
+			this.ngMeta.setTag('description', this.resource.descripcion);
 
-			if (typeof this.resource.area == 'string'){
-				this.resource.area = [];
-			}
-
-			if (typeof this.resource.nivel == 'string'){
-				this.resource.nivel = [];
-			}
+		
 
 			if (this.resource.step){
 				let idx = _.findIndex(this.steps, { name: this.resource.step });
 				this.initStepIndex = idx === -1 ? undefined : idx;
 			}
 
-			if (this.resource.type === 'mediateca'){
-				this.steps = [
-					{ name: 'ficha', 		caption: 'Ficha' },
-					{ name: 'recurso', 	caption: 'Recurso' },
-					//{ name: 'vinculo', caption: 'Vínculo' },
-					{ name: 'publicar', caption: 'Publicar' },
-				];
-			}
-
-			//===============================================
-			// Exclusive 'Desafios' validations
-			//===============================================
-			
-			if(this.resource.type === 'desafio' && this.resource.district)
-			{
-				// Create angular 'Desafios' variables
-				this.selectedDistrict = {};
-				this.selectedSchool = this.resource.school || '';
-
-				this.searchDistrictText = this.resource.district || '';
-				// this.searchSchoolText = '';
-
-				this.rate = this.resource.rate || 0;
-
-				this.School = this.Restangular.one('schools/district', this.searchDistrictText);
-
-				this.getSchool();
-			}
-
-			//===============================================
-
-
-			_.each(this.resource.links, l =>{
-				l.typeCaption = this.captions[l.type];
-			});
+		
+		
 
 			this.loading = false;
 			this.watchResource()

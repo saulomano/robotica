@@ -104,8 +104,7 @@ export function show(req, res, next) {
 								.findById(resourceId)
 								.populate('owner')
 								.populate('files')
-								.populate('published')
-								.populate('links')
+								.populate('published')							
 								.exec();
 	next();
 }
@@ -129,6 +128,8 @@ export function publish(req, res, next) {
 	let resource = req.body;
 	let pid = resource.published ? resource.published._id : undefined;
 	let published = new Published(resource);
+
+	console.log(resource);
 	// find the resource
 	if (pid === undefined){
 		published.createdAt = new Date();
@@ -145,8 +146,7 @@ export function publish(req, res, next) {
 							.findById(req.params.id)
 							.populate('owner')
 							.populate('files')
-							.populate('published')
-							.populate('links')
+							.populate('published')							
 							.exec();
 		
 						next();
@@ -163,7 +163,7 @@ export function publish(req, res, next) {
 					.populate('owner')
 					.populate('files')
 					.populate('published')
-					.populate('links')
+					
 					.exec();
 
 				next();
