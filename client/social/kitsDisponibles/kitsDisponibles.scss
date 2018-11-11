@@ -41,6 +41,53 @@
 	bottom: -25px;
 	border-top-color: #f0f1f1;
 	margin-top: -2%;
-  }
+	}
+	
+	.botonEbot{
+		margin-left: auto; 
+		margin-right: auto; 
+		text-align: center; 
+		border: 2px solid #BB62B3; 
+		padding: 12px 0px; 
+		border-radius: 5px;     
+		width: 65%;
+		margin-top: 5%;
+	}
 
-  
+	.botonTbot{
+		margin-left: auto; 
+		margin-right: auto; 
+		text-align: center; 
+		border: 2px solid #5EA7F1; 
+		padding: 12px 0px; 
+		border-radius: 5px;     
+		width: 65%;
+		margin-top: 5%;
+	}
+
+	.botonLbot{
+		margin-left: auto; 
+		margin-right: auto; 
+		text-align: center; 
+		border: 2px solid #8BBF1F; 
+		padding: 12px 0px; 
+		border-radius: 5px;     
+		width: 65%;
+		margin-top: 5%;
+	}
+
+	.contenedor{
+		background-color: white; 
+		margin-top: -4.5rem; 
+		width: 80%; 
+		margin-right: auto; 
+		margin-left: auto;
+	}
+
+  @media only screen and (max-width: 840px) {
+		.contenedor{
+			
+			margin-top: 0 !important; 
+			
+		}
+	}
