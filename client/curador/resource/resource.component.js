@@ -82,6 +82,7 @@ export default class ResourceComponent extends CuradorComponent {
 
 	changeTipoRecurso(){
 						
+
 		if (this.resource.tipoRecurso === 'Presentación')
 		this.dzOptionsSoftware.acceptedFiles = '.ppt'; 
 	
@@ -95,6 +96,9 @@ export default class ResourceComponent extends CuradorComponent {
 		if (this.resource.tipoRecurso === 'Software')
 		this.dzOptionsSoftware.acceptedFiles = '.exe'; 
 
+
+		this.resource.video='';
+		this.resource.audio='';
 		this.removeAllFiles();
 	
 	}

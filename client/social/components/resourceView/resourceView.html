@@ -13,26 +13,49 @@
 					<p flex class="paragraph post__test rview__summary">{{$ctrl.resource.summary}}</p>
 				
 					<rd-post flex class="rview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>	
+				
+				
+				
+					<div flex="75"  ng-if="$ctrl.resource.video !== '' && $ctrl.resource.video.includes('/embed') && $ctrl.resource.tipoRecurso == 'Video'">
+								
+						<md-dialog-content>
+							<div>
+							<div class="vid-container">
+								<iframe width="500" height="281" ng-src="{{$ctrl.resource.video.replace('watch?v=', 'v/') | trustUrl}}" frameborder="0" allowfullscreen></iframe>
+								</div>
+							</div>
+						</md-dialog-content>	
+					</div>		
+			
+			
+			
+					<div flex="75"  ng-if="$ctrl.resource.audio !== '' &&  $ctrl.resource.tipoRecurso == 'Audio'">
+											
+						<md-dialog-content>
+							<div>
+							<div class="vid-container">
+								<iframe width="40%" height="166" scrolling="no" frameborder="no" allow="autoplay" ng-src="{{$ctrl.resource.audio | souncloudTrusted}}"></iframe>		
+							</div>
+							</div>
+						</md-dialog-content>	
+					</div>
 				</div>
+
+				
 			</div>
 		</div>
 
 
-		<div flex="75"  ng-if="$ctrl.resource.video !== '' && $ctrl.resource.video.includes('/embed')">
-								
-			<md-dialog-content>
-				<div>
-				<div class="vid-container">
-					<iframe width="500" height="281" ng-src="{{$ctrl.resource.video.replace('watch?v=', 'v/') | trustUrl}}" frameborder="0" allowfullscreen></iframe>
-					</div>
-				</div>
-			</md-dialog-content>	
-		</div>		
+			
 
-
+	
+	
+	
+	
+	
 		<div ng-if="$ctrl.resource.files.length">
 			<md-button class="rview__button md-button" style="background-color:#8BBF1F; color: white"
-			ng-href="/api/published/{{$ctrl.resource._id}}/download" target="_blank">Descargar</md-button>
+			ng-href="/api/resource/{{$ctrl.resource._id}}/download" target="_blank">Descargar</md-button>
 			<div ng-if="$ctrl.resource.files.length">
 					<div style="text-align: left; padding-left: 2%;"><span class="text-uppercase color-grey">{{$ctrl.resource.files.length}} Archivos | {{$ctrl.sumfiles($ctrl.resource.files) | numeraljs:'0b'}}</span></div>
 			</div>

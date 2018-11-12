@@ -16,6 +16,7 @@ var PublishedSchema = new Schema({
 	tags: [String],
 	owner: { type: Schema.Types.ObjectId, ref: 'User' },		
 	video: String,
+	audio: String,
 	files: [{ type: Schema.Types.ObjectId, ref: 'File' }],
 	postBody: [{ moduleType: String, content: Schema.Types.Mixed }],		
 	tipoRecurso:  String,

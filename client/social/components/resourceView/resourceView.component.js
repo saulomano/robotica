@@ -1,9 +1,20 @@
 'use strict';
 
 export default angular
-	.module('robotica.social.components.resourceView', [])
+	.module('robotica.social.components.resourceView', [])	
+	.filter('trustUrl', function ($sce) {
+		return function(url) {
+		  return $sce.trustAsResourceUrl(url);
+		};
+	  })
+	  .filter('souncloudTrusted', function ($sce) {
+		return function(soundId) {
+		  return $sce.trustAsResourceUrl('https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/'+soundId+'&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=dalse&visual=false');
+		};
+	})
 	.directive('resourceView', resourceView)
 	.name;
+
 
 class ResourceViewController {
 	/*@ngInject*/
