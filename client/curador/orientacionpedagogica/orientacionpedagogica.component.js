@@ -38,7 +38,7 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
 		// this.Resource = this.Restangular.one('resources', this.uid);
 		this.PropuestaDesafio = this.Restangular.one('orientacionpedagogica', this.uid);
 		this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
-		this.PublishedsRecursos = this.Restangular.all('published');
+		this.PublishedsRecursos = this.Restangular.all('publisheds');
 		
 
 		this.returnDesafios = false;
@@ -68,6 +68,12 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
 		};
 
 		this.$scope.$watch(() => { return this.filterText }, (value) => {
+			this.refreshUI(true);
+		});
+
+
+
+		this.$scope.$watch(() => { return this.filterTextRecursos }, (value) => {
 			this.refreshUI(true);
 		});
 	}
@@ -144,8 +150,8 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
 			return;
 		}
     let q;
-    if (this.filterText){
-      q = this.filterText
+    if (this.filterTextRecursos){
+      q = this.filterTextRecursos
 		}
 
 		this.PublishedsRecursos

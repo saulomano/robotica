@@ -27,6 +27,7 @@ var ResourceSchema = new Schema({
 		kitusado: String,				
 		publicaHome: { type:Boolean, default: false },
 		links: [{ type: Schema.Types.ObjectId, ref: 'PublishedOrientacionPedagogica' }],
+		linksRecursos: [{ type: Schema.Types.ObjectId, ref: 'Published' }],	
 		areaEmergente: [String],	
 		anio: [String],
 		troncal: { type:Boolean, default: false },

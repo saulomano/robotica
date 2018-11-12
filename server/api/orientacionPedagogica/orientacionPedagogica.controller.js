@@ -59,7 +59,8 @@ export function index(req, res, next) {
 							.find(q)
 							.populate('owner')
 							.populate('files')
-                			.populate('links')
+							.populate('links')
+							.populate('linksRecursos')
 							.sort(query.cursor.sort)
 							.skip(query.cursor.skip)
 							.limit(query.cursor.limit)
@@ -106,6 +107,7 @@ export function show(req, res, next) {
 								.populate('owner')
 								.populate('files')
 								.populate('published')
+								.populate('linksRecursos')
         						.populate('links')
 								.exec();
 	next();
@@ -153,7 +155,8 @@ export function publish(req, res, next) {
 							.populate('owner')
 							.populate('files')
 							.populate('published')
-                            .populate('links')
+							.populate('links')
+							.populate('linksRecursos')
 							.exec();
 		
 						next();
@@ -170,7 +173,8 @@ export function publish(req, res, next) {
 					.populate('owner')
 					.populate('files')
 					.populate('published')
-                    .populate('links')
+					.populate('links')
+					.populate('linksRecursos')
 					.exec();
 
 				next();
