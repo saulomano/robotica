@@ -370,8 +370,8 @@
 											<div class="color-{{item.type}}" layout="flex" layout-align="start center">
 												<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
 											</div>
-											<div><strong>{{item.nombre}}</strong></div>
-											<div><p>{{item.descripcion}}</p></div>
+											<div><strong>{{item.title}}</strong></div>
+											<div><p>{{item.summary}}</p></div>
 										</div>
 										<md-checkbox class="md-secondary" ng-checked="$ctrl.existsObject(item, $ctrl.resource.linksRecursos)" ng-click="$ctrl.toggleObject(item, $ctrl.resource.links)"
 													 aria-label="Agregar/quitar {{item.nombre}}"></md-checkbox>
@@ -393,11 +393,11 @@
 								<div class="color-{{item.type}}" layout="flex" layout-align="start center">
 									<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
 								</div>
-								<div><strong>{{item.nombre}}</strong></div>
-								<div><p>{{item.descripcion}}</p></div>
+								<div><strong>{{item.title}}</strong></div>
+								<div><p>{{item.summary}}</p></div>
 							</div>
 							<md-checkbox class="md-secondary" ng-checked="$ctrl.existsObject(item, $ctrl.resource.linksRecursos)" ng-click="$ctrl.toggleObject(item, $ctrl.resource.linksRecursos)"
-										 aria-label="Agregar/quitar {{item.nombre}}"></md-checkbox>
+										 aria-label="Agregar/quitar {{item.title}}"></md-checkbox>
 						</div>
 					</md-list-item>
 				</md-list>

@@ -12,7 +12,7 @@ var PublishedSchema = new Schema({
 	type: String,
 	category: String,
 	title: String,
-	descripcion: String,
+	summary: String,
 	tags: [String],
 	owner: { type: Schema.Types.ObjectId, ref: 'User' },		
 	video: String,

@@ -104,6 +104,35 @@
 					</md-list-item>
 				</md-list>
 			</div>
+			<div  ng-if="$ctrl.resource.linksRecursos.length > 0">
+				<!--h5 flex class="text-uppercase" ng-if="$ctrl.resource.type == 'orientacionpedagogica'" style="font-family: DINNextRoundedLTPro-Bold;">TE SUGERIMOS CONTENIDOS RELACIONADOS</h5-->
+			<md-list ng-cloak>
+				<md-list-item ng-repeat="item in $ctrl.resource.linksRecursos">						
+					<div   flex layout="row">
+						<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ng-href="/ver/{{item.type}}/{{item._id}}" target="_blank">
+							<!--div>
+								<div class="thumbnail thumbnail--rounded thumbnail--50">
+										<div flex class="preview-glyphs">
+												<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(item.area)}}"></md-icon>
+											</div>									
+								</div>
+							</div-->
+							<div flex>
+								<div layout="row" layout-align="start center">
+									<div><strong>{{item.title}}</strong></div>
+									<div class="color-{{item.type}}" layout="row" layout-align="start center">
+											<div  ng-show="item.intensivo == true "><span style="font-size: 12px; color: #9aca3c">TALLER INTENSIVO</span> <span class="greenRel"> {{item.orden}}</span><strong ng-repeat="areas in item.area" style="font-size: 12px;"> . {{areas}}  </strong> <strong ng-repeat="anios in item.anio" style="font-size: 12px;"> . {{anios}} </strong></div>
+											<div  ng-show="item.complementarias == true "><span style="font-size: 12px; color: #9aca3c">ACTIVIDADES COMPLEMENTARIAS</span></div>
+										</div>
+								</div>
+								<!--div><p style="font-family: DINNextRoundedLTPro-Bold; font-weight: 700; font-size: 18px;">{{item.title}}</p></div-->
+								<div><p style="font-size: 12px !important;">{{item.summary | truncate:140}}</p></div>
+							</div>
+						</a>
+					</div>
+				</md-list-item>
+			</md-list>
+		</div>
 		</div>
 		<div class="rview__resources--right"></div>
 	</div>
