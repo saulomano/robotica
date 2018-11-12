@@ -31,12 +31,15 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
         this.captions = {
             'orientacionpedagogica': 'Orientacion Pedagogica',
             'noticia': 'Noticia',
-            'kit': 'Kit'
+			'kit': 'Kit',
+			
         };
 		
 		// this.Resource = this.Restangular.one('resources', this.uid);
 		this.PropuestaDesafio = this.Restangular.one('orientacionpedagogica', this.uid);
 		this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
+		this.PublishedsRecursos = this.Restangular.all('published');
+		
 
 		this.returnDesafios = false;
 
@@ -51,7 +54,9 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
 			{ name: 'publicar', caption: 'Publicar' },
 		];
 		let captions = {
-			'orientacionpedagogica': 'OrientacionPedagogica'
+			'orientacionpedagogica': 'OrientacionPedagogica',
+			
+			
 		};
 		this.configureDropzone(Util);
 		this.configureFunctions();
@@ -102,6 +107,7 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
 		this.headText = 'Orientacion Pedagogica';
 		this.showViculo = ['orientacionpedagogica' ].indexOf(this.PropuestaDesafio.route) > -1;
 		this.getPublisheds(forceApply);
+		this.getPublishedsRecursos(forceApply);
 	}
 
 	getPublisheds(forceApply){
@@ -123,6 +129,35 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
 				});
 
 				this.publisheds = _.map(filtered, p =>{
+					p.typeCaption = this.captions[p.type];
+					return p;
+				});
+
+				if (forceApply){
+					//this.$scope.$apply();
+				}
+			});
+	}
+
+	getPublishedsRecursos(forceApply){
+		if (!this.showViculo){
+			return;
+		}
+    let q;
+    if (this.filterText){
+      q = this.filterText
+		}
+
+		this.PublishedsRecursos
+			.getList({
+				q: q
+			})
+			.then(publishedsRecursos => {
+				let filtered = _.filter(publishedsRecursos, p => {
+					return p._id !== this.uid;
+				});
+
+				this.publishedsRecursos = _.map(filtered, p =>{
 					p.typeCaption = this.captions[p.type];
 					return p;
 				});
@@ -336,6 +371,7 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
 			throw err;
 		});
 	}
+
 
 	$onDestroy() {
 		if (this.saverHandler) {

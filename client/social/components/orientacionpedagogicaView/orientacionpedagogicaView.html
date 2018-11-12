@@ -79,7 +79,7 @@
 					<h5 flex class="text-uppercase" ng-if="$ctrl.resource.type == 'orientacionpedagogica'" style="font-family: DINNextRoundedLTPro-Bold;">TE SUGERIMOS CONTENIDOS RELACIONADOS</h5>
 				<md-list ng-cloak>
 					<md-list-item ng-repeat="item in $ctrl.resource.links">						
-						<div ng-if="$ctrl.isPublished == true"  flex layout="row">
+						<div   flex layout="row">
 							<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ng-href="/ver/{{item.type}}/{{item._id}}" target="_blank">
 								<div>
 									<div class="thumbnail thumbnail--rounded thumbnail--50">

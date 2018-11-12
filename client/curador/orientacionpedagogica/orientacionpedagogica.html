@@ -278,7 +278,7 @@
 		</md-content>
 		<md-content  class="dashboard__content" flex>
 			<div class="dashboard__box" ng-if="$ctrl.showViculo">
-				<h4 class="font-medium color-grey">Recursos contenidos en esta propuesta</h4>
+				<h4 class="font-medium color-grey">Propuestas contenidas en esta propuesta</h4>
 				<div class="dashboard__search">
 					<input type="text" ng-model="$ctrl.filterText" autofocus>
 				</div>
@@ -322,6 +322,71 @@
 							<div>
 								<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
 									<img ng-src="{{item.thumbnail}}" alt="Miniatura de la Propuesta Pedagógica">
+								</div>
+							</div>
+							<div flex>
+								<div class="color-{{item.type}}" layout="flex" layout-align="start center">
+									<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
+								</div>
+								<div><strong>{{item.nombre}}</strong></div>
+								<div><p>{{item.descripcion}}</p></div>
+							</div>
+							<md-checkbox class="md-secondary" ng-checked="$ctrl.existsObject(item, $ctrl.resource.links)" ng-click="$ctrl.toggleObject(item, $ctrl.resource.links)"
+										 aria-label="Agregar/quitar {{item.nombre}}"></md-checkbox>
+						</div>
+					</md-list-item>
+				</md-list>
+			</div>
+		</md-content>
+
+		<!--se agrega recursos-->
+
+		<md-content  class="dashboard__content" flex>
+			<div class="dashboard__box" ng-if="$ctrl.showViculo">
+				<h4 class="font-medium color-grey">Recursos contenidos en esta propuesta</h4>
+				<div class="dashboard__search">
+					<input type="text" ng-model="$ctrl.filterText" autofocus>
+				</div>
+				<md-conten>
+					<md-expansion-panel class="option-panel">
+						<md-expansion-panel-collapsed class="vinculados__recursos">
+							<div flex><h6 class="font-light color-primary text-center text-uppercase">{{$ctrl.resource.links.length}} Recursos vinculados</h6></div>
+							<md-expansion-panel-icon></md-expansion-panel-icon>
+						</md-expansion-panel-collapsed>
+						<md-expansion-panel-expanded>
+							<md-expansion-panel-header ng-click="$panel.collapse()" class="vinculados__recursos">
+								<div flex><h6 class="font-light color-primary text-center">{{$ctrl.resource.links.length}} Recursos vinculados</h6></div>
+								<md-expansion-panel-icon></md-expansion-panel-icon>
+							</md-expansion-panel-header>
+							<md-expansion-panel-content>
+								<md-list-item ng-repeat="item in $ctrl.resource.links">
+									<div  layout="row" layout-padding>
+										<div>
+											<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
+												<img ng-src="{{item.thumbnail}}" alt="Miniatura de la Propuesta Pedagógica">
+											</div>
+										</div>
+										<div flex>
+											<div class="color-{{item.type}}" layout="flex" layout-align="start center">
+												<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
+											</div>
+											<div><strong>{{item.nombre}}</strong></div>
+											<div><p>{{item.descripcion}}</p></div>
+										</div>
+										<md-checkbox class="md-secondary" ng-checked="$ctrl.existsObject(item, $ctrl.resource.links)" ng-click="$ctrl.toggleObject(item, $ctrl.resource.links)"
+													 aria-label="Agregar/quitar {{item.nombre}}"></md-checkbox>
+									</div>
+								</md-list-item>
+							</md-expansion-panel-content>
+						</md-expansion-panel-expanded>
+					</md-expansion-panel>
+				</md-conten>
+				<md-list ng-cloak>
+					<md-list-item ng-repeat="item in $ctrl.PublishedsRecursos">
+						<div  layout="row" layout-padding>
+							<div>
+								<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
+									<img ng-src="{{item.thumbnail}}" alt="Miniatura del recurso">
 								</div>
 							</div>
 							<div flex>
