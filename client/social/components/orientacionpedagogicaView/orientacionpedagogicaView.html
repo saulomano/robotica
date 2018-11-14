@@ -80,7 +80,7 @@
 				<md-list ng-cloak>
 					<md-list-item ng-repeat="item in $ctrl.resource.links">						
 						<div   flex layout="row">
-							<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ng-href="/ver/{{item.type}}/{{item._id}}" target="_blank">
+							<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ng-click="$ctrl.viewResourcePedag($event, $ctrl.resource, item._id)">
 								<div>
 									<div class="thumbnail thumbnail--rounded thumbnail--50">
 											<div flex class="preview-glyphs">
@@ -109,7 +109,7 @@
 			<md-list ng-cloak>
 				<md-list-item ng-repeat="item in $ctrl.resource.linksRecursos">						
 					<div   flex layout="row">
-						<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ng-href="/ver/{{item.type}}/{{item._id}}" target="_blank">
+						<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ng-click="$ctrl.viewResource($event, $ctrl.resource, item._id)" >
 							<!--div>
 								<div class="thumbnail thumbnail--rounded thumbnail--50">
 										<div flex class="preview-glyphs">

@@ -1,18 +1,18 @@
 'use strict';
-import SocialComponent from '../../social.component';
+
 export default angular
 	.module('robotica.social.components.orientacionpedagogicaView', [])
 	.directive('orientacionpedagogicaView', orientacionpedagogicaView)
 	.name;
 
-class OrientacionPedagogicaViewController extends SocialComponent{
+class OrientacionPedagogicaViewController {
 	/*@ngInject*/
-	constructor($scope, $element, $state, $timeout, Auth,$mdMedia,Restangular){
-		super({$element});
+	constructor($scope, $element, $state, $timeout, Auth,$mdMedia,Restangular,$mdDialog){
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;
 		this.rateView = this.$scope.rate;
+		this.$mdDialog = $mdDialog;
         this.Auth = Auth;
         this.getUser();
 		this.role = '';
@@ -133,8 +133,168 @@ class OrientacionPedagogicaViewController extends SocialComponent{
 
         return  "iconPed-"+entry +" step";
 
-    }
+	}
+	
+	viewResource($event, resource, id){
+
+		if (!this.$mdDialog)
+			return;
+	
+		
+	
+		this.$mdDialog.show({
+			template: require('../modalView/modalView.html'),
+			parent: angular.element(document.body),
+			targetEvent: $event,
+			clickOutsideToClose: true,
+			fullscreen: true, // Only for -xs, -sm breakpoints.
+			locals: {
+				resource: resource
+			},
+			controller: DialogController,
+			controllerAs: '$ctrl'
+		})
+			.then((data) => {
+				console.log(data);
+			}, () => {
+	
+			})
+			.catch(function(res) {
+				if (!(res === 'cancel' || res === 'escape key press')) {
+					throw res;
+				}
+			});
+	
+		function DialogController($scope, $mdDialog, resource, Restangular, $timeout) {
+			'ngInject';
+			//this.$scope = $scope;
+			this.loading = true;
+	
+			this.Resource = Restangular.one('publisheds', id);
+	
+			this.closeDialog = function() {
+				$mdDialog.hide();
+			}
+	
+	
+	
+	
+	
+			this.Resource
+				.get()
+				.then(data => {
+	
+					let captions = {
+						'propuesta': 'Propuesta pedagógica',
+						'actividad': 'Actividad accesible',
+						'herramientas': 'Herramienta',
+						'orientacion': 'Orientación',
+						'mediateca': 'Mediateca',
+						'noticias': 'Noticias',
+						'calendario': 'Calendario'
+					};
+	
+					data.links = _.map(data.links, p =>{
+						p.typeCaption = captions[p.type];
+						return p;
+					});
+	
+					this.resource = data;
+					this.loading = false;
+					$timeout(() => {
+						$scope.$apply();
+					});
+				})
+				.catch(err => {
+					throw err;
+				});
+		}
+	}
+
+	viewResourcePedag($event, resource, id){
+
+		if (!this.$mdDialog)
+			return;
+	
+		
+	
+		this.$mdDialog.show({
+			template: require('../modalView/modalView.html'),
+			parent: angular.element(document.body),
+			targetEvent: $event,
+			clickOutsideToClose: true,
+			fullscreen: true, // Only for -xs, -sm breakpoints.
+			locals: {
+				resource: resource
+			},
+			controller: DialogController,
+			controllerAs: '$ctrl'
+		})
+			.then((data) => {
+				console.log(data);
+			}, () => {
+	
+			})
+			.catch(function(res) {
+				if (!(res === 'cancel' || res === 'escape key press')) {
+					throw res;
+				}
+			});
+	
+		function DialogController($scope, $mdDialog, resource, Restangular, $timeout) {
+			'ngInject';
+			//this.$scope = $scope;
+			this.loading = true;
+	
+			this.Resource = Restangular.one('orientacionpedagogica', id);
+	
+			this.closeDialog = function() {
+				$mdDialog.hide();
+			}
+	
+	
+	
+	
+	
+			this.Resource
+				.get()
+				.then(data => {
+	
+					let captions = {
+						'propuesta': 'Propuesta pedagógica',
+						'actividad': 'Actividad accesible',
+						'herramientas': 'Herramienta',
+						'orientacion': 'Orientación',
+						'mediateca': 'Mediateca',
+						'noticias': 'Noticias',
+						'calendario': 'Calendario'
+					};
+	
+					data.links = _.map(data.links, p =>{
+						p.typeCaption = captions[p.type];
+						return p;
+					});
+	
+					this.resource = data;
+					this.loading = false;
+					$timeout(() => {
+						$scope.$apply();
+					});
+				})
+				.catch(err => {
+					throw err;
+				});
+		}
+	}
+	
 }
+
+
+
+
+
+
+
 
 function orientacionpedagogicaView($log){
 	'ngInject';
@@ -157,3 +317,11 @@ function orientacionpedagogicaView($log){
 		template: require('./orientacionpedagogicaView.html')
 	}
 }
+
+
+
+
+
+
+
+
