@@ -1,13 +1,14 @@
 'use strict';
-
+import SocialComponent from '../../social.component';
 export default angular
 	.module('robotica.social.components.orientacionpedagogicaView', [])
 	.directive('orientacionpedagogicaView', orientacionpedagogicaView)
 	.name;
 
-class OrientacionPedagogicaViewController {
+class OrientacionPedagogicaViewController extends SocialComponent{
 	/*@ngInject*/
 	constructor($scope, $element, $state, $timeout, Auth,$mdMedia,Restangular){
+		super({$element});
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;

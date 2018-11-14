@@ -4,10 +4,11 @@ export default angular
 	.module('robotica.social.components.resourceCard', [])
 	.directive('resourceCard', resourceCard)
 	.name;
-
-class ResourceCardController {
+	import SocialComponent from '../../social.component';
+class ResourceCardController extends SocialComponent{
 	/*@ngInject*/
 	constructor($scope, $element, $state){
+		super({$element});
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;

@@ -34,7 +34,7 @@
 		<rd-card-header>
 				<div class="rd-card__header--wrapper" layout="row" layout-align="start center">
 						<span class="rd-card__icon--circle">
-							<i class="ri ri-3x" ng-class="'ri-'+$ctrl.resource.type"></i>
+							<i class="ri ri-3x" ng-class="$ctrl.iconFromResourceType($ctrl.resource)"></i>
 						</span>
 						<span class="rd-card__header--type rd__text--caption">{{$ctrl.resource.typeCaption}}</span>
 						<span class="rd-card__header--level rd__text--caption">{{$ctrl.resource.category}}</span>

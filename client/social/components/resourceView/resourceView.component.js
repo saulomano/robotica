@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 export default angular
 	.module('robotica.social.components.resourceView', [])	
 	.filter('trustUrl', function ($sce) {
@@ -14,11 +16,12 @@ export default angular
 	})
 	.directive('resourceView', resourceView)
 	.name;
+	import SocialComponent from '../../social.component';
 
-
-class ResourceViewController {
+class ResourceViewController  extends SocialComponent{
 	/*@ngInject*/
 	constructor($scope, $element, $state, $timeout, Auth){
+		super({$element});
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;

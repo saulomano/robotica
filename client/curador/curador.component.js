@@ -63,5 +63,22 @@ export default class CuradorComponent {
   }
 
 
+  iconFromResourceType(resource){
+
+    if (resource.tipoRecurso === 'Presentación')
+		return  'icon-presentacion'; 
+    if (resource.tipoRecurso === 'Video')
+		return  'icon-video-line'; 
+    if (resource.tipoRecurso === 'PDF')
+		return  'icon-pdf'; 
+    if (resource.tipoRecurso === 'Software')
+    return  'icon-programa';
+    if (resource.tipoRecurso === 'Imágen')
+    return  'icon-imagen';
+    if (resource.tipoRecurso === 'Audio')
+    return  'icon-audio';
+
+  }
+
 
 }
