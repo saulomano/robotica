@@ -9,6 +9,7 @@ ops.timestamps = true;
 var ResourceSchema = new Schema({
 		status: { type: String, default: 'ninguno'},
 		type: String,
+		subtype: String,
 		category: String,
 		title: String,
 		summary: String,
