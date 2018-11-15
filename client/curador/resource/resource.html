@@ -16,7 +16,7 @@
 <!-- toolbar -->
 <div class="dashboard__toolbar" ng-hide="($ctrl.loading || $ctrl.isDelete)">
 	<rd-stepper class="dashboard__stepper" 
-							rd-section="{{$ctrl.resource.type}}" 
+							rd-section="{{$ctrl.resource.subtype}}" 
 							steps="$ctrl.steps"
 							can-next="$ctrl.canNext" 
 							on-to-refuse="$ctrl.toRefuse",
@@ -26,7 +26,7 @@
 							on-cancel="$ctrl.cancel"
 							init-step-index="$ctrl.initStepIndex"
 							user-rol="$ctrl.user.role"
-							type="$ctrl.resource.type"></rd-stepper>
+							type="$ctrl.resource.subtype"></rd-stepper>
 </div>
 
 <!-- STEP FICHA -->
@@ -81,11 +81,11 @@
 		
 		
 		
-		<md-content class="dashboard__sidenav" data-type="{{$ctrl.resource.type}}">
+		<md-content class="dashboard__sidenav" data-type="{{$ctrl.resource.subtype}}">
 			<div layout="row" class="dashboard__sidenav--top">				
 				<div flex class="dashboard__sidenav--head-resource">
 					<h2 class="dashboard__sidenav--head">{{$ctrl.headText}}</h2>
-					<h2 class="dashboard__sidenav--subhead">{{$ctrl.resource.type}}</h2>
+					<h2 class="dashboard__sidenav--subhead">{{$ctrl.resource.subtype}}</h2>
 				</div>
 			</div>
 			<h1 class="rd__headpost--sidenav">{{$ctrl.resource.title}}</h1>
@@ -95,7 +95,7 @@
 
 		<md-content  class="dashboard__content" flex>IMAGEN PRINCIPAL: 
 			<div class="dropzone dz__custom dz-software-clickable"
-					data-type="{{$ctrl.resource.type}}"
+					data-type="{{$ctrl.resource.subtype}}"
 					options="$ctrl.dzOptionsSoftware"
 					callbacks="$ctrl.dzCallbacksSoftware"
 					methods="$ctrl.dzMethods"

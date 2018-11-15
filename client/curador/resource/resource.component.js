@@ -37,12 +37,11 @@ export default class ResourceComponent extends CuradorComponent {
 
 		// Global captions to avoid unnecesary temporary captions inside functions
 		this.captions = {
-			'propuesta': 'Propuesta pedagógica',
-			'actividad': 'Actividad accesible',
-			'herramienta': 'Herramienta',
-			'orientacion': 'Orientación',
-			'mediateca': 'Mediateca',
-			'desafio': 'Desafío',
+			'tutorial': 'tutorial',
+      'herramienta': 'herramienta',
+      'materialapoyo': 'materialapoyo',
+      'experiencia': 'experiencia',
+      'ejemplos': 'ejemplos'
 		};
 
 		this.Resource = this.Restangular.one('resources', this.uid);
@@ -162,8 +161,8 @@ export default class ResourceComponent extends CuradorComponent {
 	}
 
 	refreshUI(forceApply){
-		this.headText = this.captions[this.resource.type];
-		this.showViculo = ['propuesta', 'actividad', 'orientacion' ].indexOf(this.resource.type) > -1;
+		this.headText = this.captions[this.resource.subtype];
+		this.showViculo = ['propuesta', 'actividad', 'orientacion' ].indexOf(this.resource.subtype) > -1;
 		this.getPublisheds(forceApply);
 	}
 
@@ -187,7 +186,7 @@ export default class ResourceComponent extends CuradorComponent {
 				});
 
 				this.publisheds = _.map(filtered, p =>{
-					p.typeCaption = this.captions[p.type];
+					p.typeCaption = this.captions[p.subtype];
 					return p;
 				});
 

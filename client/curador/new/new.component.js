@@ -74,7 +74,8 @@ export default class NewComponent extends CuradorComponent {
 
 
       let data = {
-        type: type,
+        type: 'resource',
+        subtype:type,
         title: '',
         summary: '',
         thumbnail: '',
