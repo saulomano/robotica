@@ -110,13 +110,14 @@
 				<md-list-item ng-repeat="item in $ctrl.resource.linksRecursos">						
 					<div   flex layout="row">
 						<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ng-click="$ctrl.viewResource($event, item, item._id)" >
-							<!--div>
+							<div>
 								<div class="thumbnail thumbnail--rounded thumbnail--50">
 										<div flex class="preview-glyphs">
-												<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(item.area)}}"></md-icon>
+												<md-icon  style="font-size: 48px; height: 48px" ng-class="$ctrl.iconFromResourceType(item)"></md-icon>
+										
 											</div>									
 								</div>
-							</div-->
+							</div>
 							<div flex>
 								<div layout="row" layout-align="start center">
 									<div><strong>{{item.title}}</strong></div>
