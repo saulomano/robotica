@@ -44,12 +44,16 @@
 			
 		</div>
 		<div >
-			
+			<div>
 				<rd-waterfall item-width="350" gutter="24" class="wf-container"load-more-text="Ver más recursos" fetch="$ctrl.fetchDataNoticia()" search-text="$ctrl.searchText">
 					<rd-item-template class="wf-box">           
 						<noticia-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></noticia-card>
 					</rd-item-template>
 				</rd-waterfall>
+			</div>
+			<div style="margin-left: auto; margin-right: auto; text-align: center; margin-top: 1%;">
+				<md-button ui-sref="social.noticias" class="rview__button md-button" style="background-color:#8BBF1F; color: white; font-size: 15px; padding: 5px; font-family: DINNextRoundedLTPro-Regular;	font-weight: bold;text-transform: none !important;"> Ver más </md-button>
+			</div>	
 		
 		</div>
 	</div>
@@ -156,6 +160,9 @@
 				<img class="imgPropuesta" ng-src="assets/propuestas.png" class="pointer">
 					</a-->
 			</div>
+			<div style="margin-left: auto; margin-right: auto; text-align: center; margin-top: 1%;">
+				<md-button ui-sref="social.propuestasdetaller" class="rview__button md-button" style="background-color:#8BBF1F; color: white; font-size: 15px; padding: 5px; font-family: DINNextRoundedLTPro-Regular;	font-weight: bold;text-transform: none !important;"> Ver más </md-button>
+			</div>	
 		</div>		
 		<!--div style="margin-left: auto; margin-right: auto; text-align: center; padding-bottom: 10%;
 		padding-top: 10%;">
