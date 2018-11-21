@@ -7,7 +7,7 @@ import {registerEvents} from './publishedkits.events';
 var ops = {};
 ops.timestamps = true;
 
-var PublishedKits = new Schema({
+var PublishedSchema = new Schema({
 		type: String,		
 		deleted: { type:Boolean, default: false },			
 		nombre: String,
@@ -24,5 +24,5 @@ var PublishedKits = new Schema({
 
 	}, ops);
 
-registerEvents(PublishedKits);
-export default mongoose.model('PublishedKits', PublishedKits);
+registerEvents(PublishedSchema);
+export default mongoose.model('PublishedKits', PublishedSchema);

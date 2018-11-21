@@ -33,9 +33,9 @@ export function index(req, res, next) {
 		q = { $or: [
 				{ type: { $regex: k, $options: 'i' } },
 				{ status: { $regex: k, $options: 'i' }},
-				{ title: { $regex: k, $options: 'i' } },
-				{ summary: { $regex: k, $options: 'i' } },
-				{ nivel: { $regex: k, $options: 'i' } },
+				{ objetivo: { $regex: k, $options: 'i' } },
+				{ descripcion: { $regex: k, $options: 'i' } },
+				{ areaEmergente: { $regex: k, $options: 'i' } },
 				{ area: { $regex: k, $options: 'i' } },
 				{ accessibility: { $regex: k, $options: 'i' } },
 				{ usability: { $regex: k, $options: 'i' } },
