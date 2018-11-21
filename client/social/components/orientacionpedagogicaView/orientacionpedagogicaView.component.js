@@ -173,17 +173,16 @@ class OrientacionPedagogicaViewController extends SocialComponent{
 			//this.$scope = $scope;
 			this.loading = true;
 	
-			this.Resource = Restangular.one('publisheds', id);
+			//this.Resource = Restangular.one('publisheds', id);
 	
 			this.closeDialog = function() {
 				$mdDialog.hide();
 			}
-	
-	
-	
-	
-	
-			this.Resource
+			this.resource = resource;
+			this.loading = false;
+
+
+		/*	this.Resource
 				.get()
 				.then(data => {
 	
@@ -210,7 +209,7 @@ class OrientacionPedagogicaViewController extends SocialComponent{
 				})
 				.catch(err => {
 					throw err;
-				});
+				});*/
 		}
 	}
 
