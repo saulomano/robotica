@@ -9,7 +9,7 @@ export default angular
 
 class OrientacionPedagogicaViewController extends SocialComponent{
 	/*@ngInject*/
-	constructor($scope, $element, $state, $timeout, Auth,$mdMedia,Restangular,$mdDialog){
+	constructor($scope, $element, $state, $timeout, Auth,$mdMedia,Restangular,$mdDialog,$anchorScroll){
 		super({$element});
 		this.$scope = $scope;
 		this.$element = $element;
@@ -26,20 +26,19 @@ class OrientacionPedagogicaViewController extends SocialComponent{
 		this.isMobile;
 		this.isPublished = this.$scope.isPublished == true;
 		this.modoVista = this.$scope.vista;		
-
+		this.$anchorScroll = $anchorScroll;
 		this.$scope.$watch(() => { return this.$scope.resource; }, (value) => {	
 			
 			this.resource = this.$scope.resource;
 			
 
 
-			if(this.resource.postBody){
+			/*if(this.resource.postBody){
 				for (var i =0 ; i< this.resource.postBody.length;i++){
 					this.resource.postBody[i].content = this.resource.postBody[i].content.replace(/<img/g, '<img class="responsive"');
 				}
-			}
-			console.log(this.resource);
-
+			}*/
+		
 			$timeout(() => {
 				this.$scope.$apply();
 			});
@@ -69,7 +68,7 @@ class OrientacionPedagogicaViewController extends SocialComponent{
 		.then(data => {
 			if(data && data.length > 0)
 			this.$scope.resource = data[0];
-		
+			this.$anchorScroll();
 		})
 		.catch(err => {
 			throw err;
@@ -95,7 +94,7 @@ class OrientacionPedagogicaViewController extends SocialComponent{
 		.then(data => {
 			if(data && data.length > 0)
 			this.$scope.resource = data[0];
-		
+			this.$anchorScroll();
 		})
 		.catch(err => {
 			throw err;
