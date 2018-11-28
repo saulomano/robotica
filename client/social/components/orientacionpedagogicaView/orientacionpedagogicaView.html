@@ -1,4 +1,4 @@
-<div class="kview" >
+<div class="kview" id="topDiv" >
 	<div class="kview__wrapper" layout-gt-xs="row">
 		<div class="one_half"  layout="column" flex="100"> <!--flex="85"-->
 			<section>
@@ -62,9 +62,9 @@
 						
 						<div ng-if="$ctrl.resource.files.length">
 							<md-button ng-if="$ctrl.resource.orden > 1"class="rview__button md-button" style="background-color:#8BBF1F; color: white"
-						ng-click="$ctrl.anterior()" scroll-on-click="top" >Anterior</md-button>
+						ng-click="$ctrl.anterior()" scroll-on-click="topDiv" >Anterior</md-button>
 						<md-button class="rview__button md-button" style="background-color:#8BBF1F; color: white"
-						ng-click="$ctrl.siguiente()" scroll-on-click="top">Siguiente</md-button>
+						ng-click="$ctrl.siguiente()" scroll-on-click="topDiv">Siguiente</md-button>
 					
 
 					</div>

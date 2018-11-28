@@ -9,7 +9,7 @@ export default angular
 
 class OrientacionPedagogicaViewController extends SocialComponent{
 	/*@ngInject*/
-	constructor($scope, $element, $state, $timeout, Auth,$mdMedia,Restangular,$mdDialog,$anchorScroll){
+	constructor($scope, $element, $state, $timeout, Auth,$mdMedia,Restangular,$mdDialog,$anchorScroll,$location){
 		super({$element});
 		this.$scope = $scope;
 		this.$element = $element;
@@ -27,6 +27,7 @@ class OrientacionPedagogicaViewController extends SocialComponent{
 		this.isPublished = this.$scope.isPublished == true;
 		this.modoVista = this.$scope.vista;		
 		this.$anchorScroll = $anchorScroll;
+		this.$location= $location;
 		this.$scope.$watch(() => { return this.$scope.resource; }, (value) => {	
 			
 			this.resource = this.$scope.resource;
@@ -68,6 +69,7 @@ class OrientacionPedagogicaViewController extends SocialComponent{
 		.then(data => {
 			if(data && data.length > 0)
 			this.$scope.resource = data[0];
+			this.$location.hash('topDiv');
 			this.$anchorScroll();
 		})
 		.catch(err => {
@@ -94,7 +96,11 @@ class OrientacionPedagogicaViewController extends SocialComponent{
 		.then(data => {
 			if(data && data.length > 0)
 			this.$scope.resource = data[0];
+			this.$location.hash('topDiv');
 			this.$anchorScroll();
+		
+
+			
 		})
 		.catch(err => {
 			throw err;
