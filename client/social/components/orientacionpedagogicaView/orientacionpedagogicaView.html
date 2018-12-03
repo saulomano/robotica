@@ -5,15 +5,27 @@
 				<div class="kview__content bg-{{$ctrl.resource.type}}" flex>
 					<div  layout="row" layout-padding layout-align="center top"></div>
 					<div flex >
-						<p><strong>{{ $ctrl.resource.createdAt | amDateFormat:'D MMMM YYYY' }}</strong></p>
+						<div layout-align="end">
+							<label class="green_font" ng-show="$ctrl.resource.complementarias == true">ACTIVIDAD COMPLEMENTARIA</label>
+							<label class="green_font" ng-show="$ctrl.resource.orden && $ctrl.resource.intensivo">TALLER INTENSIVO</label>
+							<label class="green_font" ng-show="!$ctrl.resource.intensivo && !$ctrl.resource.complementarias && $ctrl.resource.orden">TALLER</label>
+							<span class="green" ng-show="$ctrl.resource.orden"> {{$ctrl.resource.orden}}</span>
+						</div>
+						<!-- <p><strong>{{ $ctrl.resource.createdAt | amDateFormat:'D MMMM YYYY' }}</strong></p> -->
 						<h4 class="margin" style="font-family: DINNextRoundedLTPro-Regular;">{{$ctrl.resource.objetivo}}</h4>
-						<div layout="row" layout-gt-xs="column" ng-hide="$ctrl.deleteDesafioBoolean">
-							<div flex class="preview-glyphs">
+						<div layout="row" layout-xs="column" ng-hide="$ctrl.deleteDesafioBoolean" style="text-align: center; display: inline-flex">
+							<div flex class="preview-glyphs" ng-repeat="area in $ctrl.resource.area">
+								<md-icon style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(area)}}"></md-icon>
+								<div>
+									<strong> {{area}} </strong>
+								</div>
+							</div>
+							<!-- <div flex class="preview-glyphs">
 								<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(area)}}"></md-icon>
-							</div>
-							<div flex class="rd-card__body--custom">
+							</div> -->
+							<!-- <div flex class="rd-card__body--custom">
 								<p class="rd-card__paragraph ng-binding"><strong ng-repeat="area in $ctrl.resource.area"> {{area}} </strong></p>
-							</div>
+							</div> -->
 						</div>
 
 					</div>
@@ -83,9 +95,9 @@
 							<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ng-click="$ctrl.viewResourcePedag($event, $ctrl.resource, item._id)">
 								<div>
 									<div class="thumbnail thumbnail--rounded thumbnail--50">
-											<div flex class="preview-glyphs">
-													<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(item.area)}}"></md-icon>
-												</div>									
+										<div flex class="preview-glyphs">
+											<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(item.area)}}"></md-icon>
+										</div>									
 									</div>
 								</div>
 								<div flex>
@@ -111,12 +123,15 @@
 					<div   flex layout="row">
 						<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ng-click="$ctrl.viewResource($event, item, item._id)" >
 							<div>
-								<div class="thumbnail thumbnail--rounded thumbnail--50">
+								<div class="preview-glyphs">
+									<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(area)}}"></md-icon>
+								</div>
+								<!-- <div class="thumbnail thumbnail--rounded thumbnail--50">
 										<div flex class="preview-glyphs">
 												<md-icon  style="font-size: 48px; height: 48px" ng-class="$ctrl.iconFromResourceType(item)"></md-icon>
 										
 											</div>									
-								</div>
+								</div> -->
 							</div>
 							<div flex>
 								<div layout="row" layout-align="start center">
@@ -139,7 +154,7 @@
 	</div>
 	<!--Lateral -->
 	<div class="icon-bar" ng-show="!$ctrl.isMobile" ng-hide="$ctrl.modoVista === 'ver'">
-		<a ng-href="/ver/{{$ctrl.resource.type}}/{{$ctrl.resource._id}}" target="_blank" class="view-item" title="Ver Orientacion"><i class="fa fa-search"></i></a>
+		<a ng-href="/ver/{{$ctrl.resource.type}}/{{$ctrl.resource._id}}" target="_blank" class="view-item" title="Ver Orientacion"><i class="fa fa-expand"></i></a>
 		<!--a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
 		<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
 		<a href="#" class="youtube"><i class="fa fa-youtube"></i></a-->

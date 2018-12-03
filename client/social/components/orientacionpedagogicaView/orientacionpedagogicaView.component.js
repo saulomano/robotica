@@ -1,6 +1,7 @@
 'use strict';
 
 import SocialComponent from '../../social.component';
+//import angular from 'angular';
 
 export default angular
 	.module('robotica.social.components.orientacionpedagogicaView', [])
@@ -122,7 +123,7 @@ class OrientacionPedagogicaViewController extends SocialComponent{
 	
 	getFieldClass(entry){
 
-		if (entry.length>1)
+		if (angular.isArray(entry) && entry.length>1)
 			entry= entry[0];
 		
         if (entry == "Cs. Naturales")
@@ -290,13 +291,6 @@ class OrientacionPedagogicaViewController extends SocialComponent{
 	}
 	
 }
-
-
-
-
-
-
-
 
 function orientacionpedagogicaView($log){
 	'ngInject';
