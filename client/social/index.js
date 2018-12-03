@@ -35,6 +35,7 @@ import orientacionpedagogicaView from './components/orientacionpedagogicaView/or
 import kitCard from './components/kitCard/kitCard.component';
 import kitView from './components/kitView/kitView.component';
 import kitsDisponibles from './kitsDisponibles'
+import kitLbot from './kitLbot'
 
 import orientacionpedagogica from './orientacionpedagogica';
 import actividadescomplementarias from './actividadescomplementarias';
@@ -88,7 +89,8 @@ let requirements = [
 	propuestaTalleresCard,
 	talleresintensivos,
 	searchComponent,
-	modalVideo
+	modalVideo,
+	kitLbot
 
 
 ];
