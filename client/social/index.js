@@ -36,6 +36,7 @@ import kitCard from './components/kitCard/kitCard.component';
 import kitView from './components/kitView/kitView.component';
 import kitsDisponibles from './kitsDisponibles'
 import kitLbot from './kitLbot'
+import kitEbot from './kitEbot'
 
 import orientacionpedagogica from './orientacionpedagogica';
 import actividadescomplementarias from './actividadescomplementarias';
@@ -90,7 +91,8 @@ let requirements = [
 	talleresintensivos,
 	searchComponent,
 	modalVideo,
-	kitLbot
+	kitLbot,
+	kitEbot
 
 
 ];

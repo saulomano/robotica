@@ -12,7 +12,42 @@
   .md-button.left {
 	border-radius: 10px 0 0 10px;
   }
-  
+	
+	.aKitE{
+		color: #BB62B3;
+	}
+
+	button.botonEbot:hover, button.aKitE:hover{
+		background-color:#BB62B3 !important;
+		
+			color:white !important;
+		
+	}
+
+	.aKitT{
+		color: #5EA7F1;
+	}
+
+	button.botonTbot:hover, button.aKitT:hover{
+		background-color:#5EA7F1 !important;
+		
+			color:white !important;
+		
+	}
+
+	.aKitL{
+		color: #8BBF1F;
+	}
+
+	button.botonLbot:hover, button.aKitL:hover{
+		background-color:#8BBF1F !important;
+		
+			color:white !important;
+		
+	}
+
+	
+	
   .md-button.middle {
 	border-radius: 0;
 	border-left: 1px solid rgba(230, 230, 230, 0.96);
@@ -42,6 +77,8 @@
 	border-top-color: #f0f1f1;
 	margin-top: -2%;
 	}
+
+	
 	
 	.botonEbot{
 		margin-left: auto; 
@@ -52,6 +89,7 @@
 		border-radius: 5px;     
 		width: 65%;
 		margin-top: 5%;
+		background-color: white;
 	}
 
 	.botonTbot{
@@ -63,6 +101,7 @@
 		border-radius: 5px;     
 		width: 65%;
 		margin-top: 5%;
+		background-color: white;
 	}
 
 	.botonLbot{
@@ -74,6 +113,7 @@
 		border-radius: 5px;     
 		width: 65%;
 		margin-top: 5%;
+		background-color: white;
 	}
 
 	.contenedor{
