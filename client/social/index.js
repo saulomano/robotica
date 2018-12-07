@@ -34,9 +34,10 @@ import orientacionpedagogicaCard from './components/orientacionpedagogicaCard/or
 import orientacionpedagogicaView from './components/orientacionpedagogicaView/orientacionpedagogicaView.component';
 import kitCard from './components/kitCard/kitCard.component';
 import kitView from './components/kitView/kitView.component';
-import kitsDisponibles from './kitsDisponibles'
-import kitLbot from './kitLbot'
-import kitEbot from './kitEbot'
+import kitsDisponibles from './kitsDisponibles';
+import kitLbot from './kitLbot';
+import kitEbot from './kitEbot';
+import kitTbot from './kitTbot';
 
 import orientacionpedagogica from './orientacionpedagogica';
 import actividadescomplementarias from './actividadescomplementarias';
@@ -92,7 +93,8 @@ let requirements = [
 	searchComponent,
 	modalVideo,
 	kitLbot,
-	kitEbot
+	kitEbot,
+	kitTbot
 
 
 ];
