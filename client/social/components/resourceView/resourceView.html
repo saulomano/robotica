@@ -5,9 +5,10 @@
 
 				<div flex class="preview-glyphs">
 							<md-icon style="font-size: 48px; height: 48px;" class="{{$ctrl.iconFromResourceType($ctrl.resource)}}"></md-icon>
-							<div>
-								<strong> {{area}} </strong>
-							</div>
+						
+							<p flex class="rd__headpost  rd__headpost--title rview__head"">{{$ctrl.resource.subtype | uppercase}}</p>
+				
+							
 						</div>
 				<div class="rview__content--bar bg-{{$ctrl.resource.type}}"></div>
 				<div layout="column">
