@@ -1,6 +1,13 @@
 
 <md-dialog >
-
+	<md-toolbar >
+		<div class="md-toolbar-tools" style="background-color: #8BBF1F">
+			<span flex></span>
+			<md-button class="md-icon-button" ng-click="$ctrl.closeDialog()">
+				<i class="fa fa-times fa-2x" aria-hidden="true" aria-label="Cerrar dialogo"></i>
+			</md-button>
+		</div>
+	</md-toolbar>
 
 <md-dialog-content>
 		<md-dialog-content ng-if="$ctrl.isMobile===false">

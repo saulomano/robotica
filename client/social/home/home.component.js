@@ -318,7 +318,9 @@ openVideo($event, resource){
 		this.height=0;
       this.isMobile=false;
 
-
+      this.closeDialog = function() {
+				$mdDialog.hide();
+			}
     this.$scope.$watch(() => { return $mdMedia('xs') }, (mobile) => {
       this.isMobile = mobile === true;
 
