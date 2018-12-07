@@ -22,10 +22,15 @@
   .md-button.right {
 	border-radius: 0 10px 10px 0;
   }
-  
+	
+	.md-button{
+		background-color: #8BBF1F!important;
+		color: white !important;
+	}
+	
   .md-button:not([disabled]):hover {
-	background-color: rgba(193, 193, 193, 0.96);
-	color: rgba(44, 65, 164, 0.96);
+	background-color: white !important;
+	color: #8BBF1F !important;
 	transition: 0.3s;
   }
   
