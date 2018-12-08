@@ -110,10 +110,14 @@ this.$interval = $interval;
 
   slideIndexNext(index) {
     this.currentIndex = index + 1;
+    this.$interval.cancel(self.runTimeoutExample); 
+   
   }
 
   slideIndexPrev(index) {
     this.currentIndex = index == 0  ? this.slides.length - 1:  index- 1;
+    this.$interval.cancel(self.runTimeoutExample); 
+   
   }
   
    isCurrentSlideIndex(index) {
@@ -126,7 +130,9 @@ this.$interval = $interval;
   }
   
   sliderClick(indice){
-    this.currentIndex =indice;   
+    this.currentIndex =indice;
+    this.$interval.cancel(self.runTimeoutExample); 
+     
   }
   
 
