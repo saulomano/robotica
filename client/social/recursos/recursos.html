@@ -1,0 +1,62 @@
+<div style="background-color: white">
+	<div  layout="row" layout-align="center center" style="margin-bottom: 1%;">
+		<div>
+			<p  class="impact-text-large" style="text-align: center; margin-top: 20px; font-size: 40px; color: #8BBF1F; font-family: pacifico-regular, sans-serif;">Recursos</p>	
+		</div>
+	</div>
+<!-- METER DESCRICIONES DEBAJO DE LOS BOTONES -->
+	<div layout="row" layout-align="center center" style="margin-bottom: 0.5%; text-align: center; display: inline-flex; align-items: flex-start; width: 100%" id="donate" layout-sm="column"  layout-xs="column">
+		<div style="margin-right: 10px; margin-bottom: 10px; max-width: min-content;">
+			<label class="herr responsive" ng-click="$ctrl.fetchDataFilter($event,'herramienta')"><input type="checkbox" name="subtype" ng-model="$ctrl.herramienta"   ><span style="width: 300px; text-align: center; font-size: 1.4em;">Herramientas</span></label>
+			<div style="margin-top: 8rem;"> Programas, juegos y enlaces. </div>
+		</div>
+		<div style="margin-right: 10px; margin-bottom: 10px; max-width: min-content;">
+			<label class="mat responsive" ng-click="$ctrl.fetchDataFilter($event,'materialapoyo')"><input type="checkbox" name="subtype" ng-model="$ctrl.materialapoyo"  ><span style="width: 300px; text-align: center; font-size: 1.4em;">Material de apoyo</span></label>
+			<div style="margin-top: 8rem;"> Contenidos conceptuales y orientaciones. </div>
+		</div>
+		<div style="margin-right: 10px; margin-bottom: 10px; max-width: min-content;">
+			<label class="tuto responsive" ng-click="$ctrl.fetchDataFilter($event,'tutorial')"><input type="checkbox" name="subtype" ng-model="$ctrl.tutorial"   ><span style="width: 300px; text-align: center; font-size: 1.4em;">Tutoriales</span></label>
+			<div style="margin-top: 8rem;"> Guías explicativas sobre el uso de programas y plataformas. </div>
+		</div>
+		<div style="margin-right: 10px; margin-bottom: 10px; max-width: min-content;">
+			<label class="ejem responsive" ng-click="$ctrl.fetchDataFilter($event,'ejemplos')"><input type="checkbox" name="subtype" ng-model="$ctrl.ejemplos"   ><span style="width: 300px; text-align: center; font-size: 1.4em;">Ejemplos para aplicar</span></label>
+			<div style="margin-top: 8rem;"> Código listo para usar. </div>
+		</div>
+		<div style="margin-right: 10px; margin-bottom: 10px; max-width: min-content;">
+			<label class="exp responsive" ng-click="$ctrl.fetchDataFilter($event,'experiencia')"><input type="checkbox" name="subtype" ng-model="$ctrl.experiencia"   ><span style="width: 300px; text-align: center; font-size: 1.4em;">Experiencias</span></label>
+			<div style="margin-top: 8rem;"> Experiencias y casos de aplicación de robótica educativa. </div>
+		</div>
+	</div>
+<!--TODO CAMBIAR POR UN SPACER-->
+	<div style="margin-bottom: 15px; ">
+		<hr>
+	</div>
+<!-- CAMBIAR BOTONES, SACAR BORDES Y METER ICONOS - ALINEAR -->
+	<div layout="row" layout-align="center center"  style="margin-bottom: 0.5%; text-align: center; display: inline-flex; align-items: flex-start; width: 100%" id="donate" layout-sm="column"  layout-xs="column">
+		<div style="margin-right: 10px;">
+			<label class="video" ng-click="$ctrl.fetchDataFilter($event,'Video')"><input name="tipoRecurso" id="video" type="checkbox"  ng-model="$ctrl.video"  ><span style="width: 130px; text-align: center;padding: 4px 0px">video</span></label>
+		</div>
+		<div style="margin-right: 10px;">
+			<label class="audio"  ng-click="$ctrl.fetchDataFilter($event,'Audio')"><input name="tipoRecurso" id="audio" type="checkbox" ng-model="$ctrl.audio" ><span style="width: 130px;text-align: center; padding: 4px 0px">audio</span></label>
+		</div>
+		<div style="margin-right: 10px;">
+			<label class="programa" ng-click="$ctrl.fetchDataFilter($event,'Plantilla')"><input name="tipoRecurso" id="programa" type="checkbox"  ng-model="$ctrl.programa"  ><span style="width: 130px; text-align: center;padding: 4px 0px">programa</span></label>
+		</div>
+		<div style="margin-right: 10px;">
+			<label class="imagen" ng-click="$ctrl.fetchDataFilter($event,'Imágen')"><input name="tipoRecurso" id="imagen" type="checkbox"  ng-model="$ctrl.imagen"  ><span style="width: 130px; text-align: center;padding: 4px 0px">imagen</span></label>
+		</div>
+		<div style="margin-right: 10px;">
+			<label class="PDF" ng-click="$ctrl.fetchDataFilter($event,'Texto')"><input name="tipoRecurso" id="PDF" type="checkbox"  ng-model="$ctrl.PDF"  ><span style="width: 130px; text-align: center;padding: 4px 0px">PDF</span></label>
+		</div>
+		<div style="margin-right: 10px;">
+			<label class="presentacion" ng-click="$ctrl.fetchDataFilter($event,'Presentación')"><input name="tipoRecurso" id="presentacion" type="checkbox"  ng-model="$ctrl.presentacion"  ><span style="width: 130px; text-align: center;padding: 4px 0px">presentacion</span></label>
+		</div>
+	</div>
+	<div style="background-color: #eef2f5">
+		<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+			<rd-item-template>           
+				<resource-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></resource-card>
+			</rd-item-template>
+		</rd-waterfall>
+	</div>
+</div>

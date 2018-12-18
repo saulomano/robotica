@@ -49,6 +49,9 @@ class HeaderComponent {
         section: 'kits',  caption: 'Kits', action:'social.kitsDisponibles'
       },
       {
+        section: 'recursos',  caption: 'Recursos', action:'social.recursos'
+      },
+      {
         section: 'noticias',  caption: 'Noticias', action:'social.noticias'
       },
       {

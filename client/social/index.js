@@ -45,6 +45,7 @@ import propuestaTalleresCard from './components/propuestaTalleresCard/propuestaT
 import propuestasdetaller from './propuestasdetaller';
 import talleresintensivos from './talleresintensivos';
 import searchComponent from './components/searchComponent/searchComponent.component'
+import recursos from './recursos';
 
 import modalVideo from './components/modalVideo/modalVideo.component';
 // config to providers
@@ -92,9 +93,8 @@ let requirements = [
 	searchComponent,
 	modalVideo,
 	kitLbot,
-	kitEbot
-
-
+	kitEbot,
+	recursos
 ];
 
 module.exports = angular

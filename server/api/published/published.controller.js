@@ -14,6 +14,8 @@ export function index(req, res, next) {
 	var query = req.querymen;
 	let qq = req.query.q;
 	var type = req.query.type;
+	var subtypeElegido = req.query.subtype;
+	var tipoRecursoElegido = req.query.tipoRecurso;
 	let q = {};
 	if (qq){
   	// convert to regex
@@ -50,6 +52,14 @@ export function index(req, res, next) {
 		if (q['$or']) {
 			q['$or'].type = undefined; 
 		}
+	}
+
+	if (subtypeElegido){
+		q['subtype'] = subtypeElegido;
+	}
+	
+	if (tipoRecursoElegido){
+		q['tipoRecurso'] = tipoRecursoElegido;
 	}
 
 	Published
