@@ -21,23 +21,21 @@ export default class RecursosComponent extends SocialComponent{
         this.$stateParams = $stateParams;
         this.section = $stateParams.type;
         this.searchText = $stateParams.search;
-        this.muestraFiltroMobile= false;
-      
         this.$mdDialog = $mdDialog;
-       
+        
+        this.muestraFiltroMobile= false;
         this.herramienta=false;
         this.materialapoyo=false;
         this.tutorial=false;
         this.ejemplos=false;
         this.experiencia=false;
-
         this.Video=false;
 		this.Audio=false;
 		this.Plantilla=false;
 		this.Imágen=false;
 		this.Texto=false;
 		this.Presentación=false;
-
+        
         $scope.$mdMedia = $mdMedia;
 
         this.resetWaterfall;
@@ -263,8 +261,61 @@ export default class RecursosComponent extends SocialComponent{
                 };
     
                 def.resolve(res);
-            })
+            });
         }
         return def.promise;
+    }
+
+    viewRecurso_($event, resource){
+
+        if (!this.$mdDialog)
+            return;
+
+        this.$mdDialog.show({
+            //template: require('../components/resourceView/resourceView.html'),
+            template: require('../components/modalView/modalView.html'),
+            parent: angular.element(document.body),
+            targetEvent: $event,
+            clickOutsideToClose: true,
+            fullscreen: true, // Only for -xs, -sm breakpoints.
+            locals: {
+                resource: resource
+            },
+            controller: DialogController,
+            controllerAs: '$ctrl'
+        })
+        .then((data) => {
+                console.log(data);
+            }, () => {
+        })
+        .catch(function(res) {
+            if (!(res === 'cancel' || res === 'escape key press')) {
+                throw res;
+            }
+        });
+
+        function DialogController($scope, $mdDialog, resource, Restangular, $timeout) {
+            
+            'ngInject';
+            this.loading = true;
+            this.Resource = Restangular.one('published', resource._id);
+
+            this.closeDialog = function() {
+                $mdDialog.hide();
+            };
+
+            this.Resource
+                .get()
+                .then(data => {
+                    this.resource = data;
+                    this.loading = false;
+                    $timeout(() => {
+                        $scope.$apply();
+                    });
+                })
+                .catch(err => {
+                    throw err;
+                });
+        }
     }
 }

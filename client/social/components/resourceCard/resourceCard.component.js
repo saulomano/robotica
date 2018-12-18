@@ -7,11 +7,12 @@ export default angular
 	import SocialComponent from '../../social.component';
 class ResourceCardController extends SocialComponent{
 	/*@ngInject*/
-	constructor($scope, $element, $state){
+	constructor($scope, $element, $state, $mdDialog){
 		super({$element});
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;
+		this.$mdDialog = $mdDialog;
     	this.$element.addClass('resource-card');
     
 		this.resource = this.$scope.resource;
@@ -43,6 +44,63 @@ class ResourceCardController extends SocialComponent{
             this.$state.go('curador.new', { type: item.section });
 		}
 	}
+
+	viewResource($event, resource){//, modoVista){
+
+        if (!this.$mdDialog)
+            return;
+		/*
+	    if (!modoVista || modoVista === 'curador')
+	        return;
+		*/
+        this.$mdDialog.show({
+            template: require('../modalView/modalView.html'),
+            parent: angular.element(document.body),
+            targetEvent: $event,
+            clickOutsideToClose: true,
+            fullscreen: true, // Only for -xs, -sm breakpoints.
+            locals: {
+                resource: resource
+            },
+            controller: DialogController,
+            controllerAs: '$ctrl'
+        })
+		.then((data) => {
+                console.log(data);
+			}, () => {
+		})
+		.catch(function(res) {
+			if (!(res === 'cancel' || res === 'escape key press')) {
+				throw res;
+			}
+		});
+
+        function DialogController($scope, $mdDialog, resource, Restangular, $timeout) {
+            'ngInject';
+            //this.$scope = $scope;
+            this.loading = true;
+            this.Resource = Restangular.one(resource.route, resource._id);
+
+            this.closeDialog = function() {
+                $mdDialog.hide();
+            };
+
+            this.Resource
+                .get()
+                .then(data => {
+					
+					this.resource = data;
+					this.loading = false;
+				
+					$timeout(() => {
+							$scope.$apply();
+						});
+				})
+                .catch(err => {
+                    throw err;
+				});
+        }
+    }
 }
 
 function resourceCard($log){

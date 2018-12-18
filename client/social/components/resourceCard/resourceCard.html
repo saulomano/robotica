@@ -16,7 +16,7 @@
 </rd-card>
 
 <!-- Herramienta -->
-<rd-card data-rd-section="{{$ctrl.resource.type}}" >
+<rd-card data-rd-section="{{$ctrl.resource.type}}" ng-click="$ctrl.viewResource($event, $ctrl.resource, $ctrl.modoVista)">
 		<rd-card-toolbar ng-if="$ctrl.editable">
 			<div layout="row">
 				<div class="rd-card__status" flex ng-hide="$ctrl.resource.published == undefined"> <i class="fa fa-check-circle-o"></i>	Publicado</div>
