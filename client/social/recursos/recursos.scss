@@ -201,6 +201,17 @@
 	.estiloBottom{
 		margin-bottom: 18% !important;
 	}
+	
+}
+
+@media only screen and (max-width: 840px) {
+	.recursoBot{
+		align-items: center !important;
+	}
+}
+
+.recursoBot{
+	align-items: self-start;
 }
 
 input#quinto + span {
