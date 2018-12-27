@@ -1,5 +1,5 @@
-<rd-card class="rd-card__addnew" ng-if="$ctrl.resource.type === 'addnew'">
-	<rd-card-body class="rd-card__addnew--body">
+<rd-card-orientaciones class="rd-card__addnew" ng-if="$ctrl.resource.type === 'addnew'">
+	<rd-card-orientaciones-body class="rd-card__addnew--body">
 		<ul class="new-resource__list">
 			<li ng-repeat="item in $ctrl.resource.options">
 				<a ng-click="$ctrl.clickedAction(item)" layout="row" layout-align="start center">
@@ -12,12 +12,12 @@
 			<div class="new-resource__button--center">
 			</div>
 		</div>
-	</rd-card-body>
-</rd-card>
+	</rd-card-orientaciones-body>
+</rd-card-orientaciones>
 
 <!-- Herramienta -->
-<rd-card data-rd-section="{{$ctrl.resource.type}}" ng-click="$ctrl.viewResource($event, $ctrl.resource, $ctrl.modoVista)">
-		<rd-card-toolbar ng-if="$ctrl.editable">
+<rd-card-orientaciones data-rd-section="{{$ctrl.resource.type}}" ng-click="$ctrl.viewResource($event, $ctrl.resource, $ctrl.modoVista)">
+		<rd-card-orientaciones-toolbar ng-if="$ctrl.editable">
 			<div layout="row">
 				<div class="rd-card__status" flex ng-hide="$ctrl.resource.published == undefined"> <i class="fa fa-check-circle-o"></i>	Publicado</div>
 				<div class="rd-card__status" flex ng-show="$ctrl.resource.published == undefined"> <i class="fa fa-save"></i> Guardado</div>
@@ -30,8 +30,8 @@
 					</div>
 				</md-button>
 			</div>
-		</rd-card-toolbar>
-		<rd-card-header>
+		</rd-card-orientaciones-toolbar>
+		<rd-card-orientaciones-header>
 				<div class="rd-card__header--wrapper" layout="row" layout-align="start center">
 						<span class="rd-card__icon--circle">
 							<i class="ri ri-3x" ng-class="$ctrl.iconFromResourceType($ctrl.resource)"></i>
@@ -39,8 +39,8 @@
 						<span class="rd-card__header--type rd__text--caption">{{$ctrl.resource.typeCaption}}</span>
 						<span class="rd-card__header--level rd__text--caption">{{$ctrl.resource.category}}</span>
 				</div>
-		</rd-card-header>
-		<rd-card-body>
+		</rd-card-orientaciones-header>
+		<rd-card-orientaciones-body>
 				<div layout="row">
 					<div class="rd-card__thumbnail" ng-hide="$ctrl.resource.thumbnail === ''">
 						<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del recurso" >
@@ -53,5 +53,5 @@
 					</div>
 				</div>
 
-		</rd-card-body>
-</rd-card>
+		</rd-card-orientaciones-body>
+</rd-card-orientaciones>
