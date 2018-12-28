@@ -17,9 +17,14 @@ class SearchComponentController {
         this.$mdDialog = $mdDialog;
 		this.$element.addClass('search-component');
 
-		
-	
-
+		this.propuestasTalleres= false;
+		this.talleresIntensivos= false;
+		this.actividadesComplementarias= false;
+		this.kits= false;
+		this.tutoriales= false;
+		this.programas= false;
+		this.herramientas= false;
+		this.textoABuscar= '';
 		
 
 	
@@ -48,6 +53,14 @@ class SearchComponentController {
 		el.classList.remove('active');
 	}
 	
+
+	buscar(e){
+
+		console.log(this.propuestasTalleres + " " +
+			this.talleresIntensivos + " " +
+			this.actividadesComplementarias);
+			this.hideSubMenu(document.getElementById('dd'));
+	}
 	
    
     
