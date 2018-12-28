@@ -41,15 +41,18 @@
 				</div>
 		</rd-card-orientaciones-header>
 		<rd-card-orientaciones-body>
+				<div layout="row">						
+					<div style="margin-left: 10px;">
+						<label style="text-transform: uppercase; color: white">{{$ctrl.resource.subtype}}</label>
+					</div>					
+				</div>
+	
 				<div layout="row">
-					<div class="rd-card__thumbnail" ng-hide="$ctrl.resource.thumbnail === ''">
-						<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del recurso" >
-					</div>
 					<div flex class="rd-card__body--custom">
-						<h1 class="rd-card__title--v1">{{$ctrl.resource.title}}</h1>
-						<p class="rd-card__paragraph">{{$ctrl.resource.summary | truncate:140 }}</p>
-						<p><strong class="rd-card__updated rd__color--grey-light ">Actualizado <strong am-time-ago="$ctrl.resource.createdAt"></strong> </strong></p>
-						<p><strong class="rd-card__owner">{{$ctrl.resource.owner.name}}</strong></p>
+						<h1 style="color: white" class="rd-card__title--v1">{{$ctrl.resource.title}}</h1>
+						<p style="color: white" class="rd-card__paragraph">{{$ctrl.resource.summary | truncate:140 }}</p>
+						<!--p><strong class="rd-card__updated rd__color--grey-light ">Actualizado <strong am-time-ago="$ctrl.resource.createdAt"></strong> </strong></p>
+						<p><strong class="rd-card__owner">{{$ctrl.resource.owner.name}}</strong></p-->
 					</div>
 				</div>
 
