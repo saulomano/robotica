@@ -3,21 +3,22 @@
 
 <section class="main">
     <div class="wrapper-demo">
-        <div id="dd" class="wrapper-dropdown-3" tabindex="1" ng-click="$ctrl.onClick($event)">
+        <div id="dd" class="wrapper-dropdown-3" tabindex="1" ng-click="$ctrl.onClick($event)" >
             <span>Seleccione</span>
-            <ul class="dropdown">
+       
+            <ul class="dropdown" ng-click="$event.stopPropagation();">
                 <!--<li><a href="#"><i class="icon-envelope icon-large"></i>Orinetaciones</a></li>
                 <li><a href="#"><i class="icon-truck icon-large"></i>propuestas</a></li>
                 <li><a href="#"><i class="icon-plane icon-large"></i>Talleres</a></li>
                 <li><a href="#"><i class="icon-plane icon-large"></i>Talleres</a></li>-->
-                <li><md-checkbox class="green"> PROPUESTAS DE TALLERES</md-checkbox></li>
-                <li><md-checkbox class="green"> TALLERES INTENSIVOS</md-checkbox></li>
-                <li><md-checkbox class="green"> ACTIVIDADES COMPLEMENTARIAS</md-checkbox></li>
+                <li><md-checkbox class="green"  ng-model="$ctrl.propuestasTalleres"> PROPUESTAS DE TALLERES</md-checkbox></li>
+                <li><md-checkbox class="green"  ng-model="$ctrl.talleresIntensivos"> TALLERES INTENSIVOS</md-checkbox></li>
+                <li><md-checkbox class="green"  ng-model="$ctrl.actividadesComplementarias" > ACTIVIDADES COMPLEMENTARIAS</md-checkbox></li>
                 <hr class="linea"/>
-                <li><md-checkbox class="green"> KITS</md-checkbox></li>
-                <li><md-checkbox class="green"> TUTORIALES</md-checkbox></li>
-                <li><md-checkbox class="green"> PROGRAMAS</md-checkbox></li>
-                <li><md-checkbox class="green"> HERRAMIENTAS SOFTWARE</md-checkbox></li>
+                <li><md-checkbox class="green" ng-model="$ctrl.kits"> KITS</md-checkbox></li>
+                <li><md-checkbox class="green" ng-model="$ctrl.tutoriales"> TUTORIALES</md-checkbox></li>
+                <li><md-checkbox class="green" ng-model="$ctrl.programas"> PROGRAMAS</md-checkbox></li>
+                <li><md-checkbox class="green" ng-model="$ctrl.herramientas"> HERRAMIENTAS SOFTWARE</md-checkbox></li>
             </ul>
         </div>
         <div>
@@ -25,9 +26,9 @@
                 <input style="margin: 0 auto;
                     padding: 10px;
                     background: #fff;
-                    border-radius: 7px;
-                    border: 1px solid rgba(0, 0, 0, 0.15);">
-                   <img ng-src="assets/lupa.png" class="pointer"></label>
+                    border-radius: 7px; 
+                    border: 1px solid rgba(0, 0, 0, 0.15);" ng-model="$ctrl.textoABuscar">
+                   <img ng-src="assets/lupa.png" class="pointer"  ng-click="$ctrl.buscar($event)"></label>
             </div>
     
        
