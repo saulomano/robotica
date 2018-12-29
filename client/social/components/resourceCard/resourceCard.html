@@ -41,13 +41,14 @@
 				</div>
 		</rd-card-orientaciones-header>
 		<rd-card-orientaciones-body>
-				<div layout="row">						
-					<div style="margin-left: 10px;">
-						<label style="text-transform: uppercase; color: white">{{$ctrl.resource.subtype}}</label>
+				<div layout="row" style="margin-left: 40px;">						
+					<div >
+						<label style="text-transform: uppercase; color: white; position: relative;">{{$ctrl.resource.subtype}}</label>
+						<span><img  style="width: 20%;margin-left: 100px;" ng-src="{{$ctrl.getFieldClass($ctrl.resource.tipoRecurso)}}" class="pointer"></span>
 					</div>					
 				</div>
 	
-				<div layout="row">
+				<div layout="row" style="margin-left: 30px;">
 					<div flex class="rd-card__body--custom">
 						<h1 style="color: white" class="rd-card__title--v1">{{$ctrl.resource.title}}</h1>
 						<p style="color: white" class="rd-card__paragraph">{{$ctrl.resource.summary | truncate:140 }}</p>
