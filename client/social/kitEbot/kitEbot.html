@@ -112,8 +112,10 @@
 						</div>
 					</div>
 				</div>
-				<div flex style="text-align: center;">
-					<img class="responsiveK" ng-src="assets/E-Bot-que-se-puede-hacer-01.png" class="pointer">
+				
+
+				<div flex style="text-align: center;" id="divID" ng-init="imgsrc='assets/E-Bot-que-se-puede-hacer-01.png'" ng-mouseover="imgsrc='assets/e-bot.gif'" ng-mouseout="imgsrc='assets/e-bot-pausa.gif'">
+					<img ng-src="{{imgsrc}}"/>
 					<p style="text-align: center; font-size: 12px;">ROBOT MOVIL</p>			
 				</div>			
 			</div>
