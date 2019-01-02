@@ -28,6 +28,22 @@ class ResourceCardController extends SocialComponent{
 		this.resource.typeCaption = captions[this.resource.type];
 	}
 
+	getResourceTypeDescription(resourceType) {
+
+		if(resourceType == 'tutorial')
+			return "Tutorial";
+		if(resourceType == 'herramienta')
+			return "Herramienta";
+		if(resourceType == 'experiencia')
+			return "Experiencia";
+		if(resourceType == 'materialapoyo')
+			return "Material de apoyo";
+		if(resourceType == 'ejemplos')
+			return "Ejemplo";
+		
+		return resourceType;
+	}
+
 	getFieldClass(entry){
         if (entry == "Presentación")
             return "assets/images/recurso-presentacion.svg";

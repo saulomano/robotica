@@ -8,8 +8,10 @@
 	}
 
 	&__wrapper {
-		overflow: hidden;
+	overflow: hidden;
 	background-color: #9ACA3C;
+	min-height: 180px;
+	max-height: 180px;
 	//border-radius: $border-radius-default;
 	//background-color: #d0d0d0;
 	border: solid;
