@@ -2,7 +2,7 @@
 
 
 <section class="main">
-    <div class="wrapper-demo">
+    <div class="wrapper-demo" style=" position:relative; z-index:1000;">
         <div id="dd" class="wrapper-dropdown-3" tabindex="1" ng-click="$ctrl.onClick($event)" >
             <span>Seleccione</span>
        
@@ -34,3 +34,28 @@
        
     ​</div>
 </section>
+
+
+<div class="cont">
+
+	<div class="rowparallaxk">
+		<div class="textKit">
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Noticias</p>
+			
+			
+		</div>
+		<div >
+			<div>
+				<rd-waterfall item-width="350" gutter="24" class="wf-container"load-more-text="Ver más" fetch="$ctrl.fetchDataNoticia()" search-text="$ctrl.searchText">
+					<rd-item-template class="wf-box">           
+						<noticia-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></noticia-card>
+					</rd-item-template>
+				</rd-waterfall>
+			</div>
+			<div style="margin-left: auto; margin-right: auto; text-align: center; margin-top: 1%;">
+				<md-button ui-sref="social.noticias" class="rview__button md-button" style="background-color:#8BBF1F; color: white; font-size: 15px; padding: 5px; font-family: DINNextRoundedLTPro-Regular;	font-weight: bold;text-transform: none !important;"> Ver más </md-button>
+			</div>	
+		
+		</div>
+	</div>
+</div>

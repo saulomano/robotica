@@ -10,13 +10,14 @@ export default angular
 
 class SearchComponentController {
 	/*@ngInject*/
-	constructor($scope, $element, $state, $mdDialog) {
+	constructor($scope, $element, $state, $mdDialog,Restangular, $q,) {
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;
         this.$mdDialog = $mdDialog;
 		this.$element.addClass('search-component');
-
+		this.Restangular = Restangular;
+		this.$q = $q;
 		this.propuestasTalleres= false;
 		this.talleresIntensivos= false;
 		this.actividadesComplementarias= false;
@@ -25,7 +26,8 @@ class SearchComponentController {
 		this.programas= false;
 		this.herramientas= false;
 		this.textoABuscar= '';
-		
+		this.PublishedsNoticias = this.Restangular.all('publishednoticia');
+    
 
 	
 
@@ -63,6 +65,40 @@ class SearchComponentController {
 	}
 	
    
+
+
+	fetchDataNoticia(){
+		let def = this.$q.defer();
+			  this.page++;
+			  let q;
+			  if (this.searchText){
+				  q = this.searchText
+			  }
+	  
+			  this.PublishedsNoticias
+				  .getList({
+					//  page: 1, 
+					 // limit: 3,
+					  type: 'noticia'
+				  })
+				  .then(data => {
+					  let total = data.$total;
+				
+					  let res = {
+						  count: total,
+						  items: data,
+						//  page: this.page,
+						  //limit: this.limit
+					  };
+		  
+					  def.resolve(res);
+				  })
+	  
+			  return def.promise;
+	  }
+
+
+
     
 
 }
@@ -84,3 +120,5 @@ function searchComponent($log){
 		template: require('./searchComponent.html')
 	}
 }
+
+
