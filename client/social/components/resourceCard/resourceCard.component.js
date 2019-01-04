@@ -49,7 +49,6 @@ class ResourceCardController extends SocialComponent{
             return "assets/images/recurso-presentacion.svg";
         if (entry == "Video")
 			return "assets/images/recurso-video.svg";
-			
         if (entry == "Plantilla")
 			return "assets/images/recurso-video.svg"; 
 		if (entry == "Texto")
@@ -58,12 +57,7 @@ class ResourceCardController extends SocialComponent{
 			return "assets/images/recurso-imagen.svg";
 		if (entry == "Audio")
 			return "assets/images/recurso-audio.svg";                  
-
-
-
-       // return  "iconPed-"+entry +" step";
-
-        }
+    }
 
 	editResource(){
 		this.$state.go(`curador.recurso`, { uid: this.resource._id, action: 'edit' });

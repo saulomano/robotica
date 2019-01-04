@@ -2,35 +2,25 @@
 	<div class="rview__wrapper" layout="row" layout-align="start stretch">
 		<div class="rview__container"  layout="row" layout-align="start stretch" flex>
 			<div class="rview__content" flex>
-
 				<div flex class="preview-glyphs">
-							<md-icon style="font-size: 48px; height: 48px;" class="{{$ctrl.iconFromResourceType($ctrl.resource)}}"></md-icon>
-						
-							<p flex class="rd__headpost  rd__headpost--title rview__head"">{{$ctrl.resource.subtype | uppercase}}</p>
-				
-							
-						</div>
+					<span>
+						<img  style="width: 5%;margin-left: 10px;" ng-src="{{$ctrl.getFieldClass($ctrl.resource.tipoRecurso)}}" class="pointer">
+					</span>
+					<label flex style="font-size: 2rem;">{{ $ctrl.getResourceTypeDescription($ctrl.resource.subtype) | uppercase }}</label>
+				</div>
 				<div class="rview__content--bar bg-{{$ctrl.resource.type}}"></div>
 				<div layout="column">
-					<h1 flex class="rd__headpost  rd__headpost--title rview__head">{{$ctrl.resource.title}}</h1>
+					<h4 flex class="margin ng-binding">{{$ctrl.resource.title}}</h4>
 					<p flex class="paragraph post__test rview__summary">{{$ctrl.resource.summary}}</p>
-				
 					<rd-post flex class="rview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>	
-				
-				
-
 					<div ng-if="$ctrl.resource.files.length">
 						<md-button class="rview__button md-button" style="background-color:#8BBF1F; color: white"
 						ng-href="/api/publisheds/{{$ctrl.resource._id}}/download" target="_blank">Descargar</md-button>
 						<div ng-if="$ctrl.resource.files.length">
-								<div style="text-align: left; padding-left: 2%;"><span class="text-uppercase color-grey">{{$ctrl.resource.files.length}} Archivos | {{$ctrl.sumfiles($ctrl.resource.files) | numeraljs:'0b'}}</span></div>
+							<div style="text-align: left; padding-left: 2%;"><span class="text-uppercase color-grey">{{$ctrl.resource.files.length}} Archivos | {{$ctrl.sumfiles($ctrl.resource.files) | numeraljs:'0b'}}</span></div>
 						</div>
 					</div>
-			
-
-				
 					<div flex="75"  ng-if="$ctrl.resource.video !== '' && $ctrl.resource.video.includes('/embed') && $ctrl.resource.tipoRecurso == 'Video'">
-								
 						<md-dialog-content>
 							<div>
 							<div class="vid-container">
@@ -39,11 +29,7 @@
 							</div>
 						</md-dialog-content>	
 					</div>		
-			
-			
-			
 					<div flex="75"  ng-if="$ctrl.resource.audio !== '' &&  $ctrl.resource.tipoRecurso == 'Audio'">
-											
 						<md-dialog-content>
 							<div>
 							<div class="vid-container">
@@ -53,26 +39,8 @@
 						</md-dialog-content>	
 					</div>
 				</div>
-
-				
 			</div>
 		</div>
-
-
-			
-
-	
-	
-	
-	
-	
-		
-
-
-
-		
 	</div>
-
-	
 	<!-- ================================================================ -->
 </div>

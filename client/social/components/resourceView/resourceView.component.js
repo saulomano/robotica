@@ -59,6 +59,37 @@ class ResourceViewController  extends SocialComponent{
 		
 	}
 
+	getResourceTypeDescription(resourceType) {
+
+		if(resourceType == 'tutorial')
+			return "Tutorial";
+		if(resourceType == 'herramienta')
+			return "Herramienta";
+		if(resourceType == 'experiencia')
+			return "Experiencia";
+		if(resourceType == 'materialapoyo')
+			return "Material de apoyo";
+		if(resourceType == 'ejemplos')
+			return "Ejemplo";
+		
+		return resourceType;
+	}
+
+	getFieldClass(entry){
+        if (entry == "Presentación")
+            return "assets/images/recurso-presentacion-line.svg";
+        if (entry == "Video")
+			return "assets/images/recurso-video-line.svg";
+        if (entry == "Plantilla")
+			return "assets/images/recurso-video-line.svg"; 
+		if (entry == "Texto")
+			return "assets/images/recurso-pdf-line.svg";
+		if (entry == "Imagen")
+			return "assets/images/recurso-imagen-line.svg";
+		if (entry == "Audio")
+			return "assets/images/recurso-audio-line.svg";                  
+    }
+
 	onClickStar($event) {
 		this.$scope.rate = $event.rating;
 	} 
