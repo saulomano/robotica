@@ -36,25 +36,62 @@
 </section>
 
 
-<div class="cont">
-
+<div class="cont" ng-if="$ctrl.propuestasTalleres">
 	<div class="rowparallaxk">
 		<div class="textKit">
-			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Noticias</p>
-			
-			
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Propuestas de taller</p>
 		</div>
 		<div >
 			<div>
-				<rd-waterfall item-width="350" gutter="24" class="wf-container"load-more-text="Ver más" fetch="$ctrl.fetchDataNoticia()" search-text="$ctrl.searchText">
-					<rd-item-template class="wf-box">           
-						<noticia-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></noticia-card>
-					</rd-item-template>
-				</rd-waterfall>
+                    <rd-waterfall item-width="350" gutter="24" load-more-text="Ver más" fetch="$ctrl.fetchDataPropuestaTaller()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+			
+                            <rd-item-template>           
+                                    <orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+                </rd-item-template>
+                </rd-waterfall>
 			</div>
-			<div style="margin-left: auto; margin-right: auto; text-align: center; margin-top: 1%;">
-				<md-button ui-sref="social.noticias" class="rview__button md-button" style="background-color:#8BBF1F; color: white; font-size: 15px; padding: 5px; font-family: DINNextRoundedLTPro-Regular;	font-weight: bold;text-transform: none !important;"> Ver más </md-button>
-			</div>	
+		
+		</div>
+	</div>
+</div>
+
+
+
+<div class="cont" ng-if="$ctrl.actividadesComplementarias">
+	<div class="rowparallaxk">
+		<div class="textKit">
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Actividades complementarias</p>
+		</div>
+		<div >
+			<div>
+                    <rd-waterfall item-width="350" gutter="24" load-more-text="Ver más" fetch="$ctrl.fetchActividadComplementarias()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+			
+                            <rd-item-template>           
+                                    <orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+                </rd-item-template>
+                </rd-waterfall>
+			</div>
+		
+		</div>
+	</div>
+</div>
+
+
+
+<div class="cont" ng-if="$ctrl.talleresIntensivos">
+	<div class="rowparallaxk">
+		<div class="textKit">
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Talleres Intensivos</p>
+		</div>
+		<div >
+			<div>
+                    <rd-waterfall item-width="350" gutter="24" load-more-text="Ver más" fetch="$ctrl.fetchTalleresIntensivos()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+			
+                            <rd-item-template>           
+                                    <orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+                </rd-item-template>
+                </rd-waterfall>
+			</div>
 		
 		</div>
 	</div>

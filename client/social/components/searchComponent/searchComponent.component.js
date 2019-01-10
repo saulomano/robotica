@@ -26,8 +26,8 @@ class SearchComponentController {
 		this.programas= false;
 		this.herramientas= false;
 		this.textoABuscar= '';
-		this.PublishedsNoticias = this.Restangular.all('publishednoticia');
-    
+		this.PublishedsPropuestasTaller = this.Restangular.all('publishedOrientacionPedagogica');
+      
 
 	
 
@@ -67,32 +67,105 @@ class SearchComponentController {
    
 
 
-	fetchDataNoticia(){
+	fetchDataPropuestaTaller(){
+
 		let def = this.$q.defer();
-			  this.page++;
+			  
 			  let q;
 			  if (this.searchText){
 				  q = this.searchText
 			  }
 	  
-			  this.PublishedsNoticias
-				  .getList({
-					//  page: 1, 
-					 // limit: 3,
-					  type: 'noticia'
-				  })
-				  .then(data => {
-					  let total = data.$total;
-				
-					  let res = {
-						  count: total,
-						  items: data,
-						//  page: this.page,
-						  //limit: this.limit
-					  };
-		  
-					  def.resolve(res);
-				  })
+			  this.PublishedsPropuestasTaller
+            .getList({
+                page: 1,               
+                type: 'orientacionpedagogica',              
+                complementarias: false,
+                intensivo: false,
+                sort: 'orden',
+            })
+            .then(data => {
+                let total = data.$total;          
+                let res = {
+                    count: total,
+                    items: data,
+               //     page: this.page,
+                 //   limit: this.limit
+                };
+    
+                def.resolve(res);
+            })
+      
+	  
+			  return def.promise;
+	  }
+
+
+	  fetchActividadComplementarias(){
+
+		let def = this.$q.defer();
+			  
+			  let q;
+			  if (this.searchText){
+				  q = this.searchText
+			  }
+	  
+			  this.PublishedsPropuestasTaller
+            .getList({
+                page: 1,               
+                type: 'orientacionpedagogica',              
+                complementarias: true,
+                intensivo: false,
+                sort: 'orden',
+            })
+            .then(data => {
+                let total = data.$total;          
+                let res = {
+                    count: total,
+                    items: data,
+               //     page: this.page,
+                 //   limit: this.limit
+                };
+    
+                def.resolve(res);
+            })
+      
+	  
+			  return def.promise;
+	  }
+
+
+
+
+	  fetchTalleresIntensivos(){
+
+		let def = this.$q.defer();
+			  
+			  let q;
+			  if (this.searchText){
+				  q = this.searchText
+			  }
+	  
+			  this.PublishedsPropuestasTaller
+            .getList({
+                page: 1,               
+                type: 'orientacionpedagogica',              
+                complementarias: true,
+                intensivo: false,
+                sort: 'orden',
+            })
+            .then(data => {
+                let total = data.$total;          
+                let res = {
+                    count: total,
+                    items: data,
+               //     page: this.page,
+                 //   limit: this.limit
+                };
+    
+                def.resolve(res);
+            })
+      
 	  
 			  return def.promise;
 	  }
