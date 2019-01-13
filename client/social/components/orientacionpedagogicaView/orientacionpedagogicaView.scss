@@ -281,3 +281,105 @@ h3 {
 		margin-right: 10px;
 	}
 }
+
+div.view_kits_div {
+	background-color: rgb(250,250,250);
+}
+
+div.view_kits_recomendados {
+	background-color: rgb(250,250,250);
+	font-size: 1.3rem;
+    font-weight: bold;
+}
+
+div.view_kit_sugerido {
+	text-align: center;
+	align-content: center;
+	border: 1px solid lightgrey;
+    padding: 12px 0px;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: auto;
+}
+
+div.view_kit {
+	&__ebot {
+		&__off {
+			background-image: url(/assets/images/modal/e-bot_sugerido_off.png) ;
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+			display: inline-block;
+			margin-left: 10px;
+			min-width: -webkit-fill-available;
+			min-width: -moz-available;
+			height: 220px;
+    		max-height: 220px;
+		}
+		&__on {
+			background-image: url(/assets/images/modal/e-bot_sugerido_on.png);
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+			display: inline-block;
+			margin-left: 10px;
+			min-width: -webkit-fill-available;
+			min-width: -moz-available;
+			height: 220px;
+    		max-height: 220px;
+		}
+	}
+	&__lbot {
+		&__off {
+			background-image: url(/assets/images/modal/l-bot_sugerido_off.png);
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+			display: inline-block;
+			margin-left: 10px;
+			min-width: -webkit-fill-available;
+			min-width: -moz-available;
+			height: 220px;
+    		max-height: 220px;
+		}
+		&__on {
+			background-image: url(/assets/images/modal/l-bot_sugerido_on.png);
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+			display: inline-block;
+			margin-left: 10px;
+			min-width: -webkit-fill-available;
+			min-width: -moz-available;
+			height: 220px;
+    		max-height: 220px;
+		}
+	}
+	&__tbot {
+		&__off {
+			background-image: url(/assets/images/modal/t-bot_sugerido_off.png);
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+			display: inline-block;
+			margin-left: 10px;
+			min-width: -webkit-fill-available;
+			min-width: -moz-available;
+			height: 220px;
+    		max-height: 220px;
+		}
+		&__on {
+			background-image: url(/assets/images/modal/t-bot_sugerido_on.png);
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-position: center;
+			display: inline-block;
+			margin-left: 10px;
+			min-width: -webkit-fill-available;
+			min-width: -moz-available;
+			height: 220px;
+    		max-height: 220px;
+		}
+	}
+}

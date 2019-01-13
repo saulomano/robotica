@@ -33,24 +33,21 @@
 	</rd-card-toolbar>	
 	<rd-card-header>
 		<div class="rd-card-orientaciones__header--wrapper" layout="row" layout-align="start center">
-				<div class="fIntensivo" ng-show="$ctrl.resource.intensivo == true ">TALLER INTENSIVO</div>
+			<div class="fIntensivo" ng-show="$ctrl.resource.intensivo == true ">TALLER INTENSIVO</div>
 			<span class="rd-card-orientaciones__icon--circle">
 				<i class="ri ri-3x" ng-class="'ri-'+$ctrl.resource.type"></i>
 			</span>
-			</div>
+		</div>
 	</rd-card-header>
 	<rd-card-body>
 		<div layout="row" ng-hide="$ctrl.deleteDesafioBoolean || $ctrl.cardhome === 'home'" >				
-			
 			<div ng-hide="$ctrl.resource.orden" class="preview-glyphs">
 				<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(area)}}"></md-icon>
 			</div>
-
 			<div ng-show="$ctrl.resource.orden" layout-align="end" style="margin-left: 62%;">
 				<label class="green_font">TALLER</label><span class="green"> {{$ctrl.resource.orden}}</span>
 			</div>
 		</div>
-		
 		<div layout="row" ng-hide="$ctrl.deleteDesafioBoolean">
 			<div flex class="rd-card__body--custom">
 				<h1 class="rd-card__title--v1">{{$ctrl.resource.objetivo}}</h1>
@@ -61,17 +58,36 @@
 				<!--<p><strong class="rd-card-orientaciones__owner">{{$ctrl.resource.owner.name}}</strong></p>-->
 			</div>
 		</div>
+		<div class="kits_recomendados" layout="row" ng-hide="$ctrl.deleteDesafioBoolean" >
+			<label style="font-size: 1.4rem; font-weight: bold;">KITS RECOMENDADOS</label>
+		</div>
+		<div class="kits_recomendados" layout="row" ng-hide="$ctrl.deleteDesafioBoolean" layout-align="start center">
+			<div layout="row">
+				<div class="kit_sugerido" flex>
+					<span class="{{$ctrl.getKitClass('kit__ebot')}}"></span>
+					<p>E-BOT</p>
+				</div>
+				<div class="kit_sugerido" flex>
+					<span class="{{$ctrl.getKitClass('kit__tbot')}}"></span>
+					<p>T-BOT</p>
+				</div>
+				<div class="kit_sugerido" flex>
+					<span class="{{$ctrl.getKitClass('kit__lbot')}}"></span>
+					<p>L-BOT</p>
+				</div>
+			</div>
+		</div>
 		<div layout="row" ng-show="$ctrl.deleteDesafioBoolean">
-	<div class="dashboard__remove" ng-hide="$ctrl.loading">
-		<p class="dashboard__remove--legend">¿Esta seguro que desea eliminar PERMANENTEMENTE la orientacion pedagógica?</p>
-		<md-button ng-click="$ctrl.deleteResource()" class="md-raised md-primary dashboard__remove--button" aria-label="Eliminar módulo">
-			Confirmar y Eliminar Desafio
-		</md-button>
-		<md-button ng-click="$ctrl.deleteDesafioBoolean = !$ctrl.deleteDesafioBoolean" class="md-raised md-primary dashboard__remove--button" aria-label="Eliminar módulo">
-			Cancelar
-		</md-button>
-	</div>
-</div>
+			<div class="dashboard__remove" ng-hide="$ctrl.loading">
+				<p class="dashboard__remove--legend">¿Esta seguro que desea eliminar PERMANENTEMENTE la orientacion pedagógica?</p>
+				<md-button ng-click="$ctrl.deleteResource()" class="md-raised md-primary dashboard__remove--button" aria-label="Eliminar módulo">
+					Confirmar y Eliminar Desafio
+				</md-button>
+				<md-button ng-click="$ctrl.deleteDesafioBoolean = !$ctrl.deleteDesafioBoolean" class="md-raised md-primary dashboard__remove--button" aria-label="Eliminar módulo">
+					Cancelar
+				</md-button>
+			</div>
+		</div>
 	</rd-card-body>
 </rd-card>
 

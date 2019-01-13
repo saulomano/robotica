@@ -92,21 +92,24 @@ class OrientacionPedagogicaCardController {
 
 
 
-      getFieldClass(entry){
+    getFieldClass(entry){
         if (entry == "Cs. Naturales")
             return "iconPed-naturales step";
         if (entry == "Matemática")
             return "iconPed-matematica step";
         if (entry == "Prácticas del Lenguaje")
             return "iconPed-lengua step";            
-
-
-
         return  "iconPed-"+entry +" step";
+    }
 
-        }
-
-      
+    getKitClass(kit) {
+        if (kit == "kit__ebot")
+            return kit + "__on";
+        else if (kit == "kit__tbot")
+            return kit + "__off";
+        else if (kit == "kit__lbot")
+            return kit + "__on";
+    }      
 
 
 	deleteResource(){

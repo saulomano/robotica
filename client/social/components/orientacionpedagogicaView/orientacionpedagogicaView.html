@@ -84,6 +84,27 @@
 			</section>
 		</div>
 	</div>
+	<div class="view_kits_div" layout="column" layout-align="start stretch">
+		<div flex>
+			<label style="font-family: DINNextRoundedLTPro-Regular; font-size: 1.8rem; font-weight: bold;">KITS RECOMENDADOS</label>
+		</div>
+		<div flex class="view_kits_recomendados" layout="row" layout-align="start center">
+			<div flex layout="row" flex>
+				<div class="view_kit_sugerido" flex>
+					<div class="{{$ctrl.getKitClass('view_kit__ebot')}}"></div>
+					<p>E-BOT</p>
+				</div>
+				<div class="view_kit_sugerido" flex>
+					<div class="{{$ctrl.getKitClass('view_kit__tbot')}}"></div>
+					<p>T-BOT</p>
+				</div>
+				<div class="view_kit_sugerido" flex>
+					<div class="{{$ctrl.getKitClass('view_kit__lbot')}}"></div>
+					<p>L-BOT</p>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div class="rview__resources" layout="row" layout-align="start stretch">
 	
 		<div flex>

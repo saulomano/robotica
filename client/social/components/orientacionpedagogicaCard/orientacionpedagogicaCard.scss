@@ -91,3 +91,65 @@ span.green {
 	text-align: center;
 	width: 2.7em; 
   }
+
+div.kits_recomendados {
+	background-color: rgb(250,250,250);
+	font-size: 1.3rem;
+    font-weight: bold;
+}
+
+div.kit_sugerido {
+	text-align: center;
+	align-content: center;
+}
+
+span.kit {
+	&__ebot {
+		&__off {
+			background-image: url(/assets/images/e-bot_kit_sugerido_off.png);
+			display: inline-block;
+			margin-left: 10px;
+			width: 80px;
+    		height: 80px;
+		}
+		&__on {
+			background-image: url(/assets/images/e-bot_kit_sugerido_on.png);
+			display: inline-block;
+			margin-left: 10px;
+			width: 80px;
+    		height: 80px;
+		}
+	}
+	&__lbot {
+		&__off {
+			background-image: url(/assets/images/l-bot_kit_sugerido_off.png);
+			display: inline-block;
+			margin-left: 10px;
+			width: 80px;
+    		height: 80px;
+		}
+		&__on {
+			background-image: url(/assets/images/l-bot_kit_sugerido_on.png);
+			display: inline-block;
+			margin-left: 10px;
+			width: 80px;
+    		height: 80px;
+		}
+	}
+	&__tbot {
+		&__off {
+			background-image: url(/assets/images/t-bot_kit_sugerido_off.png);
+			display: inline-block;
+			margin-left: 10px;
+			width: 80px;
+    		height: 80px;
+		}
+		&__on {
+			background-image: url(/assets/images/t-bot_kit_sugerido_on.png);
+			display: inline-block;
+			margin-left: 10px;
+			width: 80px;
+    		height: 80px;
+		}
+	}
+}

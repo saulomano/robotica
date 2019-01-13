@@ -143,6 +143,15 @@ class OrientacionPedagogicaViewController extends SocialComponent{
         return  "iconPed-"+entry +" step";
 
 	}
+
+	getKitClass(kit) {
+        if (kit == "view_kit__ebot")
+            return kit + "__on";
+        else if (kit == "view_kit__tbot")
+            return kit + "__off";
+        else if (kit == "view_kit__lbot")
+            return kit + "__on";
+    }
 	
 	viewResource($event, resource, id){
 
