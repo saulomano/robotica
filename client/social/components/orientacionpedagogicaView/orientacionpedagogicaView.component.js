@@ -1,6 +1,7 @@
 'use strict';
 
 import SocialComponent from '../../social.component';
+import _ from 'lodash';
 //import angular from 'angular';
 
 export default angular
@@ -144,13 +145,16 @@ class OrientacionPedagogicaViewController extends SocialComponent{
 
 	}
 
-	getKitClass(kit) {
-        if (kit == "view_kit__ebot")
-            return kit + "__on";
-        else if (kit == "view_kit__tbot")
-            return kit + "__off";
-        else if (kit == "view_kit__lbot")
-            return kit + "__on";
+	getKitClass(kit, kitClass, list) {
+
+		var exists = _.some(list, l => {
+			if (typeof l === 'string'){
+				return l == kit;
+			}
+			return l == kit;
+		});
+		
+		return kitClass + (exists ?  '__on' : '__off');
     }
 	
 	viewResource($event, resource, id){

@@ -19,8 +19,8 @@
 <rd-card-orientaciones data-rd-section="{{$ctrl.resource.type}}" ng-click="$ctrl.viewResource($event, $ctrl.resource, $ctrl.modoVista)">
 		<rd-card-orientaciones-toolbar ng-if="$ctrl.editable">
 			<div layout="row">
-				<div class="rd-card__status" flex ng-hide="$ctrl.resource.published == undefined"> <i class="fa fa-check-circle-o"></i>	Publicado</div>
-				<div class="rd-card__status" flex ng-show="$ctrl.resource.published == undefined"> <i class="fa fa-save"></i> Guardado</div>
+				<div class="rd-card__status" style="text-transform: uppercase; color: white;" flex ng-hide="$ctrl.resource.published == undefined"> <i class="fa fa-check-circle-o" style="color: white;"></i>	Publicado</div>
+				<div class="rd-card__status" style="text-transform: uppercase; color: white;" flex ng-show="$ctrl.resource.published == undefined"> <i class="fa fa-save" style="color: white;"></i> Guardado</div>
 				<md-button ng-click="$ctrl.deleteResource()" class="bordered md-raised md-mini rd-card__button--delete" aria-label="Eliminar módulo">
 					<md-icon md-font-icon="">delete</md-icon>
 				</md-button>

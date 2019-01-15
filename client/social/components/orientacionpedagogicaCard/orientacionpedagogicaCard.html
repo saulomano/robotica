@@ -58,21 +58,21 @@
 				<!--<p><strong class="rd-card-orientaciones__owner">{{$ctrl.resource.owner.name}}</strong></p>-->
 			</div>
 		</div>
-		<div class="kits_recomendados" layout="row" ng-hide="$ctrl.deleteDesafioBoolean" >
+		<div class="kits_recomendados" layout="row" ng-hide="$ctrl.modoVista === 'curador'" >
 			<label style="font-size: 1.4rem; font-weight: bold;">KITS RECOMENDADOS</label>
 		</div>
-		<div class="kits_recomendados" layout="row" ng-hide="$ctrl.deleteDesafioBoolean" layout-align="start center">
+		<div class="kits_recomendados" layout="row" ng-hide="$ctrl.modoVista === 'curador'" layout-align="start center">
 			<div layout="row">
 				<div class="kit_sugerido" flex>
-					<span class="{{$ctrl.getKitClass('kit__ebot')}}"></span>
+					<span class="{{$ctrl.getKitClass('E-BOT', 'kit__ebot', $ctrl.resource.kits)}}"></span>
 					<p>E-BOT</p>
 				</div>
 				<div class="kit_sugerido" flex>
-					<span class="{{$ctrl.getKitClass('kit__tbot')}}"></span>
+					<span class="{{$ctrl.getKitClass('T-BOT', 'kit__tbot', $ctrl.resource.kits)}}"></span>
 					<p>T-BOT</p>
 				</div>
 				<div class="kit_sugerido" flex>
-					<span class="{{$ctrl.getKitClass('kit__lbot')}}"></span>
+					<span class="{{$ctrl.getKitClass('L-BOT', 'kit__lbot', $ctrl.resource.kits)}}"></span>
 					<p>L-BOT</p>
 				</div>
 			</div>

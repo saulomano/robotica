@@ -252,7 +252,7 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
 			
                 this.publish();
 			
-		}
+		};
 
 		this.toRefuse = ($event) => {
 			this.resource.status = 'rechazado';
@@ -264,7 +264,7 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
 					.catch(err => {
 						throw err;
 					});
-		}
+		};
 	}
 
 	configureDropzone(Util){
@@ -446,19 +446,44 @@ export default class OrientacionPedagogicaComponent extends CuradorComponent {
 	}
 
 	toggleObject(item, list){
-    var idx = _.findIndex(list, l => {
+		var idx = _.findIndex(list, l => {
 			if (typeof l === 'string'){
 				return l == item._id;
 			}
 			return l._id == item._id;
 		});
-		
-    if (idx > -1) {
-      list.splice(idx, 1);
-    }
-    else {
-      list.push(item);
-    }
+			
+		if (idx > -1) {
+		  list.splice(idx, 1);
+		}
+		else {
+		  list.push(item);
+		}
+	}
+
+	existsKit(item, list){
+		return _.some(list, l => {
+			if (typeof l === 'string'){
+				return l == item;
+			}
+			return l == item;
+		});
+	}
+
+	toggleKit(item, list){
+		var idx = _.findIndex(list, l => {
+			if (typeof l === 'string'){
+				return l == item;
+			}
+			return l == item;
+		});
+			
+		if (idx > -1) {
+		  list.splice(idx, 1);
+		}
+		else {
+		  list.push(item);
+		}
 	}
 
 	onDeletePost_($index){

@@ -102,15 +102,17 @@ class OrientacionPedagogicaCardController {
         return  "iconPed-"+entry +" step";
     }
 
-    getKitClass(kit) {
-        if (kit == "kit__ebot")
-            return kit + "__on";
-        else if (kit == "kit__tbot")
-            return kit + "__off";
-        else if (kit == "kit__lbot")
-            return kit + "__on";
-    }      
+    getKitClass(kit, kitClass, list) {
 
+		var exists = _.some(list, l => {
+			if (typeof l === 'string'){
+				return l == kit;
+			}
+			return l == kit;
+		});
+		
+		return kitClass + (exists ?  '__on' : '__off');
+    }
 
 	deleteResource(){
         this.resource

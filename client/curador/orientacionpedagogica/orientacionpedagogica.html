@@ -284,6 +284,29 @@
 		</md-content>
 		<md-content  class="dashboard__content" flex>
 			<div class="dashboard__box" ng-if="$ctrl.showViculo">
+				<h4 class="color-grey font-medium">KITS RECOMENDADOS</h4>
+				<div  layout="row" layout-padding>
+					<div flex>
+						<div><strong>E-BOT</strong></div>
+					</div>
+					<md-checkbox class="md-secondary" ng-checked="$ctrl.existsKit('E-BOT', $ctrl.resource.kits)" ng-click="$ctrl.toggleKit('E-BOT', $ctrl.resource.kits)" aria-label="Agregar/quitar {{item.nombre}}"></md-checkbox>
+				</div>
+				<div  layout="row" layout-padding>
+					<div flex>
+						<div><strong>T-BOT</strong></div>
+					</div>
+					<md-checkbox class="md-secondary" ng-checked="$ctrl.existsKit('T-BOT', $ctrl.resource.kits)" ng-click="$ctrl.toggleKit('T-BOT', $ctrl.resource.kits)" aria-label="Agregar/quitar {{item.nombre}}"></md-checkbox>
+				</div>
+				<div  layout="row" layout-padding>
+					<div flex>
+						<div><strong>L-BOT</strong></div>
+					</div>
+					<md-checkbox class="md-secondary" ng-checked="$ctrl.existsKit('L-BOT', $ctrl.resource.kits)" ng-click="$ctrl.toggleKit('L-BOT', $ctrl.resource.kits)" aria-label="Agregar/quitar {{item.nombre}}"></md-checkbox>
+				</div>
+			</div>
+		</md-content>
+		<md-content  class="dashboard__content" flex>
+			<div class="dashboard__box" ng-if="$ctrl.showViculo">
 				<h4 class="font-medium color-grey">Propuestas contenidas en esta propuesta</h4>
 				<div class="dashboard__search">
 					<input type="text" ng-model="$ctrl.filterText" autofocus>
