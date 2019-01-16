@@ -7,8 +7,14 @@
 		<span class="rd-navbar__menu-button--bars"></span>
 	</a>
 
+	<div ng-if="$rdNavbarController.isMobile">
+		<a ui-sref="social.pantallabusqueda">
+			<img style="margin-left: 50%;" ng-src="assets/busqueda2.png" alt="Logo">
+		</a>
+	</div>
+
 	<div ng-if="$rdNavbarController.isMobile">			
-		<img style="margin-left: 90%;" src="/assets/logo-ba.png" alt="logo-ba">  
+		<img style="margin-left: 70%;" src="/assets/logo-ba.png" alt="logo-ba">  
 	</div>
 	
 
@@ -20,7 +26,11 @@
 	<nav class="nav rd-navbar__nav--navigation col-sm-3" ng-if="!$rdNavbarController.isMobile" ng-transclude="items" role="navigation">
 	</nav>
 
-	
+	<div class="navbar__logo" ng-if="!$rdNavbarController.isMobile">
+		<a ui-sref="social.pantallabusqueda">
+			<img style="margin-left: -150%;"ng-src="assets/busqueda2.png" alt="Logo">
+		</a>
+	</div>
 </div>
 
 <!-- VERTICAL NAVIGATION -->
