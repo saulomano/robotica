@@ -31,27 +31,72 @@
     display: table;
 }
 
+@media only screen and (max-width: 840px) {
+    .wrapper-dropdown-3   {
+        padding: 3px !important;
+        width: auto !important;
+    }
+
+    .searchdd{
+        width: auto !important;
+    }
+
+    .searchInput{
+        width:75% !important;
+    }
+
+    .searchCont{
+        width: auto !important;
+    }
+    .wrapper-dropdown-3:after{
+        border-style: hidden !important;
+    }
+}
+
+.searchCont{
+    display: inline-block;
+    margin-bottom: 5%;
+    border: 1px solid #D1CED2;
+    padding: 7px;
+    border-radius: 7px;
+    width: 40%;
+}
+
+.searchdd{
+    width: 40%;
+}
+
+.searchInput{
+    margin: 0 auto !important;
+    padding: 10px !important;
+    background: #fff !important;
+     border-radius: 0px !important;
+    border: 0px solid !important;
+    border-right: 1px solid #D1CED2 !important;
+    border-left: 1px solid #D1CED2 !important;
+    width: 50%;
+}
 
 .wrapper-dropdown-3 {
     /* Size and position */
     position: relative;
-    width: 300px;
-    margin-left: 30%;
-    //margin: 0 auto;
+   // width: 300px;
+    //margin-left: 30%;
     padding: 10px;
     float: left;
 
     /* Styles */
     background: #fff;
-    border-radius: 7px;
+    /*border-radius: 7px;
     border: 1px solid rgba(0,0,0,0.15);
     box-shadow: 0 1px 1px rgba(50,50,50,0.1);
-    cursor: pointer;
+    cursor: pointer;*/
     outline: none;
 
     /* Font settings */
     font-weight: bold;
     color: #8AA8BD;
+   
 }
 
 .wrapper-dropdown-3:after {
@@ -59,7 +104,7 @@
     width: 0;
     height: 0;
     position: absolute;
-    right: 15px;
+    right: 5px;
     top: 50%;
     margin-top: -3px;
     border-width: 6px 6px 0 6px;

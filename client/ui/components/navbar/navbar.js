@@ -24,7 +24,7 @@ class RdNavbarController {
 
     	this.$element.addClass('rd-navbar');
 
-		this.$scope.$watch(() => { return $mdMedia('(max-width: 959px)')  }, (mobile) => {
+		this.$scope.$watch(() => { return $mdMedia('xs') || $mdMedia('sm');  }, (mobile) => {
 			this.isMobile = mobile === true;
 			if(this.isMobile) {
                 this.$element.addClass(clsScrolled);

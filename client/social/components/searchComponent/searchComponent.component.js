@@ -10,7 +10,7 @@ export default angular
 
 class SearchComponentController {
 	/*@ngInject*/
-	constructor($scope, $element, $state, $mdDialog,Restangular, $q,$stateParams) {
+	constructor($scope, $element, $state, $mdDialog,Restangular,$mdMedia, $q,$stateParams) {
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;
@@ -40,6 +40,11 @@ class SearchComponentController {
 
 
 		this.talleresIntensivos = this.filter.includes('talleresIntensivos');
+
+
+		this.$scope.$watch(() => { return $mdMedia('xs') || $mdMedia('sm'); }, (mobile) => {
+			this.isMobile = mobile === true;      
+		  });
 
 		console.log($stateParams);
 		console.log($scope.filter);
