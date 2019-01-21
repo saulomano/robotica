@@ -25,7 +25,8 @@ export function index(req, res, next) {
 	let q = {};
 
 
-	
+
+console.log(qq);
 	if (qq){
   	// convert to regex
 		let keywords = _.escapeRegExp(qq);
@@ -43,18 +44,22 @@ export function index(req, res, next) {
 
 		let k = new RegExp(keywords, 'i');
 
+		console.log(k);
+
+	
 		q = { $or: [
 				{ type: { $regex: k, $options: 'i' } },
 				{ objetivo: { $regex: k, $options: 'i' } },
 				{ descripcion: { $regex: k, $options: 'i' } },
-				{ nivel: { $regex: k, $options: 'i' } },
-			
+				{ nivel: { $regex: k, $options: 'i' } },			
 				{ 'postBody.content': { $regex: k, $options: 'i' } },
 				{ tags: { $regex: k, $options: 'i' } },
 			]
 		};
 	}
 
+
+	
 
 	if (publicaHome){
 		q['publicaHome'] =true;
@@ -81,6 +86,9 @@ export function index(req, res, next) {
 	if(orden ){
 		q['orden'] = orden;
 	}
+
+
+
 
 
 	if (area) {

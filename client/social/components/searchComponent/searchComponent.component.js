@@ -10,7 +10,7 @@ export default angular
 
 class SearchComponentController {
 	/*@ngInject*/
-	constructor($scope, $element, $state, $mdDialog,Restangular, $q,) {
+	constructor($scope, $element, $state, $mdDialog,Restangular, $q,$stateParams) {
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;
@@ -27,11 +27,22 @@ class SearchComponentController {
 		this.herramientas= false;
 		this.textoABuscar= '';
 		this.PublishedsPropuestasTaller = this.Restangular.all('publishedOrientacionPedagogica');
-      
+	   this.cantidadPropuestasTalleres= 0;
+	   this.cantidadTalleresIntensivos= 0;
+	   this.cantidadadActividadesComplementarias= 0;
+	   this.cantidadTutoriales= 0;
+	   this.cantidadProgramas= 0;
+	   this.cantidadHerramientas= 0;
+	   this.resetWaterfall;		
+		this.textSearch = $stateParams.search;
+		this.filter=$stateParams.filter.split(",");
 
-	
 
-	
+
+		this.talleresIntensivos = this.filter.includes('talleresIntensivos');
+
+		console.log($stateParams);
+		console.log($scope.filter);
 	}
 	onClick(e){
 		e.preventDefault();
@@ -47,7 +58,7 @@ class SearchComponentController {
 				return;
 			}
 			document.removeEventListener('click', onDocClick);
-			this.hideSubMenu(el);
+		//	this.hideSubMenu(el);
 		});
 	}
 
@@ -58,10 +69,27 @@ class SearchComponentController {
 
 	buscar(e){
 
-		console.log(this.propuestasTalleres + " " +
-			this.talleresIntensivos + " " +
-			this.actividadesComplementarias);
 			this.hideSubMenu(document.getElementById('dd'));
+			console.log(this.talleresIntensivos);
+			let filtro=[];
+			if (this.propuestasTalleres)
+				filtro.push('propuestasTalleres');
+			if (this.talleresIntensivos)
+				filtro.push('talleresIntensivos');
+			if (this.actividadesComplementarias)
+				filtro.push('actividadesComplementarias');
+			if (this.tutoriales)
+				filtro.push('tutoriales');
+			if (this.programas)
+				filtro.push('programas');
+			if (this.herramientas)
+				filtro.push('herramientas');	
+
+		
+			console.log(this.textSearch );
+				this.$state.go(this.$state.current, {search: this.textSearch , filter : filtro.join(",")			
+				}, {reload:true});
+			
 	}
 	
    
@@ -69,33 +97,37 @@ class SearchComponentController {
 
 	fetchDataPropuestaTaller(){
 
+		console.log('dispara');		
+
 		let def = this.$q.defer();
-			  
-			  let q;
-			  if (this.searchText){
-				  q = this.searchText
-			  }
-	  
-			  this.PublishedsPropuestasTaller
-            .getList({
-                page: 1,               
-                type: 'orientacionpedagogica',              
-                complementarias: false,
-                intensivo: false,
-                sort: 'orden',
-            })
-            .then(data => {
-                let total = data.$total;          
-                let res = {
-                    count: total,
-                    items: data,
-               //     page: this.page,
-                 //   limit: this.limit
-                };
-    
-                def.resolve(res);
-            })
-      
+				  
+					let q;
+					if (this.textSearch){
+						q = this.textSearch
+					}
+			
+					this.PublishedsPropuestasTaller
+					.getList({
+						page: 1,               
+						type: 'orientacionpedagogica',              
+						complementarias: false,
+						intensivo: false,
+						sort: 'orden',
+						q:this.textSearch
+					})
+					.then(data => {
+						let total = data.$total;          
+						this.cantidadPropuestasTalleres= data.$total;
+						let res = {
+							count: total,
+							items: data,
+					//     page: this.page,
+						//   limit: this.limit
+						};
+			
+						def.resolve(res);
+					})
+				
 	  
 			  return def.promise;
 	  }

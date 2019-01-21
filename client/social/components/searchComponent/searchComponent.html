@@ -15,7 +15,6 @@
                 <li><md-checkbox class="green"  ng-model="$ctrl.talleresIntensivos"> TALLERES INTENSIVOS</md-checkbox></li>
                 <li><md-checkbox class="green"  ng-model="$ctrl.actividadesComplementarias" > ACTIVIDADES COMPLEMENTARIAS</md-checkbox></li>
                 <hr class="linea"/>
-                <li><md-checkbox class="green" ng-model="$ctrl.kits"> KITS</md-checkbox></li>
                 <li><md-checkbox class="green" ng-model="$ctrl.tutoriales"> TUTORIALES</md-checkbox></li>
                 <li><md-checkbox class="green" ng-model="$ctrl.programas"> PROGRAMAS</md-checkbox></li>
                 <li><md-checkbox class="green" ng-model="$ctrl.herramientas"> HERRAMIENTAS SOFTWARE</md-checkbox></li>
@@ -27,7 +26,7 @@
                     padding: 10px;
                     background: #fff;
                     border-radius: 7px; 
-                    border: 1px solid rgba(0, 0, 0, 0.15);" ng-model="$ctrl.textoABuscar">
+                    border: 1px solid rgba(0, 0, 0, 0.15);" ng-model="$ctrl.textSearch">
                    <img ng-src="assets/lupa.png" class="pointer"  ng-click="$ctrl.buscar($event)"></label>
             </div>
     
@@ -36,8 +35,14 @@
 </section>
 
 
-<div class="cont" ng-if="$ctrl.propuestasTalleres">
-	<div class="rowparallaxk">
+
+
+<div class="cont" ng-if="$ctrl.filter.includes('propuestasTalleres')">
+
+
+
+
+ <div class="rowparallaxk">
 		<div class="textKit">
 			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Propuestas de taller</p>
 		</div>
@@ -57,7 +62,7 @@
 
 
 
-<div class="cont" ng-if="$ctrl.actividadesComplementarias">
+<div class="cont" ng-if="$ctrl.filter.includes('actividadesComplementarias')">
 	<div class="rowparallaxk">
 		<div class="textKit">
 			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Actividades complementarias</p>
@@ -78,7 +83,7 @@
 
 
 
-<div class="cont" ng-if="$ctrl.talleresIntensivos">
+<div class="cont" ng-if="$ctrl.filter.includes('talleresIntensivos')">
 	<div class="rowparallaxk">
 		<div class="textKit">
 			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Talleres Intensivos</p>
