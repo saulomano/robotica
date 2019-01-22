@@ -40,6 +40,11 @@ class SearchComponentController {
 
 
 		this.talleresIntensivos = this.filter.includes('talleresIntensivos');
+		this.propuestasTalleres = this.filter.includes('propuestasTalleres');
+		this.actividadesComplementarias = this.filter.includes('actividadesComplementarias');
+		this.tutoriales = this.filter.includes('tutoriales');
+		this.programas = this.filter.includes('programas');
+		this.herramientas = this.filter.includes('herramientas');
 
 
 		this.$scope.$watch(() => { return $mdMedia('xs') || $mdMedia('sm'); }, (mobile) => {
