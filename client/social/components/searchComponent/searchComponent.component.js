@@ -45,8 +45,7 @@ class SearchComponentController {
 		this.tutoriales = this.filter.includes('tutoriales');
 		this.programas = this.filter.includes('programas');
 		this.herramientas = this.filter.includes('herramientas');
-		this.Published = this.Restangular.all('published');
-	  
+		this.Publisheds = this.Restangular.all('publisheds');
 
 		this.$scope.$watch(() => { return $mdMedia('xs') || $mdMedia('sm'); }, (mobile) => {
 			this.isMobile = mobile === true;      
@@ -225,7 +224,7 @@ class SearchComponentController {
 						q = this.textSearch
 					}
 			
-					this.Published
+					this.Publisheds
 					.getList({
 						page: 1,               
 						type: 'resource',   
@@ -260,7 +259,7 @@ class SearchComponentController {
 						q = this.textSearch
 					}
 			
-					this.Published
+					this.Publisheds
 					.getList({
 						page: 1,               
 						type: 'resource',   
