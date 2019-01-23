@@ -37,19 +37,12 @@
         width: auto !important;
     }
 
-    .searchdd{
-        width: auto !important;
-    }
-
-    .searchInput{
-        width:75% !important;
-    }
-
-    .searchCont{
-        width: auto !important;
-    }
     .wrapper-dropdown-3:after{
         border-style: hidden !important;
+    }
+
+    .imgSearch{
+        margin-top: 5px !important ;
     }
 }
 
@@ -59,22 +52,25 @@
     border: 1px solid #D1CED2;
     padding: 7px;
     border-radius: 7px;
-    width: 40%;
+   // width: 40%;
 }
 
-.searchdd{
-    width: 40%;
+.imgSearch{
+    float: right !important; 
+    margin-top: auto;
 }
+
 
 .searchInput{
-    margin: 0 auto !important;
+    //margin: 0 auto !important;
     padding: 10px !important;
     background: #fff !important;
      border-radius: 0px !important;
     border: 0px solid !important;
     border-right: 1px solid #D1CED2 !important;
     border-left: 1px solid #D1CED2 !important;
-    width: 50%;
+    margin-left: 10px;
+    //width: 50%;
 }
 
 .wrapper-dropdown-3 {
@@ -104,7 +100,7 @@
     width: 0;
     height: 0;
     position: absolute;
-    right: 5px;
+    right: -5px;
     top: 50%;
     margin-top: -3px;
     border-width: 6px 6px 0 6px;
