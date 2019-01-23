@@ -45,7 +45,8 @@ class SearchComponentController {
 		this.tutoriales = this.filter.includes('tutoriales');
 		this.programas = this.filter.includes('programas');
 		this.herramientas = this.filter.includes('herramientas');
-
+		this.Published = this.Restangular.all('published');
+	  
 
 		this.$scope.$watch(() => { return $mdMedia('xs') || $mdMedia('sm'); }, (mobile) => {
 			this.isMobile = mobile === true;      
@@ -213,7 +214,75 @@ class SearchComponentController {
 	  }
 
 
+	  fetchProgramas(){
 
+		console.log('dispara');		
+
+		let def = this.$q.defer();
+				  
+					let q;
+					if (this.textSearch){
+						q = this.textSearch
+					}
+			
+					this.Published
+					.getList({
+						page: 1,               
+						type: 'resource',   
+						subtype: 'programa',       
+						q:this.textSearch
+					})
+					.then(data => {
+						let total = data.$total;          
+						this.cantidadProgramas= data.$total;
+						let res = {
+							count: total,
+							items: data,
+					//     page: this.page,
+						//   limit: this.limit
+						};
+			
+						def.resolve(res);
+					})
+				
+	  
+			  return def.promise;
+	  }
+
+	  fetchHerramientas(){
+
+		console.log('dispara');		
+
+		let def = this.$q.defer();
+				  
+					let q;
+					if (this.textSearch){
+						q = this.textSearch
+					}
+			
+					this.Published
+					.getList({
+						page: 1,               
+						type: 'resource',   
+						subtype: 'herramienta',       
+						q:this.textSearch
+					})
+					.then(data => {
+						let total = data.$total;          
+						this.cantidadHerramientas= data.$total;
+						let res = {
+							count: total,
+							items: data,
+					//     page: this.page,
+						//   limit: this.limit
+						};
+			
+						def.resolve(res);
+					})
+				
+	  
+			  return def.promise;
+	  }
     
 
 }

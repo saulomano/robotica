@@ -94,3 +94,63 @@
 		</div>
 	</div>
 </div>
+
+
+
+<div class="cont" ng-if="$ctrl.filter.includes('tutoriales')">
+	<div class="rowparallaxk">
+		<div class="textKit">
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Tutoriales</p>
+		</div>
+		<div >
+			<div>
+                    <rd-waterfall item-width="350" gutter="24" load-more-text="Ver más" fetch="$ctrl.fetchTutoriales()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+			
+                            <rd-item-template>           
+                                <resource-card resource="item" editable="false" vista="'social'"></resource-card>
+		        </rd-item-template>
+                </rd-waterfall>
+			</div>
+		
+		</div>
+	</div>
+</div>
+
+
+<div class="cont" ng-if="$ctrl.filter.includes('programas')">
+	<div class="rowparallaxk">
+		<div class="textKit">
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Programas</p>
+		</div>
+		<div >
+			<div>
+                    <rd-waterfall item-width="350" gutter="24" load-more-text="Ver más" fetch="$ctrl.fetchProgramas()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+			
+                            <rd-item-template>           
+                                <resource-card resource="item" editable="false" vista="'social'"></resource-card>
+		        </rd-item-template>
+                </rd-waterfall>
+			</div>
+		
+		</div>
+	</div>
+</div>
+
+<div class="cont" ng-if="$ctrl.filter.includes('herramientas')">
+	<div class="rowparallaxk">
+		<div class="textKit">
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Programas</p>
+		</div>
+		<div >
+			<div>
+                    <rd-waterfall item-width="350" gutter="24" load-more-text="Ver más" fetch="$ctrl.fetchHerramientas()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+			
+                            <rd-item-template>           
+                                <resource-card resource="item" editable="false" vista="'social'"></resource-card>
+		        </rd-item-template>
+                </rd-waterfall>
+			</div>
+		
+		</div>
+	</div>
+</div>
