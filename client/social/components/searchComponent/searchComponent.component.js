@@ -22,17 +22,10 @@ class SearchComponentController {
 		this.talleresIntensivos= false;
 		this.actividadesComplementarias= false;
 		this.kits= false;
-		this.tutoriales= false;
-		this.programas= false;
-		this.herramientas= false;
+		this.recursos= false;		
 		this.textoABuscar= '';
 		this.PublishedsPropuestasTaller = this.Restangular.all('publishedOrientacionPedagogica');
-	   this.cantidadPropuestasTalleres= 0;
-	   this.cantidadTalleresIntensivos= 0;
-	   this.cantidadadActividadesComplementarias= 0;
-	   this.cantidadTutoriales= 0;
-	   this.cantidadProgramas= 0;
-	   this.cantidadHerramientas= 0;
+	   this.cantidadBusqueda= 0;	  
 	   this.resetWaterfall;		
 		this.textSearch = $stateParams.search;
 		this.filter=$stateParams.filter.split(",");
@@ -42,9 +35,8 @@ class SearchComponentController {
 		this.talleresIntensivos = this.filter.includes('talleresIntensivos');
 		this.propuestasTalleres = this.filter.includes('propuestasTalleres');
 		this.actividadesComplementarias = this.filter.includes('actividadesComplementarias');
-		this.tutoriales = this.filter.includes('tutoriales');
-		this.programas = this.filter.includes('programas');
-		this.herramientas = this.filter.includes('herramientas');
+		this.recursos = this.filter.includes('recursos');
+	
 		this.Publisheds = this.Restangular.all('publisheds');
 
 		this.$scope.$watch(() => { return $mdMedia('xs') || $mdMedia('sm'); }, (mobile) => {
@@ -79,6 +71,10 @@ class SearchComponentController {
 
 	buscar(e){
 
+
+			 if (this.searchText==='')
+			    return;
+			 
 			this.hideSubMenu(document.getElementById('dd'));
 			console.log(this.talleresIntensivos);
 			let filtro=[];
@@ -88,13 +84,9 @@ class SearchComponentController {
 				filtro.push('talleresIntensivos');
 			if (this.actividadesComplementarias)
 				filtro.push('actividadesComplementarias');
-			if (this.tutoriales)
-				filtro.push('tutoriales');
-			if (this.programas)
-				filtro.push('programas');
-			if (this.herramientas)
-				filtro.push('herramientas');	
-
+			if (this.recursos)
+				filtro.push('recursos');
+			
 		
 			console.log(this.textSearch );
 				this.$state.go(this.$state.current, {search: this.textSearch , filter : filtro.join(",")			
@@ -127,7 +119,7 @@ class SearchComponentController {
 					})
 					.then(data => {
 						let total = data.$total;          
-						this.cantidadPropuestasTalleres= data.$total;
+						this.cantidadBusqueda+= data.$total;
 						let res = {
 							count: total,
 							items: data,
@@ -161,7 +153,9 @@ class SearchComponentController {
                 sort: 'orden',
             })
             .then(data => {
-                let total = data.$total;          
+				
+				let total = data.$total;    
+				this.cantidadBusqueda+=total;      
                 let res = {
                     count: total,
                     items: data,
@@ -197,7 +191,8 @@ class SearchComponentController {
                 sort: 'orden',
             })
             .then(data => {
-                let total = data.$total;          
+				let total = data.$total;   
+				this.cantidadBusqueda+=total;       
                 let res = {
                     count: total,
                     items: data,
@@ -213,7 +208,7 @@ class SearchComponentController {
 	  }
 
 
-	  fetchProgramas(){
+	  fetchRecursos(){
 
 		console.log('dispara');		
 
@@ -228,12 +223,11 @@ class SearchComponentController {
 					.getList({
 						page: 1,               
 						type: 'resource',   
-						subtype: 'programa',       
 						q:this.textSearch
 					})
 					.then(data => {
 						let total = data.$total;          
-						this.cantidadProgramas= data.$total;
+						this.cantidadBusqueda+= data.$total;
 						let res = {
 							count: total,
 							items: data,
@@ -248,40 +242,7 @@ class SearchComponentController {
 			  return def.promise;
 	  }
 
-	  fetchHerramientas(){
-
-		console.log('dispara');		
-
-		let def = this.$q.defer();
-				  
-					let q;
-					if (this.textSearch){
-						q = this.textSearch
-					}
-			
-					this.Publisheds
-					.getList({
-						page: 1,               
-						type: 'resource',   
-						subtype: 'herramienta',       
-						q:this.textSearch
-					})
-					.then(data => {
-						let total = data.$total;          
-						this.cantidadHerramientas= data.$total;
-						let res = {
-							count: total,
-							items: data,
-					//     page: this.page,
-						//   limit: this.limit
-						};
-			
-						def.resolve(res);
-					})
-				
-	  
-			  return def.promise;
-	  }
+	 
     
 
 }
