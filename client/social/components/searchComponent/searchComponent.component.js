@@ -132,6 +132,7 @@ class SearchComponentController {
 				
 	  
 			  return def.promise;
+			  console.log('disparasss');	
 	  }
 
 
