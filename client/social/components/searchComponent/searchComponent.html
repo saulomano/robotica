@@ -26,14 +26,19 @@
               
 			</div>
 			
-			<div>
+			<!--div>
 				<p style="color: red; font-size: 18px;" ng-show="!myform.$valid && submitted ">
 						Completa el contenido.
 				</p>
 					</div>
         
            
-        ​</div>
+		​</div-->
+	
+			<div class="popup">
+				<span ng-show="!myform.$valid && submitted" class="popuptext" >Completá este campo!</span>
+			</div>
+	
 		</form>
 
 
