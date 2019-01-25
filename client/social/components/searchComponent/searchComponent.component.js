@@ -150,7 +150,8 @@ class SearchComponentController {
                 type: 'orientacionpedagogica',              
                 complementarias: true,
                 intensivo: false,
-                sort: 'orden',
+				sort: 'orden',
+				q:this.textSearch
             })
             .then(data => {
 				
@@ -188,7 +189,8 @@ class SearchComponentController {
                 type: 'orientacionpedagogica',              
                 complementarias: true,
                 intensivo: false,
-                sort: 'orden',
+				sort: 'orden',
+				q:this.textSearch
             })
             .then(data => {
 				let total = data.$total;   
