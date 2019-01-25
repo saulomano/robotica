@@ -5,7 +5,7 @@ No se ha encontrado contenido para  {{$ctrl.textSearch}}
 
 
 
-<section class="main">
+<form name='myform' class="main" novalidate ng-submit="myform.$valid && $ctrl.buscar($event)">
         <div class="wrapper-demo" style=" position:relative; z-index:1000; text-align: center;">
             
             <div class="searchCont">
@@ -21,14 +21,27 @@ No se ha encontrado contenido para  {{$ctrl.textSearch}}
                                 <li><md-checkbox class="green" ng-model="$ctrl.recursos"> RECURSOS</md-checkbox></li>
                                   </ul>
                     </div>
-                    <input class="searchInput" ng-model="$ctrl.textSearch" placeholder="Busca contenido" required>
-                       <img class="wrapper-dropdown-3" style="float: right !important;" ng-src="assets/lupa.png" class="pointer"  ng-click="$ctrl.buscar($event)">
+                    <input class="searchInput" name="search" ng-model="$ctrl.textSearch" placeholder="Busca contenido" required />
+					
+					<button style="display: contents !important;border-style: none !important ;" type="submit" ng-click="submitted=true"><img  class="wrapper-dropdown-3 imgSearch"  ng-src="assets/lupa.png" class="pointer"  ></button>
+                       
               
-            </div>
+			</div>
+			
+			<!--div>
+				<p style="color: red; font-size: 18px;" ng-show="!myform.$valid && submitted ">
+						Completa el contenido.
+				</p>
+					</div>
         
            
-        ​</div>
-    </section>
+		​</div-->
+	
+			<div class="popup">
+				<span ng-show="!myform.$valid && submitted" class="popuptext" >Completá este campo!</span>
+			</div>
+	
+		</form>
 
 
 
