@@ -28,9 +28,10 @@ class SearchComponentController {
 	   this.cantidadBusqueda= 0;	  
 	   this.resetWaterfall;		
 		this.textSearch = $stateParams.search;
+		this.textoBuscado = $stateParams.search;
 		this.filter=$stateParams.filter.split(",");
 
-
+		console.log(this.textoBuscado);
 
 		this.talleresIntensivos = this.filter.includes('talleresIntensivos');
 		this.propuestasTalleres = this.filter.includes('propuestasTalleres');

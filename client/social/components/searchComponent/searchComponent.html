@@ -11,7 +11,7 @@
                     <div id="dd" class="wrapper-dropdown-3 searchdd" tabindex="1" ng-click="$ctrl.onClick($event)" >
                             <span ng-hide="$ctrl.isMobile">TODOS LOS CONTENIDOS</span>
                             <span ng-show="$ctrl.isMobile"><img ng-src="assets/icon.png" class="pointer"></span>
-                            <ul class="dropdown" style="text-align: left; width: 240px;  margin-top: 10px;" ng-click="$event.stopPropagation();">
+                            <ul class="dropdown" style="text-align: left; width: 240px;  margin-top: 10px;  z-index: 1000" ng-click="$event.stopPropagation();">
                                 <li><md-checkbox class="green"  ng-model="$ctrl.propuestasTalleres"> PROPUESTAS DE TALLERES</md-checkbox></li>
                                 <li><md-checkbox class="green"  ng-model="$ctrl.talleresIntensivos"> TALLERES INTENSIVOS</md-checkbox></li>
                                 <li><md-checkbox class="green"  ng-model="$ctrl.actividadesComplementarias" > ACTIVIDADES COMPLEMENTARIAS</md-checkbox></li>
@@ -42,14 +42,14 @@
 		</form>
 
 		<div class="rowparallaxk" >
-		<div ng-if="$ctrl.cantidadBusqueda == 0" style="margin-bottom: 5%;">
+		<div ng-if="$ctrl.filter.length > 1 && $ctrl.cantidadBusqueda===0" style="margin-bottom: 5%;">
 			<p style="font-family: DINNextRoundedLTPro-Bold; color: green; font-size: 20px;">NO SE HA ENCONTRADO CONTENIDO</p>
-			<p style="color: darkgray; font-size: 18px;">para "{{$ctrl.textSearch}}". Pruebe con otra palabra de búsqueda</p>   
+			<p style="color: darkgray; font-size: 18px;">para "{{$ctrl.textoBuscado}}". Pruebe con otra palabra de búsqueda</p>   
 		</div>
 
-		<div ng-if=" $ctrl.cantidadBusqueda != 0" style="margin-bottom: 5%;">
+		<div ng-if="$ctrl.filter.length > 1 && $ctrl.cantidadBusqueda!==0" style="margin-bottom: 5%;">
 			<p style="font-family: DINNextRoundedLTPro-Bold; color: green; font-size: 20px;">SE HAN ENCONTRADO {{$ctrl.cantidadBusqueda}} RESULTADOS</p>
-			<p style="color: darkgray; font-size: 18px;">para "{{$ctrl.textSearch}}"</p>   
+			<p style="color: darkgray; font-size: 18px;">para "{{$ctrl.textoBuscado}}"</p>   
 		</div>	
 		
 	</div>

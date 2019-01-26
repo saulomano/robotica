@@ -37,6 +37,8 @@ export function index(req, res, next) {
 		q = { $or: [
 				{ type: { $regex: k, $options: 'i' } },
 				{ title: { $regex: k, $options: 'i' } },
+				{ summary: { $regex: k, $options: 'i' } },
+				
 				{ descripcion: { $regex: k, $options: 'i' } },			
 				{ accessibility: { $regex: k, $options: 'i' } },		
 				{ 	tipoRecurso: { $regex: k, $options: 'i' } },				
