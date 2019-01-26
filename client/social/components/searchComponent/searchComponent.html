@@ -42,23 +42,24 @@
 		</form>
 
 		<div class="rowparallaxk" >
-		<div ng-if="$ctrl.filter.length > 1 && $ctrl.cantidadBusqueda===0" style="margin-bottom: 5%;">
+		<div ng-if="$ctrl.filter.length > 0 && $ctrl.cantidadBusqueda===0 && $ctrl.finishSearch" style="margin-bottom: 5%;">
 			<p style="font-family: DINNextRoundedLTPro-Bold; color: green; font-size: 20px;">NO SE HA ENCONTRADO CONTENIDO</p>
 			<p style="color: darkgray; font-size: 18px;">para "{{$ctrl.textoBuscado}}". Pruebe con otra palabra de búsqueda</p>   
 		</div>
 
-		<div ng-if="$ctrl.filter.length > 1 && $ctrl.cantidadBusqueda!==0" style="margin-bottom: 5%;">
+		<div ng-if="$ctrl.filter.length > 0 && $ctrl.cantidadBusqueda!==0 && $ctrl.finishSearch" style="margin-bottom: 5%;">
 			<p style="font-family: DINNextRoundedLTPro-Bold; color: green; font-size: 20px;">SE HAN ENCONTRADO {{$ctrl.cantidadBusqueda}} RESULTADOS</p>
 			<p style="color: darkgray; font-size: 18px;">para "{{$ctrl.textoBuscado}}"</p>   
 		</div>	
 		
 	</div>
+
+
+
 <div class="cont" ng-if="$ctrl.filter.includes('propuestasTalleres')">
 
- <div class="rowparallaxk">
-		<!--div >
+ <div class="rowparallaxk">		
 			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Propuestas de taller</p>
-		</div-->
 		
 		<div >
 			<div>
@@ -78,11 +79,11 @@
 
 <div class="cont" ng-if="$ctrl.filter.includes('actividadesComplementarias')">
 	<div class="rowparallaxk">
-		<!--div>
-			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Actividades complementarias</p>
-		</div-->
+	
+		<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Actividades complementarias</p>
+		
 
-		<div >
+		<div>
 			<div>
                     <rd-waterfall item-width="350" gutter="24" load-more-text="Ver más" fetch="$ctrl.fetchActividadComplementarias()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
 						
@@ -92,6 +93,7 @@
                 </rd-waterfall>
 			</div>
 		
+	</div>
 	</div>
 </div>
 

@@ -31,13 +31,18 @@ class SearchComponentController {
 		this.textoBuscado = $stateParams.search;
 		this.filter=$stateParams.filter.split(",");
 
-		console.log(this.textoBuscado);
+		console.log(this.filter);
 
 		this.talleresIntensivos = this.filter.includes('talleresIntensivos');
 		this.propuestasTalleres = this.filter.includes('propuestasTalleres');
 		this.actividadesComplementarias = this.filter.includes('actividadesComplementarias');
 		this.recursos = this.filter.includes('recursos');
-	
+
+		this.talleresIntensivosExecute = false;
+		this.propuestasTalleresExecute = false;
+		this.actividadesComplementariasExecute = false;
+		this.recursosExecute = false;
+		this.finishSearch = false;
 		this.Publisheds = this.Restangular.all('publisheds');
 
 		this.$scope.$watch(() => { return $mdMedia('xs') || $mdMedia('sm'); }, (mobile) => {
@@ -46,7 +51,42 @@ class SearchComponentController {
 
 		console.log($stateParams);
 		console.log($scope.filter);
+
+
+
+	
+		
 	}
+
+
+	
+
+
+
+	setExceuteVisible(){
+		console.log(' this.talleresIntensivosExecute ' + this.talleresIntensivosExecute);
+
+		if(!this.filter.includes('talleresIntensivos'))
+		this.talleresIntensivosExecute = true;
+	if(!this.filter.includes('propuestasTalleres'))
+		this.propuestasTalleresExecute = true;
+	if (!this.filter.includes('actividadesComplementarias'))
+		this.actividadesComplementariasExecute = true;
+	if (! this.filter.includes('recursos'))
+		this.recursosExecute = true;
+
+
+	console.log(' this.talleresIntensivosExecute ' + this.talleresIntensivosExecute);
+	console.log('this.propuestasTalleresExecute ' + this.propuestasTalleresExecute);
+	console.log('this.actividadesComplementariasExecute '+ this.actividadesComplementariasExecute);
+	console.log('this.recursosExecute '+ this.recursosExecute);
+
+this.finishSearch = ( this.talleresIntensivosExecute && this.propuestasTalleresExecute
+	&& this.actividadesComplementariasExecute && this.recursosExecute); 
+	}
+	
+
+
 	onClick(e){
 		e.preventDefault();
 		var el = document.getElementById('dd');
@@ -61,7 +101,6 @@ class SearchComponentController {
 				return;
 			}
 			document.removeEventListener('click', onDocClick);
-		//	this.hideSubMenu(el);
 		});
 	}
 
@@ -77,7 +116,6 @@ class SearchComponentController {
 			    return;
 			 
 			this.hideSubMenu(document.getElementById('dd'));
-			console.log(this.talleresIntensivos);
 			let filtro=[];
 			if (this.propuestasTalleres)
 				filtro.push('propuestasTalleres');
@@ -89,7 +127,6 @@ class SearchComponentController {
 				filtro.push('recursos');
 			
 		
-			console.log(this.textSearch );
 				this.$state.go(this.$state.current, {search: this.textSearch , filter : filtro.join(",")			
 				}, {reload:true});
 			
@@ -127,13 +164,14 @@ class SearchComponentController {
 					//     page: this.page,
 						//   limit: this.limit
 						};
-			
+						this.propuestasTalleresExecute = true;
+						this.setExceuteVisible();
 						def.resolve(res);
 					})
 				
 	  
 			  return def.promise;
-			  console.log('disparasss');	
+			
 	  }
 
 
@@ -165,7 +203,8 @@ class SearchComponentController {
                //     page: this.page,
                  //   limit: this.limit
                 };
-    
+				this.actividadesComplementariasExecute = true;
+				this.setExceuteVisible();
                 def.resolve(res);
             })
       
@@ -203,7 +242,10 @@ class SearchComponentController {
                //     page: this.page,
                  //   limit: this.limit
                 };
-    
+	
+				this.talleresIntensivosExecute=true;
+				this.setExceuteVisible();
+
                 def.resolve(res);
             })
       
@@ -238,7 +280,8 @@ class SearchComponentController {
 					//     page: this.page,
 						//   limit: this.limit
 						};
-			
+						this.recursosExecute = true;
+						this.setExceuteVisible();
 						def.resolve(res);
 					})
 				
