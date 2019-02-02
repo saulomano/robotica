@@ -3,27 +3,58 @@
 		 ng-class="{ 'rd-navbar--mobile': $rdNavbarController.isMobile }">
 	
 	<!-- MENU BUTTON -->
-	<md-button class="rd-navbar__menu-button" aria-label="Menu" ng-click="$rdNavbarController.toggleDropdown($event)">
+	<a class="rd-navbar__menu-button" aria-label="Menu"  ng-click="$rdNavbarController.toggleDropdown($event)">
 		<span class="rd-navbar__menu-button--bars"></span>
-	</md-button>
+	</a>
+
+	<div ng-if="$rdNavbarController.isMobile">
+		<a ui-sref="social.pantallabusqueda">
+			<img style="margin-left: 50%;" ng-src="assets/busqueda2.png" alt="Logo">
+		</a>
+	</div>
+
+	<div ng-if="$rdNavbarController.isMobile">			
+		<img style="margin-left: 70%;" src="/assets/logo-ba.png" alt="logo-ba">  
+	</div>
+	
 
 	<!-- BRAND-->
-	<a href="#" class="rd-navbar__brand" aria-label="Ir al home" ng-transclude="brand">
+	<a href="#" class="rd-navbar__brand" aria-label="Ir al home" ng-transclude="brand" ng-if="!$rdNavbarController.isMobile">
 	</a>
-	
+
 	<!-- HORIZONTAL NAVIGATION -->
-	<nav class="rd-navbar__nav--navigation" ng-transclude="items" role="navigation">
+	<nav class="nav rd-navbar__nav--navigation col-sm-3" ng-if="!$rdNavbarController.isMobile" ng-transclude="items" role="navigation">
 	</nav>
 
-	<!-- TOOLS -->
-	<div class="rd-navbar__tools" ng-transclude="tools"></div>
-
-	<!-- PROFILE -->
-	<div class="rd-navbar__profile" ng-transclude="profile"></div>
+	<div class="navbar__logo" ng-if="!$rdNavbarController.isMobile">
+		<a ui-sref="social.pantallabusqueda">
+			<img style="margin-left: -150%;"ng-src="assets/busqueda2.png" alt="Logo">
+		</a>
+	</div>
 </div>
+
 <!-- VERTICAL NAVIGATION -->
-<div flex class="rd-navbar__dropdown" md-whiteframe="4" ng-show="$rdNavbarController.dropdownOpened">
+
+
+<!-- CUSTOM VERTICAL NAVIGATION -->
+<div flex class="rd-navbar__dropdown"  ng-show="$rdNavbarController.dropdownOpened">
 	<div class="rd-navbar__dropdown--background"></div>
-	<div class="rd-navbar__dropdown--items" ng-transclude="items"></div>
+	<div class="rd-navbar__dropdown--items">
+		<nav class="navigation">
+			<ul class="mainmenu">
+				<li ng-repeat="item in $rdNavbarController.navBarItems track by $index" ng-init="$rdNavbarController.showSubmenu[$index] = false">
+					<a href 
+						ng-click="$rdNavbarController.showSubmenu[$index] = !$rdNavbarController.showSubmenu[$index]; $rdNavbarController.itemClicked(item)">
+						{{ item.caption | uppercase}}			
+					</a>
+					<ul class="submenu-i" ng-if="item.nodes">
+						<li ng-repeat="subItem in item.nodes">
+							<a href  ng-click="$rdNavbarController.itemClicked(subItem)" >{{ subItem.caption | uppercase }}</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</div>
 	<div class="rd-navbar__dropdown--tools" ng-transclude="tools"></div>
 </div>

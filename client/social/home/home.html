@@ -1,13 +1,253 @@
-<div class="banner__home" section="{{$ctrl.sectionName}}">
-	<div class="banner__wrapper clearfix">
-		<img class="banner__home--image" ng-src="{{$ctrl.section.image}}" aria-hidden="true"></img>
-		<p class="banner__home--legend" ng-bind-html="$ctrl.section.caption"></p>
+<!--div class="titHead">PLATAFORMA DE FORMACIÓN CONTINUA EN ROBÓTICA Y PROGRAMACION PARA NIVEL PRIMARIO</div-->
+<div class="slideshow-container">		   
+		
+	<div ng-repeat="item in $ctrl.slides" ng-if="$ctrl.currentIndex === $index"
+	class="divslide" layout="row" layout-align="center center" ng-style="{'background-image': 'url({{item.url}})'}">
+			<div>
+				<div class="subhead">{{item.titulo}}</div>
+				<div class="subhead2">{{item.titulo3}}</div>
+				<div class="legend"><p class="texto">{{item.texto}}</p></div>				
+				<div class="divVideo">
+				
+				
+					<md-button class="botonSlider" ng-click="$ctrl.selectButtonSlider($event,item)"> {{item.textoboton}} </md-button>
+					</div>
+			</div>
+
+			<div style="height: 10px;"> </div>
+			<div class="dot1" > 
+				<span class="dot" ng-click="$ctrl.sliderClick(0)" ng-class="{prueba: $index== 0}"></span> 
+				<span class="dot" ng-click="$ctrl.sliderClick(1)" ng-class="{prueba: $index== 1}"></span> 
+				<span class="dot" ng-click="$ctrl.sliderClick(2)" ng-class="{prueba: $index== 2}"></span>
+				<span class="dot" ng-click="$ctrl.sliderClick(3)" ng-class="{prueba: $index== 3}"></span> 
+				<span class="dot" ng-click="$ctrl.sliderClick(4)" ng-class="{prueba: $index== 4}"></span> 
+			</div>
+
+			<a class="prev" style="left: 0%;" ng-click="$ctrl.slideIndexPrev($index)">&#10094;</a>
+			<a class="next" ng-click="$ctrl.nextSlide()">&#10095;</a>
+			
+		</div>
+
+		
+		
+		
+</div>
+
+<div style="height: 2px; background: #8BBF1F"></div>
+
+<div class="cont">
+
+	<div class="rowparallaxk">
+		<div class="textKit">
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Noticias</p>
+			
+			
+		</div>
+		<div >
+			<div>
+				<rd-waterfall item-width="350" gutter="24" class="wf-container"load-more-text="Ver más" fetch="$ctrl.fetchDataNoticia()" search-text="$ctrl.searchText">
+					<rd-item-template class="wf-box">           
+						<noticia-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></noticia-card>
+					</rd-item-template>
+				</rd-waterfall>
+			</div>
+			<div style="margin-left: auto; margin-right: auto; text-align: center; margin-top: 1%;">
+				<md-button ui-sref="social.noticias" class="rview__button md-button" style="background-color:#8BBF1F; color: white; font-size: 15px; padding: 5px; font-family: DINNextRoundedLTPro-Regular;	font-weight: bold;text-transform: none !important;"> Ver más </md-button>
+			</div>	
+		
+		</div>
 	</div>
 </div>
-<section class="resources_waterfall">
-	<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewResource">
-		<rd-item-template>
-			<resource-card resource="item" ui-sref="social.ver({ uid: item._id })"></resource-card>
-		</rd-item-template>
-	</rd-waterfall>
-</section>
+
+<div class="cont">
+	<div class="row" style="background-color: #5EA7F1;">					
+		<div class="disText">
+			
+			<p class="impact-text-large" style="text-align: center; color: white; font-family: DINNextRoundedLTPro-Regular; font-size: 48px; font-weight: bold">Robótica educativa</p>
+			<p class="impact-text-large" style="text-align: center; color: white; font-family: pacifico-regular; font-size: 40px; margin: -4% 0;">para escuelas primarias</p>
+			<p style="text-align: center; color: white; font-size: 15px;
+			line-height: 23px ;  font-family: DINNextRoundedLTPro-Medium; margin-top: 6%;">
+			El uso de la robótica en el aula, y de las herramientas que ofrecen las nuevas tecnologías, fomentan un aprendizaje innovador y colaborativo a la vez que impulsan el aprendizaje basado en proyectos, permitiendo a los alumnos trabajar interdisciplinariamente y desarrollar habilidades y competencias necesarias para su inserción plena en la sociedad del conocimiento.
+			</p>
+					
+			<img ng-src="assets/robotica_educativa_icon.png" alt="Logo">
+			<div class="video">
+									<md-dialog-content>
+										<div class="md-dialog-content">
+										<div class="vid-container">
+											<iframe width="500" height="281" src="https://www.youtube.com/embed/udPk5J6WRbs" frameborder="0" allowfullscreen></iframe>
+											</div>
+										</div>
+									</md-dialog-content>	
+								</div>				
+		</div >				
+		<div class="estiloflech"></div>
+	</div>
+</div>
+
+
+<div class="cont">
+	<div  style="margin-top: 2%">
+		<p class="impact-text-large titulos" style=" text-align: center; color: #8BBF1F; font-family: pacifico-regular; font-size: 40px;">Fundamentación de la Robótica Educativa</p>				
+	</div >
+	<div class="textoVideo"  >
+		La <strong>Robótica Educativa</strong> es una estrategia de aprendizaje interdisciplinaria que emplea robots para potenciar el desarrollo de habilidades y competencias 
+		de los alumnos como el pensamiento computacional y la programación.
+	</div>
+	<div class="textoVideo" style="width: 800px; color: #5EA7F1">
+		La inclusión de recursos digitales se propone con una impronta transversal a las demás áreas curriculares a partir de las seis dimensiones planteadas en el Diseño Curricular.
+	</div>
+	
+	<div layout="row" layout-align="start strech" layout-sm="column"  layout-xs="column" style="    margin-left: 5%; margin-right: 5%;">
+		<div flex  class="divBotones">
+			
+			<a  style="color: #5EA7F1; text-decoration:  none;   
+				font-family: DINNextRoundedLTPro-Regular;font-size: 14px;font-weight:  bold;" 
+				href="assets/NAP.pdf"  target="_blank" download="NAP.pdf">NAP - Programación y Robótica
+				<img ng-src="assets/pdf.png" style="margin-left: 10px;" class="pointer">
+			</a>
+		</div>
+		<div flex class="divBotones">
+			<a  style="color: #5EA7F1; text-decoration:  none;   
+			font-family: DINNextRoundedLTPro-Regular;font-size: 14px;font-weight:  bold;" 
+				href="assets/fundamentacion.pdf"  target="_blank" download="fundamentacion.pdf">Fundamentación
+				<img ng-src="assets/pdf.png" style="margin-left: 10px;" class="pointer">
+			</a>
+		</div>
+		<div flex class="divBotones">
+					<a  style="color: #5EA7F1; text-decoration:  none;   
+					font-family: DINNextRoundedLTPro-Regular;font-size: 14px;font-weight:  bold;"  
+				href="assets/modulo-TIC-primaria.pdf"  target="_blank" download="modulo-TIC-primaria.pdf">Módulo TIC DC
+				<img ng-src="assets/pdf.png" style="margin-left: 10px;" class="pointer"></a>
+			</div>
+	</div>
+
+	<div style="margin-top: 5%;">			
+		<div layout="row" layout-align="start strech" layout-sm="column"  layout-xs="column" style="    margin-left: 20%; margin-right: 20%;">
+			<div flex  ng-click="$ctrl.ircomoempezar(1)">
+				<img style="width: 100%; height: auto;" ng-src="assets/1_home.png" class="pointer">				
+			</div>
+			<div flex ng-click="$ctrl.ircomoempezar(2)">
+				<img  style="width: 100%; height: auto;" ng-src="assets/2_home.png" class="pointer" >				
+			</div>
+			<div  flex ng-click="$ctrl.ircomoempezar(3)">
+				<img style="width: 100%; height: auto;" ng-src="assets/3_home.png" class="pointer">				
+			</div>
+		</div>			
+	</div>
+</div>
+
+<div>
+	<div class="rowparallax imgfondo" style="background-image: url(/assets/img/banner/fondo_parallax.jpg)">
+	<!--div class=" imgfondo" style="background-image: url(/assets/img/banner/fondo_parallax.jpg)"-->	
+		<div class="textKit">
+			<p class="impact-text-large titulos" style="text-align: center; color: white; font-family: pacifico-regular, sans-serif;">Propuestas de Talleres</p>
+			
+		</div>
+		<div >
+			<div class="cards">
+				<rd-waterfall item-width="350" gutter="24" class="wf-container" load-more-text="Ver más" fetch="$ctrl.fetchData()"  search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+					<rd-item-template class="wf-box">           
+						<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"  cardhome="'home'"></orientacionpedagogica-card>
+					</rd-item-template>
+				</rd-waterfall>
+				<!--rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" search-text="$ctrl.searchText" max-items="3" >
+					<rd-item-template>           
+						<propuestataller-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></propuestataller-card>
+					</rd-item-template>
+				</rd-waterfall-->
+				<!--a ui-sref="social.propuestasdetaller" >
+				<img class="imgPropuesta" ng-src="assets/propuestas.png" class="pointer">
+					</a-->
+			</div>
+			<div style="margin-left: auto; margin-right: auto; text-align: center; margin-top: 1%;">
+				<md-button ui-sref="social.propuestasdetaller" class="rview__button md-button" style="background-color:#8BBF1F; color: white; font-size: 15px; padding: 5px; font-family: DINNextRoundedLTPro-Regular;	font-weight: bold;text-transform: none !important;"> Ver más </md-button>
+			</div>	
+		</div>		
+		<!--div style="margin-left: auto; margin-right: auto; text-align: center; padding-bottom: 10%;
+		padding-top: 10%;">
+			
+			<a style="text-align: center; color: white; font-family: DINNextRoundedLTPro-Regular; font-size: 15pt; " ui-sref="social.propuestasdetaller">ver m&aacute;s</a>
+		</div-->		
+	</div>
+</div>
+<div class="cont">
+	<div class="row">
+		<div style="height: 50px; min-height: 0; margin-bottom: 0!important;"></div>
+	</div>
+</div>
+
+
+
+
+<!--div class="cont">
+
+	<div class="rowparallaxk">
+		<div class="textKit">
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Kits tecnológicos</p>
+			<p style="text-align: center; color: white; font-size: 15px;
+			line-height: 23px;">
+
+			</p>
+			<a ui-sref="social.kitsDisponibles"  target="_blank" rel="noopener noreferrer"  ng-disabled="true">
+				<img class="responsive" ng-src="/assets/img/banner/slider_kit.jpeg" alt="Logo">
+				</a>
+		</div>
+		<!--div class="cardsgral">
+			<div class="cards">
+				<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchDataKit()"  search-text="$ctrl.searchText">
+					<rd-item-template>           
+						<kit-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></kit-card>
+					</rd-item-template>
+				</rd-waterfall>
+			</div>
+		</div-->
+	<!--/div>
+</div-->
+
+<div class="cont">
+		<div  style="margin-top: 2%">
+			<p class="impact-text-large titulos" style=" text-align: center; color: #8BBF1F; font-family: pacifico-regular; font-size: 40px;">Kits tecnológicos</p>				
+		</div >
+		<div class="textoVideo"  >
+				Cada kit está conformado por una caja tecnológica, material didáctico y un entorno de programación por 
+				bloques que permiten realizar proyectos de robótica educativa.
+		</div>
+	
+		<div>			
+			<div layout="row" layout-align="start strech" layout-sm="column"  layout-xs="column" style="    margin-left: 20%; margin-right: 20%;">
+				<div flex >
+						<img  style="width: 90%;" ng-src="assets/E-BOT.jpg" class="pointer">
+						<p style="text-align: center;font-family: pacifico-regular, sans-serif; color: #BB62B3; font-size: 20px;">Kit <span style="font-family: DINNextRoundedLTPro-Regular;font-size: 26px;font-weight:  bold; color: darkgray;">E-BOT</span></p>			
+				</div>
+				<div flex >
+						<img style="width: 90%;"  ng-src="assets/T-BOT.jpg" class="pointer">
+						<p style="text-align: center;font-family: pacifico-regular, sans-serif; color: #5EA7F1; font-size: 20px;">Kit <span style="font-family: DINNextRoundedLTPro-Regular;font-size: 26px;font-weight:  bold; color: darkgray;">T-BOT</span></p>			
+				</div>
+				<div  flex >
+						<img style="width: 90%;"  ng-src="assets/L-BOT.jpg" class="pointer">
+						<p style="text-align: center;font-family: pacifico-regular, sans-serif; color: #8BBF1F; font-size: 20px;">Kit <span style="font-family: DINNextRoundedLTPro-Regular;font-size: 26px;font-weight:  bold; color: darkgray;">L-BOT</span></p>			
+				</div>
+			</div>
+			<div style="margin-left: auto; margin-right: auto; text-align: center; margin-top: 1%;">
+					<md-button ui-sref="social.kitsDisponibles" class="rview__button md-button" style="background-color:#8BBF1F; color: white; font-size: 15px; padding: 5px; font-family: DINNextRoundedLTPro-Regular;	font-weight: bold;text-transform: none !important;"> > Kits Tecnológicos </md-button>
+				</div>			
+		</div>
+	</div>
+
+
+
+
+<div class="cont">
+	<div class="row">
+		<div style="height: 50px; min-height: 0; margin-bottom: 0!important;"></div>
+	</div>
+</div>	
+<div class="cont">
+	<div class="rowparallaxk">
+<!--div  style="background-image: url(/assets/img/banner/slider_contanos.jpg); width: 100%; height: auto;"></div-->
+<a href="https://goo.gl/forms/bvPHnq7cuocWqFvd2"  target="_blank" rel="noopener noreferrer"  ng-disabled="true">
+<img style="width: 100%; height: auto;" ng-src="/assets/img/banner/slider_contanos.jpg" alt="Logo">
+</a>
+</div>
+</div>	

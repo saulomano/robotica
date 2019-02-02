@@ -1,0 +1,75 @@
+<rd-card class="rd-card__addnew" ng-if="$ctrl.resource.type === 'addnew'">
+	<rd-card-body class="rd-card__addnew--body">
+		<ul class="new-resource__list">
+			<li ng-repeat="item in $ctrl.resource.options">
+				<a ng-click="$ctrl.clickedAction(item)" layout="row" layout-align="start center">
+					<i class="{{item.icon}} color-{{item.section}} ri-3x"></i>
+					<span class="new-resource__item">{{item.caption}}</span>
+				</a>
+			</li>
+		</ul>
+		<div role="button" class="new-resource__button" ng-hide="$ctrl.resource.clicked" ng-click="$ctrl.resource.clicked = true">
+			<div class="new-resource__button--center">
+			</div>
+		</div>
+	</rd-card-body>
+</rd-card>
+
+<!-- Desafios -->
+<rd-card style="margin-top: -30px;" data-rd-section="{{$ctrl.resource.type}}" ng-if="$ctrl.resource.type !== 'addnew'" ng-click="$ctrl.viewResource($event, $ctrl.resource, $ctrl.modoVista)">
+	<rd-card-toolbar ng-if="$ctrl.editable" ng-show="$ctrl.modoVista === 'curador'">
+		<div layout="row">
+			<div class="rd-card__status" flex ng-hide="$ctrl.resource.published == undefined"> <i class="fa fa-check-circle-o"></i>	Publicado</div>
+			<div class="rd-card__status" flex ng-show="$ctrl.resource.published == undefined"> <i class="fa fa-save"></i> Guardado</div>
+			<md-button ng-click="$ctrl.showConfirm($event)" class="bordered md-raised md-mini rd-card__button--delete" aria-label="Eliminar módulo">
+				<md-iconclass="mi-mode-delete">Borrar</md-icon>
+			</md-button>
+			<md-button ng-click="$ctrl.editResource()" class="bordered mini-button md-button md-ink-ripple rd-card__button--edit">
+				<div layout="row">
+					<md-icon class="mi-mode-edit"></md-icon> <span>Editar</span>
+				</div>
+			</md-button>
+		</div>
+	</rd-card-toolbar>	
+	<rd-card-header>
+		<div class="rd-card-orientaciones__header--wrapper" layout="row" layout-align="start center">
+				<div class="fIntensivo" ng-show="$ctrl.resource.intensivo == true ">TALLER COMBINADO INTENSIVO</div>
+			<span class="rd-card-orientaciones__icon--circle">
+				<i class="ri ri-3x" ng-class="'ri-'+$ctrl.resource.type"></i>
+			</span>
+			</div>
+	</rd-card-header>
+	<rd-card-cover ng-if="$ctrl.resource.thumbnail" ng-hide="$ctrl.resource.thumbnail === ''">
+		<img style="width: 100%;
+		height: auto;" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del recurso">
+	</rd-card-cover>	
+	<rd-card-body>
+		<div layout="row" ng-hide="$ctrl.deleteDesafioBoolean">
+			<div class="preview-glyphs">
+				<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(area)}}"></md-icon>
+			</div>
+		</div>
+		<div layout="row" ng-hide="$ctrl.deleteDesafioBoolean">
+			<div flex class="rd-card__body--custom">
+				<h1 class="rd-card__title--v1">{{$ctrl.resource.titulo}}</h1>
+				<p class="rd-card__paragraph">{{$ctrl.resource.descripcion | truncate:140 }}</p>
+				<p class="rd-card__paragraph ng-binding"><strong ng-repeat="area in $ctrl.resource.area"> {{area}} </strong></p>
+				<p class="rd-card__paragraph ng-binding"><strong ng-repeat="anio in $ctrl.resource.anio"> {{anio}} </strong></p>
+				<p class="rd-card__paragraph ng-binding"><strong ng-repeat="areaEmergente in $ctrl.resource.areaEmergente" ng-class="{'blue_font': areaEmergente == 'Pensamiento Computacional', 'green_font': areaEmergente == 'Programación', 'purple_font': areaEmergente == 'Robótica'}"> {{areaEmergente}} </strong></p>
+				<!--<p><strong class="rd-card-orientaciones__owner">{{$ctrl.resource.owner.name}}</strong></p>-->
+			</div>
+		</div>
+		<div layout="row" ng-show="$ctrl.deleteDesafioBoolean">
+	<div class="dashboard__remove" ng-hide="$ctrl.loading">
+		<p class="dashboard__remove--legend">¿Esta seguro que desea eliminar PERMANENTEMENTE la orientacion pedagógica?</p>
+		<md-button ng-click="$ctrl.deleteResource()" class="md-raised md-primary dashboard__remove--button" aria-label="Eliminar módulo">
+			Confirmar y Eliminar Desafio
+		</md-button>
+		<md-button ng-click="$ctrl.deleteDesafioBoolean = !$ctrl.deleteDesafioBoolean" class="md-raised md-primary dashboard__remove--button" aria-label="Eliminar módulo">
+			Cancelar
+		</md-button>
+	</div>
+</div>
+	</rd-card-body>
+</rd-card>
+

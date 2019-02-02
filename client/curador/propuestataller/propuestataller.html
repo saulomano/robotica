@@ -1,0 +1,256 @@
+
+<div class="dashboard__loading" layout="row" layout-align="center center" ng-show="$ctrl.loading">
+	<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+
+<!-- delete -->
+<div ng-if="$ctrl.isDelete">
+	<div class="dashboard__remove" ng-hide="$ctrl.loading">
+		<p class="dashboard__remove--legend">¿Esta seguro que desea eliminar PERMANENTEMENTE este {{$ctrl.getResourceType($ctrl.resource.type)}}?</p>
+		<md-button ng-click="$ctrl.deleteResource()" class="md-raised md-primary dashboard__remove--button" aria-label="Eliminar módulo">
+			Confirmar y Eliminar Recurso
+		</md-button>
+	</div>
+</div>
+
+<!-- toolbar -->
+<div class="dashboard__toolbar" ng-hide="($ctrl.loading || $ctrl.isDelete)">
+	<rd-stepper class="dashboard__stepper" 
+							rd-section="{{$ctrl.resource.type}}" 
+							steps="$ctrl.steps"
+							can-next="$ctrl.canNext" 
+							on-to-refuse="$ctrl.toRefuse",
+							on-finish="$ctrl.finish"
+							on-enter-step="$ctrl.onEnterStep"
+							on-save="$ctrl.save"
+							on-cancel="$ctrl.cancel"
+							init-step-index="$ctrl.initStepIndex"
+							user-rol="$ctrl.user.role"
+							type="$ctrl.resource.type"
+							
+							></rd-stepper>
+</div>
+
+<!-- STEP FICHA -->
+<div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'ficha'" ng-hide="($ctrl.loading || $ctrl.isDelete)">
+	<div class="dashboard__container"  layout="row" layout-align="start stretch">
+		<md-content class="dashboard__sidenav" data-type="{{$ctrl.resource.type}}">
+			<h2 class="dashboard__sidenav--head">{{$ctrl.headText}}</h2>
+			
+				
+			<md-content class="thumbnail__container">
+				<div class="dropzone dz__custom dz__thumbnail select-thumbnail dz-tumbnail-clickable" options="$ctrl.dzOptions" callbacks="$ctrl.dzCallbacks" methods="$ctrl.dzMethods" ng-dropzone
+						 ng-hide="$ctrl.resource.thumbnail !== ''"></div>
+				<div class="thumbnail thumbnail--rounded" ng-hide="$ctrl.resource.thumbnail == ''">
+					<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del Recurso">
+					<md-button ng-click="$ctrl.editTumbnail()" class="mini-button md-button md-raised thumbnail__button--edit dz-tumbnail-clickable">
+						<div layout="row">
+								<md-icon class="mi-mode-edit"></md-icon> <span>Cambiar</span>
+						</div>
+					</md-button>
+				</div>
+			</md-content>
+			<md-content >
+					<md-checkbox ng-model="$ctrl.resource.publicaHome" aria-label="Checkbox 1">
+							Publica Home
+						  </md-checkbox>
+						</md-content>
+			<md-content >
+							<md-checkbox ng-model="$ctrl.resource.introductoria" aria-label="Checkbox 1">
+								Introductoria
+							</md-checkbox>
+			</md-content>
+			
+			<md-content>
+				<md-expansion-panel class="option-panel">
+					
+					 <md-expansion-panel-collapsed>
+						 <div class="md-title">Area *</div>
+						 <div class="md-summary">{{$ctrl.resource.area.length}} {{$ctrl.textSelection($ctrl.resource.area.length)}}</div>
+						 <md-expansion-panel-icon></md-expansion-panel-icon>
+					 </md-expansion-panel-collapsed>
+					 <md-expansion-panel-expanded>
+					
+						 <md-expansion-panel-header ng-click="$panel.collapse()">
+							 <div class="md-title">Area *</div>
+							 <div class="md-summary"></div>
+							 <md-expansion-panel-icon></md-expansion-panel-icon>
+						 </md-expansion-panel-header>
+					
+						 <md-expansion-panel-content>
+								<div flex="100" ng-repeat="item in $ctrl.areas">
+										<md-checkbox ng-checked="$ctrl.exists(item, $ctrl.resource.area)" ng-click="$ctrl.toggle(item, $ctrl.resource.area)">
+										{{ item }}
+									</md-checkbox>
+								</div>
+						 </md-expansion-panel-content>
+					
+					 </md-expansion-panel-expanded>
+					
+				 </md-expansion-panel>
+			</md-content>
+			
+
+			<!-- anio -->
+			<md-content>
+				<md-expansion-panel class="option-panel">
+					
+					 <md-expansion-panel-collapsed>
+						 <div class="md-title">Año *</div>
+						 <div class="md-summary">{{$ctrl.resource.anio.length}} {{$ctrl.textSelection($ctrl.resource.anio.length)}}</div>
+						 <md-expansion-panel-icon></md-expansion-panel-icon>
+					 </md-expansion-panel-collapsed>
+					 <md-expansion-panel-expanded>
+					
+						 <md-expansion-panel-header ng-click="$panel.collapse()">
+							 <div class="md-title">Año*</div>
+							 <div class="md-summary"></div>
+							 <md-expansion-panel-icon></md-expansion-panel-icon>
+						 </md-expansion-panel-header>
+					
+						 <md-expansion-panel-content>
+								<div flex="100" ng-repeat="item in $ctrl.anio">
+										<md-checkbox ng-checked="$ctrl.exists(item, $ctrl.resource.anio)" ng-click="$ctrl.toggle(item, $ctrl.resource.anio)">
+										{{ item }}
+									</md-checkbox>
+								</div>
+						 </md-expansion-panel-content>
+					
+					 </md-expansion-panel-expanded>
+					
+				 </md-expansion-panel>
+			</md-content>
+
+		</md-content>
+			
+			
+
+			
+		
+		<md-content  class="dashboard__content" flex>
+			<div class="dashboard__content--head">
+					<md-input-container class="dashboard__input dashboard__input--title">
+						<label>Título</label>
+						<input ng-model="$ctrl.resource.titulo" required>
+					</md-input-container>
+					<md-input-container  class="dashboard__input dashboard__input--summary">
+						<label>Descripción</label>
+						<textarea ng-model="$ctrl.resource.descripcion" required></textarea>
+					</md-input-container>
+			</div>			
+		</md-content>
+	</div>
+</div>
+
+
+
+<!-- STEP VINCULO -->
+<div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'vinculo'" ng-hide="$ctrl.loading">
+    <div class="dashboard__container"  layout="row" layout-align="start stretch">
+		<md-content class="dashboard__sidenav" data-type="{{$ctrl.resource.type}}">
+			<div layout="row" class="dashboard__sidenav--top">
+				<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="$ctrl.resource.thumbnail == ''">
+					<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura de la {{$ctrl.headText}}">
+				</div>
+				<div flex class="dashboard__sidenav--head-resource">
+					<h2 class="dashboard__sidenav--head color-propuestas">{{$ctrl.headText}}</h2>
+					<h2 class="dashboard__sidenav--subhead color-propuestas">{{$ctrl.resource.tipoDesafio.caption}}</h2>
+				</div>
+			</div>
+			<h1 class="rd__headpost--sidenav">{{$ctrl.resource.titulo}}</h1>
+			<p class="rd__headpost">{{$ctrl.resource.descripcion | truncate:140}}</p>
+			<div class="vinculo__files">				
+				<div class="text-uppercase color-black-light">Curado por: {{$ctrl.resource.owner.name}}</div>
+			</div>
+		</md-content>
+		<md-content  class="dashboard__content" flex>
+			<div class="dashboard__box" >
+				<h4 class="font-medium color-grey">Orientaciones Contenidas</h4>
+				<div class="dashboard__search">
+					<input type="text" ng-model="$ctrl.filterText" autofocus>
+				</div>
+				<md-conten>
+					<md-expansion-panel class="option-panel">
+						<md-expansion-panel-collapsed class="vinculados__recursos">
+							<div flex><h6 class="font-light color-primary text-center text-uppercase">{{$ctrl.resource.propuestas.length}} Orientaciones vinculadas</h6></div>
+							<md-expansion-panel-icon></md-expansion-panel-icon>
+						</md-expansion-panel-collapsed>
+						<md-expansion-panel-expanded>
+							<md-expansion-panel-header ng-click="$panel.collapse()" class="vinculados__recursos">
+								<div flex><h6 class="font-light color-primary text-center">{{$ctrl.resource.propuestas.length}} Orientaciones vinculadas</h6></div>
+								<md-expansion-panel-icon></md-expansion-panel-icon>
+							</md-expansion-panel-header>
+							<md-expansion-panel-content>
+								<md-list-item ng-repeat="item in $ctrl.resource.propuestas">
+									<div  layout="row" layout-padding>
+										<div>
+											<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
+												<img ng-src="{{item.thumbnail}}" alt="Miniatura de la Propuesta Pedagógica">
+											</div>
+										</div>
+										<div flex>
+											<div class="color-{{item.type}}" layout="flex" layout-align="start center">
+												<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
+											</div>
+											<div><strong>{{item.objetivo}}</strong></div>
+											<div><p>{{item.descripcion}}</p></div>
+											<div><strong>{{item.area}}</strong> {{item.anio}}</div>
+										</div>
+										<md-checkbox class="md-secondary" ng-checked="$ctrl.existsObject(item, $ctrl.resource.propuestas)" ng-click="$ctrl.toggleObject(item, $ctrl.resource.propuestas)"
+													 aria-label="Agregar/quitar {{item.nombre}}"></md-checkbox>
+									</div>
+								</md-list-item>
+							</md-expansion-panel-content>
+						</md-expansion-panel-expanded>
+					</md-expansion-panel>
+				</md-conten>
+				<md-list ng-cloak>
+					<md-list-item ng-repeat="item in $ctrl.publisheds">
+						<div  layout="row" layout-padding>
+							<div>
+								<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
+									<img ng-src="{{item.thumbnail}}" alt="Miniatura de la Propuesta Pedagógica">
+								</div>
+							</div>
+							<div flex>
+								<div class="color-{{item.type}}" layout="flex" layout-align="start center">
+									<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
+								</div>
+								<div><strong>{{item.objetivo}}</strong></div>
+								<div><p>{{item.descripcion}}</p></div>
+								<div><strong>{{item.area}}</strong> {{item.anio}}</div>
+							</div>
+							<md-checkbox class="md-secondary" ng-checked="$ctrl.existsObject(item, $ctrl.resource.propuestas)" ng-click="$ctrl.toggleObject(item, $ctrl.resource.propuestas)"
+										 aria-label="Agregar/quitar {{item.nombre}}"></md-checkbox>
+						</div>
+					</md-list-item>
+				</md-list>
+			</div>
+		</md-content>
+	</div>
+<!--	<div class="dashboard__box">
+		<h4 class="color-grey font-medium">Palabras Claves</h4>
+		<md-chips ng-model="$ctrl.resource.tags" placeholder="Ingresá un tag" md-separator-keys="$ctrl.tagsKeys">
+	</div>
+	</md-content>
+		<md-content  class="dashboard__content" flex>
+			<div class="dashboard__box">
+				<h4 class="color-grey font-medium">Palabras Claves</h4>
+				<md-chips ng-model="$ctrl.resource.tags" placeholder="Ingresá un tag" md-separator-keys="$ctrl.tagsKeys">
+			</div>
+		</md-content>
+	</div>-->
+</div>
+
+<!-- STEP PUBLICAR -->
+<div flex class="dashboard__sidenav--head-resource" id="msg">
+		<h2 class="dashboard__sidenav--head color-propuestas">
+			<strong>
+				{{ $ctrl.msg }}
+			</strong>
+		</h2>
+	</div>
+<div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'publicar'" ng-hide="$ctrl.loading">
+	
+	
+</div>

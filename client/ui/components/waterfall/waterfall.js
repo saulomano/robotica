@@ -26,10 +26,11 @@ class RdWaterfallController {
 			this.columnsSizes = {};
 			this.lastColumn_ = null;
 			this.loadMoreText = this.$scope.loadMoreText || 'Load more';
-
+			this.maxItems = this.$scope.maxItems || 0;
 			this.$scope.itemWidth = this.$scope.itemWidth || DEFAULT_ITEM_WIDTH;
 			this.$scope.gutter = this.$scope.gutter	|| DEFAULT_GUTTER;
 			this.searchText = '';
+			
 
 			this.$scope.$watch(() => { return this.$scope.searchText }, (value) => {
 				if (this.searchText !== value) {
@@ -42,11 +43,31 @@ class RdWaterfallController {
 					this.fetch();
 				}
 			});
+
+			this.$scope.$watch(() => { return this.$scope.obligareset }, (value) => {				
+					//reset & fetch
+					if ( value  == undefined ) {
+						return;
+					}
+
+					this.reset();
+					this.fetch();
+				
+			});
+
+
+
 			// set sizes
 			this.initColumnsSizes_();
 			this.$element.addClass('rd-waterfall');
 			this.currentPage = 1;
+
+
+
 			this.limit = 20;
+			if (this.maxItems!= 0){
+				this.limit = this.maxItems;
+			}
 			this.itemCount = 0;
 		}
 
@@ -96,25 +117,34 @@ class RdWaterfallController {
 				colsHeights[c] = 0;
 			}
 
+			var indice  = 0;
+			var calculoSeteoPosicion;
+
+
 			$(this.$wrapperElement).find('[data-grid-item]').each(function(){
 				let $this = $(this);
 				let idx = parseInt($this.attr('data-grid-item'));
 				//let ci = idx % csize;
 				// get the column with min height
-				let ci = _.minBy(_.keys(colsHeights), (key) => {
+				
+				
+				/*let ci = _.minBy(_.keys(colsHeights), (key) => {
 					return colsHeights[key];
-				});
+				});*/
+				let ci = indice < _.size(colsHeights) ? indice : indice% _.size(colsHeights);
 
 				let tx = (itemW*(ci))+((ci)*gutter);
 				let ty = colsHeights[ci];
 
 				// set transform
-				$this.css('transform', `translateX(${tx}px) translateY(${ty}px)`);
+				$this.  css('transform', `translateX(${tx}px) translateY(${ty}px)`);
 
 				$this.css('opacity', 1);
 
 				// upgrade colsHeights
 				colsHeights[ci] += $this.height() + gutter;
+
+				indice++;
 			});
 			
 			this.rendering_ = false;
@@ -135,7 +165,7 @@ class RdWaterfallController {
 				let childScope = this.$scope.$new(false);
 				childScope.item=item;
 				childScope.clicked = ($event) => {
-					if (!this.$scope.itemClick || item.type === 'addnew') {
+					if (!this.$scope.itemClick || item.type === 'addnew' || item.type === 'desafios' || item.type === 'desafiopropuesto') {
 						return;
 					}
 					this.$scope.itemClick.apply(this.$scope.$parent, [$event, item]);
@@ -202,6 +232,11 @@ class RdWaterfallController {
 		}
 
 		nomoreItems() {
+
+			if (this.maxItems!==0 && this.maxItems <= this.itemCount)
+				return true;
+
+
 			if (this.itemCount === 0 || this.itemCount >= this.total){
 				return true;
 			}
@@ -212,7 +247,11 @@ class RdWaterfallController {
 		}
 
 		showMoreVisible(){
-			return this.loadingIsVisible() || this.nomoreItems();
+
+		
+
+
+			return this.loadingIsVisible() || this.nomoreItems() ;//&& (this.maxItems!=0|| this.maxItems <= this.itemCount);
 		}
 }
 
@@ -229,7 +268,9 @@ function rdWaterfall(){
 				'gutter': '=',
 				'loadMoreText': '@',
 				'itemClick': '=',
-				'searchText': '='
+				'searchText': '=',
+				'maxItems': '=',
+				'obligareset':'=?'
 			},
 			template: (element, attr) => {
 				attr.itemTemplate    = getItemTemplate();

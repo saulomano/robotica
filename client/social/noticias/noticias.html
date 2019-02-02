@@ -1,0 +1,15 @@
+
+<div layout="row" layout-align="center center">
+	<p class="impact-text-large" style="text-align: center; margin-top: 20px; font-size: 40px; color: #727272; font-family: pacifico-regular, sans-serif;">Noticias</p>				
+</div>			
+
+<section class="resources_waterfall" style="margin-top: 0.5%;">
+	<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más"
+	
+	fetch="$ctrl.fetchData()" search-text="$ctrl.searchText">
+     
+        <rd-item-template>           
+            <noticia-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></noticia-card>
+		</rd-item-template>
+	</rd-waterfall>
+</section>

@@ -1,0 +1,189 @@
+<div class="kview" id="topDiv" >
+	<div class="kview__wrapper" layout-gt-xs="row">
+		<div class="one_half"  layout="column" flex="100"> <!--flex="85"-->
+			<section>
+				<div class="kview__content bg-{{$ctrl.resource.type}}" flex>
+					<div  layout="row" layout-padding layout-align="center top"></div>
+					<div flex >
+						<div layout-align="end">
+							<label class="green_font" ng-show="$ctrl.resource.complementarias == true">ACTIVIDAD COMPLEMENTARIA</label>
+							<label class="green_font" ng-show="$ctrl.resource.orden && $ctrl.resource.intensivo">TALLER INTENSIVO</label>
+							<label class="green_font" ng-show="!$ctrl.resource.intensivo && !$ctrl.resource.complementarias && $ctrl.resource.orden">TALLER</label>
+							<span class="green" ng-show="$ctrl.resource.orden"> {{$ctrl.resource.orden}}</span>
+						</div>
+						<!-- <p><strong>{{ $ctrl.resource.createdAt | amDateFormat:'D MMMM YYYY' }}</strong></p> -->
+						<h4 class="margin" style="font-family: DINNextRoundedLTPro-Regular;">{{$ctrl.resource.objetivo}}</h4>
+						<div layout="row" layout-xs="column" ng-hide="$ctrl.deleteDesafioBoolean" style="text-align: center; display: inline-flex">
+							<div flex class="preview-glyphs" ng-repeat="area in $ctrl.resource.area">
+								<md-icon style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(area)}}"></md-icon>
+								<div>
+									<strong> {{area}} </strong>
+								</div>
+							</div>
+							<!-- <div flex class="preview-glyphs">
+								<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(area)}}"></md-icon>
+							</div> -->
+							<!-- <div flex class="rd-card__body--custom">
+								<p class="rd-card__paragraph ng-binding"><strong ng-repeat="area in $ctrl.resource.area"> {{area}} </strong></p>
+							</div> -->
+						</div>
+
+					</div>
+
+
+						<p flex class="paragraph post__test kview__summary">{{$ctrl.resource.descripcion}}</p>
+						
+						
+						<!--div >
+							<div flex="none">
+								<p><strong>NAP Relacionados:</strong></p>
+							</div>
+							<div >
+								<rd-post  flex class="kview__post" modules="$ctrl.resource.potencialidades" relative="$ctrl.uid" readonly="true"></rd-post>
+							</div>
+						</div>
+						<div >
+							<div flex="none" style="margin-bottom: 10px;">
+								<p><strong>Habilidades:</strong></p>
+							</div>
+							<div >
+								<rd-post  class="kview__summary" modules="$ctrl.resource.habilidad" relative="$ctrl.uid" readonly="true"></rd-post>
+							</div>
+						</div-->
+						<div flex >
+							<rd-post flex class="kview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>
+						</div>
+						<!--div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
+							<img  ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
+						</div-->
+						<div flex >
+							<rd-post  class="kview__summary"  modules="$ctrl.resource.armado" relative="$ctrl.uid" readonly="true"></rd-post>
+						</div>
+<!--						<div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
+							<img class="responsive" ng-repeat="file in $ctrl.resource.files" ng-src="{{file}}">
+						</div>-->
+						<div ng-if="$ctrl.resource.files.length">
+								<md-button class="rview__button md-button" style="background-color:#8BBF1F; color: white"
+							ng-href="/api/publishedOrientacionPedagogica/{{$ctrl.resource._id}}/download" target="_blank">Descargar</md-button>
+							<div ng-if="$ctrl.resource.files.length">
+									<div style="text-align: left; padding-left: 2%;"><span class="text-uppercase color-grey">{{$ctrl.resource.files.length}} Archivos | {{$ctrl.sumfiles($ctrl.resource.files) | numeraljs:'0b'}}</span></div>
+							</div>
+						</div>
+						
+
+						
+						<div ng-if="$ctrl.resource.files.length">
+							<md-button ng-if="$ctrl.resource.orden > 1"class="rview__button md-button" style="background-color:#8BBF1F; color: white"
+						ng-click="$ctrl.anterior()" scroll-on-click="topDiv" >Anterior</md-button>
+						<md-button class="rview__button md-button" style="background-color:#8BBF1F; color: white"
+						ng-click="$ctrl.siguiente()" scroll-on-click="topDiv">Siguiente</md-button>
+					
+
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<div class="view_kits_div" layout="column" layout-align="start stretch" ng-hide="$ctrl.modoVista !== 'curador'">
+		<div flex>
+			<label style="font-family: DINNextRoundedLTPro-Regular; font-size: 1.8rem; font-weight: bold;">KITS RECOMENDADOS</label>
+		</div>
+		<div flex class="view_kits_recomendados" layout="row" layout-align="start center">
+			<div flex layout="row" flex>
+				<div class="view_kit_sugerido" flex>
+					<div class="{{$ctrl.getKitClass('E-BOT', 'view_kit__ebot', $ctrl.resource.kits)}}"></div>
+					<p>E-BOT</p>
+				</div>
+				<div class="view_kit_sugerido" flex>
+					<div class="{{$ctrl.getKitClass('T-BOT', 'view_kit__tbot', $ctrl.resource.kits)}}"></div>
+					<p>T-BOT</p>
+				</div>
+				<div class="view_kit_sugerido" flex>
+					<div class="{{$ctrl.getKitClass('L-BOT', 'view_kit__lbot', $ctrl.resource.kits)}}"></div>
+					<p>L-BOT</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="rview__resources" layout="row" layout-align="start stretch">
+	
+		<div flex>
+			<div  ng-if="$ctrl.resource.links.length > 0">
+					<h5 flex class="text-uppercase" ng-if="$ctrl.resource.type == 'orientacionpedagogica'" style="font-family: DINNextRoundedLTPro-Bold;">TE SUGERIMOS CONTENIDOS RELACIONADOS</h5>
+				<md-list ng-cloak>
+					<md-list-item ng-repeat="item in $ctrl.resource.links">						
+						<div   flex layout="row">
+							<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ng-click="$ctrl.viewResourcePedag($event, $ctrl.resource, item._id)">
+								<div>
+									<div class="thumbnail thumbnail--rounded thumbnail--50">
+										<div flex class="preview-glyphs">
+											<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="{{$ctrl.getFieldClass(item.area)}}"></md-icon>
+										</div>									
+									</div>
+								</div>
+								<div flex>
+									<div layout="row" layout-align="start center">
+										<div><strong>{{item.nombre}}</strong></div>
+										<div class="color-{{item.type}}" layout="row" layout-align="start center">
+												<div  ng-show="item.intensivo == true "><span style="font-size: 12px; color: #9aca3c">TALLER INTENSIVO</span> <span class="greenRel"> {{item.orden}}</span><strong ng-repeat="areas in item.area" style="font-size: 12px;"> . {{areas}}  </strong> <strong ng-repeat="anios in item.anio" style="font-size: 12px;"> . {{anios}} </strong></div>
+												<div  ng-show="item.complementarias == true "><span style="font-size: 12px; color: #9aca3c">ACTIVIDADES COMPLEMENTARIAS</span></div>
+											</div>
+									</div>
+									<div><p style="font-family: DINNextRoundedLTPro-Bold; font-weight: 700; font-size: 18px;">{{item.objetivo}}</p></div>
+									<div><p style="font-size: 12px !important;">{{item.descripcion | truncate:140}}</p></div>
+								</div>
+							</a>
+						</div>
+					</md-list-item>
+				</md-list>
+			</div>
+			<div  ng-if="$ctrl.resource.linksRecursos.length > 0">
+				<!--h5 flex class="text-uppercase" ng-if="$ctrl.resource.type == 'orientacionpedagogica'" style="font-family: DINNextRoundedLTPro-Bold;">TE SUGERIMOS CONTENIDOS RELACIONADOS</h5-->
+			<md-list ng-cloak>
+				<md-list-item ng-repeat="item in $ctrl.resource.linksRecursos">						
+					<div   flex layout="row">
+						<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ng-click="$ctrl.viewResource($event, item, item._id)" >
+							<div>
+									<div class="thumbnail thumbnail--rounded thumbnail--50">
+											<div flex class="preview-glyphs">
+													<md-icon ng-repeat="area in $ctrl.resource.area" style="font-size: 48px; height: 48px" class="{{$ctrl.iconFromResourceType(item)}}"></md-icon>
+												</div>									
+										</div>
+
+							
+
+										
+								<!-- <div class="thumbnail thumbnail--rounded thumbnail--50">
+										<div flex class="preview-glyphs">
+												<md-icon  style="font-size: 48px; height: 48px" ng-class="$ctrl.iconFromResourceType(item)"></md-icon>
+										
+											</div>									
+								</div> -->
+							</div>
+							<div flex>
+								<div layout="row" layout-align="start center">
+									<div><strong>{{item.title}}</strong></div>
+									<div class="color-{{item.type}}" layout="row" layout-align="start center">
+											<div  ng-show="item.intensivo == true "><span style="font-size: 12px; color: #9aca3c">TALLER INTENSIVO</span> <span class="greenRel"> {{item.orden}}</span><strong ng-repeat="areas in item.area" style="font-size: 12px;"> . {{areas}}  </strong> <strong ng-repeat="anios in item.anio" style="font-size: 12px;"> . {{anios}} </strong></div>
+											<div  ng-show="item.complementarias == true "><span style="font-size: 12px; color: #9aca3c">ACTIVIDADES COMPLEMENTARIAS</span></div>
+										</div>
+								</div>
+								<!--div><p style="font-family: DINNextRoundedLTPro-Bold; font-weight: 700; font-size: 18px;">{{item.title}}</p></div-->
+								<div><p style="font-size: 12px !important;">{{item.summary | truncate:140}}</p></div>
+							</div>
+						</a>
+					</div>
+				</md-list-item>
+			</md-list>
+		</div>
+		</div>
+		<div class="rview__resources--right"></div>
+	</div>
+	<!--Lateral -->
+	<div class="icon-bar" ng-show="!$ctrl.isMobile" ng-hide="$ctrl.modoVista === 'ver'">
+		<a ng-href="/ver/{{$ctrl.resource.type}}/{{$ctrl.resource._id}}" target="_blank" class="view-item" title="Ver Orientacion"><i class="fa fa-expand"></i></a>
+		<!--a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+		<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+		<a href="#" class="youtube"><i class="fa fa-youtube"></i></a-->
+	</div>
+</div>

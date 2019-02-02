@@ -6,6 +6,7 @@
 'use strict';
 import User from '../api/user/user.model';
 import Category from '../api/category/category.model';
+import TipoDesafio from '../api/tipoDesafio/tipoDesafio.model';
 import config from './environment/';
 
 export default function seedDatabaseIfNeeded() {
@@ -14,7 +15,7 @@ export default function seedDatabaseIfNeeded() {
   }
 
   // populate users
-  /*
+  
   User.find({}).remove()
     .then(() => {
       User.create({
@@ -38,7 +39,7 @@ export default function seedDatabaseIfNeeded() {
       .then(() => console.log('finished populating users'))
       .catch(err => console.log('error populating users', err));
     });
-  */
+  
   
   // populate categories
   Category
@@ -52,18 +53,16 @@ export default function seedDatabaseIfNeeded() {
       },{
         type: 'area',
         values: [
-          'Autonomía personal y social',
-          'Ciencias Naturales',
-          'Ciencias Sociales',
-          'Construcción de la ciudadanía',
-          'Educación Artística',
-          'Educación Física',
-          'Formación científico-tecnología',
-          'Formación profesional u ocupacional',
-          'Formación Técnico Específica',
-          'Inglés',
-          'Matemática',
-          'Prácticas del lenguaje',
+          'Danza',
+          'fisica',
+          'ingles',
+          'lengua',
+          'matematica',
+          'musica',
+          'naturales',
+          'plastica',
+          'sociales',
+          'teatro'
         ],
         caption: 'Area'
       },{
@@ -72,7 +71,7 @@ export default function seedDatabaseIfNeeded() {
         caption: 'Sistema Operativo'
       },{
         type: 'resource',
-        values: ['Presentación', 'Video', 'Plantilla', 'Texto', 'Imágen', 'Audio'],
+        values: ['Presentación', 'Video', 'PDF', 'Software', 'Imágen', 'Audio'],
         caption: 'Tipo de recurso'
       },{
         type: 'accessibility',
@@ -86,8 +85,42 @@ export default function seedDatabaseIfNeeded() {
         type: 'orientacion',
         values: ['Tutoriales', 'Documentación', 'Recomendaciones de uso de soft', 'Enlaces de interés', 'Documentación de apoyo'],
         caption: 'Tipo de Orientación'
+      },{
+        type: 'areaEmergente',
+        values: ['Pensamiento Computacional', 'Programacion', 'Robotica'],
+        caption: 'Area Emergente'
+      },
+      {
+        type: 'anio',
+        values: ['5to', '6to'],
+        caption: 'Año'
       })
       .then(() => console.log('finished populating categories'))
       .catch(err => console.log('error populating categories', err));
+    });
+
+
+
+    TipoDesafio
+    .find({})
+    .remove()
+    .then(() => {
+      TipoDesafio.create({
+        type: 'programacion',
+        descripcion: 'Desafios de programacion',
+        caption: 'Programacion'
+      },
+      {
+        type: 'matematico',
+        descripcion: 'Desafios de matematica',
+        caption: 'Matematico'
+      },
+      {
+        type: 'logica',
+        descripcion: 'Desafios de Logica',
+        caption: 'Logica'
+      })
+      .then(() => console.log('finished populating tipos desafios'))
+      .catch(err => console.log('error populating tipos desafios', err));
     });
 }

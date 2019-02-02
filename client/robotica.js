@@ -1,5 +1,7 @@
 'use strict';
 
+import angularStars from 'angular1-star-rating';
+import angularCorousel from 'angular-ui-carousel';
 import angular from 'angular';
 import ngMaterial from 'angular-material';
 import uiRouter from 'angular-ui-router';
@@ -42,6 +44,9 @@ import ngMeta from 'ng-meta';
 // configs
 import { roboticaConfig, roboticaRun } from './robotica.config';
 
+//youtube ng
+
+
 // componentes
 import admin from './admin';
 import app from './app';
@@ -58,6 +63,15 @@ import authModule from './auth/auth.module';
 import '../node_modules/angular-material-expansion-panel/dist/md-expansion-panel.css';
 import '../node_modules/angular-material-data-table/dist/md-data-table.css';
 import './styles/robotica.scss';
+
+
+import svg from "angular1-star-rating/dist/assets/images/star-rating.icons.svg";
+
+
+
+
+
+
 
 let requirements = [
 	uiRouter,
@@ -86,6 +100,11 @@ let requirements = [
 var robotica = angular
 							.module('robotica', requirements)
 							.config(roboticaConfig)
+							.config(function($mdDateLocaleProvider,moment) {
+								$mdDateLocaleProvider.formatDate = function(date) {
+								   return moment(date).format('DD-MM-YYYY');
+								};
+							})
 							.run(roboticaRun)
 							.name;
 

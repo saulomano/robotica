@@ -11,14 +11,18 @@ class RdStepperController {
 	steps = [];
 
 	/*@ngInject*/
-	constructor($scope, $element, $timeout){
+	constructor($scope, $element, $timeout, Auth){
 		this.$scope = $scope;
-    this.$element = $element;
-    this.$timeout = $timeout;
+    	this.$element = $element;
+		this.$timeout = $timeout;
+		this.Auth = Auth;
+		this.userRole = '';
 
 		this.$element.addClass('rd-stepper');
 		this.currentStepIndex_ = 0;
 		this.steps = this.$scope.steps;
+		this.type = this.$scope.type;
+		this.getCurrentUser();
 
 		this.$scope.$watch(() => { return this.$scope.steps }, (value) => {
 			this.steps = this.$scope.steps;
@@ -34,6 +38,17 @@ class RdStepperController {
 				//this.releaseEnterStep(value);
 			}
 		});
+	}
+
+	getCurrentUser() {
+		this.Auth
+            .getCurrentUser()
+            .then(user => {
+				this.userRole = user.role;
+            })
+            .catch((err) => {
+                this.$log.error(err)
+            });
 	}
 
 	getStepByIndex_(idx) {
@@ -81,6 +96,20 @@ class RdStepperController {
 		this.currentStepIndex_--;
 	}
 
+	toRefuse($event) {
+		let toRefuseFn = this.$scope.onToRefuse;
+		if (typeof toRefuseFn === 'function') {
+			toRefuseFn($event); 
+		}
+	}
+
+	cancel($event) {
+		let onCancelFn = this.$scope.onCancel;
+		if (typeof onCancelFn === 'function') {
+			onCancelFn($event);
+		}
+	}
+
 	finish($event){
 		let finishFn = this.$scope.onFinish;
 		if (typeof finishFn === 'function'){
@@ -109,10 +138,10 @@ class RdStepperController {
 		//}
 	}
 
-	releaseSave(){
+	releaseSave(button){
 		let onSaveFn = this.$scope.onSave;
 		if (typeof onSaveFn === 'function'){
-			onSaveFn(this.currentStep());
+			onSaveFn(button);
 		}
 	}
 }
@@ -126,13 +155,18 @@ function rdStepper($log){
 		controllerAs: '$rdStepperController',
 		scope: {
 			canNext: '=',
+			onToRefuse: '=',
 			onFinish: '=',
 			onEnterStep: '=',
 			onSave: '=',
+			onCancel: '=',
 			autoSave: '=',
 			ngModel: '=',
 			initStepIndex: '=',
-			steps: '='
+			steps: '=',
+			type:'=',
+			
+
 		},
 		template: require('./stepper.html')
 	}

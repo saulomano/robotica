@@ -8,6 +8,8 @@ import waterfall from './components/waterfall/waterfall';
 import card from './components/card/card';
 import post from './components/post/post';
 import stepper from './components/stepper/stepper';
+import cardOrientaciones from './components/cardOrientaciones/cardOrientaciones';
+
 
 let requirements = [
 	navbar,
@@ -15,7 +17,8 @@ let requirements = [
 	waterfall,
 	card,
 	post,
-	stepper
+	stepper,
+	cardOrientaciones
 ];
 
 module.exports = angular

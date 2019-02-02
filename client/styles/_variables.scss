@@ -4,19 +4,33 @@
 $color-red-500:         #f44336;
 $color-red-600:         #e53935;
 $color-red-900:         #b71c1c;
-$color-deep-purple-400: #7e57c2;
+$color-deep-purple-400: #90b9d2;
 $color-cyan-400:        #26c6da;
 $color-light-green-400: #9ccc65;
 $color-yellow-400:      #f9a825;
+$color-light2-green-400: #8CC654;
+$violeta :#894AA5;
+$celeste-claro: #19C4F9;
+$gris-claro: #D1D1D1;
 
 // ------------------------------
 // Sections
 //
 $color-propuestas:    $color-red-500;
-$color-actividades:   $color-deep-purple-400;
-$color-herramientas:  $color-cyan-400;
+$color-actividades:   $violeta;
+$color-kits:   		  $violeta;
+$color-herramientas:  $gris-claro;
 $color-orientaciones: $color-light-green-400;
-$color-mediateca:     $color-yellow-400;
+$color-mediateca:     $gris-claro;
+$color-noticias:      $violeta;
+$color-calendario:    $violeta;
+$color-documentos:    $gris-claro;
+$color-desafios:      $celeste-claro;
+$color-loquehacemos:  $color-light2-green-400;
+$color-novedades:     $color-light2-green-400;
+$color-sabiasQue:     $color-light2-green-400;
+
+
 
 $sections: (
 	propuestas: ( color: $color-propuestas ),
@@ -27,7 +41,15 @@ $sections: (
 	herramienta: ( color: $color-herramientas ),
 	orientaciones: ( color: $color-orientaciones ),
 	orientacion: ( color: $color-orientaciones ),
-	mediateca: ( color: $color-mediateca )
+	mediateca: ( color: $color-mediateca ),
+	noticias: ( color: $color-noticias ),
+	calendario: ( color: $color-calendario ),
+	documentos: ( color: $color-documentos ),
+	desafios:  ( color: $color-desafios ),
+	loquehacemos: (color: $color-loquehacemos),
+	novedades: (color: $color-novedades),
+	sabiasQue: (color: $color-sabiasQue),
+	kits: (color: $color-kits)
 ) !default;
 
 // ------------------------------
@@ -40,7 +62,7 @@ $navbar-height-scrolled: 60px;
 
 $color-primary: 			$color-red-600;
 $color-primary-light:	$color-red-500;
-$color-primary-dark:  $color-red-900;
+$color-primary-dark:  $color-light2-green-400;
 
 $color-secondary: 			#07b9c1;
 $color-secondary-light:	#2998ff;
@@ -62,4 +84,7 @@ $color-success: green;
 $color-info: blue;
 
 $color-social: $color-primary;
-$color-dashboard: #6827A0;
+$color-dashboard: #19C4F9;
+
+
+$robotica-orintaciones-svg-path: '../assets/images';

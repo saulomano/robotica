@@ -1,0 +1,58 @@
+<div class="kview" >
+	<div class="kview__wrapper" layout-gt-xs="row">
+
+		<div class="one_half"  layout="column" flex="100">			
+			<section>
+
+				<div class="kview__content" flex>
+					<div  layout="row" layout-padding layout-align="center top">
+
+					</div>
+						<div flex >
+							<p><strong >{{$ctrl.resource.fecha | amTimezone:'Argentina' | amDateFormat:'DD MMMM YYYY'}} </strong></p>
+						</div>
+						<div flex >
+							<h4 class="margin" style="font-family: DIN-Regular;">{{$ctrl.resource.title}}</h4>					
+							
+							<div flex="75" ng-hide="$ctrl.resource.thumbnail === ''">
+								<img style="width: 100%;" class="responsive" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
+							</div>
+
+							<p flex class="paragraph post__test rview__summary">{{$ctrl.resource.summary}}</p>
+							<rd-post flex class="rview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>
+								
+	
+
+								<div flex="75"  ng-if="$ctrl.resource.urlVideo !== '' && $ctrl.resource.urlVideo.includes('/embed')">
+								
+									<md-dialog-content>
+										<div>
+										<div class="vid-container">
+											<iframe width="500" height="281" ng-src="{{$ctrl.resource.urlVideo.replace('watch?v=', 'v/') | trustUrl}}" frameborder="0" allowfullscreen></iframe>
+											</div>
+										</div>
+									</md-dialog-content>	
+								</div>		
+
+
+								<div ng-if="$ctrl.resource.files.length">
+									<md-button class="rview__button md-button" style="background-color:#8BBF1F; color: white"
+									ng-href="/api/publishednoticia/{{$ctrl.resource._id}}/download" target="_blank">Descargar</md-button>
+									<div ng-if="$ctrl.resource.files.length">
+											<div style="text-align: left; padding-left: 2%;"><span class="text-uppercase color-grey">{{$ctrl.resource.files.length}} Archivos | {{$ctrl.sumfiles($ctrl.resource.files) | numeraljs:'0b'}}</span></div>
+									</div>
+								</div>
+								
+						</div>				
+					</div>
+			</section>
+		</div>
+	</div>
+	<!--Lateral -->
+	<div class="icon-bar" ng-hide="$ctrl.modoVista === 'ver'">
+		<a ng-href="/ver/{{$ctrl.resource.type}}/{{$ctrl.resource._id}}" target="_blank" class="view-item" title="Ver Noticia"><i class="fa fa-expand"></i></a>
+		<!--a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+		<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+		<a href="#" class="youtube"><i class="fa fa-youtube"></i></a-->
+	</div>
+</div>

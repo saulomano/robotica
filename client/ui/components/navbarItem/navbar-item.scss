@@ -7,3 +7,28 @@
 		margin-right: .5rem;
 	}
 }
+
+.remarca{
+	font-size: 18px !important;
+}
+
+
+.remarca-link,
+.remarca-link:link,
+.remarca-link:visited,
+.remarca-link:active {
+	//color: #3498db;
+	color: #565656;
+	padding: 8px 10px;
+	font-size: 14px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    font-family: DINNextRoundedLTPro-Regular !important;
+    
+}
+
+.remarca-link:hover {
+	//text-decoration: underline;
+	background: #eee;
+	
+}

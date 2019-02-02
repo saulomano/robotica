@@ -44,7 +44,7 @@ export function isAuthenticated() {
 /**
  * Checks if the user role meets the minimum requirements of the route
  */
-export function hasRole(roleRequired) {
+export function hasRole(roleRequired, quienCarajo) {
   if(!roleRequired) {
     throw new Error('Required role needs to be set');
   }
@@ -52,6 +52,11 @@ export function hasRole(roleRequired) {
   return compose()
     .use(isAuthenticated())
     .use(function meetsRequirements(req, res, next) {
+        console.log('roleRequiredtop: ', quienCarajo);
+        console.log('roleRequired2: ', roleRequired);
+        console.log('req.user.role2: ', req.user.role);
+        console.log('config.userRoles2: ', config.userRoles);
+        console.log('config.userRoles.indexOf(req.user.role)2: ', config.userRoles.indexOf(req.user.role));
       if(config.userRoles.indexOf(req.user.role) >= config.userRoles.indexOf(roleRequired)) {
         return next();
       } else {

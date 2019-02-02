@@ -1,0 +1,44 @@
+
+<div>
+	<div style="background-color: white">
+		<div  layout="row" layout-align="center center" style="margin-bottom: 2%;">
+			<div>
+				<p  class="impact-text-large" style="text-align: center; margin-top: 20px; font-size: 40px; color: #8BBF1F; font-family: pacifico-regular, sans-serif;">Actividades complementarias</p>	
+				<P  class="impact-text-large" style="text-align: center; color: #4D4D4D; font-family: DINNextRoundedLTPro-Light;
+				font-size: 18px;">Actividades diseñadas para que los docentes puedan desarrollar junto a sus<br/>
+				 estudiantes sin contar con la presencia de los talleristas. Se trata de propuestas  <br/>
+				 lúdicas para conocer más sobre la robótica, la programación y el pensamiento <br/>
+				 computacional que pueden desarrollarse tanto dentro como fuera del aula.</P>			
+			</div>
+		</div>
+
+<div layout="row" layout-align="center center" style="margin-bottom: 15px; " id="donate"  layout-sm="column"  layout-xs="column">
+	
+			<div  ng-click="$ctrl.fetchDataFilter($event,'pensamientoComputacional')" id="b1" class="anchoDiv">
+				<label id="b1" class="blue responsive"><input id="b1" type="checkbox" name="areaEmergente" ng-model="$ctrl.pensamientoComputacional"><span id="b1" style="padding: 10px;">PENSAMIENTO COMPUTACIONAL <br><span class="parrafoComp">Actividades lúdicas y sencillas para implementar en el aula</span> </span></label>
+			</div>
+			
+		
+		<div  ng-click="$ctrl.fetchDataFilter($event,'programacion')" id="b2" class="anchoDiv">
+				<label id="b2" class="green responsive"><input id="b2" type="checkbox" name="areaEmergente" ng-model="$ctrl.programacion"><span id="b2" style="padding: 10px;">PROGRAMACIÓN <br> <span class="parrafoComp" id="b2">Actividades utilizando Scratch para profundizar conceptos</span></span></label>
+			</div>
+
+			<div  ng-click="$ctrl.fetchDataFilter($event,'robotica')" id="b3" class="anchoDiv">
+				<label id="b3" class="yellow responsive"><input id="b3" type="checkbox" name="areaEmergente" ng-model="$ctrl.robotica"><span id="b3" style="padding: 10px;">ROBÓTICA <br> <span class="parrafoComp" id="b3">Actividades para conocer un poco más sobre robótica educativa</span></span></label>
+			</div>
+</div>
+
+		
+	</div>
+
+
+	<div style="background-color: #eef2f5">
+		
+		<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">			
+			<rd-item-template>           
+				<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+			</rd-item-template>
+		</rd-waterfall>
+				
+	</div>
+</div>

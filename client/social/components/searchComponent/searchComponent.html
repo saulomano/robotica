@@ -1,0 +1,142 @@
+
+
+
+
+
+<form name='myform' class="main" novalidate ng-submit="myform.$valid && $ctrl.buscar($event)">
+        <div class="wrapper-demo" style=" position:relative; z-index:1000; text-align: center;">
+            
+            <div class="searchCont">
+               
+                    <div id="dd" class="wrapper-dropdown-3 searchdd" tabindex="1" ng-click="$ctrl.onClick($event)" >
+                            <span ng-hide="$ctrl.isMobile">TODOS LOS CONTENIDOS</span>
+                            <span ng-show="$ctrl.isMobile"><img ng-src="assets/icon.png" class="pointer"></span>
+                            <ul class="dropdown" style="text-align: left; width: 240px;  margin-top: 10px;  z-index: 1000" ng-click="$event.stopPropagation();">
+                                <li><md-checkbox class="green"  ng-model="$ctrl.propuestasTalleres"> PROPUESTAS DE TALLERES</md-checkbox></li>
+                                <li><md-checkbox class="green"  ng-model="$ctrl.talleresIntensivos"> TALLERES INTENSIVOS</md-checkbox></li>
+                                <li><md-checkbox class="green"  ng-model="$ctrl.actividadesComplementarias" > ACTIVIDADES COMPLEMENTARIAS</md-checkbox></li>
+                                <hr class="linea"/>
+                                <li><md-checkbox class="green" ng-model="$ctrl.recursos"> RECURSOS</md-checkbox></li>
+                                  </ul>
+                    </div>
+                    <input class="searchInput" name="search" ng-model="$ctrl.textSearch" placeholder="Busca contenido" required />
+					
+					<button style="display: contents !important;border-style: none !important ;" type="submit" ng-click="submitted=true"><img  class="wrapper-dropdown-3 imgSearch"  ng-src="assets/lupa.png" class="pointer"  ></button>
+                       
+              
+			</div>
+			
+			<!--div>
+				<p style="color: red; font-size: 18px;" ng-show="!myform.$valid && submitted ">
+						Completa el contenido.
+				</p>
+					</div>
+        
+           
+		​</div-->
+	
+			<div class="popup">
+				<span ng-show="!myform.$valid && submitted" class="popuptext" >Completá este campo!</span>
+			</div>
+	
+		</form>
+
+		<div class="rowparallaxk" >
+		<div ng-if="$ctrl.filter.length > 0 && $ctrl.cantidadBusqueda===0 && $ctrl.finishSearch" style="margin-bottom: 5%;">
+			<p style="font-family: DINNextRoundedLTPro-Bold; color: green; font-size: 20px;">NO SE HA ENCONTRADO CONTENIDO</p>
+			<p style="color: darkgray; font-size: 18px;">para "{{$ctrl.textoBuscado}}". Pruebe con otra palabra de búsqueda</p>   
+		</div>
+
+		<div ng-if="$ctrl.filter.length > 0 && $ctrl.cantidadBusqueda!==0 && $ctrl.finishSearch" style="margin-bottom: 5%;">
+			<p style="font-family: DINNextRoundedLTPro-Bold; color: green; font-size: 20px;">SE HAN ENCONTRADO {{$ctrl.cantidadBusqueda}} RESULTADOS</p>
+			<p style="color: darkgray; font-size: 18px;">para "{{$ctrl.textoBuscado}}"</p>   
+		</div>	
+		
+	</div>
+
+
+
+<div class="cont" ng-if="$ctrl.filter.includes('propuestasTalleres')">
+
+ <div class="rowparallaxk">		
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Propuestas de taller</p>
+		
+		<div >
+			<div>
+                    <rd-waterfall item-width="350" gutter="24" load-more-text="Ver más" fetch="$ctrl.fetchDataPropuestaTaller()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+						
+						<rd-item-template>           
+                                    <orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+                </rd-item-template>
+                </rd-waterfall>
+			</div>
+		
+		</div>
+	</div>
+</div>
+
+
+
+<div class="cont" ng-if="$ctrl.filter.includes('actividadesComplementarias')">
+	<div class="rowparallaxk">
+	
+		<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Actividades complementarias</p>
+		
+
+		<div>
+			<div>
+                    <rd-waterfall item-width="350" gutter="24" load-more-text="Ver más" fetch="$ctrl.fetchActividadComplementarias()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+						
+                            <rd-item-template>           
+                                    <orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+                </rd-item-template>
+                </rd-waterfall>
+			</div>
+		
+	</div>
+	</div>
+</div>
+
+
+
+<div class="cont" ng-if="$ctrl.filter.includes('talleresIntensivos')">
+	<div class="rowparallaxk">
+		<div>
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Talleres Intensivos</p>
+		</div>
+		<div >
+			<div>
+                    <rd-waterfall item-width="350" gutter="24" load-more-text="Ver más" fetch="$ctrl.fetchTalleresIntensivos()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+						
+                            <rd-item-template>           
+                                    <orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+                </rd-item-template>
+                </rd-waterfall>
+			</div>
+		
+		</div>
+	</div>
+</div>
+
+
+
+<div class="cont" ng-if="$ctrl.filter.includes('recursos')">
+	<div class="rowparallaxk">
+		<div>
+			<p class="impact-text-large titulos" style="text-align: center; font-family: pacifico-regular, sans-serif; color: #8BBF1F">Recursos</p>
+		</div>
+		<div >
+			<div>
+                    <rd-waterfall item-width="350" gutter="24" load-more-text="Ver más" fetch="$ctrl.fetchRecursos()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+						
+                            <rd-item-template>           
+                                <resource-card resource="item" editable="false" vista="'social'"></resource-card>
+		        </rd-item-template>
+                </rd-waterfall>
+			</div>
+		
+		</div>
+	</div>
+</div>
+
+

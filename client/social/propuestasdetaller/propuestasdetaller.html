@@ -1,0 +1,126 @@
+
+<div style="background-color: white">
+	<div  layout="row" layout-align="center center" style="margin-bottom: 2%;">
+		<div>
+			<p  class="impact-text-large" style="text-align: center; margin-top: 20px; font-size: 40px; color: #8BBF1F; font-family: pacifico-regular, sans-serif;">Propuestas de talleres</p>	
+			<P  class="impact-text-large" style="text-align: center; color: #4D4D4D; font-family: DINNextRoundedLTPro-Light;
+			font-size: 18px;">Talleres vinculados a los contenidos del diseño curricular que permiten a docentes y <br/>talleristas abordar la robótica aplicando pensamiento computacional y programación.
+			</P>
+			</div>
+	</div>
+	<div style="margin-bottom: 15px;">
+		<p  class="impact-text-large" style="text-align: center; margin-top: 20px;  color: #8BBF1F; font-family: DINNextRoundedLTPro-Regular;">SELECCIONÁ TU ÁREA</p>
+	</div>
+	<div layout="row" layout-align="center center" style="margin-bottom: 0.5%;" id="donate"  layout-sm="column"  layout-xs="column">
+	
+			<!--label id="b1" class="blue"><input id="b1" type="checkbox" ng-model="$ctrl.areaEmergente.pensamientoComputacional" ng-change="$ctrl.fetchDataFilter()"><span id="b1">PENSAMIENTO COMPUTACIONAL</span></label>	
+			<label id="b2" class="green"><input id="b2" type="checkbox" ng-model="$ctrl.areaEmergente.programacion" ng-change="$ctrl.fetchDataFilter()"><span id="b2">PROGRAMACIÓN</span></label>
+			<label id="b3" class="yellow"><input id="b3" type="checkbox" ng-model="$ctrl.areaEmergente.robotica" ng-change="$ctrl.fetchDataFilter()"><span id="b3">ROBÓTICA</span></label-->
+		<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'matematica')">
+			<label class="mat responsive"><input type="checkbox" name="area" ng-model="$ctrl.matematica"   ><span style="width: 300px; background-image: url(/assets/images/matematica.svg); background-repeat: no-repeat; text-align: center" >Matemática</span></label>
+		</div>
+		<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'naturales')">
+			<label class="nat responsive"><input type="checkbox" name="area" ng-model="$ctrl.naturales"  ><span style="width: 300px; background-image: url(/assets/images/naturales.svg); background-repeat: no-repeat; text-align: center">Cs. Naturales</span></label>
+		</div>
+		<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'lengua')">
+			<label class="pracLen responsive"><input type="checkbox" name="area" ng-model="$ctrl.lengua"   ><span style="width: 300px; background-image: url(/assets/images/lengua.svg); background-repeat: no-repeat; text-align: center">Práct. del lenguaje</span></label>
+		</div>
+
+		<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'masAreas')">
+			<label class=" responsive"><input type="checkbox" id="mas" name="area" ng-model="$ctrl.masAreas"   ><span style="width: 300px;  text-align: center">Más Áreas</span></label>
+		</div> 
+	</div>
+
+	<div ng-if="$ctrl.masAreas " style="margin-bottom: 0.5%;"   >
+		
+			<P  class="impact-text-large" style="text-align: center; color: #4D4D4D; font-family: DINNextRoundedLTPro-Light;
+			font-size: 17px;">Estas son algunas de las propuestas que estamos diseñando para abordar </br> 
+			 todas las áreas del Diseño Curricular a través de la robótica educativa.
+			</P>
+			
+	</div>
+	<div ng-if="$ctrl.masAreas " layout="row" layout-align="center center" style="margin-bottom: 0.5%;" id="donate"  layout-sm="column"  layout-xs="column">
+	
+
+
+
+		<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'sociales')">
+		<label class="mat responsive"><input type="checkbox" name="area" ng-model="$ctrl.sociales"   ><span style="width: 180px; background-image: url(/assets/images/sociales.svg); background-repeat: no-repeat; text-align: center" >Cs. Sociales</span></label>
+	</div>
+	<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'plastica')">
+		<label class="nat responsive"><input type="checkbox" name="area" ng-model="$ctrl.plastica"  ><span style="width: 180px; background-image: url(/assets/images/plastica.svg); background-repeat: no-repeat; text-align: center">Plástica</span></label>
+	</div>
+		<!--
+	<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'danza')">
+		<label class="mat responsive"><input type="checkbox" name="area" ng-model="$ctrl.danza"   ><span style="width: 180px; background-image: url(/assets/images/danza.svg); background-repeat: no-repeat; text-align: center" >Danza</span></label>
+	</div> -->
+	<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'musica')">
+		<label class="nat responsive"><input type="checkbox" name="area" ng-model="$ctrl.musica"  ><span style="width: 180px; background-image: url(/assets/images/musica.svg); background-repeat: no-repeat; text-align: center">Música</span></label>
+	</div>
+	<!--
+	<div style="margin-right: 10px; margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'teatro')">
+		<label class="pracLen responsive"><input type="checkbox" name="area" ng-model="$ctrl.teatro"   ><span style="width: 180px; background-image: url(/assets/images/teatro.svg); background-repeat: no-repeat; text-align: center">Teatro</span></label>
+	</div> -->
+	
+	
+</div>
+	<!--
+<div ng-if="$ctrl.masAreas" layout="row" layout-align="center center"  style="margin-bottom: 15px;" layout-sm="column"  layout-xs="column" id="donate" >
+			
+	<div style="margin-right: 10px;  margin-bottom: 10px " ng-click="$ctrl.fetchDataFilter($event,'edfisica')">
+		<label class="pracLen responsive"><input type="checkbox" name="area" ng-model="$ctrl.edfisica"   ><span style="width: 180px; background-image: url(/assets/images/fisica.svg); background-repeat: no-repeat; text-align: center">Ed. Física</span></label>
+	</div>
+	
+	<div style="margin-right: 10px;  margin-bottom: 10px" ng-click="$ctrl.fetchDataFilter($event,'ingles')">
+		<label class="pracLen responsive"><input type="checkbox" name="area" ng-model="$ctrl.ingles"   ><span style="width: 180px; background-image: url(/assets/images/ingles.svg); background-repeat: no-repeat; text-align: center">Inglés</span></label>
+	</div>
+	
+</div> -->
+
+
+
+
+	<div ng-show="$ctrl.habilita56 " style="margin-bottom: 15px; ">
+		<p  class="impact-text-large" style="text-align: center; margin-top: 20px;  color: #8BBF1F; font-family: DINNextRoundedLTPro-Regular;">SELECCIONÁ EL AÑO</p>
+	</div>
+	<div layout="row" layout-align="center center"  style="margin-bottom: 15px;" id="donate" >
+				<div ng-show="$ctrl.habilita56 " style="margin-right: 10px;">
+			<label class="quinto" ng-click="$ctrl.fetchDataFilter($event,'quinto')"><input id="quinto" type="checkbox"  ng-model="$ctrl.quinto"  ><span style="width: 130px; text-align: center;padding: 4px 0px">5to</span></label>
+			</div>
+			<div ng-show="$ctrl.habilita56 ">
+			<label class="sexto"  ng-click="$ctrl.fetchDataFilter($event,'sexto')"><input id="sexto" type="checkbox" ng-model="$ctrl.sexto" ><span style="width: 130px;text-align: center; padding: 4px 0px">6to </span></label>
+		</div>
+		
+	</div>
+	
+
+ <!--div class="bottom-sheet-demo inset" layout="row" layout-sm="column" layout-align="center"  ng-if="$ctrl.isMobile">
+    <md-button flex="100" class="md-button-filter" ng-click="$ctrl.muestraFiltroMobile = !$ctrl.muestraFiltroMobile">Filtrar</md-button>
+  </div>
+
+
+<div layout-gt-xs="row"  layout-xs ="column" ng-show="!$ctrl.isMobile || $ctrl.muestraFiltroMobile">
+	<div  flex   ng-repeat="item in $ctrl.orientacionesFiltro" ng-click="$ctrl.itemClicked(item)"  
+			style="text-align: center;" layout="column">	 
+	  <div flex="auto"></div>
+      <div class="preview-glyphs">
+		<md-icon 			          
+		style="font-size: 48px; height: 48px"
+            class="iconPed-{{item.name}} step"></md-icon>
+      </div>
+      <div class="preview-scale">
+        <span class="step" >{{ item.desc }}</span>
+	  </div>
+	</div>
+</div-->   
+</div>
+	<!--section class="resources_waterfall" style="margin-top: 3%;"-->
+	<div style="background-color: #eef2f5">
+		<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+			
+					<rd-item-template>           
+							<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+		</rd-item-template>
+		</rd-waterfall>
+	</div>
+	<!--/section-->

@@ -1,0 +1,76 @@
+.orientacionpedagogica-card {
+	display: block;
+}
+
+.card {
+	padding: .5rem;
+	opacity: 0;
+	transition: transform .3s ease-in-out, opacity .2s ease-in-out  .4s;
+
+	&:hover .item-wrapper,
+	&:focus .item-wrapper {
+		box-shadow: $whiteframe-shadow-4dp;
+	}
+}
+
+.fIntensivo{
+	height: 20px; 
+	background: #8BBF1F; 
+	color: white; 
+	text-align: center;
+	font-size: 1.3rem; 
+	width: 100%;
+	padding-top: 7px;
+	padding-bottom: 20px;
+	font-family: DINNextRoundedLTPro-Regular;
+}
+
+.iconDemo .glyph {
+	border-bottom: 1px dotted #ccc;
+	padding: 10px 0 20px;
+	margin-bottom: 20px;
+}
+.iconDemo .preview-glyphs {
+	display: flex;
+	flex-direction: row;
+}
+.iconDemo .step {
+	flex-grow: 1;
+	line-height: 0.5;
+}
+.iconDemo .material-icons.md-18 {
+	font-size: 18px;
+}
+.iconDemo .material-icons.md-24 {
+	font-size: 24px;
+}
+.iconDemo .material-icons.md-36 {
+	font-size: 36px;
+}
+.iconDemo .material-icons.md-48 {
+	font-size: 48px;
+}
+.iconDemo .material-icons.md-dark {
+	color: rgba(0, 0, 0, 0.54);
+}
+.iconDemo .material-icons.md-dark.md-inactive {
+	color: rgba(0, 0, 0, 0.26);
+}
+.iconDemo .material-icons.md-light {
+	color: white;
+}
+.iconDemo .material-icons.md-light.md-inactive {
+	color: rgba(255, 255, 255, 0.3);
+}
+
+.blue_font {
+	color: #5EA7F1;
+}
+
+.green_font {
+	color: #9aca3c;
+}
+
+.purple_font {
+	color: #bb62b3;
+}

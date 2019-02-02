@@ -54,116 +54,125 @@
     }
 
     // Banner home
-    &[section="home"] {
-      background-image: url(/assets/img/banner/index_back.png);
-      background-color: $color-primary-dark;
-    }
+    
 
     &[section="home"] &--legend {
-      padding-top: 10rem;
-      text-align: right;
       h1 { color: $color-white; }
       p { color: $color-white; }
     }
 
-    &[section="home"] &--image {
-      float: left;
-    }
-
     // Banner institucional
-    &[section="institucional"] {
-      background-image: url(/assets/img/banner/institucional_back.png);
-      background-color: $color-primary-dark;
+    &[section="institucional"],
+    &[section="noticias"],
+    &[section="calendario"],
+    &[section="kits"],
+    &[section="comoempezar"],{
+      background-image: url(/assets/img/banner/imagen-fondo_violeta.jpg);
+      background-color: #894AA5;
     }
 
-    // Banner propuestas
-    &[section="propuestas"] {
-      background-color: $color-propuestas;
-      background-image: url(/assets/img/banner/propuesta_back.png);
-    }
-
-    &[section="propuestas"] &--legend {
-      padding-top: 10rem;
-      padding-right: 4rem;
-      text-align: right;
-      h1, p {
-        color: $color-white;
-      }
+     &[section="sabiasQue"],
+     &[section="loquehacemos"],
+     &[section="novedades"],
+     &[section="home"]{
+      background-image: url(/assets/img/banner/index_back.png);
       
-      p {  }
     }
 
-    &[section="propuestas"] &--image {
-      float: left;
-    }
-
-    // Banner actividades
-    &[section="actividades"] {
-      background-image: url(/assets/img/banner/actividades_back.png);
-    }
-
-    &[section="actividades"] &--legend {
-      padding-top: 10rem;
-      padding-right: 4rem;
-      text-align: left;
-      h1 { color: $color-actividades; }
-      p { color: $color-black-light;}
-    }
-
-    &[section="actividades"] &--image {
-      float: right;
-    }
-
-    // Banner herramientas
-    &[section="herramientas"] {
-      background-image: url(/assets/img/banner/herramientas_back.png);
+    // Banner video
+    &[section="video"],
+    &[section="herramientas"],
+    &[section="mediateca"],
+    &[section="documentos"]{
+      background-image: url(/assets/img/banner/institucional_back.jpg);
+      background-color: #D1D1D1;
     }
 
     &[section="herramientas"] &--legend {
-      padding-top: 15rem;
-      padding-right: 4rem;
-      text-align: right;
       h1 { color: $color-herramientas; }
       p { color: $color-black-light;}
     }
 
-    &[section="herramientas"] &--image {
+    &[section="herramientas"] &--legend,
+    &[section="noticias"] &--legend,
+    &[section="calendario"] &--legend,
+    &[section="sabiasQue"] &--legend,
+    &[section="mediateca"] &--legend,
+    &[section="loquehacemos"] &--legend,
+    &[section="novedades"] &--legend,
+    &[section="documentos"] &--legend,
+    &[section="kits"] &--legend,
+    &[section="home"] &--legend  {
+      padding-top: 15rem;
+      padding-right: 4rem;
+      text-align: right;
+    }
+
+    &[section="herramientas"] &--image,
+    &[section="noticias"] &--image,
+    &[section="calendario"] &--image,
+    &[section="sabiasQue"] &--image,
+    &[section="loquehacemos"] &--image,
+    &[section="mediateca"] &--image,
+    &[section="novedades"] &--image,
+    &[section="documentos"] &--image,
+    &[section="kits"] &--image,
+    &[section="home"] &--image {
       float: left;
     }
 
-    // Banner orientaciones
-    &[section="orientaciones"] {
-      background-image: url(/assets/img/banner/orientaciones_back.png);
+    &[section="home"] &--image {
+      padding-top: 50px;
+      height: 10%;
+      width: 20%;
+    }
+    
+
+    &[section="noticias"] &--legend {
+      h1 { color: $color-black; }
+      p { color: $color-black;}
     }
 
-    &[section="orientaciones"] &--legend {
-      padding-top: 10rem;
-      padding-right: 4rem;
-      text-align: left;
-
-      h1 { color: $color-orientaciones; }
-      p { color: $color-black-light;}
+    &[section="calendario"] &--legend {
+      h1 { color: $color-black; }
+      p { color: $color-black;}
     }
 
-    &[section="orientaciones"] &--image {
-      float: right;
+    &[section="documentos"] &--legend {
+      h1 { color: $color-black; }
+      p { color: $color-black;}
     }
 
-    // Banner mediateca
-    &[section="mediateca"] {
-      background-image: url(/assets/img/banner/mediateca_back.png);
+
+    &[section="sabiasQue"] &--legend {
+      h1 { color: $color-black; }
+      p { color: $color-black;}
     }
+
+    &[section="loquehacemos"] &--legend {
+      h1 { color: $color-black; }
+      p { color: $color-black;}
+    }
+
+    &[section="novedades"] &--legend {
+      h1 { color: $color-black; }
+      p { color: $color-black;}
+    }
+
 
     &[section="mediateca"] &--legend {
-      padding-top: 10rem;
-      padding-right: 7rem;
-      text-align: right;
-      h1 { color: $color-mediateca; }
-      p { color: $color-black-light;}
+      h1 { color: $color-black; }
+      p { color: $color-black;}
     }
 
-    &[section="mediateca"] &--image {
-      float: left;
+    &[section="kits"] &--legend {
+      h1 { color: $color-black; }
+      p { color: $color-black;}
+    }
+
+    &[section="herramientas"] &--legend {
+      h1 { color: $color-black; }
+      p { color: $color-black;}
     }
   }
 }
@@ -193,7 +202,14 @@
       &[section="actividades"] &--legend,
       &[section="herramientas"] &--legend,
       &[section="orientaciones"] &--legend,
-      &[section="mediateca"] &--legend  {
+      &[section="mediateca"] &--legend,
+      &[section="noticias"] &--legend,
+      &[section="calendario"] &--legend,
+      &[section="sabiasQue"] &--legend,
+      &[section="loquehacemos"] &--legend,
+      &[section="novedades"] &--legend,
+      &[section="documentos"] &--legend,
+      &[section="kits"] &--legend{
         width: 40rem;
         margin: 0 auto;
         padding-top: 5rem;
@@ -217,66 +233,26 @@
       
       // SECTIONS
 
-      // home
-      &[section="home"] &--legend {
-        width: 40rem;
-        margin: 0 auto;
-        padding-top: .5rem;
-      }
-
       &[section="institucional"] p {
         font-size: 1.7rem;
 		    line-height: 1.7rem;
       }
 
-      // propuestas
-      &[section="propuestas"] &--legend {
-        width: 40rem;
-        margin: 0 auto;
-        padding-top: .1rem;
-      }
-
-
-      &[section="propuestas"] &--legend p {
-        display: none;
-      }
-
-      &[section="propuestas"] &--legend h1,
-      &[section="propuestas"] &--legend h1 span {
-        font-size: 2.3em !important;
-      }
-
-      // actividades
-      &[section="actividades"] &--legend {
-        width: 40rem;
-        margin: 0 auto;
-        padding-top: .5rem;
-      }
-
       // herramientas
-      &[section="herramientas"] &--legend {
+      &[section="home"] &--legend,
+      &[section="herramientas"] &--legend,
+      &[section="noticias"] &--legend,
+      &[section="calendario"] &--legend,
+      &[section="sabiasQue"] &--legend,
+      &[section="loquehacemos"] &--legend,
+      &[section="novedades"] &--legend,
+      &[section="documentos"] &--legend,
+      &[section="mediateca"] &--legend,
+      &[section="kits"] &--legend {
         width: 40rem;
         margin: 0 auto;
         padding-top: .5rem;
       }
-
-      // orientaciones
-      &[section="orientaciones"] &--legend {
-        width: 40rem;
-        margin: 0 auto;
-        padding-left: 5rem;
-        padding-top: 7rem;
-      }
-
-      &[section="orientaciones"] &--legend p {
-        display: none;
-      }
-
-      &[section="orientaciones"] &--legend h1,
-      &[section="orientaciones"] &--legend h1 span {
-        font-size: 2.3em !important;
-      }
-
     }
   }
 
@@ -314,7 +290,7 @@
       
       &[section="institucional"] .institucional--logo {
         margin-top: -30px;
-      }
+      }     
       
       &[section="home"] &--legend p {
         display: none;
@@ -324,81 +300,55 @@
       &[section="home"] &--legend h1 span {
         font-size: 1.6em !important;
       }
-      
-      // propuestas
-      &[section="propuestas"] &--legend {
-        width: 85%;
-        margin: 0 auto;
-        padding-top: .5rem;
-      }
-
-      &[section="propuestas"] &--legend p {
-        display: none;
-      }
-
-      &[section="propuestas"] &--legend h1,
-      &[section="propuestas"] &--legend h1 span {
-        font-size: 1.6em !important;
-      }
+ 
       
       // actividades
-      &[section="actividades"] &--legend {
+      &[section="herramientas"] &--legend,
+      &[section="noticias"] &--legend,
+      &[section="calendario"] &--legend,
+      &[section="sabiasQue"] &--legend,
+      &[section="mediateca"] &--legend,
+      &[section="loquehacemos"] &--legend,
+      &[section="novedades"] &--legend,
+      &[section="documentos"] &--legend,
+      &[section="kits"] &--legend{
         width: 60%;
         margin: 0 auto;
         padding-top: 2rem;
       }
 
-      &[section="actividades"] &--legend p {
-        display: none;
-      }
 
-      &[section="actividades"] &--legend h1,
-      &[section="actividades"] &--legend h1 span {
-        font-size: 1.6em !important;
-      }
-      
-      // herramientas
-      &[section="herramientas"] &--legend {
-        width: 60%;
-        margin: 0 auto;
-        padding-top: 2rem;
-      }
-
-      &[section="herramientas"] &--legend p {
+      &[section="herramientas"] &--legend p ,
+      &[section="noticias"] &--legend p,
+      &[section="calendario"] &--legend p,
+      &[section="sabiasQue"] &--legend p,
+      &[section="mediateca"] &--legend p,
+      &[section="loquehacemos"] &--legend p,
+      &[section="novedades"] &--legend p,
+      &[section="documentos"] &--legend p,
+      &[section="kits"] &--legend p{
         display: none;
       }
 
       &[section="herramientas"] &--legend h1,
-      &[section="herramientas"] &--legend h1 span {
+      &[section="herramientas"] &--legend h1 span,
+      &[section="noticias"] &--legend h1,
+      &[section="noticias"] &--legend h1 span,
+      &[section="calendario"] &--legend h1,
+      &[section="calendario"] &--legend h1 span,
+      &[section="sabiasQue"] &--legend h1,
+      &[section="sabiasQue"] &--legend h1 span,
+      &[section="loquehacemos"] &--legend h1,
+      &[section="loquehacemos"] &--legend h1 span,
+      &[section="novedades"] &--legend h1,
+      &[section="novedades"] &--legend h1 span,
+      &[section="documentos"] &--legend h1,
+      &[section="documentos"] &--legend h1 span,
+      &[section="mediateca"] &--legend h1,
+      &[section="mediateca"] &--legend h1 span,
+      &[section="kits"] &--legend h1,
+      &[section="kits"] &--legend h1 span {
         font-size: 1.6em !important;
-      }
-
-      // orientaciones
-      &[section="orientaciones"] &--legend {
-        width: 40rem;
-        margin: 0 auto;
-        padding-left: 5rem;
-        padding-top: 3rem;
-      }
-
-      &[section="orientaciones"] &--legend p {
-        display: none;
-      }
-
-      &[section="orientaciones"] &--legend h1,
-      &[section="orientaciones"] &--legend h1 span {
-        font-size: 2.3em !important;
-      }
-      
-      // mediateca
-      &[section="mediateca"] &--legend {
-        width: 60%;
-        margin: 0 auto;
-        padding-top: 2rem;
-      }
-
-      &[section="mediateca"] &--legend p {
-        display: none;
       }
     }
   }

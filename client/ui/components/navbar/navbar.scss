@@ -1,12 +1,13 @@
 .rd-navbar {
 	display: block;
-	position: fixed;
+	position: relative;
 	top: 0;
 	left: 0;
 	width: 100%;
 	min-width: $screen-min-width;
 	z-index: $navbar-z-index;
-	background-color: $color-white;
+	background-color: #8BBF1F;
+
 
 	&__content {
 		display: flex;
@@ -22,20 +23,24 @@
 		margin: 0 6px;
     height: 50px;
     min-width: 0;
-    padding: 13px;
+    padding: 12px;
     width: 50px;
 		border-radius: 50%;
 		opacity: 1;
 		backface-visibility: hidden;
 		transition: $transition-default;
-				
+		background: #76AA13;
+		border-radius: 1.8em;
+		-moz-border-radius: 1.8em;
+		-webkit-border-radius: 1.8em;		
 		&--bars {
 			display: block;
 			position: relative;
 			width: 100%;
 			height: 3px;
-			background-color: $color-grey;
+			background-color: white;
 			border-radius: 100px;
+			margin-top:50%;
 
 			&::before {
 				content: '';
@@ -44,31 +49,47 @@
 				position: absolute;
 				width: 100%;
 				height: 3px;
-				background-color: $color-grey;
+				background-color: white;
 				border-radius: inherit;
 			}
 
 			&::after {
 				content: '';
-				top: -8px;
+				top: -9px;
 				left: 0;
 				position: absolute;
 				width: 100%;
 				height: 3px;
-				background-color: $color-grey;
+				background-color: white;
 				border-radius: inherit;
 			}
 		}
 
 		&:hover {
 			background-color: transparent !important; //fix the md-button selector
+			border-radius: 50%;
+		opacity: 1;
+		backface-visibility: hidden;
+		transition: $transition-default;
+		background: #76AA13;
+		border-radius: 1.8em;
+		-moz-border-radius: 1.8em;
+		-webkit-border-radius: 1.8em;	
 		}
 
 		&:active {
-			box-shadow: $whiteframe-shadow-1dp;
+			//box-shadow: $whiteframe-shadow-1dp;
+			border-radius: 50%;
+		opacity: 1;
+		backface-visibility: hidden;
+		transition: $transition-default;
+		background: #76AA13;
+		border-radius: 1.8em;
+		-moz-border-radius: 1.8em;
+		-webkit-border-radius: 1.8em;	
 		}
 
-		&:hover &--bars,
+		/*&:hover &--bars,
 		&:focus &--bars {
 			background-color: $color-black-light;
 		}
@@ -83,8 +104,9 @@
 		&:focus &--bars::after {
 			background-color: $color-black-light;
 			top: -9px;
-		}
+		}*/
 	}
+
 
 	&__brand {
 		display: block;
@@ -113,23 +135,21 @@
 		@include opacity-transition-delay($delay: 150ms);
 	}
 
-	&__tools {
-	}
-
 	&__dropdown {
 		position: fixed;
 		z-index: -1;
 		left: ($gutter-fluid - .5);
 		padding: $gutter-fluid 0px;
-		width: 23rem;
+		width: 100%;
 		overflow: hidden;
 		opacity: 0;
+		margin: -10px 0 0px -28px ;
 		transition: $transition-default;
 
 		&--tools {
 			opacity: 0;
 			z-index: $navbar-z-index + 3;
-			border-top: 1px solid $color-grey-light;
+			//border-top: 1px solid $color-grey-light;
 			margin-top: 1rem;
 			transition: all .5s cubic-bezier(1,.39,.93,.73);
 		}
@@ -146,7 +166,7 @@
 			border-radius: 50%;
 			left: 18px;
 			top: -60px;
-			background-color: $color-white;
+		//	background-color: grey;
 			z-index: -1;
 			//transition: $transition-default;
 			transition: transform 1s cubic-bezier(0.86, 0, 0.07, 1);
@@ -191,5 +211,298 @@
 @include respond(tab-port){
 	.rd-navbar__nav--navigation {
 		display: none;
+	//	margin: 0 auto;
+		margin-top: -8px;
+		margin-left: 60px;
 	}
+}
+
+
+/**********************************************************************************************************************/
+/* Page */
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+.nav {
+	width: 550px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+/* Navigation */
+
+.nav {
+	font-family: DINNextRoundedLTPro-Regular;
+	font-size: 16px;
+}
+
+.nav .icon {
+	display: none;
+}
+
+.nav-items {
+	padding: 0;
+	list-style: none;
+}
+
+.nav-item {
+	display: inline-block;
+	margin-right: 25px;
+}
+
+.nav-item:last-child {
+	margin-right: 0;
+}
+
+.nav-link,
+.nav-link:link,
+.nav-link:visited,
+.nav-link:active,
+.submenu-link,
+.submenu-link:link,
+.submenu-link:visited,
+.submenu-link:active {
+	display: block;
+	position: relative;
+	font-size: 14px;
+	letter-spacing: 1px;
+	cursor: pointer;
+	text-decoration: none;
+	outline: none;
+	font-family: DINNextRoundedLTPro-Regular;
+	//font-size: 16pt;
+	font-weight: bold;
+	color: #494949;
+}
+
+.nav-link,
+.nav-link:link {
+	//color: white;
+	font-weight: bold;
+	font-family: DINNextRoundedLTPro-Regular;
+	font-size: 16px;
+	//font-weight: bold;
+	color: white;
+}
+
+
+
+.nav-link:visited,
+.nav-link:hover,
+.nav-link:active {
+	//color: white;
+	font-weight: bold;
+	font-family: DINNextRoundedLTPro-Regular;
+	font-size: 16px;
+	font-weight: bold;
+	color: #494949;
+	cursor: pointer;
+	text-decoration: none;
+	outline: none;
+}
+
+.nav-link::before {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	height: 3px;
+//	background: rgba(0,0,0,0.2);
+	opacity: 0;
+	-webkit-transform: translate(0, 10px);
+	transform: translate(0, 10px);
+	transition: opacity 0.3s ease, transform 0.3s ease;
+	font-family: DINNextRoundedLTPro-Regular;
+    font-size: 16px;
+}
+
+.nav-link:hover::before,
+.nav-link:hover::before {
+	opacity: 1;
+	-webkit-transform: translate(0, 5px);
+	transform: translate(0, 5px);
+}
+
+.dropdown {
+	position: relative;
+}
+
+.dropdown .nav-link {
+	padding-right: 15px;
+	height: 17px;
+	line-height: 17px;
+	margin: 0 auto;
+}
+
+.dropdown .nav-link::after {
+	content: "";
+	position:absolute;
+	top: 6px;
+	right: 0;
+	}
+
+.submenu {
+	position: absolute;
+	top: 100%;
+	left: 30%;
+	z-index: 100;
+	width: 300px;
+	margin-left: -100px;
+	background: #fff;
+	border-radius: 3px;
+	line-height: 1.46667;
+	margin-top: -5px;
+	//box-shadow: 0 0 8px rgba(0,0,0,.3);
+	opacity:0;
+	-webkit-transform: translate(0, 0) scale(.85);
+	transform: translate(0, 0)scale(.85);
+	transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+	pointer-events: none;
+	color:#565656;
+	
+}
+
+.submenu::after,
+.submenu::before {
+	content: "";
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	margin-left: -10px;
+	border: 10px solid transparent;
+	height: 0;
+}
+
+.submenu::after {
+	border-bottom-color: #fff;
+}
+
+.submenu::before {
+	margin-left: -13px;
+	border: 13px solid transparent;
+	border-bottom-color: rgba(0,0,0,.1);
+	-webkit-filter:blur(1px);
+	filter:blur(1px);
+}
+
+.submenu-items {
+	list-style: none;
+	//padding: 10px 0;
+	padding: 8px 0;
+}
+
+.submenu-item {
+	display: block;
+	text-align: left;
+	font-size: 14px !important;
+}
+
+.submenu-link,
+.submenu-link:link,
+.submenu-link:visited,
+.submenu-link:active {
+	//color: #3498db;
+	color: #565656;
+	padding: 8px 10px;
+	
+    text-align: center !important;
+    font-weight: bold !important;
+    font-family: DINNextRoundedLTPro-Regular !important;
+    
+}
+
+.submenu-link:hover {
+	//text-decoration: underline;
+	background: #eee;
+	
+}
+
+.submenu-seperator {
+	height: 0;
+	margin: 12px 10px;
+	border-top: 1px solid #eee;
+}
+
+.show-submenu .submenu {
+	opacity: 1;
+	-webkit-transform: translate(0, 25px) scale(1);
+	transform: translate(0, 25px) scale(1);
+	pointer-events: auto;
+}
+
+
+/************************* VERTICAL ******************************************/
+
+/* define a fixed width for the entire menu */
+.navigation {
+//	width: 300px;
+}
+
+/* reset our lists to remove bullet points and padding */
+.mainmenu, .submenu-i {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* make ALL links (main and submenu-i) have padding and background color */
+.mainmenu a {
+	display: block;
+	//background-color: #9a9a9a; // #CCC
+	font-weight: bold;
+	padding: 9px;
+	background-color: white;
+	color: black;
+	font-family: DINNextRoundedLTPro-Regular;
+	font-size: 12px;
+	text-decoration: none;
+	padding-left: 32px;
+
+}
+
+/* add hover behaviour */
+.mainmenu a:hover {
+	background-color:#e7e8e9
+	 // #666
+}
+
+/* when hovering over a .mainmenu item,
+  display the submenu-i inside it.
+  we're changing the submenu-i's max-height from 0 to 200px;
+*/
+
+.mainmenu li .submenu-i {
+	max-height: 200px;
+}
+
+/*
+  we now overwrite the background-color for .submenu-i links only.
+  CSS reads down the page, so code at the bottom will overwrite the code at the top.
+*/
+
+.submenu-i a {
+	background-color:white; // #5c5c5c
+	padding-left: 62px;
+	font-weight: normal;
+}
+
+/* hover behaviour for links inside .submenu-i */
+.submenu-i a:hover {
+	background-color: #e7e8e9; //#C5C5C5;
+}
+
+/* this is the initial state of all submenu-i.
+  we set it to max-height: 0, and hide the overflowed content.
+*/
+.submenu-i {
+	max-height: 0;
 }

@@ -1,3 +1,7 @@
+.md-dialog-fullscreen {
+	width: 80%;
+}
+
 resource-view {
 	display: block;	
 }
@@ -69,7 +73,7 @@ resource-view {
 	}
 
 	&__links {
-		background-color: $color-grey-light;
+	//	background-color: $color-grey-light;
 		padding: 2rem 2rem;
 	}
 

@@ -1,0 +1,163 @@
+
+<div>
+	<div style="background-color: white">
+		<div  layout="row" layout-align="center center" style="margin-bottom: 2%;">
+			<div>
+				<p  class="impact-text-large" style="text-align: center; margin-top: 20px; font-size: 40px; color: #8BBF1F; font-family: pacifico-regular, sans-serif;">Actividades complementarias</p>	
+				<P  class="impact-text-large" style="text-align: center; color: #4D4D4D; font-family: DINNextRoundedLTPro-Light;
+				font-size: 18px;">Actividades diseñadas para que los docentes puedan desarrollar junto a sus<br/>
+				 estudiantes sin contar con la presencia de los talleristas. Se trata de propuestas  <br/>
+				 lúdicas para conocer más sobre la robótica, la programación y el pensamiento <br/>
+				 computacional que pueden desarrollarse tanto dentro como fuera del aula.</P>			
+			</div>
+		</div>
+
+<!--div layout="row" layout-align="center center" style="margin-bottom: 15px; " id="donate"  layout-sm="column"  layout-xs="column">
+	
+			<div  ng-click="$ctrl.fetchDataFilter($event,'pensamientoComputacional')" id="b1" class="anchoDiv">
+				<label id="b1" class="blue responsive"><input id="b1" type="checkbox" name="areaEmergente" ng-model="$ctrl.pensamientoComputacional"><span id="b1" style="padding: 10px;">PENSAMIENTO COMPUTACIONAL <br><span class="parrafoComp">Actividades lúdicas y sencillas para implementar en el aula</span> </span></label>
+			</div>
+			
+		
+		<div  ng-click="$ctrl.fetchDataFilter($event,'programacion')" id="b2" class="anchoDiv">
+				<label id="b2" class="green responsive"><input id="b2" type="checkbox" name="areaEmergente" ng-model="$ctrl.programacion"><span id="b2" style="padding: 10px;">PROGRAMACIÓN <br> <span class="parrafoComp" id="b2">Actividades utilizando Scratch para profundizar conceptos</span></span></label>
+			</div>
+
+			<div  ng-click="$ctrl.fetchDataFilter($event,'robotica')" id="b3" class="anchoDiv">
+				<label id="b3" class="yellow responsive"><input id="b3" type="checkbox" name="areaEmergente" ng-model="$ctrl.robotica"><span id="b3" style="padding: 10px;">ROBÓTICA <br> <span class="parrafoComp" id="b3">Actividades para conocer un poco más sobre robótica educativa</span></span></label>
+			</div>
+</div-->
+
+		
+	</div>
+
+	<div>
+		<div class="col-3" style="background-color: #8BBF1F;">
+			<div class="primerDiv">
+				<p style="font-size: 10px; color: green;font-family: DINNextRoundedLTPro-Regular;
+				font-weight: bold;">ACTIVIDADES</p>
+				<p style="font-size: 23px; font-family: pacifico-regular, sans-serif; color: white">para conocer</p>
+				<p style="color: white;	font-family: DINNextRoundedLTPro-Regular;font-weight: bold;font-size: 25px;">NUESTROS</p>
+				<P style="color: white;	font-family: DINNextRoundedLTPro-Regular; font-weight: bold;font-size: 25px;">ROBOTS</P>
+			</br>
+				<p style="font-size: 12px; color: white;">
+						A partir de la observación y la reflexión </br>
+						se propone identificar y reconocer el </br>
+						funcionamiento de los elementos que </br>
+						componen el kit de robótica educativa.
+				</p>
+			</div>
+		</div>
+		<div class="col-9" style="background-color: #F5F9FC">
+			<div class="cards">
+				<rd-waterfall item-width="350" gutter="24" class="wf-container" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">			
+					<rd-item-template class="wf-box">           
+						<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+					</rd-item-template>
+				</rd-waterfall>
+			</div>
+			<div style="margin-left: auto; margin-right: auto; text-align: center">
+				<md-button class="rview__button md-button" style="background-color:#8BBF1F; color: white"> + VER MAS </md-button>
+			</div>
+		</div>		
+	</div>
+	<div style="margin-top: 1%;">
+		<div class="col-3" style="background-color: white;">
+			<div class="primerDiv">
+				<p style="font-size: 10px; color: green;font-family: DINNextRoundedLTPro-Regular;
+				font-weight: bold;">ACTIVIDADES</p>
+				<p style="font-size: 23px; font-family: pacifico-regular, sans-serif; color: #8BBF1F">para aprender más</p>
+				<p style="color: #8BBF1F;	font-family: DINNextRoundedLTPro-Regular;font-weight: bold;font-size: 25px;">SOBRE</p>
+				<P style="color: #8BBF1F;	font-family: DINNextRoundedLTPro-Regular; font-weight: bold;font-size: 25px;">PROGRAMACIÓN</P>
+			</br>
+				<p style="font-size: 12px; color: gray;">
+						Propuestas para incorporar los conceptos</br>
+						de estructura y repetición condicional, </br>
+						secuencia y algoritmo. 
+				</p>
+			</div>
+		</div>
+		<div class="col-9" style="background-color: #DEF0F3">
+			<div class="cards">
+				<rd-waterfall item-width="350" gutter="24" class="wf-container" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">			
+					<rd-item-template class="wf-box">           
+						<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+					</rd-item-template>
+				</rd-waterfall>
+			</div>
+			<div style="margin-left: auto; margin-right: auto; text-align: center">
+				<md-button class="rview__button md-button" style="background-color:#8BBF1F; color: white"> + VER MAS </md-button>
+			</div>
+		</div>		
+	</div>
+	<div style="margin-top: 1%;">
+		<div class="col-3" style="background-color: #8BBF1F;">
+			<div class="primerDiv">
+				<p style="font-size: 10px; color: green;font-family: DINNextRoundedLTPro-Regular;
+				font-weight: bold;">ACTIVIDADES</p>
+				<p style="font-size: 23px; font-family: pacifico-regular, sans-serif; color: white">para programar</p>
+				<p style="color: white;	font-family: DINNextRoundedLTPro-Regular;font-weight: bold;font-size: 25px;">CON BLOQUES</p>
+			</br>
+				<p style="font-size: 12px; color: white;">
+						Utilizamos Scratch, Pilas Bloques </br>
+						y Lightbot para realizar secuencias,  </br>
+						animaciones y juegos que nos permitirán </br>
+						aprender a programar de manera lúdica.
+				</p>
+			</div>
+		</div>
+		<div class="col-9" style="background-color: #F5F9FC">
+			<div class="cards">
+				<rd-waterfall item-width="350" gutter="24" class="wf-container" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">			
+					<rd-item-template class="wf-box">           
+						<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+					</rd-item-template>
+				</rd-waterfall>
+			</div>
+			<div style="margin-left: auto; margin-right: auto; text-align: center">
+				<md-button class="rview__button md-button" style="background-color:#8BBF1F; color: white"> + VER MAS </md-button>
+			</div>
+		</div>		
+	</div>
+	<div style="margin-top: 1%;">
+		<div class="col-3" style="background-color: white;">
+			<div class="primerDiv">
+				<p style="font-size: 10px; color: green;font-family: DINNextRoundedLTPro-Regular;
+				font-weight: bold;">ACTIVIDADES</p>
+				<p style="font-size: 23px; font-family: pacifico-regular, sans-serif; color: #8BBF1F">para reflexionar </p>
+				<p style="color: #8BBF1F;	font-family: DINNextRoundedLTPro-Regular;font-weight: bold;font-size: 25px;">SOBRE</p>
+				<P style="color: #8BBF1F;	font-family: DINNextRoundedLTPro-Regular; font-weight: bold;font-size: 25px;">ROBÓTICA</P>
+			</br>
+				<p style="font-size: 12px; color: gray;">
+						A partir de diversas lecturas </br>
+						reflexionamos en torno a la robótica  </br>
+						para aprehenderla de manera crítica. 
+				</p>
+			</div>
+		</div>
+		<div class="col-9" style="background-color: #DEF0F3">
+			<div class="cards">
+				<rd-waterfall item-width="350" gutter="24" class="wf-container" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">			
+					<rd-item-template class="wf-box">           
+						<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+					</rd-item-template>
+				</rd-waterfall>
+			</div>
+			<div style="margin-left: auto; margin-right: auto; text-align: center">
+				<md-button class="rview__button md-button" style="background-color:#8BBF1F; color: white"> + VER MAS </md-button>
+			</div>
+		</div>		
+	</div>
+	  
+
+
+	<!--div style="background-color: #eef2f5">
+		
+		<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más recursos" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">			
+			<rd-item-template>           
+				<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+			</rd-item-template>
+		</rd-waterfall>
+				
+	</div-->
+</div>

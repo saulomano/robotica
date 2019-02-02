@@ -1,156 +1,46 @@
 <div class="rview" >
 	<div class="rview__wrapper" layout="row" layout-align="start stretch">
 		<div class="rview__container"  layout="row" layout-align="start stretch" flex>
-			<div class="rview__sidenav--icon">
-				<div class="rview__sidenav--icon--head">
-						<i class="ri color-{{$ctrl.resource.type}} ri-6x" ng-class="'ri-'+$ctrl.resource.type"></i>
-				</div>
-			</div>	
 			<div class="rview__content" flex>
+				<div flex class="preview-glyphs">
+					<span>
+						<img  style="width: 5%;margin-left: 10px;" ng-src="{{$ctrl.getFieldClass($ctrl.resource.tipoRecurso)}}" class="pointer">
+					</span>
+					<label flex style="font-size: 2rem;">{{ $ctrl.getResourceTypeDescription($ctrl.resource.subtype) | uppercase }}</label>
+				</div>
 				<div class="rview__content--bar bg-{{$ctrl.resource.type}}"></div>
 				<div layout="column">
-					<h1 flex class="rd__headpost  rd__headpost--title rview__head">{{$ctrl.resource.title}}</h1>
+					<h4 flex class="margin ng-binding">{{$ctrl.resource.title}}</h4>
 					<p flex class="paragraph post__test rview__summary">{{$ctrl.resource.summary}}</p>
 					<rd-post flex class="rview__post" modules="$ctrl.resource.postBody" relative="$ctrl.uid" readonly="true"></rd-post>	
-				</div>
-			</div>
-		</div>
-		<div class="rview__sidenav">
-				<div layout="column" layout-padding>
-					<div flex>
-						<div class="rview__thumnail thumbnail thumbnail--rounded">
-							<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
+					<div ng-if="$ctrl.resource.files.length">
+						<md-button class="rview__button md-button" style="background-color:#8BBF1F; color: white"
+						ng-href="/api/publisheds/{{$ctrl.resource._id}}/download" target="_blank">Descargar</md-button>
+						<div ng-if="$ctrl.resource.files.length">
+							<div style="text-align: left; padding-left: 2%;"><span class="text-uppercase color-grey">{{$ctrl.resource.files.length}} Archivos | {{$ctrl.sumfiles($ctrl.resource.files) | numeraljs:'0b'}}</span></div>
 						</div>
 					</div>
-					<div flex><p class="rd__headpost rview__subtitle">{{$ctrl.resource.title}}</p></div>
-					<div flex class="rview__border-bottom">
-						<div ng-if="$ctrl.isPublished == false">
-							<p><strong class="rd-card__updated rd__color--grey-light ">Actualizado <strong am-time-ago="$ctrl.resource.createdAt"></strong> </strong></p>
-							<p ng-show="$ctrl.resource.published"><strong class="rd-card__updated rd__color--grey-light">Publicado <strong am-time-ago="$ctrl.resource.published.createdAt"></strong> </strong></p>
-						</div>
-						<div ng-if="$ctrl.isPublished">
-							<p><strong class="rd-card__updated rd__color--grey-light ">Publicado <strong am-time-ago="$ctrl.resource.updatedAt"></strong> </strong></p>
-						</div>
-						<p><strong class="rd-card__owner">{{$ctrl.resource.owner.name}}</strong></p>
-					</div>
-					<div flex class="rview__border-bottom">
-							<h5>{{$ctrl.resource.typeCaption}}</h5>
-					</div>
-					<div flex layout="column" class="text-center" layout-padding>
-						<div>
-								<!--<md-button class="md-fab" ng-disabled="true" aria-label="Comment">
-										<md-icon md-font-icon="ri-mochila" class="ri ri-3x"></md-icon>
-								</md-button>-->
-						</div>
-						<div ng-if="$ctrl.resource.type == 'propuesta'" >
-							<md-button class="rview__button md-raised md-primary" ng-if="$ctrl.resource.files.length" target="_blank" ng-href="/api/publisheds/{{$ctrl.resource._id}}/download">Ver Presentación</md-button>
-						</div>
-						<div  ng-if="$ctrl.resource.type !== 'propuesta'">
-							<div ng-if="$ctrl.resource.files.length"><md-button class="rview__button md-raised md-primary" 
-										ng-href="/api/publisheds/{{$ctrl.resource._id}}/download"
-										target="_blank">Descargar</md-button></div>
-							<div ng-if="$ctrl.resource.files.length">
-								<div class="text-center"><span class="text-uppercase color-grey">{{$ctrl.resource.files.length}} Archivos | {{$ctrl.sumfiles($ctrl.resource.files) | numeraljs:'0b'}}</span></div>
+					<div flex="75"  ng-if="$ctrl.resource.video !== '' && $ctrl.resource.video.includes('/embed') && $ctrl.resource.tipoRecurso == 'Video'">
+						<md-dialog-content>
+							<div>
+							<div class="vid-container">
+								<iframe width="500" height="281" ng-src="{{$ctrl.resource.video.replace('watch?v=', 'v/') | trustUrl}}" frameborder="0" allowfullscreen></iframe>
+								</div>
 							</div>
-						</div>
+						</md-dialog-content>	
+					</div>		
+					<div flex="75"  ng-if="$ctrl.resource.audio !== '' &&  $ctrl.resource.tipoRecurso == 'Audio'">
+						<md-dialog-content>
+							<div>
+							<div class="vid-container">
+								<iframe width="40%" height="166" scrolling="no" frameborder="no" allow="autoplay" ng-src="{{$ctrl.resource.audio | souncloudTrusted}}"></iframe>		
+							</div>
+							</div>
+						</md-dialog-content>	
 					</div>
 				</div>
-		</div>
-	</div>
-
-	<div class="rview__resources" layout="row" layout-align="start stretch">
-		<div class="rview__resources--left"></div>
-		<div flex>
-			<div class="rview__links" ng-if="$ctrl.resource.links.length > 0">
-					<h3 flex class="text-uppercase" ng-if="$ctrl.resource.type !== 'propuesta'">Vinculado a {{$ctrl.resource.links.length}} materiales</h3>	
-					<h3 flex class="text-uppercase" ng-if="$ctrl.resource.type == 'propuesta'">Esta Propuesta Pedagógica contiene {{$ctrl.resource.links.length}} materiales</h3>	
-					<md-list ng-cloak>
-							<md-list-item ng-repeat="item in $ctrl.resource.links">
-								<div ng-if="$ctrl.isPublished == false" layout="row">
-										<div layout="row" layout-padding layout-align="start center">
-											<div>
-													<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
-														<img ng-src="{{item.thumbnail}}" alt="Miniatura de la {{item.typeCaption}}">
-													</div>
-											</div>
-											<div flex>
-													<div layout="row" layout-align="start center">
-														<div><strong>{{item.title}}</strong> | </div>
-														<div class="color-{{item.type}}" layout="row" layout-align="start center">
-															<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
-														</div>
-													</div>
-													<div><p>{{item.summary | truncate:140}}</p></div>
-											</div>
-										</div>
-								</div>
-								<div ng-if="$ctrl.isPublished == true"  flex layout="row">
-										<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ui-sref="social.ver({ uid: item._id })">
-											<div>
-													<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
-														<img ng-src="{{item.thumbnail}}" alt="Miniatura de la {{item.typeCaption}}">
-													</div>
-											</div>
-											<div flex>
-													<div layout="row" layout-align="start center">
-														<div><strong>{{item.title}}</strong> | </div>
-														<div class="color-{{item.type}}" layout="row" layout-align="start center">
-															<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
-														</div>
-													</div>
-													<div><p>{{item.summary | truncate:140}}</p></div>
-											</div>
-										</a>
-								</div>
-							</md-list-item>
-					</md-list>
-			</div>
-			<div ng-if="$ctrl.resource.type !== 'propuesta'">
-				<div class="rview__links" ng-if="$ctrl.resource.relations.length > 0">
-						<h3 flex class="text-uppercase">Contenido en {{$ctrl.resource.relations.length}} materiales</h3>	
-						<md-list ng-cloak>
-								<md-list-item ng-repeat="item in $ctrl.resource.relations">
-									<div ng-if="$ctrl.isPublished == false" layout="row">
-											<div layout="row" layout-padding layout-align="start center">
-												<div>
-														<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
-															<img ng-src="{{item.thumbnail}}" alt="Miniatura de la {{item.typeCaption}}">
-														</div>
-												</div>
-												<div flex>
-														<div layout="row" layout-align="start center">
-															<div><strong>{{item.title}}</strong> | </div>
-															<div class="color-{{item.type}}" layout="row" layout-align="start center">
-																<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
-															</div>
-														</div>
-														<div><p>{{item.summary | truncate:140}}</p></div>
-												</div>
-											</div>
-									</div>
-									<div ng-if="$ctrl.isPublished == true"  flex layout="row">
-											<a class="rview__link" flex layout="row" layout-padding layout-align="start center" ui-sref="social.ver({ uid: item._id })">
-												<div>
-														<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="item.thumbnail == ''">
-															<img ng-src="{{item.thumbnail}}" alt="Miniatura de la {{item.typeCaption}}">
-														</div>
-												</div>
-												<div flex>
-														<div layout="row" layout-align="start center">
-															<div><strong>{{item.title}}</strong> | </div>
-															<div class="color-{{item.type}}" layout="row" layout-align="start center">
-																<i class="ri" ng-class="'ri-'+item.type"></i> <span>{{item.typeCaption}}</span>
-															</div>
-														</div>
-														<div><p>{{item.summary | truncate:140}}</p></div>
-												</div>
-											</a>
-									</div>
-								</md-list-item>
-						</md-list>
-				</div>
 			</div>
 		</div>
-		<div class="rview__resources--right"></div>
 	</div>
+	<!-- ================================================================ -->
 </div>

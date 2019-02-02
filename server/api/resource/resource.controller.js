@@ -32,6 +32,7 @@ export function index(req, res, next) {
 
 		q = { $or: [
 				{ type: { $regex: k, $options: 'i' } },
+				{ status: { $regex: k, $options: 'i' }},
 				{ title: { $regex: k, $options: 'i' } },
 				{ summary: { $regex: k, $options: 'i' } },
 				{ nivel: { $regex: k, $options: 'i' } },
@@ -55,14 +56,14 @@ export function index(req, res, next) {
 			}
 			req.totalItems = count;
 			req.result = Resource
-										.find(q)
-										.populate('owner')
-										.populate('files')
-										.sort(query.cursor.sort)
-										.skip(query.cursor.skip)
-										.limit(query.cursor.limit)
-										.select(query.cursor.select)
-										.exec();
+							.find(q)
+							.populate('owner')
+							.populate('files')
+							.sort(query.cursor.sort)
+							.skip(query.cursor.skip)
+							.limit(query.cursor.limit)
+							.select(query.cursor.select)
+							.exec();
 			next();
 		});
 }
@@ -103,8 +104,7 @@ export function show(req, res, next) {
 								.findById(resourceId)
 								.populate('owner')
 								.populate('files')
-								.populate('published')
-								.populate('links')
+								.populate('published')							
 								.exec();
 	next();
 }
@@ -129,6 +129,7 @@ export function publish(req, res, next) {
 	let pid = resource.published ? resource.published._id : undefined;
 	let published = new Published(resource);
 
+	console.log(resource);
 	// find the resource
 	if (pid === undefined){
 		published.createdAt = new Date();
@@ -145,8 +146,7 @@ export function publish(req, res, next) {
 							.findById(req.params.id)
 							.populate('owner')
 							.populate('files')
-							.populate('published')
-							.populate('links')
+							.populate('published')							
 							.exec();
 		
 						next();
@@ -163,7 +163,7 @@ export function publish(req, res, next) {
 					.populate('owner')
 					.populate('files')
 					.populate('published')
-					.populate('links')
+					
 					.exec();
 
 				next();

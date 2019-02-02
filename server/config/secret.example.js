@@ -1,5 +1,5 @@
 // rename this file to secret.js
-module.exports = function(){
+module.exports = function() {
 	if (process.env.NODE_ENV === 'production'){
 		return {
 			SESSION_SECRET: 'topsecretvalue',
@@ -12,4 +12,4 @@ module.exports = function(){
 		GOOGLE_ID: '',
 		GOOGLE_SECRET: ''
 	};
-}
+};

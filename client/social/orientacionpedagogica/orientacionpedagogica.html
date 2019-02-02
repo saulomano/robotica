@@ -1,0 +1,34 @@
+
+<div style="background-color: white">
+	<div  layout="row" layout-align="center center" style="margin-bottom: 2%;">
+		<div>
+			<p class="impact-text-large" style="text-align: center; margin-top: 20px; font-size: 40px; color: #8BBF1F; font-family: pacifico-regular, sans-serif;">Taller</p>	
+			<P class="impact-text-large" style="text-align: center; margin-top: 14px; font-size: 25px; color: black; font-family: DINNextRoundedLTPro-Regular;">{{$ctrl.taller.titulo}}</P>
+			<P class="impact-text-large" style="text-align: center; margin-right: auto; margin-left: auto;margin-bottom: 2%; width: 70%;margin-top: 14px; font-size: 14px; color: #c7c2c2; font-family: DINNextRoundedLTPro-Regular;">{{$ctrl.taller.descripcion}}</P>
+		
+		</div>
+	</div>
+	<div  class="responsive" layout="row" layout-align="center center" style="margin-bottom: 2%;">
+		<img ng-src="assets/123.png" alt="Logo">
+	</div>
+</div>
+
+<div style="background-color: #eef2f5">
+
+
+	<!--section class="resources_waterfall" style="margin-top: 3%;"-->
+		<rd-waterfall item-width="350" gutter="24" load-more-text="Ver más" fetch="$ctrl.fetchData()" item-click="$ctrl.viewOrientacionPedagogica_" search-text="$ctrl.searchText" obligareset="$ctrl.resetWaterfall">
+			
+					<rd-item-template>           
+							<orientacionpedagogica-card resource="item" editable="item.type !== 'addnew'" vista="'social'"></orientacionpedagogica-card>
+			</rd-item-template>
+		</rd-waterfall>
+	<!--/section-->
+</div>
+<div div style="background-color: white; margin-bottom: 30px;">
+	<div class="divsec">
+	<md-button ui-sref="social.propuestasdetaller" href="/" class="buttonsec">
+		VOLVER A LAS SECUENCIAS
+	</md-button>
+</div>
+</div>

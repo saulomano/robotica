@@ -14,6 +14,8 @@ export function index(req, res, next) {
 	var query = req.querymen;
 	let qq = req.query.q;
 	var type = req.query.type;
+	var subtypeElegido = req.query.subtype;
+	var tipoRecursoElegido = req.query.tipoRecurso;
 	let q = {};
 	if (qq){
   	// convert to regex
@@ -36,11 +38,10 @@ export function index(req, res, next) {
 				{ type: { $regex: k, $options: 'i' } },
 				{ title: { $regex: k, $options: 'i' } },
 				{ summary: { $regex: k, $options: 'i' } },
-				{ nivel: { $regex: k, $options: 'i' } },
-				{ area: { $regex: k, $options: 'i' } },
-				{ accessibility: { $regex: k, $options: 'i' } },
-				{ usability: { $regex: k, $options: 'i' } },
-				{ platform: { $regex: k, $options: 'i' } },
+				
+				{ descripcion: { $regex: k, $options: 'i' } },			
+				{ accessibility: { $regex: k, $options: 'i' } },		
+				{ 	tipoRecurso: { $regex: k, $options: 'i' } },				
 				{ category: { $regex: k, $options: 'i' } },
 				{ 'postBody.content': { $regex: k, $options: 'i' } },
 				{ tags: { $regex: k, $options: 'i' } },
@@ -53,6 +54,14 @@ export function index(req, res, next) {
 		if (q['$or']) {
 			q['$or'].type = undefined; 
 		}
+	}
+
+	if (subtypeElegido){
+		q['subtype'] = subtypeElegido;
+	}
+	
+	if (tipoRecursoElegido){
+		q['tipoRecurso'] = tipoRecursoElegido;
 	}
 
 	Published

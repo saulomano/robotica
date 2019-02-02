@@ -1,0 +1,184 @@
+
+<div class="dashboard__loading" layout="row" layout-align="center center" ng-show="$ctrl.loading">
+	<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+
+<!-- delete -->
+<div ng-if="$ctrl.isDelete">
+	<div class="dashboard__remove" ng-hide="$ctrl.loading">
+		<p class="dashboard__remove--legend">¿Esta seguro que desea eliminar PERMANENTEMENTE este {{$ctrl.getResourceType($ctrl.resource.type)}}?</p>
+		<md-button ng-click="$ctrl.deleteResource()" class="md-raised md-primary dashboard__remove--button" aria-label="Eliminar módulo">
+			Confirmar y Eliminar Recurso
+		</md-button>
+	</div>
+</div>
+
+<!-- toolbar -->
+<div class="dashboard__toolbar" ng-hide="($ctrl.loading || $ctrl.isDelete)">
+	<rd-stepper class="dashboard__stepper" 
+							rd-section="{{$ctrl.resource.type}}" 
+							steps="$ctrl.steps"
+							can-next="$ctrl.canNext" 
+							on-to-refuse="$ctrl.toRefuse",
+							on-finish="$ctrl.finish"
+							on-enter-step="$ctrl.onEnterStep"
+							on-save="$ctrl.save"
+							on-cancel="$ctrl.cancel"
+							init-step-index="$ctrl.initStepIndex"
+							user-rol="$ctrl.user.role"
+							type="$ctrl.resource.type"
+							
+							></rd-stepper>
+</div>
+
+<!-- STEP FICHA -->
+<div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'ficha'" ng-hide="($ctrl.loading || $ctrl.isDelete)">
+	<div class="dashboard__container"  layout="row" layout-align="start stretch">
+		<md-content class="dashboard__sidenav" data-type="{{$ctrl.resource.type}}">
+			<h2 class="dashboard__sidenav--head">{{$ctrl.headText}}</h2>
+			
+				
+			<md-content class="thumbnail__container">
+				<div class="dropzone dz__custom dz__thumbnail select-thumbnail dz-tumbnail-clickable" options="$ctrl.dzOptions" callbacks="$ctrl.dzCallbacks" methods="$ctrl.dzMethods" ng-dropzone
+						 ng-hide="$ctrl.resource.thumbnail !== ''"></div>
+				<div class="thumbnail thumbnail--rounded" ng-hide="$ctrl.resource.thumbnail == ''">
+					<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del Recurso">
+					<md-button ng-click="$ctrl.editTumbnail()" class="mini-button md-button md-raised thumbnail__button--edit dz-tumbnail-clickable">
+						<div layout="row">
+								<md-icon class="mi-mode-edit"></md-icon> <span>Cambiar</span>
+						</div>
+					</md-button>
+				</div>
+			</md-content>			
+		</md-content>
+			
+			
+
+			
+		
+		<md-content  class="dashboard__content" flex>
+			<div class="dashboard__content--head">
+					<md-input-container class="dashboard__input dashboard__input--title">
+						<label>Nombre</label>
+						<input ng-model="$ctrl.resource.nombre" required>
+					</md-input-container>
+					<md-input-container  class="dashboard__input dashboard__input--summary">
+						<label>Descripcion</label>
+						<textarea ng-model="$ctrl.resource.descripcion" required></textarea>
+					</md-input-container>
+			</div>
+
+			<md-divider md-inset></md-divider>
+			Habilidades
+			<rd-post modules="$ctrl.resource.habilidad" relative="$ctrl.uid" on-delete="$ctrl.onDeletePost"></rd-post>
+			<md-divider md-inset></md-divider>
+		
+			<md-divider md-inset></md-divider>		
+			NAP Relacionados
+			<rd-post modules="$ctrl.resource.potencialidades" relative="$ctrl.uid" on-delete="$ctrl.onDeletePost"></rd-post>
+			<md-divider md-inset></md-divider>
+			Armado
+			<rd-post modules="$ctrl.resource.armado" relative="$ctrl.uid" on-delete="$ctrl.onDeletePost"></rd-post>
+		</md-content>
+	</div>
+</div>
+
+<!-- STEP RECURSO -->
+<div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'recurso'" ng-hide="$ctrl.loading">
+	<div class="dashboard__container"  layout="row" layout-align="start stretch">
+		<md-content class="dashboard__sidenav" data-type="{{$ctrl.resource.type}}">
+			<div layout="row" class="dashboard__sidenav--top">
+				<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="$ctrl.resource.thumbnail == ''">
+					<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura del recurso">
+				</div>
+				<div flex class="dashboard__sidenav--head-resource">
+					<h2 class="dashboard__sidenav--head">{{$ctrl.headText}}</h2>				
+				</div>
+			</div>
+			<h1 class="rd__headpost--sidenav">{{$ctrl.resource.nombre}}</h1>					
+		</md-content>
+		
+		<md-content  class="dashboard__content" flex>IMAGEN PRINCIPAL: 
+			<div class="dropzone dz__custom dz-software-clickable"
+					data-type="{{$ctrl.resource.type}}"
+					options="$ctrl.dzOptionsSoftware"
+					callbacks="$ctrl.dzCallbacksSoftware"
+					methods="$ctrl.dzMethods"
+					ng-dropzone
+					ng-hide="$ctrl.resource.files.length > 0"></div>
+			<div ng-show="$ctrl.resource.files.length > 0">
+				<md-table-container class="table__files">
+					<table md-table multiple>
+						<thead md-head md-order="$ctrl.myOrder">
+							<tr md-row>
+								<th md-column>Nombre</th>
+								<th md-column md-numeric>Tamaño</th>
+							</tr>
+						</thead>
+						<tbody md-body>
+							<tr ng-repeat="file in $ctrl.resource.files">
+								<td md-cell><i class="{{file.icon}}"></i> <span>{{file.name}}</span></td>
+								<td md-cell><span>{{file.size | numeraljs:'0b'}}</span></td>
+							</tr>
+							<tr class="table__files--summary-cell">
+								<td md-cell></td>
+								<td md-cell><span class="table__files--summary">{{$ctrl.resource.files.length}} Archivos, Total: {{$ctrl.sumfiles($ctrl.resource.files) | numeraljs:'0b'}}</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</md-table-container>
+				<div layout="row">
+					<span flex></span>
+					<md-button class="md-raised" ng-click="$ctrl.removeAllFiles()">Eliminar todos</md-button>
+					<md-button class="md-raised dz-software-clickable" ng-click="null"><i class="fa fa-upload"></i> Agregar</md-button>
+				</div>
+			</div>		
+			
+		</md-content>
+	</div>
+	
+</div>
+
+<!-- STEP VINCULO -->
+<div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'vinculo'" ng-hide="$ctrl.loading">
+    <div class="dashboard__container"  layout="row" layout-align="start stretch">
+		<md-content class="dashboard__sidenav" data-type="{{$ctrl.resource.type}}">
+			<div layout="row" class="dashboard__sidenav--top">
+				<div class="thumbnail thumbnail--rounded thumbnail--50" ng-hide="$ctrl.resource.thumbnail == ''">
+					<img ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura de la {{$ctrl.headText}}">
+				</div>
+				<div flex class="dashboard__sidenav--head-resource">
+					<h2 class="dashboard__sidenav--head color-propuestas">{{$ctrl.headText}}</h2>
+					<h2 class="dashboard__sidenav--subhead color-propuestas">{{$ctrl.resource.tipoDesafio.caption}}</h2>
+				</div>
+			</div>
+			<h1 class="rd__headpost--sidenav">{{$ctrl.resource.title}}</h1>		
+			<div class="vinculo__files">
+				<div><span class="text-uppercase color-black-light">{{$ctrl.resource.files.length}} Archivos | {{$ctrl.sumfiles($ctrl.resource.files) | numeraljs:'0b'}}</span></div>
+				<div class="text-uppercase color-black-light">Curado por: {{$ctrl.resource.owner.name}}</div>
+			</div>
+		</md-content>
+		
+		<md-content  class="dashboard__content" flex>
+			<div class="dashboard__box">
+				<h4 class="color-grey font-medium">Palabras Claves</h4>
+				<md-chips ng-model="$ctrl.resource.tags" placeholder="Ingresá un tag" md-separator-keys="$ctrl.tagsKeys">
+			</div>
+		</md-content>
+	</div>
+</div>
+
+<!-- STEP PUBLICAR -->
+<div flex class="dashboard__sidenav--head-resource" id="msg">
+		<h2 class="dashboard__sidenav--head color-propuestas">
+			<strong>
+				{{ $ctrl.msg }}
+			</strong>
+		</h2>
+	</div>
+<div class="dashboard__wrapper" ng-if="$ctrl.currentStep == 'publicar'" ng-hide="$ctrl.loading">
+	<div class="dashboard__preview--header bg-primary">
+		<h2><i class="fa fa-angle-down"></i> Previsualización <i class="fa fa-angle-down"></i></h2>
+	</div>
+	<kit-view resource="$ctrl.resource" class="dashboard__preview"></kit-view>
+</div>

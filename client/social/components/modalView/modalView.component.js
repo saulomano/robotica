@@ -2,14 +2,13 @@
 
 class ModalViewComponent {
 	/*@ngInject*/
-	constructor($scope, $element, $state, $stateParams, Restangular){
+	constructor($scope, $element, $state, $stateParams, Restangular, elementType){
 		this.$scope = $scope;
 		this.$element = $element;
 		this.$state = $state;
 		this.$stateParams = $stateParams;
 		this.Restangular = Restangular;
-
-		this.Resource = this.Restangular.one('publisheds', $scope.$parent.resource._id);
+		this.Resource = this.Restangular.one(elementType, $scope.$parent.resource._id);
 
 		this.loading = true;
 	}

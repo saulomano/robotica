@@ -62,15 +62,22 @@ export default function(app) {
     })
   }));
 
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
   /**
    * Lusca - express server security
    * https://github.com/krakenjs/lusca
    */
   if(env !== 'test' && !process.env.SAUCE_USERNAME) {
     app.use(lusca({
-      csrf: {
+      /*csrf: {
         angular: true
-      },
+      },*/
+      csrf: false,
       xframe: 'SAMEORIGIN',
       hsts: {
         maxAge: 31536000, //1 year, in seconds
@@ -88,12 +95,12 @@ export default function(app) {
     const makeWebpackConfig = require('../../tasks/webpack.make');
     const webpackConfig = makeWebpackConfig({ DEV: true });
     const compiler = webpack(webpackConfig);
-    const browserSync = require('browser-sync').create();
+    //const browserSync = require('browser-sync').create();
 
     /**
      * Run Browsersync and use middleware for Hot Module Replacement
      */
-    browserSync.init({
+   /* browserSync.init({
       open: false,
       logFileChanges: false,
       proxy: `localhost:${config.port}`,
@@ -110,7 +117,7 @@ export default function(app) {
       ],
       port: config.browserSyncPort,
       plugins: ['bs-fullscreen-message']
-    });
+    });*/
 
     /**
      * Reload all devices when bundle is complete

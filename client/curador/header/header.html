@@ -3,15 +3,14 @@
 		<rd-navbar-brand>
 				<div class="navbar__logo">
 					<a ui-sref="curador.dashboard">
-						<img ng-src="assets/robotica-logo-white-header.svg" alt="Logo">
+						<img ng-src="assets/robotica-logo.png" alt="Logo">
 					</a>
 				</div>
 				<div class="navbar__logo--scrolled">
 					<a ui-sref="curador.dashboard">
-						<img ng-src="assets/robotica-logo-white-header.svg" alt="Logo">
+						<img ng-src="assets/robotica-logo.png" alt="Logo">
 					</a>
 				</div>
-				
 		</rd-navbar-brand>
 		<rd-navbar-navigation layout="row" layout-padding>
 			<div class="dashboard__navbar--caption">Tablero</div>
@@ -47,30 +46,60 @@
 		</rd-navbar-navigation>
 		<rd-navbar-tools>
 			<!--<rd-navbar-item navbar-item-icon="ri ri-lupa" navbar-item-caption="Buscar"></rd-navbar-item>-->
-			<rd-navbar-item navbar-item-icon="mi mi-home" navbar-item-caption="Home" navbar-item-selected="true"></rd-navbar-item>
-			<rd-navbar-item navbar-item-icon="mi mi-person" navbar-item-caption="Profile" 
-											ng-hide="$ctrl.user.google.image.url !== undefined" ng-click="$ctrl.toggleProfile($event)"></rd-navbar-item>
-			<div class="rd-navbar__item profile__avatar" ng-show="$ctrl.user.google.image.url !== undefined"
-					ng-click="$ctrl.toggleProfile($event)">
-					<img ng-src="{{$ctrl.user.google.image.url}}" alt="Avatar">
-			</div>
+			<rd-navbar-item
+					navbar-item-icon="mi mi-home"
+					navbar-item-caption="Home"
+					navbar-item-selected="true">
+			</rd-navbar-item>			
+			<rd-navbar-item
+					navbar-item-icon="mi mi-home"
+					navbar-item-caption="Noticias"
+					navbar-item-selected="false"
+					ng-model="$ctrl.navNoticias">
+			</rd-navbar-item>
+			
+			<rd-navbar-item
+					navbar-item-icon="mi mi-home"
+					navbar-item-caption="Orientacion Pedagogica"
+					navbar-item-selected="false"
+					ng-model="$ctrl.navOrientacionPedagogica">
+			</rd-navbar-item>
+			<rd-navbar-item
+			navbar-item-icon="mi mi-home"
+			navbar-item-caption="Kits"
+			navbar-item-selected="false"
+			ng-model="$ctrl.navKits">
+			</rd-navbar-item>
+			<rd-navbar-item
+			navbar-item-icon="mi mi-home"
+			navbar-item-caption="Recursos"
+			navbar-item-selected="false"
+			ng-model="$ctrl.navRecursos">
+			</rd-navbar-item>
+
+
+			
+
+			<rd-navbar-item
+					navbar-item-icon="mi mi-home"
+					navbar-item-caption="Aprobar Desafios"
+					navbar-item-selected="false"
+					ng-model="$ctrl.navDesafios">
+			</rd-navbar-item>
+			<rd-navbar-item
+					navbar-item-icon="mi mi-home"
+					navbar-item-caption="Proponer Desafio"
+					navbar-item-selected="false"
+					ng-model="$ctrl.navDesafiosPropuestos">
+			</rd-navbar-item>
+			<rd-navbar-item
+					navbar-item-icon="mi mi-home"
+					navbar-item-caption="Usuarios"
+					navbar-item-selected="false"
+					ng-model="$ctrl.navUser">
+			</rd-navbar-item>
 		</rd-navbar-tools>
 		<rd-navbar-body>
 		</rd-navbar-body>
 	</rd-navbar>
-	<div class="profile__dropdown" ng-show="$ctrl.showingDropdown">
-		<div class="profile__dropdown--caret">
-			<i class="fa fa-caret-up fa-2x"></i>
-		</div>
-		<div class="profile__dropdown--username">{{$ctrl.user.name}}</div>
-		<md-divider></md-divider>
-		<div layout="row">
-			<md-button class="md-raised md-mini profile__dropdown--logout">
-				<div layout="row" layout-align="center center" ng-click="$ctrl.logout()">
-					<i class="fa fa-sign-out"></i> <span>Salir</span>
-				</div>
-			</md-button>
-		</div>
-		
-	</div>
 </header>

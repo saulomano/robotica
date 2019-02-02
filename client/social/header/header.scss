@@ -1,4 +1,51 @@
 // fix the height with the navbar
 header {
-	height: $navbar-height;
+	//height: $navbar-height;
+}
+
+.sitemap {
+	background: #8BBF1F;
+	padding: 1rem;
+
+	&__content {
+	}
+
+	&__logo img {
+		height: 5rem;
+		width: auto;
+	}
+
+	&__navigation {
+		margin-left: 4rem;
+	}
+
+	&__link {
+		text-decoration: none;
+		color: white;
+		font-weight: $font-primary-medium;
+
+		&:not(:last-child) {
+			margin-right: 2rem;
+		}
+	}
+}
+
+.titHead{
+	height: 22px; 
+	background: rgb(112, 112, 112); 
+	color: white; 
+	text-align: center;
+	font-size: 1.3rem; 
+	padding-top: 7px;
+
+  }
+
+.footer {
+	background: #8BBF1F;
+}
+
+@media only screen and (max-width: 992px) {
+	.titHead{
+		font-size: 0.8rem !important; 
+	  }
 }

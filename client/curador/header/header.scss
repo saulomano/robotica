@@ -15,7 +15,7 @@
 .profile__dropdown {
 	position: fixed;
 	right: 2rem;
-	top: $navbar-height-scrolled - 15px;
+	top: $navbar-height-scrolled;
 	padding: 1rem;
 	width: 23rem;
 	//overflow: hidden;
@@ -23,7 +23,7 @@
 	transition: $transition-default;
 	background-color: $color-white;
 	z-index: $navbar-z-index + 50;
-	box-shadow: $whiteframe-shadow-4dp;
+	//box-shadow: $whiteframe-shadow-4dp;
 	border: solid 1px $color-grey-light;
 
 	&--caret {

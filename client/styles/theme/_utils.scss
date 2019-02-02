@@ -1,10 +1,10 @@
 @each $key, $section in $sections {
 	.color-#{$key} {
-		color: map-get($section, color) !important;
+		color: green !important;
 	}
 
 	.bg-#{$key} {
-		background-color: map-get($section, color) !important;
+		background-color: green !important;
 	}
 }
 
@@ -17,7 +17,7 @@
 }
 
 .bg-primary {
-	background-color: $color-primary;
+	background-color: green;
 }
 
 .color-grey {

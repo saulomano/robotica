@@ -25,6 +25,18 @@
 		{
 			"name": "institucional",
 			"url": "/institucional"
+		},
+		{
+			"name": "canalyt",
+			"url": "/canalyt"
+		},
+		{
+			"name": "verdesafio",
+			"url": "/verdesafio/:uid"
+		},
+		{
+			"name": "comoEmpezar",
+			"url": "/comoEmpezar"
 		}
 	]
 }

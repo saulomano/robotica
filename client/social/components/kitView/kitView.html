@@ -1,0 +1,44 @@
+<div class="kview" >
+	<div class="kview__wrapper" layout-gt-xs="row">
+		<div class="one_half"  layout="column" flex="100"> <!--flex="85"-->
+			<section>
+				<div class="kview__content" flex>
+					<div  layout="row" layout-padding layout-align="center top"></div>
+					<div flex >
+						<h4 class="margin" style="font-family: DINNextRoundedLTPro-Regular;">{{$ctrl.resource.nombre}}</h4>
+						<p flex class="paragraph post__test kview__summary">{{$ctrl.resource.descripcion}}</p>
+						<div flex="100" ng-hide="$ctrl.resource.thumbnail === ''">
+							<img class="responsive" ng-src="{{$ctrl.resource.thumbnail}}" alt="Miniatura">
+						</div>
+						<div >
+							<div flex="none">
+								<h3>NAP Relacionados</h3>
+							</div>
+							<div >
+								<rd-post  flex class="kview__post" modules="$ctrl.resource.potencialidades" relative="$ctrl.uid" readonly="true"></rd-post>
+							</div>
+						</div>
+						<div >
+							<div flex="none">
+								<h3>Habilidades</h3>
+							</div>
+							<div >
+								<rd-post  class="kview__summary" modules="$ctrl.resource.habilidad" relative="$ctrl.uid" readonly="true"></rd-post>
+							</div>
+						</div>
+						<div flex >
+							<rd-post  class="kview__summary"  modules="$ctrl.resource.armado" relative="$ctrl.uid" readonly="true"></rd-post>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<!--Lateral -->
+	<div class="icon-bar">
+		<a ng-href="/ver/{{$ctrl.resource.type}}/{{$ctrl.resource._id}}" target="_blank" class="view-item" title="Ver kits"><i class="fa fa-expand"></i></a>
+		<!--a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+		<a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+		<a href="#" class="youtube"><i class="fa fa-youtube"></i></a-->
+	</div>
+</div>

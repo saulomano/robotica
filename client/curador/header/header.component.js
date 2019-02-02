@@ -11,27 +11,66 @@ class CuradorHeaderComponent {
     this.$state = $state;
     this.showingDropdown = false;
     this.$rootScope = $rootScope;
-
+this.site= 'curador';
     this.isDisabled = false;
     this.noCache = true;
     this.selectedItem;
     this.searchText =  $stateParams.search || '';
+  
+    this.navUser = {
+        section: 'usuarios',  caption: 'Usuarios', action:'curador.users'
+    };
+
+    this.navNoticias = {
+      section: 'noticias',  caption: 'Noticias', action:'curador.dashboardnoticias'
+    };
+
+
+    this.navPropuestaTaller = {
+      section: 'propuestataller',  caption: 'Propuesta Taller', action:'curador.dashboarpropuestataller'
+    };
+
+    this.navOrientacionPedagogica = {
+      section: 'orientacionpedagogica',  caption: 'Orientacion Pedagógica', action:'curador.dashboardorientacionpedagogica'
+    };
+
+    this.navKits = {
+      section: 'kits',  caption: 'Kits', action:'curador.dashboardkits'
+    };
+
+
+    this.navDesafios = {
+      section: 'desafios',  caption: 'Desafios Resueltos', action:'curador.dashboarddesafiosresueltos'
+    };
+
+    this.navDesafiosPropuestos = {
+      section: 'desafiosPropuestos',  caption: 'Desafios Propuestos', action:'curador.dashboardpropuestadesafio'
+    };
+
+    this.navRecursos = {
+      section: 'recursos',  caption: 'Recursos', action:'curador.dashboard'   
+    };
+
+    
 
     this.navbarItems = [
+      { section: 'recursos', icon: 'ri ri-recursos', caption: 'Recursos' },
       { section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuestas' },
       { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' },
       { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
       { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' },
       { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' },
+      { section: 'noticias', icon: 'ri ri-noticias', caption: 'Noticias' },
+      { section: 'calendario', icon: 'ri ri-calendario', caption: 'Calendario' }
     ];
 
     this.getUser();
-    this.handleClickOnWindow();
 
     $rootScope.$on('$stateChangeSuccess', () => {
       this.searchText =  $stateParams.search || '';
     });
   }
+
 
   searchTextChange(searchText){
     this.$rootScope.$emit('filterChange', searchText);
@@ -55,15 +94,6 @@ class CuradorHeaderComponent {
         throw err;
       });
   }
-
-  handleClickOnWindow() {
-    $(window).click(() => {
-      if (this.showingDropdown){
-        this.showingDropdown = false;
-        this.$scope.$apply();
-      }
-    });
-  }
   
   itemClicked(item) {
     if (this.selected === item.section){
@@ -71,16 +101,13 @@ class CuradorHeaderComponent {
     }
     this.selected = item.section;
   }
-
-  toggleProfile($event){
-    this.showingDropdown = !this.showingDropdown;
-    $event.stopPropagation();
-  }
-
-  logout(){
-    this.Auth.logout();
-    this.$state.go('app.login');
-  }
+    //
+    // goUserModule() {
+    //     // let host = window.location.host;
+    //     // let protocol = window.location.protocol;
+    //     // window.location.href = `${protocol}//${host}/tablero/users`;
+    //     this.$state.go('curador.users');
+    // }
 }
 
 export default angular.module('robotica.curador.curadorHeader', [])

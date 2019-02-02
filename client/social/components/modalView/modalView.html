@@ -1,6 +1,6 @@
 <md-dialog class="" aria-label="Recurso {{$ctrl.resource.title}}">
-    <md-toolbar class="bg-{{$ctrl.resource.type}}">
-			<div class="md-toolbar-tools">
+    <md-toolbar  class="bg-{{$ctrl.resource.type}}">
+			<div class="md-toolbar-tools" style="background-color: #8BBF1F">
 				<span flex></span>
 				<md-button class="md-icon-button" ng-click="$ctrl.closeDialog()">
 					<i class="fa fa-times fa-2x" aria-hidden="true" aria-label="Cerrar dialogo"></i>
@@ -11,6 +11,14 @@
 		<div class="dashboard__loading" layout="row" layout-align="center center" ng-show="$ctrl.loading">
 			<md-progress-circular md-mode="indeterminate"></md-progress-circular>
 		</div>
-		<resource-view resource="$ctrl.resource" class="dashboard__preview" is-published="true"></resource-view>
+
+
+		<resource-view ng-if="$ctrl.resource.type == 'resource' " resource="$ctrl.resource" class="dashboard__preview" is-published="true"></resource-view>
+		<noticia-view ng-if="$ctrl.resource.type == 'noticia' " resource="$ctrl.resource" class="dashboard__preview" is-published="true"></noticia-view>
+		<kit-view ng-if="$ctrl.resource.type == 'kit' " resource="$ctrl.resource" class="dashboard__preview" is-published="true"></kit-view>
+		<orientacionpedagogica-view ng-if="$ctrl.resource.type == 'orientacionpedagogica' " resource="$ctrl.resource" class="dashboard__preview" is-published="true"></orientacionpedagogica-view>
+	
+	
+	
 	</md-dialog-content>
 </md-dialog>

@@ -1,0 +1,133 @@
+.groupX {
+	font-size: 16px;
+	margin: 20px 0;
+	padding: 3px 15px 3px 15px;
+	color: rgb(49, 46, 46);
+	background-color: rgba(224, 224, 224, 0.96);
+	text-transform: none;
+	font-weight: 400;
+	min-width:100px;
+  }
+  
+  .md-button.left {
+	border-radius: 10px 0 0 10px;
+  }
+	
+	.aKitE{
+		color: #BB62B3;
+	}
+
+	button.botonEbot:hover, button.aKitE:hover{
+		background-color:#BB62B3 !important;
+		
+			color:white !important;
+		
+	}
+
+	.aKitT{
+		color: #5EA7F1;
+	}
+
+	button.botonTbot:hover, button.aKitT:hover{
+		background-color:#5EA7F1 !important;
+		
+			color:white !important;
+		
+	}
+
+	.aKitL{
+		color: #8BBF1F;
+	}
+
+	button.botonLbot:hover, button.aKitL:hover{
+		background-color:#8BBF1F !important;
+		
+			color:white !important;
+		
+	}
+
+	
+	
+  .md-button.middle {
+	border-radius: 0;
+	border-left: 1px solid rgba(230, 230, 230, 0.96);
+	border-right: 1px solid rgba(230, 230, 230, 0.96);
+  }
+  
+  .md-button.right {
+	border-radius: 0 10px 10px 0;
+  }
+  
+  .md-button:not([disabled]):hover {
+	background-color: rgba(193, 193, 193, 0.96);
+	color: rgba(44, 65, 164, 0.96);
+	transition: 0.3s;
+  }
+  
+  .estilo{
+	width: 0;
+	height: 0;
+	border-top: 25px solid transparent;
+	border-right: 30px solid transparent;
+	border-left: 30px solid transparent;
+	position: relative;
+	left: 50%;
+	margin-left: -30px;
+	bottom: -25px;
+	border-top-color: #f0f1f1;
+	margin-top: -2%;
+	}
+
+	
+	
+	.botonEbot{
+		margin-left: auto; 
+		margin-right: auto; 
+		text-align: center; 
+		border: 1px solid #BB62B3; 
+		padding: 12px 0px; 
+		border-radius: 5px;     
+		width: 65%;
+		margin-top: 5%;
+		background-color: white;
+	}
+
+	.botonTbot{
+		margin-left: auto; 
+		margin-right: auto; 
+		text-align: center; 
+		border: 1px solid #5EA7F1; 
+		padding: 12px 0px; 
+		border-radius: 5px;     
+		width: 65%;
+		margin-top: 5%;
+		background-color: white;
+	}
+
+	.botonLbot{
+		margin-left: auto; 
+		margin-right: auto; 
+		text-align: center; 
+		border: 1px solid #8BBF1F; 
+		padding: 12px 0px; 
+		border-radius: 5px;     
+		width: 65%;
+		margin-top: 5%;
+		background-color: white;
+	}
+
+	.contenedor{
+		background-color: white; 
+		margin-top: -4.5rem; 
+		width: 80%; 
+		margin-right: auto; 
+		margin-left: auto;
+	}
+
+  @media only screen and (max-width: 840px) {
+		.contenedor{
+			
+			margin-top: 0 !important; 
+			
+		}
+	}

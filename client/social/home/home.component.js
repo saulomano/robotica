@@ -1,75 +1,152 @@
 'use strict';
+
 import angular from 'angular';
 import SocialComponent from '../social.component';
 import _ from 'lodash';
 
 export default class HomeComponent extends SocialComponent {
   /*@ngInject*/
-  constructor($element, $q, $http, Restangular, $mdDialog, $stateParams, ngMeta) {
+  constructor($element, $q, $http, Restangular, $mdDialog, $stateParams, ngMeta,$state,$location,$interval,$mdMedia) {
     super({$element});
     this.$http = $http;
     this.$q = $q;
-    this.Api = Restangular;
+    this.Restangular = Restangular;
     this.$mdDialog = $mdDialog;
     this.$stateParams = $stateParams;
-
+    this.Publisheds = this.Restangular.all('publishedOrientacionPedagogica');
+    this.Publishedskits = this.Restangular.all('publishedkits');
+    this.PublishedsNoticias = this.Restangular.all('publishednoticia');
+    this.$state = $state;
     this.page = 0;
     this.limit = 20;
-
+    this.$location=$location;
+ 
     //this.viewResource = ($event, resource) => { 
     //  this.viewResource_($event, resource);
     //};
+this.$interval = $interval;
+        ngMeta.setTitle("Home");
+    
 
-    this.sectionName = this.$stateParams.seccion || 'home';
-    let sections = {
-      'home': {
-        caption:  '<h1><span class="font-primary-regular">Un entorno</span><br/> de educación accesible</h1> <p>para compartir prácticas de enseñanza inclusivas pensadas desde la diversidad</p>',
-        image: '/assets/img/banner/index_image.png',
-        title: 'Bienvenido',
-        description: 'Robotica es un entorno de educación accesible para compartir prácticas de enseñanza inclusivas pensadas desde la diversidad',
+    this.puntaje = 5;
+
+    this.slides = [      
+      {
+        titulo: "Robótica Educativa", 
+        titulo3:"en la provincia",    
+        texto:"Llega el Plan Provincial de Robótica Educativa a las escuelas primarias de la Provincia de Buenos Aires",    
+        url: "/assets/img/banner/banner-video2-min.jpg",
+        textoboton:"VER VIDEO",        
+        tipo: "video",
+        vid: 2
       },
-      'propuestas': {
-        caption:  '<h1><span class="font-primary-regular">Propuestas</span><br/>pedagógicas</h1> <p>Dinámicas, flexibles y transversales. Para diseñar tu clase  integrando  nuevas experiencias de aprendizaje.</p>',
-        image: '/assets/img/banner/propuesta_image.png',
-        title: 'Propuestas pedagógicas',
-        description: 'Propuestas pedagógicas Dinámicas, flexibles y transversales.<br />Para diseñar tu clase  integrando  nuevas experiencias de aprendizaje.',
-        type: 'propuesta'
+      {
+        titulo: "Robótica en las aulas",
+        //titulo2:"y plástica",      
+        texto:"Docentes y estudiantes dan su testimonio de esta innovación educativa",       
+        url: "/assets/img/banner/slider_vid3-min.jpg",
+       textoboton:"VER VIDEO",
+        seccion:"social.noticias" ,
+        tipo: "video"
+        ,
+        vid: 3
+        
       },
-      'actividades': {
-        caption:  '<h1>_Actividades <br />accesibles</h1> <p>Diseñadas  para  participar , interactuar y aprender  en el aula  inclusiva.</p>',
-        image: '/assets/img/banner/actividades_image.png',
-        title: 'Actividades accesibles',
-        description: 'Actividades accesibles diseñadas  para  participar, interactuar y aprender  en el aula  inclusiva.',
-        type: 'actividad'
+      {
+        titulo: "Actividades complementarias",
+        //titulo2:"complementarias",
+        titulo3:"para el aula",
+        texto:"Actividades diseñadas para que los docentes puedan desarrollar junto a los alumnos sin contar con la presencia de los talleristas. ",      
+        url: "/assets/img/banner/slider_2-m.jpg",
+        textoboton:"VER ACTIVIDADES",
+        seccion:"social.actividadescomplementarias",
+        tipo: "link"
       },
-      'herramientas': {
-        caption:  '<h1>Herramientas_</h1> <p>Software para crear actividades, rampas digitales y entornos editables.</p>',
-        image: '/assets/img/banner/herramientas_image.png',
-        title: 'Herramientas',
-        description: 'Software para crear actividades, rampas digitales y entornos editables.',
-        type: 'herramienta'
-      },
-      'orientaciones': {
-        caption:  '<h1>_Orientaciones</h1> <p>Con tutoriales, documentos y sitios de interés  que sirven de apoyo a tus prácticas de enseñanza.</p>',
-        image: '/assets/img/banner/orientaciones_image.png',
-        title: 'Orientaciones',
-        description: 'Orientaciones con tutoriales y documentación que sirven de apoyo para tus prácticas.',
-        type: 'orientacion'
-      },
-      'mediateca': {
-        caption: '<h1>Mediateca_</h1> <p>Recursos didácticos para mirar, leer y escuchar.</p>',
-        image: '/assets/img/banner/mediateca_image.png',
-        title: 'Mediateca',
-        description: 'Recursos didácticos para mirar, leer y escuchar.',
-        type: 'mediateca'
+      {
+        titulo: "Talleres", 
+        titulo3:"para el aula",
+        texto:"Encuentra PROPUESTAS DE TALLERES pensados para que docentes y talleristas aborden la robótica aplicando pensamiento computacional y programación.",    
+        url: "/assets/img/banner/slider_3-m.jpg",
+        textoboton:"VER TALLERES",
+        seccion:"social.propuestasdetaller",
+        tipo: "link"
+      },  
+      {
+        titulo: "Experiencia", 
+        titulo3:"de robótica educativa",     
+        texto:"",           
+        url: "/assets/img/banner/slider_4-m.jpg",
+        textoboton:"VER VIDEO",
+        seccion:"social.propuestasdetaller",
+        tipo: "video",
+        vid: 1
       }
-    };
-    this.section = sections[this.sectionName];
-    ngMeta.setTitle(this.section.title);
-    ngMeta.setTag('description', this.section.description);
+    ]; 
+
+   // this.slides = slides;
+    this.currentIndex = 0;
+    this.setCurrentSlideIndex = 0;
+    this.isCurrentSlideIndex = 0;
+    
+   //this.loadSlides();
+
+   var self = this;    
+
+   self.runTimeoutExample = function(){
+       self.$interval(function(){         
+           self.nextSlide();
+       }, 5000);
+   }
+    
+   self.runTimeoutExample();
+
+
   }
 
-  fetchData(){
+ 
+  setCurrentSlideIndex(index) {
+    this.currentIndex = index;
+  }
+
+  slideIndexNext(index) {
+    this.currentIndex = index + 1;
+    this.$interval.cancel(self.runTimeoutExample); 
+   
+  }
+
+  slideIndexPrev(index) {
+    this.currentIndex = index == 0  ? this.slides.length - 1:  index- 1;
+    this.$interval.cancel(self.runTimeoutExample); 
+   
+  }
+  
+   isCurrentSlideIndex(index) {
+    return this.currentIndex === index;
+  }
+  
+   nextSlide() {
+    this.currentIndex = (this.currentIndex < this.slides.length - 1) ? ++this.currentIndex : 0;
+   // this.loadSlides();
+  }
+  
+  sliderClick(indice){
+    this.currentIndex =indice;
+    this.$interval.cancel(self.runTimeoutExample); 
+     
+  }
+  
+
+  selectButtonSlider(event,item){
+
+    if (item.tipo === "video"){
+        this.openVideo(event,item);
+    }else{
+      this.$state.go(item.seccion,{reload:true});
+    }
+
+
+  }
+ /* fetchData(){
     let def = this.$q.defer();
 
     this.page++;
@@ -84,9 +161,10 @@ export default class HomeComponent extends SocialComponent {
           let captions = {
             'propuesta': 'Propuesta pedagógica',
             'actividad': 'Actividad accesible',
-            'herramienta': 'Herramienta',
+            'herramientas': 'Herramienta',
             'orientacion': 'Orientación',
-            'mediateca': 'Mediateca',
+            'noticias': 'Noticias',
+            'calendario': 'Calendario',
           };
           let total = data.$total;
           data = _.map(data, p =>{
@@ -105,11 +183,170 @@ export default class HomeComponent extends SocialComponent {
         })
 
     return def.promise;
+  }*/
+
+  ircomoempezar(valor){
+
+
+    this.$location.url("/comoEmpezar?tab="+valor);
+
   }
 
-  viewResource_($event, resource){
+
+  fetchData(){
+    let def = this.$q.defer();
+    this.page++;
+    let q;
+    if (this.searchText){
+        q = this.searchText
+    }
+
+    this.Publisheds
+        .getList({
+            page: 1, 
+            limit: 3,
+            type: 'orientacionpedagogica',
+            publicaHome: true          
+        })
+        .then(data => {
+            let total = data.$total;
+      
+            let res = {
+                count: total,
+                items: data,
+                page: this.page,
+                limit: this.limit
+            };
+
+            def.resolve(res);
+        })
+
+    return def.promise;
+}
+
+fetchDataNoticia(){
+  let def = this.$q.defer();
+        this.page++;
+        let q;
+        if (this.searchText){
+            q = this.searchText
+        }
+
+        this.PublishedsNoticias
+            .getList({
+                page: 1, 
+                limit: 3,
+                type: 'noticia',
+                publicaHome: true
+            })
+            .then(data => {
+                let total = data.$total;
+          
+                let res = {
+                    count: total,
+                    items: data,
+                    page: this.page,
+                    limit: this.limit
+                };
+    
+                def.resolve(res);
+            })
+
+        return def.promise;
+}
+
+fetchDataKit(){
+  let def = this.$q.defer();
+  this.page++;
+  let q;
+  if (this.searchText){
+      q = this.searchText
+  }
+
+  this.Publishedskits
+      .getList({
+          page: 1, 
+          limit: 3,
+          type: 'kit'
+      })
+      .then(data => {
+          let total = data.$total;
+    
+          let res = {
+              count: total,
+              items: data,
+              page: this.page,
+              limit: this.limit
+          };
+
+          def.resolve(res);
+      })
+
+  return def.promise;
+}
+
+
+openVideo($event, resource){
+
+  if (!this.$mdDialog)
+      return;
+
+  this.$mdDialog.show({
+      template: require('../components/modalVideo/modalVideo.html'),
+      parent: angular.element(document.body),
+      targetEvent: $event,
+      clickOutsideToClose: true,
+      fullscreen: true, // Only for -xs, -sm breakpoints.
+      locals: {
+          resource: resource
+      },
+      controller: DialogController,
+      controllerAs: '$ctrl'
+  })
+      .then((data) => {
+          console.log(data);
+      }, () => {
+
+      })
+      .catch(function(res) {
+          if (!(res === 'cancel' || res === 'escape key press')) {
+              throw res;
+          }
+      });
+
+  function DialogController($scope, $mdDialog, resource, Restangular, $timeout,$mdMedia) {
+      'ngInject';
+      this.loading = true;
+      this.resource = resource;
+      this.$scope =$scope;
+
+      this.width=0;
+		this.height=0;
+      this.isMobile=false;
+
+      this.closeDialog = function() {
+				$mdDialog.hide();
+			}
+    this.$scope.$watch(() => { return $mdMedia('xs') }, (mobile) => {
+      this.isMobile = mobile === true;
+
+    });
+
+   
+		
+
+	
+  }
+}
+
+
+/*viewOrientacionPedagogica_($event, resource){
+
+    if (!this.$mdDialog)
+        return;
+
 		this.$mdDialog.show({
-      template: require('../components/modalView/modalView.html'),
+      template: require('../components/orientacionpedagogicaView/orientacionpedagogicaView.html'),
       parent: angular.element(document.body),
       targetEvent: $event,
 			clickOutsideToClose: true,
@@ -148,9 +385,11 @@ export default class HomeComponent extends SocialComponent {
           let captions = {
             'propuesta': 'Propuesta pedagógica',
             'actividad': 'Actividad accesible',
-            'herramienta': 'Herramienta',
+            'herramientas': 'Herramienta',
             'orientacion': 'Orientación',
             'mediateca': 'Mediateca',
+            'noticias': 'Noticias',
+            'calendario': 'Calendario'
           };
 
           data.links = _.map(data.links, p =>{
@@ -168,5 +407,5 @@ export default class HomeComponent extends SocialComponent {
           throw err;
         });
     }
-  }
+  }*/
 }

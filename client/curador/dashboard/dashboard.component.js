@@ -1,6 +1,7 @@
 'use strict';
 import angular from 'angular';
 import CuradorComponent from '../curador.component';
+import _ from 'lodash';
 
 export default class DashboardComponent extends CuradorComponent {
   /*@ngInject*/
@@ -15,6 +16,8 @@ export default class DashboardComponent extends CuradorComponent {
 
     this.page = 0;
     this.limit = 20;
+
+    this.type = $stateParams.type;
 
     this.Resources = this.Restangular.all('resources');
 
@@ -35,76 +38,81 @@ export default class DashboardComponent extends CuradorComponent {
     });
   }
 
-  getUser(){
-    this.Auth
-    .getCurrentUser()
-    .then(user => {
-      this.user = user;
-      this.username = user.name;
-    });
-  }
+  	getUser(){
+    	this.Auth
+    		.getCurrentUser()
+    		.then(user => {
+      			this.user = user;
+      			this.username = user.name;
+    		});
+	}
+	  
+	applyFilter(status) {
+		this.$state.go(this.$state.current, {search: status}, {reload:true});
+	}
 
-  fetchData(){
-    let def = this.$q.defer();
 
-    this.page++;
-    let addNewItem = {
-      type: 'addnew',
-      options: [
-        { section: 'propuestas', icon: 'ri ri-propuestas', caption: 'Propuestas pedagógica' },
-        { section: 'actividades', icon: 'ri ri-actividades', caption: 'Actividades' },
-        { section: 'herramientas', icon: 'ri ri-herramienta', caption: 'Herramientas' },
-        { section: 'orientaciones', icon: 'ri ri-orientaciones', caption: 'Orientaciones' },
-        { section: 'mediateca', icon: 'ri ri-mediateca', caption: 'Mediateca' },
-      ]
-    };
+  	fetchData(){
+    	let def = this.$q.defer();
+    	this.page++;
+    	let addNewItem = {
+			type: 'addnew',
+			options: [
+				{ section: 'tutorial', icon: 'ri ri-', caption: 'Tutoriales' },
+				{ section: 'herramienta', icon: 'ri ri-', caption: 'Herramientas' },
+				{ section: 'materialapoyo', icon: 'ri ri-', caption: 'Materiales de Apoyo' },
+				{ section: 'experiencia', icon: 'ri ri-', caption: 'Experiencias' },
+				{ section: 'ejemplos', icon: 'ri ri-', caption: 'Ejemplos' },
+				
+			]
+    	};
 
-    let q;
-    if (this.searchText){
-      q = this.searchText
-    }
+
+    	let q;
+    	if (this.searchText){
+      		q = this.searchText
+    	}
     
-    this.Resources
-        .getList({
-          q: q,
-          page: this.page, 
-          limit: this.limit,
-          sort: 'updatedAt'
-        })
-        .then(res => {
-          let items = [];
-          if (this.page === 1) {
-            items.push(addNewItem);
-          }
-          
-          items = items.concat(res);
+    	this.Resources
+        	.getList({
+          		q: q,
+          		page: this.page, 
+          		limit: this.limit,
+          		sort: 'updatedAt',
+       		})
+        	.then(res => {
+          		let items = [];
+          		if (this.page === 1) {
+            		items.push(addNewItem);
+          		}
 
-          let data = {
-            count: (res.$total + 1),
-            items: items,
-            page: this.page,
-            limit: this.limit
-          };
+				if (this.type == 'desafios') {
+					items = items.concat(_.filter(res, function(o) { return o.type == 'desafio' }));
+				} else {
+					items = items.concat(res);
+				}
 
-          def.resolve(data);
-        })
-        .catch(err => {
-          throw err;
-        });
+				let data = {
+					count: (res.$total + 1),
+					items: items,
+					page: this.page,
+					limit: this.limit
+				};
 
-    return def.promise;
-  }
+				def.resolve(data);
+			})
+        	.catch(err => {
+          		throw err;
+       		});
+
+    	return def.promise;
+  	}
   
-  $onInit(){
+  	viewResource_($event, resource){
+    	if (!resource){
+     		return;
+    	}
 
-  }
-  
-  viewResource_($event, resource){
-    if (!resource){
-      return;
-    }
-
-    this.$state.go(`curador.recurso`, { uid: resource._id });
-
-  }
+		this.$state.go(`curador.recurso`, { uid: resource._id, action: 'edit' });
+	}
 }

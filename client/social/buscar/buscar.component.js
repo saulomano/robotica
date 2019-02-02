@@ -44,10 +44,9 @@ export default class BuscarComponent extends SocialComponent {
       },
       'herramientas': {
         caption:  '<h1>Herramientas_</h1> <p>Software para crear actividades, rampas digitales y entornos editables.</p>',
-        image: '/assets/img/banner/herramientas_image.png',
         title: 'Herramientas',
         description: 'Software para crear actividades, rampas digitales y entornos editables.',
-        type: 'herramienta'
+        type: 'herramientas'
       },
       'orientaciones': {
         caption:  '<h1>_Orientaciones</h1> <p>Con tutoriales, documentos y sitios de interés  que sirven de apoyo a tus prácticas de enseñanza.</p>',
@@ -58,10 +57,51 @@ export default class BuscarComponent extends SocialComponent {
       },
       'mediateca': {
         caption: '<h1>Mediateca_</h1> <p>Recursos didácticos para mirar, leer y escuchar.</p>',
-        image: '/assets/img/banner/mediateca_image.png',
         title: 'Mediateca',
         description: 'Recursos didácticos para mirar, leer y escuchar.',
         type: 'mediateca'
+      },
+      'noticias': {
+        caption:  '<h1>Noticias_</h1> <p>Software para crear actividades, rampas digitales y entornos editables.</p>',
+        title: 'Noticias',
+        description: 'Software para crear actividades, rampas digitales y entornos editables.',
+        type: 'noticias'
+      },
+      'calendario': {
+        caption:  '<h1>Calendario_</h1> <p>Software para crear actividades, rampas digitales y entornos editables.</p>',
+        title: 'Calendario',
+        description: 'Software para crear actividades, rampas digitales y entornos editables.',
+        type: 'calendario'
+      },
+      'sabiasQue': {
+        caption:  '<h1>Sabias Que_</h1> <p>Software para crear actividades, rampas digitales y entornos editables.</p>',
+        title: 'sabiasQue',
+        description: 'Software para crear actividades, rampas digitales y entornos editables.',
+        type: 'sabiasQue'
+      },
+      'loquehacemos': {
+        caption:  '<h1>lo que hacemos_</h1> <p>Software para crear actividades, rampas digitales y entornos editables.</p>',
+        title: 'loquehacemos',
+        description: 'Software para crear actividades, rampas digitales y entornos editables.',
+        type: 'loquehacemos'
+      },
+      'novedades': {
+        caption:  '<h1>Novedades_</h1> <p>Software para crear actividades, rampas digitales y entornos editables.</p>',
+        title: 'novedades',
+        description: 'Software para crear actividades, rampas digitales y entornos editables.',
+        type: 'novedades'
+      },
+      'documentos': {
+        caption:  '<h1>Documentos_</h1> <p>Software para crear actividades, rampas digitales y entornos editables.</p>',
+        title: 'documentos',
+        description: 'Software para crear actividades, rampas digitales y entornos editables.',
+        type: 'documentos'
+      },
+      'kits': {
+        caption:  '<h1>Kits_</h1> <p>Software para crear actividades, rampas digitales y entornos editables.</p>',
+        title: 'kits',
+        description: 'Software para crear actividades, rampas digitales y entornos editables.',
+        type: 'kits'
       }
     };
     this.section = sections[this.sectionName];
@@ -117,9 +157,11 @@ export default class BuscarComponent extends SocialComponent {
           let captions = {
             'propuesta': 'Propuesta pedagógica',
             'actividad': 'Actividad accesible',
-            'herramienta': 'Herramienta',
+            'herramientas': 'Herramienta',
             'orientacion': 'Orientación',
             'mediateca': 'Mediateca',
+            'noticias': 'Noticias',
+            'calendario': 'Calendario',
           };
           let total = data.$total;
           data = _.map(data, p =>{
