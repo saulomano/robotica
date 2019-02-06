@@ -267,7 +267,7 @@ class OrientacionPedagogicaViewController extends SocialComponent{
 			//this.$scope = $scope;
 			this.loading = true;
 	
-			this.Resource = Restangular.one('orientacionpedagogica', id);
+			this.Resource = Restangular.one('publishedorientacionpedagogica', id);
 	
 			this.closeDialog = function() {
 				$mdDialog.hide();
