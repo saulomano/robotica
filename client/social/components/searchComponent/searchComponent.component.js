@@ -76,10 +76,6 @@ class SearchComponentController {
 		this.recursosExecute = true;
 
 
-	console.log(' this.talleresIntensivosExecute ' + this.talleresIntensivosExecute);
-	console.log('this.propuestasTalleresExecute ' + this.propuestasTalleresExecute);
-	console.log('this.actividadesComplementariasExecute '+ this.actividadesComplementariasExecute);
-	console.log('this.recursosExecute '+ this.recursosExecute);
 
 this.finishSearch = ( this.talleresIntensivosExecute && this.propuestasTalleresExecute
 	&& this.actividadesComplementariasExecute && this.recursosExecute); 
@@ -117,6 +113,9 @@ this.finishSearch = ( this.talleresIntensivosExecute && this.propuestasTalleresE
 			 
 			this.hideSubMenu(document.getElementById('dd'));
 			let filtro=[];
+
+			if (this.propuestasTalleres || this.talleresIntensivos ||
+				this.actividadesComplementarias || this.recursos ) {
 			if (this.propuestasTalleres)
 				filtro.push('propuestasTalleres');
 			if (this.talleresIntensivos)
@@ -125,7 +124,12 @@ this.finishSearch = ( this.talleresIntensivosExecute && this.propuestasTalleresE
 				filtro.push('actividadesComplementarias');
 			if (this.recursos)
 				filtro.push('recursos');
-			
+			}else{
+				filtro.push('propuestasTalleres');
+				filtro.push('talleresIntensivos');
+				filtro.push('actividadesComplementarias');
+				filtro.push('recursos');
+			}
 		
 				this.$state.go(this.$state.current, {search: this.textSearch , filter : filtro.join(",")			
 				}, {reload:true});
