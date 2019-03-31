@@ -36,5 +36,8 @@ function startServer() {
 seedDatabaseIfNeeded();
 setImmediate(startServer);
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json({limit: '300mb'}));
+app.use(bodyParser.urlencoded({limit: '300mb', extended: true}));
 // Expose app
 exports = module.exports = app;

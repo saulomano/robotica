@@ -114,6 +114,13 @@ class OrientacionPedagogicaViewController extends SocialComponent{
 
 	}
 
+	recarga(recurso){
+
+		this.$scope.resource =recurso;
+		this.$location.hash('topDiv');
+			this.$anchorScroll();
+	}
+
 	sumfiles(files){
 		return _.sumBy(files, 'size');
 	}
